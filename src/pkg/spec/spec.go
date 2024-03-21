@@ -49,6 +49,13 @@ var EnumDXCCTSV []byte
 //go:embed 315/fields.tsv
 var FieldsTSV []byte
 
+// FieldsExtraTSV is the TSV file containing common APP_ fields defined by 3rd parties.
+// This file is not part of the ADIF specification.
+// If you add to this file, please keep it alphabetized.
+//
+//go:embed fields_extra.tsv
+var FieldsExtraTSV []byte
+
 //go:embed 315/enumerations_mode.tsv
 var EnumModeTSV []byte
 

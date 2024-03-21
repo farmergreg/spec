@@ -2,6 +2,7 @@ package adifield
 
 import (
 	"slices"
+	"strings"
 
 	"github.com/hamradiolog-net/adif-spec/src/pkg/shared"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spec"
@@ -27,6 +28,26 @@ func init() {
 		panic(err)
 	}
 
+	fieldListExtra, err := spec.ParseADISpecTSV[*FieldDefinition](spec.FieldsExtraTSV)
+	if err != nil {
+		panic(err)
+	}
+	FieldListAll = append(FieldListAll, fieldListExtra...)
+
+	slices.SortStableFunc(FieldListAll, func(a, b *FieldDefinition) int {
+		// Sort headers last
+		if bool(a.IsHeaderField) != bool(b.IsHeaderField) {
+			if bool(a.IsHeaderField) {
+				return 1
+			}
+			return -1
+		}
+		// If both are headers or both are not headers, sort by ID
+		return strings.Compare(string(a.ID), string(b.ID))
+	})
+	FieldListAll = slices.Clip(FieldListAll)
+
+	// special case, rename USERDEFn in FieldListAll to USERDEF1
 	// special case, rename USERDEFn in FieldListAll to USERDEF1
 	for _, item := range FieldListAll {
 		if item.ID == USERDEF+"n" {
