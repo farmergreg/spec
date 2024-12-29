@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "generate adi",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmd/specgen/main.go",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GOPATH": "${env:GOPATH}",
+                "GOROOT": "${env:GOROOT}"
+            }
+        }
+    ]
+}

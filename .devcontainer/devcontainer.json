@@ -1,0 +1,37 @@
+{
+    "name": "HamRadioLog.Net",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "target": "dev-container",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "DavidAnson.vscode-markdownlint",
+                "donjayamanne.githistory",
+                "eamodio.gitlens",
+                "golang.go",
+                "janisdd.vscode-edit-csv",
+                "mechatroner.rainbow-csv",
+                "ms-azuretools.vscode-docker",
+                "redhat.vscode-yaml",
+                "neverik.go-critic"
+            ],
+            "settings": {
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
+                "go.survey.prompt": false,
+                "go.showWelcome": false
+            }
+        }
+    },
+    "forwardPorts": [],
+    "remoteUser": "1000",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+    "workspaceFolder": "/app",
+    "mounts": [
+        "source=${localEnv:HOME}/.cache,target=/home/hrln/.cache,type=bind",
+        "source=${localEnv:HOME}/go/pkg,target=/home/hrln/go/pkg,type=bind"
+    ]
+}
