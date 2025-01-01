@@ -29,7 +29,7 @@ package main
 import (
  "fmt"
 
- "github.com/hamradiolog-net/adif-spec/src/pkg/band"
+ "github.com/hamradiolog-net/adif-spec/src/pkg/enum/band"
 )
 
 func main() {
