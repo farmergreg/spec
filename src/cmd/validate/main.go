@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/arrlsection"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
 )
 
 func main() {

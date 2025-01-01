@@ -4,7 +4,7 @@ import (
 	"slices"
 
 	"github.com/hamradiolog-net/adif-spec/src/pkg/shared"
-	"github.com/hamradiolog-net/adif-spec/src/spec"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spec"
 )
 
 var (
