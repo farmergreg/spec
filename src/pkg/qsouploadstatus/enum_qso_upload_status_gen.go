@@ -7,7 +7,7 @@
 package qsouploadstatus
 
 var (
-	Y QSOUploadStatus = "Y" // Y = the QSO has been downloaded from the online service
-	N QSOUploadStatus = "N" // N = the QSO has not been downloaded from the online service
-	I QSOUploadStatus = "I" // I = ignore or invalid
+	Y QSOUploadStatus = "Y" // Y = the QSO has been uploaded to, and accepted by, the online service
+	N QSOUploadStatus = "N" // N = do not upload the QSO to the online service
+	M QSOUploadStatus = "M" // M = the QSO has been modified since being uploaded to the online service
 )

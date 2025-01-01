@@ -7,345 +7,345 @@
 package dxccentitycode
 
 var (
-	NONE                              DXCC = 0   // 0    =
-	CANADA                            DXCC = 1   // 1    = CANADA
-	AFGHANISTAN                       DXCC = 3   // 3    = AFGHANISTAN
-	AGALEGA_AND_ST_BRANDON_IS         DXCC = 4   // 4    = AGALEGA & ST. BRANDON IS.
-	ALAND_IS                          DXCC = 5   // 5    = ALAND IS.
-	ALASKA                            DXCC = 6   // 6    = ALASKA
-	ALBANIA                           DXCC = 7   // 7    = ALBANIA
-	AMERICAN_SAMOA                    DXCC = 9   // 9    = AMERICAN SAMOA
-	AMSTERDAM_AND_ST_PAUL_IS          DXCC = 10  // 10   = AMSTERDAM & ST. PAUL IS.
-	ANDAMAN_AND_NICOBAR_IS            DXCC = 11  // 11   = ANDAMAN & NICOBAR IS.
-	ANGUILLA                          DXCC = 12  // 12   = ANGUILLA
-	ANTARCTICA                        DXCC = 13  // 13   = ANTARCTICA
-	ARMENIA                           DXCC = 14  // 14   = ARMENIA
-	ASIATIC_RUSSIA                    DXCC = 15  // 15   = ASIATIC RUSSIA
-	NEW_ZEALAND_SUBANTARCTIC_ISLANDS  DXCC = 16  // 16   = NEW ZEALAND SUBANTARCTIC ISLANDS
-	AVES_I                            DXCC = 17  // 17   = AVES I.
-	AZERBAIJAN                        DXCC = 18  // 18   = AZERBAIJAN
-	BAKER_AND_HOWLAND_IS              DXCC = 20  // 20   = BAKER & HOWLAND IS.
-	BALEARIC_IS                       DXCC = 21  // 21   = BALEARIC IS.
-	PALAU                             DXCC = 22  // 22   = PALAU
-	BOUVET                            DXCC = 24  // 24   = BOUVET
-	BELARUS                           DXCC = 27  // 27   = BELARUS
-	CANARY_IS                         DXCC = 29  // 29   = CANARY IS.
-	C_KIRIBATI_BRITISH_PHOENIX_IS     DXCC = 31  // 31   = C. KIRIBATI (BRITISH PHOENIX IS.)
-	CEUTA_AND_MELILLA                 DXCC = 32  // 32   = CEUTA & MELILLA
-	CHAGOS_IS                         DXCC = 33  // 33   = CHAGOS IS.
-	CHATHAM_IS                        DXCC = 34  // 34   = CHATHAM IS.
-	CHRISTMAS_I                       DXCC = 35  // 35   = CHRISTMAS I.
-	CLIPPERTON_I                      DXCC = 36  // 36   = CLIPPERTON I.
-	COCOS_I                           DXCC = 37  // 37   = COCOS I.
-	COCOS_KEELING_IS                  DXCC = 38  // 38   = COCOS (KEELING) IS.
-	CRETE                             DXCC = 40  // 40   = CRETE
-	CROZET_I                          DXCC = 41  // 41   = CROZET I.
-	DESECHEO_I                        DXCC = 43  // 43   = DESECHEO I.
-	DODECANESE                        DXCC = 45  // 45   = DODECANESE
-	EAST_MALAYSIA                     DXCC = 46  // 46   = EAST MALAYSIA
-	EASTER_I                          DXCC = 47  // 47   = EASTER I.
-	E_KIRIBATI_LINE_IS                DXCC = 48  // 48   = E. KIRIBATI (LINE IS.)
-	EQUATORIAL_GUINEA                 DXCC = 49  // 49   = EQUATORIAL GUINEA
-	MEXICO                            DXCC = 50  // 50   = MEXICO
-	ERITREA                           DXCC = 51  // 51   = ERITREA
-	ESTONIA                           DXCC = 52  // 52   = ESTONIA
-	ETHIOPIA                          DXCC = 53  // 53   = ETHIOPIA
-	EUROPEAN_RUSSIA                   DXCC = 54  // 54   = EUROPEAN RUSSIA
-	FERNANDO_DE_NORONHA               DXCC = 56  // 56   = FERNANDO DE NORONHA
-	BAHAMAS                           DXCC = 60  // 60   = BAHAMAS
-	FRANZ_JOSEF_LAND                  DXCC = 61  // 61   = FRANZ JOSEF LAND
-	BARBADOS                          DXCC = 62  // 62   = BARBADOS
-	FRENCH_GUIANA                     DXCC = 63  // 63   = FRENCH GUIANA
-	BERMUDA                           DXCC = 64  // 64   = BERMUDA
-	BRITISH_VIRGIN_IS                 DXCC = 65  // 65   = BRITISH VIRGIN IS.
-	BELIZE                            DXCC = 66  // 66   = BELIZE
-	CAYMAN_IS                         DXCC = 69  // 69   = CAYMAN IS.
-	CUBA                              DXCC = 70  // 70   = CUBA
-	GALAPAGOS_IS                      DXCC = 71  // 71   = GALAPAGOS IS.
-	DOMINICAN_REPUBLIC                DXCC = 72  // 72   = DOMINICAN REPUBLIC
-	EL_SALVADOR                       DXCC = 74  // 74   = EL SALVADOR
-	GEORGIA                           DXCC = 75  // 75   = GEORGIA
-	GUATEMALA                         DXCC = 76  // 76   = GUATEMALA
-	GRENADA                           DXCC = 77  // 77   = GRENADA
-	HAITI                             DXCC = 78  // 78   = HAITI
-	GUADELOUPE                        DXCC = 79  // 79   = GUADELOUPE
-	HONDURAS                          DXCC = 80  // 80   = HONDURAS
-	JAMAICA                           DXCC = 82  // 82   = JAMAICA
-	MARTINIQUE                        DXCC = 84  // 84   = MARTINIQUE
-	NICARAGUA                         DXCC = 86  // 86   = NICARAGUA
-	PANAMA                            DXCC = 88  // 88   = PANAMA
-	TURKS_AND_CAICOS_IS               DXCC = 89  // 89   = TURKS & CAICOS IS.
-	TRINIDAD_AND_TOBAGO               DXCC = 90  // 90   = TRINIDAD & TOBAGO
-	ARUBA                             DXCC = 91  // 91   = ARUBA
-	ANTIGUA_AND_BARBUDA               DXCC = 94  // 94   = ANTIGUA & BARBUDA
-	DOMINICA                          DXCC = 95  // 95   = DOMINICA
-	MONTSERRAT                        DXCC = 96  // 96   = MONTSERRAT
-	ST_LUCIA                          DXCC = 97  // 97   = ST. LUCIA
-	ST_VINCENT                        DXCC = 98  // 98   = ST. VINCENT
-	GLORIOSO_IS                       DXCC = 99  // 99   = GLORIOSO IS.
-	ARGENTINA                         DXCC = 100 // 100  = ARGENTINA
-	GUAM                              DXCC = 103 // 103  = GUAM
-	BOLIVIA                           DXCC = 104 // 104  = BOLIVIA
-	GUANTANAMO_BAY                    DXCC = 105 // 105  = GUANTANAMO BAY
-	GUERNSEY                          DXCC = 106 // 106  = GUERNSEY
-	GUINEA                            DXCC = 107 // 107  = GUINEA
-	BRAZIL                            DXCC = 108 // 108  = BRAZIL
-	GUINEA_BISSAU                     DXCC = 109 // 109  = GUINEA-BISSAU
-	HAWAII                            DXCC = 110 // 110  = HAWAII
-	HEARD_I                           DXCC = 111 // 111  = HEARD I.
-	CHILE                             DXCC = 112 // 112  = CHILE
-	ISLE_OF_MAN                       DXCC = 114 // 114  = ISLE OF MAN
-	COLOMBIA                          DXCC = 116 // 116  = COLOMBIA
-	ITU_HQ                            DXCC = 117 // 117  = ITU HQ
-	JAN_MAYEN                         DXCC = 118 // 118  = JAN MAYEN
-	ECUADOR                           DXCC = 120 // 120  = ECUADOR
-	JERSEY                            DXCC = 122 // 122  = JERSEY
-	JOHNSTON_I                        DXCC = 123 // 123  = JOHNSTON I.
-	JUAN_DE_NOVA_EUROPA               DXCC = 124 // 124  = JUAN DE NOVA, EUROPA
-	JUAN_FERNANDEZ_IS                 DXCC = 125 // 125  = JUAN FERNANDEZ IS.
-	KALININGRAD                       DXCC = 126 // 126  = KALININGRAD
-	GUYANA                            DXCC = 129 // 129  = GUYANA
-	KAZAKHSTAN                        DXCC = 130 // 130  = KAZAKHSTAN
-	KERGUELEN_IS                      DXCC = 131 // 131  = KERGUELEN IS.
-	PARAGUAY                          DXCC = 132 // 132  = PARAGUAY
-	KERMADEC_IS                       DXCC = 133 // 133  = KERMADEC IS.
-	KYRGYZSTAN                        DXCC = 135 // 135  = KYRGYZSTAN
-	PERU                              DXCC = 136 // 136  = PERU
-	REPUBLIC_OF_KOREA                 DXCC = 137 // 137  = REPUBLIC OF KOREA
-	KURE_I                            DXCC = 138 // 138  = KURE I.
-	SURINAME                          DXCC = 140 // 140  = SURINAME
-	FALKLAND_IS                       DXCC = 141 // 141  = FALKLAND IS.
-	LAKSHADWEEP_IS                    DXCC = 142 // 142  = LAKSHADWEEP IS.
-	LAOS                              DXCC = 143 // 143  = LAOS
-	URUGUAY                           DXCC = 144 // 144  = URUGUAY
-	LATVIA                            DXCC = 145 // 145  = LATVIA
-	LITHUANIA                         DXCC = 146 // 146  = LITHUANIA
-	LORD_HOWE_I                       DXCC = 147 // 147  = LORD HOWE I.
-	VENEZUELA                         DXCC = 148 // 148  = VENEZUELA
-	AZORES                            DXCC = 149 // 149  = AZORES
-	AUSTRALIA                         DXCC = 150 // 150  = AUSTRALIA
-	MACAO                             DXCC = 152 // 152  = MACAO
-	MACQUARIE_I                       DXCC = 153 // 153  = MACQUARIE I.
-	NAURU                             DXCC = 157 // 157  = NAURU
-	VANUATU                           DXCC = 158 // 158  = VANUATU
-	MALDIVES                          DXCC = 159 // 159  = MALDIVES
-	TONGA                             DXCC = 160 // 160  = TONGA
-	MALPELO_I                         DXCC = 161 // 161  = MALPELO I.
-	NEW_CALEDONIA                     DXCC = 162 // 162  = NEW CALEDONIA
-	PAPUA_NEW_GUINEA                  DXCC = 163 // 163  = PAPUA NEW GUINEA
-	MAURITIUS                         DXCC = 165 // 165  = MAURITIUS
-	MARIANA_IS                        DXCC = 166 // 166  = MARIANA IS.
-	MARKET_REEF                       DXCC = 167 // 167  = MARKET REEF
-	MARSHALL_IS                       DXCC = 168 // 168  = MARSHALL IS.
-	MAYOTTE                           DXCC = 169 // 169  = MAYOTTE
-	NEW_ZEALAND                       DXCC = 170 // 170  = NEW ZEALAND
-	MELLISH_REEF                      DXCC = 171 // 171  = MELLISH REEF
-	PITCAIRN_I                        DXCC = 172 // 172  = PITCAIRN I.
-	MICRONESIA                        DXCC = 173 // 173  = MICRONESIA
-	MIDWAY_I                          DXCC = 174 // 174  = MIDWAY I.
-	FRENCH_POLYNESIA                  DXCC = 175 // 175  = FRENCH POLYNESIA
-	FIJI                              DXCC = 176 // 176  = FIJI
-	MINAMI_TORISHIMA                  DXCC = 177 // 177  = MINAMI TORISHIMA
-	MOLDOVA                           DXCC = 179 // 179  = MOLDOVA
-	MOUNT_ATHOS                       DXCC = 180 // 180  = MOUNT ATHOS
-	MOZAMBIQUE                        DXCC = 181 // 181  = MOZAMBIQUE
-	NAVASSA_I                         DXCC = 182 // 182  = NAVASSA I.
-	SOLOMON_IS                        DXCC = 185 // 185  = SOLOMON IS.
-	NIGER                             DXCC = 187 // 187  = NIGER
-	NIUE                              DXCC = 188 // 188  = NIUE
-	NORFOLK_I                         DXCC = 189 // 189  = NORFOLK I.
-	SAMOA                             DXCC = 190 // 190  = SAMOA
-	NORTH_COOK_IS                     DXCC = 191 // 191  = NORTH COOK IS.
-	OGASAWARA                         DXCC = 192 // 192  = OGASAWARA
-	ANNOBON_I                         DXCC = 195 // 195  = ANNOBON I.
-	PALMYRA_AND_JARVIS_IS             DXCC = 197 // 197  = PALMYRA & JARVIS IS.
-	PETER_1_I                         DXCC = 199 // 199  = PETER 1 I.
-	PRINCE_EDWARD_AND_MARION_IS       DXCC = 201 // 201  = PRINCE EDWARD & MARION IS.
-	PUERTO_RICO                       DXCC = 202 // 202  = PUERTO RICO
-	ANDORRA                           DXCC = 203 // 203  = ANDORRA
-	REVILLAGIGEDO                     DXCC = 204 // 204  = REVILLAGIGEDO
-	ASCENSION_I                       DXCC = 205 // 205  = ASCENSION I.
-	AUSTRIA                           DXCC = 206 // 206  = AUSTRIA
-	RODRIGUES_I                       DXCC = 207 // 207  = RODRIGUES I.
-	BELGIUM                           DXCC = 209 // 209  = BELGIUM
-	SABLE_I                           DXCC = 211 // 211  = SABLE I.
-	BULGARIA                          DXCC = 212 // 212  = BULGARIA
-	SAINT_MARTIN                      DXCC = 213 // 213  = SAINT MARTIN
-	CORSICA                           DXCC = 214 // 214  = CORSICA
-	CYPRUS                            DXCC = 215 // 215  = CYPRUS
-	SAN_ANDRES_AND_PROVIDENCIA        DXCC = 216 // 216  = SAN ANDRES & PROVIDENCIA
-	SAN_FELIX_AND_SAN_AMBROSIO        DXCC = 217 // 217  = SAN FELIX & SAN AMBROSIO
-	SAO_TOME_AND_PRINCIPE             DXCC = 219 // 219  = SAO TOME & PRINCIPE
-	DENMARK                           DXCC = 221 // 221  = DENMARK
-	FAROE_IS                          DXCC = 222 // 222  = FAROE IS.
-	ENGLAND                           DXCC = 223 // 223  = ENGLAND
-	FINLAND                           DXCC = 224 // 224  = FINLAND
-	SARDINIA                          DXCC = 225 // 225  = SARDINIA
-	FRANCE                            DXCC = 227 // 227  = FRANCE
-	FEDERAL_REPUBLIC_OF_GERMANY       DXCC = 230 // 230  = FEDERAL REPUBLIC OF GERMANY
-	SOMALIA                           DXCC = 232 // 232  = SOMALIA
-	GIBRALTAR                         DXCC = 233 // 233  = GIBRALTAR
-	SOUTH_COOK_IS                     DXCC = 234 // 234  = SOUTH COOK IS.
-	SOUTH_GEORGIA_I                   DXCC = 235 // 235  = SOUTH GEORGIA I.
-	GREECE                            DXCC = 236 // 236  = GREECE
-	GREENLAND                         DXCC = 237 // 237  = GREENLAND
-	SOUTH_ORKNEY_IS                   DXCC = 238 // 238  = SOUTH ORKNEY IS.
-	HUNGARY                           DXCC = 239 // 239  = HUNGARY
-	SOUTH_SANDWICH_IS                 DXCC = 240 // 240  = SOUTH SANDWICH IS.
-	SOUTH_SHETLAND_IS                 DXCC = 241 // 241  = SOUTH SHETLAND IS.
-	ICELAND                           DXCC = 242 // 242  = ICELAND
-	IRELAND                           DXCC = 245 // 245  = IRELAND
-	SOVEREIGN_MILITARY_ORDER_OF_MALTA DXCC = 246 // 246  = SOVEREIGN MILITARY ORDER OF MALTA
-	SPRATLY_IS                        DXCC = 247 // 247  = SPRATLY IS.
-	ITALY                             DXCC = 248 // 248  = ITALY
-	ST_KITTS_AND_NEVIS                DXCC = 249 // 249  = ST. KITTS & NEVIS
-	ST_HELENA                         DXCC = 250 // 250  = ST. HELENA
-	LIECHTENSTEIN                     DXCC = 251 // 251  = LIECHTENSTEIN
-	ST_PAUL_I                         DXCC = 252 // 252  = ST. PAUL I.
-	ST_PETER_AND_ST_PAUL_ROCKS        DXCC = 253 // 253  = ST. PETER & ST. PAUL ROCKS
-	LUXEMBOURG                        DXCC = 254 // 254  = LUXEMBOURG
-	MADEIRA_IS                        DXCC = 256 // 256  = MADEIRA IS.
-	MALTA                             DXCC = 257 // 257  = MALTA
-	SVALBARD                          DXCC = 259 // 259  = SVALBARD
-	MONACO                            DXCC = 260 // 260  = MONACO
-	TAJIKISTAN                        DXCC = 262 // 262  = TAJIKISTAN
-	NETHERLANDS                       DXCC = 263 // 263  = NETHERLANDS
-	NORTHERN_IRELAND                  DXCC = 265 // 265  = NORTHERN IRELAND
-	NORWAY                            DXCC = 266 // 266  = NORWAY
-	POLAND                            DXCC = 269 // 269  = POLAND
-	TOKELAU_IS                        DXCC = 270 // 270  = TOKELAU IS.
-	PORTUGAL                          DXCC = 272 // 272  = PORTUGAL
-	TRINDADE_AND_MARTIM_VAZ_IS        DXCC = 273 // 273  = TRINDADE & MARTIM VAZ IS.
-	TRISTAN_DA_CUNHA_AND_GOUGH_I      DXCC = 274 // 274  = TRISTAN DA CUNHA & GOUGH I.
-	ROMANIA                           DXCC = 275 // 275  = ROMANIA
-	TROMELIN_I                        DXCC = 276 // 276  = TROMELIN I.
-	ST_PIERRE_AND_MIQUELON            DXCC = 277 // 277  = ST. PIERRE & MIQUELON
-	SAN_MARINO                        DXCC = 278 // 278  = SAN MARINO
-	SCOTLAND                          DXCC = 279 // 279  = SCOTLAND
-	TURKMENISTAN                      DXCC = 280 // 280  = TURKMENISTAN
-	SPAIN                             DXCC = 281 // 281  = SPAIN
-	TUVALU                            DXCC = 282 // 282  = TUVALU
-	UK_SOVEREIGN_BASE_AREAS_ON_CYPRUS DXCC = 283 // 283  = UK SOVEREIGN BASE AREAS ON CYPRUS
-	SWEDEN                            DXCC = 284 // 284  = SWEDEN
-	VIRGIN_IS                         DXCC = 285 // 285  = VIRGIN IS.
-	UGANDA                            DXCC = 286 // 286  = UGANDA
-	SWITZERLAND                       DXCC = 287 // 287  = SWITZERLAND
-	UKRAINE                           DXCC = 288 // 288  = UKRAINE
-	UNITED_NATIONS_HQ                 DXCC = 289 // 289  = UNITED NATIONS HQ
-	UNITED_STATES_OF_AMERICA          DXCC = 291 // 291  = UNITED STATES OF AMERICA
-	UZBEKISTAN                        DXCC = 292 // 292  = UZBEKISTAN
-	VIET_NAM                          DXCC = 293 // 293  = VIET NAM
-	WALES                             DXCC = 294 // 294  = WALES
-	VATICAN                           DXCC = 295 // 295  = VATICAN
-	SERBIA                            DXCC = 296 // 296  = SERBIA
-	WAKE_I                            DXCC = 297 // 297  = WAKE I.
-	WALLIS_AND_FUTUNA_IS              DXCC = 298 // 298  = WALLIS & FUTUNA IS.
-	WEST_MALAYSIA                     DXCC = 299 // 299  = WEST MALAYSIA
-	W_KIRIBATI_GILBERT_IS             DXCC = 301 // 301  = W. KIRIBATI (GILBERT IS. )
-	WESTERN_SAHARA                    DXCC = 302 // 302  = WESTERN SAHARA
-	WILLIS_I                          DXCC = 303 // 303  = WILLIS I.
-	BAHRAIN                           DXCC = 304 // 304  = BAHRAIN
-	BANGLADESH                        DXCC = 305 // 305  = BANGLADESH
-	BHUTAN                            DXCC = 306 // 306  = BHUTAN
-	COSTA_RICA                        DXCC = 308 // 308  = COSTA RICA
-	MYANMAR                           DXCC = 309 // 309  = MYANMAR
-	CAMBODIA                          DXCC = 312 // 312  = CAMBODIA
-	SRI_LANKA                         DXCC = 315 // 315  = SRI LANKA
-	CHINA                             DXCC = 318 // 318  = CHINA
-	HONG_KONG                         DXCC = 321 // 321  = HONG KONG
-	INDIA                             DXCC = 324 // 324  = INDIA
-	INDONESIA                         DXCC = 327 // 327  = INDONESIA
-	IRAN                              DXCC = 330 // 330  = IRAN
-	IRAQ                              DXCC = 333 // 333  = IRAQ
-	ISRAEL                            DXCC = 336 // 336  = ISRAEL
-	JAPAN                             DXCC = 339 // 339  = JAPAN
-	JORDAN                            DXCC = 342 // 342  = JORDAN
-	DEMOCRATIC_PEOPLES_REP_OF_KOREA   DXCC = 344 // 344  = DEMOCRATIC PEOPLE'S REP. OF KOREA
-	BRUNEI_DARUSSALAM                 DXCC = 345 // 345  = BRUNEI DARUSSALAM
-	KUWAIT                            DXCC = 348 // 348  = KUWAIT
-	LEBANON                           DXCC = 354 // 354  = LEBANON
-	MONGOLIA                          DXCC = 363 // 363  = MONGOLIA
-	NEPAL                             DXCC = 369 // 369  = NEPAL
-	OMAN                              DXCC = 370 // 370  = OMAN
-	PAKISTAN                          DXCC = 372 // 372  = PAKISTAN
-	PHILIPPINES                       DXCC = 375 // 375  = PHILIPPINES
-	QATAR                             DXCC = 376 // 376  = QATAR
-	SAUDI_ARABIA                      DXCC = 378 // 378  = SAUDI ARABIA
-	SEYCHELLES                        DXCC = 379 // 379  = SEYCHELLES
-	SINGAPORE                         DXCC = 381 // 381  = SINGAPORE
-	DJIBOUTI                          DXCC = 382 // 382  = DJIBOUTI
-	SYRIA                             DXCC = 384 // 384  = SYRIA
-	TAIWAN                            DXCC = 386 // 386  = TAIWAN
-	THAILAND                          DXCC = 387 // 387  = THAILAND
-	TURKEY                            DXCC = 390 // 390  = TURKEY
-	UNITED_ARAB_EMIRATES              DXCC = 391 // 391  = UNITED ARAB EMIRATES
-	ALGERIA                           DXCC = 400 // 400  = ALGERIA
-	ANGOLA                            DXCC = 401 // 401  = ANGOLA
-	BOTSWANA                          DXCC = 402 // 402  = BOTSWANA
-	BURUNDI                           DXCC = 404 // 404  = BURUNDI
-	CAMEROON                          DXCC = 406 // 406  = CAMEROON
-	CENTRAL_AFRICA                    DXCC = 408 // 408  = CENTRAL AFRICA
-	CAPE_VERDE                        DXCC = 409 // 409  = CAPE VERDE
-	CHAD                              DXCC = 410 // 410  = CHAD
-	COMOROS                           DXCC = 411 // 411  = COMOROS
-	REPUBLIC_OF_THE_CONGO             DXCC = 412 // 412  = REPUBLIC OF THE CONGO
-	DEMOCRATIC_REPUBLIC_OF_THE_CONGO  DXCC = 414 // 414  = DEMOCRATIC REPUBLIC OF THE CONGO
-	BENIN                             DXCC = 416 // 416  = BENIN
-	GABON                             DXCC = 420 // 420  = GABON
-	THE_GAMBIA                        DXCC = 422 // 422  = THE GAMBIA
-	GHANA                             DXCC = 424 // 424  = GHANA
-	COTE_DIVOIRE                      DXCC = 428 // 428  = COTE D'IVOIRE
-	KENYA                             DXCC = 430 // 430  = KENYA
-	LESOTHO                           DXCC = 432 // 432  = LESOTHO
-	LIBERIA                           DXCC = 434 // 434  = LIBERIA
-	LIBYA                             DXCC = 436 // 436  = LIBYA
-	MADAGASCAR                        DXCC = 438 // 438  = MADAGASCAR
-	MALAWI                            DXCC = 440 // 440  = MALAWI
-	MALI                              DXCC = 442 // 442  = MALI
-	MAURITANIA                        DXCC = 444 // 444  = MAURITANIA
-	MOROCCO                           DXCC = 446 // 446  = MOROCCO
-	NIGERIA                           DXCC = 450 // 450  = NIGERIA
-	ZIMBABWE                          DXCC = 452 // 452  = ZIMBABWE
-	REUNION_I                         DXCC = 453 // 453  = REUNION I.
-	RWANDA                            DXCC = 454 // 454  = RWANDA
-	SENEGAL                           DXCC = 456 // 456  = SENEGAL
-	SIERRA_LEONE                      DXCC = 458 // 458  = SIERRA LEONE
-	ROTUMA_I                          DXCC = 460 // 460  = ROTUMA I.
-	REPUBLIC_OF_SOUTH_AFRICA          DXCC = 462 // 462  = REPUBLIC OF SOUTH AFRICA
-	NAMIBIA                           DXCC = 464 // 464  = NAMIBIA
-	SUDAN                             DXCC = 466 // 466  = SUDAN
-	KINGDOM_OF_ESWATINI               DXCC = 468 // 468  = KINGDOM OF ESWATINI
-	TANZANIA                          DXCC = 470 // 470  = TANZANIA
-	TUNISIA                           DXCC = 474 // 474  = TUNISIA
-	EGYPT                             DXCC = 478 // 478  = EGYPT
-	BURKINA_FASO                      DXCC = 480 // 480  = BURKINA FASO
-	ZAMBIA                            DXCC = 482 // 482  = ZAMBIA
-	TOGO                              DXCC = 483 // 483  = TOGO
-	CONWAY_REEF                       DXCC = 489 // 489  = CONWAY REEF
-	BANABA_I_OCEAN_I                  DXCC = 490 // 490  = BANABA I. (OCEAN I.)
-	YEMEN                             DXCC = 492 // 492  = YEMEN
-	CROATIA                           DXCC = 497 // 497  = CROATIA
-	SLOVENIA                          DXCC = 499 // 499  = SLOVENIA
-	BOSNIA_HERZEGOVINA                DXCC = 501 // 501  = BOSNIA-HERZEGOVINA
-	NORTH_MACEDONIA_REPUBLIC_OF       DXCC = 502 // 502  = NORTH MACEDONIA (REPUBLIC OF)
-	CZECH_REPUBLIC                    DXCC = 503 // 503  = CZECH REPUBLIC
-	SLOVAK_REPUBLIC                   DXCC = 504 // 504  = SLOVAK REPUBLIC
-	PRATAS_I                          DXCC = 505 // 505  = PRATAS I.
-	SCARBOROUGH_REEF                  DXCC = 506 // 506  = SCARBOROUGH REEF
-	TEMOTU_PROVINCE                   DXCC = 507 // 507  = TEMOTU PROVINCE
-	AUSTRAL_I                         DXCC = 508 // 508  = AUSTRAL I.
-	MARQUESAS_IS                      DXCC = 509 // 509  = MARQUESAS IS.
-	PALESTINE                         DXCC = 510 // 510  = PALESTINE
-	TIMOR_LESTE                       DXCC = 511 // 511  = TIMOR-LESTE
-	CHESTERFIELD_IS                   DXCC = 512 // 512  = CHESTERFIELD IS.
-	DUCIE_I                           DXCC = 513 // 513  = DUCIE I.
-	MONTENEGRO                        DXCC = 514 // 514  = MONTENEGRO
-	SWAINS_I                          DXCC = 515 // 515  = SWAINS I.
-	SAINT_BARTHELEMY                  DXCC = 516 // 516  = SAINT BARTHELEMY
-	CURACAO                           DXCC = 517 // 517  = CURACAO
-	SINT_MAARTEN                      DXCC = 518 // 518  = SINT MAARTEN
-	SABA_AND_ST_EUSTATIUS             DXCC = 519 // 519  = SABA & ST. EUSTATIUS
-	BONAIRE                           DXCC = 520 // 520  = BONAIRE
-	SOUTH_SUDAN_REPUBLIC_OF           DXCC = 521 // 521  = SOUTH SUDAN (REPUBLIC OF)
-	REPUBLIC_OF_KOSOVO                DXCC = 522 // 522  = REPUBLIC OF KOSOVO
+	NONE                              DXCCEntityCode = 0   // 0    =
+	CANADA                            DXCCEntityCode = 1   // 1    = CANADA
+	AFGHANISTAN                       DXCCEntityCode = 3   // 3    = AFGHANISTAN
+	AGALEGA_AND_ST_BRANDON_IS         DXCCEntityCode = 4   // 4    = AGALEGA & ST. BRANDON IS.
+	ALAND_IS                          DXCCEntityCode = 5   // 5    = ALAND IS.
+	ALASKA                            DXCCEntityCode = 6   // 6    = ALASKA
+	ALBANIA                           DXCCEntityCode = 7   // 7    = ALBANIA
+	AMERICAN_SAMOA                    DXCCEntityCode = 9   // 9    = AMERICAN SAMOA
+	AMSTERDAM_AND_ST_PAUL_IS          DXCCEntityCode = 10  // 10   = AMSTERDAM & ST. PAUL IS.
+	ANDAMAN_AND_NICOBAR_IS            DXCCEntityCode = 11  // 11   = ANDAMAN & NICOBAR IS.
+	ANGUILLA                          DXCCEntityCode = 12  // 12   = ANGUILLA
+	ANTARCTICA                        DXCCEntityCode = 13  // 13   = ANTARCTICA
+	ARMENIA                           DXCCEntityCode = 14  // 14   = ARMENIA
+	ASIATIC_RUSSIA                    DXCCEntityCode = 15  // 15   = ASIATIC RUSSIA
+	NEW_ZEALAND_SUBANTARCTIC_ISLANDS  DXCCEntityCode = 16  // 16   = NEW ZEALAND SUBANTARCTIC ISLANDS
+	AVES_I                            DXCCEntityCode = 17  // 17   = AVES I.
+	AZERBAIJAN                        DXCCEntityCode = 18  // 18   = AZERBAIJAN
+	BAKER_AND_HOWLAND_IS              DXCCEntityCode = 20  // 20   = BAKER & HOWLAND IS.
+	BALEARIC_IS                       DXCCEntityCode = 21  // 21   = BALEARIC IS.
+	PALAU                             DXCCEntityCode = 22  // 22   = PALAU
+	BOUVET                            DXCCEntityCode = 24  // 24   = BOUVET
+	BELARUS                           DXCCEntityCode = 27  // 27   = BELARUS
+	CANARY_IS                         DXCCEntityCode = 29  // 29   = CANARY IS.
+	C_KIRIBATI_BRITISH_PHOENIX_IS     DXCCEntityCode = 31  // 31   = C. KIRIBATI (BRITISH PHOENIX IS.)
+	CEUTA_AND_MELILLA                 DXCCEntityCode = 32  // 32   = CEUTA & MELILLA
+	CHAGOS_IS                         DXCCEntityCode = 33  // 33   = CHAGOS IS.
+	CHATHAM_IS                        DXCCEntityCode = 34  // 34   = CHATHAM IS.
+	CHRISTMAS_I                       DXCCEntityCode = 35  // 35   = CHRISTMAS I.
+	CLIPPERTON_I                      DXCCEntityCode = 36  // 36   = CLIPPERTON I.
+	COCOS_I                           DXCCEntityCode = 37  // 37   = COCOS I.
+	COCOS_KEELING_IS                  DXCCEntityCode = 38  // 38   = COCOS (KEELING) IS.
+	CRETE                             DXCCEntityCode = 40  // 40   = CRETE
+	CROZET_I                          DXCCEntityCode = 41  // 41   = CROZET I.
+	DESECHEO_I                        DXCCEntityCode = 43  // 43   = DESECHEO I.
+	DODECANESE                        DXCCEntityCode = 45  // 45   = DODECANESE
+	EAST_MALAYSIA                     DXCCEntityCode = 46  // 46   = EAST MALAYSIA
+	EASTER_I                          DXCCEntityCode = 47  // 47   = EASTER I.
+	E_KIRIBATI_LINE_IS                DXCCEntityCode = 48  // 48   = E. KIRIBATI (LINE IS.)
+	EQUATORIAL_GUINEA                 DXCCEntityCode = 49  // 49   = EQUATORIAL GUINEA
+	MEXICO                            DXCCEntityCode = 50  // 50   = MEXICO
+	ERITREA                           DXCCEntityCode = 51  // 51   = ERITREA
+	ESTONIA                           DXCCEntityCode = 52  // 52   = ESTONIA
+	ETHIOPIA                          DXCCEntityCode = 53  // 53   = ETHIOPIA
+	EUROPEAN_RUSSIA                   DXCCEntityCode = 54  // 54   = EUROPEAN RUSSIA
+	FERNANDO_DE_NORONHA               DXCCEntityCode = 56  // 56   = FERNANDO DE NORONHA
+	BAHAMAS                           DXCCEntityCode = 60  // 60   = BAHAMAS
+	FRANZ_JOSEF_LAND                  DXCCEntityCode = 61  // 61   = FRANZ JOSEF LAND
+	BARBADOS                          DXCCEntityCode = 62  // 62   = BARBADOS
+	FRENCH_GUIANA                     DXCCEntityCode = 63  // 63   = FRENCH GUIANA
+	BERMUDA                           DXCCEntityCode = 64  // 64   = BERMUDA
+	BRITISH_VIRGIN_IS                 DXCCEntityCode = 65  // 65   = BRITISH VIRGIN IS.
+	BELIZE                            DXCCEntityCode = 66  // 66   = BELIZE
+	CAYMAN_IS                         DXCCEntityCode = 69  // 69   = CAYMAN IS.
+	CUBA                              DXCCEntityCode = 70  // 70   = CUBA
+	GALAPAGOS_IS                      DXCCEntityCode = 71  // 71   = GALAPAGOS IS.
+	DOMINICAN_REPUBLIC                DXCCEntityCode = 72  // 72   = DOMINICAN REPUBLIC
+	EL_SALVADOR                       DXCCEntityCode = 74  // 74   = EL SALVADOR
+	GEORGIA                           DXCCEntityCode = 75  // 75   = GEORGIA
+	GUATEMALA                         DXCCEntityCode = 76  // 76   = GUATEMALA
+	GRENADA                           DXCCEntityCode = 77  // 77   = GRENADA
+	HAITI                             DXCCEntityCode = 78  // 78   = HAITI
+	GUADELOUPE                        DXCCEntityCode = 79  // 79   = GUADELOUPE
+	HONDURAS                          DXCCEntityCode = 80  // 80   = HONDURAS
+	JAMAICA                           DXCCEntityCode = 82  // 82   = JAMAICA
+	MARTINIQUE                        DXCCEntityCode = 84  // 84   = MARTINIQUE
+	NICARAGUA                         DXCCEntityCode = 86  // 86   = NICARAGUA
+	PANAMA                            DXCCEntityCode = 88  // 88   = PANAMA
+	TURKS_AND_CAICOS_IS               DXCCEntityCode = 89  // 89   = TURKS & CAICOS IS.
+	TRINIDAD_AND_TOBAGO               DXCCEntityCode = 90  // 90   = TRINIDAD & TOBAGO
+	ARUBA                             DXCCEntityCode = 91  // 91   = ARUBA
+	ANTIGUA_AND_BARBUDA               DXCCEntityCode = 94  // 94   = ANTIGUA & BARBUDA
+	DOMINICA                          DXCCEntityCode = 95  // 95   = DOMINICA
+	MONTSERRAT                        DXCCEntityCode = 96  // 96   = MONTSERRAT
+	ST_LUCIA                          DXCCEntityCode = 97  // 97   = ST. LUCIA
+	ST_VINCENT                        DXCCEntityCode = 98  // 98   = ST. VINCENT
+	GLORIOSO_IS                       DXCCEntityCode = 99  // 99   = GLORIOSO IS.
+	ARGENTINA                         DXCCEntityCode = 100 // 100  = ARGENTINA
+	GUAM                              DXCCEntityCode = 103 // 103  = GUAM
+	BOLIVIA                           DXCCEntityCode = 104 // 104  = BOLIVIA
+	GUANTANAMO_BAY                    DXCCEntityCode = 105 // 105  = GUANTANAMO BAY
+	GUERNSEY                          DXCCEntityCode = 106 // 106  = GUERNSEY
+	GUINEA                            DXCCEntityCode = 107 // 107  = GUINEA
+	BRAZIL                            DXCCEntityCode = 108 // 108  = BRAZIL
+	GUINEA_BISSAU                     DXCCEntityCode = 109 // 109  = GUINEA-BISSAU
+	HAWAII                            DXCCEntityCode = 110 // 110  = HAWAII
+	HEARD_I                           DXCCEntityCode = 111 // 111  = HEARD I.
+	CHILE                             DXCCEntityCode = 112 // 112  = CHILE
+	ISLE_OF_MAN                       DXCCEntityCode = 114 // 114  = ISLE OF MAN
+	COLOMBIA                          DXCCEntityCode = 116 // 116  = COLOMBIA
+	ITU_HQ                            DXCCEntityCode = 117 // 117  = ITU HQ
+	JAN_MAYEN                         DXCCEntityCode = 118 // 118  = JAN MAYEN
+	ECUADOR                           DXCCEntityCode = 120 // 120  = ECUADOR
+	JERSEY                            DXCCEntityCode = 122 // 122  = JERSEY
+	JOHNSTON_I                        DXCCEntityCode = 123 // 123  = JOHNSTON I.
+	JUAN_DE_NOVA_EUROPA               DXCCEntityCode = 124 // 124  = JUAN DE NOVA, EUROPA
+	JUAN_FERNANDEZ_IS                 DXCCEntityCode = 125 // 125  = JUAN FERNANDEZ IS.
+	KALININGRAD                       DXCCEntityCode = 126 // 126  = KALININGRAD
+	GUYANA                            DXCCEntityCode = 129 // 129  = GUYANA
+	KAZAKHSTAN                        DXCCEntityCode = 130 // 130  = KAZAKHSTAN
+	KERGUELEN_IS                      DXCCEntityCode = 131 // 131  = KERGUELEN IS.
+	PARAGUAY                          DXCCEntityCode = 132 // 132  = PARAGUAY
+	KERMADEC_IS                       DXCCEntityCode = 133 // 133  = KERMADEC IS.
+	KYRGYZSTAN                        DXCCEntityCode = 135 // 135  = KYRGYZSTAN
+	PERU                              DXCCEntityCode = 136 // 136  = PERU
+	REPUBLIC_OF_KOREA                 DXCCEntityCode = 137 // 137  = REPUBLIC OF KOREA
+	KURE_I                            DXCCEntityCode = 138 // 138  = KURE I.
+	SURINAME                          DXCCEntityCode = 140 // 140  = SURINAME
+	FALKLAND_IS                       DXCCEntityCode = 141 // 141  = FALKLAND IS.
+	LAKSHADWEEP_IS                    DXCCEntityCode = 142 // 142  = LAKSHADWEEP IS.
+	LAOS                              DXCCEntityCode = 143 // 143  = LAOS
+	URUGUAY                           DXCCEntityCode = 144 // 144  = URUGUAY
+	LATVIA                            DXCCEntityCode = 145 // 145  = LATVIA
+	LITHUANIA                         DXCCEntityCode = 146 // 146  = LITHUANIA
+	LORD_HOWE_I                       DXCCEntityCode = 147 // 147  = LORD HOWE I.
+	VENEZUELA                         DXCCEntityCode = 148 // 148  = VENEZUELA
+	AZORES                            DXCCEntityCode = 149 // 149  = AZORES
+	AUSTRALIA                         DXCCEntityCode = 150 // 150  = AUSTRALIA
+	MACAO                             DXCCEntityCode = 152 // 152  = MACAO
+	MACQUARIE_I                       DXCCEntityCode = 153 // 153  = MACQUARIE I.
+	NAURU                             DXCCEntityCode = 157 // 157  = NAURU
+	VANUATU                           DXCCEntityCode = 158 // 158  = VANUATU
+	MALDIVES                          DXCCEntityCode = 159 // 159  = MALDIVES
+	TONGA                             DXCCEntityCode = 160 // 160  = TONGA
+	MALPELO_I                         DXCCEntityCode = 161 // 161  = MALPELO I.
+	NEW_CALEDONIA                     DXCCEntityCode = 162 // 162  = NEW CALEDONIA
+	PAPUA_NEW_GUINEA                  DXCCEntityCode = 163 // 163  = PAPUA NEW GUINEA
+	MAURITIUS                         DXCCEntityCode = 165 // 165  = MAURITIUS
+	MARIANA_IS                        DXCCEntityCode = 166 // 166  = MARIANA IS.
+	MARKET_REEF                       DXCCEntityCode = 167 // 167  = MARKET REEF
+	MARSHALL_IS                       DXCCEntityCode = 168 // 168  = MARSHALL IS.
+	MAYOTTE                           DXCCEntityCode = 169 // 169  = MAYOTTE
+	NEW_ZEALAND                       DXCCEntityCode = 170 // 170  = NEW ZEALAND
+	MELLISH_REEF                      DXCCEntityCode = 171 // 171  = MELLISH REEF
+	PITCAIRN_I                        DXCCEntityCode = 172 // 172  = PITCAIRN I.
+	MICRONESIA                        DXCCEntityCode = 173 // 173  = MICRONESIA
+	MIDWAY_I                          DXCCEntityCode = 174 // 174  = MIDWAY I.
+	FRENCH_POLYNESIA                  DXCCEntityCode = 175 // 175  = FRENCH POLYNESIA
+	FIJI                              DXCCEntityCode = 176 // 176  = FIJI
+	MINAMI_TORISHIMA                  DXCCEntityCode = 177 // 177  = MINAMI TORISHIMA
+	MOLDOVA                           DXCCEntityCode = 179 // 179  = MOLDOVA
+	MOUNT_ATHOS                       DXCCEntityCode = 180 // 180  = MOUNT ATHOS
+	MOZAMBIQUE                        DXCCEntityCode = 181 // 181  = MOZAMBIQUE
+	NAVASSA_I                         DXCCEntityCode = 182 // 182  = NAVASSA I.
+	SOLOMON_IS                        DXCCEntityCode = 185 // 185  = SOLOMON IS.
+	NIGER                             DXCCEntityCode = 187 // 187  = NIGER
+	NIUE                              DXCCEntityCode = 188 // 188  = NIUE
+	NORFOLK_I                         DXCCEntityCode = 189 // 189  = NORFOLK I.
+	SAMOA                             DXCCEntityCode = 190 // 190  = SAMOA
+	NORTH_COOK_IS                     DXCCEntityCode = 191 // 191  = NORTH COOK IS.
+	OGASAWARA                         DXCCEntityCode = 192 // 192  = OGASAWARA
+	ANNOBON_I                         DXCCEntityCode = 195 // 195  = ANNOBON I.
+	PALMYRA_AND_JARVIS_IS             DXCCEntityCode = 197 // 197  = PALMYRA & JARVIS IS.
+	PETER_1_I                         DXCCEntityCode = 199 // 199  = PETER 1 I.
+	PRINCE_EDWARD_AND_MARION_IS       DXCCEntityCode = 201 // 201  = PRINCE EDWARD & MARION IS.
+	PUERTO_RICO                       DXCCEntityCode = 202 // 202  = PUERTO RICO
+	ANDORRA                           DXCCEntityCode = 203 // 203  = ANDORRA
+	REVILLAGIGEDO                     DXCCEntityCode = 204 // 204  = REVILLAGIGEDO
+	ASCENSION_I                       DXCCEntityCode = 205 // 205  = ASCENSION I.
+	AUSTRIA                           DXCCEntityCode = 206 // 206  = AUSTRIA
+	RODRIGUES_I                       DXCCEntityCode = 207 // 207  = RODRIGUES I.
+	BELGIUM                           DXCCEntityCode = 209 // 209  = BELGIUM
+	SABLE_I                           DXCCEntityCode = 211 // 211  = SABLE I.
+	BULGARIA                          DXCCEntityCode = 212 // 212  = BULGARIA
+	SAINT_MARTIN                      DXCCEntityCode = 213 // 213  = SAINT MARTIN
+	CORSICA                           DXCCEntityCode = 214 // 214  = CORSICA
+	CYPRUS                            DXCCEntityCode = 215 // 215  = CYPRUS
+	SAN_ANDRES_AND_PROVIDENCIA        DXCCEntityCode = 216 // 216  = SAN ANDRES & PROVIDENCIA
+	SAN_FELIX_AND_SAN_AMBROSIO        DXCCEntityCode = 217 // 217  = SAN FELIX & SAN AMBROSIO
+	SAO_TOME_AND_PRINCIPE             DXCCEntityCode = 219 // 219  = SAO TOME & PRINCIPE
+	DENMARK                           DXCCEntityCode = 221 // 221  = DENMARK
+	FAROE_IS                          DXCCEntityCode = 222 // 222  = FAROE IS.
+	ENGLAND                           DXCCEntityCode = 223 // 223  = ENGLAND
+	FINLAND                           DXCCEntityCode = 224 // 224  = FINLAND
+	SARDINIA                          DXCCEntityCode = 225 // 225  = SARDINIA
+	FRANCE                            DXCCEntityCode = 227 // 227  = FRANCE
+	FEDERAL_REPUBLIC_OF_GERMANY       DXCCEntityCode = 230 // 230  = FEDERAL REPUBLIC OF GERMANY
+	SOMALIA                           DXCCEntityCode = 232 // 232  = SOMALIA
+	GIBRALTAR                         DXCCEntityCode = 233 // 233  = GIBRALTAR
+	SOUTH_COOK_IS                     DXCCEntityCode = 234 // 234  = SOUTH COOK IS.
+	SOUTH_GEORGIA_I                   DXCCEntityCode = 235 // 235  = SOUTH GEORGIA I.
+	GREECE                            DXCCEntityCode = 236 // 236  = GREECE
+	GREENLAND                         DXCCEntityCode = 237 // 237  = GREENLAND
+	SOUTH_ORKNEY_IS                   DXCCEntityCode = 238 // 238  = SOUTH ORKNEY IS.
+	HUNGARY                           DXCCEntityCode = 239 // 239  = HUNGARY
+	SOUTH_SANDWICH_IS                 DXCCEntityCode = 240 // 240  = SOUTH SANDWICH IS.
+	SOUTH_SHETLAND_IS                 DXCCEntityCode = 241 // 241  = SOUTH SHETLAND IS.
+	ICELAND                           DXCCEntityCode = 242 // 242  = ICELAND
+	IRELAND                           DXCCEntityCode = 245 // 245  = IRELAND
+	SOVEREIGN_MILITARY_ORDER_OF_MALTA DXCCEntityCode = 246 // 246  = SOVEREIGN MILITARY ORDER OF MALTA
+	SPRATLY_IS                        DXCCEntityCode = 247 // 247  = SPRATLY IS.
+	ITALY                             DXCCEntityCode = 248 // 248  = ITALY
+	ST_KITTS_AND_NEVIS                DXCCEntityCode = 249 // 249  = ST. KITTS & NEVIS
+	ST_HELENA                         DXCCEntityCode = 250 // 250  = ST. HELENA
+	LIECHTENSTEIN                     DXCCEntityCode = 251 // 251  = LIECHTENSTEIN
+	ST_PAUL_I                         DXCCEntityCode = 252 // 252  = ST. PAUL I.
+	ST_PETER_AND_ST_PAUL_ROCKS        DXCCEntityCode = 253 // 253  = ST. PETER & ST. PAUL ROCKS
+	LUXEMBOURG                        DXCCEntityCode = 254 // 254  = LUXEMBOURG
+	MADEIRA_IS                        DXCCEntityCode = 256 // 256  = MADEIRA IS.
+	MALTA                             DXCCEntityCode = 257 // 257  = MALTA
+	SVALBARD                          DXCCEntityCode = 259 // 259  = SVALBARD
+	MONACO                            DXCCEntityCode = 260 // 260  = MONACO
+	TAJIKISTAN                        DXCCEntityCode = 262 // 262  = TAJIKISTAN
+	NETHERLANDS                       DXCCEntityCode = 263 // 263  = NETHERLANDS
+	NORTHERN_IRELAND                  DXCCEntityCode = 265 // 265  = NORTHERN IRELAND
+	NORWAY                            DXCCEntityCode = 266 // 266  = NORWAY
+	POLAND                            DXCCEntityCode = 269 // 269  = POLAND
+	TOKELAU_IS                        DXCCEntityCode = 270 // 270  = TOKELAU IS.
+	PORTUGAL                          DXCCEntityCode = 272 // 272  = PORTUGAL
+	TRINDADE_AND_MARTIM_VAZ_IS        DXCCEntityCode = 273 // 273  = TRINDADE & MARTIM VAZ IS.
+	TRISTAN_DA_CUNHA_AND_GOUGH_I      DXCCEntityCode = 274 // 274  = TRISTAN DA CUNHA & GOUGH I.
+	ROMANIA                           DXCCEntityCode = 275 // 275  = ROMANIA
+	TROMELIN_I                        DXCCEntityCode = 276 // 276  = TROMELIN I.
+	ST_PIERRE_AND_MIQUELON            DXCCEntityCode = 277 // 277  = ST. PIERRE & MIQUELON
+	SAN_MARINO                        DXCCEntityCode = 278 // 278  = SAN MARINO
+	SCOTLAND                          DXCCEntityCode = 279 // 279  = SCOTLAND
+	TURKMENISTAN                      DXCCEntityCode = 280 // 280  = TURKMENISTAN
+	SPAIN                             DXCCEntityCode = 281 // 281  = SPAIN
+	TUVALU                            DXCCEntityCode = 282 // 282  = TUVALU
+	UK_SOVEREIGN_BASE_AREAS_ON_CYPRUS DXCCEntityCode = 283 // 283  = UK SOVEREIGN BASE AREAS ON CYPRUS
+	SWEDEN                            DXCCEntityCode = 284 // 284  = SWEDEN
+	VIRGIN_IS                         DXCCEntityCode = 285 // 285  = VIRGIN IS.
+	UGANDA                            DXCCEntityCode = 286 // 286  = UGANDA
+	SWITZERLAND                       DXCCEntityCode = 287 // 287  = SWITZERLAND
+	UKRAINE                           DXCCEntityCode = 288 // 288  = UKRAINE
+	UNITED_NATIONS_HQ                 DXCCEntityCode = 289 // 289  = UNITED NATIONS HQ
+	UNITED_STATES_OF_AMERICA          DXCCEntityCode = 291 // 291  = UNITED STATES OF AMERICA
+	UZBEKISTAN                        DXCCEntityCode = 292 // 292  = UZBEKISTAN
+	VIET_NAM                          DXCCEntityCode = 293 // 293  = VIET NAM
+	WALES                             DXCCEntityCode = 294 // 294  = WALES
+	VATICAN                           DXCCEntityCode = 295 // 295  = VATICAN
+	SERBIA                            DXCCEntityCode = 296 // 296  = SERBIA
+	WAKE_I                            DXCCEntityCode = 297 // 297  = WAKE I.
+	WALLIS_AND_FUTUNA_IS              DXCCEntityCode = 298 // 298  = WALLIS & FUTUNA IS.
+	WEST_MALAYSIA                     DXCCEntityCode = 299 // 299  = WEST MALAYSIA
+	W_KIRIBATI_GILBERT_IS             DXCCEntityCode = 301 // 301  = W. KIRIBATI (GILBERT IS. )
+	WESTERN_SAHARA                    DXCCEntityCode = 302 // 302  = WESTERN SAHARA
+	WILLIS_I                          DXCCEntityCode = 303 // 303  = WILLIS I.
+	BAHRAIN                           DXCCEntityCode = 304 // 304  = BAHRAIN
+	BANGLADESH                        DXCCEntityCode = 305 // 305  = BANGLADESH
+	BHUTAN                            DXCCEntityCode = 306 // 306  = BHUTAN
+	COSTA_RICA                        DXCCEntityCode = 308 // 308  = COSTA RICA
+	MYANMAR                           DXCCEntityCode = 309 // 309  = MYANMAR
+	CAMBODIA                          DXCCEntityCode = 312 // 312  = CAMBODIA
+	SRI_LANKA                         DXCCEntityCode = 315 // 315  = SRI LANKA
+	CHINA                             DXCCEntityCode = 318 // 318  = CHINA
+	HONG_KONG                         DXCCEntityCode = 321 // 321  = HONG KONG
+	INDIA                             DXCCEntityCode = 324 // 324  = INDIA
+	INDONESIA                         DXCCEntityCode = 327 // 327  = INDONESIA
+	IRAN                              DXCCEntityCode = 330 // 330  = IRAN
+	IRAQ                              DXCCEntityCode = 333 // 333  = IRAQ
+	ISRAEL                            DXCCEntityCode = 336 // 336  = ISRAEL
+	JAPAN                             DXCCEntityCode = 339 // 339  = JAPAN
+	JORDAN                            DXCCEntityCode = 342 // 342  = JORDAN
+	DEMOCRATIC_PEOPLES_REP_OF_KOREA   DXCCEntityCode = 344 // 344  = DEMOCRATIC PEOPLE'S REP. OF KOREA
+	BRUNEI_DARUSSALAM                 DXCCEntityCode = 345 // 345  = BRUNEI DARUSSALAM
+	KUWAIT                            DXCCEntityCode = 348 // 348  = KUWAIT
+	LEBANON                           DXCCEntityCode = 354 // 354  = LEBANON
+	MONGOLIA                          DXCCEntityCode = 363 // 363  = MONGOLIA
+	NEPAL                             DXCCEntityCode = 369 // 369  = NEPAL
+	OMAN                              DXCCEntityCode = 370 // 370  = OMAN
+	PAKISTAN                          DXCCEntityCode = 372 // 372  = PAKISTAN
+	PHILIPPINES                       DXCCEntityCode = 375 // 375  = PHILIPPINES
+	QATAR                             DXCCEntityCode = 376 // 376  = QATAR
+	SAUDI_ARABIA                      DXCCEntityCode = 378 // 378  = SAUDI ARABIA
+	SEYCHELLES                        DXCCEntityCode = 379 // 379  = SEYCHELLES
+	SINGAPORE                         DXCCEntityCode = 381 // 381  = SINGAPORE
+	DJIBOUTI                          DXCCEntityCode = 382 // 382  = DJIBOUTI
+	SYRIA                             DXCCEntityCode = 384 // 384  = SYRIA
+	TAIWAN                            DXCCEntityCode = 386 // 386  = TAIWAN
+	THAILAND                          DXCCEntityCode = 387 // 387  = THAILAND
+	TURKEY                            DXCCEntityCode = 390 // 390  = TURKEY
+	UNITED_ARAB_EMIRATES              DXCCEntityCode = 391 // 391  = UNITED ARAB EMIRATES
+	ALGERIA                           DXCCEntityCode = 400 // 400  = ALGERIA
+	ANGOLA                            DXCCEntityCode = 401 // 401  = ANGOLA
+	BOTSWANA                          DXCCEntityCode = 402 // 402  = BOTSWANA
+	BURUNDI                           DXCCEntityCode = 404 // 404  = BURUNDI
+	CAMEROON                          DXCCEntityCode = 406 // 406  = CAMEROON
+	CENTRAL_AFRICA                    DXCCEntityCode = 408 // 408  = CENTRAL AFRICA
+	CAPE_VERDE                        DXCCEntityCode = 409 // 409  = CAPE VERDE
+	CHAD                              DXCCEntityCode = 410 // 410  = CHAD
+	COMOROS                           DXCCEntityCode = 411 // 411  = COMOROS
+	REPUBLIC_OF_THE_CONGO             DXCCEntityCode = 412 // 412  = REPUBLIC OF THE CONGO
+	DEMOCRATIC_REPUBLIC_OF_THE_CONGO  DXCCEntityCode = 414 // 414  = DEMOCRATIC REPUBLIC OF THE CONGO
+	BENIN                             DXCCEntityCode = 416 // 416  = BENIN
+	GABON                             DXCCEntityCode = 420 // 420  = GABON
+	THE_GAMBIA                        DXCCEntityCode = 422 // 422  = THE GAMBIA
+	GHANA                             DXCCEntityCode = 424 // 424  = GHANA
+	COTE_DIVOIRE                      DXCCEntityCode = 428 // 428  = COTE D'IVOIRE
+	KENYA                             DXCCEntityCode = 430 // 430  = KENYA
+	LESOTHO                           DXCCEntityCode = 432 // 432  = LESOTHO
+	LIBERIA                           DXCCEntityCode = 434 // 434  = LIBERIA
+	LIBYA                             DXCCEntityCode = 436 // 436  = LIBYA
+	MADAGASCAR                        DXCCEntityCode = 438 // 438  = MADAGASCAR
+	MALAWI                            DXCCEntityCode = 440 // 440  = MALAWI
+	MALI                              DXCCEntityCode = 442 // 442  = MALI
+	MAURITANIA                        DXCCEntityCode = 444 // 444  = MAURITANIA
+	MOROCCO                           DXCCEntityCode = 446 // 446  = MOROCCO
+	NIGERIA                           DXCCEntityCode = 450 // 450  = NIGERIA
+	ZIMBABWE                          DXCCEntityCode = 452 // 452  = ZIMBABWE
+	REUNION_I                         DXCCEntityCode = 453 // 453  = REUNION I.
+	RWANDA                            DXCCEntityCode = 454 // 454  = RWANDA
+	SENEGAL                           DXCCEntityCode = 456 // 456  = SENEGAL
+	SIERRA_LEONE                      DXCCEntityCode = 458 // 458  = SIERRA LEONE
+	ROTUMA_I                          DXCCEntityCode = 460 // 460  = ROTUMA I.
+	REPUBLIC_OF_SOUTH_AFRICA          DXCCEntityCode = 462 // 462  = REPUBLIC OF SOUTH AFRICA
+	NAMIBIA                           DXCCEntityCode = 464 // 464  = NAMIBIA
+	SUDAN                             DXCCEntityCode = 466 // 466  = SUDAN
+	KINGDOM_OF_ESWATINI               DXCCEntityCode = 468 // 468  = KINGDOM OF ESWATINI
+	TANZANIA                          DXCCEntityCode = 470 // 470  = TANZANIA
+	TUNISIA                           DXCCEntityCode = 474 // 474  = TUNISIA
+	EGYPT                             DXCCEntityCode = 478 // 478  = EGYPT
+	BURKINA_FASO                      DXCCEntityCode = 480 // 480  = BURKINA FASO
+	ZAMBIA                            DXCCEntityCode = 482 // 482  = ZAMBIA
+	TOGO                              DXCCEntityCode = 483 // 483  = TOGO
+	CONWAY_REEF                       DXCCEntityCode = 489 // 489  = CONWAY REEF
+	BANABA_I_OCEAN_I                  DXCCEntityCode = 490 // 490  = BANABA I. (OCEAN I.)
+	YEMEN                             DXCCEntityCode = 492 // 492  = YEMEN
+	CROATIA                           DXCCEntityCode = 497 // 497  = CROATIA
+	SLOVENIA                          DXCCEntityCode = 499 // 499  = SLOVENIA
+	BOSNIA_HERZEGOVINA                DXCCEntityCode = 501 // 501  = BOSNIA-HERZEGOVINA
+	NORTH_MACEDONIA_REPUBLIC_OF       DXCCEntityCode = 502 // 502  = NORTH MACEDONIA (REPUBLIC OF)
+	CZECH_REPUBLIC                    DXCCEntityCode = 503 // 503  = CZECH REPUBLIC
+	SLOVAK_REPUBLIC                   DXCCEntityCode = 504 // 504  = SLOVAK REPUBLIC
+	PRATAS_I                          DXCCEntityCode = 505 // 505  = PRATAS I.
+	SCARBOROUGH_REEF                  DXCCEntityCode = 506 // 506  = SCARBOROUGH REEF
+	TEMOTU_PROVINCE                   DXCCEntityCode = 507 // 507  = TEMOTU PROVINCE
+	AUSTRAL_I                         DXCCEntityCode = 508 // 508  = AUSTRAL I.
+	MARQUESAS_IS                      DXCCEntityCode = 509 // 509  = MARQUESAS IS.
+	PALESTINE                         DXCCEntityCode = 510 // 510  = PALESTINE
+	TIMOR_LESTE                       DXCCEntityCode = 511 // 511  = TIMOR-LESTE
+	CHESTERFIELD_IS                   DXCCEntityCode = 512 // 512  = CHESTERFIELD IS.
+	DUCIE_I                           DXCCEntityCode = 513 // 513  = DUCIE I.
+	MONTENEGRO                        DXCCEntityCode = 514 // 514  = MONTENEGRO
+	SWAINS_I                          DXCCEntityCode = 515 // 515  = SWAINS I.
+	SAINT_BARTHELEMY                  DXCCEntityCode = 516 // 516  = SAINT BARTHELEMY
+	CURACAO                           DXCCEntityCode = 517 // 517  = CURACAO
+	SINT_MAARTEN                      DXCCEntityCode = 518 // 518  = SINT MAARTEN
+	SABA_AND_ST_EUSTATIUS             DXCCEntityCode = 519 // 519  = SABA & ST. EUSTATIUS
+	BONAIRE                           DXCCEntityCode = 520 // 520  = BONAIRE
+	SOUTH_SUDAN_REPUBLIC_OF           DXCCEntityCode = 521 // 521  = SOUTH SUDAN (REPUBLIC OF)
+	REPUBLIC_OF_KOSOVO                DXCCEntityCode = 522 // 522  = REPUBLIC OF KOSOVO
 )

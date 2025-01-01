@@ -4,7 +4,7 @@
 // This file contains CURRENTLY valid constants.
 // It is not a full list of all possible historic and/or future values.
 
-package awardsponsorprefix
+package awardsponsor
 
 var (
 	ADIF  AwardSponsorPrefix = "ADIF_"  // ADIF_   = ADIF Development Group

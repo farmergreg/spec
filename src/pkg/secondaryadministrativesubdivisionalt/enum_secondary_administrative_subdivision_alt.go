@@ -55,7 +55,7 @@ type EnumSecondaryAdministrativeSubdivisionAltItemMap map[SecondaryAdministrativ
 type EnumSecondaryAdministrativeSubdivisionAltItem struct {
 	shared.ImportRecordRoot
 	ID             SecondaryAdministrativeSubdivisionAlt `csv:"Code"` // The value that is stored in the ANT_PATH ADIF field.
-	DXCCEntityCode dxccentitycode.DXCC                   `csv:"DXCC Entity Code"`
+	DXCCEntityCode dxccentitycode.DXCCEntityCode         `csv:"DXCC Entity Code"`
 	Region         string                                `csv:"Region"`
 	District       string                                `csv:"District"`
 	Deleted        shared.Deleted                        `csv:"Deleted"`

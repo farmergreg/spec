@@ -6,26 +6,26 @@ import (
 
 func TestInit(t *testing.T) {
 	// Test DataTypeListAll is not empty
-	if len(List) == 0 {
+	if len(DataTypeListAll) == 0 {
 		t.Error("DataTypeListAll should not be empty after init")
 	}
 
 	// Test DataTypeList is not empty and smaller than DataTypeListAll
-	if len(ListCurrent) == 0 {
+	if len(DataTypeList) == 0 {
 		t.Error("DataTypeList should not be empty after init")
 	}
-	if len(ListCurrent) >= len(List) {
+	if len(DataTypeList) >= len(DataTypeListAll) {
 		t.Error("DataTypeList should be smaller than DataTypeListAll due to filtering")
 	}
 
 	// Test DataTypeMap has same length as DataTypeList
-	if len(Map) != len(ListCurrent) {
+	if len(DataTypeMap) != len(DataTypeList) {
 		t.Errorf("DataTypeMap length (%d) should match DataTypeList length (%d)",
-			len(Map), len(ListCurrent))
+			len(DataTypeMap), len(DataTypeList))
 	}
 
 	// Test each item in DataTypeList meets the filtering criteria
-	for _, item := range ListCurrent {
+	for _, item := range DataTypeList {
 		if !bool(item.IsReleased) {
 			t.Error("DataTypeList contains unreleased item:", item.ID)
 		}
@@ -35,8 +35,8 @@ func TestInit(t *testing.T) {
 	}
 
 	// Test each item in DataTypeList is properly mapped in DataTypeMap
-	for _, item := range ListCurrent {
-		mapped, exists := Map[item.ID]
+	for _, item := range DataTypeList {
+		mapped, exists := DataTypeMap[item.ID]
 		if !exists {
 			t.Error("Item from DataTypeList not found in DataTypeMap:", item.ID)
 		}

@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/spec"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/arrlsection"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/dxccentitycode"
 )
 
 func main() {
@@ -15,10 +16,10 @@ func validateDxcc() {
 }
 
 func compareARRLSectionDXCCtoDXCCList() {
-	for _, section := range spec.EnumARRLSectionList {
+	for _, section := range arrlsection.EnumARRLSectionList {
 		for _, code := range section.DXCCEntityCodes.Code {
 
-			if _, ok := spec.EnumDXCCEntityCodeMap[code]; !ok {
+			if _, ok := dxccentitycode.EnumDXCCEntityCodeMap[code]; !ok {
 				fmt.Printf("ARRL Section \"%s\" has DXCC code %d which is not in the DXCC list.\n", section.ID, code)
 			}
 

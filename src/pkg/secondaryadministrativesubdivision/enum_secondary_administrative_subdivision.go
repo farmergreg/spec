@@ -56,7 +56,7 @@ type EnumSecondaryAdministrativeSubdivisionItem struct {
 	shared.ImportRecordRoot
 	ID                                 SecondaryAdministrativeSubdivision `csv:"Code"` // The value that is stored in the ANT_PATH ADIF field.
 	SecondaryAdministrativeSubdivision string                             `csv:"Secondary Administrative Subdivision"`
-	DXCCEntityCode                     dxccentitycode.DXCC                `csv:"DXCC Entity Code"`
+	DXCCEntityCode                     dxccentitycode.DXCCEntityCode      `csv:"DXCC Entity Code"`
 	AlaskaJudicialDistrict             string                             `csv:"Alaska Judicial District"`
 	Deleted                            shared.Deleted                     `csv:"Deleted"`
 }

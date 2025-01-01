@@ -16,7 +16,8 @@
                 "mechatroner.rainbow-csv",
                 "ms-azuretools.vscode-docker",
                 "redhat.vscode-yaml",
-                "neverik.go-critic"
+                "neverik.go-critic",
+                "github.vscode-github-actions"
             ],
             "settings": {
                 "files.trimFinalNewlines": true,

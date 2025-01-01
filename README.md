@@ -1,5 +1,11 @@
 # ADIF Specification for Go
 
+[![Tests](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml/badge.svg)](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hamradiolog-net/adif-spec)](https://goreportcard.com/report/github.com/hamradiolog-net/adif-spec)
+[![Go Reference](https://pkg.go.dev/badge/github.com/hamradiolog-net/adif-spec.svg)](https://pkg.go.dev/github.com/hamradiolog-net/adif-spec)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/hamradiolog-net/adif-spec)](https://github.com/hamradiolog-net/adif-spec/blob/main/go.mod)
+[![License](https://img.shields.io/github/license/hamradiolog-net/adif-spec)](https://github.com/hamradiolog-net/adif-spec/blob/main/LICENSE)
+
 ## Overview
 
 This repository contains the ADIF specification for Go.
@@ -8,15 +14,14 @@ It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_202
 ## Using The Library
 
 Import any of the packages in the `src/pkg` directory that you wish to use.
-They all follow the same pattern.
-Each pacakge has constants related to the ADIF specification.
-They also proved three package level variables:
+Each package has constants related to the ADIF specification.
+They also proved three package level variables with the following suffixes:
 
 - `Map` - A map of the ADIF specification for quick lookups.
 - `List` - A list of values that are current.
 - `ListAll` - A list of all values, including deprecated ones.
 
-For example, to lookup information about a band, you can use the `band` package ([Run in Go Playground](https://go.dev/play/p/HJW91fhyvdJ)):
+For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/HJW91fhyvdJ)):
 
 ```go
 package main
@@ -49,7 +54,7 @@ func main() {
 
 The following steps are required to update the specification to the latest version.
 
-1. Download the latest ADIF TSV file exports from the ADIF Workgroup.  The current ADIF 3.1.5 spec is in the `src/spec/315` directory. You should rename the folder to the new ADIF version number.
+1. Download the latest ADIF TSV file exports from the ADIF Workgroup.  The current ADIF 3.1.5 spec is kept in the `src/spec/315` directory of this repository. You should rename the folder to the new ADIF version number.
 
 2. Update `cmd/specgen/main.go` to use the new TSV folder.
 

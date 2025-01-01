@@ -8,36 +8,36 @@ import (
 )
 
 var (
-	// Map contains ALL records, including un-released and import-only records
-	Map DataTypeDefinitionMap
+	// DataTypeMap contains ALL records, including un-released and import-only records
+	DataTypeMap DataTypeDefinitionMap
 
-	// List contains ALL records, including un-released and import-only records
-	List DataTypeDefinitionList
+	// DataTypeListAll contains ALL records, including un-released and import-only records
+	DataTypeListAll DataTypeDefinitionList
 
-	// ListCurrent
+	// DataTypeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	ListCurrent DataTypeDefinitionList
+	DataTypeList DataTypeDefinitionList
 )
 
 func init() {
 	var err error
-	List, err = spec.ParseADISpecTSV[*DataTypeDefinition](spec.AdiDataTypesTSV)
+	DataTypeListAll, err = spec.ParseADISpecTSV[*DataTypeDefinition](spec.AdiDataTypesTSV)
 	if err != nil {
 		panic(err)
 	}
 
-	ListCurrent = make([]*DataTypeDefinition, 0, len(List))
-	for _, item := range List {
+	DataTypeList = make([]*DataTypeDefinition, 0, len(DataTypeListAll))
+	for _, item := range DataTypeListAll {
 		if bool(item.IsReleased) && !bool(item.IsImportOnly) {
-			ListCurrent = append(ListCurrent, item)
+			DataTypeList = append(DataTypeList, item)
 		}
 	}
-	ListCurrent = slices.Clip(ListCurrent)
+	DataTypeList = slices.Clip(DataTypeList)
 
-	Map = make(DataTypeDefinitionMap, len(ListCurrent))
-	for _, item := range ListCurrent {
-		Map[item.ID] = item
+	DataTypeMap = make(DataTypeDefinitionMap, len(DataTypeList))
+	for _, item := range DataTypeList {
+		DataTypeMap[item.ID] = item
 	}
 }
 

@@ -1,4 +1,4 @@
-package spec
+package primaryadministrativesubdivision
 
 import (
 	"slices"
@@ -46,16 +46,16 @@ type EnumPrimaryAdministrativeSubdivisionItemList []*EnumPrimaryAdministrativeSu
 // EnumPrimaryAdministrativeSubdivisionItem represents an ARRL section item
 type EnumPrimaryAdministrativeSubdivisionItem struct {
 	shared.ImportRecordRoot
-	IsDeleted       shared.Deleted                   `csv:"Deleted"`
-	ID              PrimaryAdministrativeSubdivision `csv:"Code"` // n.b. NOT UNIQUE.
-	Description     string                           `csv:"Primary Administrative Subdivision"`
-	DXCCEntityCodes dxccentitycode.DXCCEntityList    `csv:"DXCC Entity Code"`
-	ContainedWithin string                           `csv:"Contained Within"`
-	Oblast          int                              `csv:"Oblast #"`
-	CQZone          CQZoneList                       `csv:"CQ Zone"`
-	ITUZone         ITUZoneList                      `csv:"ITU Zone"`
-	Prefix          string                           `csv:"Prefix"`
-	Comments        string                           `csv:"Comments"`
+	IsDeleted       shared.Deleted                    `csv:"Deleted"`
+	ID              PrimaryAdministrativeSubdivision  `csv:"Code"` // n.b. NOT UNIQUE.
+	Description     string                            `csv:"Primary Administrative Subdivision"`
+	DXCCEntityCodes dxccentitycode.DXCCEntityCodeList `csv:"DXCC Entity Code"`
+	ContainedWithin string                            `csv:"Contained Within"`
+	Oblast          int                               `csv:"Oblast #"`
+	CQZone          CQZoneList                        `csv:"CQ Zone"`
+	ITUZone         ITUZoneList                       `csv:"ITU Zone"`
+	Prefix          string                            `csv:"Prefix"`
+	Comments        string                            `csv:"Comments"`
 }
 
 // CQZone represents a CQ zone

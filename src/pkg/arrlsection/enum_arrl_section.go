@@ -54,9 +54,9 @@ type EnumARRLSectionItemMap map[ARRLSection]*EnumARRLSectionItem
 // EnumARRLSectionItem represents an ARRL section item
 type EnumARRLSectionItem struct {
 	shared.ImportRecordRoot
-	ID              ARRLSection                   `csv:"Abbreviation"` // The value that is stored in the ARRL_SECTION and MY_ARRL_SECTION ADIF fields.
-	Description     string                        `csv:"Section Name"`
-	DXCCEntityCodes dxccentitycode.DXCCEntityList `csv:"DXCC Entity Code"`
-	FromDate        shared.ADIDate                `csv:"From Date"`
-	DeletedDate     shared.ADIDate                `csv:"Deleted Date"`
+	ID              ARRLSection                       `csv:"Abbreviation"` // The value that is stored in the ARRL_SECTION and MY_ARRL_SECTION ADIF fields.
+	Description     string                            `csv:"Section Name"`
+	DXCCEntityCodes dxccentitycode.DXCCEntityCodeList `csv:"DXCC Entity Code"`
+	FromDate        shared.ADIDate                    `csv:"From Date"`
+	DeletedDate     shared.ADIDate                    `csv:"Deleted Date"`
 }

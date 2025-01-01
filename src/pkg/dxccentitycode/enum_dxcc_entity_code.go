@@ -10,62 +10,62 @@ import (
 )
 
 var (
-	// EnumDXCCMap contains ALL records, including deleted, un-released and import-only records
-	EnumDXCCMap EnumDXCCItemMap
+	// EnumDXCCEntityCodeMap contains ALL records, including deleted, un-released and import-only records
+	EnumDXCCEntityCodeMap EnumDXCCEntityCodeItemMap
 
-	// EnumDXCCListAll contains ALL records, including deleted, un-released and import-only records
-	EnumDXCCListAll EnumDXCCItemList
+	// EnumDXCCEntityCodeListAll contains ALL records, including deleted, un-released and import-only records
+	EnumDXCCEntityCodeListAll EnumDXCCEntityCodeItemList
 
-	// EnumDXCCList
+	// EnumDXCCEntityCodeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumDXCCList EnumDXCCItemList
+	EnumDXCCEntityCodeList EnumDXCCEntityCodeItemList
 )
 
 func init() {
 	var err error
-	EnumDXCCListAll, err = spec.ParseADISpecTSV[*EnumDXCCItem](spec.EnumDXCCTSV)
+	EnumDXCCEntityCodeListAll, err = spec.ParseADISpecTSV[*EnumDXCCEntityCodeItem](spec.EnumDXCCTSV)
 	if err != nil {
 		panic(err)
 	}
 
-	EnumDXCCList = make([]*EnumDXCCItem, 0, len(EnumDXCCListAll))
-	for _, item := range EnumDXCCListAll {
+	EnumDXCCEntityCodeList = make([]*EnumDXCCEntityCodeItem, 0, len(EnumDXCCEntityCodeListAll))
+	for _, item := range EnumDXCCEntityCodeListAll {
 		if bool(item.IsReleased) && !bool(item.IsImportOnly) && !bool(item.IsDeleted) {
-			EnumDXCCList = append(EnumDXCCList, item)
+			EnumDXCCEntityCodeList = append(EnumDXCCEntityCodeList, item)
 		}
 	}
-	EnumDXCCList = slices.Clip(EnumDXCCList)
+	EnumDXCCEntityCodeList = slices.Clip(EnumDXCCEntityCodeList)
 
-	EnumDXCCMap = make(EnumDXCCItemMap, len(EnumDXCCList))
-	for _, item := range EnumDXCCList {
-		EnumDXCCMap[item.ID] = item
+	EnumDXCCEntityCodeMap = make(EnumDXCCEntityCodeItemMap, len(EnumDXCCEntityCodeList))
+	for _, item := range EnumDXCCEntityCodeList {
+		EnumDXCCEntityCodeMap[item.ID] = item
 	}
 }
 
-// DXCC is the code of a DXCC entity.
-type DXCC int
+// DXCCEntityCode is the code of a DXCCEntityCode entity.
+type DXCCEntityCode int
 
-// EnumDXCCItemList represents a collection of DXCC entity code items
-type EnumDXCCItemList []*EnumDXCCItem
+// EnumDXCCEntityCodeItemList represents a collection of DXCC entity code items
+type EnumDXCCEntityCodeItemList []*EnumDXCCEntityCodeItem
 
-// EnumDXCCItemMap maps DXCC to its definition
-type EnumDXCCItemMap map[DXCC]*EnumDXCCItem
+// EnumDXCCEntityCodeItemMap maps DXCC to its definition
+type EnumDXCCEntityCodeItemMap map[DXCCEntityCode]*EnumDXCCEntityCodeItem
 
-// EnumDXCCItem represents a DXCC entity code item
-type EnumDXCCItem struct {
+// EnumDXCCEntityCodeItem represents a DXCC entity code item
+type EnumDXCCEntityCodeItem struct {
 	shared.ImportRecordRoot
-	ID          DXCC           `csv:"Entity Code"` // The value that is stored in the DXCC and MY_DXCC ADIF fields.
+	ID          DXCCEntityCode `csv:"Entity Code"` // The value that is stored in the DXCC and MY_DXCC ADIF fields.
 	Description string         `csv:"Entity Name"` // The value that is stored in the COUNTRY and MY_COUNTRY ADIF fields.
 	IsDeleted   shared.Deleted `csv:"Deleted"`
 }
 
-// DXCCEntityList represents a list of DXCC entity codes
-type DXCCEntityList struct {
-	Code []DXCC
+// DXCCEntityCodeList represents a list of DXCC entity codes
+type DXCCEntityCodeList struct {
+	Code []DXCCEntityCode
 }
 
-func (s *DXCCEntityList) UnmarshalCSV(csv string) error {
+func (s *DXCCEntityCodeList) UnmarshalCSV(csv string) error {
 	codes := strings.Split(csv, ",")
 
 	if len(codes) == 1 && codes[0] == "" {
@@ -77,7 +77,7 @@ func (s *DXCCEntityList) UnmarshalCSV(csv string) error {
 		if err != nil {
 			return err
 		}
-		s.Code = append(s.Code, DXCC(parsedCode))
+		s.Code = append(s.Code, DXCCEntityCode(parsedCode))
 	}
 
 	return nil

@@ -54,10 +54,10 @@ type EnumRegionItemMap map[Region]*EnumRegionItem
 // EnumRegionItem represents a region item
 type EnumRegionItem struct {
 	shared.ImportRecordRoot
-	ID            Region              `csv:"Region Entity Code"` // The value that is stored in the REGION ADIF field.
-	Description   string              `csv:"Region"`
-	DXCCCode      dxccentitycode.DXCC `csv:"DXCC Entity Code"`
-	Prefix        string              `csv:"Prefix"`
-	Applicability string              `csv:"Applicability"`
-	Comments      string              `csv:"Comments"`
+	ID            Region                        `csv:"Region Entity Code"` // The value that is stored in the REGION ADIF field.
+	Description   string                        `csv:"Region"`
+	DXCCCode      dxccentitycode.DXCCEntityCode `csv:"DXCC Entity Code"`
+	Prefix        string                        `csv:"Prefix"`
+	Applicability string                        `csv:"Applicability"`
+	Comments      string                        `csv:"Comments"`
 }

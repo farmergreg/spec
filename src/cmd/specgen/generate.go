@@ -4,29 +4,53 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hamradiolog-net/spec"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/adifield"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/aditype"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/antpath"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/arrlsection"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/award"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/awardsponsor"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/band"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/contest"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/continent"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/credit"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/mode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/morsekey"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/primaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/propagationmode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qslmedium"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qslrcvd"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qslsent"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qslvia"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qsocomplete"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qsodownloadstatus"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/qsouploadstatus"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/region"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/secondaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/secondaryadministrativesubdivisionalt"
 )
 
-func GenerateGoCodeForDataTypeDefinition(a []*spec.DataTypeDefinition) string {
+func GenerateGoCodeForDataTypeDefinition(a []*aditype.DataTypeDefinition) string {
 	return generateGoCode(
 		a,
 		"aditype",
 		"",
 		"DataType",
 		nil,
-		func(a *spec.DataTypeDefinition) string { return string(a.ID) },
-		func(a *spec.DataTypeDefinition) string { return string(a.ID) },
-		func(a *spec.DataTypeDefinition) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *aditype.DataTypeDefinition) string { return string(a.ID) },
+		func(a *aditype.DataTypeDefinition) string { return string(a.ID) },
+		func(a *aditype.DataTypeDefinition) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForFieldDefinition(a []*spec.FieldDefinition) string {
+func GenerateGoCodeForFieldDefinition(a []*adifield.FieldDefinition) string {
 	return generateGoCode(
 		a,
 		"adifield",
 		"",
 		"Field",
-		func(a *spec.FieldDefinition) bool {
+		func(a *adifield.FieldDefinition) bool {
 			switch a.ID {
 			case "USERDEFn":
 				// USERDEFn is just an example field that appears in our source data.
@@ -36,11 +60,11 @@ func GenerateGoCodeForFieldDefinition(a []*spec.FieldDefinition) string {
 				return true
 			}
 		},
-		func(a *spec.FieldDefinition) string { return string(a.ID) },
-		func(a *spec.FieldDefinition) string { return string(a.ID) },
-		func(a *spec.FieldDefinition) string {
+		func(a *adifield.FieldDefinition) string { return string(a.ID) },
+		func(a *adifield.FieldDefinition) string { return string(a.ID) },
+		func(a *adifield.FieldDefinition) string {
 
-			header := "Record"
+			header := "QSO"
 			if a.IsHeaderField {
 				header = "Header"
 			}
@@ -49,126 +73,126 @@ func GenerateGoCodeForFieldDefinition(a []*spec.FieldDefinition) string {
 	)
 }
 
-func GenerateGoCodeForAntPathEnumItem(a []*spec.EnumAntPathItem) string {
+func GenerateGoCodeForAntPathEnumItem(a []*antpath.EnumAntPathItem) string {
 	return generateGoCode(
 		a,
 		"antpath",
 		"",
 		"AntPath",
 		nil,
-		func(a *spec.EnumAntPathItem) string { return string(a.ID) },
-		func(a *spec.EnumAntPathItem) string { return string(a.ID) },
-		func(a *spec.EnumAntPathItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *antpath.EnumAntPathItem) string { return string(a.ID) },
+		func(a *antpath.EnumAntPathItem) string { return string(a.ID) },
+		func(a *antpath.EnumAntPathItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForARRLSectionEnumItem(a []*spec.EnumARRLSectionItem) string {
+func GenerateGoCodeForARRLSectionEnumItem(a []*arrlsection.EnumARRLSectionItem) string {
 	return generateGoCode(
 		a,
 		"arrlsection",
 		"",
 		"ARRLSection",
 		nil,
-		func(a *spec.EnumARRLSectionItem) string { return string(a.ID) },
-		func(a *spec.EnumARRLSectionItem) string { return string(a.ID) },
-		func(a *spec.EnumARRLSectionItem) string { return fmt.Sprintf("%-5s = %s", a.ID, a.Description) },
+		func(a *arrlsection.EnumARRLSectionItem) string { return string(a.ID) },
+		func(a *arrlsection.EnumARRLSectionItem) string { return string(a.ID) },
+		func(a *arrlsection.EnumARRLSectionItem) string { return fmt.Sprintf("%-5s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForAwardSponsorEnumItem(a []*spec.EnumAwardSponsorItem) string {
+func GenerateGoCodeForAwardSponsorEnumItem(a []*awardsponsor.EnumAwardSponsorItem) string {
 	return generateGoCode(
 		a,
-		"awardsponsorprefix",
+		"awardsponsor",
 		"",
 		"AwardSponsorPrefix",
 		nil,
-		func(a *spec.EnumAwardSponsorItem) string { return string(a.IDPrefix) },
-		func(a *spec.EnumAwardSponsorItem) string { return string(a.IDPrefix) },
-		func(a *spec.EnumAwardSponsorItem) string {
+		func(a *awardsponsor.EnumAwardSponsorItem) string { return string(a.IDPrefix) },
+		func(a *awardsponsor.EnumAwardSponsorItem) string { return string(a.IDPrefix) },
+		func(a *awardsponsor.EnumAwardSponsorItem) string {
 			return fmt.Sprintf("%-7s = %s", a.IDPrefix, a.Description)
 		},
 	)
 }
 
-func GenerateGoCodeForAwardEnumItem(a []*spec.EnumAwardItem) string {
+func GenerateGoCodeForAwardEnumItem(a []*award.EnumAwardItem) string {
 	return generateGoCode(
 		a,
 		"award",
 		"",
 		"Award",
 		nil,
-		func(a *spec.EnumAwardItem) string { return string(a.ID) },
-		func(a *spec.EnumAwardItem) string { return string(a.ID) },
-		func(a *spec.EnumAwardItem) string { return string(a.ID) },
+		func(a *award.EnumAwardItem) string { return string(a.ID) },
+		func(a *award.EnumAwardItem) string { return string(a.ID) },
+		func(a *award.EnumAwardItem) string { return string(a.ID) },
 	)
 }
 
-func GenerateGoCodeForBandEnumItem(a []*spec.EnumBandItem) string {
+func GenerateGoCodeForBandEnumItem(a []*band.EnumBandItem) string {
 	return generateGoCode(
 		a,
 		"band",
 		"Band",
 		"Band",
 		nil,
-		func(a *spec.EnumBandItem) string { return string(a.ID) },
-		func(a *spec.EnumBandItem) string { return string(a.ID) },
-		func(a *spec.EnumBandItem) string {
-			return fmt.Sprintf("%12.4f MHz - %12.4f MHz = %s", a.LowerFreq, a.UpperFreq, a.ID)
+		func(a *band.EnumBandItem) string { return string(a.ID) },
+		func(a *band.EnumBandItem) string { return string(a.ID) },
+		func(a *band.EnumBandItem) string {
+			return fmt.Sprintf("%12.4f MHz - %12.4f MHz = %s", a.LowerFreqMHz, a.UpperFreqMHz, a.ID)
 		},
 	)
 }
 
-func GenerateGoCodeForContestEnumItem(a []*spec.EnumContestItem) string {
+func GenerateGoCodeForContestEnumItem(a []*contest.EnumContestItem) string {
 	return generateGoCode(
 		a,
 		"contest",
 		"Contest_",
 		"Contest",
 		nil,
-		func(a *spec.EnumContestItem) string { return string(a.ID) },
-		func(a *spec.EnumContestItem) string { return string(a.ID) },
-		func(a *spec.EnumContestItem) string { return fmt.Sprintf("%-24s = %s", a.ID, a.Description) },
+		func(a *contest.EnumContestItem) string { return string(a.ID) },
+		func(a *contest.EnumContestItem) string { return string(a.ID) },
+		func(a *contest.EnumContestItem) string { return fmt.Sprintf("%-24s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForContinentEnumItem(a []*spec.EnumContinentItem) string {
+func GenerateGoCodeForContinentEnumItem(a []*continent.EnumContinentItem) string {
 	return generateGoCode(
 		a,
 		"continent",
 		"",
 		"Continent",
 		nil,
-		func(a *spec.EnumContinentItem) string { return string(a.ID) },
-		func(a *spec.EnumContinentItem) string { return string(a.ID) },
-		func(a *spec.EnumContinentItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *continent.EnumContinentItem) string { return string(a.ID) },
+		func(a *continent.EnumContinentItem) string { return string(a.ID) },
+		func(a *continent.EnumContinentItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForCreditEnumItem(a []*spec.EnumCreditItem) string {
+func GenerateGoCodeForCreditEnumItem(a []*credit.EnumCreditItem) string {
 	return generateGoCode(
 		a,
 		"credit",
 		"",
 		"Credit",
 		nil,
-		func(a *spec.EnumCreditItem) string { return string(a.ID) },
-		func(a *spec.EnumCreditItem) string { return string(a.ID) },
-		func(a *spec.EnumCreditItem) string {
+		func(a *credit.EnumCreditItem) string { return string(a.ID) },
+		func(a *credit.EnumCreditItem) string { return string(a.ID) },
+		func(a *credit.EnumCreditItem) string {
 			return fmt.Sprintf("%-20s %-10s %-15s %s", a.ID, a.Facet, a.Sponsor, a.Award)
 		},
 	)
 }
 
-func GenerateGoCodeForDXCCEnumItem(a []*spec.EnumDXCCEntityCodeItem) string {
+func GenerateGoCodeForDXCCEnumItem(a []*dxccentitycode.EnumDXCCEntityCodeItem) string {
 	a[0].Description = "" // A hack... we want "none" to be blank so that it shows up nicely in drop down lists.
 
 	return generateGoCode(
 		a,
 		"dxccentitycode",
 		"",
-		"DXCC",
+		"DXCCEntityCode",
 		nil,
-		func(a *spec.EnumDXCCEntityCodeItem) string {
+		func(a *dxccentitycode.EnumDXCCEntityCodeItem) string {
 			name := a.Description
 
 			if name == "" {
@@ -182,21 +206,23 @@ func GenerateGoCodeForDXCCEnumItem(a []*spec.EnumDXCCEntityCodeItem) string {
 
 			return name
 		},
-		func(a *spec.EnumDXCCEntityCodeItem) int { return int(a.ID) },
-		func(a *spec.EnumDXCCEntityCodeItem) string { return fmt.Sprintf("%-4d = %s", a.ID, a.Description) },
+		func(a *dxccentitycode.EnumDXCCEntityCodeItem) int { return int(a.ID) },
+		func(a *dxccentitycode.EnumDXCCEntityCodeItem) string {
+			return fmt.Sprintf("%-4d = %s", a.ID, a.Description)
+		},
 	)
 }
 
-func GenerateGoCodeForModeEnumItem(a []*spec.EnumModeItem) string {
+func GenerateGoCodeForModeEnumItem(a []*mode.EnumModeItem) string {
 	return generateGoCode(
 		a,
 		"mode",
 		"Mode",
 		"Mode",
 		nil,
-		func(a *spec.EnumModeItem) string { return string(a.ID) },
-		func(a *spec.EnumModeItem) string { return string(a.ID) },
-		func(a *spec.EnumModeItem) string {
+		func(a *mode.EnumModeItem) string { return string(a.ID) },
+		func(a *mode.EnumModeItem) string { return string(a.ID) },
+		func(a *mode.EnumModeItem) string {
 			if len(a.Submodes.Submodes) > 0 {
 				submodeListAsString := make([]string, len(a.Submodes.Submodes))
 				for i, subMode := range a.Submodes.Submodes {
@@ -210,193 +236,211 @@ func GenerateGoCodeForModeEnumItem(a []*spec.EnumModeItem) string {
 	)
 }
 
-func GenerateGoCodeForMorseKeyEnumItem(a []*spec.EnumMorseKeyItem) string {
+func GenerateGoCodeForMorseKeyEnumItem(a []*morsekey.EnumMorseKeyItem) string {
 	return generateGoCode(
 		a,
 		"morsekey",
 		"",
 		"MorseKey",
 		nil,
-		func(a *spec.EnumMorseKeyItem) string { return string(a.ID) },
-		func(a *spec.EnumMorseKeyItem) string { return string(a.ID) },
-		func(a *spec.EnumMorseKeyItem) string { return fmt.Sprintf("%-3s = %s", a.ID, a.Description) },
+		func(a *morsekey.EnumMorseKeyItem) string { return string(a.ID) },
+		func(a *morsekey.EnumMorseKeyItem) string { return string(a.ID) },
+		func(a *morsekey.EnumMorseKeyItem) string { return fmt.Sprintf("%-3s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForPrimaryAdministrativeSubdivisionEnumItem(a []*spec.EnumPrimaryAdministrativeSubdivisionItem) string {
+func GenerateGoCodeForPrimaryAdministrativeSubdivisionEnumItem(a []*primaryadministrativesubdivision.EnumPrimaryAdministrativeSubdivisionItem) string {
 	return generateGoCode(
 		a,
 		"primaryadministrativesubdivision",
 		"",
 		"PrimaryAdministrativeSubdivision",
 		nil,
-		func(a *spec.EnumPrimaryAdministrativeSubdivisionItem) string { return string(a.ID) },
-		func(a *spec.EnumPrimaryAdministrativeSubdivisionItem) string { return string(a.ID) },
-		func(a *spec.EnumPrimaryAdministrativeSubdivisionItem) string {
+		func(a *primaryadministrativesubdivision.EnumPrimaryAdministrativeSubdivisionItem) string {
+			return string(a.ID)
+		},
+		func(a *primaryadministrativesubdivision.EnumPrimaryAdministrativeSubdivisionItem) string {
+			return string(a.ID)
+		},
+		func(a *primaryadministrativesubdivision.EnumPrimaryAdministrativeSubdivisionItem) string {
 			return fmt.Sprintf("%s = %s", a.ID, a.Description)
 		},
 	)
 }
 
-func GenerateGoCodeForPropagationModeEnumItem(a []*spec.EnumPropagationModeItem) string {
+func GenerateGoCodeForPropagationModeEnumItem(a []*propagationmode.EnumPropagationModeItem) string {
 	return generateGoCode(
 		a,
 		"propagationmode",
 		"",
 		"PropagationMode",
 		nil,
-		func(a *spec.EnumPropagationModeItem) string { return string(a.ID) },
-		func(a *spec.EnumPropagationModeItem) string { return string(a.ID) },
-		func(a *spec.EnumPropagationModeItem) string { return fmt.Sprintf("%-10s = %s", a.ID, a.Description) },
+		func(a *propagationmode.EnumPropagationModeItem) string { return string(a.ID) },
+		func(a *propagationmode.EnumPropagationModeItem) string { return string(a.ID) },
+		func(a *propagationmode.EnumPropagationModeItem) string {
+			return fmt.Sprintf("%-10s = %s", a.ID, a.Description)
+		},
 	)
 }
 
-func GenerateGoCodeForQSLMediumEnumItem(a []*spec.EnumQSLMediumItem) string {
+func GenerateGoCodeForQSLMediumEnumItem(a []*qslmedium.EnumQSLMediumItem) string {
 	return generateGoCode(
 		a,
 		"qslmedium",
 		"",
 		"QSLMedium",
 		nil,
-		func(a *spec.EnumQSLMediumItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLMediumItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLMediumItem) string { return fmt.Sprintf("%-5s = %s", a.ID, a.Description) },
+		func(a *qslmedium.EnumQSLMediumItem) string { return string(a.ID) },
+		func(a *qslmedium.EnumQSLMediumItem) string { return string(a.ID) },
+		func(a *qslmedium.EnumQSLMediumItem) string { return fmt.Sprintf("%-5s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForQSLRcvdEnumItem(a []*spec.EnumQSLRcvdItem) string {
+func GenerateGoCodeForQSLRcvdEnumItem(a []*qslrcvd.EnumQSLRcvdItem) string {
 	return generateGoCode(
 		a,
 		"qslrcvd",
 		"",
 		"QSLRcvd",
 		nil,
-		func(a *spec.EnumQSLRcvdItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLRcvdItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLRcvdItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qslrcvd.EnumQSLRcvdItem) string { return string(a.ID) },
+		func(a *qslrcvd.EnumQSLRcvdItem) string { return string(a.ID) },
+		func(a *qslrcvd.EnumQSLRcvdItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForQSLSentEnumItem(a []*spec.EnumQSLSentItem) string {
+func GenerateGoCodeForQSLSentEnumItem(a []*qslsent.EnumQSLSentItem) string {
 	return generateGoCode(
 		a,
 		"qslsent",
 		"",
 		"QSLSent",
 		nil,
-		func(a *spec.EnumQSLSentItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLSentItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLSentItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qslsent.EnumQSLSentItem) string { return string(a.ID) },
+		func(a *qslsent.EnumQSLSentItem) string { return string(a.ID) },
+		func(a *qslsent.EnumQSLSentItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForQSLViaEnumItem(a []*spec.EnumQSLViaItem) string {
+func GenerateGoCodeForQSLViaEnumItem(a []*qslvia.EnumQSLViaItem) string {
 	return generateGoCode(
 		a,
 		"qslvia",
 		"",
 		"QSLVia",
 		nil,
-		func(a *spec.EnumQSLViaItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLViaItem) string { return string(a.ID) },
-		func(a *spec.EnumQSLViaItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qslvia.EnumQSLViaItem) string { return string(a.ID) },
+		func(a *qslvia.EnumQSLViaItem) string { return string(a.ID) },
+		func(a *qslvia.EnumQSLViaItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForQSOCompleteEnumItem(a []*spec.EnumQSOCompleteItem) string {
+func GenerateGoCodeForQSOCompleteEnumItem(a []*qsocomplete.EnumQSOCompleteItem) string {
 	return generateGoCode(
 		a,
 		"qsocomplete",
 		"",
 		"QSOComplete",
 		nil,
-		func(a *spec.EnumQSOCompleteItem) string { return string(a.ID) },
-		func(a *spec.EnumQSOCompleteItem) string { return string(a.ID) },
-		func(a *spec.EnumQSOCompleteItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qsocomplete.EnumQSOCompleteItem) string { return string(a.ID) },
+		func(a *qsocomplete.EnumQSOCompleteItem) string { return string(a.ID) },
+		func(a *qsocomplete.EnumQSOCompleteItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForQSODownloadStatusEnumItem(a []*spec.EnumQSODownloadStatusItem) string {
+func GenerateGoCodeForQSODownloadStatusEnumItem(a []*qsodownloadstatus.EnumQSODownloadStatusItem) string {
 	return generateGoCode(
 		a,
 		"qsodownloadstatus",
 		"",
 		"QSODownloadStatus",
 		nil,
-		func(a *spec.EnumQSODownloadStatusItem) string { return string(a.ID) },
-		func(a *spec.EnumQSODownloadStatusItem) string { return string(a.ID) },
-		func(a *spec.EnumQSODownloadStatusItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qsodownloadstatus.EnumQSODownloadStatusItem) string { return string(a.ID) },
+		func(a *qsodownloadstatus.EnumQSODownloadStatusItem) string { return string(a.ID) },
+		func(a *qsodownloadstatus.EnumQSODownloadStatusItem) string {
+			return fmt.Sprintf("%s = %s", a.ID, a.Description)
+		},
 	)
 }
 
-func GenerateGoCodeForQSOUploadStatusEnumItem(a []*spec.EnumQSOUploadStatusItem) string {
+func GenerateGoCodeForQSOUploadStatusEnumItem(a []*qsouploadstatus.EnumQSOUploadStatusItem) string {
 	return generateGoCode(
 		a,
 		"qsouploadstatus",
 		"",
 		"QSOUploadStatus",
 		nil,
-		func(a *spec.EnumQSOUploadStatusItem) string { return string(a.ID) },
-		func(a *spec.EnumQSOUploadStatusItem) string { return string(a.ID) },
-		func(a *spec.EnumQSOUploadStatusItem) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *qsouploadstatus.EnumQSOUploadStatusItem) string { return string(a.ID) },
+		func(a *qsouploadstatus.EnumQSOUploadStatusItem) string { return string(a.ID) },
+		func(a *qsouploadstatus.EnumQSOUploadStatusItem) string {
+			return fmt.Sprintf("%s = %s", a.ID, a.Description)
+		},
 	)
 }
 
-func GenerateGoCodeForRegionEnumItem(a []*spec.EnumRegionItem) string {
+func GenerateGoCodeForRegionEnumItem(a []*region.EnumRegionItem) string {
 	return generateGoCode(
 		a,
 		"region",
 		"",
 		"Region",
 		nil,
-		func(a *spec.EnumRegionItem) string { return string(a.ID) },
-		func(a *spec.EnumRegionItem) string { return string(a.ID) },
-		func(a *spec.EnumRegionItem) string {
+		func(a *region.EnumRegionItem) string { return string(a.ID) },
+		func(a *region.EnumRegionItem) string { return string(a.ID) },
+		func(a *region.EnumRegionItem) string {
 			return fmt.Sprintf("%-5s = DXCC: %-3d / %-5s / %s", a.ID, a.DXCCCode, a.Prefix, a.Description)
 		},
 	)
 }
 
-func GenerateGoCodeForSecondaryAdministrativeSubdivisionAltEnumItem(a []*spec.EnumSecondaryAdministrativeSubdivisionAltItem) string {
+func GenerateGoCodeForSecondaryAdministrativeSubdivisionAltEnumItem(a []*secondaryadministrativesubdivisionalt.EnumSecondaryAdministrativeSubdivisionAltItem) string {
 	return generateGoCode(
 		a,
 		"secondaryadministrativesubdivisionalt",
 		"",
 		"SecondaryAdministrativeSubdivisionAlt",
 		nil,
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionAltItem) string { return string(a.ID) },
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionAltItem) string { return string(a.ID) },
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionAltItem) string {
+		func(a *secondaryadministrativesubdivisionalt.EnumSecondaryAdministrativeSubdivisionAltItem) string {
+			return string(a.ID)
+		},
+		func(a *secondaryadministrativesubdivisionalt.EnumSecondaryAdministrativeSubdivisionAltItem) string {
+			return string(a.ID)
+		},
+		func(a *secondaryadministrativesubdivisionalt.EnumSecondaryAdministrativeSubdivisionAltItem) string {
 			return fmt.Sprintf("%-50s = DXCC: %-3d / %-20s / %s", a.ID, a.DXCCEntityCode, a.Region, a.District)
 		},
 	)
 }
 
-func GenerateGoCodeForSecondaryAdministrativeSubdivisionEnumItem(a []*spec.EnumSecondaryAdministrativeSubdivisionItem) string {
+func GenerateGoCodeForSecondaryAdministrativeSubdivisionEnumItem(a []*secondaryadministrativesubdivision.EnumSecondaryAdministrativeSubdivisionItem) string {
 	return generateGoCode(
 		a,
 		"secondaryadministrativesubdivision",
 		"",
 		"SecondaryAdministrativeSubdivision",
 		nil,
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionItem) string { return string(a.ID) },
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionItem) string { return string(a.ID) },
-		func(a *spec.EnumSecondaryAdministrativeSubdivisionItem) string {
+		func(a *secondaryadministrativesubdivision.EnumSecondaryAdministrativeSubdivisionItem) string {
+			return string(a.ID)
+		},
+		func(a *secondaryadministrativesubdivision.EnumSecondaryAdministrativeSubdivisionItem) string {
+			return string(a.ID)
+		},
+		func(a *secondaryadministrativesubdivision.EnumSecondaryAdministrativeSubdivisionItem) string {
 			return fmt.Sprintf("%-40s = DXCC: %-3d / %-35s / %s", a.ID, a.DXCCEntityCode, a.SecondaryAdministrativeSubdivision, a.AlaskaJudicialDistrict)
 		},
 	)
 }
 
-func GenerateGoCodeForSubModeEnumItem(a []*spec.EnumSubModeItem) string {
+func GenerateGoCodeForSubModeEnumItem(a []*mode.EnumSubModeItem) string {
 	return generateGoCode(
 		a,
 		"mode",
 		"SubMode",
 		"SubMode",
 		nil,
-		func(a *spec.EnumSubModeItem) string { return string(a.ID) },
-		func(a *spec.EnumSubModeItem) string { return string(a.ID) },
-		func(a *spec.EnumSubModeItem) string { return fmt.Sprintf("%-12s / %s", a.Mode, a.ID) },
+		func(a *mode.EnumSubModeItem) string { return string(a.ID) },
+		func(a *mode.EnumSubModeItem) string { return string(a.ID) },
+		func(a *mode.EnumSubModeItem) string { return fmt.Sprintf("%-12s / %s", a.Mode, a.ID) },
 	)
 }
 

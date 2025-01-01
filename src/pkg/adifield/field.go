@@ -8,44 +8,44 @@ import (
 )
 
 var (
-	// Map contains ALL records, including un-released and import-only records
-	Map FieldDefinitionMap
+	// FieldMap contains ALL records, including un-released and import-only records
+	FieldMap FieldDefinitionMap
 
-	// List contains ALL records, including un-released and import-only records
-	List FieldDefinitionList
+	// FieldListAll contains ALL records, including un-released and import-only records
+	FieldListAll FieldDefinitionList
 
-	// ListCurrent
+	// FieldList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	ListCurrent FieldDefinitionList
+	FieldList FieldDefinitionList
 )
 
 func init() {
 	var err error
-	List, err = spec.ParseADISpecTSV[*FieldDefinition](spec.AdiFieldsTSV)
+	FieldListAll, err = spec.ParseADISpecTSV[*FieldDefinition](spec.AdiFieldsTSV)
 	if err != nil {
 		panic(err)
 	}
 
 	// special case, rename USERDEFn in FieldListAll to USERDEF1
-	for _, item := range List {
+	for _, item := range FieldListAll {
 		if item.ID == USERDEF+"n" {
 			item.ID = USERDEF + "1"
 			break
 		}
 	}
 
-	ListCurrent = make([]*FieldDefinition, 0, len(List))
-	for _, item := range List {
+	FieldList = make([]*FieldDefinition, 0, len(FieldListAll))
+	for _, item := range FieldListAll {
 		if bool(item.IsReleased) && !bool(item.IsImportOnly) {
-			ListCurrent = append(ListCurrent, item)
+			FieldList = append(FieldList, item)
 		}
 	}
-	ListCurrent = slices.Clip(ListCurrent)
+	FieldList = slices.Clip(FieldList)
 
-	Map = make(FieldDefinitionMap, len(ListCurrent))
-	for _, item := range ListCurrent {
-		Map[item.ID] = item
+	FieldMap = make(FieldDefinitionMap, len(FieldList))
+	for _, item := range FieldList {
+		FieldMap[item.ID] = item
 	}
 }
 
