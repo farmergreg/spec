@@ -4,7 +4,7 @@
 // This file contains CURRENTLY valid constants.
 // It is not a full list of all possible historic and/or future values.
 
-package aditype
+package datatype
 
 var (
 	CreditList                                DataType = "CreditList"                                // CreditList = a comma-delimited list where each list item is either: A member of the Credit enumeration. A member of the Credit enumeration followed by a colon and an ampersand-delimited list of members of the QSL_Medium enumeration. For example IOTA,WAS:LOTW&CARD,DXCC:CARD

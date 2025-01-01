@@ -1,4 +1,4 @@
-package aditype
+package datatype
 
 import (
 	"testing"

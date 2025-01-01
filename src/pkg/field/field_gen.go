@@ -4,7 +4,7 @@
 // This file contains CURRENTLY valid constants.
 // It is not a full list of all possible historic and/or future values.
 
-package adifield
+package field
 
 var (
 	ADIF_VER                   Field = "ADIF_VER"                   // ADIF_VER                       = Header: identifies the version of ADIF used in this file in the format X.Y.Z where X is an integer designating the ADIF epoch Y is an integer between 0 and 9 designating the major version Z is an integer between 0 and 9 designating the minor version

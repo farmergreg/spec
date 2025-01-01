@@ -47,7 +47,7 @@ var AdiDataTypesTSV []byte
 var EnumDXCCTSV []byte
 
 //go:embed 315/fields.tsv
-var AdiFieldsTSV []byte
+var FieldsTSV []byte
 
 //go:embed 315/enumerations_mode.tsv
 var EnumModeTSV []byte

@@ -5,8 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/adifield"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/aditype"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/datatype"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/awardsponsor"
@@ -28,14 +27,15 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivision"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivisionalt"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/field"
 )
 
 // Generate the Go code for the ADIF spec
 // n.b. We only generate constants for currently valid values.
 // As a general rule, we skip deleted, un-released, and import-only records.
 func main() {
-	writeToFile("aditype", "adi_data_type_gen.go", GenerateGoCodeForDataTypeDefinition(aditype.DataTypeList))
-	writeToFile("adifield", "field_gen.go", GenerateGoCodeForFieldDefinition(adifield.FieldList))
+	writeToFile("datatype", "datatype_gen.go", GenerateGoCodeForDataTypeDefinition(datatype.DataTypeList))
+	writeToFile("field", "field_gen.go", GenerateGoCodeForFieldDefinition(field.FieldList))
 
 	writeToFile("enum/antpath", "enum_ant_path_gen.go", GenerateGoCodeForAntPathEnumItem(antpath.EnumAntPathList))
 	writeToFile("enum/arrlsection", "enum_arrl_section_gen.go", GenerateGoCodeForARRLSectionEnumItem(arrlsection.EnumARRLSectionList))

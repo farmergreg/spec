@@ -1,4 +1,4 @@
-package adifield
+package field
 
 import (
 	"slices"
@@ -22,7 +22,7 @@ var (
 
 func init() {
 	var err error
-	FieldListAll, err = spec.ParseADISpecTSV[*FieldDefinition](spec.AdiFieldsTSV)
+	FieldListAll, err = spec.ParseADISpecTSV[*FieldDefinition](spec.FieldsTSV)
 	if err != nil {
 		panic(err)
 	}
