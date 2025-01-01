@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/datatype"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/adifield"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/aditype"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/award"
@@ -28,29 +29,28 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivision"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivisionalt"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/field"
 )
 
-func GenerateGoCodeForDataTypeDefinition(a []*datatype.DataTypeDefinition) string {
+func GenerateGoCodeForDataTypeDefinition(a []*aditype.DataTypeDefinition) string {
 	return generateGoCode(
 		a,
-		"datatype",
+		"aditype",
 		"",
 		"DataType",
 		nil,
-		func(a *datatype.DataTypeDefinition) string { return string(a.ID) },
-		func(a *datatype.DataTypeDefinition) string { return string(a.ID) },
-		func(a *datatype.DataTypeDefinition) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
+		func(a *aditype.DataTypeDefinition) string { return string(a.ID) },
+		func(a *aditype.DataTypeDefinition) string { return string(a.ID) },
+		func(a *aditype.DataTypeDefinition) string { return fmt.Sprintf("%s = %s", a.ID, a.Description) },
 	)
 }
 
-func GenerateGoCodeForFieldDefinition(a []*field.FieldDefinition) string {
+func GenerateGoCodeForFieldDefinition(a []*adifield.FieldDefinition) string {
 	return generateGoCode(
 		a,
-		"field",
+		"adifield",
 		"",
 		"Field",
-		func(a *field.FieldDefinition) bool {
+		func(a *adifield.FieldDefinition) bool {
 			switch a.ID {
 			case "USERDEFn":
 				// USERDEFn is just an example field that appears in our source data.
@@ -60,9 +60,9 @@ func GenerateGoCodeForFieldDefinition(a []*field.FieldDefinition) string {
 				return true
 			}
 		},
-		func(a *field.FieldDefinition) string { return string(a.ID) },
-		func(a *field.FieldDefinition) string { return string(a.ID) },
-		func(a *field.FieldDefinition) string {
+		func(a *adifield.FieldDefinition) string { return string(a.ID) },
+		func(a *adifield.FieldDefinition) string { return string(a.ID) },
+		func(a *adifield.FieldDefinition) string {
 
 			header := "QSO"
 			if a.IsHeaderField {
