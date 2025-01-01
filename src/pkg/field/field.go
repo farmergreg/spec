@@ -50,8 +50,8 @@ func init() {
 }
 
 const (
-	FieldEOR Field = "EOR" // Special Field: End of Record
-	FieldEOH Field = "EOH" // Special Field: End of Header
+	EOR Field = "EOR" // Special Field: End of Record
+	EOH Field = "EOH" // Special Field: End of Header
 
 	// USERDEF is the prefix for user defined fields.
 	// These fields must always have a number after them, e.g. USERDEF1, USERDEF2, etc.
