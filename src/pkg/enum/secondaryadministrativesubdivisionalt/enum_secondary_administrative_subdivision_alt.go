@@ -10,15 +10,15 @@ import (
 
 var (
 	// EnumSecondaryAdministrativeSubdivisionAltMap contains ALL records, including un-released and import-only records
-	EnumSecondaryAdministrativeSubdivisionAltMap EnumSecondaryAdministrativeSubdivisionAltItemMap
+	EnumSecondaryAdministrativeSubdivisionAltMap map[SecondaryAdministrativeSubdivisionAlt]*EnumSecondaryAdministrativeSubdivisionAltItem
 
 	// EnumSecondaryAdministrativeSubdivisionAltListAll contains ALL records, including un-released and import-only records
-	EnumSecondaryAdministrativeSubdivisionAltListAll EnumSecondaryAdministrativeSubdivisionAltItemList
+	EnumSecondaryAdministrativeSubdivisionAltListAll []*EnumSecondaryAdministrativeSubdivisionAltItem
 
 	// EnumSecondaryAdministrativeSubdivisionAltList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumSecondaryAdministrativeSubdivisionAltList EnumSecondaryAdministrativeSubdivisionAltItemList
+	EnumSecondaryAdministrativeSubdivisionAltList []*EnumSecondaryAdministrativeSubdivisionAltItem
 )
 
 func init() {
@@ -36,7 +36,7 @@ func init() {
 	}
 	EnumSecondaryAdministrativeSubdivisionAltList = slices.Clip(EnumSecondaryAdministrativeSubdivisionAltList)
 
-	EnumSecondaryAdministrativeSubdivisionAltMap = make(EnumSecondaryAdministrativeSubdivisionAltItemMap, len(EnumSecondaryAdministrativeSubdivisionAltList))
+	EnumSecondaryAdministrativeSubdivisionAltMap = make(map[SecondaryAdministrativeSubdivisionAlt]*EnumSecondaryAdministrativeSubdivisionAltItem, len(EnumSecondaryAdministrativeSubdivisionAltList))
 	for _, item := range EnumSecondaryAdministrativeSubdivisionAltList {
 		EnumSecondaryAdministrativeSubdivisionAltMap[item.ID] = item
 	}
@@ -44,12 +44,6 @@ func init() {
 
 // SecondaryAdministrativeSubdivisionAlt represents an antenna path abbreviation
 type SecondaryAdministrativeSubdivisionAlt string
-
-// EnumSecondaryAdministrativeSubdivisionAltItemList represents a collection of antenna path definitions
-type EnumSecondaryAdministrativeSubdivisionAltItemList []*EnumSecondaryAdministrativeSubdivisionAltItem
-
-// EnumSecondaryAdministrativeSubdivisionAltItemMap maps SecondaryAdministrativeSubdivisionAlt to its definition
-type EnumSecondaryAdministrativeSubdivisionAltItemMap map[SecondaryAdministrativeSubdivisionAlt]*EnumSecondaryAdministrativeSubdivisionAltItem
 
 // EnumSecondaryAdministrativeSubdivisionAltItem represents an antenna path item
 type EnumSecondaryAdministrativeSubdivisionAltItem struct {

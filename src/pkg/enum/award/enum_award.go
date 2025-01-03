@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumAwardMap contains ALL records, including un-released and import-only records
-	EnumAwardMap EnumAwardItemMap
+	EnumAwardMap map[Award]*EnumAwardItem
 
 	// EnumAwardListAll contains ALL records, including un-released and import-only records
-	EnumAwardListAll EnumAwardItemList
+	EnumAwardListAll []*EnumAwardItem
 
 	// EnumAwardList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumAwardList EnumAwardItemList
+	EnumAwardList []*EnumAwardItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumAwardList = slices.Clip(EnumAwardList)
 
-	EnumAwardMap = make(EnumAwardItemMap, len(EnumAwardList))
+	EnumAwardMap = make(map[Award]*EnumAwardItem, len(EnumAwardList))
 	for _, item := range EnumAwardList {
 		EnumAwardMap[item.ID] = item
 	}
@@ -48,12 +48,6 @@ func init() {
 
 // Award represents an ADIF award type
 type Award string
-
-// EnumAwardItemList represents a collection of Award definitions
-type EnumAwardItemList []*EnumAwardItem
-
-// EnumAwardItemMap maps Award to its definition
-type EnumAwardItemMap map[Award]*EnumAwardItem
 
 // EnumAwardItem represents an award item
 type EnumAwardItem struct {

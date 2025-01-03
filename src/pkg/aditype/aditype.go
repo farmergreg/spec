@@ -9,15 +9,15 @@ import (
 
 var (
 	// DataTypeMap contains ALL records, including un-released and import-only records
-	DataTypeMap DataTypeDefinitionMap
+	DataTypeMap map[DataType]*DataTypeDefinition
 
 	// DataTypeListAll contains ALL records, including un-released and import-only records
-	DataTypeListAll DataTypeDefinitionList
+	DataTypeListAll []*DataTypeDefinition
 
 	// DataTypeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	DataTypeList DataTypeDefinitionList
+	DataTypeList []*DataTypeDefinition
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	DataTypeList = slices.Clip(DataTypeList)
 
-	DataTypeMap = make(DataTypeDefinitionMap, len(DataTypeList))
+	DataTypeMap = make(map[DataType]*DataTypeDefinition, len(DataTypeList))
 	for _, item := range DataTypeList {
 		DataTypeMap[item.ID] = item
 	}
@@ -46,12 +46,6 @@ type DataTypeIndicator rune
 
 // DataType represents the ADIF data type of a data field
 type DataType string
-
-// DataTypeDefinitionList represents a collection of ADIF data type definitions
-type DataTypeDefinitionList []*DataTypeDefinition
-
-// DataTypeDefinitionMap maps DataType to its definition
-type DataTypeDefinitionMap map[DataType]*DataTypeDefinition
 
 // DataTypeDefinition represents an ADIF data type definition
 type DataTypeDefinition struct {

@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSLSentMap contains ALL records, including un-released and import-only records
-	EnumQSLSentMap EnumQSLSentItemMap
+	EnumQSLSentMap map[QSLSent]*EnumQSLSentItem
 
 	// EnumQSLSentListAll contains ALL records, including un-released and import-only records
-	EnumQSLSentListAll EnumQSLSentItemList
+	EnumQSLSentListAll []*EnumQSLSentItem
 
 	// EnumQSLSentList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSLSentList EnumQSLSentItemList
+	EnumQSLSentList []*EnumQSLSentItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSLSentList = slices.Clip(EnumQSLSentList)
 
-	EnumQSLSentMap = make(EnumQSLSentItemMap, len(EnumQSLSentList))
+	EnumQSLSentMap = make(map[QSLSent]*EnumQSLSentItem, len(EnumQSLSentList))
 	for _, item := range EnumQSLSentList {
 		EnumQSLSentMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSLSent represents the QSL sent status
 type QSLSent string
-
-// EnumQSLSentItemList represents a collection of QSL sent status items
-type EnumQSLSentItemList []*EnumQSLSentItem
-
-// EnumQSLSentItemMap maps QSLSent to its definition
-type EnumQSLSentItemMap map[QSLSent]*EnumQSLSentItem
 
 // EnumQSLSentItem represents a QSL sent status item
 type EnumQSLSentItem struct {

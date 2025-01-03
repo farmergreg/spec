@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumBandMap contains ALL records, including un-released and import-only records
-	EnumBandMap EnumBandItemMap
+	EnumBandMap map[Band]*EnumBandItem
 
 	// EnumBandListAll contains ALL records, including un-released and import-only records
-	EnumBandListAll EnumBandItemList
+	EnumBandListAll []*EnumBandItem
 
 	// EnumBandList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumBandList EnumBandItemList
+	EnumBandList []*EnumBandItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumBandList = slices.Clip(EnumBandList)
 
-	EnumBandMap = make(EnumBandItemMap, len(EnumBandList))
+	EnumBandMap = make(map[Band]*EnumBandItem, len(EnumBandList))
 	for _, item := range EnumBandList {
 		EnumBandMap[item.ID] = item
 	}
@@ -46,12 +46,6 @@ type Band string
 
 // MHz represents megahertz, a type alias for float32
 type MHz = float32
-
-// EnumBandItemList represents a collection of Band definitions
-type EnumBandItemList []*EnumBandItem
-
-// EnumBandItemMap maps Band names to their definitions
-type EnumBandItemMap map[Band]*EnumBandItem
 
 // EnumBandItem represents a band item
 type EnumBandItem struct {

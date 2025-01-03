@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSODownloadStatusMap contains ALL records, including un-released and import-only statuses
-	EnumQSODownloadStatusMap EnumQSODownloadStatusItemMap
+	EnumQSODownloadStatusMap map[QSODownloadStatus]*EnumQSODownloadStatusItem
 
 	// EnumQSODownloadStatusListAll contains ALL records, including un-released and import-only statuses
-	EnumQSODownloadStatusListAll EnumQSODownloadStatusItemList
+	EnumQSODownloadStatusListAll []*EnumQSODownloadStatusItem
 
 	// EnumQSODownloadStatusList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSODownloadStatusList EnumQSODownloadStatusItemList
+	EnumQSODownloadStatusList []*EnumQSODownloadStatusItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSODownloadStatusList = slices.Clip(EnumQSODownloadStatusList)
 
-	EnumQSODownloadStatusMap = make(EnumQSODownloadStatusItemMap, len(EnumQSODownloadStatusList))
+	EnumQSODownloadStatusMap = make(map[QSODownloadStatus]*EnumQSODownloadStatusItem, len(EnumQSODownloadStatusList))
 	for _, item := range EnumQSODownloadStatusList {
 		EnumQSODownloadStatusMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSODownloadStatus represents the download status of a QSO
 type QSODownloadStatus string
-
-// EnumQSODownloadStatusItemList represents a collection of QSO download status items
-type EnumQSODownloadStatusItemList []*EnumQSODownloadStatusItem
-
-// EnumQSODownloadStatusItemMap maps QSODownloadStatus to its definition
-type EnumQSODownloadStatusItemMap map[QSODownloadStatus]*EnumQSODownloadStatusItem
 
 // EnumQSODownloadStatusItem represents a QSO download status item
 type EnumQSODownloadStatusItem struct {

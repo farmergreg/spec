@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumMorseKeyMap contains ALL records, including un-released and import-only records
-	EnumMorseKeyMap EnumMorseKeyItemMap
+	EnumMorseKeyMap map[MorseKey]*EnumMorseKeyItem
 
 	// EnumMorseKeyListAll contains ALL records, including un-released and import-only records
-	EnumMorseKeyListAll EnumMorseKeyItemList
+	EnumMorseKeyListAll []*EnumMorseKeyItem
 
 	// EnumMorseKeyList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumMorseKeyList EnumMorseKeyItemList
+	EnumMorseKeyList []*EnumMorseKeyItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumMorseKeyList = slices.Clip(EnumMorseKeyList)
 
-	EnumMorseKeyMap = make(EnumMorseKeyItemMap, len(EnumMorseKeyList))
+	EnumMorseKeyMap = make(map[MorseKey]*EnumMorseKeyItem, len(EnumMorseKeyList))
 	for _, item := range EnumMorseKeyList {
 		EnumMorseKeyMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // MorseKey represents a morse key type identifier
 type MorseKey string
-
-// EnumMorseKeyItemList represents a collection of morse key definitions
-type EnumMorseKeyItemList []*EnumMorseKeyItem
-
-// EnumMorseKeyItemMap maps MorseKey to its definition
-type EnumMorseKeyItemMap map[MorseKey]*EnumMorseKeyItem
 
 // EnumMorseKeyItem represents a morse key item
 type EnumMorseKeyItem struct {

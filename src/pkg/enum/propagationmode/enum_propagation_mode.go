@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumPropagationModeMap contains ALL records, including un-released and import-only records
-	EnumPropagationModeMap EnumPropagationModeItemMap
+	EnumPropagationModeMap map[PropagationMode]*EnumPropagationModeItem
 
 	// EnumPropagationModeListAll contains ALL records, including un-released and import-only records
-	EnumPropagationModeListAll EnumPropagationModeItemList
+	EnumPropagationModeListAll []*EnumPropagationModeItem
 
 	// EnumPropagationModeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumPropagationModeList EnumPropagationModeItemList
+	EnumPropagationModeList []*EnumPropagationModeItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumPropagationModeList = slices.Clip(EnumPropagationModeList)
 
-	EnumPropagationModeMap = make(EnumPropagationModeItemMap, len(EnumPropagationModeList))
+	EnumPropagationModeMap = make(map[PropagationMode]*EnumPropagationModeItem, len(EnumPropagationModeList))
 	for _, item := range EnumPropagationModeList {
 		EnumPropagationModeMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // PropagationMode represents the propagation mode string type
 type PropagationMode string
-
-// EnumPropagationModeItemList represents a collection of propagation mode items
-type EnumPropagationModeItemList []*EnumPropagationModeItem
-
-// EnumPropagationModeItemMap maps PropagationMode to its definition
-type EnumPropagationModeItemMap map[PropagationMode]*EnumPropagationModeItem
 
 // EnumPropagationModeItem represents a propagation mode item
 type EnumPropagationModeItem struct {

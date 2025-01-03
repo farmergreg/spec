@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumCreditMap contains ALL records, including un-released and import-only records
-	EnumCreditMap EnumCreditItemMap
+	EnumCreditMap map[Credit]*EnumCreditItem
 
 	// EnumCreditListAll contains ALL records, including un-released and import-only records
-	EnumCreditListAll EnumCreditItemList
+	EnumCreditListAll []*EnumCreditItem
 
 	// EnumCreditList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumCreditList EnumCreditItemList
+	EnumCreditList []*EnumCreditItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumCreditList = slices.Clip(EnumCreditList)
 
-	EnumCreditMap = make(EnumCreditItemMap, len(EnumCreditList))
+	EnumCreditMap = make(map[Credit]*EnumCreditItem, len(EnumCreditList))
 	for _, item := range EnumCreditList {
 		EnumCreditMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // Credit represents an award credit identifier
 type Credit string
-
-// EnumCreditItemList represents a collection of award credit definitions
-type EnumCreditItemList []*EnumCreditItem
-
-// EnumCreditItemMap maps Credit to its definition
-type EnumCreditItemMap map[Credit]*EnumCreditItem
 
 // EnumCreditItem represents an award credit item
 type EnumCreditItem struct {

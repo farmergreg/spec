@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumSubModeMap contains ALL records, including un-released and import-only records
-	EnumSubModeMap EnumSubModeItemMap
+	EnumSubModeMap map[SubMode]*EnumSubModeItem
 
 	// EnumSubModeListAll contains ALL records, including un-released and import-only records
-	EnumSubModeListAll EnumSubModeItemList
+	EnumSubModeListAll []*EnumSubModeItem
 
 	// EnumSubModeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumSubModeList EnumSubModeItemList
+	EnumSubModeList []*EnumSubModeItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumSubModeList = slices.Clip(EnumSubModeList)
 
-	EnumSubModeMap = make(EnumSubModeItemMap, len(EnumSubModeList))
+	EnumSubModeMap = make(map[SubMode]*EnumSubModeItem, len(EnumSubModeList))
 	for _, item := range EnumSubModeList {
 		EnumSubModeMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // SubMode represents the submode of an ADIF record
 type SubMode string
-
-// EnumSubModeItemList represents a collection of submode definitions
-type EnumSubModeItemList []*EnumSubModeItem
-
-// EnumSubModeItemMap maps SubMode to its definition
-type EnumSubModeItemMap map[SubMode]*EnumSubModeItem
 
 // EnumSubModeItem represents a submode item
 type EnumSubModeItem struct {

@@ -13,12 +13,12 @@ import (
 // n.b. There is no map like the other enumerations have. This is because the IDs are not unique.
 var (
 	// EnumPrimaryAdministrativeSubdivisionListAll contains ALL records, including deleted, un-released and import-only records
-	EnumPrimaryAdministrativeSubdivisionListAll EnumPrimaryAdministrativeSubdivisionItemList
+	EnumPrimaryAdministrativeSubdivisionListAll []*EnumPrimaryAdministrativeSubdivisionItem
 
 	// EnumPrimaryAdministrativeSubdivisionList
 	// is a filtered list.
 	// It excludes deleted, un-released and import-only records.
-	EnumPrimaryAdministrativeSubdivisionList EnumPrimaryAdministrativeSubdivisionItemList
+	EnumPrimaryAdministrativeSubdivisionList []*EnumPrimaryAdministrativeSubdivisionItem
 )
 
 func init() {
@@ -39,9 +39,6 @@ func init() {
 
 // PrimaryAdministrativeSubdivision represents a primary administrative subdivision identifier
 type PrimaryAdministrativeSubdivision string
-
-// EnumPrimaryAdministrativeSubdivisionItemList represents a collection of ARRL section definitions
-type EnumPrimaryAdministrativeSubdivisionItemList []*EnumPrimaryAdministrativeSubdivisionItem
 
 // EnumPrimaryAdministrativeSubdivisionItem represents an ARRL section item
 type EnumPrimaryAdministrativeSubdivisionItem struct {

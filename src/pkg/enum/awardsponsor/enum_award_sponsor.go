@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumAwardSponsorMap contains ALL records, including un-released and import-only records
-	EnumAwardSponsorMap EnumAwardSponsorItemMap
+	EnumAwardSponsorMap map[AwardSponsorPrefix]*EnumAwardSponsorItem
 
 	// EnumAwardSponsorListAll contains ALL records, including un-released and import-only records
-	EnumAwardSponsorListAll EnumAwardSponsorItemList
+	EnumAwardSponsorListAll []*EnumAwardSponsorItem
 
 	// EnumAwardSponsorList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumAwardSponsorList EnumAwardSponsorItemList
+	EnumAwardSponsorList []*EnumAwardSponsorItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumAwardSponsorList = slices.Clip(EnumAwardSponsorList)
 
-	EnumAwardSponsorMap = make(EnumAwardSponsorItemMap, len(EnumAwardSponsorList))
+	EnumAwardSponsorMap = make(map[AwardSponsorPrefix]*EnumAwardSponsorItem, len(EnumAwardSponsorList))
 	for _, item := range EnumAwardSponsorList {
 		EnumAwardSponsorMap[item.IDPrefix] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // AwardSponsorPrefix represents the unique identifier for an award sponsor
 type AwardSponsorPrefix string
-
-// EnumAwardSponsorItemList represents a collection of award sponsor definitions
-type EnumAwardSponsorItemList []*EnumAwardSponsorItem
-
-// EnumAwardSponsorItemMap maps AwardSponsorPrefix to its definition
-type EnumAwardSponsorItemMap map[AwardSponsorPrefix]*EnumAwardSponsorItem
 
 // EnumAwardSponsorItem represents an award sponsor item
 type EnumAwardSponsorItem struct {

@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSLMediumMap contains ALL records, including un-released and import-only records
-	EnumQSLMediumMap EnumQSLMediumItemMap
+	EnumQSLMediumMap map[QSLMedium]*EnumQSLMediumItem
 
 	// EnumQSLMediumListAll contains ALL records, including un-released and import-only records
-	EnumQSLMediumListAll EnumQSLMediumItemList
+	EnumQSLMediumListAll []*EnumQSLMediumItem
 
 	// EnumQSLMediumList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSLMediumList EnumQSLMediumItemList
+	EnumQSLMediumList []*EnumQSLMediumItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSLMediumList = slices.Clip(EnumQSLMediumList)
 
-	EnumQSLMediumMap = make(EnumQSLMediumItemMap, len(EnumQSLMediumList))
+	EnumQSLMediumMap = make(map[QSLMedium]*EnumQSLMediumItem, len(EnumQSLMediumList))
 	for _, item := range EnumQSLMediumList {
 		EnumQSLMediumMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSLMedium represents the medium used for QSL exchange
 type QSLMedium string
-
-// EnumQSLMediumItemList represents a collection of QSL medium items
-type EnumQSLMediumItemList []*EnumQSLMediumItem
-
-// EnumQSLMediumItemMap maps QSLMedium to its definition
-type EnumQSLMediumItemMap map[QSLMedium]*EnumQSLMediumItem
 
 // EnumQSLMediumItem represents a QSL medium item
 type EnumQSLMediumItem struct {

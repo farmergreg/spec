@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSLViaMap contains ALL records, including un-released and import-only records
-	EnumQSLViaMap EnumQSLViaItemMap
+	EnumQSLViaMap map[QSLVia]*EnumQSLViaItem
 
 	// EnumQSLViaListAll contains all QSL Via records, including un-released and import-only records
-	EnumQSLViaListAll EnumQSLViaItemList
+	EnumQSLViaListAll []*EnumQSLViaItem
 
 	// EnumQSLViaList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSLViaList EnumQSLViaItemList
+	EnumQSLViaList []*EnumQSLViaItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSLViaList = slices.Clip(EnumQSLViaList)
 
-	EnumQSLViaMap = make(EnumQSLViaItemMap, len(EnumQSLViaList))
+	EnumQSLViaMap = make(map[QSLVia]*EnumQSLViaItem, len(EnumQSLViaList))
 	for _, item := range EnumQSLViaList {
 		EnumQSLViaMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSLVia represents the method used to exchange QSL cards
 type QSLVia string
-
-// EnumQSLViaItemList represents a collection of QSL Via records
-type EnumQSLViaItemList []*EnumQSLViaItem
-
-// EnumQSLViaItemMap maps QSLVia to its definition
-type EnumQSLViaItemMap map[QSLVia]*EnumQSLViaItem
 
 // EnumQSLViaItem represents a QSL Via item
 type EnumQSLViaItem struct {

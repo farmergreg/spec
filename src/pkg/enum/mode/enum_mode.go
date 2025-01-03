@@ -10,15 +10,15 @@ import (
 
 var (
 	// EnumModeMap contains ALL records, including un-released and import-only records
-	EnumModeMap EnumModeItemMap
+	EnumModeMap map[Mode]*EnumModeItem
 
 	// EnumModeListAll contains ALL records, including un-released and import-only records
-	EnumModeListAll EnumModeItemList
+	EnumModeListAll []*EnumModeItem
 
 	// EnumModeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumModeList EnumModeItemList
+	EnumModeList []*EnumModeItem
 )
 
 func init() {
@@ -36,7 +36,7 @@ func init() {
 	}
 	EnumModeList = slices.Clip(EnumModeList)
 
-	EnumModeMap = make(EnumModeItemMap, len(EnumModeList))
+	EnumModeMap = make(map[Mode]*EnumModeItem, len(EnumModeList))
 	for _, item := range EnumModeList {
 		EnumModeMap[item.ID] = item
 	}
@@ -49,12 +49,6 @@ type Mode string
 type EnumModeSubModeList struct {
 	Submodes []SubMode
 }
-
-// EnumModeItemList represents a collection of Mode items
-type EnumModeItemList []*EnumModeItem
-
-// EnumModeItemMap maps Mode to its definition
-type EnumModeItemMap map[Mode]*EnumModeItem
 
 // EnumModeItem represents a Mode item
 type EnumModeItem struct {

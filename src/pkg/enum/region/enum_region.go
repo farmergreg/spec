@@ -10,15 +10,15 @@ import (
 
 var (
 	// EnumRegionMap contains ALL records, including un-released and import-only records
-	EnumRegionMap EnumRegionItemMap
+	EnumRegionMap map[Region]*EnumRegionItem
 
 	// EnumRegionListAll contains ALL records, including un-released and import-only records
-	EnumRegionListAll EnumRegionItemList
+	EnumRegionListAll []*EnumRegionItem
 
 	// EnumRegionList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumRegionList EnumRegionItemList
+	EnumRegionList []*EnumRegionItem
 )
 
 func init() {
@@ -36,7 +36,7 @@ func init() {
 	}
 	EnumRegionList = slices.Clip(EnumRegionList)
 
-	EnumRegionMap = make(EnumRegionItemMap, len(EnumRegionList))
+	EnumRegionMap = make(map[Region]*EnumRegionItem, len(EnumRegionList))
 	for _, item := range EnumRegionList {
 		EnumRegionMap[item.ID] = item
 	}
@@ -44,12 +44,6 @@ func init() {
 
 // Region represents a region entity code
 type Region string
-
-// EnumRegionItemList represents a collection of region items
-type EnumRegionItemList []*EnumRegionItem
-
-// EnumRegionItemMap maps Region to its definition
-type EnumRegionItemMap map[Region]*EnumRegionItem
 
 // EnumRegionItem represents a region item
 type EnumRegionItem struct {

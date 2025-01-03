@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSOUploadStatusMap contains ALL records, including un-released and import-only statuses
-	EnumQSOUploadStatusMap EnumQSOUploadStatusItemMap
+	EnumQSOUploadStatusMap map[QSOUploadStatus]*EnumQSOUploadStatusItem
 
 	// EnumQSOUploadStatusListAll contains ALL records, including un-released and import-only statuses
-	EnumQSOUploadStatusListAll EnumQSOUploadStatusItemList
+	EnumQSOUploadStatusListAll []*EnumQSOUploadStatusItem
 
 	// EnumQSOUploadStatusList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSOUploadStatusList EnumQSOUploadStatusItemList
+	EnumQSOUploadStatusList []*EnumQSOUploadStatusItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSOUploadStatusList = slices.Clip(EnumQSOUploadStatusList)
 
-	EnumQSOUploadStatusMap = make(EnumQSOUploadStatusItemMap, len(EnumQSOUploadStatusList))
+	EnumQSOUploadStatusMap = make(map[QSOUploadStatus]*EnumQSOUploadStatusItem, len(EnumQSOUploadStatusList))
 	for _, item := range EnumQSOUploadStatusList {
 		EnumQSOUploadStatusMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSOUploadStatus represents the upload status of a QSO
 type QSOUploadStatus string
-
-// EnumQSOUploadStatusItemList represents a collection of QSO upload status items
-type EnumQSOUploadStatusItemList []*EnumQSOUploadStatusItem
-
-// EnumQSOUploadStatusItemMap maps QSOUploadStatus to its definition
-type EnumQSOUploadStatusItemMap map[QSOUploadStatus]*EnumQSOUploadStatusItem
 
 // EnumQSOUploadStatusItem represents a QSO upload status item
 type EnumQSOUploadStatusItem struct {

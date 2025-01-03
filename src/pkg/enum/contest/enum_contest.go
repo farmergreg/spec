@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumContestMap contains ALL records, including un-released and import-only records
-	EnumContestMap EnumContestItemMap
+	EnumContestMap map[Contest]*EnumContestItem
 
 	// EnumContestListAll contains ALL records, including un-released and import-only records
-	EnumContestListAll EnumContestItemList
+	EnumContestListAll []*EnumContestItem
 
 	// EnumContestList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumContestList EnumContestItemList
+	EnumContestList []*EnumContestItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumContestList = slices.Clip(EnumContestList)
 
-	EnumContestMap = make(EnumContestItemMap, len(EnumContestList))
+	EnumContestMap = make(map[Contest]*EnumContestItem, len(EnumContestList))
 	for _, item := range EnumContestList {
 		EnumContestMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // Contest represents the contest identifier
 type Contest string
-
-// EnumContestItemList represents a collection of contest definitions
-type EnumContestItemList []*EnumContestItem
-
-// EnumContestItemMap maps Contest to its definition
-type EnumContestItemMap map[Contest]*EnumContestItem
 
 // EnumContestItem represents a contest item
 type EnumContestItem struct {

@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSOCompleteMap contains ALL records, including un-released and import-only values
-	EnumQSOCompleteMap EnumQSOCompleteItemMap
+	EnumQSOCompleteMap map[QSOComplete]*EnumQSOCompleteItem
 
 	// EnumQSOCompleteListAll contains ALL records, including un-released and import-only contests
-	EnumQSOCompleteListAll EnumQSOCompleteItemList
+	EnumQSOCompleteListAll []*EnumQSOCompleteItem
 
 	// EnumQSOCompleteList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSOCompleteList EnumQSOCompleteItemList
+	EnumQSOCompleteList []*EnumQSOCompleteItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSOCompleteList = slices.Clip(EnumQSOCompleteList)
 
-	EnumQSOCompleteMap = make(EnumQSOCompleteItemMap, len(EnumQSOCompleteList))
+	EnumQSOCompleteMap = make(map[QSOComplete]*EnumQSOCompleteItem, len(EnumQSOCompleteList))
 	for _, item := range EnumQSOCompleteList {
 		EnumQSOCompleteMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSOComplete represents the completion status of a QSO
 type QSOComplete string
-
-// EnumQSOCompleteItemList represents a collection of QSO Complete definitions
-type EnumQSOCompleteItemList []*EnumQSOCompleteItem
-
-// EnumQSOCompleteItemMap maps QSOComplete to its definition
-type EnumQSOCompleteItemMap map[QSOComplete]*EnumQSOCompleteItem
 
 // EnumQSOCompleteItem represents a QSO Complete item
 type EnumQSOCompleteItem struct {

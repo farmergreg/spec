@@ -9,15 +9,15 @@ import (
 
 var (
 	// FieldMap contains ALL records, including un-released and import-only records
-	FieldMap FieldDefinitionMap
+	FieldMap map[Field]*FieldDefinition
 
 	// FieldListAll contains ALL records, including un-released and import-only records
-	FieldListAll FieldDefinitionList
+	FieldListAll []*FieldDefinition
 
 	// FieldList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	FieldList FieldDefinitionList
+	FieldList []*FieldDefinition
 )
 
 func init() {
@@ -43,7 +43,7 @@ func init() {
 	}
 	FieldList = slices.Clip(FieldList)
 
-	FieldMap = make(FieldDefinitionMap, len(FieldList))
+	FieldMap = make(map[Field]*FieldDefinition, len(FieldList))
 	for _, item := range FieldList {
 		FieldMap[item.ID] = item
 	}
@@ -65,12 +65,6 @@ const (
 
 // Field is the ADIF field name in and ADI file.
 type Field string
-
-// FieldDefinitionList represents a collection of ADIF field definitions
-type FieldDefinitionList []*FieldDefinition
-
-// FieldDefinitionMap maps Field to its definition
-type FieldDefinitionMap map[Field]*FieldDefinition
 
 // FieldDefinition represents an ADIF field definition
 type FieldDefinition struct {

@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumQSLRcvdMap contains ALL records, including un-released and import-only records
-	EnumQSLRcvdMap EnumQSLRcvdItemMap
+	EnumQSLRcvdMap map[QSLRcvd]*EnumQSLRcvdItem
 
 	// EnumQSLRcvdListAll contains ALL records, including un-released and import-only records
-	EnumQSLRcvdListAll EnumQSLRcvdItemList
+	EnumQSLRcvdListAll []*EnumQSLRcvdItem
 
 	// EnumQSLRcvdList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumQSLRcvdList EnumQSLRcvdItemList
+	EnumQSLRcvdList []*EnumQSLRcvdItem
 )
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 	}
 	EnumQSLRcvdList = slices.Clip(EnumQSLRcvdList)
 
-	EnumQSLRcvdMap = make(EnumQSLRcvdItemMap, len(EnumQSLRcvdList))
+	EnumQSLRcvdMap = make(map[QSLRcvd]*EnumQSLRcvdItem, len(EnumQSLRcvdList))
 	for _, item := range EnumQSLRcvdList {
 		EnumQSLRcvdMap[item.ID] = item
 	}
@@ -43,12 +43,6 @@ func init() {
 
 // QSLRcvd represents the QSL received status
 type QSLRcvd string
-
-// EnumQSLRcvdItemList represents a collection of QSL received status definitions
-type EnumQSLRcvdItemList []*EnumQSLRcvdItem
-
-// EnumQSLRcvdItemMap maps QSLRcvd to its definition
-type EnumQSLRcvdItemMap map[QSLRcvd]*EnumQSLRcvdItem
 
 // EnumQSLRcvdItem represents a QSL received status item
 type EnumQSLRcvdItem struct {

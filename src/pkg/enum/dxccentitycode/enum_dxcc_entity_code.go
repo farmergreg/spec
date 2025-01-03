@@ -11,15 +11,15 @@ import (
 
 var (
 	// EnumDXCCEntityCodeMap contains ALL records, including deleted, un-released and import-only records
-	EnumDXCCEntityCodeMap EnumDXCCEntityCodeItemMap
+	EnumDXCCEntityCodeMap map[DXCCEntityCode]*EnumDXCCEntityCodeItem
 
 	// EnumDXCCEntityCodeListAll contains ALL records, including deleted, un-released and import-only records
-	EnumDXCCEntityCodeListAll EnumDXCCEntityCodeItemList
+	EnumDXCCEntityCodeListAll []*EnumDXCCEntityCodeItem
 
 	// EnumDXCCEntityCodeList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumDXCCEntityCodeList EnumDXCCEntityCodeItemList
+	EnumDXCCEntityCodeList []*EnumDXCCEntityCodeItem
 )
 
 func init() {
@@ -37,7 +37,7 @@ func init() {
 	}
 	EnumDXCCEntityCodeList = slices.Clip(EnumDXCCEntityCodeList)
 
-	EnumDXCCEntityCodeMap = make(EnumDXCCEntityCodeItemMap, len(EnumDXCCEntityCodeList))
+	EnumDXCCEntityCodeMap = make(map[DXCCEntityCode]*EnumDXCCEntityCodeItem, len(EnumDXCCEntityCodeList))
 	for _, item := range EnumDXCCEntityCodeList {
 		EnumDXCCEntityCodeMap[item.ID] = item
 	}
@@ -45,12 +45,6 @@ func init() {
 
 // DXCCEntityCode is the code of a DXCCEntityCode entity.
 type DXCCEntityCode int
-
-// EnumDXCCEntityCodeItemList represents a collection of DXCC entity code items
-type EnumDXCCEntityCodeItemList []*EnumDXCCEntityCodeItem
-
-// EnumDXCCEntityCodeItemMap maps DXCC to its definition
-type EnumDXCCEntityCodeItemMap map[DXCCEntityCode]*EnumDXCCEntityCodeItem
 
 // EnumDXCCEntityCodeItem represents a DXCC entity code item
 type EnumDXCCEntityCodeItem struct {

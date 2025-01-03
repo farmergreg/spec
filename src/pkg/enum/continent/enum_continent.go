@@ -9,15 +9,15 @@ import (
 
 var (
 	// EnumContinentMap contains ALL records, including un-released and import-only records
-	EnumContinentMap EnumContinentItemMap
+	EnumContinentMap map[Continent]*EnumContinentItem
 
 	// EnumContinentListAll contains ALL records, including un-released and import-only records
-	EnumContinentListAll EnumContinentItemList
+	EnumContinentListAll []*EnumContinentItem
 
 	// EnumContinentList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumContinentList EnumContinentItemList
+	EnumContinentList []*EnumContinentItem
 )
 
 func init() {
@@ -35,19 +35,13 @@ func init() {
 	}
 	EnumContinentList = slices.Clip(EnumContinentList)
 
-	EnumContinentMap = make(EnumContinentItemMap, len(EnumContinentList))
+	EnumContinentMap = make(map[Continent]*EnumContinentItem, len(EnumContinentList))
 	for _, item := range EnumContinentList {
 		EnumContinentMap[item.ID] = item
 	}
 }
 
 type Continent string
-
-// EnumContinentItemList represents a collection of Continent items
-type EnumContinentItemList []*EnumContinentItem
-
-// EnumContinentItemMap maps Continent to its definition
-type EnumContinentItemMap map[Continent]*EnumContinentItem
 
 // EnumContinentItem represents a continent item
 type EnumContinentItem struct {

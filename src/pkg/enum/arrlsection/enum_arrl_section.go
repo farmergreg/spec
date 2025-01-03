@@ -10,15 +10,15 @@ import (
 
 var (
 	// EnumARRLSectionMap contains ALL records, including un-released and import-only records
-	EnumARRLSectionMap EnumARRLSectionItemMap
+	EnumARRLSectionMap map[ARRLSection]*EnumARRLSectionItem
 
 	// EnumARRLSectionListAll contains ALL records, including un-released and import-only records
-	EnumARRLSectionListAll EnumARRLSectionItemList
+	EnumARRLSectionListAll []*EnumARRLSectionItem
 
 	// EnumARRLSectionList
 	// is a filtered list.
 	// It excludes un-released and import-only records.
-	EnumARRLSectionList EnumARRLSectionItemList
+	EnumARRLSectionList []*EnumARRLSectionItem
 )
 
 func init() {
@@ -36,7 +36,7 @@ func init() {
 	}
 	EnumARRLSectionList = slices.Clip(EnumARRLSectionList)
 
-	EnumARRLSectionMap = make(EnumARRLSectionItemMap, len(EnumARRLSectionList))
+	EnumARRLSectionMap = make(map[ARRLSection]*EnumARRLSectionItem, len(EnumARRLSectionList))
 	for _, item := range EnumARRLSectionList {
 		EnumARRLSectionMap[item.ID] = item
 	}
@@ -44,12 +44,6 @@ func init() {
 
 // ARRLSection represents an ARRL section identifier
 type ARRLSection string
-
-// EnumARRLSectionItemList represents a collection of ARRL section definitions
-type EnumARRLSectionItemList []*EnumARRLSectionItem
-
-// EnumARRLSectionItemMap maps ARRLSection to its definition
-type EnumARRLSectionItemMap map[ARRLSection]*EnumARRLSectionItem
 
 // EnumARRLSectionItem represents an ARRL section item
 type EnumARRLSectionItem struct {
