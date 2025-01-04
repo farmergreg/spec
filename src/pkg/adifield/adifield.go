@@ -120,8 +120,3 @@ type FieldDefinition struct {
 	MaximumValue  int                `csv:"Maximum Value"`
 	Description   string             `csv:"Description"`
 }
-
-// IsValid returns true if the field NAME is valid per the ADIF specification
-func (f Field) IsValid() bool {
-	return FieldMap[f] != nil || strings.HasPrefix(string(f), APP_) || strings.HasPrefix(string(f), USERDEF)
-}
