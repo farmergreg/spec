@@ -43,13 +43,13 @@ func init() {
 			return -1
 		}
 
+		// Sort APP_ fields to the end of the QSO field list
 		if strings.HasPrefix(string(a.ID), APP_) && !strings.HasPrefix(string(b.ID), APP_) {
 			return 1
 		} else if !strings.HasPrefix(string(a.ID), APP_) && strings.HasPrefix(string(b.ID), APP_) {
 			return -1
 		}
 
-		// If both are headers or both are not headers, sort by ID
 		return strings.Compare(string(a.ID), string(b.ID))
 	})
 	FieldListAll = slices.Clip(FieldListAll)
