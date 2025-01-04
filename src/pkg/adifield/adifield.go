@@ -1,6 +1,7 @@
 package adifield
 
 import (
+	"fmt"
 	"slices"
 	"strings"
 
@@ -34,6 +35,16 @@ func init() {
 	}
 	FieldListAll = append(FieldListAll, fieldListExtra...)
 
+	// special case, rename USERDEFn in FieldListAll to USERDEF1
+	var userDefDescription string
+	for _, item := range FieldListAll {
+		if item.ID == USERDEF+"n" {
+			item.ID = USERDEF + "1"
+			userDefDescription = item.Description
+			break
+		}
+	}
+
 	slices.SortStableFunc(FieldListAll, func(a, b *FieldDefinition) int {
 		// Sort headers last
 		if bool(a.IsHeaderField) != bool(b.IsHeaderField) {
@@ -43,25 +54,21 @@ func init() {
 			return -1
 		}
 
-		// Sort APP_ fields to the end of the QSO field list
-		if strings.HasPrefix(string(a.ID), APP_) && !strings.HasPrefix(string(b.ID), APP_) {
-			return 1
-		} else if !strings.HasPrefix(string(a.ID), APP_) && strings.HasPrefix(string(b.ID), APP_) {
-			return -1
-		}
-
 		return strings.Compare(string(a.ID), string(b.ID))
 	})
-	FieldListAll = slices.Clip(FieldListAll)
 
-	// special case, rename USERDEFn in FieldListAll to USERDEF1
-	// special case, rename USERDEFn in FieldListAll to USERDEF1
-	for _, item := range FieldListAll {
-		if item.ID == USERDEF+"n" {
-			item.ID = USERDEF + "1"
-			break
-		}
+	for i := 2; i < 11; i++ {
+		FieldListAll = append(FieldListAll, &FieldDefinition{
+			ID:            Field(fmt.Sprintf("USERDEF%d", i)),
+			IsHeaderField: true,
+			Description:   userDefDescription,
+			ImportRecordRoot: shared.ImportRecordRoot{
+				IsReleased:   shared.Released(true),
+				IsImportOnly: shared.ImportOnly(false),
+			},
+		})
 	}
+	FieldListAll = slices.Clip(FieldListAll)
 
 	FieldList = make([]*FieldDefinition, 0, len(FieldListAll))
 	for _, item := range FieldListAll {
