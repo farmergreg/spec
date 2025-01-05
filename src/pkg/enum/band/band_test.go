@@ -60,7 +60,7 @@ func TestBandwidth(t *testing.T) {
 	}
 }
 
-func TestFindBandByMHz(t *testing.T) {
+func TestIsInBand(t *testing.T) {
 	for _, item := range EnumBandList {
 		if !item.IsInBand(item.LowerFreqMHz) {
 			t.Errorf("Band %s should be in band", item.ID)
@@ -73,6 +73,24 @@ func TestFindBandByMHz(t *testing.T) {
 		}
 		if item.IsInBand(item.UpperFreqMHz + 1) {
 			t.Errorf("Band %s should not be in band", item.ID)
+		}
+	}
+}
+
+func TestFindBandByMHz(t *testing.T) {
+	for _, item := range EnumBandList {
+		_, ok := FindBandByMHz(item.LowerFreqMHz)
+		if !ok {
+			t.Errorf("Band %s should be in band", item.ID)
+		}
+	}
+}
+
+func TestFindBandByMHz_NotInBand(t *testing.T) {
+	for _, item := range EnumBandList {
+		_, ok := FindBandByMHz(0.25)
+		if ok {
+			t.Errorf("Band %s should be in band", item.ID)
 		}
 	}
 }

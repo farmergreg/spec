@@ -13,13 +13,13 @@ It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_202
 
 ## Using The Library
 
-Import any of the packages in the [`src/pkg`](src/pkg) directory that you wish to use.
-Each package has constants related to the ADIF specification.
-They use init() to create three package level variables with the following suffixes:
+- Import any of the packages in the [`src/pkg`](src/pkg) directory that you wish to use.
+- Each package has constants related to the ADIF specification.
+- They use init() to create three package level variables with the following suffixes:
 
-- `Map` - A map of the ADIF specification for quick lookups.
-- `List` - A list of values that are current.
-- `ListAll` - A list of all values, including deprecated ones.
+- *.`Map` Suffix - A map of the ADIF specification for quick lookups.
+- *.`List` Suffix - A list of values that are current.
+- *.`ListAll` Suffix - A list of all values, including deprecated ones.
 
 For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/HJW91fhyvdJ)):
 

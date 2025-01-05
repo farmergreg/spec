@@ -10,21 +10,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.23"
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.23.4'
 
-      - name: Run tests
-        run: |
-          ./test.sh
+    - name: Run tests
+      run: go test -v ./...
 
-      - name: Run generate
-        run: |
-          ./generate.sh
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Generated files are not up to date. Please run generate.sh locally and commit changes."
-            exit 1
-          fi
+    - name: Run generate
+      run: |
+        ./generate.sh
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Generated files are not up to date. Please run generate.sh locally and commit changes."
+          exit 1
+        fi
