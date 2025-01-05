@@ -20,7 +20,7 @@ It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_202
   - *.`List` Suffix - A list of values that are current.
   - *.`ListAll` Suffix - A list of all values, including deprecated ones.
 
-For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/HJW91fhyvdJ)):
+For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/5tPOX3wSCpK)):
 
 ```go
 package main
