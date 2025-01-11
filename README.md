@@ -70,3 +70,9 @@ The following steps are required to update the specification to the latest versi
 ```sh
 ./test.sh
 ```
+
+## Related Projects
+
+If you found this library useful, you may also be interested in the following projects:
+
+- [hamradiolog-net/adif](https://github.com/hamradiolog-net/adif): High Performance ADI Library For Go
