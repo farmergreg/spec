@@ -1,4 +1,4 @@
-# ADIF Specification Library for Go
+# ADIF 3.1.5 Specification Library for Go
 
 [![Tests](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml/badge.svg)](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hamradiolog-net/adif-spec)](https://goreportcard.com/report/github.com/hamradiolog-net/adif-spec)
@@ -76,3 +76,5 @@ The following steps are required to update the specification to the latest versi
 If you found this library useful, you may also be interested in the following projects:
 
 - [hamradiolog-net/adif](https://github.com/hamradiolog-net/adif): High Performance ADI Library For Go
+- [g3zod/CreateADIFTestFiles](https://github.com/g3zod/CreateADIFTestFiles) ADI Test Files
+- [g3zod/CreateADIFExportFiles](https://github.com/g3zod/CreateADIFExportFiles) ADIF Workgroup Specification Export Tool
