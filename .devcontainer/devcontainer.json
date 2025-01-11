@@ -32,7 +32,7 @@
     "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
     "workspaceFolder": "/app",
     "mounts": [
-        "source=${localEnv:HOME}/.cache,target=/home/hrln/.cache,type=bind",
-        "source=${localEnv:HOME}/go/pkg,target=/home/hrln/go/pkg,type=bind"
+        "source=${localEnv:HOME}/.cache,target=/home/adif-spec/.cache,type=bind",
+        "source=${localEnv:HOME}/go/pkg,target=/home/adif-spec/go/pkg,type=bind"
     ]
 }
