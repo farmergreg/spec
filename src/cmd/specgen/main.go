@@ -30,6 +30,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivisionalt"
 )
 
+//go:generate go run .
+
 // Generate the Go code for the ADIF spec
 // n.b. We only generate constants for currently valid values.
 // As a general rule, we skip deleted, un-released, and import-only records.

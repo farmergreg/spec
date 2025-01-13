@@ -53,22 +53,22 @@ func main() {
 
 The following steps are required to update the specification to the latest version.
 
-1. Download the latest ADIF TSV file exports from the ADIF Workgroup.  The current ADIF 3.1.5 spec is kept in the `src/spec/315` directory of this repository. You should rename the folder to the new ADIF version number.
+1. Download the latest ADIF TSV file exports from the ADIF Workgroup.  The current ADIF 3.1.5 spec is kept in the `src/spec/315` directory of this repository. You should rename the folder to match the new ADIF version number.
 
-2. Update [`cmd/specgen/main.go`](src/cmd/specgen/main.go) to use the new TSV folder.
+2. Update [`cmd/specgen/main.go`](src/cmd/specgen/main.go) and related code to use the new TSV folder.
 
 3. Add code for any new enumerations to the src/pkg folder being careful to follow the existing style.
 
-4. Run the [`generate.sh`](generate.sh) script to generate the Go code.
+4. Run `go generate ./...` to re-generate the Go code.
 
 ```sh
-./generate.sh
+go generate ./...
 ```
 
 ### Testing
 
 ```sh
-./test.sh
+go test ./...
 ```
 
 ## Related Projects

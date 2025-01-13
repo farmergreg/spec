@@ -22,8 +22,8 @@ jobs:
 
     - name: Run generate
       run: |
-        ./generate.sh
+        go generate ./...
         if [ -n "$(git status --porcelain)" ]; then
-          echo "Generated files are not up to date. Please run generate.sh locally and commit changes."
+          echo "Generated files are not up to date. Please run go generate ./... locally and commit changes."
           exit 1
         fi
