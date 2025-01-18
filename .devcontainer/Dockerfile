@@ -2,7 +2,7 @@
 #  Arguments  #
 ###############
 # Toolchain Software Versions
-ARG VERSION_GOLANG=1.23.4-bookworm
+ARG VERSION_GOLANG=1.23.5-bookworm
 
 # Development Tool Versions
 ARG VERSION_DELVE=latest
