@@ -27,3 +27,5 @@ APP_QRZLOG_LOGID	PositiveInteger		QRZ LOG: References the internal ID of a log r
 APP_QRZLOG_QSLDATE	Date		QRZ LOG: QSL Date (e.g. 20210126) This field contains the first date on which we saw a QRZ accepted confirmation for this contact. This could have been a confirmation as a result of matching contacts in the QRZ system or a credit imported from Logbook of The World.	N					3.0.2	Released
 APP_QRZLOG_STATUS	Enumeration		QRZ LOG: Status [C: Confirmed, A: Reserved for future use, N: Not Confirmed, 2: Confirmation Requested, S: Confirmation Requested, Request Seen, R: Confirmation Requested, Request Rejected]	N					3.0.2	Released
 APP_SKCCLOGGER_KEYTYPE	Enumeration		Straight Key Century Club (SKCC): [BUG, SK, SS] CW KEY TYPE (SS=Side Swiper / Cootie, SK=Straight, B=Bug)	N					3.0.2	Released
+EOH	None		End Of Header Marker. No Data.	Y					3.0.2	Released
+EOR	None		End of Record Marker. No Data.	N					3.0.2	Released
