@@ -1,10 +1,15 @@
 ﻿Field Name	Data Type	Enumeration	Description	Header Field	Minimum Value	Maximum Value	Import-only	Comments	ADIF Version	ADIF Status
 APP_LOTW_2XQSL	Enumeration		ARRL LOTW: [Y, N] APP_LOTW_2xQSL ="Y" Indicates this confirmation is considered to be "two-way" in the QSO's Mode. It is a confirmation that counts towards the mode-specific awards & endorsement in the WAS program. Only present if QSL_RCVD="Y".	N					3.0.2	Released
+APP_LOTW_CQZ_INFERRED	String		ARRL LOTW	N					3.0.2	Released
+APP_LOTW_CQZ_INVALID	String		ARRL LOTW	N					3.0.2	Released
 APP_LOTW_CQZ_USERINVALID	String		ARRL LOTW: Present only if the QSLing station included an invalid CQ zone value in its station location uploaded to LOTW	N					3.0.2	Released
 APP_LOTW_CREDIT_GRANTED	String		ARRL LOTW: Award credits granted based upon this QSL. Awards per LOTW award enumeration.	N					3.0.2	Released
 APP_LOTW_CREDIT_SUBMITTED	String		ARRL LOTW: Award credits for which this QSL has been submitted on an award application to sponsor. Awards per LOTW award enumeration.	N					3.0.2	Released
 APP_LOTW_DXCC_ENTITY_STATUS	Enumeration		ARRL LOTW: [Current, Deleted] Indicates whether the ARRL DXCC entity is "Current" -- counts toward Honor Roll, 5 Band DXCC and DXCC Challenege awrads -- or "Deleted"	N					3.0.2	Released
 APP_LOTW_EOF	String		ARRL LOTW: End of File marker. No other fields expected in this record.	N					3.0.2	Released
+APP_LOTW_GRIDSQUARE_INVALID	String		ARRL LOTW	N					3.0.2	Released
+APP_LOTW_ITUZ_INFERRED	String		ARRL LOTW	N					3.0.2	Released
+APP_LOTW_ITUZ_INVALID	String		ARRL LOTW	N					3.0.2	Released
 APP_LOTW_ITUZ_USERINVALID	String		ARRL LOTW: Present only if the QSLing station included an invalid ITU zone value in its station location uploaded to LOTW	N					3.0.2	Released
 APP_LOTW_LASTQSL	String		ARRL LOTW: date/time (YYYY-MM-DD HH:MM:SS) Present only if qso_qsl="yes". Date and time at which the most recent QSL record in this report was received. This will be the QSL date/time of the first QSO record in the file. This value only applies to the records in this file.	Y					3.0.2	Released
 APP_LOTW_LASTQSORX	String		ARRL LOTW: date/time (YYYY-MM-DD HH:MM:SS) Present only if qso_qsl="no". Date and time at which the most recent QSO record in this report was received. This will be the QSO received (uploaded) date/time of the first QSO record in the file. This value only applies to the records in this file.	Y					3.0.2	Released
@@ -18,7 +23,7 @@ APP_LOTW_QSLMODE	Enumeration		ARRL LOTW: The Mode that your QSO partner indicate
 APP_LOTW_QSO_TIMESTAMP	String		ARRL LOTW: Combined QSO Date & Time in ISO-8601 format	N					3.0.2	Released
 APP_LOTW_RXQSL	String		ARRL LOTW: Timestamp (YYYY-MM-DD HH:MM:SS) at which the conrfirmation match (QSL) was made/updated at LOTW. Present only if QSL_RCVD="Y"	N					3.0.2	Released
 APP_LOTW_RXQSO	String		ARRL LOTW: Timestamp (YYYY-MM-DD HH:MM:SS) at which QSO record was inserted/updated at LOTW	N					3.0.2	Released
-APP_SKCCLOGGER_KEYTYPE	Enumeration		Straight Key Century Club (SKCC): [BUG, SK, SS] CW KEY TYPE (SS=Side Swiper / Cootie, SK=Straight, B=Bug)	N					3.0.2	Released
 APP_QRZLOG_LOGID	PositiveInteger		QRZ LOG: References the internal ID of a log record in the QRZ system.	N					3.0.2	Released
 APP_QRZLOG_QSLDATE	Date		QRZ LOG: QSL Date (e.g. 20210126) This field contains the first date on which we saw a QRZ accepted confirmation for this contact. This could have been a confirmation as a result of matching contacts in the QRZ system or a credit imported from Logbook of The World.	N					3.0.2	Released
 APP_QRZLOG_STATUS	Enumeration		QRZ LOG: Status [C: Confirmed, A: Reserved for future use, N: Not Confirmed, 2: Confirmation Requested, S: Confirmation Requested, Request Seen, R: Confirmation Requested, Request Rejected]	N					3.0.2	Released
+APP_SKCCLOGGER_KEYTYPE	Enumeration		Straight Key Century Club (SKCC): [BUG, SK, SS] CW KEY TYPE (SS=Side Swiper / Cootie, SK=Straight, B=Bug)	N					3.0.2	Released
