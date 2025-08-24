@@ -76,5 +76,6 @@ go test ./...
 If you found this library useful, you may also be interested in the following projects:
 
 - [hamradiolog-net/adif](https://github.com/hamradiolog-net/adif): High Performance ADI Library For Go
+- [hamradiolog-net/adif-benchmark](https://github.com/hamradiolog-net/adif-benchmark): ADIF Parsing Benchmarks
 - [g3zod/CreateADIFTestFiles](https://github.com/g3zod/CreateADIFTestFiles) ADI Test Files
 - [g3zod/CreateADIFExportFiles](https://github.com/g3zod/CreateADIFExportFiles) ADIF Workgroup Specification Export Tool
