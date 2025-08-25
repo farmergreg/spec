@@ -1,0 +1,14 @@
+// GENERATED CODE; DO NOT EDIT
+// ADIF: {{ .Spec.Adif.Version }} {{ .Spec.Adif.Status }}
+package {{ .PackageName }}
+
+// ADIFVersion is the version of the ADIF specification.
+// This is the version that is currently supported by this package.
+const ADIF_VERSION = "{{ .Spec.Adif.Version }}"
+
+const ADIF_VERSION_MAJOR = {{ index (Split .Spec.Adif.Version ".") 0 }} // ADIF Major Version
+const ADIF_VERSION_MINOR = {{ index (Split .Spec.Adif.Version ".") 1 }} // ADIF Minor Version
+const ADIF_VERSION_PATCH = {{ index (Split .Spec.Adif.Version ".") 2 }} // ADIF Patch Version
+
+// The ADIF Version Status (Released | Proposed)
+const ADIF_STATUS = "{{ .Spec.Adif.Status }}"

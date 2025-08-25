@@ -1,0 +1,3 @@
+package secondaryadministrativesubdivisionalt
+
+type SecondaryAdministrativeSubdivisionAlt string

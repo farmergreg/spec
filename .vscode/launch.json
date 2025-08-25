@@ -5,7 +5,19 @@
             "name": "generate adi",
             "type": "go",
             "request": "launch",
-            "program": "${workspaceFolder}/cmd/specgen/main.go",
+            "program": "${workspaceFolder}/src/cmd/specgen/main.go",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GOPATH": "${env:GOPATH}",
+                "GOROOT": "${env:GOROOT}"
+            }
+        },
+        {
+            "name": "specgen2",
+            "type": "go",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/cmd/specgen2",
             "args": [],
             "cwd": "${workspaceFolder}",
             "env": {
