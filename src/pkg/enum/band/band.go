@@ -26,3 +26,7 @@ func (a *MHz) UnmarshalJSON(data []byte) error {
 	*a = MHz(mhz)
 	return nil
 }
+
+func (b Band) String() string {
+	return string(b)
+}

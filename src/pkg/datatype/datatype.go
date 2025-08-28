@@ -5,3 +5,7 @@ type DataTypeIndicator rune
 
 // DataType represents the ADIF data type of a data field
 type DataType string
+
+func (d DataType) String() string {
+	return string(d)
+}

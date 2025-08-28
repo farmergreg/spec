@@ -34,3 +34,7 @@ func (a *DXCCEntityCodeList) UnmarshalJSON(data []byte) error {
 
 	return nil
 }
+
+func (d DXCCEntityCode) String() string {
+	return strconv.Itoa(int(d))
+}

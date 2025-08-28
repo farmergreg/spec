@@ -5,17 +5,6 @@ package {{ .PackageName }}
 
 var (
 {{- range $key, $value := .Records }}
-	{{ $.ConstPrefix}}{{ ConvertToGoIdentifier $key }} {{ $.DataType }} = "{{ $key }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.Description }}
+	{{ $.ConstPrefix}}{{ ConvertToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.Description }}
 {{- end }}
 )
-
-// IsValid returns true if the {{ .DataType }} exists in the ADIF specification. This includes Import Only and Deleted values.
-func (value {{ .DataType }}) IsValid() bool {
-	switch value{
-{{- range $key, $value := .Records }}
-	case {{ $.ConstPrefix}}{{ ConvertToGoIdentifier $key }}:
-		return true
-{{- end }}
-	}
-	return false
-}

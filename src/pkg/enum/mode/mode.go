@@ -33,3 +33,7 @@ func (s *EnumModeSubModeList) UnmarshalJSON(data []byte) error {
 	}
 	return nil
 }
+
+func (m Mode) String() string {
+	return string(m)
+}

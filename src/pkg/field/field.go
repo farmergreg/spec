@@ -15,3 +15,7 @@ const (
 // By convention in this package, field name constants are always UPPERCASE.
 // This is a departure from the ADIF specification, which allows field names to include lowercase letters.
 type Field string
+
+func (f Field) String() string {
+	return string(f)
+}
