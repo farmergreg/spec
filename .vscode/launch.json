@@ -2,22 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "generate adi",
+            "name": "specgen",
             "type": "go",
             "request": "launch",
-            "program": "${workspaceFolder}/src/cmd/specgen/main.go",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "env": {
-                "GOPATH": "${env:GOPATH}",
-                "GOROOT": "${env:GOROOT}"
-            }
-        },
-        {
-            "name": "specgen2",
-            "type": "go",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/cmd/specgen2",
+            "program": "${workspaceFolder}/src/cmd/specgen",
             "args": [],
             "cwd": "${workspaceFolder}",
             "env": {

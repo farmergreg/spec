@@ -1,3 +1,0 @@
-package secondaryadministrativesubdivision
-
-type SecondaryAdministrativeSubdivision string
