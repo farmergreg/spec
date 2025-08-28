@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-// CreditRecord represents a single credit record
-type CreditRecord struct {
+// CreditSpec represents the specification for a single Credit
+type CreditSpec struct {
 	BaseEnumerationSpec
 	Id      string `json:"Credit For"` // Credit For
 	Sponsor string `json:"Sponsor"`
@@ -13,12 +13,12 @@ type CreditRecord struct {
 	Facet   string `json:"Facet"`
 }
 
-func (c CreditRecord) Description() string {
+func (c CreditSpec) Description() string {
 	return fmt.Sprintf("%s %s %s", c.Sponsor, c.Award, c.Facet)
 }
 
-// CreditEnumeration represents the complete credit enumeration
-type CreditEnumeration struct {
-	Header  []string                `json:"Header"`
-	Records map[string]CreditRecord `json:"Records"`
+// CreditSpecMap contains all CreditSpec specifications.
+type CreditSpecMap struct {
+	Header  []string              `json:"Header"`
+	Records map[string]CreditSpec `json:"Records"`
 }

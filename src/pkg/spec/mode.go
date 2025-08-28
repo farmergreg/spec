@@ -4,16 +4,16 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/mode"
 )
 
-// ModeRecord represents a single mode record
-type ModeRecord struct {
+// ModeSpec represents the specification for a single Mode
+type ModeSpec struct {
 	BaseEnumerationSpec
 	Id          string                   `json:"Mode"` // Mode
 	Submodes    mode.EnumModeSubModeList `json:"Submodes,omitempty"`
 	Description string                   `json:"Description,omitempty"`
 }
 
-// ModeEnumeration represents the complete mode enumeration
-type ModeEnumeration struct {
-	Header  []string              `json:"Header"`
-	Records map[string]ModeRecord `json:"Records"`
+// ModeSpecMap contains all ModeSpec specifications.
+type ModeSpecMap struct {
+	Header  []string            `json:"Header"`
+	Records map[string]ModeSpec `json:"Records"`
 }

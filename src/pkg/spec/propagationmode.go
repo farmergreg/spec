@@ -1,14 +1,14 @@
 package spec
 
-// PropagationModeRecord represents a single propagation mode record
-type PropagationModeRecord struct {
+// PropagationModeSpec represents the specification for a single PropagationMode
+type PropagationModeSpec struct {
 	BaseEnumerationSpec
 	Id          string `json:"Enumeration"` // Enumeration
 	Description string `json:"Description"`
 }
 
-// PropagationModeEnumeration represents the complete propagation mode enumeration
-type PropagationModeEnumeration struct {
-	Header  []string                         `json:"Header"`
-	Records map[string]PropagationModeRecord `json:"Records"`
+// PropagationModeSpecMap contains all PropagationModeSpec specifications.
+type PropagationModeSpecMap struct {
+	Header  []string                       `json:"Header"`
+	Records map[string]PropagationModeSpec `json:"Records"`
 }

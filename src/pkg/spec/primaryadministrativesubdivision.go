@@ -1,7 +1,7 @@
 package spec
 
-// PrimaryAdministrativeSubdivisionRecord represents a single primary administrative subdivision record
-type PrimaryAdministrativeSubdivisionRecord struct {
+// PrimaryAdministrativeSubdivisionSpec represents the specification for a single PrimaryAdministrativeSubdivision
+type PrimaryAdministrativeSubdivisionSpec struct {
 	BaseEnumerationSpec
 	Code            string          `json:"Code"` // Code
 	PrimaryAdminSub string          `json:"Primary Administrative Subdivision"`
@@ -14,12 +14,12 @@ type PrimaryAdministrativeSubdivisionRecord struct {
 	IsDeleted       AdifSpecBoolean `json:"Deleted,omitempty"`
 }
 
-func (p PrimaryAdministrativeSubdivisionRecord) Description() string {
+func (p PrimaryAdministrativeSubdivisionSpec) Description() string {
 	return p.PrimaryAdminSub
 }
 
-// PrimaryAdministrativeSubdivisionEnumeration represents the complete primary administrative subdivision enumeration
-type PrimaryAdministrativeSubdivisionEnumeration struct {
-	Header  []string                                          `json:"Header"`
-	Records map[string]PrimaryAdministrativeSubdivisionRecord `json:"Records"`
+// PrimaryAdministrativeSubdivisionSpecMap contains all PrimaryAdministrativeSubdivisionSpec specifications.
+type PrimaryAdministrativeSubdivisionSpecMap struct {
+	Header  []string                                        `json:"Header"`
+	Records map[string]PrimaryAdministrativeSubdivisionSpec `json:"Records"`
 }

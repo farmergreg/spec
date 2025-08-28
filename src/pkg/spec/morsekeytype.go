@@ -1,7 +1,7 @@
 package spec
 
-// MorseKeyTypeRecord represents a single morse key type record
-type MorseKeyTypeRecord struct {
+// MorseKeyTypeSpec represents the specification for a single MorseKeyType
+type MorseKeyTypeSpec struct {
 	BaseEnumerationSpec
 	Id               string `json:"Abbreviation"` // Abbreviation
 	Description      string `json:"Meaning"`
@@ -10,8 +10,8 @@ type MorseKeyTypeRecord struct {
 	Examples         string `json:"Examples,omitempty"`
 }
 
-// MorseKeyTypeEnumeration represents the complete morse key type enumeration
-type MorseKeyTypeEnumeration struct {
-	Header  []string                      `json:"Header"`
-	Records map[string]MorseKeyTypeRecord `json:"Records"`
+// MorseKeyTypeSpecMap contains all MorseKeyTypeSpec specifications.
+type MorseKeyTypeSpecMap struct {
+	Header  []string                    `json:"Header"`
+	Records map[string]MorseKeyTypeSpec `json:"Records"`
 }

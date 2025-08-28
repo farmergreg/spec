@@ -6,20 +6,20 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/band"
 )
 
-// BandRecord represents a single band record
-type BandRecord struct {
+// BandSpec represents the specification for a single Band
+type BandSpec struct {
 	BaseEnumerationSpec
 	Id           string   `json:"Band"` // Band
 	LowerFreqMHz band.MHz `json:"Lower Freq (MHz)"`
 	UpperFreqMHz band.MHz `json:"Upper Freq (MHz)"`
 }
 
-func (b BandRecord) Description() string {
+func (b BandSpec) Description() string {
 	return fmt.Sprintf("%-6s %12.4f MHz - %12.4f MHz", b.Id, b.LowerFreqMHz, b.UpperFreqMHz)
 }
 
-// BandEnumeration represents the complete band enumeration
-type BandEnumeration struct {
-	Header  []string              `json:"Header"`
-	Records map[string]BandRecord `json:"Records"`
+// BandSpecMap contains all BandSpec specifications.
+type BandSpecMap struct {
+	Header  []string            `json:"Header"`
+	Records map[string]BandSpec `json:"Records"`
 }

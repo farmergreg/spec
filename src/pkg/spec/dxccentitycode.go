@@ -4,15 +4,15 @@ import (
 	"strings"
 )
 
-// DXCCEntityCodeRecord represents a single DXCC entity code record
-type DXCCEntityCodeRecord struct {
+// DXCCEntityCodeSpec represents the specification for a single DXCCEntityCode
+type DXCCEntityCodeSpec struct {
 	BaseEnumerationSpec
 	Id         string          `json:"Entity Code"` // Entity Code
 	EntityName string          `json:"Entity Name"`
 	IsDeleted  AdifSpecBoolean `json:"Deleted,omitempty"`
 }
 
-func (d DXCCEntityCodeRecord) Identifier() string {
+func (d DXCCEntityCodeSpec) Identifier() string {
 	name := d.Description()
 
 	if strings.HasPrefix(name, "None ") {
@@ -26,12 +26,12 @@ func (d DXCCEntityCodeRecord) Identifier() string {
 	return name
 }
 
-func (d DXCCEntityCodeRecord) Description() string {
+func (d DXCCEntityCodeSpec) Description() string {
 	return d.EntityName
 }
 
-// DXCCEntityCodeEnumeration represents the complete DXCC entity code enumeration
-type DXCCEntityCodeEnumeration struct {
-	Header  []string                        `json:"Header"`
-	Records map[string]DXCCEntityCodeRecord `json:"Records"`
+// DXCCEntityCodeSpecMap contains all DXCCEntityCodeSpec specifications.
+type DXCCEntityCodeSpecMap struct {
+	Header  []string                      `json:"Header"`
+	Records map[string]DXCCEntityCodeSpec `json:"Records"`
 }

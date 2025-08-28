@@ -1,14 +1,14 @@
 package spec
 
-// QSOUploadStatusRecord represents a single QSO upload status record
-type QSOUploadStatusRecord struct {
+// QSOUploadStatusSpec represents the specification for a single QSOUploadStatus
+type QSOUploadStatusSpec struct {
 	BaseEnumerationSpec
 	Id          string `json:"Status"` // Status
 	Description string `json:"Description"`
 }
 
-// QSOUploadStatusEnumeration represents the complete QSO upload status enumeration
-type QSOUploadStatusEnumeration struct {
-	Header  []string                         `json:"Header"`
-	Records map[string]QSOUploadStatusRecord `json:"Records"`
+// QSOUploadStatusSpecMap contains all QSOUploadStatusSpec specifications.
+type QSOUploadStatusSpecMap struct {
+	Header  []string                       `json:"Header"`
+	Records map[string]QSOUploadStatusSpec `json:"Records"`
 }

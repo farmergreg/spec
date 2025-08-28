@@ -1,18 +1,18 @@
 package spec
 
-// ContinentRecord represents a single continent record
-type ContinentRecord struct {
+// ContinentSpec represents the specification for a single Continent
+type ContinentSpec struct {
 	BaseEnumerationSpec
 	Id        string `json:"Abbreviation"` // Abbreviation
 	Continent string `json:"Continent"`
 }
 
-func (c ContinentRecord) Description() string {
+func (c ContinentSpec) Description() string {
 	return c.Continent
 }
 
-// ContinentEnumeration represents the complete continent enumeration
-type ContinentEnumeration struct {
-	Header  []string                   `json:"Header"`
-	Records map[string]ContinentRecord `json:"Records"`
+// ContinentSpecMap contains all ContinentSpec specifications.
+type ContinentSpecMap struct {
+	Header  []string                 `json:"Header"`
+	Records map[string]ContinentSpec `json:"Records"`
 }

@@ -4,8 +4,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
 )
 
-// ARRLSectionRecord represents a single ARRL section record
-type ARRLSectionRecord struct {
+// ARRLSectionSpec represents the specification for a single ARRLSection
+type ARRLSectionSpec struct {
 	BaseEnumerationSpec
 	Id             string                            `json:"Abbreviation"` // Abbreviation
 	Description    string                            `json:"Section Name"` // Section Name
@@ -14,8 +14,8 @@ type ARRLSectionRecord struct {
 	DeletedDate    AdifSpecDateTime                  `json:"Deleted Date,omitempty"`
 }
 
-// ARRLSectionEnumeration represents the complete ARRL section enumeration
-type ARRLSectionEnumeration struct {
-	Header  []string                     `json:"Header"`
-	Records map[string]ARRLSectionRecord `json:"Records"`
+// ARRLSectionSpecMap contains all ARRLSectionSpec specifications.
+type ARRLSectionSpecMap struct {
+	Header  []string                   `json:"Header"`
+	Records map[string]ARRLSectionSpec `json:"Records"`
 }

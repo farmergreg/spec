@@ -1,14 +1,14 @@
 package spec
 
-// QSOCompleteRecord represents a single QSO complete record
-type QSOCompleteRecord struct {
+// QSOCompleteSpec represents the specification for a single QSOComplete
+type QSOCompleteSpec struct {
 	BaseEnumerationSpec
 	Id          string `json:"Abbreviation"` // Abbreviation
 	Description string `json:"Meaning"`
 }
 
-// QSOCompleteEnumeration represents the complete QSO complete enumeration
-type QSOCompleteEnumeration struct {
-	Header  []string                     `json:"Header"`
-	Records map[string]QSOCompleteRecord `json:"Records"`
+// QSOCompleteSpecMap contains all QSOCompleteSpec specifications.
+type QSOCompleteSpecMap struct {
+	Header  []string                   `json:"Header"`
+	Records map[string]QSOCompleteSpec `json:"Records"`
 }

@@ -1,7 +1,7 @@
 package spec
 
-// SecondaryAdministrativeSubdivisionRecord represents a single secondary administrative subdivision record
-type SecondaryAdministrativeSubdivisionRecord struct {
+// SecondaryAdministrativeSubdivisionSpec represents the specification for a single SecondaryAdministrativeSubdivision
+type SecondaryAdministrativeSubdivisionSpec struct {
 	BaseEnumerationSpec
 	Id                     string          `json:"Code"` // Code
 	SecondaryAdminSub      string          `json:"Secondary Administrative Subdivision"`
@@ -10,12 +10,12 @@ type SecondaryAdministrativeSubdivisionRecord struct {
 	IsDeleted              AdifSpecBoolean `json:"Deleted,omitempty"`
 }
 
-func (s SecondaryAdministrativeSubdivisionRecord) Description() string {
+func (s SecondaryAdministrativeSubdivisionSpec) Description() string {
 	return s.SecondaryAdminSub
 }
 
-// SecondaryAdministrativeSubdivisionEnumeration represents the complete secondary administrative subdivision enumeration
-type SecondaryAdministrativeSubdivisionEnumeration struct {
-	Header  []string                                            `json:"Header"`
-	Records map[string]SecondaryAdministrativeSubdivisionRecord `json:"Records"`
+// SecondaryAdministrativeSubdivisionSpecMap contains all SecondaryAdministrativeSubdivisionSpec specifications.
+type SecondaryAdministrativeSubdivisionSpecMap struct {
+	Header  []string                                          `json:"Header"`
+	Records map[string]SecondaryAdministrativeSubdivisionSpec `json:"Records"`
 }

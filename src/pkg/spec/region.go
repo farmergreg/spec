@@ -1,7 +1,7 @@
 package spec
 
-// RegionRecord represents a single region record
-type RegionRecord struct {
+// RegionSpec represents the specification for a single Region
+type RegionSpec struct {
 	BaseEnumerationSpec
 	Id             string           `json:"Region Entity Code"` // Region Entity Code
 	DXCCEntityCode string           `json:"DXCC Entity Code"`
@@ -12,12 +12,12 @@ type RegionRecord struct {
 	EndDate        AdifSpecDateOnly `json:"End Date,omitempty"`
 }
 
-func (r RegionRecord) Description() string {
+func (r RegionSpec) Description() string {
 	return r.Region
 }
 
-// RegionEnumeration represents the complete region enumeration
-type RegionEnumeration struct {
-	Header  []string                `json:"Header"`
-	Records map[string]RegionRecord `json:"Records"`
+// RegionSpecMap contains all RegionSpec specifications.
+type RegionSpecMap struct {
+	Header  []string              `json:"Header"`
+	Records map[string]RegionSpec `json:"Records"`
 }

@@ -1,15 +1,15 @@
 package spec
 
-// SubmodeRecord represents a single submode record
-type SubmodeRecord struct {
+// SubmodeSpec represents the specification for a single Submode
+type SubmodeSpec struct {
 	BaseEnumerationSpec
 	Id          string `json:"Submode"` // Submode
 	Mode        string `json:"Mode"`
 	Description string `json:"Description,omitempty"`
 }
 
-// SubmodeEnumeration represents the complete submode enumeration
-type SubmodeEnumeration struct {
-	Header  []string                 `json:"Header"`
-	Records map[string]SubmodeRecord `json:"Records"`
+// SubmodeSpecMap contains all SubmodeSpec specifications.
+type SubmodeSpecMap struct {
+	Header  []string               `json:"Header"`
+	Records map[string]SubmodeSpec `json:"Records"`
 }

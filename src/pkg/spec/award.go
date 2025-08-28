@@ -1,17 +1,17 @@
 package spec
 
-// AwardRecord represents a single award record
-type AwardRecord struct {
+// AwardSpec represents the specification for a single Award
+type AwardSpec struct {
 	BaseEnumerationSpec
 	Id string `json:"Award"` // Award
 }
 
-func (a AwardRecord) Description() string {
+func (a AwardSpec) Description() string {
 	return a.Id
 }
 
-// AwardEnumeration represents the complete award enumeration
-type AwardEnumeration struct {
-	Header  []string               `json:"Header"`
-	Records map[string]AwardRecord `json:"Records"`
+// AwardSpecMap contains all AwardSpec specifications.
+type AwardSpecMap struct {
+	Header  []string             `json:"Header"`
+	Records map[string]AwardSpec `json:"Records"`
 }
