@@ -1,7 +1,7 @@
 package spec
 
-// Field represents a single field definition
-type Field struct {
+// FieldSpec represents the specification for a single Field
+type FieldSpec struct {
 	Id            string          `json:"Field Name"` // Field Name
 	DataType      string          `json:"Data Type"`
 	Enumeration   string          `json:"Enumeration,omitempty"`
@@ -13,8 +13,8 @@ type Field struct {
 	Comments      string          `json:"Comments,omitempty"`
 }
 
-// Fields represents the complete fields collection
-type Fields struct {
-	Header  []string         `json:"Header"`
-	Records map[string]Field `json:"Records"`
+// FieldSpecMap contains all FieldSpec specifications.
+type FieldSpecMap struct {
+	Header  []string             `json:"Header"`
+	Records map[string]FieldSpec `json:"Records"`
 }

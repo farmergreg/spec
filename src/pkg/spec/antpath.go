@@ -1,14 +1,14 @@
 package spec
 
-// AntPathSpec represents the specification for AntPath
+// AntPathSpec represents the specification for a single AntPath
 type AntPathSpec struct {
 	BaseEnumerationSpec
 	Id          string `json:"Abbreviation"` // Abbreviation
 	Description string `json:"Meaning"`
 }
 
-// AntPathEnumerationSpec represents list of all available AntPath specifications.
-type AntPathEnumerationSpec struct {
+// AntPathEnumerationSpecMap contains all AntPathSpec specifications
+type AntPathEnumerationSpecMap struct {
 	Header  []string               `json:"Header"`
 	Records map[string]AntPathSpec `json:"Records"`
 }

@@ -8,9 +8,9 @@ type AdifSpec struct {
 		Status       string           `json:"Status"`
 		Date         AdifSpecDateTime `json:"Date"`
 		Created      AdifSpecDateTime `json:"Created"`
-		DataTypes    DataTypes        `json:"DataTypes"`
+		DataTypes    DataTypeSpecMap  `json:"DataTypes"`
 		Enumerations Enumerations     `json:"Enumerations"`
-		Fields       Fields           `json:"Fields"`
+		Fields       FieldSpecMap     `json:"Fields"`
 	} `json:"Adif"`
 }
 
@@ -22,7 +22,7 @@ type BaseEnumerationSpec struct {
 }
 
 type Enumerations struct {
-	Ant_Path                                 AntPathEnumerationSpec                           `json:"Ant_Path,omitempty"`
+	Ant_Path                                 AntPathEnumerationSpecMap                        `json:"Ant_Path,omitempty"`
 	ARRL_Section                             ARRLSectionEnumeration                           `json:"ARRL_Section,omitempty"`
 	Award                                    AwardEnumeration                                 `json:"Award,omitempty"`
 	Award_Sponsor                            AwardSponsorEnumeration                          `json:"Award_Sponsor,omitempty"`

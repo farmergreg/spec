@@ -1,7 +1,7 @@
 package spec
 
-// DataType represents a single data type definition
-type DataType struct {
+// DataTypeSpec represents the specification for a single DataType
+type DataTypeSpec struct {
 	Id                string          `json:"Data Type Name"` // Data Type Name
 	DataTypeIndicator string          `json:"Data Type Indicator,omitempty"`
 	Description       string          `json:"Description"`
@@ -11,8 +11,8 @@ type DataType struct {
 	Comments          string          `json:"Comments,omitempty"`
 }
 
-// DataTypes represents the complete data types collection
-type DataTypes struct {
-	Header  []string            `json:"Header"`
-	Records map[string]DataType `json:"Records"`
+// DataTypeSpecMap contains all DataTypeSpec specifications.
+type DataTypeSpecMap struct {
+	Header  []string                `json:"Header"`
+	Records map[string]DataTypeSpec `json:"Records"`
 }
