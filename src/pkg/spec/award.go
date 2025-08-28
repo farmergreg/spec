@@ -2,7 +2,7 @@ package spec
 
 // AwardRecord represents a single award record
 type AwardRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id string `json:"Award"` // Award
 }
 

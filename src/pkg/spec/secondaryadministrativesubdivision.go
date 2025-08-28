@@ -2,7 +2,7 @@ package spec
 
 // SecondaryAdministrativeSubdivisionRecord represents a single secondary administrative subdivision record
 type SecondaryAdministrativeSubdivisionRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id                     string          `json:"Code"` // Code
 	SecondaryAdminSub      string          `json:"Secondary Administrative Subdivision"`
 	DXCCEntityCode         string          `json:"DXCC Entity Code"`

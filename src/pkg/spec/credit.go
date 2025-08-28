@@ -6,7 +6,7 @@ import (
 
 // CreditRecord represents a single credit record
 type CreditRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id      string `json:"Credit For"` // Credit For
 	Sponsor string `json:"Sponsor"`
 	Award   string `json:"Award"`

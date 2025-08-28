@@ -2,7 +2,7 @@ package spec
 
 // MorseKeyTypeRecord represents a single morse key type record
 type MorseKeyTypeRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id               string `json:"Abbreviation"` // Abbreviation
 	Description      string `json:"Meaning"`
 	Characteristics  string `json:"Characteristics,omitempty"`

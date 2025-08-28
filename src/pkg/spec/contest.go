@@ -2,7 +2,7 @@ package spec
 
 // ContestIDRecord represents a single contest ID record
 type ContestIDRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Contest-ID"` // Contest ID
 	Description string `json:"Description"`
 }

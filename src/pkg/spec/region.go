@@ -2,7 +2,7 @@ package spec
 
 // RegionRecord represents a single region record
 type RegionRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id             string           `json:"Region Entity Code"` // Region Entity Code
 	DXCCEntityCode string           `json:"DXCC Entity Code"`
 	Region         string           `json:"Region"`

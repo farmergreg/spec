@@ -2,7 +2,7 @@ package spec
 
 // QSODownloadStatusRecord represents a single QSO download status record
 type QSODownloadStatusRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Status"` // Status
 	Description string `json:"Description"`
 }

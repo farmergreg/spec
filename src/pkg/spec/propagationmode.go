@@ -2,7 +2,7 @@ package spec
 
 // PropagationModeRecord represents a single propagation mode record
 type PropagationModeRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Enumeration"` // Enumeration
 	Description string `json:"Description"`
 }

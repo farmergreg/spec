@@ -6,7 +6,7 @@ import (
 
 // ARRLSectionRecord represents a single ARRL section record
 type ARRLSectionRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id             string                            `json:"Abbreviation"` // Abbreviation
 	Description    string                            `json:"Section Name"` // Section Name
 	DXCCEntityCode dxccentitycode.DXCCEntityCodeList `json:"DXCC Entity Code"`

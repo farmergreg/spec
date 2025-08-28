@@ -2,7 +2,7 @@ package spec
 
 // AwardSponsorRecord represents a single award sponsor record
 type AwardSponsorRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Sponsor"`                 // Sponsor Prefix
 	Description string `json:"Sponsoring Organization"` // Sponsoring Organization
 }

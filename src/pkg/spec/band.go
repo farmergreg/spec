@@ -8,7 +8,7 @@ import (
 
 // BandRecord represents a single band record
 type BandRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id           string   `json:"Band"` // Band
 	LowerFreqMHz band.MHz `json:"Lower Freq (MHz)"`
 	UpperFreqMHz band.MHz `json:"Upper Freq (MHz)"`

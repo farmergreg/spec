@@ -2,7 +2,7 @@ package spec
 
 // QSLViaRecord represents a single QSL via record
 type QSLViaRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Via"` // Via
 	Description string `json:"Description"`
 }

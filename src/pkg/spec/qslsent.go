@@ -2,7 +2,7 @@ package spec
 
 // QSLSentRecord represents a single QSL sent record
 type QSLSentRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Status"` // Status
 	Meaning     string `json:"Meaning"`
 	Description string `json:"Description"`

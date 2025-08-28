@@ -14,8 +14,8 @@ type AdifSpec struct {
 	} `json:"Adif"`
 }
 
-// BaseEnumerationRecord contains common fields present in all enumerations
-type BaseEnumerationRecord struct {
+// BaseEnumerationSpec contains common fields present in all enumerations
+type BaseEnumerationSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
 	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string          `json:"Comments,omitempty"`

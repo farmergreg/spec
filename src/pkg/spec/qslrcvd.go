@@ -2,7 +2,7 @@ package spec
 
 // QSLRcvdRecord represents a single QSL received record
 type QSLRcvdRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Status"` // Status
 	Meaning     string `json:"Meaning"`
 	Description string `json:"Description"`

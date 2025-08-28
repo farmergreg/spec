@@ -1,14 +1,14 @@
 package spec
 
-// AntPathRecord represents a single antenna path record
-type AntPathRecord struct {
-	BaseEnumerationRecord
+// AntPathSpec represents the specification for AntPath
+type AntPathSpec struct {
+	BaseEnumerationSpec
 	Id          string `json:"Abbreviation"` // Abbreviation
 	Description string `json:"Meaning"`
 }
 
-// AntPathEnumeration represents the complete antenna path enumeration
+// AntPathEnumeration represents list of all available AntPath specifications.
 type AntPathEnumeration struct {
-	Header  []string                 `json:"Header"`
-	Records map[string]AntPathRecord `json:"Records"`
+	Header  []string               `json:"Header"`
+	Records map[string]AntPathSpec `json:"Records"`
 }

@@ -2,7 +2,7 @@ package spec
 
 // ContinentRecord represents a single continent record
 type ContinentRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id        string `json:"Abbreviation"` // Abbreviation
 	Continent string `json:"Continent"`
 }

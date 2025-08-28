@@ -6,7 +6,7 @@ import (
 
 // DXCCEntityCodeRecord represents a single DXCC entity code record
 type DXCCEntityCodeRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id         string          `json:"Entity Code"` // Entity Code
 	EntityName string          `json:"Entity Name"`
 	IsDeleted  AdifSpecBoolean `json:"Deleted,omitempty"`

@@ -2,7 +2,7 @@ package spec
 
 // EQSLAGRecord represents a single EQSL AG record
 type EQSLAGRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Status"` // Status
 	Description string `json:"Description"`
 }

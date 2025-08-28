@@ -6,7 +6,7 @@ import (
 
 // ModeRecord represents a single mode record
 type ModeRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string                   `json:"Mode"` // Mode
 	Submodes    mode.EnumModeSubModeList `json:"Submodes,omitempty"`
 	Description string                   `json:"Description,omitempty"`

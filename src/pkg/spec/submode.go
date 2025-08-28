@@ -2,7 +2,7 @@ package spec
 
 // SubmodeRecord represents a single submode record
 type SubmodeRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Submode"` // Submode
 	Mode        string `json:"Mode"`
 	Description string `json:"Description,omitempty"`

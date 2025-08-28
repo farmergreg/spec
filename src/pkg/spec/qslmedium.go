@@ -2,7 +2,7 @@ package spec
 
 // QSLMediumRecord represents a single QSL medium record
 type QSLMediumRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Medium"` // Medium
 	Description string `json:"Description"`
 }

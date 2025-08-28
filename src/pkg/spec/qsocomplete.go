@@ -2,7 +2,7 @@ package spec
 
 // QSOCompleteRecord represents a single QSO complete record
 type QSOCompleteRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Id          string `json:"Abbreviation"` // Abbreviation
 	Description string `json:"Meaning"`
 }

@@ -2,7 +2,7 @@ package spec
 
 // PrimaryAdministrativeSubdivisionRecord represents a single primary administrative subdivision record
 type PrimaryAdministrativeSubdivisionRecord struct {
-	BaseEnumerationRecord
+	BaseEnumerationSpec
 	Code            string          `json:"Code"` // Code
 	PrimaryAdminSub string          `json:"Primary Administrative Subdivision"`
 	DXCCEntityCode  string          `json:"DXCC Entity Code"`
