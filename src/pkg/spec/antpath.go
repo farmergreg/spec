@@ -7,8 +7,8 @@ type AntPathSpec struct {
 	Description string `json:"Meaning"`
 }
 
-// AntPathEnumeration represents list of all available AntPath specifications.
-type AntPathEnumeration struct {
+// AntPathEnumerationSpec represents list of all available AntPath specifications.
+type AntPathEnumerationSpec struct {
 	Header  []string               `json:"Header"`
 	Records map[string]AntPathSpec `json:"Records"`
 }

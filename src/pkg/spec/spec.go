@@ -22,7 +22,7 @@ type BaseEnumerationSpec struct {
 }
 
 type Enumerations struct {
-	Ant_Path                                 AntPathEnumeration                               `json:"Ant_Path,omitempty"`
+	Ant_Path                                 AntPathEnumerationSpec                           `json:"Ant_Path,omitempty"`
 	ARRL_Section                             ARRLSectionEnumeration                           `json:"ARRL_Section,omitempty"`
 	Award                                    AwardEnumeration                                 `json:"Award,omitempty"`
 	Award_Sponsor                            AwardSponsorEnumeration                          `json:"Award_Sponsor,omitempty"`
