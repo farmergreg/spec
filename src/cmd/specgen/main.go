@@ -43,7 +43,7 @@ func main() {
 	generate(adifSpec, adifSpec.Adif.Enumerations.Continent.Records, "enum", "continent", "Continent", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Credit.Records, "enum", "credit", "Credit", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.DXCC_Entity_Code.Records, "enum_dxccentitycode", "dxccentitycode", "DXCCEntityCode", "")
-	generate(adifSpec, adifSpec.Adif.Enumerations.EQSL_AG.Records, "enum", "eqslag", "EQSL_AG", "")
+	generate(adifSpec, adifSpec.Adif.Enumerations.EQSL_AG.Records, "enum", "eqslag", "EQSLAG", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Mode.Records, "enum", "mode", "Mode", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Morse_Key_Type.Records, "enum", "morsekeytype", "MorseKeyType", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Primary_Administrative_Subdivision.Records, "enum", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivision", "PrimaryAdministrativeSubdivision")
