@@ -32,8 +32,8 @@ func main() {
 	fmt.Printf("Status: %s\n", adifSpec.Adif.Status)
 
 	generate(adifSpec, nil, "spec", "spec", "", "")
-	generate(adifSpec, adifSpec.Adif.Fields.Records, "adifield", "adifield", "ADIField", "")
-	generate(adifSpec, adifSpec.Adif.DataTypes.Records, "aditype", "aditype", "ADIType", "")
+	generate(adifSpec, adifSpec.Adif.Fields.Records, "field", "field", "Field", "")
+	generate(adifSpec, adifSpec.Adif.DataTypes.Records, "datatype", "datatype", "DataType", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Ant_Path.Records, "enum", "antpath", "AntPath", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.ARRL_Section.Records, "enum", "arrlsection", "ARRLSection", "")
 	generate(adifSpec, adifSpec.Adif.Enumerations.Award.Records, "enum", "award", "Award", "")

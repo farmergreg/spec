@@ -2,6 +2,7 @@
 // ADIF: {{ .Spec.Adif.Version }} {{ .Spec.Adif.Status }}
 
 package {{ .PackageName }}
+
 var (
 {{- range $key, $value := .Records }}
 	{{ $.ConstPrefix}}{{ ConvertToGoIdentifier $value.Identifier }} {{ $.DataType }} = {{ $key }} // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.Description }}

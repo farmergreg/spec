@@ -1,5 +1,6 @@
 // GENERATED CODE; DO NOT EDIT
 // ADIF: 3.1.6 Proposed
+
 package spec
 
 // ADIFVersion is the version of the ADIF specification.
