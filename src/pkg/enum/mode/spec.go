@@ -1,6 +1,7 @@
 package mode
 
 import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -10,7 +11,7 @@ type Spec struct {
 	IsImportOnly    spectype.Boolean    `json:"Import-only,omitempty"`
 	Comments        string              `json:"Comments,omitempty"`
 	Id              string              `json:"Mode"` // Mode
-	Submodes        EnumModeSubModeList `json:"Submodes,omitempty"`
+	Submodes        submode.SubModeList `json:"Submodes,omitempty"`
 	Description     string              `json:"Description,omitempty"`
 }
 

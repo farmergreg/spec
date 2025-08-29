@@ -13,23 +13,19 @@ type DXCCEntityCode int
 // DXCCEntityCodeList represents a list of DXCC entity codes
 type DXCCEntityCodeList []DXCCEntityCode
 
-func (a *DXCCEntityCodeList) UnmarshalJSON(data []byte) error {
+func (d *DXCCEntityCodeList) UnmarshalJSON(data []byte) error {
 	var val string
 	if err := json.Unmarshal(data, &val); err != nil {
 		return err
 	}
 
-	codes := strings.Split(val, ",")
-	if len(codes) == 1 && codes[0] == "" {
-		codes = []string{}
-	}
-
-	for _, c := range codes {
+	codes := strings.SplitSeq(val, ",")
+	for c := range codes {
 		parsedCode, err := strconv.Atoi(c)
 		if err != nil {
 			return err
 		}
-		*a = append(*a, DXCCEntityCode(parsedCode))
+		*d = append(*d, DXCCEntityCode(parsedCode))
 	}
 
 	return nil
