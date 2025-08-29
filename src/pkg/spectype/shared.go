@@ -43,8 +43,8 @@ func (i *Integer) UnmarshalJSON(data []byte) error {
 // DateTime is a date/time stored in the ADIF JSON specification.
 type DateTime int64
 
-// AsTime converts DateTime to a standard time.Time representation
-func (d DateTime) AsTime() time.Time {
+// ToTime converts DateTime to a standard time.Time representation
+func (d DateTime) ToTime() time.Time {
 	return time.Unix(int64(d), 0)
 }
 
@@ -67,8 +67,8 @@ func (d *DateTime) UnmarshalJSON(data []byte) error {
 // DateOnly is a date stored in the ADIF JSON specification.
 type DateOnly int64
 
-// AsTime converts DateOnly to a standard time.Time representation
-func (d DateOnly) AsTime() time.Time {
+// ToTime converts DateOnly to a standard time.Time representation
+func (d DateOnly) ToTime() time.Time {
 	return time.Unix(int64(d), 0)
 }
 
