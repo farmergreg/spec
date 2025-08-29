@@ -4,8 +4,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// MorseKeyTypeSpec represents the specification for a single MorseKeyType
-type MorseKeyTypeSpec struct {
+// Spec represents the specification for a single MorseKeyType as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName  string                   `json:"Enumeration Name"`
 	IsImportOnly     spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments         string                   `json:"Comments,omitempty"`
@@ -16,8 +16,8 @@ type MorseKeyTypeSpec struct {
 	Examples         string                   `json:"Examples,omitempty"`
 }
 
-// SpecMap contains all MorseKeyTypeSpec specifications.
+// SpecMap contains all MorseKeyType specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string                          `json:"Header"`
-	Records map[MorseKeyType]MorseKeyTypeSpec `json:"Records"`
+	Header  []string              `json:"Header"`
+	Records map[MorseKeyType]Spec `json:"Records"`
 }

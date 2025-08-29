@@ -4,8 +4,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// AntPathSpec represents the specification for a single AntPath
-type AntPathSpec struct {
+// Spec represents the specification for a single AntPath as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
@@ -13,8 +13,8 @@ type AntPathSpec struct {
 	Description     string                   `json:"Meaning"`
 }
 
-// SpecMap contains all AntPathSpec specifications
+// SpecMap contains all AntPath specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string                `json:"Header"`
-	Records map[AntPath]AntPathSpec `json:"Records"`
+	Header  []string         `json:"Header"`
+	Records map[AntPath]Spec `json:"Records"`
 }

@@ -6,8 +6,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// DXCCEntityCodeSpec represents the specification for a single DXCCEntityCode
-type DXCCEntityCodeSpec struct {
+// Spec represents the specification for a single DXCCEntityCode as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
@@ -16,7 +16,7 @@ type DXCCEntityCodeSpec struct {
 	IsDeleted       spectype.AdifSpecBoolean `json:"Deleted,omitempty"`
 }
 
-func (d DXCCEntityCodeSpec) Identifier() string {
+func (d Spec) Identifier() string {
 	name := d.Description()
 
 	if strings.HasPrefix(name, "None ") {
@@ -30,12 +30,12 @@ func (d DXCCEntityCodeSpec) Identifier() string {
 	return name
 }
 
-func (d DXCCEntityCodeSpec) Description() string {
+func (d Spec) Description() string {
 	return d.EntityName
 }
 
-// SpecMap contains all DXCCEntityCodeSpec specifications.
+// SpecMap contains all DXCCEntityCode specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string                              `json:"Header"`
-	Records map[DXCCEntityCode]DXCCEntityCodeSpec `json:"Records"`
+	Header  []string                `json:"Header"`
+	Records map[DXCCEntityCode]Spec `json:"Records"`
 }

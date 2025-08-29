@@ -4,8 +4,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// SubmodeSpec represents the specification for a single Submode
-type SubmodeSpec struct {
+// Spec represents the specification for a single Submode as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
@@ -14,8 +14,8 @@ type SubmodeSpec struct {
 	Description     string                   `json:"Description,omitempty"`
 }
 
-// SpecMap contains all SubmodeSpec specifications.
+// SpecMap contains all Submode specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string                `json:"Header"`
-	Records map[SubMode]SubmodeSpec `json:"Records"`
+	Header  []string         `json:"Header"`
+	Records map[SubMode]Spec `json:"Records"`
 }

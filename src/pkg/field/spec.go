@@ -2,8 +2,8 @@ package field
 
 import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 
-// FieldSpec represents the specification for a single Field
-type FieldSpec struct {
+// Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	Id            string                   `json:"Field Name"` // Field Name
 	DataType      string                   `json:"Data Type"`
 	Enumeration   string                   `json:"Enumeration,omitempty"`
@@ -15,8 +15,8 @@ type FieldSpec struct {
 	Comments      string                   `json:"Comments,omitempty"`
 }
 
-// SpecMap contains all FieldSpec specifications.
+// SpecMap contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string             `json:"Header"`
-	Records map[string]FieldSpec `json:"Records"`
+	Header  []string        `json:"Header"`
+	Records map[string]Spec `json:"Records"`
 }

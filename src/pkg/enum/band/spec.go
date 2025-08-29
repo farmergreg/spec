@@ -6,8 +6,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// BandSpec represents the specification for a single Band
-type BandSpec struct {
+// Spec represents the specification for a single Band as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
@@ -16,12 +16,12 @@ type BandSpec struct {
 	UpperFreqMHz    MHz                      `json:"Upper Freq (MHz)"`
 }
 
-func (b BandSpec) Description() string {
+func (b Spec) Description() string {
 	return fmt.Sprintf("%-6s %12.4f MHz - %12.4f MHz", b.Id, b.LowerFreqMHz, b.UpperFreqMHz)
 }
 
-// SpecMap contains all BandSpec specifications.
+// SpecMap contains all Band specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string          `json:"Header"`
-	Records map[Band]BandSpec `json:"Records"`
+	Header  []string      `json:"Header"`
+	Records map[Band]Spec `json:"Records"`
 }

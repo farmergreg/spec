@@ -4,8 +4,8 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// AwardSponsorSpec represents the specification for a single AwardSponsor
-type AwardSponsorSpec struct {
+// Spec represents the specification for a single AwardSponsor as defined by the ADIF Workgroup specification exports.
+type Spec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
@@ -13,8 +13,8 @@ type AwardSponsorSpec struct {
 	Description     string                   `json:"Sponsoring Organization"` // Sponsoring Organization
 }
 
-// SpecMap contains all AwardSponsorSpec specifications.
+// SpecMap contains all AwardSponsor specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string                                `json:"Header"`
-	Records map[AwardSponsorPrefix]AwardSponsorSpec `json:"Records"`
+	Header  []string                    `json:"Header"`
+	Records map[AwardSponsorPrefix]Spec `json:"Records"`
 }
