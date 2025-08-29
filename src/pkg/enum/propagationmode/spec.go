@@ -13,8 +13,8 @@ type PropagationModeSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// PropagationModeSpecMap contains all PropagationModeSpec specifications.
-type PropagationModeSpecMap struct {
-	Header  []string           `json:"Header"`
+// SpecMap contains all PropagationModeSpec specifications.
+type SpecMap struct {
+	Header  []string                                `json:"Header"`
 	Records map[PropagationMode]PropagationModeSpec `json:"Records"`
 }

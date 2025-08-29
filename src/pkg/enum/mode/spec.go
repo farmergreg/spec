@@ -14,8 +14,8 @@ type ModeSpec struct {
 	Description     string                   `json:"Description,omitempty"`
 }
 
-// ModeSpecMap contains all ModeSpec specifications.
-type ModeSpecMap struct {
-	Header  []string    `json:"Header"`
+// SpecMap contains all ModeSpec specifications.
+type SpecMap struct {
+	Header  []string          `json:"Header"`
 	Records map[Mode]ModeSpec `json:"Records"`
 }

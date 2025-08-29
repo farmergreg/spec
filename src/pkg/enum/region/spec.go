@@ -22,8 +22,8 @@ func (r RegionSpec) Description() string {
 	return r.Region
 }
 
-// RegionSpecMap contains all RegionSpec specifications.
-type RegionSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all RegionSpec specifications.
+type SpecMap struct {
+	Header  []string              `json:"Header"`
 	Records map[Region]RegionSpec `json:"Records"`
 }

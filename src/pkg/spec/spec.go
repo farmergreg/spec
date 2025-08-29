@@ -39,36 +39,36 @@ type AdifSpec struct {
 		Status       string                    `json:"Status"`
 		Date         spectype.AdifSpecDateTime `json:"Date"`
 		Created      spectype.AdifSpecDateTime `json:"Created"`
-		DataTypes    datatype.DataTypeSpecMap  `json:"DataTypes"`
+		DataTypes    datatype.SpecMap          `json:"DataTypes"`
 		Enumerations Enumerations              `json:"Enumerations"`
-		Fields       field.FieldSpecMap        `json:"Fields"`
+		Fields       field.SpecMap             `json:"Fields"`
 	} `json:"Adif"`
 }
 
 type Enumerations struct {
-	Ant_Path                                 antpath.AntPathEnumerationSpecMap                                                  `json:"Ant_Path,omitempty"`
-	ARRL_Section                             arrlsection.ARRLSectionSpecMap                                                     `json:"ARRL_Section,omitempty"`
-	Award                                    award.AwardSpecMap                                                                 `json:"Award,omitempty"`
-	Award_Sponsor                            awardsponsor.AwardSponsorSpecMap                                                   `json:"Award_Sponsor,omitempty"`
-	Band                                     band.BandSpecMap                                                                   `json:"Band,omitempty"`
-	Contest_ID                               contest.ContestSpecMap                                                             `json:"Contest_ID,omitempty"`
-	Continent                                continent.ContinentSpecMap                                                         `json:"Continent,omitempty"`
-	Credit                                   credit.CreditSpecMap                                                               `json:"Credit,omitempty"`
-	DXCC_Entity_Code                         dxccentitycode.DXCCEntityCodeSpecMap                                               `json:"DXCC_Entity_Code,omitempty"`
-	EQSL_AG                                  eqslag.EQSLAGSpecMap                                                               `json:"EQSL_AG,omitempty"`
-	Mode                                     mode.ModeSpecMap                                                                   `json:"Mode,omitempty"`
-	Morse_Key_Type                           morsekeytype.MorseKeyTypeSpecMap                                                   `json:"Morse_Key_Type,omitempty"`
-	Primary_Administrative_Subdivision       primaryadministrativesubdivision.PrimaryAdministrativeSubdivisionSpecMap           `json:"Primary_Administrative_Subdivision,omitempty"`
-	Propagation_Mode                         propagationmode.PropagationModeSpecMap                                             `json:"Propagation_Mode,omitempty"`
-	QSL_Medium                               qslmedium.QSLMediumSpecMap                                                         `json:"QSL_Medium,omitempty"`
-	QSL_Rcvd                                 qslrcvd.QSLRcvdSpecMap                                                             `json:"QSL_Rcvd,omitempty"`
-	QSL_Sent                                 qslsent.QSLSentSpecMap                                                             `json:"QSL_Sent,omitempty"`
-	QSL_Via                                  qslvia.QSLViaSpecMap                                                               `json:"QSL_Via,omitempty"`
-	QSO_Complete                             qsocomplete.QSOCompleteSpecMap                                                     `json:"QSO_Complete,omitempty"`
-	QSO_Download_Status                      qsodownloadstatus.QSODownloadStatusSpecMap                                         `json:"QSO_Download_Status,omitempty"`
-	QSO_Upload_Status                        qsouploadstatus.QSOUploadStatusSpecMap                                             `json:"QSO_Upload_Status,omitempty"`
-	Region                                   region.RegionSpecMap                                                               `json:"Region,omitempty"`
-	Secondary_Administrative_Subdivision     secondaryadministrativesubdivision.SecondaryAdministrativeSubdivisionSpecMap       `json:"Secondary_Administrative_Subdivision,omitempty"`
-	Secondary_Administrative_Subdivision_Alt secondaryadministrativesubdivisionalt.SecondaryAdministrativeSubdivisionAltSpecMap `json:"Secondary_Administrative_Subdivision_Alt,omitempty"`
-	Submode                                  submode.SubmodeSpecMap                                                             `json:"Submode,omitempty"`
+	Ant_Path                                 antpath.SpecMap                               `json:"Ant_Path,omitempty"`
+	ARRL_Section                             arrlsection.SpecMap                           `json:"ARRL_Section,omitempty"`
+	Award                                    award.SpecMap                                 `json:"Award,omitempty"`
+	Award_Sponsor                            awardsponsor.SpecMap                          `json:"Award_Sponsor,omitempty"`
+	Band                                     band.SpecMap                                  `json:"Band,omitempty"`
+	Contest_ID                               contest.SpecMap                               `json:"Contest_ID,omitempty"`
+	Continent                                continent.SpecMap                             `json:"Continent,omitempty"`
+	Credit                                   credit.SpecMap                                `json:"Credit,omitempty"`
+	DXCC_Entity_Code                         dxccentitycode.SpecMap                        `json:"DXCC_Entity_Code,omitempty"`
+	EQSL_AG                                  eqslag.SpecMap                                `json:"EQSL_AG,omitempty"`
+	Mode                                     mode.SpecMap                                  `json:"Mode,omitempty"`
+	Morse_Key_Type                           morsekeytype.SpecMap                          `json:"Morse_Key_Type,omitempty"`
+	Primary_Administrative_Subdivision       primaryadministrativesubdivision.SpecMap      `json:"Primary_Administrative_Subdivision,omitempty"`
+	Propagation_Mode                         propagationmode.SpecMap                       `json:"Propagation_Mode,omitempty"`
+	QSL_Medium                               qslmedium.SpecMap                             `json:"QSL_Medium,omitempty"`
+	QSL_Rcvd                                 qslrcvd.SpecMap                               `json:"QSL_Rcvd,omitempty"`
+	QSL_Sent                                 qslsent.SpecMap                               `json:"QSL_Sent,omitempty"`
+	QSL_Via                                  qslvia.SpecMap                                `json:"QSL_Via,omitempty"`
+	QSO_Complete                             qsocomplete.SpecMap                           `json:"QSO_Complete,omitempty"`
+	QSO_Download_Status                      qsodownloadstatus.SpecMap                     `json:"QSO_Download_Status,omitempty"`
+	QSO_Upload_Status                        qsouploadstatus.SpecMap                       `json:"QSO_Upload_Status,omitempty"`
+	Region                                   region.SpecMap                                `json:"Region,omitempty"`
+	Secondary_Administrative_Subdivision     secondaryadministrativesubdivision.SpecMap    `json:"Secondary_Administrative_Subdivision,omitempty"`
+	Secondary_Administrative_Subdivision_Alt secondaryadministrativesubdivisionalt.SpecMap `json:"Secondary_Administrative_Subdivision_Alt,omitempty"`
+	Submode                                  submode.SpecMap                               `json:"Submode,omitempty"`
 }

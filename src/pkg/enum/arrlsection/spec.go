@@ -17,8 +17,8 @@ type ARRLSectionSpec struct {
 	DeletedDate     spectype.AdifSpecDateTime         `json:"Deleted Date,omitempty"`
 }
 
-// ARRLSectionSpecMap contains all ARRLSectionSpec specifications.
-type ARRLSectionSpecMap struct {
-	Header  []string           `json:"Header"`
+// SpecMap contains all ARRLSectionSpec specifications.
+type SpecMap struct {
+	Header  []string                        `json:"Header"`
 	Records map[ARRLSection]ARRLSectionSpec `json:"Records"`
 }

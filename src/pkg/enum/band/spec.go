@@ -20,8 +20,8 @@ func (b BandSpec) Description() string {
 	return fmt.Sprintf("%-6s %12.4f MHz - %12.4f MHz", b.Id, b.LowerFreqMHz, b.UpperFreqMHz)
 }
 
-// BandSpecMap contains all BandSpec specifications.
-type BandSpecMap struct {
-	Header  []string    `json:"Header"`
+// SpecMap contains all BandSpec specifications.
+type SpecMap struct {
+	Header  []string          `json:"Header"`
 	Records map[Band]BandSpec `json:"Records"`
 }

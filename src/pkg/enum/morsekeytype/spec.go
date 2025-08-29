@@ -16,8 +16,8 @@ type MorseKeyTypeSpec struct {
 	Examples         string                   `json:"Examples,omitempty"`
 }
 
-// MorseKeyTypeSpecMap contains all MorseKeyTypeSpec specifications.
-type MorseKeyTypeSpecMap struct {
-	Header  []string           `json:"Header"`
+// SpecMap contains all MorseKeyTypeSpec specifications.
+type SpecMap struct {
+	Header  []string                          `json:"Header"`
 	Records map[MorseKeyType]MorseKeyTypeSpec `json:"Records"`
 }

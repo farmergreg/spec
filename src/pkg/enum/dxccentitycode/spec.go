@@ -34,8 +34,8 @@ func (d DXCCEntityCodeSpec) Description() string {
 	return d.EntityName
 }
 
-// DXCCEntityCodeSpecMap contains all DXCCEntityCodeSpec specifications.
-type DXCCEntityCodeSpecMap struct {
-	Header  []string           `json:"Header"`
+// SpecMap contains all DXCCEntityCodeSpec specifications.
+type SpecMap struct {
+	Header  []string                              `json:"Header"`
 	Records map[DXCCEntityCode]DXCCEntityCodeSpec `json:"Records"`
 }

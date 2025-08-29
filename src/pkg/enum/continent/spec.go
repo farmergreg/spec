@@ -17,8 +17,8 @@ func (c ContinentSpec) Description() string {
 	return c.Continent
 }
 
-// ContinentSpecMap contains all ContinentSpec specifications.
-type ContinentSpecMap struct {
-	Header  []string        `json:"Header"`
+// SpecMap contains all ContinentSpec specifications.
+type SpecMap struct {
+	Header  []string                    `json:"Header"`
 	Records map[Continent]ContinentSpec `json:"Records"`
 }

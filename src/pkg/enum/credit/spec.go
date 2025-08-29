@@ -21,8 +21,8 @@ func (c CreditSpec) Description() string {
 	return fmt.Sprintf("%s %s %s", c.Sponsor, c.Award, c.Facet)
 }
 
-// CreditSpecMap contains all CreditSpec specifications.
-type CreditSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all CreditSpec specifications.
+type SpecMap struct {
+	Header  []string              `json:"Header"`
 	Records map[Credit]CreditSpec `json:"Records"`
 }

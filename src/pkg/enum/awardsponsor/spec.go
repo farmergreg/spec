@@ -13,8 +13,8 @@ type AwardSponsorSpec struct {
 	Description     string                   `json:"Sponsoring Organization"` // Sponsoring Organization
 }
 
-// AwardSponsorSpecMap contains all AwardSponsorSpec specifications.
-type AwardSponsorSpecMap struct {
-	Header  []string                    `json:"Header"`
+// SpecMap contains all AwardSponsorSpec specifications.
+type SpecMap struct {
+	Header  []string                                `json:"Header"`
 	Records map[AwardSponsorPrefix]AwardSponsorSpec `json:"Records"`
 }

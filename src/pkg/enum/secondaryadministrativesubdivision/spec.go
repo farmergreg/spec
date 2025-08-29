@@ -20,8 +20,8 @@ func (s SecondaryAdministrativeSubdivisionSpec) Description() string {
 	return s.SecondaryAdminSub
 }
 
-// SecondaryAdministrativeSubdivisionSpecMap contains all SecondaryAdministrativeSubdivisionSpec specifications.
-type SecondaryAdministrativeSubdivisionSpecMap struct {
-	Header  []string                           `json:"Header"`
+// SpecMap contains all SecondaryAdministrativeSubdivisionSpec specifications.
+type SpecMap struct {
+	Header  []string                                                                      `json:"Header"`
 	Records map[SecondaryAdministrativeSubdivision]SecondaryAdministrativeSubdivisionSpec `json:"Records"`
 }

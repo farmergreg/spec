@@ -13,8 +13,8 @@ type EQSLAGSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// EQSLAGSpecMap contains all EQSLAGSpec specifications.
-type EQSLAGSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all EQSLAGSpec specifications.
+type SpecMap struct {
+	Header  []string              `json:"Header"`
 	Records map[EQSLAG]EQSLAGSpec `json:"Records"`
 }

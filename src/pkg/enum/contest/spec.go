@@ -13,8 +13,8 @@ type ContestSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// ContestSpecMap contains all ContestSpec specifications.
-type ContestSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all ContestSpec specifications.
+type SpecMap struct {
+	Header  []string                `json:"Header"`
 	Records map[Contest]ContestSpec `json:"Records"`
 }

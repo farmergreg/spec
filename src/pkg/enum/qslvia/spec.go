@@ -13,8 +13,8 @@ type QSLViaSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// QSLViaSpecMap contains all QSLViaSpec specifications.
-type QSLViaSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all QSLViaSpec specifications.
+type SpecMap struct {
+	Header  []string              `json:"Header"`
 	Records map[QSLVia]QSLViaSpec `json:"Records"`
 }

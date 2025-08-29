@@ -13,8 +13,8 @@ type AntPathSpec struct {
 	Description     string                   `json:"Meaning"`
 }
 
-// AntPathEnumerationSpecMap contains all AntPathSpec specifications
-type AntPathEnumerationSpecMap struct {
-	Header  []string        `json:"Header"`
+// SpecMap contains all AntPathSpec specifications
+type SpecMap struct {
+	Header  []string                `json:"Header"`
 	Records map[AntPath]AntPathSpec `json:"Records"`
 }

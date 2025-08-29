@@ -13,8 +13,8 @@ type DataTypeSpec struct {
 	Comments          string                   `json:"Comments,omitempty"`
 }
 
-// DataTypeSpecMap contains all DataTypeSpec specifications.
-type DataTypeSpecMap struct {
+// SpecMap contains all DataTypeSpec specifications.
+type SpecMap struct {
 	Header  []string                `json:"Header"`
 	Records map[string]DataTypeSpec `json:"Records"`
 }

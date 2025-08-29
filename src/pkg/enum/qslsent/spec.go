@@ -14,8 +14,8 @@ type QSLSentSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// QSLSentSpecMap contains all QSLSentSpec specifications.
-type QSLSentSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all QSLSentSpec specifications.
+type SpecMap struct {
+	Header  []string                `json:"Header"`
 	Records map[QSLSent]QSLSentSpec `json:"Records"`
 }

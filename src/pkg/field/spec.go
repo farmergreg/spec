@@ -15,8 +15,8 @@ type FieldSpec struct {
 	Comments      string                   `json:"Comments,omitempty"`
 }
 
-// FieldSpecMap contains all FieldSpec specifications.
-type FieldSpecMap struct {
+// SpecMap contains all FieldSpec specifications.
+type SpecMap struct {
 	Header  []string             `json:"Header"`
 	Records map[string]FieldSpec `json:"Records"`
 }

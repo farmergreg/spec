@@ -14,8 +14,8 @@ type QSLRcvdSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// QSLRcvdSpecMap contains all QSLRcvdSpec specifications.
-type QSLRcvdSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all QSLRcvdSpec specifications.
+type SpecMap struct {
+	Header  []string                `json:"Header"`
 	Records map[QSLRcvd]QSLRcvdSpec `json:"Records"`
 }

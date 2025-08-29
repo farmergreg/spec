@@ -14,8 +14,8 @@ type SubmodeSpec struct {
 	Description     string                   `json:"Description,omitempty"`
 }
 
-// SubmodeSpecMap contains all SubmodeSpec specifications.
-type SubmodeSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all SubmodeSpec specifications.
+type SpecMap struct {
+	Header  []string                `json:"Header"`
 	Records map[SubMode]SubmodeSpec `json:"Records"`
 }

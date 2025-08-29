@@ -13,8 +13,8 @@ type QSODownloadStatusSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// QSODownloadStatusSpecMap contains all QSODownloadStatusSpec specifications.
-type QSODownloadStatusSpecMap struct {
-	Header  []string           `json:"Header"`
+// SpecMap contains all QSODownloadStatusSpec specifications.
+type SpecMap struct {
+	Header  []string                                    `json:"Header"`
 	Records map[QSODownloadStatus]QSODownloadStatusSpec `json:"Records"`
 }

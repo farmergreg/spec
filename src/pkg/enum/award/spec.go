@@ -16,8 +16,8 @@ func (a AwardSpec) Description() string {
 	return a.Id
 }
 
-// AwardSpecMap contains all AwardSpec specifications.
-type AwardSpecMap struct {
-	Header  []string     `json:"Header"`
+// SpecMap contains all AwardSpec specifications.
+type SpecMap struct {
+	Header  []string            `json:"Header"`
 	Records map[Award]AwardSpec `json:"Records"`
 }

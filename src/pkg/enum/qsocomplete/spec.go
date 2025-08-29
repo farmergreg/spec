@@ -13,8 +13,8 @@ type QSOCompleteSpec struct {
 	Description     string                   `json:"Meaning"`
 }
 
-// QSOCompleteSpecMap contains all QSOCompleteSpec specifications.
-type QSOCompleteSpecMap struct {
-	Header  []string        `json:"Header"`
+// SpecMap contains all QSOCompleteSpec specifications.
+type SpecMap struct {
+	Header  []string                        `json:"Header"`
 	Records map[QSOComplete]QSOCompleteSpec `json:"Records"`
 }

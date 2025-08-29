@@ -13,8 +13,8 @@ type QSLMediumSpec struct {
 	Description     string                   `json:"Description"`
 }
 
-// QSLMediumSpecMap contains all QSLMediumSpec specifications.
-type QSLMediumSpecMap struct {
-	Header  []string        `json:"Header"`
+// SpecMap contains all QSLMediumSpec specifications.
+type SpecMap struct {
+	Header  []string                    `json:"Header"`
 	Records map[QSLMedium]QSLMediumSpec `json:"Records"`
 }
