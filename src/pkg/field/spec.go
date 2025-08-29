@@ -17,6 +17,6 @@ type Spec struct {
 
 // SpecMap contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMap struct {
-	Header  []string        `json:"Header"`
-	Records map[string]Spec `json:"Records"`
+	Header  []string       `json:"Header"`
+	Records map[Field]Spec `json:"Records"`
 }

@@ -6,7 +6,7 @@ package {{ .PackageName }}
 var (
 {{- range $key, $value := .Records }}
 {{- if and $value.IsHeaderField (ne $value.Id "USERDEFn") }}
-	{{ ConvertToGoIdentifier $key }} {{ $.DataType }} = "{{ $key }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}Header Field: {{ $value.Description }}
+	{{ ConvertToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}Header Field: {{ $value.Description }}
 {{- end }}
 {{- end }}
 )
@@ -14,7 +14,7 @@ var (
 var (
 {{- range $key, $value := .Records }}
 {{- if and (not $value.IsHeaderField) }}
-	{{ ConvertToGoIdentifier $key }} {{ $.DataType }} = "{{ $key }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}Record Field: {{ $value.Description }}
+	{{ ConvertToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}Record Field: {{ $value.Description }}
 {{- end }}
 {{- end }}
 )
