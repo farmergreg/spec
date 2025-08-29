@@ -37,7 +37,7 @@ type AdifSpecContainer struct {
 	AdifSpec AdifSpec `json:"Adif"`
 }
 
-// This is the main ADIF specification structure
+// This is the main ADIF specification
 type AdifSpec struct {
 	Version   string            `json:"Version"`
 	Status    string            `json:"Status"`
@@ -48,7 +48,7 @@ type AdifSpec struct {
 	Enum      Enum              `json:"Enumerations"`
 }
 
-// Enumerations defined in the ADIF specification.
+// Enumerations defined in the ADIF specification
 type Enum struct {
 	Ant_Path                                 antpath.SpecMap                               `json:"Ant_Path,omitempty"`
 	ARRL_Section                             arrlsection.SpecMap                           `json:"ARRL_Section,omitempty"`
