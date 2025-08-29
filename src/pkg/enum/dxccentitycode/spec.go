@@ -1,9 +1,8 @@
-package spec
+package dxccentitycode
 
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -37,6 +36,6 @@ func (d DXCCEntityCodeSpec) Description() string {
 
 // DXCCEntityCodeSpecMap contains all DXCCEntityCodeSpec specifications.
 type DXCCEntityCodeSpecMap struct {
-	Header  []string                                             `json:"Header"`
-	Records map[dxccentitycode.DXCCEntityCode]DXCCEntityCodeSpec `json:"Records"`
+	Header  []string           `json:"Header"`
+	Records map[DXCCEntityCode]DXCCEntityCodeSpec `json:"Records"`
 }

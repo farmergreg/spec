@@ -1,7 +1,6 @@
-package spec
+package propagationmode
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/propagationmode"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type PropagationModeSpec struct {
 
 // PropagationModeSpecMap contains all PropagationModeSpec specifications.
 type PropagationModeSpecMap struct {
-	Header  []string                                                `json:"Header"`
-	Records map[propagationmode.PropagationMode]PropagationModeSpec `json:"Records"`
+	Header  []string           `json:"Header"`
+	Records map[PropagationMode]PropagationModeSpec `json:"Records"`
 }

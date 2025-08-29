@@ -1,9 +1,8 @@
-package spec
+package band
 
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/band"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -13,8 +12,8 @@ type BandSpec struct {
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
 	Id              string                   `json:"Band"` // Band
-	LowerFreqMHz    band.MHz                 `json:"Lower Freq (MHz)"`
-	UpperFreqMHz    band.MHz                 `json:"Upper Freq (MHz)"`
+	LowerFreqMHz    MHz                      `json:"Lower Freq (MHz)"`
+	UpperFreqMHz    MHz                      `json:"Upper Freq (MHz)"`
 }
 
 func (b BandSpec) Description() string {
@@ -23,6 +22,6 @@ func (b BandSpec) Description() string {
 
 // BandSpecMap contains all BandSpec specifications.
 type BandSpecMap struct {
-	Header  []string               `json:"Header"`
-	Records map[band.Band]BandSpec `json:"Records"`
+	Header  []string    `json:"Header"`
+	Records map[Band]BandSpec `json:"Records"`
 }

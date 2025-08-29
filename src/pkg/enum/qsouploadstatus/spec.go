@@ -1,7 +1,6 @@
-package spec
+package qsouploadstatus
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsouploadstatus"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type QSOUploadStatusSpec struct {
 
 // QSOUploadStatusSpecMap contains all QSOUploadStatusSpec specifications.
 type QSOUploadStatusSpecMap struct {
-	Header  []string                                                `json:"Header"`
-	Records map[qsouploadstatus.QSOUploadStatus]QSOUploadStatusSpec `json:"Records"`
+	Header  []string           `json:"Header"`
+	Records map[QSOUploadStatus]QSOUploadStatusSpec `json:"Records"`
 }

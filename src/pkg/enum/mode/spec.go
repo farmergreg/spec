@@ -1,7 +1,6 @@
-package spec
+package mode
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/mode"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -11,12 +10,12 @@ type ModeSpec struct {
 	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
 	Id              string                   `json:"Mode"` // Mode
-	Submodes        mode.EnumModeSubModeList `json:"Submodes,omitempty"`
+	Submodes        EnumModeSubModeList      `json:"Submodes,omitempty"`
 	Description     string                   `json:"Description,omitempty"`
 }
 
 // ModeSpecMap contains all ModeSpec specifications.
 type ModeSpecMap struct {
-	Header  []string               `json:"Header"`
-	Records map[mode.Mode]ModeSpec `json:"Records"`
+	Header  []string    `json:"Header"`
+	Records map[Mode]ModeSpec `json:"Records"`
 }

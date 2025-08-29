@@ -1,7 +1,6 @@
-package spec
+package region
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -25,6 +24,6 @@ func (r RegionSpec) Description() string {
 
 // RegionSpecMap contains all RegionSpec specifications.
 type RegionSpecMap struct {
-	Header  []string                     `json:"Header"`
-	Records map[region.Region]RegionSpec `json:"Records"`
+	Header  []string     `json:"Header"`
+	Records map[Region]RegionSpec `json:"Records"`
 }

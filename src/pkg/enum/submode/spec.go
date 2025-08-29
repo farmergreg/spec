@@ -1,7 +1,6 @@
-package spec
+package submode
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -17,6 +16,6 @@ type SubmodeSpec struct {
 
 // SubmodeSpecMap contains all SubmodeSpec specifications.
 type SubmodeSpecMap struct {
-	Header  []string                        `json:"Header"`
-	Records map[submode.SubMode]SubmodeSpec `json:"Records"`
+	Header  []string     `json:"Header"`
+	Records map[SubMode]SubmodeSpec `json:"Records"`
 }

@@ -1,7 +1,6 @@
-package spec
+package qslsent
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslsent"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -17,6 +16,6 @@ type QSLSentSpec struct {
 
 // QSLSentSpecMap contains all QSLSentSpec specifications.
 type QSLSentSpecMap struct {
-	Header  []string                        `json:"Header"`
-	Records map[qslsent.QSLSent]QSLSentSpec `json:"Records"`
+	Header  []string     `json:"Header"`
+	Records map[QSLSent]QSLSentSpec `json:"Records"`
 }

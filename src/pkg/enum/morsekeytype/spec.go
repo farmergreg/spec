@@ -1,7 +1,6 @@
-package spec
+package morsekeytype
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/morsekeytype"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -19,6 +18,6 @@ type MorseKeyTypeSpec struct {
 
 // MorseKeyTypeSpecMap contains all MorseKeyTypeSpec specifications.
 type MorseKeyTypeSpecMap struct {
-	Header  []string                                       `json:"Header"`
-	Records map[morsekeytype.MorseKeyType]MorseKeyTypeSpec `json:"Records"`
+	Header  []string           `json:"Header"`
+	Records map[MorseKeyType]MorseKeyTypeSpec `json:"Records"`
 }

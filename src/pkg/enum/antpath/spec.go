@@ -1,7 +1,6 @@
-package spec
+package antpath
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type AntPathSpec struct {
 
 // AntPathEnumerationSpecMap contains all AntPathSpec specifications
 type AntPathEnumerationSpecMap struct {
-	Header  []string                        `json:"Header"`
-	Records map[antpath.AntPath]AntPathSpec `json:"Records"`
+	Header  []string        `json:"Header"`
+	Records map[AntPath]AntPathSpec `json:"Records"`
 }

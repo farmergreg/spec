@@ -1,4 +1,4 @@
-package spec
+package field
 
 import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 

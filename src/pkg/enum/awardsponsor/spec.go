@@ -1,7 +1,6 @@
-package spec
+package awardsponsor
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/awardsponsor"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type AwardSponsorSpec struct {
 
 // AwardSponsorSpecMap contains all AwardSponsorSpec specifications.
 type AwardSponsorSpecMap struct {
-	Header  []string                                             `json:"Header"`
-	Records map[awardsponsor.AwardSponsorPrefix]AwardSponsorSpec `json:"Records"`
+	Header  []string                    `json:"Header"`
+	Records map[AwardSponsorPrefix]AwardSponsorSpec `json:"Records"`
 }

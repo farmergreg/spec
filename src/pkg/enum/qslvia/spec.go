@@ -1,7 +1,6 @@
-package spec
+package qslvia
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslvia"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type QSLViaSpec struct {
 
 // QSLViaSpecMap contains all QSLViaSpec specifications.
 type QSLViaSpecMap struct {
-	Header  []string                     `json:"Header"`
-	Records map[qslvia.QSLVia]QSLViaSpec `json:"Records"`
+	Header  []string     `json:"Header"`
+	Records map[QSLVia]QSLViaSpec `json:"Records"`
 }

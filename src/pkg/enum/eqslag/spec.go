@@ -1,7 +1,6 @@
-package spec
+package eqslag
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/eqslag"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type EQSLAGSpec struct {
 
 // EQSLAGSpecMap contains all EQSLAGSpec specifications.
 type EQSLAGSpecMap struct {
-	Header  []string                     `json:"Header"`
-	Records map[eqslag.EQSLAG]EQSLAGSpec `json:"Records"`
+	Header  []string     `json:"Header"`
+	Records map[EQSLAG]EQSLAGSpec `json:"Records"`
 }

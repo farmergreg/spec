@@ -1,7 +1,6 @@
-package spec
+package qslmedium
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type QSLMediumSpec struct {
 
 // QSLMediumSpecMap contains all QSLMediumSpec specifications.
 type QSLMediumSpecMap struct {
-	Header  []string                              `json:"Header"`
-	Records map[qslmedium.QSLMedium]QSLMediumSpec `json:"Records"`
+	Header  []string        `json:"Header"`
+	Records map[QSLMedium]QSLMediumSpec `json:"Records"`
 }

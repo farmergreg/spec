@@ -1,7 +1,6 @@
-package spec
+package qsocomplete
 
 import (
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsocomplete"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
@@ -16,6 +15,6 @@ type QSOCompleteSpec struct {
 
 // QSOCompleteSpecMap contains all QSOCompleteSpec specifications.
 type QSOCompleteSpecMap struct {
-	Header  []string                                    `json:"Header"`
-	Records map[qsocomplete.QSOComplete]QSOCompleteSpec `json:"Records"`
+	Header  []string        `json:"Header"`
+	Records map[QSOComplete]QSOCompleteSpec `json:"Records"`
 }
