@@ -10,21 +10,21 @@ import (
 // Boolean is a boolean stored in the ADIF JSON specification.
 type Boolean bool
 
-func (a *Boolean) UnmarshalJSON(data []byte) error {
+func (b *Boolean) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
 		return err
 	}
 
-	*a = strings.ToLower(strings.TrimSpace(val)) == "true"
+	*b = strings.ToLower(strings.TrimSpace(val)) == "true"
 	return nil
 }
 
 // Integer is an integer stored in the ADIF JSON specification.
 type Integer int
 
-func (a *Integer) UnmarshalJSON(data []byte) error {
+func (i *Integer) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -35,15 +35,20 @@ func (a *Integer) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = Integer(result)
+	*i = Integer(result)
 
 	return nil
 }
 
 // DateTime is a date/time stored in the ADIF JSON specification.
-type DateTime time.Time
+type DateTime int64
 
-func (a *DateTime) UnmarshalJSON(data []byte) error {
+// AsTime converts DateTime to a standard time.Time representation
+func (d DateTime) AsTime() time.Time {
+	return time.Unix(int64(d), 0)
+}
+
+func (d *DateTime) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -54,15 +59,20 @@ func (a *DateTime) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = DateTime(parsedDate)
+	*d = DateTime(parsedDate.Unix())
 
 	return nil
 }
 
 // DateOnly is a date stored in the ADIF JSON specification.
-type DateOnly time.Time
+type DateOnly int64
 
-func (a *DateOnly) UnmarshalJSON(data []byte) error {
+// AsTime converts DateOnly to a standard time.Time representation
+func (d DateOnly) AsTime() time.Time {
+	return time.Unix(int64(d), 0)
+}
+
+func (d *DateOnly) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -73,7 +83,7 @@ func (a *DateOnly) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = DateOnly(parsedDate)
+	*d = DateOnly(parsedDate.Unix())
 
 	return nil
 }
