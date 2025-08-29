@@ -35,17 +35,17 @@ import (
 // It can be used to import and process the ADIF Workgroup's all.json specification export.
 type AdifSpec struct {
 	Adif struct {
-		Version      string                    `json:"Version"`
-		Status       string                    `json:"Status"`
-		Date         spectype.AdifSpecDateTime `json:"Date"`
-		Created      spectype.AdifSpecDateTime `json:"Created"`
-		DataTypes    datatype.SpecMap          `json:"DataTypes"`
-		Enumerations Enumerations              `json:"Enumerations"`
-		Fields       field.SpecMap             `json:"Fields"`
+		Version   string                    `json:"Version"`
+		Status    string                    `json:"Status"`
+		Date      spectype.AdifSpecDateTime `json:"Date"`
+		Created   spectype.AdifSpecDateTime `json:"Created"`
+		DataTypes datatype.SpecMap          `json:"DataTypes"`
+		Fields    field.SpecMap             `json:"Fields"`
+		Enum      Enum                      `json:"Enumerations"`
 	} `json:"Adif"`
 }
 
-type Enumerations struct {
+type Enum struct {
 	Ant_Path                                 antpath.SpecMap                               `json:"Ant_Path,omitempty"`
 	ARRL_Section                             arrlsection.SpecMap                           `json:"ARRL_Section,omitempty"`
 	Award                                    award.SpecMap                                 `json:"Award,omitempty"`
