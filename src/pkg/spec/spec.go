@@ -31,6 +31,12 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
+// This is the root object for JSON unmarshaling.
+// It can be used to import and process the ADIF Workgroup's all.json specification export.
+type AdifSpecContainer struct {
+	AdifSpec AdifSpec `json:"Adif"`
+}
+
 // This is the main ADIF specification structure
 type AdifSpec struct {
 	Version   string                    `json:"Version"`
@@ -42,12 +48,7 @@ type AdifSpec struct {
 	Enum      Enum                      `json:"Enumerations"`
 }
 
-// This is the root object for JSON unmarshaling.
-// It can be used to import and process the ADIF Workgroup's all.json specification export.
-type AdifSpecContainer struct {
-	AdifSpec AdifSpec `json:"Adif"`
-}
-
+// Enumerations defined in the ADIF specification.
 type Enum struct {
 	Ant_Path                                 antpath.SpecMap                               `json:"Ant_Path,omitempty"`
 	ARRL_Section                             arrlsection.SpecMap                           `json:"ARRL_Section,omitempty"`
