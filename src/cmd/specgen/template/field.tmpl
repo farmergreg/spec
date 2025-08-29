@@ -18,16 +18,3 @@ var (
 {{- end }}
 {{- end }}
 )
-
-// IsValid returns true if the {{ .DataType }} exists in the ADIF specification. This includes Import Only and Deleted values.
-func IsValid(value {{ .DataType }}) bool {
-	switch value{
-{{- range $key, $value := .Records }}
-{{- if ne $value.Id "USERDEFn" }}
-	case {{ $.ConstPrefix}}{{ ConvertToGoIdentifier $key }}:
-		return true
-{{- end }}
-{{- end }}
-	}
-	return false
-}
