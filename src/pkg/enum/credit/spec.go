@@ -8,13 +8,13 @@ import (
 
 // Spec represents the specification for a single Credit as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	EnumerationName string                   `json:"Enumeration Name"`
-	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string                   `json:"Comments,omitempty"`
-	Id              string                   `json:"Credit For"` // Credit For
-	Sponsor         string                   `json:"Sponsor"`
-	Award           string                   `json:"Award"`
-	Facet           string                   `json:"Facet"`
+	EnumerationName string           `json:"Enumeration Name"`
+	IsImportOnly    spectype.Boolean `json:"Import-only,omitempty"`
+	Comments        string           `json:"Comments,omitempty"`
+	Id              string           `json:"Credit For"` // Credit For
+	Sponsor         string           `json:"Sponsor"`
+	Award           string           `json:"Award"`
+	Facet           string           `json:"Facet"`
 }
 
 func (c Spec) Description() string {

@@ -1,9 +1,9 @@
-package datatype
+package spec
 
 import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 
-// Spec represents the specification for a single DataType as defined by the ADIF Workgroup specification exports.
-type Spec struct {
+// DataTypeSpec represents the specification for a single DataType
+type DataTypeSpec struct {
 	Id                string           `json:"Data Type Name"` // Data Type Name
 	DataTypeIndicator string           `json:"Data Type Indicator,omitempty"`
 	Description       string           `json:"Description"`
@@ -13,8 +13,8 @@ type Spec struct {
 	Comments          string           `json:"Comments,omitempty"`
 }
 
-// SpecMap contains all DataType specifications as defined by the ADIF Workgroup specification exports.
-type SpecMap struct {
-	Header  []string        `json:"Header"`
-	Records map[string]Spec `json:"Records"`
+// DataTypeSpecMap contains all DataTypeSpec specifications.
+type DataTypeSpecMap struct {
+	Header  []string                `json:"Header"`
+	Records map[string]DataTypeSpec `json:"Records"`
 }

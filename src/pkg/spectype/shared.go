@@ -7,10 +7,10 @@ import (
 	"time"
 )
 
-// AdifSpecBoolean is a boolean stored in the ADIF JSON specification.
-type AdifSpecBoolean bool
+// Boolean is a boolean stored in the ADIF JSON specification.
+type Boolean bool
 
-func (a *AdifSpecBoolean) UnmarshalJSON(data []byte) error {
+func (a *Boolean) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -21,10 +21,10 @@ func (a *AdifSpecBoolean) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// AdifSpecInteger is an integer stored in the ADIF JSON specification.
-type AdifSpecInteger int
+// Integer is an integer stored in the ADIF JSON specification.
+type Integer int
 
-func (a *AdifSpecInteger) UnmarshalJSON(data []byte) error {
+func (a *Integer) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -35,15 +35,15 @@ func (a *AdifSpecInteger) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = AdifSpecInteger(result)
+	*a = Integer(result)
 
 	return nil
 }
 
-// AdifSpecDateTime is a date/time stored in the ADIF JSON specification.
-type AdifSpecDateTime time.Time
+// DateTime is a date/time stored in the ADIF JSON specification.
+type DateTime time.Time
 
-func (a *AdifSpecDateTime) UnmarshalJSON(data []byte) error {
+func (a *DateTime) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -54,15 +54,15 @@ func (a *AdifSpecDateTime) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = AdifSpecDateTime(parsedDate)
+	*a = DateTime(parsedDate)
 
 	return nil
 }
 
-// AdifSpecDateOnly is a date stored in the ADIF JSON specification.
-type AdifSpecDateOnly time.Time
+// DateOnly is a date stored in the ADIF JSON specification.
+type DateOnly time.Time
 
-func (a *AdifSpecDateOnly) UnmarshalJSON(data []byte) error {
+func (a *DateOnly) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
 	if err != nil {
@@ -73,7 +73,7 @@ func (a *AdifSpecDateOnly) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	*a = AdifSpecDateOnly(parsedDate)
+	*a = DateOnly(parsedDate)
 
 	return nil
 }

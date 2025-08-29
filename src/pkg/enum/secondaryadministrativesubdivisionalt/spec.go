@@ -6,14 +6,14 @@ import (
 
 // Spec represents the specification for a single SecondaryAdministrativeSubdivisionAlt as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	EnumerationName string                   `json:"Enumeration Name"`
-	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string                   `json:"Comments,omitempty"`
-	Id              string                   `json:"Code"`             // Code
-	DXCCEntityCode  string                   `json:"DXCC Entity Code"` // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
-	Region          string                   `json:"Region"`
-	District        string                   `json:"District"`
-	IsDeleted       spectype.AdifSpecBoolean `json:"Deleted,omitempty"`
+	EnumerationName string           `json:"Enumeration Name"`
+	IsImportOnly    spectype.Boolean `json:"Import-only,omitempty"`
+	Comments        string           `json:"Comments,omitempty"`
+	Id              string           `json:"Code"`             // Code
+	DXCCEntityCode  string           `json:"DXCC Entity Code"` // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
+	Region          string           `json:"Region"`
+	District        string           `json:"District"`
+	IsDeleted       spectype.Boolean `json:"Deleted,omitempty"`
 }
 
 func (s Spec) Description() string {

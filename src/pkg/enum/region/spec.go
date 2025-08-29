@@ -6,16 +6,16 @@ import (
 
 // Spec represents the specification for a single Region as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	EnumerationName string                    `json:"Enumeration Name"`
-	IsImportOnly    spectype.AdifSpecBoolean  `json:"Import-only,omitempty"`
-	Comments        string                    `json:"Comments,omitempty"`
-	Id              string                    `json:"Region Entity Code"` // Region Entity Code
-	DXCCEntityCode  string                    `json:"DXCC Entity Code"`   // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
-	Region          string                    `json:"Region"`
-	Prefix          string                    `json:"Prefix,omitempty"`
-	Applicability   string                    `json:"Applicability,omitempty"`
-	StartDate       spectype.AdifSpecDateOnly `json:"Start Date,omitempty"`
-	EndDate         spectype.AdifSpecDateOnly `json:"End Date,omitempty"`
+	EnumerationName string            `json:"Enumeration Name"`
+	IsImportOnly    spectype.Boolean  `json:"Import-only,omitempty"`
+	Comments        string            `json:"Comments,omitempty"`
+	Id              string            `json:"Region Entity Code"` // Region Entity Code
+	DXCCEntityCode  string            `json:"DXCC Entity Code"`   // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
+	Region          string            `json:"Region"`
+	Prefix          string            `json:"Prefix,omitempty"`
+	Applicability   string            `json:"Applicability,omitempty"`
+	StartDate       spectype.DateOnly `json:"Start Date,omitempty"`
+	EndDate         spectype.DateOnly `json:"End Date,omitempty"`
 }
 
 func (r Spec) Description() string {

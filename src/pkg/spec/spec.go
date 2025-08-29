@@ -39,13 +39,13 @@ type AdifSpecContainer struct {
 
 // This is the main ADIF specification structure
 type AdifSpec struct {
-	Version   string                    `json:"Version"`
-	Status    string                    `json:"Status"`
-	Date      spectype.AdifSpecDateTime `json:"Date"`
-	Created   spectype.AdifSpecDateTime `json:"Created"`
-	DataTypes datatype.SpecMap          `json:"DataTypes"`
-	Fields    field.SpecMap             `json:"Fields"`
-	Enum      Enum                      `json:"Enumerations"`
+	Version   string            `json:"Version"`
+	Status    string            `json:"Status"`
+	Date      spectype.DateTime `json:"Date"`
+	Created   spectype.DateTime `json:"Created"`
+	DataTypes datatype.SpecMap  `json:"DataTypes"`
+	Fields    field.SpecMap     `json:"Fields"`
+	Enum      Enum              `json:"Enumerations"`
 }
 
 // Enumerations defined in the ADIF specification.

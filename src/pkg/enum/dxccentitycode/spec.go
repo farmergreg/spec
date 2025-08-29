@@ -8,12 +8,12 @@ import (
 
 // Spec represents the specification for a single DXCCEntityCode as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	EnumerationName string                   `json:"Enumeration Name"`
-	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string                   `json:"Comments,omitempty"`
-	Id              string                   `json:"Entity Code"` // Entity Code
-	EntityName      string                   `json:"Entity Name"`
-	IsDeleted       spectype.AdifSpecBoolean `json:"Deleted,omitempty"`
+	EnumerationName string           `json:"Enumeration Name"`
+	IsImportOnly    spectype.Boolean `json:"Import-only,omitempty"`
+	Comments        string           `json:"Comments,omitempty"`
+	Id              string           `json:"Entity Code"` // Entity Code
+	EntityName      string           `json:"Entity Name"`
+	IsDeleted       spectype.Boolean `json:"Deleted,omitempty"`
 }
 
 func (d Spec) Identifier() string {
