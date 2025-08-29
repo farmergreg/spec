@@ -1,5 +1,5 @@
 // GENERATED CODE; DO NOT EDIT
-// ADIF: {{ .Spec.Adif.Version }} {{ .Spec.Adif.Status }}
+// ADIF: {{ .Spec.Version }} {{ .Spec.Status }}
 
 package {{ .PackageName }}
 
@@ -8,5 +8,3 @@ var (
 	{{ $.ConstPrefix}}{{ ConvertToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.Description }}
 {{- end }}
 )
-
-var Map = {{ ConvertToGoCode .Records }}

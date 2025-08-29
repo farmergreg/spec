@@ -31,18 +31,21 @@ import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-// This is the root object.
-// It can be used to import and process the ADIF Workgroup's all.json specification export.
+// This is the main ADIF specification structure
 type AdifSpec struct {
-	Adif struct {
-		Version   string                    `json:"Version"`
-		Status    string                    `json:"Status"`
-		Date      spectype.AdifSpecDateTime `json:"Date"`
-		Created   spectype.AdifSpecDateTime `json:"Created"`
-		DataTypes datatype.SpecMap          `json:"DataTypes"`
-		Fields    field.SpecMap             `json:"Fields"`
-		Enum      Enum                      `json:"Enumerations"`
-	} `json:"Adif"`
+	Version   string                    `json:"Version"`
+	Status    string                    `json:"Status"`
+	Date      spectype.AdifSpecDateTime `json:"Date"`
+	Created   spectype.AdifSpecDateTime `json:"Created"`
+	DataTypes datatype.SpecMap          `json:"DataTypes"`
+	Fields    field.SpecMap             `json:"Fields"`
+	Enum      Enum                      `json:"Enumerations"`
+}
+
+// This is the root object for JSON unmarshaling.
+// It can be used to import and process the ADIF Workgroup's all.json specification export.
+type AdifSpecContainer struct {
+	AdifSpec AdifSpec `json:"Adif"`
 }
 
 type Enum struct {

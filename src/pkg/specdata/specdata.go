@@ -21,9 +21,11 @@ var (
 // Returns a copy of the ADIF Workgroup Specification as defined in their all.json export.
 func GetADIFSpec() spec.AdifSpec {
 	once.Do(func() {
-		if err := json.Unmarshal(jsonData, &adifSpec); err != nil {
+		var container spec.AdifSpecContainer
+		if err := json.Unmarshal(jsonData, &container); err != nil {
 			panic(err)
 		}
+		adifSpec = &container.AdifSpec
 	})
 	return *adifSpec
 }
