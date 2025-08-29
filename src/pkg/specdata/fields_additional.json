@@ -232,11 +232,5 @@
     "Data Type": "String",
     "Description": "specifies the name and optional enumeration or range of the nth user-defined field, where n is a positive integer The name of a user-defined field may not be an ADIF Field name contain a comma a colon an open-angle-bracket or close-angle-bracket character an open-curly-bracket or close-curly-bracket character begin or end with a space character",
     "Header Field": "true"
-  },
-  "USERDEF10": {
-    "Field Name": "USERDEF10",
-    "Data Type": "String",
-    "Description": "specifies the name and optional enumeration or range of the nth user-defined field, where n is a positive integer The name of a user-defined field may not be an ADIF Field name contain a comma a colon an open-angle-bracket or close-angle-bracket character an open-curly-bracket or close-curly-bracket character begin or end with a space character",
-    "Header Field": "true"
   }
 }
