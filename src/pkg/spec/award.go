@@ -1,13 +1,16 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/award"
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/award"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+)
 
 // AwardSpec represents the specification for a single Award
 type AwardSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-	Id              string          `json:"Award"` // Award
+	EnumerationName string                   `json:"Enumeration Name"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string                   `json:"Comments,omitempty"`
+	Id              string                   `json:"Award"` // Award
 }
 
 func (a AwardSpec) Description() string {

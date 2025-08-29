@@ -2,12 +2,13 @@ package spec
 
 import (
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/mode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
 // ModeSpec represents the specification for a single Mode
 type ModeSpec struct {
 	EnumerationName string                   `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean          `json:"Import-only,omitempty"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
 	Comments        string                   `json:"Comments,omitempty"`
 	Id              string                   `json:"Mode"` // Mode
 	Submodes        mode.EnumModeSubModeList `json:"Submodes,omitempty"`

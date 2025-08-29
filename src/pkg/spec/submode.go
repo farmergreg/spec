@@ -1,15 +1,18 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+)
 
 // SubmodeSpec represents the specification for a single Submode
 type SubmodeSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-	Id              string          `json:"Submode"` // Submode
-	Mode            string          `json:"Mode"`
-	Description     string          `json:"Description,omitempty"`
+	EnumerationName string                   `json:"Enumeration Name"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string                   `json:"Comments,omitempty"`
+	Id              string                   `json:"Submode"` // Submode
+	Mode            string                   `json:"Mode"`
+	Description     string                   `json:"Description,omitempty"`
 }
 
 // SubmodeSpecMap contains all SubmodeSpec specifications.

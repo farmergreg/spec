@@ -1,14 +1,17 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/continent"
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/continent"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+)
 
 // ContinentSpec represents the specification for a single Continent
 type ContinentSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-	Id              string          `json:"Abbreviation"` // Abbreviation
-	Continent       string          `json:"Continent"`
+	EnumerationName string                   `json:"Enumeration Name"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string                   `json:"Comments,omitempty"`
+	Id              string                   `json:"Abbreviation"` // Abbreviation
+	Continent       string                   `json:"Continent"`
 }
 
 func (c ContinentSpec) Description() string {

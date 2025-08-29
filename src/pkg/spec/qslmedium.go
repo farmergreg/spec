@@ -1,14 +1,17 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+)
 
 // QSLMediumSpec represents the specification for a single QSLMedium
 type QSLMediumSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-	Id              string          `json:"Medium"` // Medium
-	Description     string          `json:"Description"`
+	EnumerationName string                   `json:"Enumeration Name"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string                   `json:"Comments,omitempty"`
+	Id              string                   `json:"Medium"` // Medium
+	Description     string                   `json:"Description"`
 }
 
 // QSLMediumSpecMap contains all QSLMediumSpec specifications.

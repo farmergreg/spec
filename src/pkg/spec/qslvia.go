@@ -1,14 +1,17 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslvia"
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslvia"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+)
 
 // QSLViaSpec represents the specification for a single QSLVia
 type QSLViaSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-	Id              string          `json:"Via"` // Via
-	Description     string          `json:"Description"`
+	EnumerationName string                   `json:"Enumeration Name"`
+	IsImportOnly    spectype.AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string                   `json:"Comments,omitempty"`
+	Id              string                   `json:"Via"` // Via
+	Description     string                   `json:"Description"`
 }
 
 // QSLViaSpecMap contains all QSLViaSpec specifications.

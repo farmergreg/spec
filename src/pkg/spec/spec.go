@@ -1,16 +1,18 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+
 // This is the root object.
 // It can be used to import and process the ADIF Workgroup's all.json specification export.
 type AdifSpec struct {
 	Adif struct {
-		Version      string           `json:"Version"`
-		Status       string           `json:"Status"`
-		Date         AdifSpecDateTime `json:"Date"`
-		Created      AdifSpecDateTime `json:"Created"`
-		DataTypes    DataTypeSpecMap  `json:"DataTypes"`
-		Enumerations Enumerations     `json:"Enumerations"`
-		Fields       FieldSpecMap     `json:"Fields"`
+		Version      string                    `json:"Version"`
+		Status       string                    `json:"Status"`
+		Date         spectype.AdifSpecDateTime `json:"Date"`
+		Created      spectype.AdifSpecDateTime `json:"Created"`
+		DataTypes    DataTypeSpecMap           `json:"DataTypes"`
+		Enumerations Enumerations              `json:"Enumerations"`
+		Fields       FieldSpecMap              `json:"Fields"`
 	} `json:"Adif"`
 }
 
