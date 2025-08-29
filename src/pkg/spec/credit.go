@@ -6,11 +6,13 @@ import (
 
 // CreditSpec represents the specification for a single Credit
 type CreditSpec struct {
-	BaseEnumerationSpec
-	Id      string `json:"Credit For"` // Credit For
-	Sponsor string `json:"Sponsor"`
-	Award   string `json:"Award"`
-	Facet   string `json:"Facet"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Credit For"` // Credit For
+	Sponsor         string          `json:"Sponsor"`
+	Award           string          `json:"Award"`
+	Facet           string          `json:"Facet"`
 }
 
 func (c CreditSpec) Description() string {

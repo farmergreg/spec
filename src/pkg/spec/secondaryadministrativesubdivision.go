@@ -2,7 +2,9 @@ package spec
 
 // SecondaryAdministrativeSubdivisionSpec represents the specification for a single SecondaryAdministrativeSubdivision
 type SecondaryAdministrativeSubdivisionSpec struct {
-	BaseEnumerationSpec
+	EnumerationName        string          `json:"Enumeration Name"`
+	IsImportOnly           AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments               string          `json:"Comments,omitempty"`
 	Id                     string          `json:"Code"` // Code
 	SecondaryAdminSub      string          `json:"Secondary Administrative Subdivision"`
 	DXCCEntityCode         string          `json:"DXCC Entity Code"`

@@ -2,9 +2,11 @@ package spec
 
 // QSLMediumSpec represents the specification for a single QSLMedium
 type QSLMediumSpec struct {
-	BaseEnumerationSpec
-	Id          string `json:"Medium"` // Medium
-	Description string `json:"Description"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Medium"` // Medium
+	Description     string          `json:"Description"`
 }
 
 // QSLMediumSpecMap contains all QSLMediumSpec specifications.

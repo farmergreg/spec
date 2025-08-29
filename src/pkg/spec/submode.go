@@ -2,10 +2,12 @@ package spec
 
 // SubmodeSpec represents the specification for a single Submode
 type SubmodeSpec struct {
-	BaseEnumerationSpec
-	Id          string `json:"Submode"` // Submode
-	Mode        string `json:"Mode"`
-	Description string `json:"Description,omitempty"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Submode"` // Submode
+	Mode            string          `json:"Mode"`
+	Description     string          `json:"Description,omitempty"`
 }
 
 // SubmodeSpecMap contains all SubmodeSpec specifications.

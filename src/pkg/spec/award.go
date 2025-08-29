@@ -2,8 +2,10 @@ package spec
 
 // AwardSpec represents the specification for a single Award
 type AwardSpec struct {
-	BaseEnumerationSpec
-	Id string `json:"Award"` // Award
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Award"` // Award
 }
 
 func (a AwardSpec) Description() string {

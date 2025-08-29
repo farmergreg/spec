@@ -2,7 +2,9 @@ package spec
 
 // PrimaryAdministrativeSubdivisionSpec represents the specification for a single PrimaryAdministrativeSubdivision
 type PrimaryAdministrativeSubdivisionSpec struct {
-	BaseEnumerationSpec
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
 	Code            string          `json:"Code"` // Code
 	PrimaryAdminSub string          `json:"Primary Administrative Subdivision"`
 	DXCCEntityCode  string          `json:"DXCC Entity Code"`

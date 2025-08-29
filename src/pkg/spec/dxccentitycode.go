@@ -6,10 +6,12 @@ import (
 
 // DXCCEntityCodeSpec represents the specification for a single DXCCEntityCode
 type DXCCEntityCodeSpec struct {
-	BaseEnumerationSpec
-	Id         string          `json:"Entity Code"` // Entity Code
-	EntityName string          `json:"Entity Name"`
-	IsDeleted  AdifSpecBoolean `json:"Deleted,omitempty"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Entity Code"` // Entity Code
+	EntityName      string          `json:"Entity Name"`
+	IsDeleted       AdifSpecBoolean `json:"Deleted,omitempty"`
 }
 
 func (d DXCCEntityCodeSpec) Identifier() string {

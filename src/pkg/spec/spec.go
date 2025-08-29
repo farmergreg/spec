@@ -14,13 +14,6 @@ type AdifSpec struct {
 	} `json:"Adif"`
 }
 
-// BaseEnumerationSpec contains common fields present in all enumerations
-type BaseEnumerationSpec struct {
-	EnumerationName string          `json:"Enumeration Name"`
-	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
-	Comments        string          `json:"Comments,omitempty"`
-}
-
 type Enumerations struct {
 	Ant_Path                                 AntPathEnumerationSpecMap                    `json:"Ant_Path,omitempty"`
 	ARRL_Section                             ARRLSectionSpecMap                           `json:"ARRL_Section,omitempty"`

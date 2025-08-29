@@ -2,9 +2,11 @@ package spec
 
 // ContinentSpec represents the specification for a single Continent
 type ContinentSpec struct {
-	BaseEnumerationSpec
-	Id        string `json:"Abbreviation"` // Abbreviation
-	Continent string `json:"Continent"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Abbreviation"` // Abbreviation
+	Continent       string          `json:"Continent"`
 }
 
 func (c ContinentSpec) Description() string {

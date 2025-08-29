@@ -2,9 +2,11 @@ package spec
 
 // AwardSponsorSpec represents the specification for a single AwardSponsor
 type AwardSponsorSpec struct {
-	BaseEnumerationSpec
-	Id          string `json:"Sponsor"`                 // Sponsor Prefix
-	Description string `json:"Sponsoring Organization"` // Sponsoring Organization
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Sponsor"`                 // Sponsor Prefix
+	Description     string          `json:"Sponsoring Organization"` // Sponsoring Organization
 }
 
 // AwardSponsorSpecMap contains all AwardSponsorSpec specifications.

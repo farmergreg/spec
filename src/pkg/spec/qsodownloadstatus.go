@@ -2,9 +2,11 @@ package spec
 
 // QSODownloadStatusSpec represents the specification for a single QSODownloadStatus
 type QSODownloadStatusSpec struct {
-	BaseEnumerationSpec
-	Id          string `json:"Status"` // Status
-	Description string `json:"Description"`
+	EnumerationName string          `json:"Enumeration Name"`
+	IsImportOnly    AdifSpecBoolean `json:"Import-only,omitempty"`
+	Comments        string          `json:"Comments,omitempty"`
+	Id              string          `json:"Status"` // Status
+	Description     string          `json:"Description"`
 }
 
 // QSODownloadStatusSpecMap contains all QSODownloadStatusSpec specifications.
