@@ -44,11 +44,11 @@ func GetADIFSpec() spec.AdifSpec {
 		delete(container.AdifSpec.Fields.Records, "USERDEFn")
 
 		// Step 3: Add Extra Fields
-		var additionalFields map[field.Field]field.Spec
-		if err := json.Unmarshal(extraFieldData, &additionalFields); err != nil {
+		var extraFields map[field.Field]field.Spec
+		if err := json.Unmarshal(extraFieldData, &extraFields); err != nil {
 			panic(err)
 		}
-		maps.Copy(container.AdifSpec.Fields.Records, additionalFields)
+		maps.Copy(container.AdifSpec.Fields.Records, extraFields)
 
 		adifSpec = &container.AdifSpec
 	})
