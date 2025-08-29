@@ -61,7 +61,7 @@ func main() {
 	generate(adifSpec, adifSpec.Adif.Enumerations.Submode.Records, "enum", "submode", "SubMode", "SubMode")
 }
 
-func generate(spec spec.AdifSpec, records any, tmplName, packageName, typeName, constPrefix string) {
+func generate(spec spec.AdifSpec, records any, tmplName, packageName, dataType, constPrefix string) {
 	fileName := filepath.Join("src/cmd/specgen/template/", tmplName+".tmpl")
 
 	tmpl := template.New(tmplName + ".tmpl").Funcs(tmplFuncs)
@@ -73,7 +73,7 @@ func generate(spec spec.AdifSpec, records any, tmplName, packageName, typeName, 
 	var buf strings.Builder
 	err = tmpl.Execute(&buf, ViewBag{
 		Spec:        spec,
-		DataType:    typeName,
+		DataType:    dataType,
 		PackageName: packageName,
 		Records:     records,
 		ConstPrefix: constPrefix,

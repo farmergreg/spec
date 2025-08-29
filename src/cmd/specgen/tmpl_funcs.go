@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"strings"
 )
@@ -8,6 +9,7 @@ import (
 var tmplFuncs = template.FuncMap{
 	"Split":                 strings.Split,
 	"ConvertToGoIdentifier": convertToGoIdentifier,
+	"ConvertToGoCode":       convertToGoCode,
 }
 
 func convertToGoIdentifier(s string) string {
@@ -28,4 +30,8 @@ func convertToGoIdentifier(s string) string {
 	result = strings.ReplaceAll(result, "__", "_")
 	result = strings.TrimSuffix(result, "_")
 	return result
+}
+
+func convertToGoCode(a any) string {
+	return fmt.Sprintf("%#v", a)
 }
