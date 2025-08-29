@@ -4,7 +4,7 @@ import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 
 // Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Id            string           `json:"Field Name"` // Field Name
+	Id            Field            `json:"Field Name"` // Field Name
 	DataType      string           `json:"Data Type"`
 	Enumeration   string           `json:"Enumeration,omitempty"`
 	Description   string           `json:"Description"`
