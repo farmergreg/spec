@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/awardsponsor"
+
 // AwardSponsorSpec represents the specification for a single AwardSponsor
 type AwardSponsorSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -11,6 +13,6 @@ type AwardSponsorSpec struct {
 
 // AwardSponsorSpecMap contains all AwardSponsorSpec specifications.
 type AwardSponsorSpecMap struct {
-	Header  []string                    `json:"Header"`
-	Records map[string]AwardSponsorSpec `json:"Records"`
+	Header  []string                                             `json:"Header"`
+	Records map[awardsponsor.AwardSponsorPrefix]AwardSponsorSpec `json:"Records"`
 }

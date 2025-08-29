@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslsent"
+
 // QSLSentSpec represents the specification for a single QSLSent
 type QSLSentSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -12,6 +14,6 @@ type QSLSentSpec struct {
 
 // QSLSentSpecMap contains all QSLSentSpec specifications.
 type QSLSentSpecMap struct {
-	Header  []string               `json:"Header"`
-	Records map[string]QSLSentSpec `json:"Records"`
+	Header  []string                        `json:"Header"`
+	Records map[qslsent.QSLSent]QSLSentSpec `json:"Records"`
 }

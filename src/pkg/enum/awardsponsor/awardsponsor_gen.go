@@ -16,32 +16,3 @@ var (
 	TAG   AwardSponsorPrefix = "TAG_"   // TAG - Tambov award group
 	WABAG AwardSponsorPrefix = "WABAG_" // WAB - Worked all Britain
 )
-
-// IsValid returns true if the AwardSponsorPrefix exists in the ADIF specification. This includes Import Only and Deleted values.
-func (value AwardSponsorPrefix) IsValid() bool {
-	switch value {
-	case ADIF:
-		return true
-	case ARI:
-		return true
-	case ARRL:
-		return true
-	case CQ:
-		return true
-	case DARC:
-		return true
-	case EQSL:
-		return true
-	case IARU:
-		return true
-	case JARL:
-		return true
-	case RSGB:
-		return true
-	case TAG:
-		return true
-	case WABAG:
-		return true
-	}
-	return false
-}

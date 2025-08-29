@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivision"
+
 // SecondaryAdministrativeSubdivisionSpec represents the specification for a single SecondaryAdministrativeSubdivision
 type SecondaryAdministrativeSubdivisionSpec struct {
 	EnumerationName        string          `json:"Enumeration Name"`
@@ -18,6 +20,6 @@ func (s SecondaryAdministrativeSubdivisionSpec) Description() string {
 
 // SecondaryAdministrativeSubdivisionSpecMap contains all SecondaryAdministrativeSubdivisionSpec specifications.
 type SecondaryAdministrativeSubdivisionSpecMap struct {
-	Header  []string                                          `json:"Header"`
-	Records map[string]SecondaryAdministrativeSubdivisionSpec `json:"Records"`
+	Header  []string                                                                                                         `json:"Header"`
+	Records map[secondaryadministrativesubdivision.SecondaryAdministrativeSubdivision]SecondaryAdministrativeSubdivisionSpec `json:"Records"`
 }

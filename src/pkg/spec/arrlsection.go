@@ -1,6 +1,7 @@
 package spec
 
 import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
 )
 
@@ -18,6 +19,6 @@ type ARRLSectionSpec struct {
 
 // ARRLSectionSpecMap contains all ARRLSectionSpec specifications.
 type ARRLSectionSpecMap struct {
-	Header  []string                   `json:"Header"`
-	Records map[string]ARRLSectionSpec `json:"Records"`
+	Header  []string                                    `json:"Header"`
+	Records map[arrlsection.ARRLSection]ARRLSectionSpec `json:"Records"`
 }

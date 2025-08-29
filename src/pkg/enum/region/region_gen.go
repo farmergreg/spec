@@ -15,30 +15,3 @@ var (
 	SI_279 Region = "SI.279" // Shetland Islands
 	SY_248 Region = "SY.248" // Sicily
 )
-
-// IsValid returns true if the Region exists in the ADIF specification. This includes Import Only and Deleted values.
-func (value Region) IsValid() bool {
-	switch value {
-	case AI_248:
-		return true
-	case BI_259:
-		return true
-	case ET_390:
-		return true
-	case IV_206:
-		return true
-	case KO_0:
-		return true
-	case KO_296:
-		return true
-	case KO_522:
-		return true
-	case NONE:
-		return true
-	case SI_279:
-		return true
-	case SY_248:
-		return true
-	}
-	return false
-}

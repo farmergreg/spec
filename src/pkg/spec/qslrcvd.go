@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslrcvd"
+
 // QSLRcvdSpec represents the specification for a single QSLRcvd
 type QSLRcvdSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -12,6 +14,6 @@ type QSLRcvdSpec struct {
 
 // QSLRcvdSpecMap contains all QSLRcvdSpec specifications.
 type QSLRcvdSpecMap struct {
-	Header  []string               `json:"Header"`
-	Records map[string]QSLRcvdSpec `json:"Records"`
+	Header  []string                        `json:"Header"`
+	Records map[qslrcvd.QSLRcvd]QSLRcvdSpec `json:"Records"`
 }

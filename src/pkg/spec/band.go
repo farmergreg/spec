@@ -22,6 +22,6 @@ func (b BandSpec) Description() string {
 
 // BandSpecMap contains all BandSpec specifications.
 type BandSpecMap struct {
-	Header  []string            `json:"Header"`
-	Records map[string]BandSpec `json:"Records"`
+	Header  []string               `json:"Header"`
+	Records map[band.Band]BandSpec `json:"Records"`
 }

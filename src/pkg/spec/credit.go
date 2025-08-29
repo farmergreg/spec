@@ -2,6 +2,8 @@ package spec
 
 import (
 	"fmt"
+
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/credit"
 )
 
 // CreditSpec represents the specification for a single Credit
@@ -21,6 +23,6 @@ func (c CreditSpec) Description() string {
 
 // CreditSpecMap contains all CreditSpec specifications.
 type CreditSpecMap struct {
-	Header  []string              `json:"Header"`
-	Records map[string]CreditSpec `json:"Records"`
+	Header  []string                     `json:"Header"`
+	Records map[credit.Credit]CreditSpec `json:"Records"`
 }

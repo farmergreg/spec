@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
+
 // QSLMediumSpec represents the specification for a single QSLMedium
 type QSLMediumSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -11,6 +13,6 @@ type QSLMediumSpec struct {
 
 // QSLMediumSpecMap contains all QSLMediumSpec specifications.
 type QSLMediumSpecMap struct {
-	Header  []string                 `json:"Header"`
-	Records map[string]QSLMediumSpec `json:"Records"`
+	Header  []string                              `json:"Header"`
+	Records map[qslmedium.QSLMedium]QSLMediumSpec `json:"Records"`
 }

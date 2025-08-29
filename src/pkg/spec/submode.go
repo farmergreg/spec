@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
+
 // SubmodeSpec represents the specification for a single Submode
 type SubmodeSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -12,6 +14,6 @@ type SubmodeSpec struct {
 
 // SubmodeSpecMap contains all SubmodeSpec specifications.
 type SubmodeSpecMap struct {
-	Header  []string               `json:"Header"`
-	Records map[string]SubmodeSpec `json:"Records"`
+	Header  []string                        `json:"Header"`
+	Records map[submode.SubMode]SubmodeSpec `json:"Records"`
 }

@@ -16,6 +16,6 @@ type ModeSpec struct {
 
 // ModeSpecMap contains all ModeSpec specifications.
 type ModeSpecMap struct {
-	Header  []string            `json:"Header"`
-	Records map[string]ModeSpec `json:"Records"`
+	Header  []string               `json:"Header"`
+	Records map[mode.Mode]ModeSpec `json:"Records"`
 }

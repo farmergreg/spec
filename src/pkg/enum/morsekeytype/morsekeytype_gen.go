@@ -12,24 +12,3 @@ var (
 	SP  MorseKeyType = "SP"  // Single Paddle
 	SS  MorseKeyType = "SS"  // Sideswiper
 )
-
-// IsValid returns true if the MorseKeyType exists in the ADIF specification. This includes Import Only and Deleted values.
-func (value MorseKeyType) IsValid() bool {
-	switch value {
-	case BUG:
-		return true
-	case CPU:
-		return true
-	case DP:
-		return true
-	case FAB:
-		return true
-	case SK:
-		return true
-	case SP:
-		return true
-	case SS:
-		return true
-	}
-	return false
-}

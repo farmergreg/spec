@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/award"
+
 // AwardSpec represents the specification for a single Award
 type AwardSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -14,6 +16,6 @@ func (a AwardSpec) Description() string {
 
 // AwardSpecMap contains all AwardSpec specifications.
 type AwardSpecMap struct {
-	Header  []string             `json:"Header"`
-	Records map[string]AwardSpec `json:"Records"`
+	Header  []string                  `json:"Header"`
+	Records map[award.Award]AwardSpec `json:"Records"`
 }

@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/continent"
+
 // ContinentSpec represents the specification for a single Continent
 type ContinentSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -15,6 +17,6 @@ func (c ContinentSpec) Description() string {
 
 // ContinentSpecMap contains all ContinentSpec specifications.
 type ContinentSpecMap struct {
-	Header  []string                 `json:"Header"`
-	Records map[string]ContinentSpec `json:"Records"`
+	Header  []string                              `json:"Header"`
+	Records map[continent.Continent]ContinentSpec `json:"Records"`
 }

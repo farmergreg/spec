@@ -10,20 +10,3 @@ var (
 	R QSLSent = "R" // the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service
 	Y QSLSent = "Y" // an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
 )
-
-// IsValid returns true if the QSLSent exists in the ADIF specification. This includes Import Only and Deleted values.
-func (value QSLSent) IsValid() bool {
-	switch value {
-	case I:
-		return true
-	case N:
-		return true
-	case Q:
-		return true
-	case R:
-		return true
-	case Y:
-		return true
-	}
-	return false
-}

@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
+
 // RegionSpec represents the specification for a single Region
 type RegionSpec struct {
 	EnumerationName string           `json:"Enumeration Name"`
@@ -20,6 +22,6 @@ func (r RegionSpec) Description() string {
 
 // RegionSpecMap contains all RegionSpec specifications.
 type RegionSpecMap struct {
-	Header  []string              `json:"Header"`
-	Records map[string]RegionSpec `json:"Records"`
+	Header  []string                     `json:"Header"`
+	Records map[region.Region]RegionSpec `json:"Records"`
 }

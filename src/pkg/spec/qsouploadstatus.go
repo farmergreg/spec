@@ -1,5 +1,7 @@
 package spec
 
+import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsouploadstatus"
+
 // QSOUploadStatusSpec represents the specification for a single QSOUploadStatus
 type QSOUploadStatusSpec struct {
 	EnumerationName string          `json:"Enumeration Name"`
@@ -11,6 +13,6 @@ type QSOUploadStatusSpec struct {
 
 // QSOUploadStatusSpecMap contains all QSOUploadStatusSpec specifications.
 type QSOUploadStatusSpecMap struct {
-	Header  []string                       `json:"Header"`
-	Records map[string]QSOUploadStatusSpec `json:"Records"`
+	Header  []string                                                `json:"Header"`
+	Records map[qsouploadstatus.QSOUploadStatus]QSOUploadStatusSpec `json:"Records"`
 }
