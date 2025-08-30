@@ -1,9 +1,0 @@
-﻿Enumeration Name	Region Entity Code	DXCC Entity Code	Region	Prefix	Applicability	Import-only	Comments	ADIF Version	ADIF Status
-Region	NONE		Not within a WAE or CQ region that is within a DXCC entity					3.1.5	Released
-Region	IV	206	ITU Vienna	4U1V	CQ, WAE			3.1.5	Released
-Region	AI	248	African Italy	IG9	CQ			3.1.5	Released
-Region	SY	248	Sicily	IT9	CQ, WAE			3.1.5	Released
-Region	BI	259	Bear Island	JW/B	CQ, WAE			3.1.5	Released
-Region	SI	279	Shetland Islands	GM/S	CQ, WAE			3.1.5	Released
-Region	KO	296	Kosovo	Z6	CQ, WAE			3.1.5	Released
-Region	ET	390	European Turkey	TA1	CQ			3.1.5	Released

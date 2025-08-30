@@ -1,102 +1,78 @@
-// package spec exposes the ADIF specification TSV files from:
-// https://adif.org/
 package spec
 
-import _ "embed"
-
-const (
-	// ADIFVersion is the version of the ADIF specification.
-	// This is the version that is currently supported by this package.
-	// The specification was downloaded from:
-	//
-	// https://adif.org.uk/315/ADIF_315_resources_2024_11_28.zip
-	ADIFVersion      = "3.1.5"
-	ADIFVersionMajor = 3 // ADIF Major Version
-	ADIFVersionMinor = 1 // ADIF Minor Version
-	ADIFVersionPatch = 5 // ADIF Patch Version
+import (
+	"github.com/hamradiolog-net/adif-spec/src/pkg/datatype"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/antpath"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/award"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/awardsponsor"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/band"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/contest"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/continent"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/credit"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/eqslag"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/mode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/morsekeytype"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/primaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/propagationmode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslrcvd"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslsent"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslvia"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsocomplete"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsodownloadstatus"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsouploadstatus"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivisionalt"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/field"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
 )
 
-//go:embed 315/enumerations_ant_path.tsv
-var EnumAntPathTSV []byte
+// This is the root object for JSON unmarshaling.
+// It can be used to import and process the ADIF Workgroup's all.json specification export.
+type AdifSpecContainer struct {
+	AdifSpec AdifSpec `json:"Adif"`
+}
 
-//go:embed 315/enumerations_arrl_section.tsv
-var EnumARRLSectionTSV []byte
+// This is the main ADIF specification
+type AdifSpec struct {
+	Version   string                    `json:"Version"`
+	Status    string                    `json:"Status"`
+	Date      spectype.DateTime         `json:"Date"`
+	Created   spectype.DateTime         `json:"Created"`
+	DataTypes datatype.SpecMapContainer `json:"DataTypes"`
+	Fields    field.SpecMapContainer    `json:"Fields"`
+	Enum      Enum                      `json:"Enumerations"`
+}
 
-//go:embed 315/enumerations_award.tsv
-var EnumAwardTSV []byte
-
-//go:embed 315/enumerations_award_sponsor.tsv
-var EnumAwardSponsorTSV []byte
-
-//go:embed 315/enumerations_band.tsv
-var EnumBandTSV []byte
-
-//go:embed 315/enumerations_contest_id.tsv
-var EnumContestTSV []byte
-
-//go:embed 315/enumerations_continent.tsv
-var EnumContinentTSV []byte
-
-//go:embed 315/enumerations_credit.tsv
-var EnumCreditTSV []byte
-
-//go:embed 315/datatypes.tsv
-var AdiDataTypesTSV []byte
-
-//go:embed 315/enumerations_dxcc_entity_code.tsv
-var EnumDXCCTSV []byte
-
-//go:embed 315/fields.tsv
-var FieldsTSV []byte
-
-// FieldsExtraTSV is the TSV file containing common APP_ fields defined by 3rd parties.
-// This file is not part of the ADIF specification.
-// If you add to this file, please keep it alphabetized.
-//
-//go:embed fields_extra.tsv
-var FieldsExtraTSV []byte
-
-//go:embed 315/enumerations_mode.tsv
-var EnumModeTSV []byte
-
-//go:embed 315/enumerations_morse_key_type.tsv
-var EnumMorseKeyTSV []byte
-
-//go:embed 315/enumerations_primary_administrative_subdivision.tsv
-var EnumPrimaryAdministrativeSubdivisionTSV []byte
-
-//go:embed 315/enumerations_propagation_mode.tsv
-var EnumPropagationModeTSV []byte
-
-//go:embed 315/enumerations_qsl_medium.tsv
-var EnumQSLMediumTSV []byte
-
-//go:embed 315/enumerations_qsl_rcvd.tsv
-var EnumQSLRcvdTSV []byte
-
-//go:embed 315/enumerations_qsl_sent.tsv
-var EnumQSLSentTSV []byte
-
-//go:embed 315/enumerations_qsl_via.tsv
-var EnumQSLViaTSV []byte
-
-//go:embed 315/enumerations_qso_complete.tsv
-var EnumQSOCompleteTSV []byte
-
-//go:embed 315/enumerations_qso_download_status.tsv
-var EnumQSODownloadStatusTSV []byte
-
-//go:embed 315/enumerations_qso_upload_status.tsv
-var EnumQSOUploadStatusTSV []byte
-
-//go:embed 315/enumerations_region.tsv
-var EnumRegionTSV []byte
-
-//go:embed 315/enumerations_secondary_administrative_subdivision.tsv
-var EnumSecondaryAdministrativeSubdivisionTSV []byte
-
-//go:embed 315/enumerations_secondary_administrative_subdivision_alt.tsv
-var EnumSecondaryAdministrativeSubdivisionAltTSV []byte
-
-//go:embed 315/enumerations_submode.tsv
-var EnumSubModeTSV []byte
+// Enumerations defined in the ADIF specification
+type Enum struct {
+	Ant_Path                                 antpath.SpecMapContainer                               `json:"Ant_Path,omitempty"`
+	ARRL_Section                             arrlsection.SpecMapContainer                           `json:"ARRL_Section,omitempty"`
+	Award                                    award.SpecMapContainer                                 `json:"Award,omitempty"`
+	Award_Sponsor                            awardsponsor.SpecMapContainer                          `json:"Award_Sponsor,omitempty"`
+	Band                                     band.SpecMapContainer                                  `json:"Band,omitempty"`
+	Contest_ID                               contest.SpecMapContainer                               `json:"Contest_ID,omitempty"`
+	Continent                                continent.SpecMapContainer                             `json:"Continent,omitempty"`
+	Credit                                   credit.SpecMapContainer                                `json:"Credit,omitempty"`
+	DXCC_Entity_Code                         dxccentitycode.SpecMapContainer                        `json:"DXCC_Entity_Code,omitempty"`
+	EQSL_AG                                  eqslag.SpecMapContainer                                `json:"EQSL_AG,omitempty"`
+	Mode                                     mode.SpecMapContainer                                  `json:"Mode,omitempty"`
+	Morse_Key_Type                           morsekeytype.SpecMapContainer                          `json:"Morse_Key_Type,omitempty"`
+	Primary_Administrative_Subdivision       primaryadministrativesubdivision.SpecMapContainer      `json:"Primary_Administrative_Subdivision,omitempty"`
+	Propagation_Mode                         propagationmode.SpecMapContainer                       `json:"Propagation_Mode,omitempty"`
+	QSL_Medium                               qslmedium.SpecMapContainer                             `json:"QSL_Medium,omitempty"`
+	QSL_Rcvd                                 qslrcvd.SpecMapContainer                               `json:"QSL_Rcvd,omitempty"`
+	QSL_Sent                                 qslsent.SpecMapContainer                               `json:"QSL_Sent,omitempty"`
+	QSL_Via                                  qslvia.SpecMapContainer                                `json:"QSL_Via,omitempty"`
+	QSO_Complete                             qsocomplete.SpecMapContainer                           `json:"QSO_Complete,omitempty"`
+	QSO_Download_Status                      qsodownloadstatus.SpecMapContainer                     `json:"QSO_Download_Status,omitempty"`
+	QSO_Upload_Status                        qsouploadstatus.SpecMapContainer                       `json:"QSO_Upload_Status,omitempty"`
+	Region                                   region.SpecMapContainer                                `json:"Region,omitempty"`
+	Secondary_Administrative_Subdivision     secondaryadministrativesubdivision.SpecMapContainer    `json:"Secondary_Administrative_Subdivision,omitempty"`
+	Secondary_Administrative_Subdivision_Alt secondaryadministrativesubdivisionalt.SpecMapContainer `json:"Secondary_Administrative_Subdivision_Alt,omitempty"`
+	Submode                                  submode.SpecMapContainer                               `json:"Submode,omitempty"`
+}

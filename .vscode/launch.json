@@ -2,16 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "generate adi",
+            "name": "specgen",
             "type": "go",
             "request": "launch",
-            "program": "${workspaceFolder}/cmd/specgen/main.go",
+            "program": "${workspaceFolder}/src/cmd/specgen",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/src/cmd/specgen",
             "env": {
                 "GOPATH": "${env:GOPATH}",
                 "GOROOT": "${env:GOROOT}"
-            }
+            },
+            "postDebugTask": "go-imports"
         }
     ]
 }

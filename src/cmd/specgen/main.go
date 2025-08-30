@@ -1,86 +1,111 @@
 package main
 
 import (
+	_ "embed"
+	"fmt"
 	"go/format"
+	"log"
 	"os"
+	"path"
 	"path/filepath"
+	"strings"
+	"text/template"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/adifield"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/aditype"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/antpath"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/arrlsection"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/awardsponsor"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/band"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/contest"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/continent"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/credit"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/mode"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/morsekey"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/propagationmode"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslmedium"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslrcvd"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslsent"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qslvia"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsocomplete"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsodownloadstatus"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/qsouploadstatus"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/region"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivision"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/secondaryadministrativesubdivisionalt"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/spec"
+	"github.com/hamradiolog-net/adif-spec/src/pkg/specdata"
 )
 
+//go:generate go install golang.org/x/tools/cmd/goimports@latest
 //go:generate go run .
+//go:generate goimports -w .
 
-// Generate the Go code for the ADIF spec
-// n.b. We only generate constants for currently valid values.
-// As a general rule, we skip deleted, un-released, and import-only records.
+type ViewBag struct {
+	Spec        spec.AdifSpec
+	DataType    string
+	PackageName string
+	Records     any
+	ConstPrefix string
+}
+
 func main() {
-	writeToFile("aditype", "aditype_gen.go", GenerateGoCodeForDataTypeDefinition(aditype.DataTypeList))
-	writeToFile("adifield", "adifield_gen.go", GenerateGoCodeForFieldDefinition(adifield.FieldList))
+	adifSpec := specdata.GetADIFSpec()
 
-	writeToFile("enum/antpath", "antpath_gen.go", GenerateGoCodeForAntPathEnumItem(antpath.EnumAntPathList))
-	writeToFile("enum/arrlsection", "arrlsection_gen.go", GenerateGoCodeForARRLSectionEnumItem(arrlsection.EnumARRLSectionList))
-	writeToFile("enum/awardsponsor", "awardsponsor_gen.go", GenerateGoCodeForAwardSponsorEnumItem(awardsponsor.EnumAwardSponsorList))
-	// the award enum is depreciated, and there are no constants to export, so we skip it.
-	// writeToFile("award", "enum_award_gen.go", GenerateGoCodeForAwardEnumItem(award.EnumAwardList))
-	writeToFile("enum/band", "band_gen.go", GenerateGoCodeForBandEnumItem(band.EnumBandList))
-	writeToFile("enum/contest", "contest_gen.go", GenerateGoCodeForContestEnumItem(contest.EnumContestList))
-	writeToFile("enum/continent", "continent_gen.go", GenerateGoCodeForContinentEnumItem(continent.EnumContinentList))
-	writeToFile("enum/credit", "credit_gen.go", GenerateGoCodeForCreditEnumItem(credit.EnumCreditList))
-	writeToFile("enum/dxccentitycode", "dxccentitycode_gen.go", GenerateGoCodeForDXCCEnumItem(dxccentitycode.EnumDXCCEntityCodeList))
-	writeToFile("enum/mode", "mode_gen.go", GenerateGoCodeForModeEnumItem(mode.EnumModeList))
-	writeToFile("enum/morsekey", "morsekey_gen.go", GenerateGoCodeForMorseKeyEnumItem(morsekey.EnumMorseKeyList))
-	// These codes are not unique, so for now, we don't want to generate the list of constants...
-	// writeToFile("enum/primary_administrative_subdivision_gen.go", GenerateGoCodeForPrimaryAdministrativeSubdivisionEnumItem(primaryadministrativesubdivision.EnumPrimaryAdministrativeSubdivisionList))
-	writeToFile("enum/propagationmode", "propagationmode_gen.go", GenerateGoCodeForPropagationModeEnumItem(propagationmode.EnumPropagationModeList))
-	writeToFile("enum/qslmedium", "qslmedium_gen.go", GenerateGoCodeForQSLMediumEnumItem(qslmedium.EnumQSLMediumList))
-	writeToFile("enum/qslrcvd", "qslrcvd_gen.go", GenerateGoCodeForQSLRcvdEnumItem(qslrcvd.EnumQSLRcvdList))
-	writeToFile("enum/qslsent", "qslsent_gen.go", GenerateGoCodeForQSLSentEnumItem(qslsent.EnumQSLSentList))
-	writeToFile("enum/qslvia", "qslvia_gen.go", GenerateGoCodeForQSLViaEnumItem(qslvia.EnumQSLViaList))
-	writeToFile("enum/qsocomplete", "qsocomplete_gen.go", GenerateGoCodeForQSOCompleteEnumItem(qsocomplete.EnumQSOCompleteList))
-	writeToFile("enum/qsodownloadstatus", "qsodownloadstatus_gen.go", GenerateGoCodeForQSODownloadStatusEnumItem(qsodownloadstatus.EnumQSODownloadStatusList))
-	writeToFile("enum/qsouploadstatus", "qsouploadstatus_gen.go", GenerateGoCodeForQSOUploadStatusEnumItem(qsouploadstatus.EnumQSOUploadStatusList))
-	writeToFile("enum/region", "region_gen.go", GenerateGoCodeForRegionEnumItem(region.EnumRegionList))
-	writeToFile("enum/secondaryadministrativesubdivisionalt", "secondaryadministrativesubdivisionalt_gen.go", GenerateGoCodeForSecondaryAdministrativeSubdivisionAltEnumItem(secondaryadministrativesubdivisionalt.EnumSecondaryAdministrativeSubdivisionAltList))
-	writeToFile("enum/secondaryadministrativesubdivision", "secondaryadministrativesubdivision_gen.go", GenerateGoCodeForSecondaryAdministrativeSubdivisionEnumItem(secondaryadministrativesubdivision.EnumSecondaryAdministrativeSubdivisionList))
-	writeToFile("enum/mode", "submode_gen.go", GenerateGoCodeForSubModeEnumItem(mode.EnumSubModeList))
+	fmt.Printf("ADIF Version: %s\n", adifSpec.Version)
+	fmt.Printf("Status: %s\n", adifSpec.Status)
+
+	generate(adifSpec, nil, false, "spec.tmpl", "spec", "", "")
+
+	generate(adifSpec, adifSpec.Fields.Records, false, "field.tmpl", "field", "Field", "")
+	generate(adifSpec, adifSpec.DataTypes.Records, false, "standard.tmpl", "datatype", "DataType", "")
+
+	generate(adifSpec, adifSpec.Enum.Ant_Path.Records, true, "standard.tmpl", "antpath", "AntPath", "")
+	generate(adifSpec, adifSpec.Enum.ARRL_Section.Records, true, "standard.tmpl", "arrlsection", "ARRLSection", "")
+	generate(adifSpec, adifSpec.Enum.Award.Records, true, "standard.tmpl", "award", "Award", "")
+	generate(adifSpec, adifSpec.Enum.Award_Sponsor.Records, true, "standard.tmpl", "awardsponsor", "AwardSponsorPrefix", "")
+	generate(adifSpec, adifSpec.Enum.Band.Records, true, "standard.tmpl", "band", "Band", "Band")
+	generate(adifSpec, adifSpec.Enum.Contest_ID.Records, true, "standard.tmpl", "contest", "Contest", "Contest")
+	generate(adifSpec, adifSpec.Enum.Continent.Records, true, "standard.tmpl", "continent", "Continent", "")
+	generate(adifSpec, adifSpec.Enum.Credit.Records, true, "standard.tmpl", "credit", "Credit", "")
+	generate(adifSpec, adifSpec.Enum.DXCC_Entity_Code.Records, true, "dxcc.tmpl", "dxccentitycode", "DXCCEntityCode", "")
+	generate(adifSpec, adifSpec.Enum.EQSL_AG.Records, true, "standard.tmpl", "eqslag", "EQSLAG", "")
+	generate(adifSpec, adifSpec.Enum.Mode.Records, true, "standard.tmpl", "mode", "Mode", "")
+	generate(adifSpec, adifSpec.Enum.Morse_Key_Type.Records, true, "standard.tmpl", "morsekeytype", "MorseKeyType", "")
+	// todo research primary key / Primary Administrative Subdivision
+	// generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivision", "PrimaryAdministrativeSubdivision")
+	generate(adifSpec, adifSpec.Enum.Propagation_Mode.Records, true, "standard.tmpl", "propagationmode", "PropagationMode", "")
+	generate(adifSpec, adifSpec.Enum.QSL_Medium.Records, true, "standard.tmpl", "qslmedium", "QSLMedium", "")
+	generate(adifSpec, adifSpec.Enum.QSL_Rcvd.Records, true, "standard.tmpl", "qslrcvd", "QSLRcvd", "")
+	generate(adifSpec, adifSpec.Enum.QSL_Sent.Records, true, "standard.tmpl", "qslsent", "QSLSent", "")
+	generate(adifSpec, adifSpec.Enum.QSL_Via.Records, true, "standard.tmpl", "qslvia", "QSLVia", "")
+	generate(adifSpec, adifSpec.Enum.QSO_Complete.Records, true, "standard.tmpl", "qsocomplete", "QSOComplete", "")
+	generate(adifSpec, adifSpec.Enum.QSO_Download_Status.Records, true, "standard.tmpl", "qsodownloadstatus", "QSODownloadStatus", "")
+	generate(adifSpec, adifSpec.Enum.QSO_Upload_Status.Records, true, "standard.tmpl", "qsouploadstatus", "QSOUploadStatus", "")
+	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard.tmpl", "region", "Region", "")
+	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision.Records, true, "standard.tmpl", "secondaryadministrativesubdivision", "SecondaryAdministrativeSubdivision", "")
+	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records, true, "standard.tmpl", "secondaryadministrativesubdivisionalt", "SecondaryAdministrativeSubdivisionAlt", "")
+	generate(adifSpec, adifSpec.Enum.Submode.Records, true, "standard.tmpl", "submode", "SubMode", "SubMode")
+}
+
+func generate(spec spec.AdifSpec, records any, isEnum bool, tmplName, packageName, dataType, constPrefix string) {
+	tmpl := template.New("").Funcs(tmplFuncs)
+	tmpl, err := tmpl.ParseGlob("template/*.tmpl")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var buf strings.Builder
+	err = tmpl.ExecuteTemplate(&buf, tmplName, ViewBag{
+		Spec:        spec,
+		DataType:    dataType,
+		PackageName: packageName,
+		Records:     records,
+		ConstPrefix: constPrefix,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dir := packageName
+	if isEnum {
+		dir = path.Join("enum", packageName)
+	}
+	writeToFile(dir, packageName+"_gen.go", buf.String())
 }
 
 func writeToFile(dir, filename, content string) {
 	fullPath := filepath.Join("../../pkg", dir, filename)
 	os.MkdirAll(filepath.Dir(fullPath), 0755)
 
-	content = "// DO NOT EDIT\n// Code generated by ./cmd/codegen/codegen\n\n// This file contains CURRENTLY valid constants.\n// It is not a full list of all possible historic and/or future values.\n\n" + content
-
 	formatted, fmtErr := format.Source([]byte(content))
 	if fmtErr != nil {
-		panic(fmtErr)
-		// formatted = []byte(content)
+		formatted = []byte(content)
 	}
 
 	err := os.WriteFile(fullPath, formatted, 0644)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
+	}
+
+	if fmtErr != nil {
+		log.Fatal(fmtErr)
 	}
 }

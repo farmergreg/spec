@@ -1,0 +1,12 @@
+// DO NOT EDIT; GENERATED CODE
+// ADIF: {{ .Spec.Version }} {{ .Spec.Status }}
+
+package {{ .PackageName }}
+
+var (
+{{- range $key, $value := .Records }}
+	{{ $.ConstPrefix}}{{ ToGoIdentifier $value.Identifier }} {{ $.DataType }} = {{ $key }} // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.String }}
+{{- end }}
+)
+
+{{ template "static_data" . }}
