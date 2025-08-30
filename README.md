@@ -13,6 +13,7 @@ It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_202
 
 ## Using The Library
 
+- Run `go get github.com/hamradiolog-net/adif-spec@latest`
 - Import any of the packages in the [`src/pkg`](src/pkg) directory that you wish to use.
 - Each package has constants related to the ADIF specification with the following suffixes:
   - *.`Map` Suffix - A map of the ADIF specification for quick lookups.
