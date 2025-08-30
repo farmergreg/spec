@@ -20,7 +20,7 @@ type Spec struct {
 	// Comments     string              `json:"Comments,omitempty"`
 	Key         Mode                `json:"Mode"` // Mode
 	Submodes    submode.SubModeList `json:"Submodes,omitempty"`
-	Description string              `json:"Description,omitempty"` // TODO may want to improve this. e.g. SSB = [ LSB, SSB ]
+	Description string              `json:"Description,omitempty"`
 }
 
 func (s Spec) String() string {
