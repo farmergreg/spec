@@ -3,7 +3,7 @@
 
 package mode
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/submode"
+import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/submode"
 
 var (
 	AM           Mode = "AM"           // AM                     = []
