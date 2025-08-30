@@ -3,7 +3,7 @@
 
 package spec
 
-// ADIFVersion is the version of the ADIF specification.
+// ADIF_VER is the version of the ADIF specification.
 // This is the version that is currently supported by this package.
 const ADIF_VER = "3.1.6"
 
