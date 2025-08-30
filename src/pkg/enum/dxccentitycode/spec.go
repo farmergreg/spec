@@ -17,10 +17,10 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          DXCCEntityCode   `json:"Entity Code"` // Entity Code // TODO how to use DXCCEntityCode type here.
-	EntityName   string           `json:"Entity Name"`
-	IsDeleted    spectype.Boolean `json:"Deleted,omitempty"`
+	// Comments     string           `json:"Comments,omitempty"`
+	Key        DXCCEntityCode   `json:"Entity Code"` // Entity Code // TODO how to use DXCCEntityCode type here.
+	EntityName string           `json:"Entity Name"`
+	IsDeleted  spectype.Boolean `json:"Deleted,omitempty"`
 }
 
 func (d Spec) Identifier() string {
