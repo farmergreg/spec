@@ -1,6 +1,6 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 
 // DataTypeSpec represents the specification for a single DataType
 type DataTypeSpec struct {

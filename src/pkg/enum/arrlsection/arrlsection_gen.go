@@ -3,7 +3,7 @@
 
 package arrlsection
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
+import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/dxccentitycode"
 
 var (
 	AB  ARRLSection = "AB"  // AB   = Alberta

@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/field"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/spec"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/field"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spec"
 )
 
 // https://adif.org.uk/proposed/316/ADIF_316_resources_2025_08_27.zip

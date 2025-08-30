@@ -1,6 +1,6 @@
 package spec
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 
 // FieldSpec represents the specification for a single Field
 type FieldSpec struct {

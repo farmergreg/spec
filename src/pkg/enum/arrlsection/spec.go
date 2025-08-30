@@ -3,8 +3,8 @@ package arrlsection
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 )
 
 // Spec represents the specification for a single ARRLSection as defined by the ADIF Workgroup specification exports.

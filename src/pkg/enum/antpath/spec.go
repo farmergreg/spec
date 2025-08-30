@@ -3,7 +3,7 @@ package antpath
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 )
 
 // SpecMap contains all AntPath specifications as defined by the ADIF Workgroup specification exports.

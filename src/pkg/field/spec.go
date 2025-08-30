@@ -1,6 +1,6 @@
 package field
 
-import "github.com/hamradiolog-net/adif-spec/src/pkg/spectype"
+import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 
 // SpecMap contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
