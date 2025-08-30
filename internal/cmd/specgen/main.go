@@ -11,8 +11,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spec"
-	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/specdata"
+	"github.com/hamradiolog-net/adif-spec/v2/spec"
+	"github.com/hamradiolog-net/adif-spec/v2/specdata"
 )
 
 //go:generate go install golang.org/x/tools/cmd/goimports@latest
@@ -91,7 +91,7 @@ func generate(spec spec.AdifSpec, records any, isEnum bool, tmplName, packageNam
 }
 
 func writeToFile(dir, filename, content string) {
-	fullPath := filepath.Join("../../../src/pkg", dir, filename)
+	fullPath := filepath.Join("../../../", dir, filename)
 	os.MkdirAll(filepath.Dir(fullPath), 0755)
 
 	formatted, fmtErr := format.Source([]byte(content))
