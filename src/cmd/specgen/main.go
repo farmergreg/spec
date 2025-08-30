@@ -17,7 +17,7 @@ import (
 
 //go:generate go install golang.org/x/tools/cmd/goimports@latest
 //go:generate go run .
-//go:generate goimports -w .
+//go:generate goimports -w ../../pkg
 
 type ViewBag struct {
 	Spec        spec.AdifSpec
