@@ -19,33 +19,32 @@ It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_202
   - *.`List` Suffix - A list of values that are current.
   - *.`ListAll` Suffix - A list of all values, including deprecated ones.
 
-For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/_RiCLCUhVV1)):
+For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/6RkeK-RGayh)):
 
 ```go
 package main
 
 import (
- "fmt"
+	"fmt"
 
- "github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/band"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/band"
 )
 
 func main() {
 
- forty := band.BandMap[band.Band40m]
- fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
+	forty := band.BandMap[band.Band40m]
+	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
 
- fmt.Println("Current Bands")
- for _, band := range band.BandListCurrent {
-  fmt.Printf("%s: %f - %f\n", band.ID, band.LowerFreqMHz, band.UpperFreqMHz)
- }
+	fmt.Println("Current Bands")
+	for _, band := range band.BandListCurrent {
+		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
+	}
 
- fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
- for _, band := range band.BandListAll {
-  fmt.Printf("%s: %f - %f\n", band.ID, band.LowerFreqMHz, band.UpperFreqMHz)
- }
+	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
+	for _, band := range band.BandListAll {
+		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
+	}
 }
-
 ```
 
 ## Maintenance
