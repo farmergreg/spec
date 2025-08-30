@@ -1,3 +1,3 @@
-module github.com/hamradiolog-net/adif-spec/v2
+module github.com/hamradiolog-net/adif-spec/v3
 
 go 1.25
