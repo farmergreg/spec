@@ -10,11 +10,11 @@ type SpecMapContainer struct {
 
 // Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Key           ADIField         `json:"Field Name"` // Field Name
-	DataType      string           `json:"Data Type"`
-	Enumeration   string           `json:"Enumeration,omitempty"`
+	Key      ADIField `json:"Field Name"` // Field Name
+	DataType string   `json:"Data Type"`
+	// Enumeration   string           `json:"Enumeration,omitempty"`
 	Description   string           `json:"Description"`
-	IsHeaderField string           `json:"Header Field,omitempty"`
+	IsHeaderField spectype.Boolean `json:"Header Field,omitempty"`
 	MinimumValue  spectype.Integer `json:"Minimum Value,omitempty"`
 	MaximumValue  spectype.Integer `json:"Maximum Value,omitempty"`
 	IsImportOnly  spectype.Boolean `json:"Import-only,omitempty"`
