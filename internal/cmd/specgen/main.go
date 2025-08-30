@@ -17,7 +17,7 @@ import (
 
 //go:generate go install golang.org/x/tools/cmd/goimports@latest
 //go:generate go run .
-//go:generate goimports -w ../../pkg
+//go:generate goimports -w ../../../
 
 type ViewBag struct {
 	Spec        spec.AdifSpec
@@ -91,7 +91,7 @@ func generate(spec spec.AdifSpec, records any, isEnum bool, tmplName, packageNam
 }
 
 func writeToFile(dir, filename, content string) {
-	fullPath := filepath.Join("../../pkg", dir, filename)
+	fullPath := filepath.Join("../../../src/pkg", dir, filename)
 	os.MkdirAll(filepath.Dir(fullPath), 0755)
 
 	formatted, fmtErr := format.Source([]byte(content))

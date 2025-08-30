@@ -5,7 +5,7 @@
             "label": "go-imports",
             "type": "shell",
             "command": "goimports",
-            "args": ["-w", "${workspaceFolder}/src"],
+            "args": ["-w", "${workspaceFolder}/"],
             "group": "build",
             "presentation": {
                 "echo": true,

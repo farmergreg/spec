@@ -5,9 +5,9 @@
             "name": "specgen",
             "type": "go",
             "request": "launch",
-            "program": "${workspaceFolder}/src/cmd/specgen",
+            "program": "${workspaceFolder}/internal/cmd/specgen",
             "args": [],
-            "cwd": "${workspaceFolder}/src/cmd/specgen",
+            "cwd": "${workspaceFolder}/internal/cmd/specgen",
             "env": {
                 "GOPATH": "${env:GOPATH}",
                 "GOROOT": "${env:GOROOT}"
