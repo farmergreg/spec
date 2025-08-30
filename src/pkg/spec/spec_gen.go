@@ -7,9 +7,9 @@ package spec
 // This is the version that is currently supported by this package.
 const ADIF_VER = "3.1.6"
 
-const ADIF_VERSION_MAJOR = 3 // ADIF Major Version
-const ADIF_VERSION_MINOR = 1 // ADIF Minor Version
-const ADIF_VERSION_PATCH = 6 // ADIF Patch Version
+const ADIF_VER_MAJOR = 3 // ADIF Major Version
+const ADIF_VER_MINOR = 1 // ADIF Minor Version
+const ADIF_VER_PATCH = 6 // ADIF Patch Version
 
 // The ADIF Version Status (Released | Proposed)
 const ADIF_STATUS = "Proposed"
