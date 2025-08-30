@@ -13,11 +13,11 @@ var (
 
 // A map of all QSLSent specifications.
 var QSLSentMap = map[QSLSent]Spec{
-	I: {IsImportOnly: false, Comments: "", Key: "I", Meaning: "ignore or invalid", Description: ""},
-	N: {IsImportOnly: false, Comments: "", Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
-	Q: {IsImportOnly: false, Comments: "", Key: "Q", Meaning: "queued", Description: "an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service"},
-	R: {IsImportOnly: false, Comments: "", Key: "R", Meaning: "requested", Description: "the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service"},
-	Y: {IsImportOnly: false, Comments: "", Key: "Y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
+	I: {IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
+	N: {IsImportOnly: false, Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
+	Q: {IsImportOnly: false, Key: "Q", Meaning: "queued", Description: "an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service"},
+	R: {IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service"},
+	Y: {IsImportOnly: false, Key: "Y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
 }
 
 // All QSLSent specifications including depreciated and import only.

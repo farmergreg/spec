@@ -16,9 +16,9 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          Continent        `json:"Abbreviation"` // Abbreviation
-	Continent    string           `json:"Continent"`
+	// Comments     string           `json:"Comments,omitempty"`
+	Key       Continent `json:"Abbreviation"` // Abbreviation
+	Continent string    `json:"Continent"`
 }
 
 func (s Spec) String() string {

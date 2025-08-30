@@ -15,13 +15,13 @@ type SpecMapContainer struct {
 // Spec represents the specification for a single MorseKeyType as defined by the ADIF Workgroup specification exports.
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
-	IsImportOnly     spectype.Boolean `json:"Import-only,omitempty"`
-	Comments         string           `json:"Comments,omitempty"`
-	Key              MorseKeyType     `json:"Abbreviation"` // Abbreviation
-	Description      string           `json:"Meaning"`
-	Characteristics  string           `json:"Characteristics,omitempty"`
-	MorseComposition string           `json:"Morse Composition,omitempty"`
-	Examples         string           `json:"Examples,omitempty"`
+	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
+	// Comments         string           `json:"Comments,omitempty"`
+	Key              MorseKeyType `json:"Abbreviation"` // Abbreviation
+	Description      string       `json:"Meaning"`
+	Characteristics  string       `json:"Characteristics,omitempty"`
+	MorseComposition string       `json:"Morse Composition,omitempty"`
+	Examples         string       `json:"Examples,omitempty"`
 }
 
 func (s Spec) String() string {

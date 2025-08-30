@@ -16,10 +16,10 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          Band             `json:"Band"` // Band
-	LowerFreqMHz MHz              `json:"Lower Freq (MHz)"`
-	UpperFreqMHz MHz              `json:"Upper Freq (MHz)"`
+	// Comments     string           `json:"Comments,omitempty"`
+	Key          Band `json:"Band"` // Band
+	LowerFreqMHz MHz  `json:"Lower Freq (MHz)"`
+	UpperFreqMHz MHz  `json:"Upper Freq (MHz)"`
 }
 
 func (b Spec) String() string {

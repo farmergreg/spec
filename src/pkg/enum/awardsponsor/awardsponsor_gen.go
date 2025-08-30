@@ -19,17 +19,17 @@ var (
 
 // A map of all AwardSponsorPrefix specifications.
 var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
-	ADIF:  {IsImportOnly: false, Comments: "", Key: "ADIF_", Description: "ADIF Development Group"},
-	ARI:   {IsImportOnly: false, Comments: "", Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
-	ARRL:  {IsImportOnly: false, Comments: "", Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
-	CQ:    {IsImportOnly: false, Comments: "", Key: "CQ_", Description: "CQ Magazine"},
-	DARC:  {IsImportOnly: false, Comments: "", Key: "DARC_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
-	EQSL:  {IsImportOnly: false, Comments: "", Key: "EQSL_", Description: "eQSL"},
-	IARU:  {IsImportOnly: false, Comments: "", Key: "IARU_", Description: "IARU - International Amateur Radio Union"},
-	JARL:  {IsImportOnly: false, Comments: "", Key: "JARL_", Description: "JARL - Japan Amateur Radio League"},
-	RSGB:  {IsImportOnly: false, Comments: "", Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
-	TAG:   {IsImportOnly: false, Comments: "", Key: "TAG_", Description: "TAG - Tambov award group"},
-	WABAG: {IsImportOnly: false, Comments: "", Key: "WABAG_", Description: "WAB - Worked all Britain"},
+	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
+	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
+	ARRL:  {IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
+	CQ:    {IsImportOnly: false, Key: "CQ_", Description: "CQ Magazine"},
+	DARC:  {IsImportOnly: false, Key: "DARC_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
+	EQSL:  {IsImportOnly: false, Key: "EQSL_", Description: "eQSL"},
+	IARU:  {IsImportOnly: false, Key: "IARU_", Description: "IARU - International Amateur Radio Union"},
+	JARL:  {IsImportOnly: false, Key: "JARL_", Description: "JARL - Japan Amateur Radio League"},
+	RSGB:  {IsImportOnly: false, Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
+	TAG:   {IsImportOnly: false, Key: "TAG_", Description: "TAG - Tambov award group"},
+	WABAG: {IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
 }
 
 // All AwardSponsorPrefix specifications including depreciated and import only.

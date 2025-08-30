@@ -9,10 +9,10 @@ import (
 // Spec represents the specification for a single AwardSponsor as defined by the ADIF Workgroup specification exports.
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
-	IsImportOnly spectype.Boolean   `json:"Import-only,omitempty"`
-	Comments     string             `json:"Comments,omitempty"`
-	Key          AwardSponsorPrefix `json:"Sponsor"`                 // Sponsor Prefix
-	Description  string             `json:"Sponsoring Organization"` // Sponsoring Organization
+	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
+	// Comments     string             `json:"Comments,omitempty"`
+	Key         AwardSponsorPrefix `json:"Sponsor"`                 // Sponsor Prefix
+	Description string             `json:"Sponsoring Organization"` // Sponsoring Organization
 }
 
 func (s Spec) String() string {

@@ -16,10 +16,10 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          SubMode          `json:"Submode"` // Submode
-	Mode         string           `json:"Mode"`
-	Description  string           `json:"Description,omitempty"` // TODO would be nice to clean this up Submode Mode Description
+	// Comments     string           `json:"Comments,omitempty"`
+	Key         SubMode `json:"Submode"` // Submode
+	Mode        string  `json:"Mode"`
+	Description string  `json:"Description,omitempty"` // TODO would be nice to clean this up Submode Mode Description
 }
 
 func (s Spec) String() string {

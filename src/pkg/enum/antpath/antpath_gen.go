@@ -12,10 +12,10 @@ var (
 
 // A map of all AntPath specifications.
 var AntPathMap = map[AntPath]Spec{
-	G: {IsImportOnly: false, Comments: "", Key: "G", Description: "grayline"},
-	L: {IsImportOnly: false, Comments: "", Key: "L", Description: "long path"},
-	O: {IsImportOnly: false, Comments: "", Key: "O", Description: "other"},
-	S: {IsImportOnly: false, Comments: "", Key: "S", Description: "short path"},
+	G: {IsImportOnly: false, Key: "G", Description: "grayline"},
+	L: {IsImportOnly: false, Key: "L", Description: "long path"},
+	O: {IsImportOnly: false, Key: "O", Description: "other"},
+	S: {IsImportOnly: false, Key: "S", Description: "short path"},
 }
 
 // All AntPath specifications including depreciated and import only.

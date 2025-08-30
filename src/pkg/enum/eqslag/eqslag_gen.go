@@ -11,9 +11,9 @@ var (
 
 // A map of all EQSLAG specifications.
 var EQSLAGMap = map[EQSLAG]Spec{
-	N: {IsImportOnly: false, Comments: "", Key: "N", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
-	U: {IsImportOnly: false, Comments: "", Key: "U", Description: "unknown"},
-	Y: {IsImportOnly: false, Comments: "", Key: "Y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
+	N: {IsImportOnly: false, Key: "N", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
+	U: {IsImportOnly: false, Key: "U", Description: "unknown"},
+	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
 }
 
 // All EQSLAG specifications including depreciated and import only.

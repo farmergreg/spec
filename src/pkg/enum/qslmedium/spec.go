@@ -16,9 +16,9 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          QSLMedium        `json:"Medium"` // Medium
-	Description  string           `json:"Description"`
+	// Comments     string           `json:"Comments,omitempty"`
+	Key         QSLMedium `json:"Medium"` // Medium
+	Description string    `json:"Description"`
 }
 
 func (s Spec) String() string {

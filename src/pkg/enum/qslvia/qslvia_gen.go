@@ -12,10 +12,10 @@ var (
 
 // A map of all QSLVia specifications.
 var QSLViaMap = map[QSLVia]Spec{
-	B: {IsImportOnly: false, Comments: "", Key: "B", Description: "bureau"},
-	D: {IsImportOnly: false, Comments: "", Key: "D", Description: "direct"},
-	E: {IsImportOnly: false, Comments: "", Key: "E", Description: "electronic"},
-	M: {IsImportOnly: true, Comments: "", Key: "M", Description: "manager"},
+	B: {IsImportOnly: false, Key: "B", Description: "bureau"},
+	D: {IsImportOnly: false, Key: "D", Description: "direct"},
+	E: {IsImportOnly: false, Key: "E", Description: "electronic"},
+	M: {IsImportOnly: true, Key: "M", Description: "manager"},
 }
 
 // All QSLVia specifications including depreciated and import only.

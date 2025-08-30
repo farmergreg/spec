@@ -11,9 +11,9 @@ var (
 
 // A map of all QSLMedium specifications.
 var QSLMediumMap = map[QSLMedium]Spec{
-	CARD: {IsImportOnly: false, Comments: "", Key: "CARD", Description: "QSO confirmation via paper QSL card"},
-	EQSL: {IsImportOnly: false, Comments: "", Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
-	LOTW: {IsImportOnly: false, Comments: "", Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
+	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
+	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
+	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
 }
 
 // All QSLMedium specifications including depreciated and import only.

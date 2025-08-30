@@ -16,11 +16,11 @@ type SpecMapContainer struct {
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
-	Comments     string           `json:"Comments,omitempty"`
-	Key          Credit           `json:"Credit For"` // Credit For
-	Sponsor      string           `json:"Sponsor"`
-	Award        string           `json:"Award"`
-	Facet        string           `json:"Facet"`
+	// Comments     string           `json:"Comments,omitempty"`
+	Key     Credit `json:"Credit For"` // Credit For
+	Sponsor string `json:"Sponsor"`
+	Award   string `json:"Award"`
+	Facet   string `json:"Facet"`
 }
 
 func (c Spec) String() string {

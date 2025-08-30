@@ -15,10 +15,10 @@ type SpecMapContainer struct {
 // Spec represents the specification for a single QSODownloadStatus as defined by the ADIF Workgroup specification exports.
 type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
-	IsImportOnly spectype.Boolean  `json:"Import-only,omitempty"`
-	Comments     string            `json:"Comments,omitempty"`
-	Key          QSODownloadStatus `json:"Status"` // Status
-	Description  string            `json:"Description"`
+	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
+	// Comments     string            `json:"Comments,omitempty"`
+	Key         QSODownloadStatus `json:"Status"` // Status
+	Description string            `json:"Description"`
 }
 
 func (s Spec) String() string {

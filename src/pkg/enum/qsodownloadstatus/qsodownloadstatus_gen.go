@@ -11,9 +11,9 @@ var (
 
 // A map of all QSODownloadStatus specifications.
 var QSODownloadStatusMap = map[QSODownloadStatus]Spec{
-	I: {IsImportOnly: false, Comments: "", Key: "I", Description: "ignore or invalid"},
-	N: {IsImportOnly: false, Comments: "", Key: "N", Description: "the QSO has not been downloaded from the online service"},
-	Y: {IsImportOnly: false, Comments: "", Key: "Y", Description: "the QSO has been downloaded from the online service"},
+	I: {IsImportOnly: false, Key: "I", Description: "ignore or invalid"},
+	N: {IsImportOnly: false, Key: "N", Description: "the QSO has not been downloaded from the online service"},
+	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO has been downloaded from the online service"},
 }
 
 // All QSODownloadStatus specifications including depreciated and import only.

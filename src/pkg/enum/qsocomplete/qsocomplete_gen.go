@@ -12,10 +12,10 @@ var (
 
 // A map of all QSOComplete specifications.
 var QSOCompleteMap = map[QSOComplete]Spec{
-	Uncertain: {IsImportOnly: false, Comments: "", Key: "?", Description: "uncertain"},
-	N:         {IsImportOnly: false, Comments: "", Key: "N", Description: "no"},
-	NIL:       {IsImportOnly: false, Comments: "", Key: "NIL", Description: "not heard"},
-	Y:         {IsImportOnly: false, Comments: "", Key: "Y", Description: "yes"},
+	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
+	N:         {IsImportOnly: false, Key: "N", Description: "no"},
+	NIL:       {IsImportOnly: false, Key: "NIL", Description: "not heard"},
+	Y:         {IsImportOnly: false, Key: "Y", Description: "yes"},
 }
 
 // All QSOComplete specifications including depreciated and import only.

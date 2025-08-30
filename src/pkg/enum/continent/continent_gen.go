@@ -15,13 +15,13 @@ var (
 
 // A map of all Continent specifications.
 var ContinentMap = map[Continent]Spec{
-	AF: {IsImportOnly: false, Comments: "", Key: "AF", Continent: "Africa"},
-	AN: {IsImportOnly: false, Comments: "", Key: "AN", Continent: "Antarctica"},
-	AS: {IsImportOnly: false, Comments: "", Key: "AS", Continent: "Asia"},
-	EU: {IsImportOnly: false, Comments: "", Key: "EU", Continent: "Europe"},
-	NA: {IsImportOnly: false, Comments: "", Key: "NA", Continent: "North America"},
-	OC: {IsImportOnly: false, Comments: "", Key: "OC", Continent: "Oceania"},
-	SA: {IsImportOnly: false, Comments: "", Key: "SA", Continent: "South America"},
+	AF: {IsImportOnly: false, Key: "AF", Continent: "Africa"},
+	AN: {IsImportOnly: false, Key: "AN", Continent: "Antarctica"},
+	AS: {IsImportOnly: false, Key: "AS", Continent: "Asia"},
+	EU: {IsImportOnly: false, Key: "EU", Continent: "Europe"},
+	NA: {IsImportOnly: false, Key: "NA", Continent: "North America"},
+	OC: {IsImportOnly: false, Key: "OC", Continent: "Oceania"},
+	SA: {IsImportOnly: false, Key: "SA", Continent: "South America"},
 }
 
 // All Continent specifications including depreciated and import only.
