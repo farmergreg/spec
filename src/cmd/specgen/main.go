@@ -35,8 +35,8 @@ func main() {
 
 	generate(adifSpec, nil, false, "spec.tmpl", "spec", "", "")
 
-	generate(adifSpec, adifSpec.Fields.Records, false, "field.tmpl", "field", "Field", "")
-	generate(adifSpec, adifSpec.DataTypes.Records, false, "standard.tmpl", "datatype", "DataType", "")
+	generate(adifSpec, adifSpec.Fields.Records, false, "field.tmpl", "adifield", "ADIField", "")
+	generate(adifSpec, adifSpec.DataTypes.Records, false, "standard.tmpl", "aditype", "ADIType", "")
 
 	generate(adifSpec, adifSpec.Enum.Ant_Path.Records, true, "standard.tmpl", "antpath", "AntPath", "")
 	generate(adifSpec, adifSpec.Enum.ARRL_Section.Records, true, "standard.tmpl", "arrlsection", "ARRLSection", "")

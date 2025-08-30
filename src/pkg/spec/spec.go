@@ -1,7 +1,8 @@
 package spec
 
 import (
-	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/datatype"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/adifield"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/aditype"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/award"
@@ -27,7 +28,6 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/secondaryadministrativesubdivision"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/secondaryadministrativesubdivisionalt"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/submode"
-	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/field"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 )
 
@@ -43,8 +43,8 @@ type AdifSpec struct {
 	Status    string                    `json:"Status"`
 	Date      spectype.DateTime         `json:"Date"`
 	Created   spectype.DateTime         `json:"Created"`
-	DataTypes datatype.SpecMapContainer `json:"DataTypes"`
-	Fields    field.SpecMapContainer    `json:"Fields"`
+	DataTypes aditype.SpecMapContainer  `json:"DataTypes"`
+	Fields    adifield.SpecMapContainer `json:"Fields"`
 	Enum      Enum                      `json:"Enumerations"`
 }
 

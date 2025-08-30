@@ -1,16 +1,16 @@
-package datatype
+package aditype
 
 import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 
 // SpecMapContainer contains all DataType specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
-	Header  []string          `json:"Header"`
-	Records map[DataType]Spec `json:"Records"`
+	Header  []string         `json:"Header"`
+	Records map[ADIType]Spec `json:"Records"`
 }
 
 // Spec represents the specification for a single DataType as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Key               DataType         `json:"Data Type Name"` // Data Type Name
+	Key               ADIType          `json:"Data Type Name"` // Data Type Name
 	DataTypeIndicator string           `json:"Data Type Indicator,omitempty"`
 	Description       string           `json:"Description"`
 	MinimumValue      spectype.Integer `json:"Minimum Value,omitempty"`

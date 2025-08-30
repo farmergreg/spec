@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/field"
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/adifield"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spec"
 )
 
@@ -41,13 +41,13 @@ func GetADIFSpec() spec.AdifSpec {
 		userdefn := container.AdifSpec.Fields.Records["USERDEFn"]
 		for i := 1; i < 10; i++ {
 			next := userdefn
-			next.Key = field.Field("USERDEF" + strconv.Itoa(i))
+			next.Key = adifield.ADIField("USERDEF" + strconv.Itoa(i))
 			container.AdifSpec.Fields.Records[next.Key] = next
 		}
 		delete(container.AdifSpec.Fields.Records, "USERDEFn")
 
 		// Step 3: Add Extra Fields
-		var extraFields map[field.Field]field.Spec
+		var extraFields map[adifield.ADIField]adifield.Spec
 		if err := json.Unmarshal(extraFieldData, &extraFields); err != nil {
 			panic(err)
 		}

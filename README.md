@@ -40,7 +40,7 @@ func main() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
-	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
+	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandListCurrent)")
 	for _, band := range band.BandListAll {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}

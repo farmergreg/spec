@@ -1,11 +1,11 @@
-package field
+package adifield
 
 const (
 	// Header: End Of Header Marker. No data, no length.
-	EOH Field = "EOH"
+	EOH ADIField = "EOH"
 
 	// Record: End of Record Marker. No data, no length.
-	EOR Field = "EOR"
+	EOR ADIField = "EOR"
 
 	// USERDEF is the prefix for user defined fields.
 	// These fields must always have a number after them, e.g. USERDEF1, USERDEF2, etc.
@@ -17,11 +17,11 @@ const (
 	APP_ = "APP_"
 )
 
-// Field is the ADIF field name in and ADI file.
+// ADIField is the ADIF field name in and ADI file.
 // By convention in this package, field name constants are always UPPERCASE.
 // This is a departure from the ADIF specification, which allows field names to include lowercase letters.
-type Field string
+type ADIField string
 
-func (f Field) String() string {
+func (f ADIField) String() string {
 	return string(f)
 }

@@ -1,16 +1,16 @@
-package field
+package adifield
 
 import "github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 
 // SpecMap contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
-	Records map[Field]Spec `json:"Records"`
+	Records map[ADIField]Spec `json:"Records"`
 }
 
 // Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Key           Field            `json:"Field Name"` // Field Name
+	Key           ADIField         `json:"Field Name"` // Field Name
 	DataType      string           `json:"Data Type"`
 	Enumeration   string           `json:"Enumeration,omitempty"`
 	Description   string           `json:"Description"`
