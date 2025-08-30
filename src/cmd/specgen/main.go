@@ -60,7 +60,7 @@ func main() {
 	generate(adifSpec, adifSpec.Enum.QSO_Complete.Records, true, "standard.tmpl", "qsocomplete", "QSOComplete", "")
 	generate(adifSpec, adifSpec.Enum.QSO_Download_Status.Records, true, "standard.tmpl", "qsodownloadstatus", "QSODownloadStatus", "")
 	generate(adifSpec, adifSpec.Enum.QSO_Upload_Status.Records, true, "standard.tmpl", "qsouploadstatus", "QSOUploadStatus", "")
-	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard.tmpl", "region", "Region", "")
+	generate(adifSpec, adifSpec.Enum.Region.Records, true, "region.tmpl", "region", "Region", "")
 	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision.Records, true, "standard.tmpl", "secondaryadministrativesubdivision", "SecondaryAdministrativeSubdivision", "")
 	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records, true, "standard.tmpl", "secondaryadministrativesubdivisionalt", "SecondaryAdministrativeSubdivisionAlt", "")
 	generate(adifSpec, adifSpec.Enum.Submode.Records, true, "standard.tmpl", "submode", "SubMode", "SubMode")

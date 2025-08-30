@@ -4,16 +4,16 @@
 package region
 
 var (
-	AI_248 Region = "AI.248" //   AI.248 = African Italy
-	BI_259 Region = "BI.259" //   BI.259 = Bear Island
-	ET_390 Region = "ET.390" //   ET.390 = European Turkey
-	IV_206 Region = "IV.206" //   IV.206 = ITU Vienna
-	KO_0   Region = "KO.0"   //   KO.0   = Kosovo
-	KO_296 Region = "KO.296" //   KO.296 = Kosovo
-	KO_522 Region = "KO.522" //   KO.522 = Kosovo
-	NONE   Region = "NONE"   // NONE.    = Not within a WAE or CQ region that is within a DXCC entity
-	SI_279 Region = "SI.279" //   SI.279 = Shetland Islands
-	SY_248 Region = "SY.248" //   SY.248 = Sicily
+	AI_248 Region = "AI"   //   AI.248 = AI    African Italy
+	BI_259 Region = "BI"   //   BI.259 = BI    Bear Island
+	ET_390 Region = "ET"   //   ET.390 = ET    European Turkey
+	IV_206 Region = "IV"   //   IV.206 = IV    ITU Vienna
+	KO_0   Region = "KO"   //   KO.0   = KO    Kosovo
+	KO_296 Region = "KO"   //   KO.296 = KO    Kosovo
+	KO_522 Region = "KO"   //   KO.522 = KO    Kosovo
+	NONE   Region = "NONE" // NONE.    = NONE  Not within a WAE or CQ region that is within a DXCC entity
+	SI_279 Region = "SI"   //   SI.279 = SI    Shetland Islands
+	SY_248 Region = "SY"   //   SY.248 = SY    Sicily
 )
 
 // A map of all Region specifications.
