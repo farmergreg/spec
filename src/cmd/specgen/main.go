@@ -50,8 +50,7 @@ func main() {
 	generate(adifSpec, adifSpec.Enum.EQSL_AG.Records, true, "standard.tmpl", "eqslag", "EQSLAG", "")
 	generate(adifSpec, adifSpec.Enum.Mode.Records, true, "standard.tmpl", "mode", "Mode", "")
 	generate(adifSpec, adifSpec.Enum.Morse_Key_Type.Records, true, "standard.tmpl", "morsekeytype", "MorseKeyType", "")
-	// todo research primary key / Primary Administrative Subdivision
-	// generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivision", "PrimaryAdministrativeSubdivision")
+	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "primary-administrative-subdivision.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivision", "PrimaryAdministrativeSubdivision")
 	generate(adifSpec, adifSpec.Enum.Propagation_Mode.Records, true, "standard.tmpl", "propagationmode", "PropagationMode", "")
 	generate(adifSpec, adifSpec.Enum.QSL_Medium.Records, true, "standard.tmpl", "qslmedium", "QSLMedium", "")
 	generate(adifSpec, adifSpec.Enum.QSL_Rcvd.Records, true, "standard.tmpl", "qslrcvd", "QSLRcvd", "")

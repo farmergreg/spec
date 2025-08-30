@@ -29,5 +29,5 @@ type Spec struct {
 }
 
 func (s Spec) String() string {
-	return fmt.Sprintf("%s.%s", s.Code, s.Oblast)
+	return fmt.Sprintf("%5s.%-5s = %-5s ( %-5s )", s.Code, s.DXCCEntityCode, s.Code, s.PrimaryAdminSub)
 }
