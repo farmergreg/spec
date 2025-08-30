@@ -3,6 +3,7 @@ package secondaryadministrativesubdivision
 import (
 	"fmt"
 
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 )
 
@@ -19,7 +20,7 @@ type Spec struct {
 	// Comments               string                             `json:"Comments,omitempty"`
 	Key                    SecondaryAdministrativeSubdivision `json:"Code"` // Code
 	SecondaryAdminSub      string                             `json:"Secondary Administrative Subdivision"`
-	DXCCEntityCode         string                             `json:"DXCC Entity Code"` // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
+	DXCCEntityCode         dxccentitycode.DXCCEntityCode      `json:"DXCC Entity Code"`
 	AlaskaJudicialDistrict string                             `json:"Alaska Judicial District,omitempty"`
 	IsDeleted              spectype.Boolean                   `json:"Deleted,omitempty"`
 }

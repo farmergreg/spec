@@ -3,6 +3,7 @@ package secondaryadministrativesubdivisionalt
 import (
 	"fmt"
 
+	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v2/src/pkg/spectype"
 )
 
@@ -17,8 +18,8 @@ type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
 	// Comments       string                                `json:"Comments,omitempty"`
-	Key            SecondaryAdministrativeSubdivisionAlt `json:"Code"`             // Code
-	DXCCEntityCode string                                `json:"DXCC Entity Code"` // TODO: get this to deserialize into dxccentitycode.DXCCEntityCode...
+	Key            SecondaryAdministrativeSubdivisionAlt `json:"Code"` // Code
+	DXCCEntityCode dxccentitycode.DXCCEntityCode         `json:"DXCC Entity Code"`
 	Region         string                                `json:"Region"`
 	District       string                                `json:"District"`
 	IsDeleted      spectype.Boolean                      `json:"Deleted,omitempty"`

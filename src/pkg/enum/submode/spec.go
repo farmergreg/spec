@@ -19,7 +19,7 @@ type Spec struct {
 	// Comments     string           `json:"Comments,omitempty"`
 	Key         SubMode `json:"Submode"` // Submode
 	Mode        string  `json:"Mode"`
-	Description string  `json:"Description,omitempty"` // TODO would be nice to clean this up Submode Mode Description
+	Description string  `json:"Description,omitempty"`
 }
 
 func (s Spec) String() string {
