@@ -10,6 +10,10 @@ import (
 // See Also: https://www.arrl.org/dxcc
 type DXCCEntityCode int
 
+func (d DXCCEntityCode) ToInt() int {
+	return int(d)
+}
+
 func (d *DXCCEntityCode) UnmarshalJSON(data []byte) error {
 	var val string
 	if err := json.Unmarshal(data, &val); err != nil {
