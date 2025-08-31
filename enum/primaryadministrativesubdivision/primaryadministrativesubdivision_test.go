@@ -3,7 +3,7 @@ package primaryadministrativesubdivision
 import (
 	"testing"
 
-	"github.com/hamradiolog-net/adif-spec/v8/enum/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 )
 
 func TestLookupRegion(t *testing.T) {

@@ -11,8 +11,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hamradiolog-net/adif-spec/v8/spec"
-	"github.com/hamradiolog-net/adif-spec/v8/specdata"
+	"github.com/hamradiolog-net/adif-spec/v6/spec"
+	"github.com/hamradiolog-net/adif-spec/v6/specdata"
 )
 
 //go:generate go install golang.org/x/tools/cmd/goimports@latest

@@ -28,7 +28,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/v8/enum/band"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/band"
 )
 
 func main() {

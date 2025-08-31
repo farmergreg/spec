@@ -3,7 +3,7 @@
 
 package region
 
-import "github.com/hamradiolog-net/adif-spec/v8/spectype"
+import "github.com/hamradiolog-net/adif-spec/v6/spectype"
 
 /*
  * This enumeration has a composite key.

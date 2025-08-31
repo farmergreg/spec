@@ -1,6 +1,6 @@
 package region
 
-import "github.com/hamradiolog-net/adif-spec/v8/enum/dxccentitycode"
+import "github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 
 // RegionCompositeKey works differently that almost all of the other enumerations!
 // It is a COMPOSITE KEY, made up of the RegionCompositeKey code and the DXCC Entity Code.

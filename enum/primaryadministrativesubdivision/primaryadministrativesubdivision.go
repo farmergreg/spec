@@ -1,6 +1,6 @@
 package primaryadministrativesubdivision
 
-import "github.com/hamradiolog-net/adif-spec/v8/enum/dxccentitycode"
+import "github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 
 type PrimaryAdministrativeSubdivisionCompositeKey string
 

@@ -1,6 +1,6 @@
 package aditype
 
-import "github.com/hamradiolog-net/adif-spec/v8/spectype"
+import "github.com/hamradiolog-net/adif-spec/v6/spectype"
 
 // SpecMapContainer contains all DataType specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {

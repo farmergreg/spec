@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hamradiolog-net/adif-spec/v8/spectype"
+	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
 // SpecMap contains all DXCCEntityCode specifications as defined by the ADIF Workgroup specification exports.

@@ -1,7 +1,7 @@
 package award
 
 import (
-	"github.com/hamradiolog-net/adif-spec/v8/spectype"
+	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
 // SpecMap contains all Award specifications as defined by the ADIF Workgroup specification exports.
