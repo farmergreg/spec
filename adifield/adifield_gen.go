@@ -3,7 +3,7 @@
 
 package adifield
 
-var (
+const (
 	ADDRESS                        ADIField = "ADDRESS"                        // Record: the contacted station's complete mailing address: full name, street address, city, postal code, and country
 	ADDRESS_INTL                   ADIField = "ADDRESS_INTL"                   // Record: the contacted station's complete mailing address: full name, street address, city, postal code, and country
 	ADIF_VER                       ADIField = "ADIF_VER"                       // Header: identifies the version of ADIF used in this file in the format X.Y.Z where X is an integer designating the ADIF epoch Y is an integer between 0 and 9 designating the major version Z is an integer between 0 and 9 designating the minor version

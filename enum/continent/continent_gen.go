@@ -3,7 +3,7 @@
 
 package continent
 
-var (
+const (
 	AF Continent = "AF" // AF = Africa
 	AN Continent = "AN" // AN = Antarctica
 	AS Continent = "AS" // AS = Asia

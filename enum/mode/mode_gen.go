@@ -5,7 +5,7 @@ package mode
 
 import "github.com/hamradiolog-net/adif-spec/v6/enum/submode"
 
-var (
+const (
 	AM           Mode = "AM"           // AM                     = []
 	AMTORFEC     Mode = "AMTORFEC"     // Deprecated: AMTORFEC   = []
 	ARDOP        Mode = "ARDOP"        // ARDOP                  = []

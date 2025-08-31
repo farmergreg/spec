@@ -3,7 +3,7 @@
 
 package eqslag
 
-var (
+const (
 	N EQSLAG = "N" // N = the QSO is confirmed but not "Authenticity Guaranteed" by eQSL
 	U EQSLAG = "U" // U = unknown
 	Y EQSLAG = "Y" // Y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL

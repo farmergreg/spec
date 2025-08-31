@@ -3,7 +3,7 @@
 
 package propagationmode
 
-var (
+const (
 	AS       PropagationMode = "AS"       // AS         = Aircraft Scatter
 	AUE      PropagationMode = "AUE"      // AUE        = Aurora-E
 	AUR      PropagationMode = "AUR"      // AUR        = Aurora

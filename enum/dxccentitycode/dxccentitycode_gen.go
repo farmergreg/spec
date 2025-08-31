@@ -3,7 +3,7 @@
 
 package dxccentitycode
 
-var (
+const (
 	NONE                                     DXCCEntityCode = 0   // 0 = None (the contacted station is known to not be within a DXCC entity)
 	CANADA                                   DXCCEntityCode = 1   // 1 = CANADA
 	ABU_AIL_IS_DELETED                       DXCCEntityCode = 2   // 2 = ABU AIL IS. (DELETED)

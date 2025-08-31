@@ -3,7 +3,7 @@
 
 package award
 
-var (
+const (
 	AJA         Award = "AJA"         // Deprecated: AJA
 	CQDX        Award = "CQDX"        // Deprecated: CQDX
 	CQDXFIELD   Award = "CQDXFIELD"   // Deprecated: CQDXFIELD

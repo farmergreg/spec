@@ -3,7 +3,7 @@
 
 package aditype
 
-var (
+const (
 	AwardList                                 ADIType = "AwardList"                                 // Deprecated: a comma-delimited list of members of the Award enumeration
 	Boolean                                   ADIType = "Boolean"                                   // if True, the single ASCII character Y or y if False, the single ASCII character N or n
 	Character                                 ADIType = "Character"                                 // an ASCII character whose code lies in the range of 32 through 126, inclusive

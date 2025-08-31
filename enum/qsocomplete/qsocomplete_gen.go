@@ -3,7 +3,7 @@
 
 package qsocomplete
 
-var (
+const (
 	Uncertain QSOComplete = "?"   // ?    = uncertain
 	N         QSOComplete = "N"   // N    = no
 	NIL       QSOComplete = "NIL" // NIL  = not heard

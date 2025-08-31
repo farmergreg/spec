@@ -3,7 +3,7 @@
 
 package band
 
-var (
+const (
 	Band1_25cm Band = "1.25cm" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
 	Band1_25m  Band = "1.25m"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
 	Band10m    Band = "10m"    // 10m    =      28.0000 MHz to      29.7000 MHz

@@ -3,7 +3,7 @@
 
 package submode
 
-var (
+const (
 	SubMode8PSK1000       SubMode = "8PSK1000"       // 8PSK1000        = PSK
 	SubMode8PSK1000F      SubMode = "8PSK1000F"      // 8PSK1000F       = PSK
 	SubMode8PSK1200F      SubMode = "8PSK1200F"      // 8PSK1200F       = PSK

@@ -5,7 +5,7 @@ package arrlsection
 
 import "github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 
-var (
+const (
 	AB  ARRLSection = "AB"  // AB   = Alberta
 	AK  ARRLSection = "AK"  // AK   = Alaska
 	AL  ARRLSection = "AL"  // AL   = Alabama

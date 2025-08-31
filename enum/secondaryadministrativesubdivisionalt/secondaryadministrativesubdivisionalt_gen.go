@@ -3,7 +3,7 @@
 
 package secondaryadministrativesubdivisionalt
 
-var (
+const (
 	NZ_Regions_Auckland_Auckland                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Auckland"                   // NZ_Regions:Auckland/Auckland                       = DXCC: 170 Auckland
 	NZ_Regions_Auckland_Franklin                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Franklin"                   // NZ_Regions:Auckland/Franklin                       = DXCC: 170 Auckland
 	NZ_Regions_Auckland_Manukau                    SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Manukau"                    // NZ_Regions:Auckland/Manukau                        = DXCC: 170 Auckland

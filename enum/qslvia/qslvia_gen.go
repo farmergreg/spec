@@ -3,7 +3,7 @@
 
 package qslvia
 
-var (
+const (
 	B QSLVia = "B" // B = bureau
 	D QSLVia = "D" // D = direct
 	E QSLVia = "E" // E = electronic

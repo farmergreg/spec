@@ -3,7 +3,7 @@
 
 package qslmedium
 
-var (
+const (
 	CARD QSLMedium = "CARD" // CARD = QSO confirmation via paper QSL card
 	EQSL QSLMedium = "EQSL" // EQSL = QSO confirmation via eQSL.cc
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World

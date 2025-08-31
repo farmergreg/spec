@@ -3,7 +3,7 @@
 
 package qsouploadstatus
 
-var (
+const (
 	M QSOUploadStatus = "M" // M = the QSO has been modified since being uploaded to the online service
 	N QSOUploadStatus = "N" // N = do not upload the QSO to the online service
 	Y QSOUploadStatus = "Y" // Y = the QSO has been uploaded to, and accepted by, the online service

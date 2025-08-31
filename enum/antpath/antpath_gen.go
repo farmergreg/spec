@@ -3,7 +3,7 @@
 
 package antpath
 
-var (
+const (
 	G AntPath = "G" // G = grayline
 	L AntPath = "L" // L = long path
 	O AntPath = "O" // O = other

@@ -3,7 +3,7 @@
 
 package secondaryadministrativesubdivision
 
-var (
+const (
 	AKAleutians_East                  SecondaryAdministrativeSubdivision = "AK,Aleutians East"                  // AK,Aleutians East                   = DXCC 6: Aleutians East
 	AKAleutians_Islands               SecondaryAdministrativeSubdivision = "AK,Aleutians Islands"               // AK,Aleutians Islands                = DXCC 6: Aleutians Islands
 	AKAleutians_West                  SecondaryAdministrativeSubdivision = "AK,Aleutians West"                  // AK,Aleutians West                   = DXCC 6: Aleutians West

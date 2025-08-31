@@ -3,7 +3,7 @@
 
 package contest
 
-var (
+const (
 	Contest070_160M_SPRINT        Contest = "070-160M-SPRINT"        // 070-160M-SPRINT      = PODXS Great Pumpkin Sprint
 	Contest070_3_DAY              Contest = "070-3-DAY"              // 070-3-DAY            = PODXS Three Day Weekend
 	Contest070_31_FLAVORS         Contest = "070-31-FLAVORS"         // 070-31-FLAVORS       = PODXS 31 Flavors

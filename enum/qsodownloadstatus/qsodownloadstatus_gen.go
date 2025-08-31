@@ -3,7 +3,7 @@
 
 package qsodownloadstatus
 
-var (
+const (
 	I QSODownloadStatus = "I" // I = ignore or invalid
 	N QSODownloadStatus = "N" // N = the QSO has not been downloaded from the online service
 	Y QSODownloadStatus = "Y" // Y = the QSO has been downloaded from the online service

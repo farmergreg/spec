@@ -3,7 +3,7 @@
 
 package qslrcvd
 
-var (
+const (
 	I QSLRcvd = "I" // I =
 	N QSLRcvd = "N" // N = an incoming QSL card has not been received the QSO has not been confirmed by the online service
 	R QSLRcvd = "R" // R = the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service

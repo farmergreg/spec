@@ -3,7 +3,7 @@
 
 package credit
 
-var (
+const (
 	CQDX                Credit = "CQDX"                // CQDX                 = CQ Magazine     DX                                            Mixed
 	CQDXFIELD           Credit = "CQDXFIELD"           // CQDXFIELD            = CQ Magazine     DX Field                                      Mixed
 	CQDXFIELD_BAND      Credit = "CQDXFIELD_BAND"      // CQDXFIELD_BAND       = CQ Magazine     DX Field                                      Band

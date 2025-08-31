@@ -1,6 +1,6 @@
 {{ template "header" . }}
 
-var (
+const (
 {{- range $key, $value := .Records }}
 	{{ $.ConstPrefix}}{{ ToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.String }}
 {{- end }}

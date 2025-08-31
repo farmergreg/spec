@@ -3,7 +3,7 @@
 
 package awardsponsor
 
-var (
+const (
 	ADIF  AwardSponsorPrefix = "ADIF_"  // ADIF_  = ADIF Development Group
 	ARI   AwardSponsorPrefix = "ARI_"   // ARI_   = ARI - l'Associazione Radioamatori Italiani
 	ARRL  AwardSponsorPrefix = "ARRL_"  // ARRL_  = ARRL - American Radio Relay League

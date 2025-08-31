@@ -3,7 +3,7 @@
 
 package morsekeytype
 
-var (
+const (
 	BUG MorseKeyType = "BUG" // BUG  = Mechanical semi-automatic keyer or Bug
 	CPU MorseKeyType = "CPU" // CPU  = Computer Driven
 	DP  MorseKeyType = "DP"  // DP   = Dual Paddle

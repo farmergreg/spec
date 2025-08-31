@@ -3,7 +3,7 @@
 
 package qslsent
 
-var (
+const (
 	I QSLSent = "I" // I =
 	N QSLSent = "N" // N = do not send an outgoing QSL card do not upload the QSO to the online service
 	Q QSLSent = "Q" // Q = an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service
