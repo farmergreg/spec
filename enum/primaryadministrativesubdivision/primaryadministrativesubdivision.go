@@ -1,7 +1,18 @@
 package primaryadministrativesubdivision
 
-type PrimaryAdministrativeSubdivision string
+import "github.com/hamradiolog-net/adif-spec/v8/enum/dxccentitycode"
 
-func (p PrimaryAdministrativeSubdivision) String() string {
+type PrimaryAdministrativeSubdivisionCompositeKey string
+
+func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 	return string(p)
+}
+
+// LookupRegion looks up a Region specification by its composite key (RegionCompositeKey + DXCCEntityCode).
+func LookupPrimaryAdministrativeSubdivision(code PrimaryAdministrativeSubdivisionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
+	spec, ok := PrimaryAdministrativeSubdivisionCompositeKeyMap[PrimaryAdministrativeSubdivisionCompositeKey(string(code)+"."+dxccEntityCode.String())]
+	if !ok {
+		return Spec{}, false
+	}
+	return spec, true
 }

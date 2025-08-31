@@ -31,5 +31,5 @@ type Spec struct {
 type Region string
 
 func (s Spec) String() string {
-	return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap", s.Key, s.DXCCEntityCode, s.Key, s.Region)
+	return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Key, s.DXCCEntityCode, s.Key, s.Region)
 }

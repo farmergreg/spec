@@ -12,9 +12,9 @@ func (r RegionCompositeKey) String() string {
 }
 
 // LookupRegion looks up a Region specification by its composite key (RegionCompositeKey + DXCCEntityCode).
-func LookupRegion(key RegionCompositeKey, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
+func LookupRegion(key Region, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
 	spec, ok := RegionCompositeKeyMap[RegionCompositeKey(string(key)+"."+dxccEntityCode.String())]
-	if !ok || spec.DXCCEntityCode != dxccEntityCode {
+	if !ok {
 		return Spec{}, false
 	}
 	return spec, true
