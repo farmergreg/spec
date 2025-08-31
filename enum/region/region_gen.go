@@ -6,20 +6,20 @@ package region
 import "github.com/hamradiolog-net/adif-spec/v8/spectype"
 
 var (
-	AI_248 Region = "AI"   //   AI.248 = AI    African Italy
-	BI_259 Region = "BI"   //   BI.259 = BI    Bear Island
-	ET_390 Region = "ET"   //   ET.390 = ET    European Turkey
-	IV_206 Region = "IV"   //   IV.206 = IV    ITU Vienna
-	KO_0   Region = "KO"   //   KO.0   = KO    Kosovo
-	KO_296 Region = "KO"   //   KO.296 = KO    Kosovo
-	KO_522 Region = "KO"   //   KO.522 = KO    Kosovo
-	NONE   Region = "NONE" // NONE.0   = NONE  Not within a WAE or CQ region that is within a DXCC entity
-	SI_279 Region = "SI"   //   SI.279 = SI    Shetland Islands
-	SY_248 Region = "SY"   //   SY.248 = SY    Sicily
+	AI_248 RegionCompositeKey = "AI.248" //   AI.248 = AI    African Italy  ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	BI_259 RegionCompositeKey = "BI.259" //   BI.259 = BI    Bear Island    ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	ET_390 RegionCompositeKey = "ET.390" //   ET.390 = ET    European Turkey; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	IV_206 RegionCompositeKey = "IV.206" //   IV.206 = IV    ITU Vienna     ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	KO_0   RegionCompositeKey = "KO.0"   //   KO.0   = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	KO_296 RegionCompositeKey = "KO.296" //   KO.296 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	KO_522 RegionCompositeKey = "KO.522" //   KO.522 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	NONE   RegionCompositeKey = "NONE"   // NONE.0   = NONE  Not within a WAE or CQ region that is within a DXCC entity; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	SI_279 RegionCompositeKey = "SI.279" //   SI.279 = SI    Shetland Islands; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
+	SY_248 RegionCompositeKey = "SY.248" //   SY.248 = SY    Sicily         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionMap
 )
 
-// A map of all Region specifications.
-var RegionMap = map[Region]Spec{
+// A map of all RegionCompositeKey specifications.
+var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 	AI_248: {IsImportOnly: false, Key: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	BI_259: {IsImportOnly: false, Key: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 	ET_390: {IsImportOnly: false, Key: "ET", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
@@ -32,30 +32,30 @@ var RegionMap = map[Region]Spec{
 	SY_248: {IsImportOnly: false, Key: "SY", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 }
 
-// All Region specifications including depreciated and import only.
-var RegionListAll = []Spec{
-	RegionMap[AI_248],
-	RegionMap[BI_259],
-	RegionMap[ET_390],
-	RegionMap[IV_206],
-	RegionMap[KO_0],
-	RegionMap[KO_296],
-	RegionMap[KO_522],
-	RegionMap[NONE],
-	RegionMap[SI_279],
-	RegionMap[SY_248],
+// All RegionCompositeKey specifications including depreciated and import only.
+var RegionCompositeKeyListAll = []Spec{
+	RegionCompositeKeyMap[AI_248],
+	RegionCompositeKeyMap[BI_259],
+	RegionCompositeKeyMap[ET_390],
+	RegionCompositeKeyMap[IV_206],
+	RegionCompositeKeyMap[KO_0],
+	RegionCompositeKeyMap[KO_296],
+	RegionCompositeKeyMap[KO_522],
+	RegionCompositeKeyMap[NONE],
+	RegionCompositeKeyMap[SI_279],
+	RegionCompositeKeyMap[SY_248],
 }
 
-// All Region specifications values that are NOT marked import-only.
-var RegionListCurrent = []Spec{
-	RegionMap[AI_248],
-	RegionMap[BI_259],
-	RegionMap[ET_390],
-	RegionMap[IV_206],
-	RegionMap[KO_0],
-	RegionMap[KO_296],
-	RegionMap[KO_522],
-	RegionMap[NONE],
-	RegionMap[SI_279],
-	RegionMap[SY_248],
+// All RegionCompositeKey specifications values that are NOT marked import-only.
+var RegionCompositeKeyListCurrent = []Spec{
+	RegionCompositeKeyMap[AI_248],
+	RegionCompositeKeyMap[BI_259],
+	RegionCompositeKeyMap[ET_390],
+	RegionCompositeKeyMap[IV_206],
+	RegionCompositeKeyMap[KO_0],
+	RegionCompositeKeyMap[KO_296],
+	RegionCompositeKeyMap[KO_522],
+	RegionCompositeKeyMap[NONE],
+	RegionCompositeKeyMap[SI_279],
+	RegionCompositeKeyMap[SY_248],
 }
