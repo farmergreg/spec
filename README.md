@@ -19,7 +19,7 @@ It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_reso
   - *.`List` Suffix - A list of values that are current.
   - *.`ListAll` Suffix - A list of all values, including import-only values.
 
-For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/8HYNUtAUAJh)):
+For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/G_9Sy9Xbrpd)):
 
 ```go
 package main
@@ -28,24 +28,29 @@ import (
 	"fmt"
 
 	"github.com/hamradiolog-net/adif-spec/v6/enum/band"
+	"github.com/hamradiolog-net/adif-spec/v6/spec"
 )
 
 func main() {
+	fmt.Println("ADIF Specification Version:", spec.ADIF_VER)
 
-	forty := band.BandMap[band.Band40m]
+	bandMap:=band.BandMap()
+	currentBands:=band.BandListCurrent()
+	allBands:=band.BandListAll()
+
+	forty := bandMap[band.Band40m]
 	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
 
 	fmt.Println("Current Bands")
-	for _, band := range band.BandListCurrent {
+	for _, band := range currentBands {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
 	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
-	for _, band := range band.BandListAll {
+	for _, band := range allBands {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 }
-
 ```
 
 ## Maintenance
