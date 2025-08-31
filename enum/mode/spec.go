@@ -3,8 +3,8 @@ package mode
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/v3/enum/submode"
-	"github.com/hamradiolog-net/adif-spec/v3/spectype"
+	"github.com/hamradiolog-net/adif-spec/v8/enum/submode"
+	"github.com/hamradiolog-net/adif-spec/v8/spectype"
 )
 
 // SpecMap contains all Mode specifications as defined by the ADIF Workgroup specification exports.

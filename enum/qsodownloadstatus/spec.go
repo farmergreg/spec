@@ -3,7 +3,7 @@ package qsodownloadstatus
 import (
 	"fmt"
 
-	"github.com/hamradiolog-net/adif-spec/v3/spectype"
+	"github.com/hamradiolog-net/adif-spec/v8/spectype"
 )
 
 // SpecMap contains all QSODownloadStatus specifications as defined by the ADIF Workgroup specification exports.

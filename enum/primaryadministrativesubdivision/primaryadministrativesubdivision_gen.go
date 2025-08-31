@@ -3,7 +3,7 @@
 
 package primaryadministrativesubdivision
 
-import "github.com/hamradiolog-net/adif-spec/v3/spectype"
+import "github.com/hamradiolog-net/adif-spec/v8/spectype"
 
 var (
 	PrimaryAdministrativeSubdivision001_5            PrimaryAdministrativeSubdivision = "001"  //   001.5     = 001   ( Brändö )

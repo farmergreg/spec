@@ -3,7 +3,7 @@
 
 package region
 
-import "github.com/hamradiolog-net/adif-spec/v3/spectype"
+import "github.com/hamradiolog-net/adif-spec/v8/spectype"
 
 var (
 	AI_248 Region = "AI"   //   AI.248 = AI    African Italy
