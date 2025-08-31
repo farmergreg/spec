@@ -22,9 +22,9 @@ type Spec struct {
 	PrimaryAdminSub string                        `json:"Primary Administrative Subdivision"`
 	DXCCEntityCode  dxccentitycode.DXCCEntityCode `json:"DXCC Entity Code"`
 	ContainedWithin string                        `json:"Contained Within,omitempty"`
-	Oblast          string                        `json:"Oblast #,omitempty"`
-	CQZone          string                        `json:"CQ Zone,omitempty"`
-	ITUZone         string                        `json:"ITU Zone,omitempty"`
+	Oblast          spectype.Oblast               `json:"Oblast #,omitempty"`
+	CQZone          spectype.CQZoneList           `json:"CQ Zone,omitempty"`
+	ITUZone         spectype.ITUZoneList          `json:"ITU Zone,omitempty"`
 	Prefix          string                        `json:"Prefix,omitempty"`
 	IsDeleted       spectype.Boolean              `json:"Deleted,omitempty"`
 }

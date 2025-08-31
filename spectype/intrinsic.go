@@ -21,6 +21,10 @@ func (b *Boolean) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (b Boolean) ToBool() bool {
+	return bool(b)
+}
+
 // Integer is an integer stored in the ADIF JSON specification.
 type Integer int
 
@@ -38,6 +42,10 @@ func (i *Integer) UnmarshalJSON(data []byte) error {
 	*i = Integer(result)
 
 	return nil
+}
+
+func (i Integer) ToInt() int {
+	return int(i)
 }
 
 // DateTime is a date/time stored in the ADIF JSON specification.
