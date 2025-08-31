@@ -1,8 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// ADIF: 3.1.6 Proposed
-
+// Package arrlsection provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package arrlsection
 
 import "github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"

@@ -1,8 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// ADIF: 3.1.6 Proposed
-
+// Package award provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package award
 
 const (

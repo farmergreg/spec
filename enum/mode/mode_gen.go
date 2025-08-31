@@ -1,8 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// ADIF: 3.1.6 Proposed
-
+// Package mode provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package mode
 
 import "github.com/hamradiolog-net/adif-spec/v6/enum/submode"
