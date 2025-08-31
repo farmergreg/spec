@@ -14,10 +14,6 @@ It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_reso
 ## Using The Library
 
 - Run `go get github.com/hamradiolog-net/adif-spec@latest`
-- Import any of the packages in the [`src/pkg`](src/pkg) directory that you wish to use.
-  - *.`Map` Suffix - A map of the ADIF specification for fast lookups.
-  - *.`List` Suffix - A list of values that are current.
-  - *.`ListAll` Suffix - A list of all values, including import-only values.
 
 For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/G_9Sy9Xbrpd)):
 
