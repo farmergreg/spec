@@ -38,5 +38,9 @@ func (d Spec) Identifier() string {
 }
 
 func (s Spec) String() string {
-	return fmt.Sprintf("%s = %s", s.Key, s.EntityName)
+	deleted := ""
+	if s.IsDeleted {
+		deleted = " (DELETED) "
+	}
+	return fmt.Sprintf("%s = %s%s", s.Key, s.EntityName, deleted)
 }

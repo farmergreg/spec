@@ -6,13 +6,13 @@ package dxccentitycode
 var (
 	NONE                                     DXCCEntityCode = 0   // 0 = None (the contacted station is known to not be within a DXCC entity)
 	CANADA                                   DXCCEntityCode = 1   // 1 = CANADA
-	ABU_AIL_IS_DELETED                       DXCCEntityCode = 2   // 2 = ABU AIL IS.
+	ABU_AIL_IS_DELETED                       DXCCEntityCode = 2   // 2 = ABU AIL IS. (DELETED)
 	AFGHANISTAN                              DXCCEntityCode = 3   // 3 = AFGHANISTAN
 	AGALEGA_AND_ST_BRANDON_IS                DXCCEntityCode = 4   // 4 = AGALEGA & ST. BRANDON IS.
 	ALAND_IS                                 DXCCEntityCode = 5   // 5 = ALAND IS.
 	ALASKA                                   DXCCEntityCode = 6   // 6 = ALASKA
 	ALBANIA                                  DXCCEntityCode = 7   // 7 = ALBANIA
-	ALDABRA_DELETED                          DXCCEntityCode = 8   // 8 = ALDABRA
+	ALDABRA_DELETED                          DXCCEntityCode = 8   // 8 = ALDABRA (DELETED)
 	AMERICAN_SAMOA                           DXCCEntityCode = 9   // 9 = AMERICAN SAMOA
 	AMSTERDAM_AND_ST_PAUL_IS                 DXCCEntityCode = 10  // 10 = AMSTERDAM & ST. PAUL IS.
 	ANDAMAN_AND_NICOBAR_IS                   DXCCEntityCode = 11  // 11 = ANDAMAN & NICOBAR IS.
@@ -23,18 +23,18 @@ var (
 	NEW_ZEALAND_SUBANTARCTIC_ISLANDS         DXCCEntityCode = 16  // 16 = NEW ZEALAND SUBANTARCTIC ISLANDS
 	AVES_I                                   DXCCEntityCode = 17  // 17 = AVES I.
 	AZERBAIJAN                               DXCCEntityCode = 18  // 18 = AZERBAIJAN
-	BAJO_NUEVO_DELETED                       DXCCEntityCode = 19  // 19 = BAJO NUEVO
+	BAJO_NUEVO_DELETED                       DXCCEntityCode = 19  // 19 = BAJO NUEVO (DELETED)
 	BAKER_AND_HOWLAND_IS                     DXCCEntityCode = 20  // 20 = BAKER & HOWLAND IS.
 	BALEARIC_IS                              DXCCEntityCode = 21  // 21 = BALEARIC IS.
 	PALAU                                    DXCCEntityCode = 22  // 22 = PALAU
-	BLENHEIM_REEF_DELETED                    DXCCEntityCode = 23  // 23 = BLENHEIM REEF
+	BLENHEIM_REEF_DELETED                    DXCCEntityCode = 23  // 23 = BLENHEIM REEF (DELETED)
 	BOUVET                                   DXCCEntityCode = 24  // 24 = BOUVET
-	BRITISH_NORTH_BORNEO_DELETED             DXCCEntityCode = 25  // 25 = BRITISH NORTH BORNEO
-	BRITISH_SOMALILAND_DELETED               DXCCEntityCode = 26  // 26 = BRITISH SOMALILAND
+	BRITISH_NORTH_BORNEO_DELETED             DXCCEntityCode = 25  // 25 = BRITISH NORTH BORNEO (DELETED)
+	BRITISH_SOMALILAND_DELETED               DXCCEntityCode = 26  // 26 = BRITISH SOMALILAND (DELETED)
 	BELARUS                                  DXCCEntityCode = 27  // 27 = BELARUS
-	CANAL_ZONE_DELETED                       DXCCEntityCode = 28  // 28 = CANAL ZONE
+	CANAL_ZONE_DELETED                       DXCCEntityCode = 28  // 28 = CANAL ZONE (DELETED)
 	CANARY_IS                                DXCCEntityCode = 29  // 29 = CANARY IS.
-	CELEBE_AND_MOLUCCA_IS_DELETED            DXCCEntityCode = 30  // 30 = CELEBE & MOLUCCA IS.
+	CELEBE_AND_MOLUCCA_IS_DELETED            DXCCEntityCode = 30  // 30 = CELEBE & MOLUCCA IS. (DELETED)
 	C_KIRIBATI_BRITISH_PHOENIX_IS            DXCCEntityCode = 31  // 31 = C. KIRIBATI (BRITISH PHOENIX IS.)
 	CEUTA_AND_MELILLA                        DXCCEntityCode = 32  // 32 = CEUTA & MELILLA
 	CHAGOS_IS                                DXCCEntityCode = 33  // 33 = CHAGOS IS.
@@ -43,12 +43,12 @@ var (
 	CLIPPERTON_I                             DXCCEntityCode = 36  // 36 = CLIPPERTON I.
 	COCOS_I                                  DXCCEntityCode = 37  // 37 = COCOS I.
 	COCOS_KEELING_IS                         DXCCEntityCode = 38  // 38 = COCOS (KEELING) IS.
-	COMOROS_DELETED                          DXCCEntityCode = 39  // 39 = COMOROS
+	COMOROS_DELETED                          DXCCEntityCode = 39  // 39 = COMOROS (DELETED)
 	CRETE                                    DXCCEntityCode = 40  // 40 = CRETE
 	CROZET_I                                 DXCCEntityCode = 41  // 41 = CROZET I.
-	DAMAO_DIU_DELETED                        DXCCEntityCode = 42  // 42 = DAMAO, DIU
+	DAMAO_DIU_DELETED                        DXCCEntityCode = 42  // 42 = DAMAO, DIU (DELETED)
 	DESECHEO_I                               DXCCEntityCode = 43  // 43 = DESECHEO I.
-	DESROCHES_DELETED                        DXCCEntityCode = 44  // 44 = DESROCHES
+	DESROCHES_DELETED                        DXCCEntityCode = 44  // 44 = DESROCHES (DELETED)
 	DODECANESE                               DXCCEntityCode = 45  // 45 = DODECANESE
 	EAST_MALAYSIA                            DXCCEntityCode = 46  // 46 = EAST MALAYSIA
 	EASTER_I                                 DXCCEntityCode = 47  // 47 = EASTER I.
@@ -59,11 +59,11 @@ var (
 	ESTONIA                                  DXCCEntityCode = 52  // 52 = ESTONIA
 	ETHIOPIA                                 DXCCEntityCode = 53  // 53 = ETHIOPIA
 	EUROPEAN_RUSSIA                          DXCCEntityCode = 54  // 54 = EUROPEAN RUSSIA
-	FARQUHAR_DELETED                         DXCCEntityCode = 55  // 55 = FARQUHAR
+	FARQUHAR_DELETED                         DXCCEntityCode = 55  // 55 = FARQUHAR (DELETED)
 	FERNANDO_DE_NORONHA                      DXCCEntityCode = 56  // 56 = FERNANDO DE NORONHA
-	FRENCH_EQUATORIAL_AFRICA_DELETED         DXCCEntityCode = 57  // 57 = FRENCH EQUATORIAL AFRICA
-	FRENCH_INDO_CHINA_DELETED                DXCCEntityCode = 58  // 58 = FRENCH INDO-CHINA
-	FRENCH_WEST_AFRICA_DELETED               DXCCEntityCode = 59  // 59 = FRENCH WEST AFRICA
+	FRENCH_EQUATORIAL_AFRICA_DELETED         DXCCEntityCode = 57  // 57 = FRENCH EQUATORIAL AFRICA (DELETED)
+	FRENCH_INDO_CHINA_DELETED                DXCCEntityCode = 58  // 58 = FRENCH INDO-CHINA (DELETED)
+	FRENCH_WEST_AFRICA_DELETED               DXCCEntityCode = 59  // 59 = FRENCH WEST AFRICA (DELETED)
 	BAHAMAS                                  DXCCEntityCode = 60  // 60 = BAHAMAS
 	FRANZ_JOSEF_LAND                         DXCCEntityCode = 61  // 61 = FRANZ JOSEF LAND
 	BARBADOS                                 DXCCEntityCode = 62  // 62 = BARBADOS
@@ -71,8 +71,8 @@ var (
 	BERMUDA                                  DXCCEntityCode = 64  // 64 = BERMUDA
 	BRITISH_VIRGIN_IS                        DXCCEntityCode = 65  // 65 = BRITISH VIRGIN IS.
 	BELIZE                                   DXCCEntityCode = 66  // 66 = BELIZE
-	FRENCH_INDIA_DELETED                     DXCCEntityCode = 67  // 67 = FRENCH INDIA
-	KUWAIT_SAUDI_ARABIA_NEUTRAL_ZONE_DELETED DXCCEntityCode = 68  // 68 = KUWAIT/SAUDI ARABIA NEUTRAL ZONE
+	FRENCH_INDIA_DELETED                     DXCCEntityCode = 67  // 67 = FRENCH INDIA (DELETED)
+	KUWAIT_SAUDI_ARABIA_NEUTRAL_ZONE_DELETED DXCCEntityCode = 68  // 68 = KUWAIT/SAUDI ARABIA NEUTRAL ZONE (DELETED)
 	CAYMAN_IS                                DXCCEntityCode = 69  // 69 = CAYMAN IS.
 	CUBA                                     DXCCEntityCode = 70  // 70 = CUBA
 	GALAPAGOS_IS                             DXCCEntityCode = 71  // 71 = GALAPAGOS IS.
@@ -84,16 +84,16 @@ var (
 	HAITI                                    DXCCEntityCode = 78  // 78 = HAITI
 	GUADELOUPE                               DXCCEntityCode = 79  // 79 = GUADELOUPE
 	HONDURAS                                 DXCCEntityCode = 80  // 80 = HONDURAS
-	GERMANY_DELETED                          DXCCEntityCode = 81  // 81 = GERMANY
+	GERMANY_DELETED                          DXCCEntityCode = 81  // 81 = GERMANY (DELETED)
 	JAMAICA                                  DXCCEntityCode = 82  // 82 = JAMAICA
 	MARTINIQUE                               DXCCEntityCode = 84  // 84 = MARTINIQUE
-	BONAIRE_CURACAO_DELETED                  DXCCEntityCode = 85  // 85 = BONAIRE, CURACAO
+	BONAIRE_CURACAO_DELETED                  DXCCEntityCode = 85  // 85 = BONAIRE, CURACAO (DELETED)
 	NICARAGUA                                DXCCEntityCode = 86  // 86 = NICARAGUA
 	PANAMA                                   DXCCEntityCode = 88  // 88 = PANAMA
 	TURKS_AND_CAICOS_IS                      DXCCEntityCode = 89  // 89 = TURKS & CAICOS IS.
 	TRINIDAD_AND_TOBAGO                      DXCCEntityCode = 90  // 90 = TRINIDAD & TOBAGO
 	ARUBA                                    DXCCEntityCode = 91  // 91 = ARUBA
-	GEYSER_REEF_DELETED                      DXCCEntityCode = 93  // 93 = GEYSER REEF
+	GEYSER_REEF_DELETED                      DXCCEntityCode = 93  // 93 = GEYSER REEF (DELETED)
 	ANTIGUA_AND_BARBUDA                      DXCCEntityCode = 94  // 94 = ANTIGUA & BARBUDA
 	DOMINICA                                 DXCCEntityCode = 95  // 95 = DOMINICA
 	MONTSERRAT                               DXCCEntityCode = 96  // 96 = MONTSERRAT
@@ -101,8 +101,8 @@ var (
 	ST_VINCENT                               DXCCEntityCode = 98  // 98 = ST. VINCENT
 	GLORIOSO_IS                              DXCCEntityCode = 99  // 99 = GLORIOSO IS.
 	ARGENTINA                                DXCCEntityCode = 100 // 100 = ARGENTINA
-	GOA_DELETED                              DXCCEntityCode = 101 // 101 = GOA
-	GOLD_COAST_TOGOLAND_DELETED              DXCCEntityCode = 102 // 102 = GOLD COAST, TOGOLAND
+	GOA_DELETED                              DXCCEntityCode = 101 // 101 = GOA (DELETED)
+	GOLD_COAST_TOGOLAND_DELETED              DXCCEntityCode = 102 // 102 = GOLD COAST, TOGOLAND (DELETED)
 	GUAM                                     DXCCEntityCode = 103 // 103 = GUAM
 	BOLIVIA                                  DXCCEntityCode = 104 // 104 = BOLIVIA
 	GUANTANAMO_BAY                           DXCCEntityCode = 105 // 105 = GUANTANAMO BAY
@@ -113,32 +113,32 @@ var (
 	HAWAII                                   DXCCEntityCode = 110 // 110 = HAWAII
 	HEARD_I                                  DXCCEntityCode = 111 // 111 = HEARD I.
 	CHILE                                    DXCCEntityCode = 112 // 112 = CHILE
-	IFNI_DELETED                             DXCCEntityCode = 113 // 113 = IFNI
+	IFNI_DELETED                             DXCCEntityCode = 113 // 113 = IFNI (DELETED)
 	ISLE_OF_MAN                              DXCCEntityCode = 114 // 114 = ISLE OF MAN
-	ITALIAN_SOMALILAND_DELETED               DXCCEntityCode = 115 // 115 = ITALIAN SOMALILAND
+	ITALIAN_SOMALILAND_DELETED               DXCCEntityCode = 115 // 115 = ITALIAN SOMALILAND (DELETED)
 	COLOMBIA                                 DXCCEntityCode = 116 // 116 = COLOMBIA
 	ITU_HQ                                   DXCCEntityCode = 117 // 117 = ITU HQ
 	JAN_MAYEN                                DXCCEntityCode = 118 // 118 = JAN MAYEN
-	JAVA_DELETED                             DXCCEntityCode = 119 // 119 = JAVA
+	JAVA_DELETED                             DXCCEntityCode = 119 // 119 = JAVA (DELETED)
 	ECUADOR                                  DXCCEntityCode = 120 // 120 = ECUADOR
 	JERSEY                                   DXCCEntityCode = 122 // 122 = JERSEY
 	JOHNSTON_I                               DXCCEntityCode = 123 // 123 = JOHNSTON I.
 	JUAN_DE_NOVA_EUROPA                      DXCCEntityCode = 124 // 124 = JUAN DE NOVA, EUROPA
 	JUAN_FERNANDEZ_IS                        DXCCEntityCode = 125 // 125 = JUAN FERNANDEZ IS.
 	KALININGRAD                              DXCCEntityCode = 126 // 126 = KALININGRAD
-	KAMARAN_IS_DELETED                       DXCCEntityCode = 127 // 127 = KAMARAN IS.
-	KARELO_FINNISH_REPUBLIC_DELETED          DXCCEntityCode = 128 // 128 = KARELO-FINNISH REPUBLIC
+	KAMARAN_IS_DELETED                       DXCCEntityCode = 127 // 127 = KAMARAN IS. (DELETED)
+	KARELO_FINNISH_REPUBLIC_DELETED          DXCCEntityCode = 128 // 128 = KARELO-FINNISH REPUBLIC (DELETED)
 	GUYANA                                   DXCCEntityCode = 129 // 129 = GUYANA
 	KAZAKHSTAN                               DXCCEntityCode = 130 // 130 = KAZAKHSTAN
 	KERGUELEN_IS                             DXCCEntityCode = 131 // 131 = KERGUELEN IS.
 	PARAGUAY                                 DXCCEntityCode = 132 // 132 = PARAGUAY
 	KERMADEC_IS                              DXCCEntityCode = 133 // 133 = KERMADEC IS.
-	KINGMAN_REEF_DELETED                     DXCCEntityCode = 134 // 134 = KINGMAN REEF
+	KINGMAN_REEF_DELETED                     DXCCEntityCode = 134 // 134 = KINGMAN REEF (DELETED)
 	KYRGYZSTAN                               DXCCEntityCode = 135 // 135 = KYRGYZSTAN
 	PERU                                     DXCCEntityCode = 136 // 136 = PERU
 	REPUBLIC_OF_KOREA                        DXCCEntityCode = 137 // 137 = REPUBLIC OF KOREA
 	KURE_I                                   DXCCEntityCode = 138 // 138 = KURE I.
-	KURIA_MURIA_I_DELETED                    DXCCEntityCode = 139 // 139 = KURIA MURIA I.
+	KURIA_MURIA_I_DELETED                    DXCCEntityCode = 139 // 139 = KURIA MURIA I. (DELETED)
 	SURINAME                                 DXCCEntityCode = 140 // 140 = SURINAME
 	FALKLAND_IS                              DXCCEntityCode = 141 // 141 = FALKLAND IS.
 	LAKSHADWEEP_IS                           DXCCEntityCode = 142 // 142 = LAKSHADWEEP IS.
@@ -150,11 +150,11 @@ var (
 	VENEZUELA                                DXCCEntityCode = 148 // 148 = VENEZUELA
 	AZORES                                   DXCCEntityCode = 149 // 149 = AZORES
 	AUSTRALIA                                DXCCEntityCode = 150 // 150 = AUSTRALIA
-	MALYJ_VYSOTSKIJ_I_DELETED                DXCCEntityCode = 151 // 151 = MALYJ VYSOTSKIJ I.
+	MALYJ_VYSOTSKIJ_I_DELETED                DXCCEntityCode = 151 // 151 = MALYJ VYSOTSKIJ I. (DELETED)
 	MACAO                                    DXCCEntityCode = 152 // 152 = MACAO
 	MACQUARIE_I                              DXCCEntityCode = 153 // 153 = MACQUARIE I.
-	YEMEN_ARAB_REPUBLIC_DELETED              DXCCEntityCode = 154 // 154 = YEMEN ARAB REPUBLIC
-	MALAYA_DELETED                           DXCCEntityCode = 155 // 155 = MALAYA
+	YEMEN_ARAB_REPUBLIC_DELETED              DXCCEntityCode = 154 // 154 = YEMEN ARAB REPUBLIC (DELETED)
+	MALAYA_DELETED                           DXCCEntityCode = 155 // 155 = MALAYA (DELETED)
 	NAURU                                    DXCCEntityCode = 157 // 157 = NAURU
 	VANUATU                                  DXCCEntityCode = 158 // 158 = VANUATU
 	MALDIVES                                 DXCCEntityCode = 159 // 159 = MALDIVES
@@ -162,7 +162,7 @@ var (
 	MALPELO_I                                DXCCEntityCode = 161 // 161 = MALPELO I.
 	NEW_CALEDONIA                            DXCCEntityCode = 162 // 162 = NEW CALEDONIA
 	PAPUA_NEW_GUINEA                         DXCCEntityCode = 163 // 163 = PAPUA NEW GUINEA
-	MANCHURIA_DELETED                        DXCCEntityCode = 164 // 164 = MANCHURIA
+	MANCHURIA_DELETED                        DXCCEntityCode = 164 // 164 = MANCHURIA (DELETED)
 	MAURITIUS                                DXCCEntityCode = 165 // 165 = MAURITIUS
 	MARIANA_IS                               DXCCEntityCode = 166 // 166 = MARIANA IS.
 	MARKET_REEF                              DXCCEntityCode = 167 // 167 = MARKET REEF
@@ -176,29 +176,29 @@ var (
 	FRENCH_POLYNESIA                         DXCCEntityCode = 175 // 175 = FRENCH POLYNESIA
 	FIJI                                     DXCCEntityCode = 176 // 176 = FIJI
 	MINAMI_TORISHIMA                         DXCCEntityCode = 177 // 177 = MINAMI TORISHIMA
-	MINERVA_REEF_DELETED                     DXCCEntityCode = 178 // 178 = MINERVA REEF
+	MINERVA_REEF_DELETED                     DXCCEntityCode = 178 // 178 = MINERVA REEF (DELETED)
 	MOLDOVA                                  DXCCEntityCode = 179 // 179 = MOLDOVA
 	MOUNT_ATHOS                              DXCCEntityCode = 180 // 180 = MOUNT ATHOS
 	MOZAMBIQUE                               DXCCEntityCode = 181 // 181 = MOZAMBIQUE
 	NAVASSA_I                                DXCCEntityCode = 182 // 182 = NAVASSA I.
-	NETHERLANDS_BORNEO_DELETED               DXCCEntityCode = 183 // 183 = NETHERLANDS BORNEO
-	NETHERLANDS_NEW_GUINEA_DELETED           DXCCEntityCode = 184 // 184 = NETHERLANDS NEW GUINEA
+	NETHERLANDS_BORNEO_DELETED               DXCCEntityCode = 183 // 183 = NETHERLANDS BORNEO (DELETED)
+	NETHERLANDS_NEW_GUINEA_DELETED           DXCCEntityCode = 184 // 184 = NETHERLANDS NEW GUINEA (DELETED)
 	SOLOMON_IS                               DXCCEntityCode = 185 // 185 = SOLOMON IS.
-	NEWFOUNDLAND_LABRADOR_DELETED            DXCCEntityCode = 186 // 186 = NEWFOUNDLAND, LABRADOR
+	NEWFOUNDLAND_LABRADOR_DELETED            DXCCEntityCode = 186 // 186 = NEWFOUNDLAND, LABRADOR (DELETED)
 	NIGER                                    DXCCEntityCode = 187 // 187 = NIGER
 	NIUE                                     DXCCEntityCode = 188 // 188 = NIUE
 	NORFOLK_I                                DXCCEntityCode = 189 // 189 = NORFOLK I.
 	SAMOA                                    DXCCEntityCode = 190 // 190 = SAMOA
 	NORTH_COOK_IS                            DXCCEntityCode = 191 // 191 = NORTH COOK IS.
 	OGASAWARA                                DXCCEntityCode = 192 // 192 = OGASAWARA
-	OKINAWA_RYUKYU_IS_DELETED                DXCCEntityCode = 193 // 193 = OKINAWA (RYUKYU IS.)
-	OKINO_TORI_SHIMA_DELETED                 DXCCEntityCode = 194 // 194 = OKINO TORI-SHIMA
+	OKINAWA_RYUKYU_IS_DELETED                DXCCEntityCode = 193 // 193 = OKINAWA (RYUKYU IS.) (DELETED)
+	OKINO_TORI_SHIMA_DELETED                 DXCCEntityCode = 194 // 194 = OKINO TORI-SHIMA (DELETED)
 	ANNOBON_I                                DXCCEntityCode = 195 // 195 = ANNOBON I.
-	PALESTINE_DELETED                        DXCCEntityCode = 196 // 196 = PALESTINE
+	PALESTINE_DELETED                        DXCCEntityCode = 196 // 196 = PALESTINE (DELETED)
 	PALMYRA_AND_JARVIS_IS                    DXCCEntityCode = 197 // 197 = PALMYRA & JARVIS IS.
-	PAPUA_TERRITORY_DELETED                  DXCCEntityCode = 198 // 198 = PAPUA TERRITORY
+	PAPUA_TERRITORY_DELETED                  DXCCEntityCode = 198 // 198 = PAPUA TERRITORY (DELETED)
 	PETER_1_I                                DXCCEntityCode = 199 // 199 = PETER 1 I.
-	PORTUGUESE_TIMOR_DELETED                 DXCCEntityCode = 200 // 200 = PORTUGUESE TIMOR
+	PORTUGUESE_TIMOR_DELETED                 DXCCEntityCode = 200 // 200 = PORTUGUESE TIMOR (DELETED)
 	PRINCE_EDWARD_AND_MARION_IS              DXCCEntityCode = 201 // 201 = PRINCE EDWARD & MARION IS.
 	PUERTO_RICO                              DXCCEntityCode = 202 // 202 = PUERTO RICO
 	ANDORRA                                  DXCCEntityCode = 203 // 203 = ANDORRA
@@ -206,9 +206,9 @@ var (
 	ASCENSION_I                              DXCCEntityCode = 205 // 205 = ASCENSION I.
 	AUSTRIA                                  DXCCEntityCode = 206 // 206 = AUSTRIA
 	RODRIGUES_I                              DXCCEntityCode = 207 // 207 = RODRIGUES I.
-	RUANDA_URUNDI_DELETED                    DXCCEntityCode = 208 // 208 = RUANDA-URUNDI
+	RUANDA_URUNDI_DELETED                    DXCCEntityCode = 208 // 208 = RUANDA-URUNDI (DELETED)
 	BELGIUM                                  DXCCEntityCode = 209 // 209 = BELGIUM
-	SAAR_DELETED                             DXCCEntityCode = 210 // 210 = SAAR
+	SAAR_DELETED                             DXCCEntityCode = 210 // 210 = SAAR (DELETED)
 	SABLE_I                                  DXCCEntityCode = 211 // 211 = SABLE I.
 	BULGARIA                                 DXCCEntityCode = 212 // 212 = BULGARIA
 	SAINT_MARTIN                             DXCCEntityCode = 213 // 213 = SAINT MARTIN
@@ -216,20 +216,20 @@ var (
 	CYPRUS                                   DXCCEntityCode = 215 // 215 = CYPRUS
 	SAN_ANDRES_AND_PROVIDENCIA               DXCCEntityCode = 216 // 216 = SAN ANDRES & PROVIDENCIA
 	SAN_FELIX_AND_SAN_AMBROSIO               DXCCEntityCode = 217 // 217 = SAN FELIX & SAN AMBROSIO
-	CZECHOSLOVAKIA_DELETED                   DXCCEntityCode = 218 // 218 = CZECHOSLOVAKIA
+	CZECHOSLOVAKIA_DELETED                   DXCCEntityCode = 218 // 218 = CZECHOSLOVAKIA (DELETED)
 	SAO_TOME_AND_PRINCIPE                    DXCCEntityCode = 219 // 219 = SAO TOME & PRINCIPE
-	SARAWAK_DELETED                          DXCCEntityCode = 220 // 220 = SARAWAK
+	SARAWAK_DELETED                          DXCCEntityCode = 220 // 220 = SARAWAK (DELETED)
 	DENMARK                                  DXCCEntityCode = 221 // 221 = DENMARK
 	FAROE_IS                                 DXCCEntityCode = 222 // 222 = FAROE IS.
 	ENGLAND                                  DXCCEntityCode = 223 // 223 = ENGLAND
 	FINLAND                                  DXCCEntityCode = 224 // 224 = FINLAND
 	SARDINIA                                 DXCCEntityCode = 225 // 225 = SARDINIA
-	SAUDI_ARABIA_IRAQ_NEUTRAL_ZONE_DELETED   DXCCEntityCode = 226 // 226 = SAUDI ARABIA/IRAQ NEUTRAL ZONE
+	SAUDI_ARABIA_IRAQ_NEUTRAL_ZONE_DELETED   DXCCEntityCode = 226 // 226 = SAUDI ARABIA/IRAQ NEUTRAL ZONE (DELETED)
 	FRANCE                                   DXCCEntityCode = 227 // 227 = FRANCE
-	SERRANA_BANK_AND_RONCADOR_CAY_DELETED    DXCCEntityCode = 228 // 228 = SERRANA BANK & RONCADOR CAY
-	GERMAN_DEMOCRATIC_REPUBLIC_DELETED       DXCCEntityCode = 229 // 229 = GERMAN DEMOCRATIC REPUBLIC
+	SERRANA_BANK_AND_RONCADOR_CAY_DELETED    DXCCEntityCode = 228 // 228 = SERRANA BANK & RONCADOR CAY (DELETED)
+	GERMAN_DEMOCRATIC_REPUBLIC_DELETED       DXCCEntityCode = 229 // 229 = GERMAN DEMOCRATIC REPUBLIC (DELETED)
 	FEDERAL_REPUBLIC_OF_GERMANY              DXCCEntityCode = 230 // 230 = FEDERAL REPUBLIC OF GERMANY
-	SIKKIM_DELETED                           DXCCEntityCode = 231 // 231 = SIKKIM
+	SIKKIM_DELETED                           DXCCEntityCode = 231 // 231 = SIKKIM (DELETED)
 	SOMALIA                                  DXCCEntityCode = 232 // 232 = SOMALIA
 	GIBRALTAR                                DXCCEntityCode = 233 // 233 = GIBRALTAR
 	SOUTH_COOK_IS                            DXCCEntityCode = 234 // 234 = SOUTH COOK IS.
@@ -241,8 +241,8 @@ var (
 	SOUTH_SANDWICH_IS                        DXCCEntityCode = 240 // 240 = SOUTH SANDWICH IS.
 	SOUTH_SHETLAND_IS                        DXCCEntityCode = 241 // 241 = SOUTH SHETLAND IS.
 	ICELAND                                  DXCCEntityCode = 242 // 242 = ICELAND
-	PEOPLES_DEMOCRATIC_REP_OF_YEMEN_DELETED  DXCCEntityCode = 243 // 243 = PEOPLE'S DEMOCRATIC REP. OF YEMEN
-	SOUTHERN_SUDAN_DELETED                   DXCCEntityCode = 244 // 244 = SOUTHERN SUDAN
+	PEOPLES_DEMOCRATIC_REP_OF_YEMEN_DELETED  DXCCEntityCode = 243 // 243 = PEOPLE'S DEMOCRATIC REP. OF YEMEN (DELETED)
+	SOUTHERN_SUDAN_DELETED                   DXCCEntityCode = 244 // 244 = SOUTHERN SUDAN (DELETED)
 	IRELAND                                  DXCCEntityCode = 245 // 245 = IRELAND
 	SOVEREIGN_MILITARY_ORDER_OF_MALTA        DXCCEntityCode = 246 // 246 = SOVEREIGN MILITARY ORDER OF MALTA
 	SPRATLY_IS                               DXCCEntityCode = 247 // 247 = SPRATLY IS.
@@ -253,23 +253,23 @@ var (
 	ST_PAUL_I                                DXCCEntityCode = 252 // 252 = ST. PAUL I.
 	ST_PETER_AND_ST_PAUL_ROCKS               DXCCEntityCode = 253 // 253 = ST. PETER & ST. PAUL ROCKS
 	LUXEMBOURG                               DXCCEntityCode = 254 // 254 = LUXEMBOURG
-	ST_MAARTEN_SABA_ST_EUSTATIUS_DELETED     DXCCEntityCode = 255 // 255 = ST. MAARTEN, SABA, ST. EUSTATIUS
+	ST_MAARTEN_SABA_ST_EUSTATIUS_DELETED     DXCCEntityCode = 255 // 255 = ST. MAARTEN, SABA, ST. EUSTATIUS (DELETED)
 	MADEIRA_IS                               DXCCEntityCode = 256 // 256 = MADEIRA IS.
 	MALTA                                    DXCCEntityCode = 257 // 257 = MALTA
-	SUMATRA_DELETED                          DXCCEntityCode = 258 // 258 = SUMATRA
+	SUMATRA_DELETED                          DXCCEntityCode = 258 // 258 = SUMATRA (DELETED)
 	SVALBARD                                 DXCCEntityCode = 259 // 259 = SVALBARD
 	MONACO                                   DXCCEntityCode = 260 // 260 = MONACO
-	SWAN_IS_DELETED                          DXCCEntityCode = 261 // 261 = SWAN IS.
+	SWAN_IS_DELETED                          DXCCEntityCode = 261 // 261 = SWAN IS. (DELETED)
 	TAJIKISTAN                               DXCCEntityCode = 262 // 262 = TAJIKISTAN
 	NETHERLANDS                              DXCCEntityCode = 263 // 263 = NETHERLANDS
-	TANGIER_DELETED                          DXCCEntityCode = 264 // 264 = TANGIER
+	TANGIER_DELETED                          DXCCEntityCode = 264 // 264 = TANGIER (DELETED)
 	NORTHERN_IRELAND                         DXCCEntityCode = 265 // 265 = NORTHERN IRELAND
 	NORWAY                                   DXCCEntityCode = 266 // 266 = NORWAY
-	TERRITORY_OF_NEW_GUINEA_DELETED          DXCCEntityCode = 267 // 267 = TERRITORY OF NEW GUINEA
-	TIBET_DELETED                            DXCCEntityCode = 268 // 268 = TIBET
+	TERRITORY_OF_NEW_GUINEA_DELETED          DXCCEntityCode = 267 // 267 = TERRITORY OF NEW GUINEA (DELETED)
+	TIBET_DELETED                            DXCCEntityCode = 268 // 268 = TIBET (DELETED)
 	POLAND                                   DXCCEntityCode = 269 // 269 = POLAND
 	TOKELAU_IS                               DXCCEntityCode = 270 // 270 = TOKELAU IS.
-	TRIESTE_DELETED                          DXCCEntityCode = 271 // 271 = TRIESTE
+	TRIESTE_DELETED                          DXCCEntityCode = 271 // 271 = TRIESTE (DELETED)
 	PORTUGAL                                 DXCCEntityCode = 272 // 272 = PORTUGAL
 	TRINDADE_AND_MARTIM_VAZ_IS               DXCCEntityCode = 273 // 273 = TRINDADE & MARTIM VAZ IS.
 	TRISTAN_DA_CUNHA_AND_GOUGH_I             DXCCEntityCode = 274 // 274 = TRISTAN DA CUNHA & GOUGH I.
@@ -303,7 +303,7 @@ var (
 	BAHRAIN                                  DXCCEntityCode = 304 // 304 = BAHRAIN
 	BANGLADESH                               DXCCEntityCode = 305 // 305 = BANGLADESH
 	BHUTAN                                   DXCCEntityCode = 306 // 306 = BHUTAN
-	ZANZIBAR_DELETED                         DXCCEntityCode = 307 // 307 = ZANZIBAR
+	ZANZIBAR_DELETED                         DXCCEntityCode = 307 // 307 = ZANZIBAR (DELETED)
 	COSTA_RICA                               DXCCEntityCode = 308 // 308 = COSTA RICA
 	MYANMAR                                  DXCCEntityCode = 309 // 309 = MYANMAR
 	CAMBODIA                                 DXCCEntityCode = 312 // 312 = CAMBODIA
@@ -378,11 +378,11 @@ var (
 	BURKINA_FASO                             DXCCEntityCode = 480 // 480 = BURKINA FASO
 	ZAMBIA                                   DXCCEntityCode = 482 // 482 = ZAMBIA
 	TOGO                                     DXCCEntityCode = 483 // 483 = TOGO
-	WALVIS_BAY_DELETED                       DXCCEntityCode = 488 // 488 = WALVIS BAY
+	WALVIS_BAY_DELETED                       DXCCEntityCode = 488 // 488 = WALVIS BAY (DELETED)
 	CONWAY_REEF                              DXCCEntityCode = 489 // 489 = CONWAY REEF
 	BANABA_I_OCEAN_I                         DXCCEntityCode = 490 // 490 = BANABA I. (OCEAN I.)
 	YEMEN                                    DXCCEntityCode = 492 // 492 = YEMEN
-	PENGUIN_IS_DELETED                       DXCCEntityCode = 493 // 493 = PENGUIN IS.
+	PENGUIN_IS_DELETED                       DXCCEntityCode = 493 // 493 = PENGUIN IS. (DELETED)
 	CROATIA                                  DXCCEntityCode = 497 // 497 = CROATIA
 	SLOVENIA                                 DXCCEntityCode = 499 // 499 = SLOVENIA
 	BOSNIA_HERZEGOVINA                       DXCCEntityCode = 501 // 501 = BOSNIA-HERZEGOVINA
