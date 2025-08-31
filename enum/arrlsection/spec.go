@@ -23,7 +23,7 @@ func (s Spec) String() string {
 	return fmt.Sprintf("%-4s = %s", s.Key, s.Description)
 }
 
-// SpecMap contains all ARRLSection specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all ARRLSection specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[ARRLSection]Spec `json:"Records"`

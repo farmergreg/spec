@@ -6,7 +6,7 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
-// SpecMap contains all QSOComplete specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all QSOComplete specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[QSOComplete]Spec `json:"Records"`

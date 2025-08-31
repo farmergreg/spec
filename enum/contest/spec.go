@@ -19,7 +19,7 @@ func (s Spec) String() string {
 	return fmt.Sprintf("%-20s = %s", s.Key, s.Description)
 }
 
-// SpecMap contains all Contest specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all Contest specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[Contest]Spec `json:"Records"`

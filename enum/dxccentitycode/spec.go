@@ -7,7 +7,7 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
-// SpecMap contains all DXCCEntityCode specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all DXCCEntityCode specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[DXCCEntityCode]Spec `json:"Records"`

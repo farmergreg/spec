@@ -6,7 +6,7 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
-// SpecMap contains all Submode specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all Submode specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[SubMode]Spec `json:"Records"`

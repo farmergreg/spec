@@ -19,7 +19,7 @@ func (s Spec) String() string {
 	return fmt.Sprintf("%-6s = %s", s.Key, s.Description)
 }
 
-// SpecMap contains all AwardSponsor specifications as defined by the ADIF Workgroup specification exports.
+// SpecMapContainer contains all AwardSponsor specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[AwardSponsorPrefix]Spec `json:"Records"`
