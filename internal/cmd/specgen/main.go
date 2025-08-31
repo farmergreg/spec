@@ -33,63 +33,249 @@ func main() {
 	fmt.Printf("ADIF Version: %s\n", adifSpec.Version)
 	fmt.Printf("Status: %s\n", adifSpec.Status)
 
-	generate(adifSpec, nil, false, "spec.tmpl", "spec", "", "")
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "",
+		PackageName: "spec",
+		Records:     nil,
+		ConstPrefix: "",
+	}, false, "spec.tmpl")
 
-	generate(adifSpec, adifSpec.Fields.Records, false, "field.tmpl", "adifield", "ADIField", "")
-	generate(adifSpec, adifSpec.DataTypes.Records, false, "standard.tmpl", "aditype", "ADIType", "")
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "ADIField",
+		PackageName: "adifield",
+		Records:     adifSpec.Fields.Records,
+		ConstPrefix: "",
+	}, false, "field.tmpl")
 
-	generate(adifSpec, adifSpec.Enum.Ant_Path.Records, true, "standard.tmpl", "antpath", "AntPath", "")
-	generate(adifSpec, adifSpec.Enum.ARRL_Section.Records, true, "standard.tmpl", "arrlsection", "ARRLSection", "")
-	generate(adifSpec, adifSpec.Enum.Award.Records, true, "standard.tmpl", "award", "Award", "")
-	generate(adifSpec, adifSpec.Enum.Award_Sponsor.Records, true, "standard.tmpl", "awardsponsor", "AwardSponsorPrefix", "")
-	generate(adifSpec, adifSpec.Enum.Band.Records, true, "standard.tmpl", "band", "Band", "Band")
-	generate(adifSpec, adifSpec.Enum.Contest_ID.Records, true, "standard.tmpl", "contest", "Contest", "Contest")
-	generate(adifSpec, adifSpec.Enum.Continent.Records, true, "standard.tmpl", "continent", "Continent", "")
-	generate(adifSpec, adifSpec.Enum.Credit.Records, true, "standard.tmpl", "credit", "Credit", "")
-	generate(adifSpec, adifSpec.Enum.DXCC_Entity_Code.Records, true, "dxcc.tmpl", "dxccentitycode", "DXCCEntityCode", "")
-	generate(adifSpec, adifSpec.Enum.EQSL_AG.Records, true, "standard.tmpl", "eqslag", "EQSLAG", "")
-	generate(adifSpec, adifSpec.Enum.Mode.Records, true, "standard.tmpl", "mode", "Mode", "")
-	generate(adifSpec, adifSpec.Enum.Morse_Key_Type.Records, true, "standard.tmpl", "morsekeytype", "MorseKeyType", "")
-	generate(adifSpec, adifSpec.Enum.Propagation_Mode.Records, true, "standard.tmpl", "propagationmode", "PropagationMode", "")
-	generate(adifSpec, adifSpec.Enum.QSL_Medium.Records, true, "standard.tmpl", "qslmedium", "QSLMedium", "")
-	generate(adifSpec, adifSpec.Enum.QSL_Rcvd.Records, true, "standard.tmpl", "qslrcvd", "QSLRcvd", "")
-	generate(adifSpec, adifSpec.Enum.QSL_Sent.Records, true, "standard.tmpl", "qslsent", "QSLSent", "")
-	generate(adifSpec, adifSpec.Enum.QSL_Via.Records, true, "standard.tmpl", "qslvia", "QSLVia", "")
-	generate(adifSpec, adifSpec.Enum.QSO_Complete.Records, true, "standard.tmpl", "qsocomplete", "QSOComplete", "")
-	generate(adifSpec, adifSpec.Enum.QSO_Download_Status.Records, true, "standard.tmpl", "qsodownloadstatus", "QSODownloadStatus", "")
-	generate(adifSpec, adifSpec.Enum.QSO_Upload_Status.Records, true, "standard.tmpl", "qsouploadstatus", "QSOUploadStatus", "")
-	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision.Records, true, "standard.tmpl", "secondaryadministrativesubdivision", "SecondaryAdministrativeSubdivision", "")
-	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records, true, "standard.tmpl", "secondaryadministrativesubdivisionalt", "SecondaryAdministrativeSubdivisionAlt", "")
-	generate(adifSpec, adifSpec.Enum.Submode.Records, true, "standard.tmpl", "submode", "SubMode", "SubMode")
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "ADIType",
+		PackageName: "aditype",
+		Records:     adifSpec.DataTypes.Records,
+		ConstPrefix: "",
+	}, false, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "AntPath",
+		PackageName: "antpath",
+		Records:     adifSpec.Enum.Ant_Path.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "ARRLSection",
+		PackageName: "arrlsection",
+		Records:     adifSpec.Enum.ARRL_Section.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Award",
+		PackageName: "award",
+		Records:     adifSpec.Enum.Award.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "AwardSponsorPrefix",
+		PackageName: "awardsponsor",
+		Records:     adifSpec.Enum.Award_Sponsor.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Band",
+		PackageName: "band",
+		Records:     adifSpec.Enum.Band.Records,
+		ConstPrefix: "Band",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Contest",
+		PackageName: "contest",
+		Records:     adifSpec.Enum.Contest_ID.Records,
+		ConstPrefix: "Contest",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Continent",
+		PackageName: "continent",
+		Records:     adifSpec.Enum.Continent.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Credit",
+		PackageName: "credit",
+		Records:     adifSpec.Enum.Credit.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "DXCCEntityCode",
+		PackageName: "dxccentitycode",
+		Records:     adifSpec.Enum.DXCC_Entity_Code.Records,
+		ConstPrefix: "",
+	}, true, "dxcc.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "EQSLAG",
+		PackageName: "eqslag",
+		Records:     adifSpec.Enum.EQSL_AG.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "Mode",
+		PackageName: "mode",
+		Records:     adifSpec.Enum.Mode.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "MorseKeyType",
+		PackageName: "morsekeytype",
+		Records:     adifSpec.Enum.Morse_Key_Type.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "PropagationMode",
+		PackageName: "propagationmode",
+		Records:     adifSpec.Enum.Propagation_Mode.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSLMedium",
+		PackageName: "qslmedium",
+		Records:     adifSpec.Enum.QSL_Medium.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSLRcvd",
+		PackageName: "qslrcvd",
+		Records:     adifSpec.Enum.QSL_Rcvd.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSLSent",
+		PackageName: "qslsent",
+		Records:     adifSpec.Enum.QSL_Sent.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSLVia",
+		PackageName: "qslvia",
+		Records:     adifSpec.Enum.QSL_Via.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSOComplete",
+		PackageName: "qsocomplete",
+		Records:     adifSpec.Enum.QSO_Complete.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSODownloadStatus",
+		PackageName: "qsodownloadstatus",
+		Records:     adifSpec.Enum.QSO_Download_Status.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "QSOUploadStatus",
+		PackageName: "qsouploadstatus",
+		Records:     adifSpec.Enum.QSO_Upload_Status.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "SecondaryAdministrativeSubdivision",
+		PackageName: "secondaryadministrativesubdivision",
+		Records:     adifSpec.Enum.Secondary_Administrative_Subdivision.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "SecondaryAdministrativeSubdivisionAlt",
+		PackageName: "secondaryadministrativesubdivisionalt",
+		Records:     adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records,
+		ConstPrefix: "",
+	}, true, "standard.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "SubMode",
+		PackageName: "submode",
+		Records:     adifSpec.Enum.Submode.Records,
+		ConstPrefix: "SubMode",
+	}, true, "standard.tmpl")
 
 	// Region and PrimaryAdministrativeSubdivision have composite keys and are quite different from the rest.
-	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard-composite-index.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivisionCompositeKey", "PrimaryAdministrativeSubdivision")
-	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard-composite-index.tmpl", "region", "RegionCompositeKey", "")
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "PrimaryAdministrativeSubdivisionCompositeKey",
+		PackageName: "primaryadministrativesubdivision",
+		Records:     adifSpec.Enum.Primary_Administrative_Subdivision.Records,
+		ConstPrefix: "PrimaryAdministrativeSubdivision",
+	}, true, "standard-composite-index.tmpl")
+
+	generate(ViewBag{
+		Spec:        adifSpec,
+		DataType:    "RegionCompositeKey",
+		PackageName: "region",
+		Records:     adifSpec.Enum.Region.Records,
+		ConstPrefix: "",
+	}, true, "standard-composite-index.tmpl")
 }
 
-func generate(spec spec.AdifSpec, records any, isEnum bool, tmplName, packageName, dataType, constPrefix string) {
+func generate(viewBag ViewBag, isEnum bool, tmplName string) {
 	tmpl := template.New("").Funcs(tmplFuncs)
 	tmpl, err := tmpl.ParseGlob("template/*.tmpl")
 	if err != nil {
 		log.Fatal(err)
 	}
 	var buf strings.Builder
-	err = tmpl.ExecuteTemplate(&buf, tmplName, ViewBag{
-		Spec:        spec,
-		DataType:    dataType,
-		PackageName: packageName,
-		Records:     records,
-		ConstPrefix: constPrefix,
-	})
+	err = tmpl.ExecuteTemplate(&buf, tmplName, viewBag)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dir := packageName
+	dir := viewBag.PackageName
 	if isEnum {
-		dir = path.Join("enum", packageName)
+		dir = path.Join("enum", viewBag.PackageName)
 	}
-	writeToFile(dir, packageName+"_gen.go", buf.String())
+	writeToFile(dir, viewBag.PackageName+"_gen.go", buf.String())
 }
 
 func writeToFile(dir, filename, content string) {
