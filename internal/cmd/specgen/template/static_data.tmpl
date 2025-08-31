@@ -22,3 +22,28 @@ var {{ .DataType }}ListCurrent = []Spec {
 {{- end }}
 }
 {{- end }}
+
+{{- define "static_data_composite" }}
+// A map of all {{ .DataType }} specifications.
+var {{ .DataType }}Map = map[{{ .DataType }}]Spec {
+{{- range $key, $value := .Records }}
+	"{{ $key.String }}": {{ ToGoCode $value $.PackageName }},
+{{- end }}
+}
+
+// All {{ .DataType }} specifications including depreciated and import only.
+var {{ .DataType }}ListAll = []Spec {
+{{- range $key, $value := .Records }}
+	{{ $.DataType }}Map["{{ $key.String }}"],
+{{- end }}
+}
+
+// All {{ .DataType }} specifications values that are NOT marked import-only.
+var {{ .DataType }}ListCurrent = []Spec {
+{{- range $key, $value := .Records }}
+{{- if not $value.IsImportOnly }}
+	{{ $.DataType }}Map["{{ $key.String }}"],
+{{- end }}
+{{- end }}
+}
+{{- end }}

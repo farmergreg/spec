@@ -18,18 +18,18 @@ type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
 	// Comments       string            `json:"Comments,omitempty"`
-	Key            RegionCompositeKey            `json:"Region Entity Code"` // Region Entity Code
+	Code           RegionCode                    `json:"Region Entity Code"` // Region Entity Code
 	DXCCEntityCode dxccentitycode.DXCCEntityCode `json:"DXCC Entity Code"`
-	Region         Region                        `json:"Region"`
+	Region         string                        `json:"Region"`
 	Prefix         string                        `json:"Prefix,omitempty"`
 	Applicability  spectype.StringSlice          `json:"Applicability,omitempty"` // TODO custom type
 	StartDate      spectype.DateTime             `json:"Start Date,omitempty"`
 	EndDate        spectype.DateTime             `json:"End Date,omitempty"`
 }
 
-// Region represents a region entity code.
-type Region string
+// RegionCode represents a region entity code.
+type RegionCode string
 
 func (s Spec) String() string {
-	return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Key, s.DXCCEntityCode, s.Key, s.Region)
+	return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.Region)
 }

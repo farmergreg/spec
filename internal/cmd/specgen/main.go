@@ -63,7 +63,7 @@ func main() {
 	generate(adifSpec, adifSpec.Enum.Submode.Records, true, "standard.tmpl", "submode", "SubMode", "SubMode")
 
 	// Region and PrimaryAdministrativeSubdivision have composite keys and are quite different from the rest.
-	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivisionCompositeKey", "PrimaryAdministrativeSubdivision")
+	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard-composite-index.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivisionCompositeKey", "PrimaryAdministrativeSubdivision")
 	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard-composite-index.tmpl", "region", "RegionCompositeKey", "")
 }
 

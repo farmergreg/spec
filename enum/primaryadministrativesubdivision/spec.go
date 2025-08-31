@@ -29,6 +29,7 @@ type Spec struct {
 	IsDeleted       spectype.Boolean                     `json:"Deleted,omitempty"`
 }
 
+// PrimaryAdministrativeSubdivisionCode is the Code portion of the composite key.
 type PrimaryAdministrativeSubdivisionCode string
 
 func (s Spec) String() string {

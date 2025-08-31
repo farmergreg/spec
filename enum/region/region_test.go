@@ -8,7 +8,7 @@ import (
 
 func TestLookupRegion(t *testing.T) {
 	tests := []struct {
-		region Region
+		region RegionCode
 		dxcc   dxccentitycode.DXCCEntityCode
 		wantOk bool
 	}{
