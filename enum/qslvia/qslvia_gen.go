@@ -4,6 +4,8 @@
 // Package qslvia provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qslvia
 
+import "maps"
+
 const (
 	B QSLVia = "B" // B = bureau
 	D QSLVia = "D" // D = direct
@@ -11,25 +13,40 @@ const (
 	M QSLVia = "M" // Deprecated: M = manager
 )
 
+// All QSLVia specifications including depreciated and import only.
+func QSLViaListAll() []Spec {
+	return append([]Spec(nil), internalQSLViaListAll...)
+}
+
+// All QSLVia specifications values that are NOT marked import-only.
+func QSLViaListCurrent() []Spec {
+	return append([]Spec(nil), internalQSLViaListCurrent...)
+}
+
 // A map of all QSLVia specifications.
-var QSLViaMap = map[QSLVia]Spec{
+func QSLViaMap() map[QSLVia]Spec {
+	cp := make(map[QSLVia]Spec, len(internalQSLViaMap))
+	maps.Copy(cp, internalQSLViaMap)
+	return cp
+}
+
+// A map of all QSLVia specifications.
+var internalQSLViaMap = map[QSLVia]Spec{
 	B: {IsImportOnly: false, Key: "B", Description: "bureau"},
 	D: {IsImportOnly: false, Key: "D", Description: "direct"},
 	E: {IsImportOnly: false, Key: "E", Description: "electronic"},
 	M: {IsImportOnly: true, Key: "M", Description: "manager"},
 }
 
-// All QSLVia specifications including depreciated and import only.
-var QSLViaListAll = []Spec{
-	QSLViaMap[B],
-	QSLViaMap[D],
-	QSLViaMap[E],
-	QSLViaMap[M],
+var internalQSLViaListAll = []Spec{
+	internalQSLViaMap[B],
+	internalQSLViaMap[D],
+	internalQSLViaMap[E],
+	internalQSLViaMap[M],
 }
 
-// All QSLVia specifications values that are NOT marked import-only.
-var QSLViaListCurrent = []Spec{
-	QSLViaMap[B],
-	QSLViaMap[D],
-	QSLViaMap[E],
+var internalQSLViaListCurrent = []Spec{
+	internalQSLViaMap[B],
+	internalQSLViaMap[D],
+	internalQSLViaMap[E],
 }

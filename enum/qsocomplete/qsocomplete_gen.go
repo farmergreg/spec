@@ -4,6 +4,8 @@
 // Package qsocomplete provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qsocomplete
 
+import "maps"
+
 const (
 	Uncertain QSOComplete = "?"   // ?    = uncertain
 	N         QSOComplete = "N"   // N    = no
@@ -11,26 +13,41 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
+// All QSOComplete specifications including depreciated and import only.
+func QSOCompleteListAll() []Spec {
+	return append([]Spec(nil), internalQSOCompleteListAll...)
+}
+
+// All QSOComplete specifications values that are NOT marked import-only.
+func QSOCompleteListCurrent() []Spec {
+	return append([]Spec(nil), internalQSOCompleteListCurrent...)
+}
+
 // A map of all QSOComplete specifications.
-var QSOCompleteMap = map[QSOComplete]Spec{
+func QSOCompleteMap() map[QSOComplete]Spec {
+	cp := make(map[QSOComplete]Spec, len(internalQSOCompleteMap))
+	maps.Copy(cp, internalQSOCompleteMap)
+	return cp
+}
+
+// A map of all QSOComplete specifications.
+var internalQSOCompleteMap = map[QSOComplete]Spec{
 	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
 	N:         {IsImportOnly: false, Key: "N", Description: "no"},
 	NIL:       {IsImportOnly: false, Key: "NIL", Description: "not heard"},
 	Y:         {IsImportOnly: false, Key: "Y", Description: "yes"},
 }
 
-// All QSOComplete specifications including depreciated and import only.
-var QSOCompleteListAll = []Spec{
-	QSOCompleteMap[Uncertain],
-	QSOCompleteMap[N],
-	QSOCompleteMap[NIL],
-	QSOCompleteMap[Y],
+var internalQSOCompleteListAll = []Spec{
+	internalQSOCompleteMap[Uncertain],
+	internalQSOCompleteMap[N],
+	internalQSOCompleteMap[NIL],
+	internalQSOCompleteMap[Y],
 }
 
-// All QSOComplete specifications values that are NOT marked import-only.
-var QSOCompleteListCurrent = []Spec{
-	QSOCompleteMap[Uncertain],
-	QSOCompleteMap[N],
-	QSOCompleteMap[NIL],
-	QSOCompleteMap[Y],
+var internalQSOCompleteListCurrent = []Spec{
+	internalQSOCompleteMap[Uncertain],
+	internalQSOCompleteMap[N],
+	internalQSOCompleteMap[NIL],
+	internalQSOCompleteMap[Y],
 }

@@ -33,7 +33,7 @@ func (b *Spec) IsInBand(mhz MHz) bool {
 
 // FindBandByMHz returns the band specification that contains the given MHz value, if any.
 func FindBandByMHz(mhz MHz) (Spec, bool) {
-	for _, item := range BandListAll {
+	for _, item := range BandListAll() {
 		if item.IsInBand(mhz) {
 			return item, true
 		}

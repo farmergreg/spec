@@ -4,6 +4,8 @@
 // Package band provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package band
 
+import "maps"
+
 const (
 	Band1_25cm Band = "1.25cm" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
 	Band1_25m  Band = "1.25m"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
@@ -40,8 +42,25 @@ const (
 	Bandsubmm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
+// All Band specifications including depreciated and import only.
+func BandListAll() []Spec {
+	return append([]Spec(nil), internalBandListAll...)
+}
+
+// All Band specifications values that are NOT marked import-only.
+func BandListCurrent() []Spec {
+	return append([]Spec(nil), internalBandListCurrent...)
+}
+
 // A map of all Band specifications.
-var BandMap = map[Band]Spec{
+func BandMap() map[Band]Spec {
+	cp := make(map[Band]Spec, len(internalBandMap))
+	maps.Copy(cp, internalBandMap)
+	return cp
+}
+
+// A map of all Band specifications.
+var internalBandMap = map[Band]Spec{
 	Band1_25cm: {IsImportOnly: false, Key: "1.25cm", LowerFreqMHz: 24000, UpperFreqMHz: 24250},
 	Band1_25m:  {IsImportOnly: false, Key: "1.25m", LowerFreqMHz: 222, UpperFreqMHz: 225},
 	Band10m:    {IsImportOnly: false, Key: "10m", LowerFreqMHz: 28, UpperFreqMHz: 29.7},
@@ -77,76 +96,74 @@ var BandMap = map[Band]Spec{
 	Bandsubmm:  {IsImportOnly: false, Key: "submm", LowerFreqMHz: 300000, UpperFreqMHz: 7.5e+06},
 }
 
-// All Band specifications including depreciated and import only.
-var BandListAll = []Spec{
-	BandMap[Band1_25cm],
-	BandMap[Band1_25m],
-	BandMap[Band10m],
-	BandMap[Band12m],
-	BandMap[Band13cm],
-	BandMap[Band15m],
-	BandMap[Band160m],
-	BandMap[Band17m],
-	BandMap[Band1mm],
-	BandMap[Band2_5mm],
-	BandMap[Band20m],
-	BandMap[Band2190m],
-	BandMap[Band23cm],
-	BandMap[Band2m],
-	BandMap[Band2mm],
-	BandMap[Band30m],
-	BandMap[Band33cm],
-	BandMap[Band3cm],
-	BandMap[Band40m],
-	BandMap[Band4m],
-	BandMap[Band4mm],
-	BandMap[Band560m],
-	BandMap[Band5m],
-	BandMap[Band60m],
-	BandMap[Band630m],
-	BandMap[Band6cm],
-	BandMap[Band6m],
-	BandMap[Band6mm],
-	BandMap[Band70cm],
-	BandMap[Band80m],
-	BandMap[Band8m],
-	BandMap[Band9cm],
-	BandMap[Bandsubmm],
+var internalBandListAll = []Spec{
+	internalBandMap[Band1_25cm],
+	internalBandMap[Band1_25m],
+	internalBandMap[Band10m],
+	internalBandMap[Band12m],
+	internalBandMap[Band13cm],
+	internalBandMap[Band15m],
+	internalBandMap[Band160m],
+	internalBandMap[Band17m],
+	internalBandMap[Band1mm],
+	internalBandMap[Band2_5mm],
+	internalBandMap[Band20m],
+	internalBandMap[Band2190m],
+	internalBandMap[Band23cm],
+	internalBandMap[Band2m],
+	internalBandMap[Band2mm],
+	internalBandMap[Band30m],
+	internalBandMap[Band33cm],
+	internalBandMap[Band3cm],
+	internalBandMap[Band40m],
+	internalBandMap[Band4m],
+	internalBandMap[Band4mm],
+	internalBandMap[Band560m],
+	internalBandMap[Band5m],
+	internalBandMap[Band60m],
+	internalBandMap[Band630m],
+	internalBandMap[Band6cm],
+	internalBandMap[Band6m],
+	internalBandMap[Band6mm],
+	internalBandMap[Band70cm],
+	internalBandMap[Band80m],
+	internalBandMap[Band8m],
+	internalBandMap[Band9cm],
+	internalBandMap[Bandsubmm],
 }
 
-// All Band specifications values that are NOT marked import-only.
-var BandListCurrent = []Spec{
-	BandMap[Band1_25cm],
-	BandMap[Band1_25m],
-	BandMap[Band10m],
-	BandMap[Band12m],
-	BandMap[Band13cm],
-	BandMap[Band15m],
-	BandMap[Band160m],
-	BandMap[Band17m],
-	BandMap[Band1mm],
-	BandMap[Band2_5mm],
-	BandMap[Band20m],
-	BandMap[Band2190m],
-	BandMap[Band23cm],
-	BandMap[Band2m],
-	BandMap[Band2mm],
-	BandMap[Band30m],
-	BandMap[Band33cm],
-	BandMap[Band3cm],
-	BandMap[Band40m],
-	BandMap[Band4m],
-	BandMap[Band4mm],
-	BandMap[Band560m],
-	BandMap[Band5m],
-	BandMap[Band60m],
-	BandMap[Band630m],
-	BandMap[Band6cm],
-	BandMap[Band6m],
-	BandMap[Band6mm],
-	BandMap[Band70cm],
-	BandMap[Band80m],
-	BandMap[Band8m],
-	BandMap[Band9cm],
-	BandMap[Bandsubmm],
+var internalBandListCurrent = []Spec{
+	internalBandMap[Band1_25cm],
+	internalBandMap[Band1_25m],
+	internalBandMap[Band10m],
+	internalBandMap[Band12m],
+	internalBandMap[Band13cm],
+	internalBandMap[Band15m],
+	internalBandMap[Band160m],
+	internalBandMap[Band17m],
+	internalBandMap[Band1mm],
+	internalBandMap[Band2_5mm],
+	internalBandMap[Band20m],
+	internalBandMap[Band2190m],
+	internalBandMap[Band23cm],
+	internalBandMap[Band2m],
+	internalBandMap[Band2mm],
+	internalBandMap[Band30m],
+	internalBandMap[Band33cm],
+	internalBandMap[Band3cm],
+	internalBandMap[Band40m],
+	internalBandMap[Band4m],
+	internalBandMap[Band4mm],
+	internalBandMap[Band560m],
+	internalBandMap[Band5m],
+	internalBandMap[Band60m],
+	internalBandMap[Band630m],
+	internalBandMap[Band6cm],
+	internalBandMap[Band6m],
+	internalBandMap[Band6mm],
+	internalBandMap[Band70cm],
+	internalBandMap[Band80m],
+	internalBandMap[Band8m],
+	internalBandMap[Band9cm],
+	internalBandMap[Bandsubmm],
 }

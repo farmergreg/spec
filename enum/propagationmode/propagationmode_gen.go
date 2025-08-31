@@ -4,6 +4,8 @@
 // Package propagationmode provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package propagationmode
 
+import "maps"
+
 const (
 	AS       PropagationMode = "AS"       // AS         = Aircraft Scatter
 	AUE      PropagationMode = "AUE"      // AUE        = Aurora-E
@@ -27,8 +29,25 @@ const (
 	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
+// All PropagationMode specifications including depreciated and import only.
+func PropagationModeListAll() []Spec {
+	return append([]Spec(nil), internalPropagationModeListAll...)
+}
+
+// All PropagationMode specifications values that are NOT marked import-only.
+func PropagationModeListCurrent() []Spec {
+	return append([]Spec(nil), internalPropagationModeListCurrent...)
+}
+
 // A map of all PropagationMode specifications.
-var PropagationModeMap = map[PropagationMode]Spec{
+func PropagationModeMap() map[PropagationMode]Spec {
+	cp := make(map[PropagationMode]Spec, len(internalPropagationModeMap))
+	maps.Copy(cp, internalPropagationModeMap)
+	return cp
+}
+
+// A map of all PropagationMode specifications.
+var internalPropagationModeMap = map[PropagationMode]Spec{
 	AS:       {IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
 	AUE:      {IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
 	AUR:      {IsImportOnly: false, Key: "AUR", Description: "Aurora"},
@@ -51,50 +70,48 @@ var PropagationModeMap = map[PropagationMode]Spec{
 	TR:       {IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
 }
 
-// All PropagationMode specifications including depreciated and import only.
-var PropagationModeListAll = []Spec{
-	PropagationModeMap[AS],
-	PropagationModeMap[AUE],
-	PropagationModeMap[AUR],
-	PropagationModeMap[BS],
-	PropagationModeMap[ECH],
-	PropagationModeMap[EME],
-	PropagationModeMap[ES],
-	PropagationModeMap[F2],
-	PropagationModeMap[FAI],
-	PropagationModeMap[GWAVE],
-	PropagationModeMap[INTERNET],
-	PropagationModeMap[ION],
-	PropagationModeMap[IRL],
-	PropagationModeMap[LOS],
-	PropagationModeMap[MS],
-	PropagationModeMap[RPT],
-	PropagationModeMap[RS],
-	PropagationModeMap[SAT],
-	PropagationModeMap[TEP],
-	PropagationModeMap[TR],
+var internalPropagationModeListAll = []Spec{
+	internalPropagationModeMap[AS],
+	internalPropagationModeMap[AUE],
+	internalPropagationModeMap[AUR],
+	internalPropagationModeMap[BS],
+	internalPropagationModeMap[ECH],
+	internalPropagationModeMap[EME],
+	internalPropagationModeMap[ES],
+	internalPropagationModeMap[F2],
+	internalPropagationModeMap[FAI],
+	internalPropagationModeMap[GWAVE],
+	internalPropagationModeMap[INTERNET],
+	internalPropagationModeMap[ION],
+	internalPropagationModeMap[IRL],
+	internalPropagationModeMap[LOS],
+	internalPropagationModeMap[MS],
+	internalPropagationModeMap[RPT],
+	internalPropagationModeMap[RS],
+	internalPropagationModeMap[SAT],
+	internalPropagationModeMap[TEP],
+	internalPropagationModeMap[TR],
 }
 
-// All PropagationMode specifications values that are NOT marked import-only.
-var PropagationModeListCurrent = []Spec{
-	PropagationModeMap[AS],
-	PropagationModeMap[AUE],
-	PropagationModeMap[AUR],
-	PropagationModeMap[BS],
-	PropagationModeMap[ECH],
-	PropagationModeMap[EME],
-	PropagationModeMap[ES],
-	PropagationModeMap[F2],
-	PropagationModeMap[FAI],
-	PropagationModeMap[GWAVE],
-	PropagationModeMap[INTERNET],
-	PropagationModeMap[ION],
-	PropagationModeMap[IRL],
-	PropagationModeMap[LOS],
-	PropagationModeMap[MS],
-	PropagationModeMap[RPT],
-	PropagationModeMap[RS],
-	PropagationModeMap[SAT],
-	PropagationModeMap[TEP],
-	PropagationModeMap[TR],
+var internalPropagationModeListCurrent = []Spec{
+	internalPropagationModeMap[AS],
+	internalPropagationModeMap[AUE],
+	internalPropagationModeMap[AUR],
+	internalPropagationModeMap[BS],
+	internalPropagationModeMap[ECH],
+	internalPropagationModeMap[EME],
+	internalPropagationModeMap[ES],
+	internalPropagationModeMap[F2],
+	internalPropagationModeMap[FAI],
+	internalPropagationModeMap[GWAVE],
+	internalPropagationModeMap[INTERNET],
+	internalPropagationModeMap[ION],
+	internalPropagationModeMap[IRL],
+	internalPropagationModeMap[LOS],
+	internalPropagationModeMap[MS],
+	internalPropagationModeMap[RPT],
+	internalPropagationModeMap[RS],
+	internalPropagationModeMap[SAT],
+	internalPropagationModeMap[TEP],
+	internalPropagationModeMap[TR],
 }

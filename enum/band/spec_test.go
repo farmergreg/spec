@@ -3,7 +3,7 @@ package band
 import "testing"
 
 func TestBandwidth(t *testing.T) {
-	for _, item := range BandListAll {
+	for _, item := range BandListAll() {
 		if item.Bandwidth() != item.UpperFreqMHz-item.LowerFreqMHz {
 			t.Errorf("Band %s bandwidth is incorrect: %f", item.Key, item.Bandwidth())
 		}
@@ -11,7 +11,7 @@ func TestBandwidth(t *testing.T) {
 }
 
 func TestIsInBand(t *testing.T) {
-	for _, item := range BandListAll {
+	for _, item := range BandListAll() {
 		if !item.IsInBand(item.LowerFreqMHz) {
 			t.Errorf("Band %s should be in band", item.Key)
 		}
@@ -28,7 +28,7 @@ func TestIsInBand(t *testing.T) {
 }
 
 func TestFindBandByMHz(t *testing.T) {
-	for _, item := range BandListAll {
+	for _, item := range BandListAll() {
 		_, ok := FindBandByMHz(item.LowerFreqMHz)
 		if !ok {
 			t.Errorf("Band %s should be in band", item.Key)
@@ -37,7 +37,7 @@ func TestFindBandByMHz(t *testing.T) {
 }
 
 func TestFindBandByMHz_NotInBand(t *testing.T) {
-	for _, item := range BandListAll {
+	for _, item := range BandListAll() {
 		_, ok := FindBandByMHz(0.25)
 		if ok {
 			t.Errorf("Band %s should be in band", item.Key)

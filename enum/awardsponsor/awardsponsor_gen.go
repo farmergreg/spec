@@ -4,6 +4,8 @@
 // Package awardsponsor provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package awardsponsor
 
+import "maps"
+
 const (
 	ADIF  AwardSponsorPrefix = "ADIF_"  // ADIF_  = ADIF Development Group
 	ARI   AwardSponsorPrefix = "ARI_"   // ARI_   = ARI - l'Associazione Radioamatori Italiani
@@ -18,8 +20,25 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
+// All AwardSponsorPrefix specifications including depreciated and import only.
+func AwardSponsorPrefixListAll() []Spec {
+	return append([]Spec(nil), internalAwardSponsorPrefixListAll...)
+}
+
+// All AwardSponsorPrefix specifications values that are NOT marked import-only.
+func AwardSponsorPrefixListCurrent() []Spec {
+	return append([]Spec(nil), internalAwardSponsorPrefixListCurrent...)
+}
+
 // A map of all AwardSponsorPrefix specifications.
-var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
+func AwardSponsorPrefixMap() map[AwardSponsorPrefix]Spec {
+	cp := make(map[AwardSponsorPrefix]Spec, len(internalAwardSponsorPrefixMap))
+	maps.Copy(cp, internalAwardSponsorPrefixMap)
+	return cp
+}
+
+// A map of all AwardSponsorPrefix specifications.
+var internalAwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
 	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
 	ARRL:  {IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
@@ -33,32 +52,30 @@ var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 	WABAG: {IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
 }
 
-// All AwardSponsorPrefix specifications including depreciated and import only.
-var AwardSponsorPrefixListAll = []Spec{
-	AwardSponsorPrefixMap[ADIF],
-	AwardSponsorPrefixMap[ARI],
-	AwardSponsorPrefixMap[ARRL],
-	AwardSponsorPrefixMap[CQ],
-	AwardSponsorPrefixMap[DARC],
-	AwardSponsorPrefixMap[EQSL],
-	AwardSponsorPrefixMap[IARU],
-	AwardSponsorPrefixMap[JARL],
-	AwardSponsorPrefixMap[RSGB],
-	AwardSponsorPrefixMap[TAG],
-	AwardSponsorPrefixMap[WABAG],
+var internalAwardSponsorPrefixListAll = []Spec{
+	internalAwardSponsorPrefixMap[ADIF],
+	internalAwardSponsorPrefixMap[ARI],
+	internalAwardSponsorPrefixMap[ARRL],
+	internalAwardSponsorPrefixMap[CQ],
+	internalAwardSponsorPrefixMap[DARC],
+	internalAwardSponsorPrefixMap[EQSL],
+	internalAwardSponsorPrefixMap[IARU],
+	internalAwardSponsorPrefixMap[JARL],
+	internalAwardSponsorPrefixMap[RSGB],
+	internalAwardSponsorPrefixMap[TAG],
+	internalAwardSponsorPrefixMap[WABAG],
 }
 
-// All AwardSponsorPrefix specifications values that are NOT marked import-only.
-var AwardSponsorPrefixListCurrent = []Spec{
-	AwardSponsorPrefixMap[ADIF],
-	AwardSponsorPrefixMap[ARI],
-	AwardSponsorPrefixMap[ARRL],
-	AwardSponsorPrefixMap[CQ],
-	AwardSponsorPrefixMap[DARC],
-	AwardSponsorPrefixMap[EQSL],
-	AwardSponsorPrefixMap[IARU],
-	AwardSponsorPrefixMap[JARL],
-	AwardSponsorPrefixMap[RSGB],
-	AwardSponsorPrefixMap[TAG],
-	AwardSponsorPrefixMap[WABAG],
+var internalAwardSponsorPrefixListCurrent = []Spec{
+	internalAwardSponsorPrefixMap[ADIF],
+	internalAwardSponsorPrefixMap[ARI],
+	internalAwardSponsorPrefixMap[ARRL],
+	internalAwardSponsorPrefixMap[CQ],
+	internalAwardSponsorPrefixMap[DARC],
+	internalAwardSponsorPrefixMap[EQSL],
+	internalAwardSponsorPrefixMap[IARU],
+	internalAwardSponsorPrefixMap[JARL],
+	internalAwardSponsorPrefixMap[RSGB],
+	internalAwardSponsorPrefixMap[TAG],
+	internalAwardSponsorPrefixMap[WABAG],
 }
