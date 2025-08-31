@@ -67,17 +67,17 @@ const (
 	AKYukon_Koyukuk                   SecondaryAdministrativeSubdivision = "AK,Yukon-Koyukuk"                   // AK,Yukon-Koyukuk                    = DXCC 6: Yukon-Koyukuk
 )
 
-// All SecondaryAdministrativeSubdivision specifications including depreciated and import only.
+// All SecondaryAdministrativeSubdivision specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func SecondaryAdministrativeSubdivisionListAll() []Spec {
 	return append([]Spec(nil), internalSecondaryAdministrativeSubdivisionListAll...)
 }
 
-// All SecondaryAdministrativeSubdivision specifications values that are NOT marked import-only.
+// All SecondaryAdministrativeSubdivision specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func SecondaryAdministrativeSubdivisionListCurrent() []Spec {
 	return append([]Spec(nil), internalSecondaryAdministrativeSubdivisionListCurrent...)
 }
 
-// A map of all SecondaryAdministrativeSubdivision specifications.
+// A map of all SecondaryAdministrativeSubdivision from ADIF 3.1.6 (Proposed).
 func SecondaryAdministrativeSubdivisionMap() map[SecondaryAdministrativeSubdivision]Spec {
 	cp := make(map[SecondaryAdministrativeSubdivision]Spec, len(internalSecondaryAdministrativeSubdivisionMap))
 	maps.Copy(cp, internalSecondaryAdministrativeSubdivisionMap)

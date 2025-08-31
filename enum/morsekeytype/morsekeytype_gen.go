@@ -16,17 +16,17 @@ const (
 	SS  MorseKeyType = "SS"  // SS   = Sideswiper
 )
 
-// All MorseKeyType specifications including depreciated and import only.
+// All MorseKeyType specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func MorseKeyTypeListAll() []Spec {
 	return append([]Spec(nil), internalMorseKeyTypeListAll...)
 }
 
-// All MorseKeyType specifications values that are NOT marked import-only.
+// All MorseKeyType specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func MorseKeyTypeListCurrent() []Spec {
 	return append([]Spec(nil), internalMorseKeyTypeListCurrent...)
 }
 
-// A map of all MorseKeyType specifications.
+// A map of all MorseKeyType from ADIF 3.1.6 (Proposed).
 func MorseKeyTypeMap() map[MorseKeyType]Spec {
 	cp := make(map[MorseKeyType]Spec, len(internalMorseKeyTypeMap))
 	maps.Copy(cp, internalMorseKeyTypeMap)

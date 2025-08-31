@@ -15,17 +15,17 @@ import (
  * It works differently from most of the other enumerations.
  */
 
-// All PrimaryAdministrativeSubdivisionCompositeKey specifications including depreciated and import only.
+// All PrimaryAdministrativeSubdivisionCompositeKey specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func PrimaryAdministrativeSubdivisionCompositeKeyListAll() []Spec {
 	return append([]Spec(nil), internalPrimaryAdministrativeSubdivisionCompositeKeyListAll...)
 }
 
-// All PrimaryAdministrativeSubdivisionCompositeKey specifications values that are NOT marked import-only.
+// All PrimaryAdministrativeSubdivisionCompositeKey specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func PrimaryAdministrativeSubdivisionCompositeKeyListCurrent() []Spec {
 	return append([]Spec(nil), internalPrimaryAdministrativeSubdivisionCompositeKeyListCurrent...)
 }
 
-// A map of all PrimaryAdministrativeSubdivisionCompositeKey specifications.
+// A map of all PrimaryAdministrativeSubdivisionCompositeKey from ADIF 3.1.6 (Proposed).
 func PrimaryAdministrativeSubdivisionCompositeKeyMap() map[PrimaryAdministrativeSubdivisionCompositeKey]Spec {
 	cp := make(map[PrimaryAdministrativeSubdivisionCompositeKey]Spec, len(internalPrimaryAdministrativeSubdivisionCompositeKeyMap))
 	maps.Copy(cp, internalPrimaryAdministrativeSubdivisionCompositeKeyMap)

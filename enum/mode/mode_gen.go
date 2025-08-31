@@ -103,17 +103,17 @@ const (
 	WSPR         Mode = "WSPR"         // WSPR                   = []
 )
 
-// All Mode specifications including depreciated and import only.
+// All Mode specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ModeListAll() []Spec {
 	return append([]Spec(nil), internalModeListAll...)
 }
 
-// All Mode specifications values that are NOT marked import-only.
+// All Mode specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ModeListCurrent() []Spec {
 	return append([]Spec(nil), internalModeListCurrent...)
 }
 
-// A map of all Mode specifications.
+// A map of all Mode from ADIF 3.1.6 (Proposed).
 func ModeMap() map[Mode]Spec {
 	cp := make(map[Mode]Spec, len(internalModeMap))
 	maps.Copy(cp, internalModeMap)

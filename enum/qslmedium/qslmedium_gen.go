@@ -12,17 +12,17 @@ const (
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// All QSLMedium specifications including depreciated and import only.
+// All QSLMedium specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSLMediumListAll() []Spec {
 	return append([]Spec(nil), internalQSLMediumListAll...)
 }
 
-// All QSLMedium specifications values that are NOT marked import-only.
+// All QSLMedium specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSLMediumListCurrent() []Spec {
 	return append([]Spec(nil), internalQSLMediumListCurrent...)
 }
 
-// A map of all QSLMedium specifications.
+// A map of all QSLMedium from ADIF 3.1.6 (Proposed).
 func QSLMediumMap() map[QSLMedium]Spec {
 	cp := make(map[QSLMedium]Spec, len(internalQSLMediumMap))
 	maps.Copy(cp, internalQSLMediumMap)

@@ -14,17 +14,17 @@ const (
 	Y QSLSent = "Y" // Y = an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
 )
 
-// All QSLSent specifications including depreciated and import only.
+// All QSLSent specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSLSentListAll() []Spec {
 	return append([]Spec(nil), internalQSLSentListAll...)
 }
 
-// All QSLSent specifications values that are NOT marked import-only.
+// All QSLSent specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSLSentListCurrent() []Spec {
 	return append([]Spec(nil), internalQSLSentListCurrent...)
 }
 
-// A map of all QSLSent specifications.
+// A map of all QSLSent from ADIF 3.1.6 (Proposed).
 func QSLSentMap() map[QSLSent]Spec {
 	cp := make(map[QSLSent]Spec, len(internalQSLSentMap))
 	maps.Copy(cp, internalQSLSentMap)

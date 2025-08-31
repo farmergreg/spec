@@ -12,17 +12,17 @@ const (
 	Y QSODownloadStatus = "Y" // Y = the QSO has been downloaded from the online service
 )
 
-// All QSODownloadStatus specifications including depreciated and import only.
+// All QSODownloadStatus specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSODownloadStatusListAll() []Spec {
 	return append([]Spec(nil), internalQSODownloadStatusListAll...)
 }
 
-// All QSODownloadStatus specifications values that are NOT marked import-only.
+// All QSODownloadStatus specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSODownloadStatusListCurrent() []Spec {
 	return append([]Spec(nil), internalQSODownloadStatusListCurrent...)
 }
 
-// A map of all QSODownloadStatus specifications.
+// A map of all QSODownloadStatus from ADIF 3.1.6 (Proposed).
 func QSODownloadStatusMap() map[QSODownloadStatus]Spec {
 	cp := make(map[QSODownloadStatus]Spec, len(internalQSODownloadStatusMap))
 	maps.Copy(cp, internalQSODownloadStatusMap)

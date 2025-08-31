@@ -42,17 +42,17 @@ const (
 	Bandsubmm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
-// All Band specifications including depreciated and import only.
+// All Band specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func BandListAll() []Spec {
 	return append([]Spec(nil), internalBandListAll...)
 }
 
-// All Band specifications values that are NOT marked import-only.
+// All Band specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func BandListCurrent() []Spec {
 	return append([]Spec(nil), internalBandListCurrent...)
 }
 
-// A map of all Band specifications.
+// A map of all Band from ADIF 3.1.6 (Proposed).
 func BandMap() map[Band]Spec {
 	cp := make(map[Band]Spec, len(internalBandMap))
 	maps.Copy(cp, internalBandMap)

@@ -13,17 +13,17 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
-// All QSOComplete specifications including depreciated and import only.
+// All QSOComplete specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSOCompleteListAll() []Spec {
 	return append([]Spec(nil), internalQSOCompleteListAll...)
 }
 
-// All QSOComplete specifications values that are NOT marked import-only.
+// All QSOComplete specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSOCompleteListCurrent() []Spec {
 	return append([]Spec(nil), internalQSOCompleteListCurrent...)
 }
 
-// A map of all QSOComplete specifications.
+// A map of all QSOComplete from ADIF 3.1.6 (Proposed).
 func QSOCompleteMap() map[QSOComplete]Spec {
 	cp := make(map[QSOComplete]Spec, len(internalQSOCompleteMap))
 	maps.Copy(cp, internalQSOCompleteMap)

@@ -265,17 +265,17 @@ const (
 	Contest_YUDXC                  Contest = "YUDXC"                  // YUDXC                = YU DX Contest
 )
 
-// All Contest specifications including depreciated and import only.
+// All Contest specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ContestListAll() []Spec {
 	return append([]Spec(nil), internalContestListAll...)
 }
 
-// All Contest specifications values that are NOT marked import-only.
+// All Contest specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ContestListCurrent() []Spec {
 	return append([]Spec(nil), internalContestListCurrent...)
 }
 
-// A map of all Contest specifications.
+// A map of all Contest from ADIF 3.1.6 (Proposed).
 func ContestMap() map[Contest]Spec {
 	cp := make(map[Contest]Spec, len(internalContestMap))
 	maps.Copy(cp, internalContestMap)

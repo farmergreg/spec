@@ -12,17 +12,17 @@ const (
 	Y QSOUploadStatus = "Y" // Y = the QSO has been uploaded to, and accepted by, the online service
 )
 
-// All QSOUploadStatus specifications including depreciated and import only.
+// All QSOUploadStatus specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSOUploadStatusListAll() []Spec {
 	return append([]Spec(nil), internalQSOUploadStatusListAll...)
 }
 
-// All QSOUploadStatus specifications values that are NOT marked import-only.
+// All QSOUploadStatus specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSOUploadStatusListCurrent() []Spec {
 	return append([]Spec(nil), internalQSOUploadStatusListCurrent...)
 }
 
-// A map of all QSOUploadStatus specifications.
+// A map of all QSOUploadStatus from ADIF 3.1.6 (Proposed).
 func QSOUploadStatusMap() map[QSOUploadStatus]Spec {
 	cp := make(map[QSOUploadStatus]Spec, len(internalQSOUploadStatusMap))
 	maps.Copy(cp, internalQSOUploadStatusMap)

@@ -12,17 +12,17 @@ const (
 	Y EQSLAG = "Y" // Y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL
 )
 
-// All EQSLAG specifications including depreciated and import only.
+// All EQSLAG specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func EQSLAGListAll() []Spec {
 	return append([]Spec(nil), internalEQSLAGListAll...)
 }
 
-// All EQSLAG specifications values that are NOT marked import-only.
+// All EQSLAG specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func EQSLAGListCurrent() []Spec {
 	return append([]Spec(nil), internalEQSLAGListCurrent...)
 }
 
-// A map of all EQSLAG specifications.
+// A map of all EQSLAG from ADIF 3.1.6 (Proposed).
 func EQSLAGMap() map[EQSLAG]Spec {
 	cp := make(map[EQSLAG]Spec, len(internalEQSLAGMap))
 	maps.Copy(cp, internalEQSLAGMap)

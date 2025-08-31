@@ -20,17 +20,17 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
-// All AwardSponsorPrefix specifications including depreciated and import only.
+// All AwardSponsorPrefix specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func AwardSponsorPrefixListAll() []Spec {
 	return append([]Spec(nil), internalAwardSponsorPrefixListAll...)
 }
 
-// All AwardSponsorPrefix specifications values that are NOT marked import-only.
+// All AwardSponsorPrefix specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func AwardSponsorPrefixListCurrent() []Spec {
 	return append([]Spec(nil), internalAwardSponsorPrefixListCurrent...)
 }
 
-// A map of all AwardSponsorPrefix specifications.
+// A map of all AwardSponsorPrefix from ADIF 3.1.6 (Proposed).
 func AwardSponsorPrefixMap() map[AwardSponsorPrefix]Spec {
 	cp := make(map[AwardSponsorPrefix]Spec, len(internalAwardSponsorPrefixMap))
 	maps.Copy(cp, internalAwardSponsorPrefixMap)

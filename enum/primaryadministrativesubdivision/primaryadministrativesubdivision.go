@@ -11,8 +11,5 @@ func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 // LookupRegion looks up a Region specification by its composite key (RegionCompositeKey + DXCCEntityCode).
 func LookupPrimaryAdministrativeSubdivision(code PrimaryAdministrativeSubdivisionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
 	spec, ok := internalPrimaryAdministrativeSubdivisionCompositeKeyMap[PrimaryAdministrativeSubdivisionCompositeKey(string(code)+"."+dxccEntityCode.String())]
-	if !ok {
-		return Spec{}, false
-	}
-	return spec, true
+	return spec, ok
 }

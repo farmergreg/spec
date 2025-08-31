@@ -1,15 +1,15 @@
 {{- define "static_data_func" }}
-// All {{ .DataType }} specifications including depreciated and import only.
+// All {{ .DataType }} specifications in ADIF {{ .Spec.Version }} ({{ .Spec.Status }}) including depreciated and import only.
 func {{ .DataType }}ListAll() []Spec{
 	return append([]Spec(nil), internal{{ .DataType }}ListAll...)
 }
 
-// All {{ .DataType }} specifications values that are NOT marked import-only.
+// All {{ .DataType }} specifications values in ADIF {{ .Spec.Version }} ({{ .Spec.Status }}) that are NOT marked import-only.
 func {{ .DataType }}ListCurrent() []Spec{
 	return append([]Spec(nil), internal{{ .DataType }}ListCurrent...)
 }
 
-// A map of all {{ .DataType }} specifications.
+// A map of all {{ .DataType }} from ADIF {{ .Spec.Version }} ({{ .Spec.Status }}).
 func {{ .DataType }}Map() map[{{ .DataType }}]Spec{
 	cp := make(map[{{ .DataType }}]Spec, len(internal{{ .DataType}}Map))
 	maps.Copy(cp, internal{{ .DataType }}Map)

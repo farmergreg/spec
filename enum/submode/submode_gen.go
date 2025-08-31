@@ -192,17 +192,17 @@ const (
 	SubModeVARA_SATELLITE SubMode = "VARA SATELLITE" // VARA SATELLITE  = DYNAMIC         Channel adaptive high-speed modem for satellite operations
 )
 
-// All SubMode specifications including depreciated and import only.
+// All SubMode specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func SubModeListAll() []Spec {
 	return append([]Spec(nil), internalSubModeListAll...)
 }
 
-// All SubMode specifications values that are NOT marked import-only.
+// All SubMode specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func SubModeListCurrent() []Spec {
 	return append([]Spec(nil), internalSubModeListCurrent...)
 }
 
-// A map of all SubMode specifications.
+// A map of all SubMode from ADIF 3.1.6 (Proposed).
 func SubModeMap() map[SubMode]Spec {
 	cp := make(map[SubMode]Spec, len(internalSubModeMap))
 	maps.Copy(cp, internalSubModeMap)

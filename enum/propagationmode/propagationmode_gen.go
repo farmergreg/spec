@@ -29,17 +29,17 @@ const (
 	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
-// All PropagationMode specifications including depreciated and import only.
+// All PropagationMode specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func PropagationModeListAll() []Spec {
 	return append([]Spec(nil), internalPropagationModeListAll...)
 }
 
-// All PropagationMode specifications values that are NOT marked import-only.
+// All PropagationMode specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func PropagationModeListCurrent() []Spec {
 	return append([]Spec(nil), internalPropagationModeListCurrent...)
 }
 
-// A map of all PropagationMode specifications.
+// A map of all PropagationMode from ADIF 3.1.6 (Proposed).
 func PropagationModeMap() map[PropagationMode]Spec {
 	cp := make(map[PropagationMode]Spec, len(internalPropagationModeMap))
 	maps.Copy(cp, internalPropagationModeMap)

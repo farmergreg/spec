@@ -412,17 +412,17 @@ const (
 	REPUBLIC_OF_KOSOVO                       DXCCEntityCode = 522 // 522 = REPUBLIC OF KOSOVO
 )
 
-// All DXCCEntityCode specifications including depreciated and import only.
+// All DXCCEntityCode specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func DXCCEntityCodeListAll() []Spec {
 	return append([]Spec(nil), internalDXCCEntityCodeListAll...)
 }
 
-// All DXCCEntityCode specifications values that are NOT marked import-only.
+// All DXCCEntityCode specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func DXCCEntityCodeListCurrent() []Spec {
 	return append([]Spec(nil), internalDXCCEntityCodeListCurrent...)
 }
 
-// A map of all DXCCEntityCode specifications.
+// A map of all DXCCEntityCode from ADIF 3.1.6 (Proposed).
 func DXCCEntityCodeMap() map[DXCCEntityCode]Spec {
 	cp := make(map[DXCCEntityCode]Spec, len(internalDXCCEntityCodeMap))
 	maps.Copy(cp, internalDXCCEntityCodeMap)

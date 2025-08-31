@@ -103,17 +103,17 @@ const (
 	WY  ARRLSection = "WY"  // WY   = Wyoming
 )
 
-// All ARRLSection specifications including depreciated and import only.
+// All ARRLSection specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ARRLSectionListAll() []Spec {
 	return append([]Spec(nil), internalARRLSectionListAll...)
 }
 
-// All ARRLSection specifications values that are NOT marked import-only.
+// All ARRLSection specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ARRLSectionListCurrent() []Spec {
 	return append([]Spec(nil), internalARRLSectionListCurrent...)
 }
 
-// A map of all ARRLSection specifications.
+// A map of all ARRLSection from ADIF 3.1.6 (Proposed).
 func ARRLSectionMap() map[ARRLSection]Spec {
 	cp := make(map[ARRLSection]Spec, len(internalARRLSectionMap))
 	maps.Copy(cp, internalARRLSectionMap)

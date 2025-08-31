@@ -37,17 +37,17 @@ const (
 	WWFFRef                                   ADIType = "WWFFRef"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
-// All ADIType specifications including depreciated and import only.
+// All ADIType specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ADITypeListAll() []Spec {
 	return append([]Spec(nil), internalADITypeListAll...)
 }
 
-// All ADIType specifications values that are NOT marked import-only.
+// All ADIType specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ADITypeListCurrent() []Spec {
 	return append([]Spec(nil), internalADITypeListCurrent...)
 }
 
-// A map of all ADIType specifications.
+// A map of all ADIType from ADIF 3.1.6 (Proposed).
 func ADITypeMap() map[ADIType]Spec {
 	cp := make(map[ADIType]Spec, len(internalADITypeMap))
 	maps.Copy(cp, internalADITypeMap)

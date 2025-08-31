@@ -82,17 +82,17 @@ const (
 	NZ_Regions_West_Coast_Westland                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Westland"                 // NZ_Regions:West Coast/Westland                     = DXCC: 170 West Coast
 )
 
-// All SecondaryAdministrativeSubdivisionAlt specifications including depreciated and import only.
+// All SecondaryAdministrativeSubdivisionAlt specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func SecondaryAdministrativeSubdivisionAltListAll() []Spec {
 	return append([]Spec(nil), internalSecondaryAdministrativeSubdivisionAltListAll...)
 }
 
-// All SecondaryAdministrativeSubdivisionAlt specifications values that are NOT marked import-only.
+// All SecondaryAdministrativeSubdivisionAlt specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func SecondaryAdministrativeSubdivisionAltListCurrent() []Spec {
 	return append([]Spec(nil), internalSecondaryAdministrativeSubdivisionAltListCurrent...)
 }
 
-// A map of all SecondaryAdministrativeSubdivisionAlt specifications.
+// A map of all SecondaryAdministrativeSubdivisionAlt from ADIF 3.1.6 (Proposed).
 func SecondaryAdministrativeSubdivisionAltMap() map[SecondaryAdministrativeSubdivisionAlt]Spec {
 	cp := make(map[SecondaryAdministrativeSubdivisionAlt]Spec, len(internalSecondaryAdministrativeSubdivisionAltMap))
 	maps.Copy(cp, internalSecondaryAdministrativeSubdivisionAltMap)

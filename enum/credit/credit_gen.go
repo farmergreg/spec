@@ -80,17 +80,17 @@ const (
 	WITUZ_BAND          Credit = "WITUZ_BAND"          // WITUZ_BAND           = RSGB            Worked ITU Zones (WITUZ)                      Band
 )
 
-// All Credit specifications including depreciated and import only.
+// All Credit specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func CreditListAll() []Spec {
 	return append([]Spec(nil), internalCreditListAll...)
 }
 
-// All Credit specifications values that are NOT marked import-only.
+// All Credit specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func CreditListCurrent() []Spec {
 	return append([]Spec(nil), internalCreditListCurrent...)
 }
 
-// A map of all Credit specifications.
+// A map of all Credit from ADIF 3.1.6 (Proposed).
 func CreditMap() map[Credit]Spec {
 	cp := make(map[Credit]Spec, len(internalCreditMap))
 	maps.Copy(cp, internalCreditMap)

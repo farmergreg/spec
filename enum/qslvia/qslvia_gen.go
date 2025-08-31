@@ -13,17 +13,17 @@ const (
 	M QSLVia = "M" // Deprecated: M = manager
 )
 
-// All QSLVia specifications including depreciated and import only.
+// All QSLVia specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func QSLViaListAll() []Spec {
 	return append([]Spec(nil), internalQSLViaListAll...)
 }
 
-// All QSLVia specifications values that are NOT marked import-only.
+// All QSLVia specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func QSLViaListCurrent() []Spec {
 	return append([]Spec(nil), internalQSLViaListCurrent...)
 }
 
-// A map of all QSLVia specifications.
+// A map of all QSLVia from ADIF 3.1.6 (Proposed).
 func QSLViaMap() map[QSLVia]Spec {
 	cp := make(map[QSLVia]Spec, len(internalQSLViaMap))
 	maps.Copy(cp, internalQSLViaMap)

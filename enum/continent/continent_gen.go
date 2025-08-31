@@ -16,17 +16,17 @@ const (
 	SA Continent = "SA" // SA = South America
 )
 
-// All Continent specifications including depreciated and import only.
+// All Continent specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ContinentListAll() []Spec {
 	return append([]Spec(nil), internalContinentListAll...)
 }
 
-// All Continent specifications values that are NOT marked import-only.
+// All Continent specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ContinentListCurrent() []Spec {
 	return append([]Spec(nil), internalContinentListCurrent...)
 }
 
-// A map of all Continent specifications.
+// A map of all Continent from ADIF 3.1.6 (Proposed).
 func ContinentMap() map[Continent]Spec {
 	cp := make(map[Continent]Spec, len(internalContinentMap))
 	maps.Copy(cp, internalContinentMap)

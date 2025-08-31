@@ -15,17 +15,17 @@ import (
  * It works differently from most of the other enumerations.
  */
 
-// All RegionCompositeKey specifications including depreciated and import only.
+// All RegionCompositeKey specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func RegionCompositeKeyListAll() []Spec {
 	return append([]Spec(nil), internalRegionCompositeKeyListAll...)
 }
 
-// All RegionCompositeKey specifications values that are NOT marked import-only.
+// All RegionCompositeKey specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func RegionCompositeKeyListCurrent() []Spec {
 	return append([]Spec(nil), internalRegionCompositeKeyListCurrent...)
 }
 
-// A map of all RegionCompositeKey specifications.
+// A map of all RegionCompositeKey from ADIF 3.1.6 (Proposed).
 func RegionCompositeKeyMap() map[RegionCompositeKey]Spec {
 	cp := make(map[RegionCompositeKey]Spec, len(internalRegionCompositeKeyMap))
 	maps.Copy(cp, internalRegionCompositeKeyMap)

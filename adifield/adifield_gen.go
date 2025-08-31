@@ -231,17 +231,17 @@ const (
 	WWFF_REF                       ADIField = "WWFF_REF"                       // Record: the contacted station's WWFF (World Wildlife Flora & Fauna) reference
 )
 
-// All ADIField specifications including depreciated and import only.
+// All ADIField specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func ADIFieldListAll() []Spec {
 	return append([]Spec(nil), internalADIFieldListAll...)
 }
 
-// All ADIField specifications values that are NOT marked import-only.
+// All ADIField specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func ADIFieldListCurrent() []Spec {
 	return append([]Spec(nil), internalADIFieldListCurrent...)
 }
 
-// A map of all ADIField specifications.
+// A map of all ADIField from ADIF 3.1.6 (Proposed).
 func ADIFieldMap() map[ADIField]Spec {
 	cp := make(map[ADIField]Spec, len(internalADIFieldMap))
 	maps.Copy(cp, internalADIFieldMap)

@@ -38,17 +38,17 @@ const (
 	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
-// All Award specifications including depreciated and import only.
+// All Award specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
 func AwardListAll() []Spec {
 	return append([]Spec(nil), internalAwardListAll...)
 }
 
-// All Award specifications values that are NOT marked import-only.
+// All Award specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
 func AwardListCurrent() []Spec {
 	return append([]Spec(nil), internalAwardListCurrent...)
 }
 
-// A map of all Award specifications.
+// A map of all Award from ADIF 3.1.6 (Proposed).
 func AwardMap() map[Award]Spec {
 	cp := make(map[Award]Spec, len(internalAwardMap))
 	maps.Copy(cp, internalAwardMap)
