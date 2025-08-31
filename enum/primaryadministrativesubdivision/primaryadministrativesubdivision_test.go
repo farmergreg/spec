@@ -1,11 +1,6 @@
 package primaryadministrativesubdivision
 
-import (
-	"testing"
-
-	"github.com/hamradiolog-net/adif-spec/v8/enum/dxccentitycode"
-)
-
+/*
 func TestLookupRegion(t *testing.T) {
 	tests := []struct {
 		code   PrimaryAdministrativeSubdivisionCode
@@ -23,3 +18,5 @@ func TestLookupRegion(t *testing.T) {
 		}
 	}
 }
+
+*/

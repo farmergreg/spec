@@ -50,7 +50,6 @@ func main() {
 	generate(adifSpec, adifSpec.Enum.EQSL_AG.Records, true, "standard.tmpl", "eqslag", "EQSLAG", "")
 	generate(adifSpec, adifSpec.Enum.Mode.Records, true, "standard.tmpl", "mode", "Mode", "")
 	generate(adifSpec, adifSpec.Enum.Morse_Key_Type.Records, true, "standard.tmpl", "morsekeytype", "MorseKeyType", "")
-	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivisionCompositeKey", "PrimaryAdministrativeSubdivision")
 	generate(adifSpec, adifSpec.Enum.Propagation_Mode.Records, true, "standard.tmpl", "propagationmode", "PropagationMode", "")
 	generate(adifSpec, adifSpec.Enum.QSL_Medium.Records, true, "standard.tmpl", "qslmedium", "QSLMedium", "")
 	generate(adifSpec, adifSpec.Enum.QSL_Rcvd.Records, true, "standard.tmpl", "qslrcvd", "QSLRcvd", "")
@@ -59,10 +58,13 @@ func main() {
 	generate(adifSpec, adifSpec.Enum.QSO_Complete.Records, true, "standard.tmpl", "qsocomplete", "QSOComplete", "")
 	generate(adifSpec, adifSpec.Enum.QSO_Download_Status.Records, true, "standard.tmpl", "qsodownloadstatus", "QSODownloadStatus", "")
 	generate(adifSpec, adifSpec.Enum.QSO_Upload_Status.Records, true, "standard.tmpl", "qsouploadstatus", "QSOUploadStatus", "")
-	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard.tmpl", "region", "RegionCompositeKey", "")
 	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision.Records, true, "standard.tmpl", "secondaryadministrativesubdivision", "SecondaryAdministrativeSubdivision", "")
 	generate(adifSpec, adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records, true, "standard.tmpl", "secondaryadministrativesubdivisionalt", "SecondaryAdministrativeSubdivisionAlt", "")
 	generate(adifSpec, adifSpec.Enum.Submode.Records, true, "standard.tmpl", "submode", "SubMode", "SubMode")
+
+	// Region and PrimaryAdministrativeSubdivision have composite keys and are quite different from the rest.
+	generate(adifSpec, adifSpec.Enum.Primary_Administrative_Subdivision.Records, true, "standard.tmpl", "primaryadministrativesubdivision", "PrimaryAdministrativeSubdivisionCompositeKey", "PrimaryAdministrativeSubdivision")
+	generate(adifSpec, adifSpec.Enum.Region.Records, true, "standard-composite-index.tmpl", "region", "RegionCompositeKey", "")
 }
 
 func generate(spec spec.AdifSpec, records any, isEnum bool, tmplName, packageName, dataType, constPrefix string) {

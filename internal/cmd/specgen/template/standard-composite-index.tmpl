@@ -1,5 +1,7 @@
 {{ template "header" . }}
 
+// TODO : add primary key... but with de-duplication
+
 var (
 {{- range $key, $value := .Records }}
 	{{ $.ConstPrefix}}{{ ToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.String }}

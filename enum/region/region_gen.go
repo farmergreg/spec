@@ -5,17 +5,19 @@ package region
 
 import "github.com/hamradiolog-net/adif-spec/v8/spectype"
 
+// TODO : add primary key... but with de-duplication
+
 var (
-	AI_248 RegionCompositeKey = "AI.248" //   AI.248 = AI    African Italy  ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	BI_259 RegionCompositeKey = "BI.259" //   BI.259 = BI    Bear Island    ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	ET_390 RegionCompositeKey = "ET.390" //   ET.390 = ET    European Turkey; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	IV_206 RegionCompositeKey = "IV.206" //   IV.206 = IV    ITU Vienna     ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	KO_0   RegionCompositeKey = "KO.0"   //   KO.0   = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	KO_296 RegionCompositeKey = "KO.296" //   KO.296 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	KO_522 RegionCompositeKey = "KO.522" //   KO.522 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	NONE   RegionCompositeKey = "NONE"   // NONE.0   = NONE  Not within a WAE or CQ region that is within a DXCC entity; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	SI_279 RegionCompositeKey = "SI.279" //   SI.279 = SI    Shetland Islands; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
-	SY_248 RegionCompositeKey = "SY.248" //   SY.248 = SY    Sicily         ; IMPORTANT: This is NOT the Region Code / Key. It is a lookup key for use with RegionCompositeKeyMap
+	AI_248 RegionCompositeKey = "AI.248" //   AI.248 = AI    African Italy  ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	BI_259 RegionCompositeKey = "BI.259" //   BI.259 = BI    Bear Island    ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	ET_390 RegionCompositeKey = "ET.390" //   ET.390 = ET    European Turkey; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	IV_206 RegionCompositeKey = "IV.206" //   IV.206 = IV    ITU Vienna     ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	KO_0   RegionCompositeKey = "KO.0"   //   KO.0   = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	KO_296 RegionCompositeKey = "KO.296" //   KO.296 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	KO_522 RegionCompositeKey = "KO.522" //   KO.522 = KO    Kosovo         ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	NONE   RegionCompositeKey = "NONE"   // NONE.0   = NONE  Not within a WAE or CQ region that is within a DXCC entity; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	SI_279 RegionCompositeKey = "SI.279" //   SI.279 = SI    Shetland Islands; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
+	SY_248 RegionCompositeKey = "SY.248" //   SY.248 = SY    Sicily         ; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap
 )
 
 // A map of all RegionCompositeKey specifications.
