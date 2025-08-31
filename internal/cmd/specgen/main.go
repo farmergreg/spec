@@ -241,7 +241,7 @@ func main() {
 		ConstPrefix: "SubMode",
 	}, true, "standard.tmpl")
 
-	// Region and PrimaryAdministrativeSubdivision have composite keys and are quite different from the rest.
+	// Region and PrimaryAdministrativeSubdivision have composite keys and are quite different from the rest of the enums.
 	generate(ViewBag{
 		Spec:        adifSpec,
 		DataType:    "PrimaryAdministrativeSubdivisionCompositeKey",

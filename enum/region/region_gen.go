@@ -5,7 +5,10 @@ package region
 
 import "github.com/hamradiolog-net/adif-spec/v8/spectype"
 
-// TODO : add "code" constants for Region enum... but with de-duplication
+/*
+ * This enumeration has a composite key.
+ * It works differently from most of the other enumerations.
+ */
 
 // A map of all RegionCompositeKey specifications.
 var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
