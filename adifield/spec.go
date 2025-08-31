@@ -1,6 +1,10 @@
 package adifield
 
-import "github.com/hamradiolog-net/adif-spec/v8/spectype"
+import (
+	"fmt"
+
+	"github.com/hamradiolog-net/adif-spec/v8/spectype"
+)
 
 // SpecMap contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
@@ -22,5 +26,9 @@ type Spec struct {
 }
 
 func (s Spec) String() string {
-	return s.Description
+	if s.IsHeaderField {
+		return fmt.Sprintf("Header: %s", s.Description)
+	} else {
+		return fmt.Sprintf("Record: %s", s.Description)
+	}
 }
