@@ -106,7 +106,7 @@ func main() {
 		DataType:    "Contest",
 		PackageName: "contest",
 		Records:     adifSpec.Enum.Contest_ID.Records,
-		ConstPrefix: "Contest",
+		ConstPrefix: "Contest_",
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
