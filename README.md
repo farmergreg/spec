@@ -9,18 +9,17 @@
 ## Overview
 
 This repository contains the ADIF specification for Go.
-It is generated from the [export](https://adif.org.uk/315/ADIF_315_resources_2024_11_28.zip) published by the [ADIF Workgroup](https://www.adif.org/)
+It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_resources_2025_08_27.zip) published by the [ADIF Workgroup](https://www.adif.org/)
 
 ## Using The Library
 
 - Run `go get github.com/hamradiolog-net/adif-spec@latest`
 - Import any of the packages in the [`src/pkg`](src/pkg) directory that you wish to use.
-- Each package has constants related to the ADIF specification with the following suffixes:
-  - *.`Map` Suffix - A map of the ADIF specification for quick lookups.
+  - *.`Map` Suffix - A map of the ADIF specification for fast lookups.
   - *.`List` Suffix - A list of values that are current.
-  - *.`ListAll` Suffix - A list of all values, including deprecated ones.
+  - *.`ListAll` Suffix - A list of all values, including import-only values.
 
-For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/6RkeK-RGayh)):
+For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/8HYNUtAUAJh)):
 
 ```go
 package main
@@ -41,11 +40,12 @@ func main() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
-	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandListCurrent)")
+	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
 	for _, band := range band.BandListAll {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 }
+
 ```
 
 ## Maintenance
@@ -56,7 +56,7 @@ The following steps are required to update the specification to the latest versi
 
 2. Add code for any new enumerations to the src/pkg folder being careful to follow the existing style.
 
-3. Update `src/cmd/specgen` if necessary.
+3. Update `internal/cmd/specgen` if necessary.
 
 4. Run `go test ./...` to run the tests.
 
