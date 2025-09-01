@@ -22,7 +22,7 @@ type Spec struct {
 	DXCCEntityCode dxccentitycode.DXCCEntityCode `json:"DXCC Entity Code"`
 	Region         string                        `json:"Region"`
 	Prefix         string                        `json:"Prefix,omitempty"`
-	Applicability  spectype.StringSlice          `json:"Applicability,omitempty"` // TODO custom type
+	Applicability  spectype.StringSlice          `json:"Applicability,omitempty"`
 	StartDate      spectype.DateTime             `json:"Start Date,omitempty"`
 	EndDate        spectype.DateTime             `json:"End Date,omitempty"`
 }
