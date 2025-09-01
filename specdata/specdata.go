@@ -19,16 +19,23 @@ var specData []byte
 //go:embed fields_extra.json
 var extraFieldData []byte
 
-// Returns a copy of the ADIF Workgroup Specification as defined in their all.json export.
-// Some modifications are made to the original data:
-// 1. USERDEFn is replaced with USERDEF1, USERDEF2, ..., USERDEF9
-// 2. Extra fields from fields_extra.json are added to the specification
-func GetADIFSpec() spec.AdifSpec {
-	// Step 1: Parse ADIF Workgroup Specification
+// Returns a complete copy of the ADIF Workgroup Specification EXACTLY as defined in the all.json export.
+// This data is re-created every time this function is called.
+func LoadADIFSpec() spec.AdifSpecContainer {
 	var container spec.AdifSpecContainer
 	if err := json.Unmarshal(specData, &container); err != nil {
 		log.Fatal(err)
 	}
+	return container
+}
+
+// Returns a copy of the ADIF Workgroup Specification, defined in the all.json export, but with some modifications:
+// 1. USERDEFn is replaced with USERDEF1, USERDEF2, ..., USERDEF9.
+// 2. Extra fields from fields_extra.json are added to the specification.
+// This data is re-created every time this function is called.
+func LoadADIFSpecWithExtras() spec.AdifSpec {
+	// Step 1: Load ADIF Workgroup Specification
+	container := LoadADIFSpec()
 
 	// Step 2: Remove USERDEFn and replace with USERDEF1, USERDEF2, etc...
 	userdefn := container.AdifSpec.Fields.Records["USERDEFn"]

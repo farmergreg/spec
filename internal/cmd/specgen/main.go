@@ -28,7 +28,7 @@ type ViewBag struct {
 }
 
 func main() {
-	adifSpec := specdata.GetADIFSpec()
+	adifSpec := specdata.LoadADIFSpecWithExtras()
 
 	fmt.Printf("ADIF Version: %s\n", adifSpec.Version)
 	fmt.Printf("Status: %s\n", adifSpec.Status)
