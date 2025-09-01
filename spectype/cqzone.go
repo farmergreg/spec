@@ -19,7 +19,7 @@ func (d *CQZoneList) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	// TODO Hack... does the ADIF Spec need a fix?
+	// TODO: The ADIF Workgroup is expected to fix this in ADIF 3.1.7
 	if val == "S=16 T=17" {
 		val = "16,17"
 	}

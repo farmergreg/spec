@@ -19,7 +19,7 @@ func (d *ITUZoneList) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	// TODO Hack... does the ADIF Spec need a fix?
+	// TODO: The ADIF Workgroup is expected to fix this in ADIF 3.1.7
 	val = strings.ReplaceAll(val, "/", ",")
 
 	codes := strings.SplitSeq(val, ",")
