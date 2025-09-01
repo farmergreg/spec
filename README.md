@@ -11,47 +11,17 @@
 This repository contains the ADIF specification for Go.
 It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_resources_2025_08_27.zip) published by the [ADIF Workgroup](https://www.adif.org/)
 
-## Using The Library
+## Installing The Library
 
-- Run `go get github.com/hamradiolog-net/adif-spec@latest`
+`go get github.com/hamradiolog-net/adif-spec@latest`
 
-For example, to lookup information about a band, we can use the `band` package ([Run in Go Playground](https://go.dev/play/p/G_9Sy9Xbrpd)):
+## Examples
 
-```go
-package main
+Please see the [example code here](example_test.go).
 
-import (
-	"fmt"
+## Library Maintenance
 
-	"github.com/hamradiolog-net/adif-spec/v6/enum/band"
-	"github.com/hamradiolog-net/adif-spec/v6/spec"
-)
-
-func main() {
-	fmt.Println("ADIF Specification Version:", spec.ADIF_VER)
-
-	bandMap:=band.BandMap()
-	currentBands:=band.BandListCurrent()
-	allBands:=band.BandListAll()
-
-	forty := bandMap[band.Band40m]
-	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
-
-	fmt.Println("Current Bands")
-	for _, band := range currentBands {
-		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
-	}
-
-	fmt.Println("All Bands Including Import-Only and Unreleased (usually this is the same as BandList)")
-	for _, band := range allBands {
-		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
-	}
-}
-```
-
-## Maintenance
-
-The following steps are required to update the specification to the latest version.
+If you wish to update this library, the following steps are required:
 
 1. Download the latest ADIF all.json file export from the ADIF Workgroup. This file must be placed into the `src/pkg/specdata/` directory of this repository.
 
