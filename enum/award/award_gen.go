@@ -4,8 +4,6 @@
 // Package award provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package award
 
-import "maps"
-
 const (
 	AJA         Award = "AJA"         // Deprecated: AJA
 	CQDX        Award = "CQDX"        // Deprecated: CQDX
@@ -38,25 +36,10 @@ const (
 	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
-// All Award specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
-func AwardListAll() []Spec {
-	return append([]Spec(nil), internalAwardListAll...)
-}
-
-// All Award specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
-func AwardListCurrent() []Spec {
-	return append([]Spec(nil), internalAwardListCurrent...)
-}
-
-// A map of all Award from ADIF 3.1.6 (Proposed).
-func AwardMap() map[Award]Spec {
-	cp := make(map[Award]Spec, len(internalAwardMap))
-	maps.Copy(cp, internalAwardMap)
-	return cp
-}
-
 // A map of all Award specifications.
-var internalAwardMap = map[Award]Spec{
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var AwardMap = map[Award]Spec{
 	AJA:         {IsImportOnly: true, Key: "AJA"},
 	CQDX:        {IsImportOnly: true, Key: "CQDX"},
 	CQDXFIELD:   {IsImportOnly: true, Key: "CQDXFIELD"},
@@ -88,36 +71,42 @@ var internalAwardMap = map[Award]Spec{
 	WAZ:         {IsImportOnly: true, Key: "WAZ"},
 }
 
-var internalAwardListAll = []Spec{
-	internalAwardMap[AJA],
-	internalAwardMap[CQDX],
-	internalAwardMap[CQDXFIELD],
-	internalAwardMap[CQWAZ_160m],
-	internalAwardMap[CQWAZ_CW],
-	internalAwardMap[CQWAZ_MIXED],
-	internalAwardMap[CQWAZ_PHONE],
-	internalAwardMap[CQWAZ_RTTY],
-	internalAwardMap[CQWPX],
-	internalAwardMap[DARC_DOK],
-	internalAwardMap[DXCC],
-	internalAwardMap[DXCC_CW],
-	internalAwardMap[DXCC_MIXED],
-	internalAwardMap[DXCC_PHONE],
-	internalAwardMap[DXCC_RTTY],
-	internalAwardMap[IOTA],
-	internalAwardMap[JCC],
-	internalAwardMap[JCG],
-	internalAwardMap[MARATHON],
-	internalAwardMap[RDA],
-	internalAwardMap[USACA],
-	internalAwardMap[VUCC],
-	internalAwardMap[WAB],
-	internalAwardMap[WAC],
-	internalAwardMap[WAE],
-	internalAwardMap[WAIP],
-	internalAwardMap[WAJA],
-	internalAwardMap[WAS],
-	internalAwardMap[WAZ],
+// All Award specifications including depreciated and import only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var AwardListAll = []Spec{
+	AwardMap[AJA],
+	AwardMap[CQDX],
+	AwardMap[CQDXFIELD],
+	AwardMap[CQWAZ_160m],
+	AwardMap[CQWAZ_CW],
+	AwardMap[CQWAZ_MIXED],
+	AwardMap[CQWAZ_PHONE],
+	AwardMap[CQWAZ_RTTY],
+	AwardMap[CQWPX],
+	AwardMap[DARC_DOK],
+	AwardMap[DXCC],
+	AwardMap[DXCC_CW],
+	AwardMap[DXCC_MIXED],
+	AwardMap[DXCC_PHONE],
+	AwardMap[DXCC_RTTY],
+	AwardMap[IOTA],
+	AwardMap[JCC],
+	AwardMap[JCG],
+	AwardMap[MARATHON],
+	AwardMap[RDA],
+	AwardMap[USACA],
+	AwardMap[VUCC],
+	AwardMap[WAB],
+	AwardMap[WAC],
+	AwardMap[WAE],
+	AwardMap[WAIP],
+	AwardMap[WAJA],
+	AwardMap[WAS],
+	AwardMap[WAZ],
 }
 
-var internalAwardListCurrent = []Spec{}
+// All Award specifications values that are NOT marked import-only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var AwardListCurrent = []Spec{}

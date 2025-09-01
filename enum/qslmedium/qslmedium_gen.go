@@ -4,46 +4,35 @@
 // Package qslmedium provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qslmedium
 
-import "maps"
-
 const (
 	CARD QSLMedium = "CARD" // CARD = QSO confirmation via paper QSL card
 	EQSL QSLMedium = "EQSL" // EQSL = QSO confirmation via eQSL.cc
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// All QSLMedium specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
-func QSLMediumListAll() []Spec {
-	return append([]Spec(nil), internalQSLMediumListAll...)
-}
-
-// All QSLMedium specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
-func QSLMediumListCurrent() []Spec {
-	return append([]Spec(nil), internalQSLMediumListCurrent...)
-}
-
-// A map of all QSLMedium from ADIF 3.1.6 (Proposed).
-func QSLMediumMap() map[QSLMedium]Spec {
-	cp := make(map[QSLMedium]Spec, len(internalQSLMediumMap))
-	maps.Copy(cp, internalQSLMediumMap)
-	return cp
-}
-
 // A map of all QSLMedium specifications.
-var internalQSLMediumMap = map[QSLMedium]Spec{
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var QSLMediumMap = map[QSLMedium]Spec{
 	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
 	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
 	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
 }
 
-var internalQSLMediumListAll = []Spec{
-	internalQSLMediumMap[CARD],
-	internalQSLMediumMap[EQSL],
-	internalQSLMediumMap[LOTW],
+// All QSLMedium specifications including depreciated and import only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var QSLMediumListAll = []Spec{
+	QSLMediumMap[CARD],
+	QSLMediumMap[EQSL],
+	QSLMediumMap[LOTW],
 }
 
-var internalQSLMediumListCurrent = []Spec{
-	internalQSLMediumMap[CARD],
-	internalQSLMediumMap[EQSL],
-	internalQSLMediumMap[LOTW],
+// All QSLMedium specifications values that are NOT marked import-only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var QSLMediumListCurrent = []Spec{
+	QSLMediumMap[CARD],
+	QSLMediumMap[EQSL],
+	QSLMediumMap[LOTW],
 }

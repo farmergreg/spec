@@ -4,8 +4,6 @@
 // Package aditype provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package aditype
 
-import "maps"
-
 const (
 	AwardList                                 ADIType = "AwardList"                                 // Deprecated: a comma-delimited list of members of the Award enumeration
 	Boolean                                   ADIType = "Boolean"                                   // if True, the single ASCII character Y or y if False, the single ASCII character N or n
@@ -37,25 +35,10 @@ const (
 	WWFFRef                                   ADIType = "WWFFRef"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
-// All ADIType specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
-func ADITypeListAll() []Spec {
-	return append([]Spec(nil), internalADITypeListAll...)
-}
-
-// All ADIType specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
-func ADITypeListCurrent() []Spec {
-	return append([]Spec(nil), internalADITypeListCurrent...)
-}
-
-// A map of all ADIType from ADIF 3.1.6 (Proposed).
-func ADITypeMap() map[ADIType]Spec {
-	cp := make(map[ADIType]Spec, len(internalADITypeMap))
-	maps.Copy(cp, internalADITypeMap)
-	return cp
-}
-
 // A map of all ADIType specifications.
-var internalADITypeMap = map[ADIType]Spec{
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var ADITypeMap = map[ADIType]Spec{
 	AwardList:           {Key: "AwardList", DataTypeIndicator: "", Description: "a comma-delimited list of members of the Award enumeration", MinimumValue: 0, MaximumValue: 0, IsImportOnly: true, Comments: ""},
 	Boolean:             {Key: "Boolean", DataTypeIndicator: "B", Description: "if True, the single ASCII character Y or y if False, the single ASCII character N or n", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 	Character:           {Key: "Character", DataTypeIndicator: "", Description: "an ASCII character whose code lies in the range of 32 through 126, inclusive", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
@@ -86,63 +69,69 @@ var internalADITypeMap = map[ADIType]Spec{
 	WWFFRef:                                   {Key: "WWFFRef", DataTypeIndicator: "", Description: "a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 }
 
-var internalADITypeListAll = []Spec{
-	internalADITypeMap[AwardList],
-	internalADITypeMap[Boolean],
-	internalADITypeMap[Character],
-	internalADITypeMap[CreditList],
-	internalADITypeMap[Date],
-	internalADITypeMap[Digit],
-	internalADITypeMap[Enumeration],
-	internalADITypeMap[GridSquare],
-	internalADITypeMap[GridSquareExt],
-	internalADITypeMap[GridSquareList],
-	internalADITypeMap[IOTARefNo],
-	internalADITypeMap[Integer],
-	internalADITypeMap[IntlCharacter],
-	internalADITypeMap[IntlMultilineString],
-	internalADITypeMap[IntlString],
-	internalADITypeMap[Location],
-	internalADITypeMap[MultilineString],
-	internalADITypeMap[Number],
-	internalADITypeMap[POTARef],
-	internalADITypeMap[POTARefList],
-	internalADITypeMap[PositiveInteger],
-	internalADITypeMap[SOTARef],
-	internalADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
-	internalADITypeMap[SecondarySubdivisionList],
-	internalADITypeMap[SponsoredAwardList],
-	internalADITypeMap[String],
-	internalADITypeMap[Time],
-	internalADITypeMap[WWFFRef],
+// All ADIType specifications including depreciated and import only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var ADITypeListAll = []Spec{
+	ADITypeMap[AwardList],
+	ADITypeMap[Boolean],
+	ADITypeMap[Character],
+	ADITypeMap[CreditList],
+	ADITypeMap[Date],
+	ADITypeMap[Digit],
+	ADITypeMap[Enumeration],
+	ADITypeMap[GridSquare],
+	ADITypeMap[GridSquareExt],
+	ADITypeMap[GridSquareList],
+	ADITypeMap[IOTARefNo],
+	ADITypeMap[Integer],
+	ADITypeMap[IntlCharacter],
+	ADITypeMap[IntlMultilineString],
+	ADITypeMap[IntlString],
+	ADITypeMap[Location],
+	ADITypeMap[MultilineString],
+	ADITypeMap[Number],
+	ADITypeMap[POTARef],
+	ADITypeMap[POTARefList],
+	ADITypeMap[PositiveInteger],
+	ADITypeMap[SOTARef],
+	ADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
+	ADITypeMap[SecondarySubdivisionList],
+	ADITypeMap[SponsoredAwardList],
+	ADITypeMap[String],
+	ADITypeMap[Time],
+	ADITypeMap[WWFFRef],
 }
 
-var internalADITypeListCurrent = []Spec{
-	internalADITypeMap[Boolean],
-	internalADITypeMap[Character],
-	internalADITypeMap[CreditList],
-	internalADITypeMap[Date],
-	internalADITypeMap[Digit],
-	internalADITypeMap[Enumeration],
-	internalADITypeMap[GridSquare],
-	internalADITypeMap[GridSquareExt],
-	internalADITypeMap[GridSquareList],
-	internalADITypeMap[IOTARefNo],
-	internalADITypeMap[Integer],
-	internalADITypeMap[IntlCharacter],
-	internalADITypeMap[IntlMultilineString],
-	internalADITypeMap[IntlString],
-	internalADITypeMap[Location],
-	internalADITypeMap[MultilineString],
-	internalADITypeMap[Number],
-	internalADITypeMap[POTARef],
-	internalADITypeMap[POTARefList],
-	internalADITypeMap[PositiveInteger],
-	internalADITypeMap[SOTARef],
-	internalADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
-	internalADITypeMap[SecondarySubdivisionList],
-	internalADITypeMap[SponsoredAwardList],
-	internalADITypeMap[String],
-	internalADITypeMap[Time],
-	internalADITypeMap[WWFFRef],
+// All ADIType specifications values that are NOT marked import-only.
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var ADITypeListCurrent = []Spec{
+	ADITypeMap[Boolean],
+	ADITypeMap[Character],
+	ADITypeMap[CreditList],
+	ADITypeMap[Date],
+	ADITypeMap[Digit],
+	ADITypeMap[Enumeration],
+	ADITypeMap[GridSquare],
+	ADITypeMap[GridSquareExt],
+	ADITypeMap[GridSquareList],
+	ADITypeMap[IOTARefNo],
+	ADITypeMap[Integer],
+	ADITypeMap[IntlCharacter],
+	ADITypeMap[IntlMultilineString],
+	ADITypeMap[IntlString],
+	ADITypeMap[Location],
+	ADITypeMap[MultilineString],
+	ADITypeMap[Number],
+	ADITypeMap[POTARef],
+	ADITypeMap[POTARefList],
+	ADITypeMap[PositiveInteger],
+	ADITypeMap[SOTARef],
+	ADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
+	ADITypeMap[SecondarySubdivisionList],
+	ADITypeMap[SponsoredAwardList],
+	ADITypeMap[String],
+	ADITypeMap[Time],
+	ADITypeMap[WWFFRef],
 }

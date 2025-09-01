@@ -4,36 +4,17 @@
 // Package region provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package region
 
-import (
-	"maps"
-
-	"github.com/hamradiolog-net/adif-spec/v6/spectype"
-)
+import "github.com/hamradiolog-net/adif-spec/v6/spectype"
 
 /*
  * This enumeration has a composite key.
  * It works differently from most of the other enumerations.
  */
 
-// All RegionCompositeKey specifications in ADIF 3.1.6 (Proposed) including depreciated and import only.
-func RegionCompositeKeyListAll() []Spec {
-	return append([]Spec(nil), internalRegionCompositeKeyListAll...)
-}
-
-// All RegionCompositeKey specifications values in ADIF 3.1.6 (Proposed) that are NOT marked import-only.
-func RegionCompositeKeyListCurrent() []Spec {
-	return append([]Spec(nil), internalRegionCompositeKeyListCurrent...)
-}
-
-// A map of all RegionCompositeKey from ADIF 3.1.6 (Proposed).
-func RegionCompositeKeyMap() map[RegionCompositeKey]Spec {
-	cp := make(map[RegionCompositeKey]Spec, len(internalRegionCompositeKeyMap))
-	maps.Copy(cp, internalRegionCompositeKeyMap)
-	return cp
-}
-
 // A map of all RegionCompositeKey specifications.
-var internalRegionCompositeKeyMap = map[RegionCompositeKey]Spec{
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 	"AI.248": {IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	"BI.259": {IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 	"ET.390": {IsImportOnly: false, Code: "ET", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
@@ -47,29 +28,33 @@ var internalRegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 }
 
 // All RegionCompositeKey specifications including depreciated and import only.
-var internalRegionCompositeKeyListAll = []Spec{
-	internalRegionCompositeKeyMap["AI.248"],
-	internalRegionCompositeKeyMap["BI.259"],
-	internalRegionCompositeKeyMap["ET.390"],
-	internalRegionCompositeKeyMap["IV.206"],
-	internalRegionCompositeKeyMap["KO.0"],
-	internalRegionCompositeKeyMap["KO.296"],
-	internalRegionCompositeKeyMap["KO.522"],
-	internalRegionCompositeKeyMap["NONE"],
-	internalRegionCompositeKeyMap["SI.279"],
-	internalRegionCompositeKeyMap["SY.248"],
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var RegionCompositeKeyListAll = []Spec{
+	RegionCompositeKeyMap["AI.248"],
+	RegionCompositeKeyMap["BI.259"],
+	RegionCompositeKeyMap["ET.390"],
+	RegionCompositeKeyMap["IV.206"],
+	RegionCompositeKeyMap["KO.0"],
+	RegionCompositeKeyMap["KO.296"],
+	RegionCompositeKeyMap["KO.522"],
+	RegionCompositeKeyMap["NONE"],
+	RegionCompositeKeyMap["SI.279"],
+	RegionCompositeKeyMap["SY.248"],
 }
 
 // All RegionCompositeKey specifications values that are NOT marked import-only.
-var internalRegionCompositeKeyListCurrent = []Spec{
-	internalRegionCompositeKeyMap["AI.248"],
-	internalRegionCompositeKeyMap["BI.259"],
-	internalRegionCompositeKeyMap["ET.390"],
-	internalRegionCompositeKeyMap["IV.206"],
-	internalRegionCompositeKeyMap["KO.0"],
-	internalRegionCompositeKeyMap["KO.296"],
-	internalRegionCompositeKeyMap["KO.522"],
-	internalRegionCompositeKeyMap["NONE"],
-	internalRegionCompositeKeyMap["SI.279"],
-	internalRegionCompositeKeyMap["SY.248"],
+// For convenience, this data is mutable.
+// If you require immutable data, please use the specdata package.
+var RegionCompositeKeyListCurrent = []Spec{
+	RegionCompositeKeyMap["AI.248"],
+	RegionCompositeKeyMap["BI.259"],
+	RegionCompositeKeyMap["ET.390"],
+	RegionCompositeKeyMap["IV.206"],
+	RegionCompositeKeyMap["KO.0"],
+	RegionCompositeKeyMap["KO.296"],
+	RegionCompositeKeyMap["KO.522"],
+	RegionCompositeKeyMap["NONE"],
+	RegionCompositeKeyMap["SI.279"],
+	RegionCompositeKeyMap["SY.248"],
 }
