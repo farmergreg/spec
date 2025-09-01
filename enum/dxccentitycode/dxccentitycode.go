@@ -14,6 +14,10 @@ func (d DXCCEntityCode) ToInt() int {
 	return int(d)
 }
 
+func (d DXCCEntityCode) String() string {
+	return strconv.Itoa(int(d))
+}
+
 func (d *DXCCEntityCode) UnmarshalJSON(data []byte) error {
 	var val string
 	if err := json.Unmarshal(data, &val); err != nil {
@@ -48,8 +52,4 @@ func (d *DXCCEntityCodeList) UnmarshalJSON(data []byte) error {
 	}
 
 	return nil
-}
-
-func (d DXCCEntityCode) String() string {
-	return strconv.Itoa(int(d))
 }
