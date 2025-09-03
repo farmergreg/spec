@@ -21,6 +21,7 @@ type Spec struct {
 	Continent string    `json:"Continent"`
 }
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	return fmt.Sprintf("%s = %s", s.Key, s.Continent)
 }

@@ -37,7 +37,8 @@ func (d Spec) Identifier() string {
 	return name
 }
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	deleted := ""
 	if s.IsDeleted {
 		deleted = " (DELETED) "

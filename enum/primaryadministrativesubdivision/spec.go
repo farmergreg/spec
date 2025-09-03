@@ -32,6 +32,7 @@ type Spec struct {
 // PrimaryAdministrativeSubdivisionCode is the Code portion of the composite key.
 type PrimaryAdministrativeSubdivisionCode string
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	return fmt.Sprintf("%5s.%-5s = %-5s ( %-5s ); IMPORTANT: This is NOT the Primary Administrative Subdivision Code. It is a lookup key for use with PrimaryAdministrativeSubdivisionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.PrimaryAdminSub)
 }

@@ -25,6 +25,7 @@ type Spec struct {
 	IsDeleted              spectype.Boolean                   `json:"Deleted,omitempty"`
 }
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	return fmt.Sprintf("%-35s = DXCC %s: %s", s.Key, s.DXCCEntityCode, s.SecondaryAdminSub)
 }

@@ -22,7 +22,8 @@ type Spec struct {
 	UpperFreqMHz MHz  `json:"Upper Freq (MHz)"`
 }
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz)
 }
 

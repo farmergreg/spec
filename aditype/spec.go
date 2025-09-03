@@ -19,6 +19,7 @@ type Spec struct {
 	Comments          string           `json:"Comments,omitempty"`
 }
 
-func (s Spec) String() string {
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
 	return s.Description
 }
