@@ -6,6 +6,6 @@ type ADITypeIndicator rune
 // ADIType represents the ADIF data type of a data field
 type ADIType string
 
-func (d ADIType) String() string {
-	return string(d)
+func (t ADIType) String() string {
+	return string(t)
 }

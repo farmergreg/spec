@@ -1,5 +1,5 @@
 {
-    "name": "HamRadioLog.Net",
+    "name": "adif-spec",
     "build": {
         "dockerfile": "Dockerfile",
         "target": "dev-container",
