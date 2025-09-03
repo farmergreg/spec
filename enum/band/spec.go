@@ -22,13 +22,13 @@ type Spec struct {
 	UpperFreqMHz MHz  `json:"Upper Freq (MHz)"`
 }
 
-func (b Spec) String() string {
-	return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", b.Key, b.LowerFreqMHz, b.UpperFreqMHz)
+func (s Spec) String() string {
+	return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz)
 }
 
 // IsInBand returns true if the specified frequency is within the band specification.
-func (b *Spec) IsInBand(mhz MHz) bool {
-	return mhz >= b.LowerFreqMHz && mhz <= b.UpperFreqMHz
+func (s *Spec) IsInBand(mhz MHz) bool {
+	return mhz >= s.LowerFreqMHz && mhz <= s.UpperFreqMHz
 }
 
 // FindBandByMHz returns the band specification that contains the given MHz value, if any.
@@ -42,6 +42,6 @@ func FindBandByMHz(mhz MHz) (Spec, bool) {
 }
 
 // Bandwidth returns the width of the frequency range in MHz
-func (b *Spec) Bandwidth() MHz {
-	return b.UpperFreqMHz - b.LowerFreqMHz
+func (s *Spec) Bandwidth() MHz {
+	return s.UpperFreqMHz - s.LowerFreqMHz
 }

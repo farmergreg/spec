@@ -23,6 +23,6 @@ type Spec struct {
 	Facet   string `json:"Facet"`
 }
 
-func (c Spec) String() string {
-	return fmt.Sprintf("%-20s = %-15s %-45s %-15s", c.Key, c.Sponsor, c.Award, c.Facet)
+func (s Spec) String() string {
+	return fmt.Sprintf("%-20s = %-15s %-45s %-15s", s.Key, s.Sponsor, s.Award, s.Facet)
 }

@@ -18,6 +18,6 @@ type Spec struct {
 	Key Award `json:"Award"` // Award
 }
 
-func (a Spec) String() string {
-	return string(a.Key)
+func (s Spec) String() string {
+	return string(s.Key)
 }
