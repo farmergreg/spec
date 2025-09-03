@@ -7,96 +7,96 @@ package mode
 import "github.com/hamradiolog-net/adif-spec/v6/enum/submode"
 
 const (
-	AM           Mode = "AM"           // AM                     = []
-	AMTORFEC     Mode = "AMTORFEC"     // Deprecated: AMTORFEC   = []
-	ARDOP        Mode = "ARDOP"        // ARDOP                  = []
-	ASCI         Mode = "ASCI"         // Deprecated: ASCI       = []
-	ATV          Mode = "ATV"          // ATV                    = []
-	C4FM         Mode = "C4FM"         // Deprecated: C4FM       = []
-	CHIP         Mode = "CHIP"         // CHIP                   = [CHIP64 CHIP128]
-	CHIP128      Mode = "CHIP128"      // Deprecated: CHIP128    = []
-	CHIP64       Mode = "CHIP64"       // Deprecated: CHIP64     = []
-	CLO          Mode = "CLO"          // CLO                    = []
-	CONTESTI     Mode = "CONTESTI"     // CONTESTI               = []
-	CW           Mode = "CW"           // CW                     = [PCW]
-	DIGITALVOICE Mode = "DIGITALVOICE" // DIGITALVOICE           = [C4FM DMR DSTAR FREEDV M17]
-	DOMINO       Mode = "DOMINO"       // DOMINO                 = [DOM-M DOM4 DOM5 DOM8 DOM11 DOM16 DOM22 DOM44 DOM88 DOMINOEX DOMINOF]
-	DOMINOF      Mode = "DOMINOF"      // Deprecated: DOMINOF    = []
-	DSTAR        Mode = "DSTAR"        // Deprecated: DSTAR      = []
-	DYNAMIC      Mode = "DYNAMIC"      // DYNAMIC                = [VARA HF VARA SATELLITE VARA FM 1200 VARA FM 9600]
-	FAX          Mode = "FAX"          // FAX                    = []
-	FM           Mode = "FM"           // FM                     = []
-	FMHELL       Mode = "FMHELL"       // Deprecated: FMHELL     = []
-	FSK          Mode = "FSK"          // FSK                    = [SCAMP_FAST SCAMP_SLOW SCAMP_VSLOW]
-	FSK31        Mode = "FSK31"        // Deprecated: FSK31      = []
-	FSK441       Mode = "FSK441"       // FSK441                 = []
-	FT8          Mode = "FT8"          // FT8                    = []
-	GTOR         Mode = "GTOR"         // Deprecated: GTOR       = []
-	HELL         Mode = "HELL"         // HELL                   = [FMHELL FSKH105 FSKH245 FSKHELL HELL80 HELLX5 HELLX9 HFSK PSKHELL SLOWHELL]
-	HELL80       Mode = "HELL80"       // Deprecated: HELL80     = []
-	HFSK         Mode = "HFSK"         // Deprecated: HFSK       = []
-	ISCAT        Mode = "ISCAT"        // ISCAT                  = [ISCAT-A ISCAT-B]
-	JT4          Mode = "JT4"          // JT4                    = [JT4A JT4B JT4C JT4D JT4E JT4F JT4G]
-	JT44         Mode = "JT44"         // JT44                   = []
-	JT4A         Mode = "JT4A"         // Deprecated: JT4A       = []
-	JT4B         Mode = "JT4B"         // Deprecated: JT4B       = []
-	JT4C         Mode = "JT4C"         // Deprecated: JT4C       = []
-	JT4D         Mode = "JT4D"         // Deprecated: JT4D       = []
-	JT4E         Mode = "JT4E"         // Deprecated: JT4E       = []
-	JT4F         Mode = "JT4F"         // Deprecated: JT4F       = []
-	JT4G         Mode = "JT4G"         // Deprecated: JT4G       = []
-	JT65         Mode = "JT65"         // JT65                   = [JT65A JT65B JT65B2 JT65C JT65C2]
-	JT65A        Mode = "JT65A"        // Deprecated: JT65A      = []
-	JT65B        Mode = "JT65B"        // Deprecated: JT65B      = []
-	JT65C        Mode = "JT65C"        // Deprecated: JT65C      = []
-	JT6M         Mode = "JT6M"         // JT6M                   = []
-	JT9          Mode = "JT9"          // JT9                    = [JT9-1 JT9-2 JT9-5 JT9-10 JT9-30 JT9A JT9B JT9C JT9D JT9E JT9E FAST JT9F JT9F FAST JT9G JT9G FAST JT9H JT9H FAST]
-	MFSK         Mode = "MFSK"         // MFSK                   = [FSQCALL FST4 FST4W FT4 JS8 JTMS MFSK4 MFSK8 MFSK11 MFSK16 MFSK22 MFSK31 MFSK32 MFSK64 MFSK64L MFSK128 MFSK128L Q65]
-	MFSK16       Mode = "MFSK16"       // Deprecated: MFSK16     = []
-	MFSK8        Mode = "MFSK8"        // Deprecated: MFSK8      = []
-	MSK144       Mode = "MSK144"       // MSK144                 = []
-	MT63         Mode = "MT63"         // MT63                   = []
-	MTONE        Mode = "MTONE"        // MTONE                  = [SCAMP_OO SCAMP_OO_SLW]
-	OLIVIA       Mode = "OLIVIA"       // OLIVIA                 = [OLIVIA 4/125 OLIVIA 4/250 OLIVIA 8/250 OLIVIA 8/500 OLIVIA 16/500 OLIVIA 16/1000 OLIVIA 32/1000]
-	OPERA        Mode = "OPERA"        // OPERA                  = [OPERA-BEACON OPERA-QSO]
-	PAC          Mode = "PAC"          // PAC                    = [PAC2 PAC3 PAC4]
-	PAC2         Mode = "PAC2"         // Deprecated: PAC2       = []
-	PAC3         Mode = "PAC3"         // Deprecated: PAC3       = []
-	PAX          Mode = "PAX"          // PAX                    = [PAX2]
-	PAX2         Mode = "PAX2"         // Deprecated: PAX2       = []
-	PCW          Mode = "PCW"          // Deprecated: PCW        = []
-	PKT          Mode = "PKT"          // PKT                    = []
-	PSK          Mode = "PSK"          // PSK                    = [8PSK125 8PSK125F 8PSK125FL 8PSK250 8PSK250F 8PSK250FL 8PSK500 8PSK500F 8PSK1000 8PSK1000F 8PSK1200F FSK31 PSK10 PSK31 PSK63 PSK63F PSK63RC4 PSK63RC5 PSK63RC10 PSK63RC20 PSK63RC32 PSK125 PSK125C12 PSK125R PSK125RC10 PSK125RC12 PSK125RC16 PSK125RC4 PSK125RC5 PSK250 PSK250C6 PSK250R PSK250RC2 PSK250RC3 PSK250RC5 PSK250RC6 PSK250RC7 PSK500 PSK500C2 PSK500C4 PSK500R PSK500RC2 PSK500RC3 PSK500RC4 PSK800C2 PSK800RC2 PSK1000 PSK1000C2 PSK1000R PSK1000RC2 PSKAM10 PSKAM31 PSKAM50 PSKFEC31 QPSK31 QPSK63 QPSK125 QPSK250 QPSK500 SIM31]
-	PSK10        Mode = "PSK10"        // Deprecated: PSK10      = []
-	PSK125       Mode = "PSK125"       // Deprecated: PSK125     = []
-	PSK2K        Mode = "PSK2K"        // PSK2K                  = []
-	PSK31        Mode = "PSK31"        // Deprecated: PSK31      = []
-	PSK63        Mode = "PSK63"        // Deprecated: PSK63      = []
-	PSK63F       Mode = "PSK63F"       // Deprecated: PSK63F     = []
-	PSKAM10      Mode = "PSKAM10"      // Deprecated: PSKAM10    = []
-	PSKAM31      Mode = "PSKAM31"      // Deprecated: PSKAM31    = []
-	PSKAM50      Mode = "PSKAM50"      // Deprecated: PSKAM50    = []
-	PSKFEC31     Mode = "PSKFEC31"     // Deprecated: PSKFEC31   = []
-	PSKHELL      Mode = "PSKHELL"      // Deprecated: PSKHELL    = []
-	Q15          Mode = "Q15"          // Q15                    = []
-	QPSK125      Mode = "QPSK125"      // Deprecated: QPSK125    = []
-	QPSK31       Mode = "QPSK31"       // Deprecated: QPSK31     = []
-	QPSK63       Mode = "QPSK63"       // Deprecated: QPSK63     = []
-	QRA64        Mode = "QRA64"        // QRA64                  = [QRA64A QRA64B QRA64C QRA64D QRA64E]
-	ROS          Mode = "ROS"          // ROS                    = [ROS-EME ROS-HF ROS-MF]
-	RTTY         Mode = "RTTY"         // RTTY                   = [ASCI]
-	RTTYM        Mode = "RTTYM"        // RTTYM                  = []
-	SSB          Mode = "SSB"          // SSB                    = [LSB USB]
-	SSTV         Mode = "SSTV"         // SSTV                   = []
-	T10          Mode = "T10"          // T10                    = []
-	THOR         Mode = "THOR"         // THOR                   = [THOR-M THOR4 THOR5 THOR8 THOR11 THOR16 THOR22 THOR25X4 THOR50X1 THOR50X2 THOR100]
-	THRB         Mode = "THRB"         // THRB                   = [THRBX THRBX1 THRBX2 THRBX4 THROB1 THROB2 THROB4]
-	THRBX        Mode = "THRBX"        // Deprecated: THRBX      = []
-	TOR          Mode = "TOR"          // TOR                    = [AMTORFEC GTOR NAVTEX SITORB]
-	V4           Mode = "V4"           // V4                     = []
-	VOI          Mode = "VOI"          // VOI                    = []
-	WINMOR       Mode = "WINMOR"       // WINMOR                 = []
-	WSPR         Mode = "WSPR"         // WSPR                   = []
+	AM           Mode = "AM"           // AM                     =
+	AMTORFEC     Mode = "AMTORFEC"     // Deprecated: AMTORFEC   =
+	ARDOP        Mode = "ARDOP"        // ARDOP                  =
+	ASCI         Mode = "ASCI"         // Deprecated: ASCI       =
+	ATV          Mode = "ATV"          // ATV                    =
+	C4FM         Mode = "C4FM"         // Deprecated: C4FM       =
+	CHIP         Mode = "CHIP"         // CHIP                   = CHIP64, CHIP128
+	CHIP128      Mode = "CHIP128"      // Deprecated: CHIP128    =
+	CHIP64       Mode = "CHIP64"       // Deprecated: CHIP64     =
+	CLO          Mode = "CLO"          // CLO                    =
+	CONTESTI     Mode = "CONTESTI"     // CONTESTI               =
+	CW           Mode = "CW"           // CW                     = PCW
+	DIGITALVOICE Mode = "DIGITALVOICE" // DIGITALVOICE           = C4FM, DMR, DSTAR, FREEDV, M17
+	DOMINO       Mode = "DOMINO"       // DOMINO                 = DOM-M, DOM4, DOM5, DOM8, DOM11, DOM16, DOM22, DOM44, DOM88, DOMINOEX, DOMINOF
+	DOMINOF      Mode = "DOMINOF"      // Deprecated: DOMINOF    =
+	DSTAR        Mode = "DSTAR"        // Deprecated: DSTAR      =
+	DYNAMIC      Mode = "DYNAMIC"      // DYNAMIC                = VARA HF, VARA SATELLITE, VARA FM 1200, VARA FM 9600
+	FAX          Mode = "FAX"          // FAX                    =
+	FM           Mode = "FM"           // FM                     =
+	FMHELL       Mode = "FMHELL"       // Deprecated: FMHELL     =
+	FSK          Mode = "FSK"          // FSK                    = SCAMP_FAST, SCAMP_SLOW, SCAMP_VSLOW
+	FSK31        Mode = "FSK31"        // Deprecated: FSK31      =
+	FSK441       Mode = "FSK441"       // FSK441                 =
+	FT8          Mode = "FT8"          // FT8                    =
+	GTOR         Mode = "GTOR"         // Deprecated: GTOR       =
+	HELL         Mode = "HELL"         // HELL                   = FMHELL, FSKH105, FSKH245, FSKHELL, HELL80, HELLX5, HELLX9, HFSK, PSKHELL, SLOWHELL
+	HELL80       Mode = "HELL80"       // Deprecated: HELL80     =
+	HFSK         Mode = "HFSK"         // Deprecated: HFSK       =
+	ISCAT        Mode = "ISCAT"        // ISCAT                  = ISCAT-A, ISCAT-B
+	JT4          Mode = "JT4"          // JT4                    = JT4A, JT4B, JT4C, JT4D, JT4E, JT4F, JT4G
+	JT44         Mode = "JT44"         // JT44                   =
+	JT4A         Mode = "JT4A"         // Deprecated: JT4A       =
+	JT4B         Mode = "JT4B"         // Deprecated: JT4B       =
+	JT4C         Mode = "JT4C"         // Deprecated: JT4C       =
+	JT4D         Mode = "JT4D"         // Deprecated: JT4D       =
+	JT4E         Mode = "JT4E"         // Deprecated: JT4E       =
+	JT4F         Mode = "JT4F"         // Deprecated: JT4F       =
+	JT4G         Mode = "JT4G"         // Deprecated: JT4G       =
+	JT65         Mode = "JT65"         // JT65                   = JT65A, JT65B, JT65B2, JT65C, JT65C2
+	JT65A        Mode = "JT65A"        // Deprecated: JT65A      =
+	JT65B        Mode = "JT65B"        // Deprecated: JT65B      =
+	JT65C        Mode = "JT65C"        // Deprecated: JT65C      =
+	JT6M         Mode = "JT6M"         // JT6M                   =
+	JT9          Mode = "JT9"          // JT9                    = JT9-1, JT9-2, JT9-5, JT9-10, JT9-30, JT9A, JT9B, JT9C, JT9D, JT9E, JT9E FAST, JT9F, JT9F FAST, JT9G, JT9G FAST, JT9H, JT9H FAST
+	MFSK         Mode = "MFSK"         // MFSK                   = FSQCALL, FST4, FST4W, FT4, JS8, JTMS, MFSK4, MFSK8, MFSK11, MFSK16, MFSK22, MFSK31, MFSK32, MFSK64, MFSK64L, MFSK128 MFSK128L, Q65
+	MFSK16       Mode = "MFSK16"       // Deprecated: MFSK16     =
+	MFSK8        Mode = "MFSK8"        // Deprecated: MFSK8      =
+	MSK144       Mode = "MSK144"       // MSK144                 =
+	MT63         Mode = "MT63"         // MT63                   =
+	MTONE        Mode = "MTONE"        // MTONE                  = SCAMP_OO, SCAMP_OO_SLW
+	OLIVIA       Mode = "OLIVIA"       // OLIVIA                 = OLIVIA 4/125, OLIVIA 4/250, OLIVIA 8/250, OLIVIA 8/500, OLIVIA 16/500, OLIVIA 16/1000, OLIVIA 32/1000
+	OPERA        Mode = "OPERA"        // OPERA                  = OPERA-BEACON, OPERA-QSO
+	PAC          Mode = "PAC"          // PAC                    = PAC2, PAC3, PAC4
+	PAC2         Mode = "PAC2"         // Deprecated: PAC2       =
+	PAC3         Mode = "PAC3"         // Deprecated: PAC3       =
+	PAX          Mode = "PAX"          // PAX                    = PAX2
+	PAX2         Mode = "PAX2"         // Deprecated: PAX2       =
+	PCW          Mode = "PCW"          // Deprecated: PCW        =
+	PKT          Mode = "PKT"          // PKT                    =
+	PSK          Mode = "PSK"          // PSK                    = 8PSK125, 8PSK125F, 8PSK125FL, 8PSK250, 8PSK250F, 8PSK250FL, 8PSK500, 8PSK500F, 8PSK1000, 8PSK1000F, 8PSK1200F, FSK31, PSK10, PSK31, PSK63, PSK63F, PSK63RC4, PSK63RC5, PSK63RC10, PSK63RC20, PSK63RC32, PSK125, PSK125C12, PSK125R, PSK125RC10, PSK125RC12, PSK125RC16, PSK125RC4, PSK125RC5, PSK250, PSK250C6, PSK250R, PSK250RC2, PSK250RC3, PSK250RC5, PSK250RC6, PSK250RC7, PSK500, PSK500C2, PSK500C4, PSK500R, PSK500RC2, PSK500RC3, PSK500RC4, PSK800C2, PSK800RC2, PSK1000, PSK1000C2, PSK1000R, PSK1000RC2, PSKAM10, PSKAM31, PSKAM50, PSKFEC31, QPSK31, QPSK63, QPSK125, QPSK250, QPSK500, SIM31
+	PSK10        Mode = "PSK10"        // Deprecated: PSK10      =
+	PSK125       Mode = "PSK125"       // Deprecated: PSK125     =
+	PSK2K        Mode = "PSK2K"        // PSK2K                  =
+	PSK31        Mode = "PSK31"        // Deprecated: PSK31      =
+	PSK63        Mode = "PSK63"        // Deprecated: PSK63      =
+	PSK63F       Mode = "PSK63F"       // Deprecated: PSK63F     =
+	PSKAM10      Mode = "PSKAM10"      // Deprecated: PSKAM10    =
+	PSKAM31      Mode = "PSKAM31"      // Deprecated: PSKAM31    =
+	PSKAM50      Mode = "PSKAM50"      // Deprecated: PSKAM50    =
+	PSKFEC31     Mode = "PSKFEC31"     // Deprecated: PSKFEC31   =
+	PSKHELL      Mode = "PSKHELL"      // Deprecated: PSKHELL    =
+	Q15          Mode = "Q15"          // Q15                    =
+	QPSK125      Mode = "QPSK125"      // Deprecated: QPSK125    =
+	QPSK31       Mode = "QPSK31"       // Deprecated: QPSK31     =
+	QPSK63       Mode = "QPSK63"       // Deprecated: QPSK63     =
+	QRA64        Mode = "QRA64"        // QRA64                  = QRA64A, QRA64B, QRA64C, QRA64D, QRA64E
+	ROS          Mode = "ROS"          // ROS                    = ROS-EME, ROS-HF, ROS-MF
+	RTTY         Mode = "RTTY"         // RTTY                   = ASCI
+	RTTYM        Mode = "RTTYM"        // RTTYM                  =
+	SSB          Mode = "SSB"          // SSB                    = LSB, USB
+	SSTV         Mode = "SSTV"         // SSTV                   =
+	T10          Mode = "T10"          // T10                    =
+	THOR         Mode = "THOR"         // THOR                   = THOR-M, THOR4, THOR5, THOR8, THOR11, THOR16, THOR22, THOR25X4, THOR50X1, THOR50X2, THOR100
+	THRB         Mode = "THRB"         // THRB                   = THRBX, THRBX1, THRBX2, THRBX4, THROB1, THROB2, THROB4
+	THRBX        Mode = "THRBX"        // Deprecated: THRBX      =
+	TOR          Mode = "TOR"          // TOR                    = AMTORFEC, GTOR, NAVTEX, SITORB
+	V4           Mode = "V4"           // V4                     =
+	VOI          Mode = "VOI"          // VOI                    =
+	WINMOR       Mode = "WINMOR"       // WINMOR                 =
+	WSPR         Mode = "WSPR"         // WSPR                   =
 )
 
 // A map of all Mode specifications.

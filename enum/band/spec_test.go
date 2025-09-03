@@ -1,10 +1,12 @@
 package band
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestBandwidth(t *testing.T) {
 	for _, item := range BandListAll {
-		if item.Bandwidth() != item.UpperFreqMHz-item.LowerFreqMHz {
+		if item.Bandwidth() != float64(item.UpperFreqMHz)-float64(item.LowerFreqMHz) {
 			t.Errorf("Band %s bandwidth is incorrect: %f", item.Key, item.Bandwidth())
 		}
 	}
@@ -12,27 +14,25 @@ func TestBandwidth(t *testing.T) {
 
 func TestIsInBand(t *testing.T) {
 	for _, item := range BandListAll {
-		if !item.IsInBand(item.LowerFreqMHz) {
-			t.Errorf("Band %s should be in band", item.Key)
+		if !item.IsInBand(float64(item.LowerFreqMHz)) {
+			t.Errorf("frequency %f should be in band %s", item.LowerFreqMHz, item.Key)
 		}
-		if !item.IsInBand(item.UpperFreqMHz) {
-			t.Errorf("Band %s should be in band", item.Key)
+		if !item.IsInBand(float64(item.UpperFreqMHz)) {
+			t.Errorf("frequency %f should be in band %s", item.UpperFreqMHz, item.Key)
 		}
-		if item.IsInBand(item.LowerFreqMHz - 1) {
-			t.Errorf("Band %s should not be in band", item.Key)
+		if item.IsInBand(float64(item.LowerFreqMHz) - .01) {
+			t.Errorf("frequency %f should NOT be in band %s", item.LowerFreqMHz-.01, item.Key)
 		}
-		if item.IsInBand(item.UpperFreqMHz + 1) {
-			t.Errorf("Band %s should not be in band", item.Key)
+		if item.IsInBand(float64(item.UpperFreqMHz) + .01) {
+			t.Errorf("frequency %f should NOT be in band %s", item.UpperFreqMHz+.01, item.Key)
 		}
 	}
 }
 
 func TestFindBandByMHz(t *testing.T) {
-	for _, item := range BandListAll {
-		_, ok := FindBandByMHz(item.LowerFreqMHz)
-		if !ok {
-			t.Errorf("Band %s should be in band", item.Key)
-		}
+	b, ok := FindBandByMHz(7.050)
+	if !ok || b.Key != Band40m {
+		t.Errorf("7.050 MHz should be in band %s", Band40m)
 	}
 }
 
@@ -40,7 +40,7 @@ func TestFindBandByMHz_NotInBand(t *testing.T) {
 	for _, item := range BandListAll {
 		_, ok := FindBandByMHz(0.25)
 		if ok {
-			t.Errorf("Band %s should be in band", item.Key)
+			t.Errorf("0.25Mhz should not be in band %s", item.Key)
 		}
 	}
 }

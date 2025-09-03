@@ -17,9 +17,9 @@ type Spec struct {
 	// EnumerationName string           `json:"Enumeration Name"`
 	IsImportOnly spectype.Boolean `json:"Import-only,omitempty"`
 	// Comments     string           `json:"Comments,omitempty"`
-	Key          Band `json:"Band"` // Band
-	LowerFreqMHz MHz  `json:"Lower Freq (MHz)"`
-	UpperFreqMHz MHz  `json:"Upper Freq (MHz)"`
+	Key          Band         `json:"Band"` // Band
+	LowerFreqMHz spectype.MHz `json:"Lower Freq (MHz)"`
+	UpperFreqMHz spectype.MHz `json:"Upper Freq (MHz)"`
 }
 
 // Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
@@ -28,12 +28,12 @@ func (s Spec) CodeGeneratorMetadata() string {
 }
 
 // IsInBand returns true if the specified frequency is within the band specification.
-func (s *Spec) IsInBand(mhz MHz) bool {
-	return mhz >= s.LowerFreqMHz && mhz <= s.UpperFreqMHz
+func (s *Spec) IsInBand(mhz float64) bool {
+	return mhz >= float64(s.LowerFreqMHz) && mhz <= float64(s.UpperFreqMHz)
 }
 
 // FindBandByMHz returns the band specification that contains the given MHz value, if any.
-func FindBandByMHz(mhz MHz) (Spec, bool) {
+func FindBandByMHz(mhz float64) (Spec, bool) {
 	for _, item := range BandListAll {
 		if item.IsInBand(mhz) {
 			return item, true
@@ -43,6 +43,6 @@ func FindBandByMHz(mhz MHz) (Spec, bool) {
 }
 
 // Bandwidth returns the width of the frequency range in MHz
-func (s *Spec) Bandwidth() MHz {
-	return s.UpperFreqMHz - s.LowerFreqMHz
+func (s *Spec) Bandwidth() float64 {
+	return float64(s.UpperFreqMHz) - float64(s.LowerFreqMHz)
 }

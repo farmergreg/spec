@@ -3,7 +3,6 @@ package dxccentitycode
 import (
 	"encoding/json"
 	"strconv"
-	"strings"
 )
 
 // DXCCEntityCode is an ARRL DX Century Club code.
@@ -30,26 +29,5 @@ func (d *DXCCEntityCode) UnmarshalJSON(data []byte) error {
 	}
 
 	*d = DXCCEntityCode(parsedCode)
-	return nil
-}
-
-// DXCCEntityCodeList represents a list of DXCC entity codes
-type DXCCEntityCodeList []DXCCEntityCode
-
-func (d *DXCCEntityCodeList) UnmarshalJSON(data []byte) error {
-	var val string
-	if err := json.Unmarshal(data, &val); err != nil {
-		return err
-	}
-
-	codes := strings.SplitSeq(val, ",")
-	for c := range codes {
-		parsedCode, err := strconv.Atoi(c)
-		if err != nil {
-			return err
-		}
-		*d = append(*d, DXCCEntityCode(parsedCode))
-	}
-
 	return nil
 }
