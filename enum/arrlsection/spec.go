@@ -1,8 +1,6 @@
 package arrlsection
 
 import (
-	"fmt"
-
 	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
@@ -23,9 +21,4 @@ type Spec struct {
 	DXCCEntityCode dxccentitycode.DXCCEntityCodeList `json:"DXCC Entity Code"`
 	FromDate       spectype.DateTime                 `json:"From Date,omitempty"`
 	DeletedDate    spectype.DateTime                 `json:"Deleted Date,omitempty"`
-}
-
-// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
-func (s Spec) CodeGeneratorMetadata() string {
-	return fmt.Sprintf("%-4s = %s", s.Key, s.Description)
 }

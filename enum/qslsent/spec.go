@@ -1,8 +1,6 @@
 package qslsent
 
 import (
-	"fmt"
-
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
@@ -20,9 +18,4 @@ type Spec struct {
 	Key         QSLSent `json:"Status"` // Status
 	Meaning     string  `json:"Meaning"`
 	Description string  `json:"Description"`
-}
-
-// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
-func (s Spec) CodeGeneratorMetadata() string {
-	return fmt.Sprintf("%s = %s", s.Key, s.Description)
 }
