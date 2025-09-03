@@ -10,6 +10,9 @@ var tmplFuncs = template.FuncMap{
 	"Split":          strings.Split,
 	"ToGoIdentifier": toGoIdentifier,
 	"ToGoCode":       toGoCode,
+	"CommentsFor": func(viewBag ViewBag, a any) string {
+		return viewBag.Comments(a)
+	},
 }
 
 func toGoIdentifier(s string) string {

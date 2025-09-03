@@ -2,7 +2,7 @@
 
 const (
 {{- range $key, $value := .Records }}
-	{{ $.ConstPrefix}}{{ ToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ $value.CodeGeneratorMetadata }}
+	{{ $.ConstPrefix}}{{ ToGoIdentifier $key.String }} {{ $.DataType }} = "{{ $key.String }}" // {{ if $value.IsImportOnly }}Deprecated: {{ end }}{{ CommentsFor $ $value }}
 {{- end }}
 )
 

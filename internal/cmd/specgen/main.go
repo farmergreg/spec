@@ -11,6 +11,33 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/hamradiolog-net/adif-spec/v6/adifield"
+	"github.com/hamradiolog-net/adif-spec/v6/aditype"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/antpath"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/arrlsection"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/award"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/awardsponsor"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/band"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/contest"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/continent"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/credit"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/eqslag"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/mode"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/morsekeytype"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/primaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/propagationmode"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qslmedium"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qslrcvd"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qslsent"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qslvia"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qsocomplete"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qsodownloadstatus"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/qsouploadstatus"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/region"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/secondaryadministrativesubdivision"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/secondaryadministrativesubdivisionalt"
+	"github.com/hamradiolog-net/adif-spec/v6/enum/submode"
 	"github.com/hamradiolog-net/adif-spec/v6/spec"
 	"github.com/hamradiolog-net/adif-spec/v6/specdata"
 )
@@ -25,6 +52,7 @@ type ViewBag struct {
 	PackageName string
 	Records     any
 	ConstPrefix string
+	Comments    func(a any) string
 }
 
 func main() {
@@ -39,6 +67,7 @@ func main() {
 		PackageName: "spec",
 		Records:     nil,
 		ConstPrefix: "",
+		Comments:    func(a any) string { return "" }, // spec package doesn't have CodeGeneratorMetadata
 	}, false, "spec.tmpl")
 
 	generate(ViewBag{
@@ -47,6 +76,16 @@ func main() {
 		PackageName: "adifield",
 		Records:     adifSpec.Fields.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(adifield.Spec); ok {
+				if spec.IsHeaderField {
+					return fmt.Sprintf("Header: %s", spec.Description)
+				} else {
+					return fmt.Sprintf("Record: %s", spec.Description)
+				}
+			}
+			return ""
+		},
 	}, false, "standard.tmpl")
 
 	generate(ViewBag{
@@ -55,6 +94,12 @@ func main() {
 		PackageName: "aditype",
 		Records:     adifSpec.DataTypes.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(aditype.Spec); ok {
+				return spec.Description
+			}
+			return ""
+		},
 	}, false, "standard.tmpl")
 
 	/*
@@ -67,6 +112,12 @@ func main() {
 		PackageName: "antpath",
 		Records:     adifSpec.Enum.Ant_Path.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(antpath.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -75,6 +126,12 @@ func main() {
 		PackageName: "arrlsection",
 		Records:     adifSpec.Enum.ARRL_Section.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(arrlsection.Spec); ok {
+				return fmt.Sprintf("%-4s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -83,6 +140,12 @@ func main() {
 		PackageName: "award",
 		Records:     adifSpec.Enum.Award.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(award.Spec); ok {
+				return string(spec.Key)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -91,6 +154,12 @@ func main() {
 		PackageName: "awardsponsor",
 		Records:     adifSpec.Enum.Award_Sponsor.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(awardsponsor.Spec); ok {
+				return fmt.Sprintf("%-6s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -99,6 +168,12 @@ func main() {
 		PackageName: "band",
 		Records:     adifSpec.Enum.Band.Records,
 		ConstPrefix: "Band",
+		Comments: func(a any) string {
+			if spec, ok := a.(band.Spec); ok {
+				return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", spec.Key, spec.LowerFreqMHz, spec.UpperFreqMHz)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -107,6 +182,12 @@ func main() {
 		PackageName: "contest",
 		Records:     adifSpec.Enum.Contest_ID.Records,
 		ConstPrefix: "Contest_",
+		Comments: func(a any) string {
+			if spec, ok := a.(contest.Spec); ok {
+				return fmt.Sprintf("%-20s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -115,6 +196,12 @@ func main() {
 		PackageName: "continent",
 		Records:     adifSpec.Enum.Continent.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(continent.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Continent)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -123,6 +210,12 @@ func main() {
 		PackageName: "credit",
 		Records:     adifSpec.Enum.Credit.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(credit.Spec); ok {
+				return fmt.Sprintf("%-20s = %-15s %-45s %-15s", spec.Key, spec.Sponsor, spec.Award, spec.Facet)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -131,6 +224,16 @@ func main() {
 		PackageName: "dxccentitycode",
 		Records:     adifSpec.Enum.DXCC_Entity_Code.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(dxccentitycode.Spec); ok {
+				deleted := ""
+				if spec.IsDeleted {
+					deleted = " (DELETED) "
+				}
+				return fmt.Sprintf("%s = %s%s", spec.Key, spec.EntityName, deleted)
+			}
+			return ""
+		},
 	}, true, "dxcc.tmpl")
 
 	generate(ViewBag{
@@ -139,6 +242,12 @@ func main() {
 		PackageName: "eqslag",
 		Records:     adifSpec.Enum.EQSL_AG.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(eqslag.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -147,6 +256,16 @@ func main() {
 		PackageName: "mode",
 		Records:     adifSpec.Enum.Mode.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(mode.Spec); ok {
+				if spec.IsImportOnly {
+					return fmt.Sprintf("%-10s = %s", spec.Key, spec.Submodes)
+				} else {
+					return fmt.Sprintf("%-22s = %s", spec.Key, spec.Submodes)
+				}
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -155,6 +274,12 @@ func main() {
 		PackageName: "morsekeytype",
 		Records:     adifSpec.Enum.Morse_Key_Type.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(morsekeytype.Spec); ok {
+				return fmt.Sprintf("%-4s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -163,6 +288,12 @@ func main() {
 		PackageName: "propagationmode",
 		Records:     adifSpec.Enum.Propagation_Mode.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(propagationmode.Spec); ok {
+				return fmt.Sprintf("%-10s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -171,6 +302,12 @@ func main() {
 		PackageName: "qslmedium",
 		Records:     adifSpec.Enum.QSL_Medium.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qslmedium.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -179,6 +316,12 @@ func main() {
 		PackageName: "qslrcvd",
 		Records:     adifSpec.Enum.QSL_Rcvd.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qslrcvd.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -187,6 +330,12 @@ func main() {
 		PackageName: "qslsent",
 		Records:     adifSpec.Enum.QSL_Sent.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qslsent.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -195,6 +344,12 @@ func main() {
 		PackageName: "qslvia",
 		Records:     adifSpec.Enum.QSL_Via.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qslvia.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -203,6 +358,12 @@ func main() {
 		PackageName: "qsocomplete",
 		Records:     adifSpec.Enum.QSO_Complete.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qsocomplete.Spec); ok {
+				return fmt.Sprintf("%-4s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -211,6 +372,12 @@ func main() {
 		PackageName: "qsodownloadstatus",
 		Records:     adifSpec.Enum.QSO_Download_Status.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qsodownloadstatus.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -219,6 +386,12 @@ func main() {
 		PackageName: "qsouploadstatus",
 		Records:     adifSpec.Enum.QSO_Upload_Status.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(qsouploadstatus.Spec); ok {
+				return fmt.Sprintf("%s = %s", spec.Key, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -227,6 +400,12 @@ func main() {
 		PackageName: "secondaryadministrativesubdivision",
 		Records:     adifSpec.Enum.Secondary_Administrative_Subdivision.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(secondaryadministrativesubdivision.Spec); ok {
+				return fmt.Sprintf("%-35s = DXCC %s: %s", spec.Key, spec.DXCCEntityCode, spec.SecondaryAdminSub)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -235,6 +414,12 @@ func main() {
 		PackageName: "secondaryadministrativesubdivisionalt",
 		Records:     adifSpec.Enum.Secondary_Administrative_Subdivision_Alt.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(secondaryadministrativesubdivisionalt.Spec); ok {
+				return fmt.Sprintf("%-50s = DXCC: %s %s", spec.Key, spec.DXCCEntityCode, spec.Region)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	generate(ViewBag{
@@ -243,6 +428,12 @@ func main() {
 		PackageName: "submode",
 		Records:     adifSpec.Enum.Submode.Records,
 		ConstPrefix: "SubMode",
+		Comments: func(a any) string {
+			if spec, ok := a.(submode.Spec); ok {
+				return fmt.Sprintf("%-15s = %-15s %s", spec.Key, spec.Mode, spec.Description)
+			}
+			return ""
+		},
 	}, true, "standard.tmpl")
 
 	// PrimaryAdministrativeSubdivision and Region have composite keys and are quite different from the rest of the enums.
@@ -252,6 +443,12 @@ func main() {
 		PackageName: "primaryadministrativesubdivision",
 		Records:     adifSpec.Enum.Primary_Administrative_Subdivision.Records,
 		ConstPrefix: "PrimaryAdministrativeSubdivision",
+		Comments: func(a any) string {
+			if spec, ok := a.(primaryadministrativesubdivision.Spec); ok {
+				return fmt.Sprintf("%5s.%-5s = %-5s ( %-5s ); IMPORTANT: This is NOT the Primary Administrative Subdivision Code. It is a lookup key for use with PrimaryAdministrativeSubdivisionCompositeKeyMap", spec.Code, spec.DXCCEntityCode, spec.Code, spec.PrimaryAdminSub)
+			}
+			return ""
+		},
 	}, true, "standard-composite-index.tmpl")
 
 	generate(ViewBag{
@@ -260,6 +457,12 @@ func main() {
 		PackageName: "region",
 		Records:     adifSpec.Enum.Region.Records,
 		ConstPrefix: "",
+		Comments: func(a any) string {
+			if spec, ok := a.(region.Spec); ok {
+				return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", spec.Code, spec.DXCCEntityCode, spec.Code, spec.Region)
+			}
+			return ""
+		},
 	}, true, "standard-composite-index.tmpl")
 }
 
