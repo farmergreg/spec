@@ -47,7 +47,7 @@ func main() {
 		PackageName: "adifield",
 		Records:     adifSpec.Fields.Records,
 		ConstPrefix: "",
-	}, false, "standard.tmpl")
+	}, false, "standard-field.tmpl")
 
 	generate(ViewBag{
 		Spec:        adifSpec,

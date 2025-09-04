@@ -2,7 +2,11 @@ package adifield
 
 import (
 	"fmt"
+	"path"
+	"reflect"
+	"strconv"
 
+	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
@@ -25,11 +29,30 @@ type Spec struct {
 	Comments      string           `json:"Comments,omitempty"`
 }
 
-// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
-func (s Spec) CodeGeneratorMetadata() string {
+func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
+	var headerOrRecord = "Record"
 	if s.IsHeaderField {
-		return fmt.Sprintf("Header: %s", s.Description)
-	} else {
-		return fmt.Sprintf("Record: %s", s.Description)
+		headerOrRecord = "Header"
+	}
+
+	return codegen.CodeGeneratorMetadataForEnum{
+		ConstName:     codegen.ToGoIdentifier(string(s.Key)),
+		ConstDataType: reflect.TypeOf(s.Key).Name(),
+		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
+		Comments:      fmt.Sprintf("%s: %s", headerOrRecord, s.Description),
+	}
+}
+
+func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+	for k, v := range c.Records {
+		result[k] = v
+	}
+	return result
+}
+
+func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
+	return codegen.CodeGeneratorMetadataForContainer{
+		PackageName: path.Base(reflect.TypeOf(c).PkgPath()),
 	}
 }
