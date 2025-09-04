@@ -7,6 +7,7 @@ type CodeGenContainer interface {
 
 type CodeGeneratorMetadataForContainer struct {
 	PackageName string
+	DataType    string
 }
 
 type CodeGenSpec interface {
@@ -15,9 +16,9 @@ type CodeGenSpec interface {
 
 type CodeGeneratorMetadataForEnum struct {
 	ConstName     string
-	ConstDataType string
 	ConstValue    string
-	Comments      string
+	ConstComments string
+	IsDeprecated  bool
 }
 
 type CodeGeneratorEnumValue interface {

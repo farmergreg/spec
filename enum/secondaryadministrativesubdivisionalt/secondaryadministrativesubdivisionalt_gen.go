@@ -159,7 +159,7 @@ var SecondaryAdministrativeSubdivisionAltMap = map[SecondaryAdministrativeSubdiv
 	NZ_Regions_West_Coast_Westland:                 {IsImportOnly: false, Key: "NZ_Regions:West Coast/Westland", DXCCEntityCode: 170, Region: "West Coast", District: "Westland", IsDeleted: false},
 }
 
-// All SecondaryAdministrativeSubdivisionAlt specifications including depreciated and import only.
+// All SecondaryAdministrativeSubdivisionAlt specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SecondaryAdministrativeSubdivisionAltListAll = []Spec{
@@ -238,7 +238,7 @@ var SecondaryAdministrativeSubdivisionAltListAll = []Spec{
 	SecondaryAdministrativeSubdivisionAltMap[NZ_Regions_West_Coast_Westland],
 }
 
-// All SecondaryAdministrativeSubdivisionAlt specifications values that are NOT marked import-only.
+// All SecondaryAdministrativeSubdivisionAlt specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SecondaryAdministrativeSubdivisionAltListCurrent = []Spec{

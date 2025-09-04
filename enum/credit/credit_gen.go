@@ -155,7 +155,7 @@ var CreditMap = map[Credit]Spec{
 	WITUZ_BAND:          {IsImportOnly: false, Key: "WITUZ_BAND", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Band"},
 }
 
-// All Credit specifications including depreciated and import only.
+// All Credit specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var CreditListAll = []Spec{
@@ -232,7 +232,7 @@ var CreditListAll = []Spec{
 	CreditMap[WITUZ_BAND],
 }
 
-// All Credit specifications values that are NOT marked import-only.
+// All Credit specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var CreditListCurrent = []Spec{

@@ -27,7 +27,7 @@ var ContinentMap = map[Continent]Spec{
 	SA: {IsImportOnly: false, Key: "SA", Continent: "South America"},
 }
 
-// All Continent specifications including depreciated and import only.
+// All Continent specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContinentListAll = []Spec{
@@ -40,7 +40,7 @@ var ContinentListAll = []Spec{
 	ContinentMap[SA],
 }
 
-// All Continent specifications values that are NOT marked import-only.
+// All Continent specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContinentListCurrent = []Spec{

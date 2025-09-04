@@ -2,8 +2,6 @@ package adifield
 
 import (
 	"fmt"
-	"path"
-	"reflect"
 	"strconv"
 
 	"github.com/hamradiolog-net/adif-spec/v6/codegen"
@@ -37,9 +35,9 @@ func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
 
 	return codegen.CodeGeneratorMetadataForEnum{
 		ConstName:     codegen.ToGoIdentifier(string(s.Key)),
-		ConstDataType: reflect.TypeOf(s.Key).Name(),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
-		Comments:      fmt.Sprintf("%s: %s", headerOrRecord, s.Description),
+		ConstComments: fmt.Sprintf("%s: %s", headerOrRecord, s.Description),
+		IsDeprecated:  bool(s.IsImportOnly),
 	}
 }
 
@@ -53,6 +51,7 @@ func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumVa
 
 func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
 	return codegen.CodeGeneratorMetadataForContainer{
-		PackageName: path.Base(reflect.TypeOf(c).PkgPath()),
+		PackageName: "adifield",
+		DataType:    "ADIField",
 	}
 }

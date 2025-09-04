@@ -8,7 +8,7 @@ import "github.com/hamradiolog-net/adif-spec/v6/spectype"
 
 /*
  * This enumeration has a composite key.
- * It works differently from most of the other enumerations.
+ * It behaves differently than most of the other enumerations.
  */
 
 // A map of all RegionCompositeKey specifications.
@@ -27,7 +27,7 @@ var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 	"SY.248": {IsImportOnly: false, Code: "SY", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 }
 
-// All RegionCompositeKey specifications including depreciated and import only.
+// All RegionCompositeKey specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var RegionCompositeKeyListAll = []Spec{
@@ -43,7 +43,7 @@ var RegionCompositeKeyListAll = []Spec{
 	RegionCompositeKeyMap["SY.248"],
 }
 
-// All RegionCompositeKey specifications values that are NOT marked import-only.
+// All RegionCompositeKey specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var RegionCompositeKeyListCurrent = []Spec{

@@ -19,7 +19,7 @@ var QSOUploadStatusMap = map[QSOUploadStatus]Spec{
 	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO has been uploaded to, and accepted by, the online service"},
 }
 
-// All QSOUploadStatus specifications including depreciated and import only.
+// All QSOUploadStatus specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOUploadStatusListAll = []Spec{
@@ -28,7 +28,7 @@ var QSOUploadStatusListAll = []Spec{
 	QSOUploadStatusMap[Y],
 }
 
-// All QSOUploadStatus specifications values that are NOT marked import-only.
+// All QSOUploadStatus specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOUploadStatusListCurrent = []Spec{

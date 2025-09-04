@@ -8,7 +8,7 @@ import "github.com/hamradiolog-net/adif-spec/v6/spectype"
 
 /*
  * This enumeration has a composite key.
- * It works differently from most of the other enumerations.
+ * It behaves differently than most of the other enumerations.
  */
 
 // A map of all PrimaryAdministrativeSubdivisionCompositeKey specifications.
@@ -1982,7 +1982,7 @@ var PrimaryAdministrativeSubdivisionCompositeKeyMap = map[PrimaryAdministrativeS
 	"ZVO.504":          {IsImportOnly: false, Comments: "", Code: "ZVO", PrimaryAdminSub: "Zvolen", DXCCEntityCode: 504, ContainedWithin: "Banska Bystrica (Banskobystrický kraj)", Oblast: 0, CQZone: spectype.CQZoneList(nil), ITUZone: spectype.ITUZoneList(nil), Prefix: "", IsDeleted: false},
 }
 
-// All PrimaryAdministrativeSubdivisionCompositeKey specifications including depreciated and import only.
+// All PrimaryAdministrativeSubdivisionCompositeKey specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var PrimaryAdministrativeSubdivisionCompositeKeyListAll = []Spec{
@@ -3953,7 +3953,7 @@ var PrimaryAdministrativeSubdivisionCompositeKeyListAll = []Spec{
 	PrimaryAdministrativeSubdivisionCompositeKeyMap["ZVO.504"],
 }
 
-// All PrimaryAdministrativeSubdivisionCompositeKey specifications values that are NOT marked import-only.
+// All PrimaryAdministrativeSubdivisionCompositeKey specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var PrimaryAdministrativeSubdivisionCompositeKeyListCurrent = []Spec{

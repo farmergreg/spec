@@ -19,7 +19,7 @@ var QSODownloadStatusMap = map[QSODownloadStatus]Spec{
 	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO has been downloaded from the online service"},
 }
 
-// All QSODownloadStatus specifications including depreciated and import only.
+// All QSODownloadStatus specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSODownloadStatusListAll = []Spec{
@@ -28,7 +28,7 @@ var QSODownloadStatusListAll = []Spec{
 	QSODownloadStatusMap[Y],
 }
 
-// All QSODownloadStatus specifications values that are NOT marked import-only.
+// All QSODownloadStatus specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSODownloadStatusListCurrent = []Spec{

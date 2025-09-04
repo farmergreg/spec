@@ -2,7 +2,9 @@ package primaryadministrativesubdivision
 
 import (
 	"fmt"
+	"strconv"
 
+	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
@@ -32,7 +34,30 @@ type Spec struct {
 // PrimaryAdministrativeSubdivisionCode is the Code portion of the composite key.
 type PrimaryAdministrativeSubdivisionCode string
 
-// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
-func (s Spec) CodeGeneratorMetadata() string {
-	return fmt.Sprintf("%5s.%-5s = %-5s ( %-5s ); IMPORTANT: This is NOT the Primary Administrative Subdivision Code. It is a lookup key for use with PrimaryAdministrativeSubdivisionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.PrimaryAdminSub)
+func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
+	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))
+	if s.IsDeleted {
+		constName += ".Deleted.0"
+	}
+	return codegen.CodeGeneratorMetadataForEnum{
+		ConstName:     strconv.QuoteToASCII(constName),
+		ConstValue:    strconv.QuoteToASCII(string(s.Code)),
+		ConstComments: fmt.Sprintf("%5s.%-5s = %-5s ( %-5s ); IMPORTANT: This is NOT the Primary Administrative Subdivision Code. It is a lookup key for use with PrimaryAdministrativeSubdivisionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.PrimaryAdminSub),
+		IsDeprecated:  bool(s.IsImportOnly),
+	}
+}
+
+func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+	for k, v := range c.Records {
+		result[k] = v
+	}
+	return result
+}
+
+func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
+	return codegen.CodeGeneratorMetadataForContainer{
+		PackageName: "primaryadministrativesubdivision",
+		DataType:    "PrimaryAdministrativeSubdivisionCompositeKey",
+	}
 }

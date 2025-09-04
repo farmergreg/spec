@@ -35,7 +35,7 @@ var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 	WABAG: {IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
 }
 
-// All AwardSponsorPrefix specifications including depreciated and import only.
+// All AwardSponsorPrefix specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardSponsorPrefixListAll = []Spec{
@@ -52,7 +52,7 @@ var AwardSponsorPrefixListAll = []Spec{
 	AwardSponsorPrefixMap[WABAG],
 }
 
-// All AwardSponsorPrefix specifications values that are NOT marked import-only.
+// All AwardSponsorPrefix specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardSponsorPrefixListCurrent = []Spec{

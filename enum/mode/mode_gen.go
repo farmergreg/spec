@@ -195,7 +195,7 @@ var ModeMap = map[Mode]Spec{
 	WSPR:         {IsImportOnly: false, Key: "WSPR", Submodes: submode.SubModeList(nil), Description: ""},
 }
 
-// All Mode specifications including depreciated and import only.
+// All Mode specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ModeListAll = []Spec{
@@ -291,7 +291,7 @@ var ModeListAll = []Spec{
 	ModeMap[WSPR],
 }
 
-// All Mode specifications values that are NOT marked import-only.
+// All Mode specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ModeListCurrent = []Spec{

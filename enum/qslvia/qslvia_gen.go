@@ -21,7 +21,7 @@ var QSLViaMap = map[QSLVia]Spec{
 	M: {IsImportOnly: true, Key: "M", Description: "manager"},
 }
 
-// All QSLVia specifications including depreciated and import only.
+// All QSLVia specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLViaListAll = []Spec{
@@ -31,7 +31,7 @@ var QSLViaListAll = []Spec{
 	QSLViaMap[M],
 }
 
-// All QSLVia specifications values that are NOT marked import-only.
+// All QSLVia specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLViaListCurrent = []Spec{

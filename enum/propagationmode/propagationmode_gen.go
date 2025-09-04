@@ -53,7 +53,7 @@ var PropagationModeMap = map[PropagationMode]Spec{
 	TR:       {IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
 }
 
-// All PropagationMode specifications including depreciated and import only.
+// All PropagationMode specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var PropagationModeListAll = []Spec{
@@ -79,7 +79,7 @@ var PropagationModeListAll = []Spec{
 	PropagationModeMap[TR],
 }
 
-// All PropagationMode specifications values that are NOT marked import-only.
+// All PropagationMode specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var PropagationModeListCurrent = []Spec{

@@ -21,7 +21,7 @@ var QSOCompleteMap = map[QSOComplete]Spec{
 	Y:         {IsImportOnly: false, Key: "Y", Description: "yes"},
 }
 
-// All QSOComplete specifications including depreciated and import only.
+// All QSOComplete specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOCompleteListAll = []Spec{
@@ -31,7 +31,7 @@ var QSOCompleteListAll = []Spec{
 	QSOCompleteMap[Y],
 }
 
-// All QSOComplete specifications values that are NOT marked import-only.
+// All QSOComplete specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOCompleteListCurrent = []Spec{

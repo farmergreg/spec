@@ -457,7 +457,7 @@ var ADIFieldMap = map[ADIField]Spec{
 	WWFF_REF:                       {Key: "WWFF_REF", DataType: "WWFFRef", Description: "the contacted station's WWFF (World Wildlife Flora & Fauna) reference", IsHeaderField: false, MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 }
 
-// All ADIField specifications including depreciated and import only.
+// All ADIField specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ADIFieldListAll = []Spec{
@@ -685,7 +685,7 @@ var ADIFieldListAll = []Spec{
 	ADIFieldMap[WWFF_REF],
 }
 
-// All ADIField specifications values that are NOT marked import-only.
+// All ADIField specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ADIFieldListCurrent = []Spec{

@@ -71,7 +71,7 @@ var AwardMap = map[Award]Spec{
 	WAZ:         {IsImportOnly: true, Key: "WAZ"},
 }
 
-// All Award specifications including depreciated and import only.
+// All Award specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardListAll = []Spec{
@@ -106,7 +106,7 @@ var AwardListAll = []Spec{
 	AwardMap[WAZ],
 }
 
-// All Award specifications values that are NOT marked import-only.
+// All Award specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardListCurrent = []Spec{}

@@ -23,7 +23,7 @@ var QSLSentMap = map[QSLSent]Spec{
 	Y: {IsImportOnly: false, Key: "Y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
 }
 
-// All QSLSent specifications including depreciated and import only.
+// All QSLSent specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLSentListAll = []Spec{
@@ -34,7 +34,7 @@ var QSLSentListAll = []Spec{
 	QSLSentMap[Y],
 }
 
-// All QSLSent specifications values that are NOT marked import-only.
+// All QSLSent specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLSentListCurrent = []Spec{

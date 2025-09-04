@@ -3,6 +3,7 @@ package spec
 import (
 	"github.com/hamradiolog-net/adif-spec/v6/adifield"
 	"github.com/hamradiolog-net/adif-spec/v6/aditype"
+	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/award"
@@ -46,6 +47,17 @@ type AdifSpec struct {
 	DataTypes aditype.SpecMapContainer  `json:"DataTypes"`
 	Fields    adifield.SpecMapContainer `json:"Fields"`
 	Enum      Enum                      `json:"Enumerations"`
+}
+
+func (a AdifSpec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
+	return codegen.CodeGeneratorMetadataForContainer{
+		PackageName: "spec",
+		DataType:    "",
+	}
+}
+
+func (a AdifSpec) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
+	return nil
 }
 
 // Enumerations defined in the ADIF specification

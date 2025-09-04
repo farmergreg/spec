@@ -525,7 +525,7 @@ var ContestMap = map[Contest]Spec{
 	Contest_YUDXC:                  {IsImportOnly: false, Key: "YUDXC", Description: "YU DX Contest"},
 }
 
-// All Contest specifications including depreciated and import only.
+// All Contest specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContestListAll = []Spec{
@@ -787,7 +787,7 @@ var ContestListAll = []Spec{
 	ContestMap[Contest_YUDXC],
 }
 
-// All Contest specifications values that are NOT marked import-only.
+// All Contest specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContestListCurrent = []Spec{

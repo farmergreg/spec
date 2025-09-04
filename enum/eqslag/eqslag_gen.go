@@ -19,7 +19,7 @@ var EQSLAGMap = map[EQSLAG]Spec{
 	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
 }
 
-// All EQSLAG specifications including depreciated and import only.
+// All EQSLAG specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var EQSLAGListAll = []Spec{
@@ -28,7 +28,7 @@ var EQSLAGListAll = []Spec{
 	EQSLAGMap[Y],
 }
 
-// All EQSLAG specifications values that are NOT marked import-only.
+// All EQSLAG specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var EQSLAGListCurrent = []Spec{

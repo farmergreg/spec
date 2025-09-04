@@ -79,7 +79,7 @@ var BandMap = map[Band]Spec{
 	Bandsubmm:  {IsImportOnly: false, Key: "submm", LowerFreqMHz: 300000, UpperFreqMHz: 7.5e+06},
 }
 
-// All Band specifications including depreciated and import only.
+// All Band specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var BandListAll = []Spec{
@@ -118,7 +118,7 @@ var BandListAll = []Spec{
 	BandMap[Bandsubmm],
 }
 
-// All Band specifications values that are NOT marked import-only.
+// All Band specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var BandListCurrent = []Spec{

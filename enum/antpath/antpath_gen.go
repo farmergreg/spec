@@ -21,7 +21,7 @@ var AntPathMap = map[AntPath]Spec{
 	S: {IsImportOnly: false, Key: "S", Description: "short path"},
 }
 
-// All AntPath specifications including depreciated and import only.
+// All AntPath specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AntPathListAll = []Spec{
@@ -31,7 +31,7 @@ var AntPathListAll = []Spec{
 	AntPathMap[S],
 }
 
-// All AntPath specifications values that are NOT marked import-only.
+// All AntPath specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AntPathListCurrent = []Spec{

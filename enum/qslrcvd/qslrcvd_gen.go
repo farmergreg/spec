@@ -23,7 +23,7 @@ var QSLRcvdMap = map[QSLRcvd]Spec{
 	Y: {IsImportOnly: false, Key: "Y", Meaning: "yes (confirmed)", Description: "an incoming QSL card has been received the QSO has been confirmed by the online service"},
 }
 
-// All QSLRcvd specifications including depreciated and import only.
+// All QSLRcvd specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLRcvdListAll = []Spec{
@@ -34,7 +34,7 @@ var QSLRcvdListAll = []Spec{
 	QSLRcvdMap[Y],
 }
 
-// All QSLRcvd specifications values that are NOT marked import-only.
+// All QSLRcvd specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLRcvdListCurrent = []Spec{

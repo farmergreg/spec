@@ -27,7 +27,7 @@ var MorseKeyTypeMap = map[MorseKeyType]Spec{
 	SS:  {IsImportOnly: false, Key: "SS", Description: "Sideswiper", Characteristics: "a single control which actuates a SPDT (single poll, double throw) switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "W1SFR Green Machine Torsion Bar Cootie"},
 }
 
-// All MorseKeyType specifications including depreciated and import only.
+// All MorseKeyType specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var MorseKeyTypeListAll = []Spec{
@@ -40,7 +40,7 @@ var MorseKeyTypeListAll = []Spec{
 	MorseKeyTypeMap[SS],
 }
 
-// All MorseKeyType specifications values that are NOT marked import-only.
+// All MorseKeyType specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var MorseKeyTypeListCurrent = []Spec{

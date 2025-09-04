@@ -195,7 +195,7 @@ var ARRLSectionMap = map[ARRLSection]Spec{
 	WY:  {IsImportOnly: false, Comments: "", Key: "WY", Description: "Wyoming", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
 }
 
-// All ARRLSection specifications including depreciated and import only.
+// All ARRLSection specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ARRLSectionListAll = []Spec{
@@ -291,7 +291,7 @@ var ARRLSectionListAll = []Spec{
 	ARRLSectionMap[WY],
 }
 
-// All ARRLSection specifications values that are NOT marked import-only.
+// All ARRLSection specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ARRLSectionListCurrent = []Spec{

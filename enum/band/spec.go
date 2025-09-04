@@ -2,7 +2,9 @@ package band
 
 import (
 	"fmt"
+	"strconv"
 
+	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
@@ -22,9 +24,28 @@ type Spec struct {
 	UpperFreqMHz spectype.MHz `json:"Upper Freq (MHz)"`
 }
 
-// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
-func (s Spec) CodeGeneratorMetadata() string {
-	return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz)
+func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
+	return codegen.CodeGeneratorMetadataForEnum{
+		ConstName:     codegen.ToGoIdentifier("Band" + string(s.Key)),
+		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
+		ConstComments: fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz),
+		IsDeprecated:  bool(s.IsImportOnly),
+	}
+}
+
+func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+	for k, v := range c.Records {
+		result[k] = v
+	}
+	return result
+}
+
+func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
+	return codegen.CodeGeneratorMetadataForContainer{
+		PackageName: "band",
+		DataType:    "Band",
+	}
 }
 
 // IsInBand returns true if the specified frequency is within the band specification.

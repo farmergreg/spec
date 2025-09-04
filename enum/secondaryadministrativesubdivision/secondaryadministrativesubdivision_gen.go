@@ -129,7 +129,7 @@ var SecondaryAdministrativeSubdivisionMap = map[SecondaryAdministrativeSubdivisi
 	AKYukon_Koyukuk:                   {IsImportOnly: false, Key: "AK,Yukon-Koyukuk", SecondaryAdminSub: "Yukon-Koyukuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
 }
 
-// All SecondaryAdministrativeSubdivision specifications including depreciated and import only.
+// All SecondaryAdministrativeSubdivision specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SecondaryAdministrativeSubdivisionListAll = []Spec{
@@ -193,7 +193,7 @@ var SecondaryAdministrativeSubdivisionListAll = []Spec{
 	SecondaryAdministrativeSubdivisionMap[AKYukon_Koyukuk],
 }
 
-// All SecondaryAdministrativeSubdivision specifications values that are NOT marked import-only.
+// All SecondaryAdministrativeSubdivision specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SecondaryAdministrativeSubdivisionListCurrent = []Spec{

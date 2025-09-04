@@ -69,7 +69,7 @@ var ADITypeMap = map[ADIType]Spec{
 	WWFFRef:                                   {Key: "WWFFRef", DataTypeIndicator: "", Description: "a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 }
 
-// All ADIType specifications including depreciated and import only.
+// All ADIType specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ADITypeListAll = []Spec{
@@ -103,7 +103,7 @@ var ADITypeListAll = []Spec{
 	ADITypeMap[WWFFRef],
 }
 
-// All ADIType specifications values that are NOT marked import-only.
+// All ADIType specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ADITypeListCurrent = []Spec{

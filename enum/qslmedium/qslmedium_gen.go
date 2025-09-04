@@ -19,7 +19,7 @@ var QSLMediumMap = map[QSLMedium]Spec{
 	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
 }
 
-// All QSLMedium specifications including depreciated and import only.
+// All QSLMedium specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLMediumListAll = []Spec{
@@ -28,7 +28,7 @@ var QSLMediumListAll = []Spec{
 	QSLMediumMap[LOTW],
 }
 
-// All QSLMedium specifications values that are NOT marked import-only.
+// All QSLMedium specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLMediumListCurrent = []Spec{

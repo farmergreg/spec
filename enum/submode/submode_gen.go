@@ -379,7 +379,7 @@ var SubModeMap = map[SubMode]Spec{
 	SubModeVARA_SATELLITE: {IsImportOnly: false, Key: "VARA SATELLITE", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for satellite operations"},
 }
 
-// All SubMode specifications including depreciated and import only.
+// All SubMode specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SubModeListAll = []Spec{
@@ -568,7 +568,7 @@ var SubModeListAll = []Spec{
 	SubModeMap[SubModeVARA_SATELLITE],
 }
 
-// All SubMode specifications values that are NOT marked import-only.
+// All SubMode specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var SubModeListCurrent = []Spec{
