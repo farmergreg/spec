@@ -1,6 +1,8 @@
 package secondaryadministrativesubdivisionalt
 
 import (
+	"fmt"
+
 	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
@@ -21,4 +23,9 @@ type Spec struct {
 	Region         string                                `json:"Region"`
 	District       string                                `json:"District"`
 	IsDeleted      spectype.Boolean                      `json:"Deleted,omitempty"`
+}
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	return fmt.Sprintf("%-50s = DXCC: %s %s", s.Key, s.DXCCEntityCode, s.Region)
 }

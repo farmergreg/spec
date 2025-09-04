@@ -1,6 +1,8 @@
 package band
 
 import (
+	"fmt"
+
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
@@ -18,6 +20,11 @@ type Spec struct {
 	Key          Band `json:"Band"` // Band
 	LowerFreqMHz MHz  `json:"Lower Freq (MHz)"`
 	UpperFreqMHz MHz  `json:"Upper Freq (MHz)"`
+}
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	return fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz)
 }
 
 // IsInBand returns true if the specified frequency is within the band specification.

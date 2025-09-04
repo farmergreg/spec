@@ -1,6 +1,8 @@
 package credit
 
 import (
+	"fmt"
+
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
@@ -19,4 +21,9 @@ type Spec struct {
 	Sponsor string `json:"Sponsor"`
 	Award   string `json:"Award"`
 	Facet   string `json:"Facet"`
+}
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	return fmt.Sprintf("%-20s = %-15s %-45s %-15s", s.Key, s.Sponsor, s.Award, s.Facet)
 }

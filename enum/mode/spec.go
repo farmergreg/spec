@@ -1,6 +1,8 @@
 package mode
 
 import (
+	"fmt"
+
 	"github.com/hamradiolog-net/adif-spec/v6/enum/submode"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
@@ -19,4 +21,13 @@ type Spec struct {
 	Key         Mode                `json:"Mode"` // Mode
 	Submodes    submode.SubModeList `json:"Submodes,omitempty"`
 	Description string              `json:"Description,omitempty"`
+}
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	if s.IsImportOnly {
+		return fmt.Sprintf("%-10s = %s", s.Key, s.Submodes)
+	} else {
+		return fmt.Sprintf("%-22s = %s", s.Key, s.Submodes)
+	}
 }

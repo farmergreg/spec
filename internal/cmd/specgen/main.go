@@ -67,7 +67,7 @@ func main() {
 		PackageName: "spec",
 		Records:     nil,
 		ConstPrefix: "",
-		Comments:    func(a any) string { return "" },
+		Comments:    func(a any) string { return "" }, // spec package doesn't have CodeGeneratorMetadata
 	}, false, "spec.tmpl")
 
 	generate(ViewBag{

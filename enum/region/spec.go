@@ -1,6 +1,8 @@
 package region
 
 import (
+	"fmt"
+
 	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
@@ -27,3 +29,8 @@ type Spec struct {
 
 // RegionCode represents a region entity code.
 type RegionCode string
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	return fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.Region)
+}

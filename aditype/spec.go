@@ -18,3 +18,8 @@ type Spec struct {
 	IsImportOnly      spectype.Boolean `json:"Import-only,omitempty"`
 	Comments          string           `json:"Comments,omitempty"`
 }
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	return s.Description
+}

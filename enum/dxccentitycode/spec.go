@@ -1,6 +1,7 @@
 package dxccentitycode
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
@@ -34,4 +35,13 @@ func (d Spec) Identifier() string {
 	}
 
 	return name
+}
+
+// Depreciated: CodeGeneratorMetadata is not part of the stable API and may change without warning in the future even for minor version numbers.
+func (s Spec) CodeGeneratorMetadata() string {
+	deleted := ""
+	if s.IsDeleted {
+		deleted = " (DELETED) "
+	}
+	return fmt.Sprintf("%s = %s%s", s.Key, s.EntityName, deleted)
 }
