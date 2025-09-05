@@ -1,4 +1,4 @@
-package spectype
+package primaryadministrativesubdivision
 
 import (
 	"encoding/json"

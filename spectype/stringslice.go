@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// StringSlice is a slice of strings stored in the ADIF JSON specification as a comma-separated string.
 type StringSlice []string
 
 func (d *StringSlice) UnmarshalJSON(data []byte) error {

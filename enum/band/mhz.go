@@ -1,4 +1,4 @@
-package spectype
+package band
 
 import (
 	"encoding/json"

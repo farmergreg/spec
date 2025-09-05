@@ -1,4 +1,4 @@
-package spectype
+package primaryadministrativesubdivision
 
 import (
 	"encoding/json"
@@ -6,21 +6,23 @@ import (
 	"strings"
 )
 
-type ITUZone int
-type ITUZoneList []ITUZone
+type CQZone int
+type CQZoneList []CQZone
 
-func (d ITUZone) ToInt() int {
+func (d CQZone) ToInt() int {
 	return int(d)
 }
 
-func (d *ITUZoneList) UnmarshalJSON(data []byte) error {
+func (d *CQZoneList) UnmarshalJSON(data []byte) error {
 	var val string
 	if err := json.Unmarshal(data, &val); err != nil {
 		return err
 	}
 
 	// TODO: The ADIF Workgroup is expected to fix this in ADIF 3.1.7
-	val = strings.ReplaceAll(val, "/", ",")
+	if val == "S=16 T=17" {
+		val = "16,17"
+	}
 
 	codes := strings.SplitSeq(val, ",")
 	for c := range codes {
@@ -28,7 +30,7 @@ func (d *ITUZoneList) UnmarshalJSON(data []byte) error {
 		if err != nil {
 			return err
 		}
-		*d = append(*d, ITUZone(parsedCode))
+		*d = append(*d, CQZone(parsedCode))
 	}
 
 	return nil
