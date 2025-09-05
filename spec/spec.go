@@ -49,6 +49,8 @@ type AdifSpec struct {
 	Enum      Enum                      `json:"Enumerations"`
 }
 
+var _ codegen.CodeGenContainer = AdifSpec{}
+
 func (a AdifSpec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
 	return codegen.CodeGeneratorMetadataForContainer{
 		PackageName: "spec",

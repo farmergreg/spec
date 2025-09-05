@@ -8,11 +8,17 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
+var (
+	_ codegen.CodeGenContainer = SpecMapContainer{}
+	_ codegen.CodeGenSpec      = Spec{}
+)
+
 // SpecMapContainer contains all Field specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
 	Records map[ADIField]Spec `json:"Records"`
 }
+
 
 // Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
 type Spec struct {

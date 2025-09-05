@@ -3,11 +3,15 @@ package dxccentitycode
 import (
 	"encoding/json"
 	"strconv"
+
+	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 )
 
 // DXCCEntityCode is an ARRL DX Century Club code.
 // See Also: https://www.arrl.org/dxcc
 type DXCCEntityCode int
+
+var _ codegen.CodeGeneratorEnumValue = DXCCEntityCode(0)
 
 func (d DXCCEntityCode) ToInt() int {
 	return int(d)

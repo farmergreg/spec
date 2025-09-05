@@ -8,6 +8,11 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
+var (
+	_ codegen.CodeGenContainer = SpecMapContainer{}
+	_ codegen.CodeGenSpec      = Spec{}
+)
+
 // SpecMapContainer contains all QSLVia specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
