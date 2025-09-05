@@ -1,6 +1,6 @@
 package credit
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // Credit represents an award credit identifier
 type Credit string

@@ -3,7 +3,6 @@ package spec
 import (
 	"github.com/hamradiolog-net/adif-spec/v6/adifield"
 	"github.com/hamradiolog-net/adif-spec/v6/aditype"
-	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/antpath"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/arrlsection"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/award"
@@ -29,6 +28,7 @@ import (
 	"github.com/hamradiolog-net/adif-spec/v6/enum/secondaryadministrativesubdivision"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/secondaryadministrativesubdivisionalt"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/submode"
+	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 

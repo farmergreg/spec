@@ -1,6 +1,6 @@
 package qslrcvd
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // QSLRcvd represents the QSL received status
 type QSLRcvd string

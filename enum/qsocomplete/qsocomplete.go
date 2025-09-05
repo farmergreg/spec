@@ -1,6 +1,6 @@
 package qsocomplete
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // QSOComplete represents the completion status of a QSO
 type QSOComplete string

@@ -1,6 +1,6 @@
 package awardsponsor
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // AwardSponsorPrefix represents the unique identifier for an award sponsor
 type AwardSponsorPrefix string

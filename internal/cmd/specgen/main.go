@@ -11,7 +11,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hamradiolog-net/adif-spec/v6/codegen"
+	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spec"
 	"github.com/hamradiolog-net/adif-spec/v6/specdata"
 )

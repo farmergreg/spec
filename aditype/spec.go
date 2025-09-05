@@ -3,13 +3,13 @@ package aditype
 import (
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/codegen"
+	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 
 var (
 	_ codegen.CodeGenContainer = SpecMapContainer{}
-	_ codegen.CodeGenSpec = Spec{}
+	_ codegen.CodeGenSpec      = Spec{}
 )
 
 // SpecMapContainer contains all DataType specifications as defined by the ADIF Workgroup specification exports.

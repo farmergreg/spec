@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/enum/submode"
+	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/adif-spec/v6/spectype"
 )
 

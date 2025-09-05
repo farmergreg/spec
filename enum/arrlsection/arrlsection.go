@@ -1,6 +1,6 @@
 package arrlsection
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // ARRLSection represents an ARRL section identifier
 type ARRLSection string

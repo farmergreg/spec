@@ -1,6 +1,6 @@
 package secondaryadministrativesubdivisionalt
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 type SecondaryAdministrativeSubdivisionAlt string
 

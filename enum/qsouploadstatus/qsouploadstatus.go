@@ -1,6 +1,6 @@
 package qsouploadstatus
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // QSOUploadStatus represents the download status of a QSO
 type QSOUploadStatus string

@@ -1,6 +1,6 @@
 package adifield
 
-import "github.com/hamradiolog-net/adif-spec/v6/codegen"
+import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 // ADIField is the ADIF field name in and ADI file.
 // By convention in the adifield package, field name constants are always UPPERCASE.
