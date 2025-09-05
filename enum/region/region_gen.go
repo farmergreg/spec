@@ -11,6 +11,17 @@ import "github.com/hamradiolog-net/adif-spec/v6/spectype"
  * It behaves differently than most of the other enumerations.
  */
 
+const (
+	AI   RegionCode = "AI"   // AI
+	BI   RegionCode = "BI"   // BI
+	ET   RegionCode = "ET"   // ET
+	IV   RegionCode = "IV"   // IV
+	KO   RegionCode = "KO"   // KO
+	NONE RegionCode = "NONE" // NONE
+	SI   RegionCode = "SI"   // SI
+	SY   RegionCode = "SY"   // SY
+)
+
 // A map of all RegionCompositeKey specifications.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.

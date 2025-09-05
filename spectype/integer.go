@@ -8,11 +8,6 @@ import (
 // Integer is an integer stored in the ADIF JSON specification.
 type Integer int
 
-// ToInt converts Integer to int
-func (i Integer) ToInt() int {
-	return int(i)
-}
-
 func (i *Integer) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)

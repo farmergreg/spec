@@ -7,7 +7,7 @@ import (
 
 type PrimaryAdministrativeSubdivisionCompositeKey string
 
-var _ codegen.CodeGeneratorEnumValue = PrimaryAdministrativeSubdivisionCompositeKey("")
+var _ codegen.CodeGenKey = PrimaryAdministrativeSubdivisionCompositeKey("")
 
 func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 	return string(p)

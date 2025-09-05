@@ -10,7 +10,7 @@ import (
 // It is NOT the value that is stored in the ADIF field.
 type RegionCompositeKey string
 
-var _ codegen.CodeGeneratorEnumValue = RegionCompositeKey("")
+var _ codegen.CodeGenKey = RegionCompositeKey("")
 
 func (r RegionCompositeKey) String() string {
 	return string(r)
@@ -18,6 +18,10 @@ func (r RegionCompositeKey) String() string {
 
 // LookupRegion looks up a Region specification by its composite key (RegionCompositeKey + DXCCEntityCode).
 func LookupRegion(code RegionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
+	if code == NONE {
+		spec, ok := RegionCompositeKeyMap[RegionCompositeKey("NONE")]
+		return spec, ok
+	}
 	spec, ok := RegionCompositeKeyMap[RegionCompositeKey(string(code)+"."+dxccEntityCode.String())]
 	return spec, ok
 }

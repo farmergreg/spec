@@ -88,11 +88,11 @@ func generate(isEnum bool, tmplName string, viewBag ViewBag) {
 		log.Fatal(err)
 	}
 
-	dir := viewBag.CodeGen.CodeGeneratorMetadata().PackageName
+	dir := viewBag.CodeGen.CodeGenMetadata().PackageName
 	if isEnum {
-		dir = path.Join("enum", viewBag.CodeGen.CodeGeneratorMetadata().PackageName)
+		dir = path.Join("enum", viewBag.CodeGen.CodeGenMetadata().PackageName)
 	}
-	writeToFile(dir, viewBag.CodeGen.CodeGeneratorMetadata().PackageName+"_gen.go", buf.String())
+	writeToFile(dir, viewBag.CodeGen.CodeGenMetadata().PackageName+"_gen.go", buf.String())
 }
 
 func writeToFile(dir, filename, content string) {

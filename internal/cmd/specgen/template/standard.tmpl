@@ -1,9 +1,9 @@
 {{ template "header" . }}
 
 const (
-{{- range $key, $value := .CodeGen.CodeGeneratorRecords }}
-	{{- $metadata := $value.CodeGeneratorMetadata }}
-	{{ $metadata.ConstName }} {{ $.CodeGen.CodeGeneratorMetadata.DataType }} = {{ $metadata.ConstValue }} // {{ if $metadata.IsDeprecated }}Deprecated: {{ end }}{{ $metadata.ConstComments }}
+{{- range $key, $value := .CodeGen.CodeGenRecords }}
+	{{- $metadata := $value.CodeGenMetadata }}
+	{{ $metadata.ConstName }} {{ $.CodeGen.CodeGenMetadata.DataType }} = {{ $metadata.ConstValue }} // {{ if $metadata.IsDeprecated }}Deprecated: {{ end }}{{ $metadata.ConstComments }}
 {{- end }}
 )
 

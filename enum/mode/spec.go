@@ -30,14 +30,14 @@ type Spec struct {
 	Description string              `json:"Description,omitempty"`
 }
 
-func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
+func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	var comments string
 	if s.IsImportOnly {
 		comments = fmt.Sprintf("%-10s = %s", s.Key, s.Submodes)
 	} else {
 		comments = fmt.Sprintf("%-22s = %s", s.Key, s.Submodes)
 	}
-	return codegen.CodeGeneratorMetadataForEnum{
+	return codegen.CodeGenEnumMetadata{
 		ConstName:     codegen.ToGoIdentifier(string(s.Key)),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
 		ConstComments: comments,
@@ -45,16 +45,16 @@ func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
 	}
 }
 
-func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
-	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		result[k] = v
 	}
 	return result
 }
 
-func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
-	return codegen.CodeGeneratorMetadataForContainer{
+func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
+	return codegen.CodeGenContainerMetadata{
 		PackageName: "mode",
 		DataType:    "Mode",
 	}

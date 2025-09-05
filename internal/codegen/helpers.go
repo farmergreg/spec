@@ -2,6 +2,7 @@ package codegen
 
 import "strings"
 
+// ToGoIdentifier converts a string to a valid Go identifier by replacing or removing invalid characters.
 func ToGoIdentifier(s string) string {
 	var replacer = strings.NewReplacer(
 		" ", "_",

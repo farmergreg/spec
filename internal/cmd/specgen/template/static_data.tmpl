@@ -1,32 +1,32 @@
 {{- define "static_data" }}
-// A map of all {{ .CodeGen.CodeGeneratorMetadata.DataType }} specifications.
+// A map of all {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
-var {{ .CodeGen.CodeGeneratorMetadata.DataType }}Map = map[{{ .CodeGen.CodeGeneratorMetadata.DataType }}]Spec {
-{{- range $key, $value := .CodeGen.CodeGeneratorRecords }}
-	{{- $metadata := $value.CodeGeneratorMetadata }}
-	{{ $metadata.ConstName }}: {{ ToGoCode $value $.CodeGen.CodeGeneratorMetadata.PackageName }},
+var {{ .CodeGen.CodeGenMetadata.DataType }}Map = map[{{ .CodeGen.CodeGenMetadata.DataType }}]Spec {
+{{- range $key, $value := .CodeGen.CodeGenRecords }}
+	{{- $metadata := $value.CodeGenMetadata }}
+	{{ $metadata.ConstName }}: {{ ToGoCode $value $.CodeGen.CodeGenMetadata.PackageName }},
 {{- end }}
 }
 
-// All {{ .CodeGen.CodeGeneratorMetadata.DataType }} specifications including deprecated and import only.
+// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications including deprecated and import only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
-var {{ .CodeGen.CodeGeneratorMetadata.DataType }}ListAll = []Spec {
-{{- range $key, $value := .CodeGen.CodeGeneratorRecords }}
-	{{- $metadata := $value.CodeGeneratorMetadata }}
-	{{ $.CodeGen.CodeGeneratorMetadata.DataType }}Map[{{ $metadata.ConstName }}],
+var {{ .CodeGen.CodeGenMetadata.DataType }}ListAll = []Spec {
+{{- range $key, $value := .CodeGen.CodeGenRecords }}
+	{{- $metadata := $value.CodeGenMetadata }}
+	{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
 {{- end }}
 }
 
-// All {{ .CodeGen.CodeGeneratorMetadata.DataType }} specifications that are NOT marked import-only.
+// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
-var {{ .CodeGen.CodeGeneratorMetadata.DataType }}ListCurrent = []Spec {
-{{- range $key, $value := .CodeGen.CodeGeneratorRecords }}
-	{{- $metadata := $value.CodeGeneratorMetadata }}
+var {{ .CodeGen.CodeGenMetadata.DataType }}ListCurrent = []Spec {
+{{- range $key, $value := .CodeGen.CodeGenRecords }}
+	{{- $metadata := $value.CodeGenMetadata }}
 {{- if not $value.IsImportOnly }}
-	{{ $.CodeGen.CodeGeneratorMetadata.DataType }}Map[{{ $metadata.ConstName }}],
+	{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
 {{- end }}
 {{- end }}
 }

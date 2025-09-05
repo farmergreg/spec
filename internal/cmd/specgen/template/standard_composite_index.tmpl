@@ -4,4 +4,11 @@
  * This enumeration has a composite key.
  * It behaves differently than most of the other enumerations.
  */
+
+const (
+{{- range $key, $value := .CodeGen.CodeGenMetadata.CompositeKeyMap }}
+    {{ $key }} {{ $.CodeGen.CodeGenMetadata.CompositeKeyType }} = "{{ $value }}" // {{ $value }}
+{{- end }}
+)
+
 {{ template "static_data" . }}

@@ -51,14 +51,14 @@ type AdifSpec struct {
 
 var _ codegen.CodeGenContainer = AdifSpec{}
 
-func (a AdifSpec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
-	return codegen.CodeGeneratorMetadataForContainer{
+func (a AdifSpec) CodeGenMetadata() codegen.CodeGenContainerMetadata {
+	return codegen.CodeGenContainerMetadata{
 		PackageName: "spec",
 		DataType:    "",
 	}
 }
 
-func (a AdifSpec) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
+func (a AdifSpec) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	return nil
 }
 

@@ -30,8 +30,8 @@ type Spec struct {
 	Facet   string `json:"Facet"`
 }
 
-func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
-	return codegen.CodeGeneratorMetadataForEnum{
+func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
+	return codegen.CodeGenEnumMetadata{
 		ConstName:     codegen.ToGoIdentifier(string(s.Key)),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
 		ConstComments: fmt.Sprintf("%-20s = %-15s %-45s %-15s", s.Key, s.Sponsor, s.Award, s.Facet),
@@ -39,16 +39,16 @@ func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
 	}
 }
 
-func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
-	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		result[k] = v
 	}
 	return result
 }
 
-func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
-	return codegen.CodeGeneratorMetadataForContainer{
+func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
+	return codegen.CodeGenContainerMetadata{
 		PackageName: "credit",
 		DataType:    "Credit",
 	}

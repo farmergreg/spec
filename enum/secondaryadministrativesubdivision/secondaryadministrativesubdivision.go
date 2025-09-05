@@ -4,7 +4,7 @@ import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 
 type SecondaryAdministrativeSubdivision string
 
-var _ codegen.CodeGeneratorEnumValue = SecondaryAdministrativeSubdivision("")
+var _ codegen.CodeGenKey = SecondaryAdministrativeSubdivision("")
 
 func (s SecondaryAdministrativeSubdivision) String() string {
 	return string(s)

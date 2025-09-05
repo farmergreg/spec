@@ -1,26 +1,28 @@
 package codegen
 
 type CodeGenContainer interface {
-	CodeGeneratorRecords() map[CodeGeneratorEnumValue]CodeGenSpec
-	CodeGeneratorMetadata() CodeGeneratorMetadataForContainer
-}
-
-type CodeGeneratorMetadataForContainer struct {
-	PackageName string
-	DataType    string
+	CodeGenMetadata() CodeGenContainerMetadata
+	CodeGenRecords() map[CodeGenKey]CodeGenSpec
 }
 
 type CodeGenSpec interface {
-	CodeGeneratorMetadata() CodeGeneratorMetadataForEnum
+	CodeGenMetadata() CodeGenEnumMetadata
 }
 
-type CodeGeneratorMetadataForEnum struct {
+type CodeGenKey interface {
+	String() string
+}
+
+type CodeGenContainerMetadata struct {
+	PackageName      string
+	DataType         string
+	CompositeKeyType string            // only used for enums that have composite keys
+	CompositeKeyMap  map[string]string // key is the code, value is the comment; only used for enums that have composite keys
+}
+
+type CodeGenEnumMetadata struct {
 	ConstName     string
 	ConstValue    string
 	ConstComments string
 	IsDeprecated  bool
-}
-
-type CodeGeneratorEnumValue interface {
-	String() string
 }

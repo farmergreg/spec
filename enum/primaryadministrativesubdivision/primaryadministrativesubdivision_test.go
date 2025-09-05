@@ -12,8 +12,8 @@ func TestLookupRegion(t *testing.T) {
 		dxcc   dxccentitycode.DXCCEntityCode
 		wantOk bool
 	}{
-		{"NS", 1, true},
-		{"QC", 1, true},
+		{PrimaryAdministrativeSubdivision_001, 5, true},
+		{PrimaryAdministrativeSubdivision_ZVO, 504, true},
 		{"XX", 9999, false},
 	}
 	for _, tt := range tests {

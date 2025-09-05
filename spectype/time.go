@@ -9,9 +9,13 @@ import (
 // It is represented as an Unix timestamp.
 type DateTime int64
 
-// ToTime converts DateTime to time.Time
-func (d DateTime) ToTime() time.Time {
+// Time converts DateTime which is stored as an Unix timestamp to time.Time
+func (d DateTime) Time() time.Time {
 	return time.Unix(int64(d), 0)
+}
+
+func (d DateTime) String() string {
+	return d.Time().Format(time.RFC3339)
 }
 
 func (d *DateTime) UnmarshalJSON(data []byte) error {

@@ -28,8 +28,8 @@ type Spec struct {
 	Continent string    `json:"Continent"`
 }
 
-func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
-	return codegen.CodeGeneratorMetadataForEnum{
+func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
+	return codegen.CodeGenEnumMetadata{
 		ConstName:     codegen.ToGoIdentifier(string(s.Key)),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
 		ConstComments: fmt.Sprintf("%s = %s", s.Key, s.Continent),
@@ -37,16 +37,16 @@ func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
 	}
 }
 
-func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
-	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		result[k] = v
 	}
 	return result
 }
 
-func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
-	return codegen.CodeGeneratorMetadataForContainer{
+func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
+	return codegen.CodeGenContainerMetadata{
 		PackageName: "continent",
 		DataType:    "Continent",
 	}

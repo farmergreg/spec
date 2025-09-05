@@ -7,7 +7,7 @@ import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
 // This is a departure from the ADIF specification, which allows field names to include lowercase letters.
 type ADIField string
 
-var _ codegen.CodeGeneratorEnumValue = ADIField("")
+var _ codegen.CodeGenKey = ADIField("")
 
 func (f ADIField) String() string {
 	return string(f)

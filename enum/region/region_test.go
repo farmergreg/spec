@@ -15,6 +15,9 @@ func TestLookupRegion(t *testing.T) {
 		{"AI", 248, true},
 		{"BI", 259, true},
 		{"XX", 9999, false},
+		{NONE, 0, true},
+		{NONE, 50, true},
+		{NONE, 9999, true},
 	}
 	for _, tt := range tests {
 		_, ok := LookupRegion(tt.region, tt.dxcc)

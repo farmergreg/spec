@@ -37,14 +37,14 @@ type Spec struct {
 // RegionCode represents a region entity code.
 type RegionCode string
 
-func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
+func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))
 	if string(s.Code) == "NONE" {
 		constName = "NONE"
 	}
 	constName = strconv.QuoteToASCII(constName)
 
-	return codegen.CodeGeneratorMetadataForEnum{
+	return codegen.CodeGenEnumMetadata{
 		ConstName:     constName,
 		ConstValue:    strconv.QuoteToASCII(string(s.Code)),
 		ConstComments: fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.Region),
@@ -52,17 +52,25 @@ func (s Spec) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForEnum {
 	}
 }
 
-func (c SpecMapContainer) CodeGeneratorRecords() map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec {
-	result := make(map[codegen.CodeGeneratorEnumValue]codegen.CodeGenSpec, len(c.Records))
+func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
+	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		result[k] = v
 	}
 	return result
 }
 
-func (c SpecMapContainer) CodeGeneratorMetadata() codegen.CodeGeneratorMetadataForContainer {
-	return codegen.CodeGeneratorMetadataForContainer{
-		PackageName: "region",
-		DataType:    "RegionCompositeKey",
+func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
+	keyMap := make(map[string]string)
+	for _, v := range c.Records {
+
+		keyMap[string(v.Code)] = string(v.Code)
+	}
+
+	return codegen.CodeGenContainerMetadata{
+		PackageName:      "region",
+		DataType:         "RegionCompositeKey",
+		CompositeKeyType: "RegionCode",
+		CompositeKeyMap:  keyMap,
 	}
 }

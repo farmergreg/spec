@@ -11,9 +11,9 @@ import (
 // See Also: https://www.arrl.org/dxcc
 type DXCCEntityCode int
 
-var _ codegen.CodeGeneratorEnumValue = DXCCEntityCode(0)
+var _ codegen.CodeGenKey = DXCCEntityCode(0)
 
-func (d DXCCEntityCode) ToInt() int {
+func (d DXCCEntityCode) Int() int {
 	return int(d)
 }
 
