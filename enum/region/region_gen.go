@@ -28,40 +28,47 @@ func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for RegionCompositeKey exists and is not import only.
-func IsValid(regioncompositekey RegionCompositeKey) bool {
-	spec, ok := internalMap[regioncompositekey]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All RegionCompositeKey specifications INCLUDING ones marked import only.
-func AllRegionCompositeKey() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveRegionCompositeKey specifications EXCLUDING ones marked import only.
-func AllActiveRegionCompositeKey() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all RegionCompositeKey specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All RegionCompositeKey specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap["AI.248"],
+		internalMap["BI.259"],
+		internalMap["ET.390"],
+		internalMap["IV.206"],
+		internalMap["KO.0"],
+		internalMap["KO.296"],
+		internalMap["KO.522"],
+		internalMap["NONE"],
+		internalMap["SI.279"],
+		internalMap["SY.248"],
+	}
+}
+
+// RegionCompositeKey specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap["AI.248"],
+		internalMap["BI.259"],
+		internalMap["ET.390"],
+		internalMap["IV.206"],
+		internalMap["KO.0"],
+		internalMap["KO.296"],
+		internalMap["KO.522"],
+		internalMap["NONE"],
+		internalMap["SI.279"],
+		internalMap["SY.248"],
+	}
 }
 
 var internalMap = map[RegionCompositeKey]Spec{

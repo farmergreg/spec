@@ -105,40 +105,207 @@ func Lookup(arrlsection ARRLSection) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for ARRLSection exists and is not import only.
-func IsValid(arrlsection ARRLSection) bool {
-	spec, ok := internalMap[arrlsection]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All ARRLSection specifications INCLUDING ones marked import only.
-func AllARRLSection() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveARRLSection specifications EXCLUDING ones marked import only.
-func AllActiveARRLSection() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all ARRLSection specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All ARRLSection specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AB],
+		internalMap[AK],
+		internalMap[AL],
+		internalMap[AR],
+		internalMap[AZ],
+		internalMap[BC],
+		internalMap[CO],
+		internalMap[CT],
+		internalMap[DE],
+		internalMap[EB],
+		internalMap[EMA],
+		internalMap[ENY],
+		internalMap[EPA],
+		internalMap[EWA],
+		internalMap[GA],
+		internalMap[GH],
+		internalMap[GTA],
+		internalMap[IA],
+		internalMap[ID],
+		internalMap[IL],
+		internalMap[IN],
+		internalMap[KS],
+		internalMap[KY],
+		internalMap[LA],
+		internalMap[LAX],
+		internalMap[MAR],
+		internalMap[MB],
+		internalMap[MDC],
+		internalMap[ME],
+		internalMap[MI],
+		internalMap[MN],
+		internalMap[MO],
+		internalMap[MS],
+		internalMap[MT],
+		internalMap[NB],
+		internalMap[NC],
+		internalMap[ND],
+		internalMap[NE],
+		internalMap[NFL],
+		internalMap[NH],
+		internalMap[NL],
+		internalMap[NLI],
+		internalMap[NM],
+		internalMap[NNJ],
+		internalMap[NNY],
+		internalMap[NS],
+		internalMap[NT],
+		internalMap[NTX],
+		internalMap[NV],
+		internalMap[NWT],
+		internalMap[OH],
+		internalMap[OK],
+		internalMap[ON],
+		internalMap[ONE],
+		internalMap[ONN],
+		internalMap[ONS],
+		internalMap[OR],
+		internalMap[ORG],
+		internalMap[PAC],
+		internalMap[PE],
+		internalMap[PR],
+		internalMap[QC],
+		internalMap[RI],
+		internalMap[SB],
+		internalMap[SC],
+		internalMap[SCV],
+		internalMap[SD],
+		internalMap[SDG],
+		internalMap[SF],
+		internalMap[SFL],
+		internalMap[SJV],
+		internalMap[SK],
+		internalMap[SNJ],
+		internalMap[STX],
+		internalMap[SV],
+		internalMap[TER],
+		internalMap[TN],
+		internalMap[UT],
+		internalMap[VA],
+		internalMap[VI],
+		internalMap[VT],
+		internalMap[WCF],
+		internalMap[WI],
+		internalMap[WMA],
+		internalMap[WNY],
+		internalMap[WPA],
+		internalMap[WTX],
+		internalMap[WV],
+		internalMap[WWA],
+		internalMap[WY],
+	}
+}
+
+// ARRLSection specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[AB],
+		internalMap[AK],
+		internalMap[AL],
+		internalMap[AR],
+		internalMap[AZ],
+		internalMap[BC],
+		internalMap[CO],
+		internalMap[CT],
+		internalMap[DE],
+		internalMap[EB],
+		internalMap[EMA],
+		internalMap[ENY],
+		internalMap[EPA],
+		internalMap[EWA],
+		internalMap[GA],
+		internalMap[GH],
+		internalMap[GTA],
+		internalMap[IA],
+		internalMap[ID],
+		internalMap[IL],
+		internalMap[IN],
+		internalMap[KS],
+		internalMap[KY],
+		internalMap[LA],
+		internalMap[LAX],
+		internalMap[MAR],
+		internalMap[MB],
+		internalMap[MDC],
+		internalMap[ME],
+		internalMap[MI],
+		internalMap[MN],
+		internalMap[MO],
+		internalMap[MS],
+		internalMap[MT],
+		internalMap[NB],
+		internalMap[NC],
+		internalMap[ND],
+		internalMap[NE],
+		internalMap[NFL],
+		internalMap[NH],
+		internalMap[NL],
+		internalMap[NLI],
+		internalMap[NM],
+		internalMap[NNJ],
+		internalMap[NNY],
+		internalMap[NS],
+		internalMap[NT],
+		internalMap[NTX],
+		internalMap[NV],
+		internalMap[NWT],
+		internalMap[OH],
+		internalMap[OK],
+		internalMap[ON],
+		internalMap[ONE],
+		internalMap[ONN],
+		internalMap[ONS],
+		internalMap[OR],
+		internalMap[ORG],
+		internalMap[PAC],
+		internalMap[PE],
+		internalMap[PR],
+		internalMap[QC],
+		internalMap[RI],
+		internalMap[SB],
+		internalMap[SC],
+		internalMap[SCV],
+		internalMap[SD],
+		internalMap[SDG],
+		internalMap[SF],
+		internalMap[SFL],
+		internalMap[SJV],
+		internalMap[SK],
+		internalMap[SNJ],
+		internalMap[STX],
+		internalMap[SV],
+		internalMap[TER],
+		internalMap[TN],
+		internalMap[UT],
+		internalMap[VA],
+		internalMap[VI],
+		internalMap[VT],
+		internalMap[WCF],
+		internalMap[WI],
+		internalMap[WMA],
+		internalMap[WNY],
+		internalMap[WPA],
+		internalMap[WTX],
+		internalMap[WV],
+		internalMap[WWA],
+		internalMap[WY],
+	}
 }
 
 var internalMap = map[ARRLSection]Spec{

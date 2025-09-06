@@ -17,40 +17,35 @@ func Lookup(antpath AntPath) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for AntPath exists and is not import only.
-func IsValid(antpath AntPath) bool {
-	spec, ok := internalMap[antpath]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All AntPath specifications INCLUDING ones marked import only.
-func AllAntPath() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveAntPath specifications EXCLUDING ones marked import only.
-func AllActiveAntPath() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all AntPath specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All AntPath specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[G],
+		internalMap[L],
+		internalMap[O],
+		internalMap[S],
+	}
+}
+
+// AntPath specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[G],
+		internalMap[L],
+		internalMap[O],
+		internalMap[S],
+	}
 }
 
 var internalMap = map[AntPath]Spec{

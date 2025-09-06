@@ -5,35 +5,10 @@ func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGe
 	return spec, ok
 }
 
-// IsValid returns true if the specification for {{ .CodeGen.CodeGenMetadata.DataType }} exists and is not import only.
-func IsValid({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) bool {
-	spec, ok := internalMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications INCLUDING ones marked import only.
-func All{{ .CodeGen.CodeGenMetadata.DataType }}() []Spec {
-	result := make([]Spec,0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActive{{ .CodeGen.CodeGenMetadata.DataType }} specifications EXCLUDING ones marked import only.
-func AllActive{{ .CodeGen.CodeGenMetadata.DataType }}() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all {{ .CodeGen.CodeGenMetadata.DataType }} specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -41,11 +16,33 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
+// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec {
+	{{- range $key, $value := .CodeGen.CodeGenRecords }}
+		{{- $metadata := $value.CodeGenMetadata }}
+	internalMap[{{ $metadata.ConstName }}],
+	{{- end }}
+	}
+}
+
+// {{ .CodeGen.CodeGenMetadata.DataType }} specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec {
+	{{- range $key, $value := .CodeGen.CodeGenRecords }}
+		{{- if not $value.IsImportOnly }}
+		{{- $metadata := $value.CodeGenMetadata }}
+		internalMap[{{ $metadata.ConstName }}],
+		{{- end }}
+	{{- end }}
+	}
+}
+
 var internalMap = map[{{ .CodeGen.CodeGenMetadata.DataType }}]Spec {
-{{- range $key, $value := .CodeGen.CodeGenRecords }}
-	{{- $metadata := $value.CodeGenMetadata }}
-	{{ $metadata.ConstName }}: {{ ToGoCode $value $.CodeGen.CodeGenMetadata.PackageName }},
-{{- end }}
+	{{- range $key, $value := .CodeGen.CodeGenRecords }}
+		{{- $metadata := $value.CodeGenMetadata }}
+		{{ $metadata.ConstName }}: {{ ToGoCode $value $.CodeGen.CodeGenMetadata.PackageName }},
+	{{- end }}
 }
 
 {{- end }}

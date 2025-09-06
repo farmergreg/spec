@@ -86,40 +86,173 @@ func Lookup(secondaryadministrativesubdivisionalt SecondaryAdministrativeSubdivi
 	return spec, ok
 }
 
-// IsValid returns true if the specification for SecondaryAdministrativeSubdivisionAlt exists and is not import only.
-func IsValid(secondaryadministrativesubdivisionalt SecondaryAdministrativeSubdivisionAlt) bool {
-	spec, ok := internalMap[secondaryadministrativesubdivisionalt]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All SecondaryAdministrativeSubdivisionAlt specifications INCLUDING ones marked import only.
-func AllSecondaryAdministrativeSubdivisionAlt() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveSecondaryAdministrativeSubdivisionAlt specifications EXCLUDING ones marked import only.
-func AllActiveSecondaryAdministrativeSubdivisionAlt() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all SecondaryAdministrativeSubdivisionAlt specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All SecondaryAdministrativeSubdivisionAlt specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[NZ_Regions_Auckland_Auckland],
+		internalMap[NZ_Regions_Auckland_Franklin],
+		internalMap[NZ_Regions_Auckland_Manukau],
+		internalMap[NZ_Regions_Auckland_North_Shore],
+		internalMap[NZ_Regions_Auckland_Papakura],
+		internalMap[NZ_Regions_Auckland_Rodney],
+		internalMap[NZ_Regions_Auckland_Waitakere],
+		internalMap[NZ_Regions_Bay_of_Plenty_Kawerau],
+		internalMap[NZ_Regions_Bay_of_Plenty_Opotiki],
+		internalMap[NZ_Regions_Bay_of_Plenty_Rotorua],
+		internalMap[NZ_Regions_Bay_of_Plenty_Tauranga],
+		internalMap[NZ_Regions_Bay_of_Plenty_Western_Bay_of_Plenty],
+		internalMap[NZ_Regions_Bay_of_Plenty_Whakatane],
+		internalMap[NZ_Regions_Canterbury_Ashburton],
+		internalMap[NZ_Regions_Canterbury_Banks_Peninsula],
+		internalMap[NZ_Regions_Canterbury_Christchurch],
+		internalMap[NZ_Regions_Canterbury_Hurunui],
+		internalMap[NZ_Regions_Canterbury_Kaikoura],
+		internalMap[NZ_Regions_Canterbury_Mackenzie],
+		internalMap[NZ_Regions_Canterbury_Selwyn],
+		internalMap[NZ_Regions_Canterbury_Timaru],
+		internalMap[NZ_Regions_Canterbury_Waimakariri],
+		internalMap[NZ_Regions_Canterbury_Waimate],
+		internalMap[NZ_Regions_Gisborne_Gisborne],
+		internalMap[NZ_Regions_Hawkes_Bay_Central_Hawkes_Bay],
+		internalMap[NZ_Regions_Hawkes_Bay_Hastings],
+		internalMap[NZ_Regions_Hawkes_Bay_Napier],
+		internalMap[NZ_Regions_Hawkes_Bay_Wairoa],
+		internalMap[NZ_Regions_Marlborough_Marlborough],
+		internalMap[NZ_Regions_Nelson_Nelson],
+		internalMap[NZ_Regions_Northland_Far_North],
+		internalMap[NZ_Regions_Northland_Kaipara],
+		internalMap[NZ_Regions_Northland_Whangarei],
+		internalMap[NZ_Regions_Otago_Central_Otago],
+		internalMap[NZ_Regions_Otago_Clutha],
+		internalMap[NZ_Regions_Otago_Dunedin],
+		internalMap[NZ_Regions_Otago_Queenstown_Lakes],
+		internalMap[NZ_Regions_Otago_Waitaki],
+		internalMap[NZ_Regions_Southland_Gore],
+		internalMap[NZ_Regions_Southland_Invercargill],
+		internalMap[NZ_Regions_Southland_Southland],
+		internalMap[NZ_Regions_Taranaki_New_Plymouth],
+		internalMap[NZ_Regions_Taranaki_South_Taranaki],
+		internalMap[NZ_Regions_Taranaki_Stratford],
+		internalMap[NZ_Regions_Tasman_Tasman],
+		internalMap[NZ_Regions_Waikato_Hamilton],
+		internalMap[NZ_Regions_Waikato_Hauraki],
+		internalMap[NZ_Regions_Waikato_Matamata_Piako],
+		internalMap[NZ_Regions_Waikato_Otorohanga],
+		internalMap[NZ_Regions_Waikato_South_Waikato],
+		internalMap[NZ_Regions_Waikato_Taupo],
+		internalMap[NZ_Regions_Waikato_Thames_Coromandel],
+		internalMap[NZ_Regions_Waikato_Waikato],
+		internalMap[NZ_Regions_Waikato_Waipa],
+		internalMap[NZ_Regions_Waikato_Waitomo],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Horowhenua],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Manawatu],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Palmerston_North],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Rangitikei],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Ruapehu],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Tararua],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Wanganui],
+		internalMap[NZ_Regions_Wellington_Carterton],
+		internalMap[NZ_Regions_Wellington_Kapiti_Coast],
+		internalMap[NZ_Regions_Wellington_Lower_Hutt],
+		internalMap[NZ_Regions_Wellington_Masterton],
+		internalMap[NZ_Regions_Wellington_Porirua],
+		internalMap[NZ_Regions_Wellington_South_Wairarapa],
+		internalMap[NZ_Regions_Wellington_Upper_Hutt],
+		internalMap[NZ_Regions_Wellington_Wellington],
+		internalMap[NZ_Regions_West_Coast_Buller],
+		internalMap[NZ_Regions_West_Coast_Grey],
+		internalMap[NZ_Regions_West_Coast_Westland],
+	}
+}
+
+// SecondaryAdministrativeSubdivisionAlt specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[NZ_Regions_Auckland_Auckland],
+		internalMap[NZ_Regions_Auckland_Franklin],
+		internalMap[NZ_Regions_Auckland_Manukau],
+		internalMap[NZ_Regions_Auckland_North_Shore],
+		internalMap[NZ_Regions_Auckland_Papakura],
+		internalMap[NZ_Regions_Auckland_Rodney],
+		internalMap[NZ_Regions_Auckland_Waitakere],
+		internalMap[NZ_Regions_Bay_of_Plenty_Kawerau],
+		internalMap[NZ_Regions_Bay_of_Plenty_Opotiki],
+		internalMap[NZ_Regions_Bay_of_Plenty_Rotorua],
+		internalMap[NZ_Regions_Bay_of_Plenty_Tauranga],
+		internalMap[NZ_Regions_Bay_of_Plenty_Western_Bay_of_Plenty],
+		internalMap[NZ_Regions_Bay_of_Plenty_Whakatane],
+		internalMap[NZ_Regions_Canterbury_Ashburton],
+		internalMap[NZ_Regions_Canterbury_Banks_Peninsula],
+		internalMap[NZ_Regions_Canterbury_Christchurch],
+		internalMap[NZ_Regions_Canterbury_Hurunui],
+		internalMap[NZ_Regions_Canterbury_Kaikoura],
+		internalMap[NZ_Regions_Canterbury_Mackenzie],
+		internalMap[NZ_Regions_Canterbury_Selwyn],
+		internalMap[NZ_Regions_Canterbury_Timaru],
+		internalMap[NZ_Regions_Canterbury_Waimakariri],
+		internalMap[NZ_Regions_Canterbury_Waimate],
+		internalMap[NZ_Regions_Gisborne_Gisborne],
+		internalMap[NZ_Regions_Hawkes_Bay_Central_Hawkes_Bay],
+		internalMap[NZ_Regions_Hawkes_Bay_Hastings],
+		internalMap[NZ_Regions_Hawkes_Bay_Napier],
+		internalMap[NZ_Regions_Hawkes_Bay_Wairoa],
+		internalMap[NZ_Regions_Marlborough_Marlborough],
+		internalMap[NZ_Regions_Nelson_Nelson],
+		internalMap[NZ_Regions_Northland_Far_North],
+		internalMap[NZ_Regions_Northland_Kaipara],
+		internalMap[NZ_Regions_Northland_Whangarei],
+		internalMap[NZ_Regions_Otago_Central_Otago],
+		internalMap[NZ_Regions_Otago_Clutha],
+		internalMap[NZ_Regions_Otago_Dunedin],
+		internalMap[NZ_Regions_Otago_Queenstown_Lakes],
+		internalMap[NZ_Regions_Otago_Waitaki],
+		internalMap[NZ_Regions_Southland_Gore],
+		internalMap[NZ_Regions_Southland_Invercargill],
+		internalMap[NZ_Regions_Southland_Southland],
+		internalMap[NZ_Regions_Taranaki_New_Plymouth],
+		internalMap[NZ_Regions_Taranaki_South_Taranaki],
+		internalMap[NZ_Regions_Taranaki_Stratford],
+		internalMap[NZ_Regions_Tasman_Tasman],
+		internalMap[NZ_Regions_Waikato_Hamilton],
+		internalMap[NZ_Regions_Waikato_Hauraki],
+		internalMap[NZ_Regions_Waikato_Matamata_Piako],
+		internalMap[NZ_Regions_Waikato_Otorohanga],
+		internalMap[NZ_Regions_Waikato_South_Waikato],
+		internalMap[NZ_Regions_Waikato_Taupo],
+		internalMap[NZ_Regions_Waikato_Thames_Coromandel],
+		internalMap[NZ_Regions_Waikato_Waikato],
+		internalMap[NZ_Regions_Waikato_Waipa],
+		internalMap[NZ_Regions_Waikato_Waitomo],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Horowhenua],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Manawatu],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Palmerston_North],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Rangitikei],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Ruapehu],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Tararua],
+		internalMap[NZ_Regions_Wanganui_Manawatu_Wanganui],
+		internalMap[NZ_Regions_Wellington_Carterton],
+		internalMap[NZ_Regions_Wellington_Kapiti_Coast],
+		internalMap[NZ_Regions_Wellington_Lower_Hutt],
+		internalMap[NZ_Regions_Wellington_Masterton],
+		internalMap[NZ_Regions_Wellington_Porirua],
+		internalMap[NZ_Regions_Wellington_South_Wairarapa],
+		internalMap[NZ_Regions_Wellington_Upper_Hutt],
+		internalMap[NZ_Regions_Wellington_Wellington],
+		internalMap[NZ_Regions_West_Coast_Buller],
+		internalMap[NZ_Regions_West_Coast_Grey],
+		internalMap[NZ_Regions_West_Coast_Westland],
+	}
 }
 
 var internalMap = map[SecondaryAdministrativeSubdivisionAlt]Spec{

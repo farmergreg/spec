@@ -20,40 +20,41 @@ func Lookup(continent Continent) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for Continent exists and is not import only.
-func IsValid(continent Continent) bool {
-	spec, ok := internalMap[continent]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All Continent specifications INCLUDING ones marked import only.
-func AllContinent() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveContinent specifications EXCLUDING ones marked import only.
-func AllActiveContinent() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all Continent specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All Continent specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AF],
+		internalMap[AN],
+		internalMap[AS],
+		internalMap[EU],
+		internalMap[NA],
+		internalMap[OC],
+		internalMap[SA],
+	}
+}
+
+// Continent specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[AF],
+		internalMap[AN],
+		internalMap[AS],
+		internalMap[EU],
+		internalMap[NA],
+		internalMap[OC],
+		internalMap[SA],
+	}
 }
 
 var internalMap = map[Continent]Spec{

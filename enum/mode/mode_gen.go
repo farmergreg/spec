@@ -105,40 +105,165 @@ func Lookup(mode Mode) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for Mode exists and is not import only.
-func IsValid(mode Mode) bool {
-	spec, ok := internalMap[mode]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All Mode specifications INCLUDING ones marked import only.
-func AllMode() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveMode specifications EXCLUDING ones marked import only.
-func AllActiveMode() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all Mode specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All Mode specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AM],
+		internalMap[AMTORFEC],
+		internalMap[ARDOP],
+		internalMap[ASCI],
+		internalMap[ATV],
+		internalMap[C4FM],
+		internalMap[CHIP],
+		internalMap[CHIP128],
+		internalMap[CHIP64],
+		internalMap[CLO],
+		internalMap[CONTESTI],
+		internalMap[CW],
+		internalMap[DIGITALVOICE],
+		internalMap[DOMINO],
+		internalMap[DOMINOF],
+		internalMap[DSTAR],
+		internalMap[DYNAMIC],
+		internalMap[FAX],
+		internalMap[FM],
+		internalMap[FMHELL],
+		internalMap[FSK],
+		internalMap[FSK31],
+		internalMap[FSK441],
+		internalMap[FT8],
+		internalMap[GTOR],
+		internalMap[HELL],
+		internalMap[HELL80],
+		internalMap[HFSK],
+		internalMap[ISCAT],
+		internalMap[JT4],
+		internalMap[JT44],
+		internalMap[JT4A],
+		internalMap[JT4B],
+		internalMap[JT4C],
+		internalMap[JT4D],
+		internalMap[JT4E],
+		internalMap[JT4F],
+		internalMap[JT4G],
+		internalMap[JT65],
+		internalMap[JT65A],
+		internalMap[JT65B],
+		internalMap[JT65C],
+		internalMap[JT6M],
+		internalMap[JT9],
+		internalMap[MFSK],
+		internalMap[MFSK16],
+		internalMap[MFSK8],
+		internalMap[MSK144],
+		internalMap[MT63],
+		internalMap[MTONE],
+		internalMap[OLIVIA],
+		internalMap[OPERA],
+		internalMap[PAC],
+		internalMap[PAC2],
+		internalMap[PAC3],
+		internalMap[PAX],
+		internalMap[PAX2],
+		internalMap[PCW],
+		internalMap[PKT],
+		internalMap[PSK],
+		internalMap[PSK10],
+		internalMap[PSK125],
+		internalMap[PSK2K],
+		internalMap[PSK31],
+		internalMap[PSK63],
+		internalMap[PSK63F],
+		internalMap[PSKAM10],
+		internalMap[PSKAM31],
+		internalMap[PSKAM50],
+		internalMap[PSKFEC31],
+		internalMap[PSKHELL],
+		internalMap[Q15],
+		internalMap[QPSK125],
+		internalMap[QPSK31],
+		internalMap[QPSK63],
+		internalMap[QRA64],
+		internalMap[ROS],
+		internalMap[RTTY],
+		internalMap[RTTYM],
+		internalMap[SSB],
+		internalMap[SSTV],
+		internalMap[T10],
+		internalMap[THOR],
+		internalMap[THRB],
+		internalMap[THRBX],
+		internalMap[TOR],
+		internalMap[V4],
+		internalMap[VOI],
+		internalMap[WINMOR],
+		internalMap[WSPR],
+	}
+}
+
+// Mode specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[AM],
+		internalMap[ARDOP],
+		internalMap[ATV],
+		internalMap[CHIP],
+		internalMap[CLO],
+		internalMap[CONTESTI],
+		internalMap[CW],
+		internalMap[DIGITALVOICE],
+		internalMap[DOMINO],
+		internalMap[DYNAMIC],
+		internalMap[FAX],
+		internalMap[FM],
+		internalMap[FSK],
+		internalMap[FSK441],
+		internalMap[FT8],
+		internalMap[HELL],
+		internalMap[ISCAT],
+		internalMap[JT4],
+		internalMap[JT44],
+		internalMap[JT65],
+		internalMap[JT6M],
+		internalMap[JT9],
+		internalMap[MFSK],
+		internalMap[MSK144],
+		internalMap[MT63],
+		internalMap[MTONE],
+		internalMap[OLIVIA],
+		internalMap[OPERA],
+		internalMap[PAC],
+		internalMap[PAX],
+		internalMap[PKT],
+		internalMap[PSK],
+		internalMap[PSK2K],
+		internalMap[Q15],
+		internalMap[QRA64],
+		internalMap[ROS],
+		internalMap[RTTY],
+		internalMap[RTTYM],
+		internalMap[SSB],
+		internalMap[SSTV],
+		internalMap[T10],
+		internalMap[THOR],
+		internalMap[THRB],
+		internalMap[TOR],
+		internalMap[V4],
+		internalMap[VOI],
+		internalMap[WINMOR],
+		internalMap[WSPR],
+	}
 }
 
 var internalMap = map[Mode]Spec{

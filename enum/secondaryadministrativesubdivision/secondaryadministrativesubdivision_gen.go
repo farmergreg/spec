@@ -71,40 +71,143 @@ func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivisio
 	return spec, ok
 }
 
-// IsValid returns true if the specification for SecondaryAdministrativeSubdivision exists and is not import only.
-func IsValid(secondaryadministrativesubdivision SecondaryAdministrativeSubdivision) bool {
-	spec, ok := internalMap[secondaryadministrativesubdivision]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All SecondaryAdministrativeSubdivision specifications INCLUDING ones marked import only.
-func AllSecondaryAdministrativeSubdivision() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveSecondaryAdministrativeSubdivision specifications EXCLUDING ones marked import only.
-func AllActiveSecondaryAdministrativeSubdivision() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all SecondaryAdministrativeSubdivision specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All SecondaryAdministrativeSubdivision specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AKAleutians_East],
+		internalMap[AKAleutians_Islands],
+		internalMap[AKAleutians_West],
+		internalMap[AKAnchorage],
+		internalMap[AKAngoon],
+		internalMap[AKBarrow],
+		internalMap[AKBethel],
+		internalMap[AKBristol_Bay],
+		internalMap[AKCordova_McCarthy],
+		internalMap[AKDenali],
+		internalMap[AKDillingham],
+		internalMap[AKFairbanks],
+		internalMap[AKFairbanks_North_Star],
+		internalMap[AKFirst_Judicial_District],
+		internalMap[AKFourth_Judicial_District],
+		internalMap[AKHaines],
+		internalMap[AKHoonah_Angoon],
+		internalMap[AKJuneau],
+		internalMap[AKKenai_Peninsula],
+		internalMap[AKKenai_Cook_Inlet],
+		internalMap[AKKetchikan],
+		internalMap[AKKetchikan_Gateway],
+		internalMap[AKKobuk],
+		internalMap[AKKodiak_Island],
+		internalMap[AKKusilvak],
+		internalMap[AKKuskokwim],
+		internalMap[AKLake_and_Peninsula],
+		internalMap[AKLynn_Canal_Icy_Straits],
+		internalMap[AKMatanuska_Susitna],
+		internalMap[AKNome],
+		internalMap[AKNorth_Slope],
+		internalMap[AKNorthwest_Arctic],
+		internalMap[AKOuter_Ketchikan],
+		internalMap[AKPalmer_Wasilla_Talkeetna],
+		internalMap[AKPetersburg],
+		internalMap[AKPribilof_Islands],
+		internalMap[AKPrince_of_Wales],
+		internalMap[AKPrince_of_Wales_Hyder],
+		internalMap[AKPrince_of_Wales_Outer_Ketchikan],
+		internalMap[AKSaint_Matthew_Island],
+		internalMap[AKSecond_Judicial_District],
+		internalMap[AKSeward],
+		internalMap[AKSitka],
+		internalMap[AKSkagway],
+		internalMap[AKSkagway_Hoonah_Angoon],
+		internalMap[AKSkagway_Yakuta],
+		internalMap[AKSkagway_Yakutat_Angoon],
+		internalMap[AKSoutheast_Fairbanks],
+		internalMap[AKThird_Judicial_District],
+		internalMap[AKUpper_Yukon],
+		internalMap[AKValdez_Chitina_Whittier],
+		internalMap[AKValdez_Cordova],
+		internalMap[AKWade_Hampton],
+		internalMap[AKWales_Hyder],
+		internalMap[AKWrangell],
+		internalMap[AKWrangell_Petersburg],
+		internalMap[AKYakutat],
+		internalMap[AKYukon_Koyukuk],
+	}
+}
+
+// SecondaryAdministrativeSubdivision specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[AKAleutians_East],
+		internalMap[AKAleutians_Islands],
+		internalMap[AKAleutians_West],
+		internalMap[AKAnchorage],
+		internalMap[AKAngoon],
+		internalMap[AKBarrow],
+		internalMap[AKBethel],
+		internalMap[AKBristol_Bay],
+		internalMap[AKCordova_McCarthy],
+		internalMap[AKDenali],
+		internalMap[AKDillingham],
+		internalMap[AKFairbanks],
+		internalMap[AKFairbanks_North_Star],
+		internalMap[AKFirst_Judicial_District],
+		internalMap[AKFourth_Judicial_District],
+		internalMap[AKHaines],
+		internalMap[AKHoonah_Angoon],
+		internalMap[AKJuneau],
+		internalMap[AKKenai_Peninsula],
+		internalMap[AKKenai_Cook_Inlet],
+		internalMap[AKKetchikan],
+		internalMap[AKKetchikan_Gateway],
+		internalMap[AKKobuk],
+		internalMap[AKKodiak_Island],
+		internalMap[AKKusilvak],
+		internalMap[AKKuskokwim],
+		internalMap[AKLake_and_Peninsula],
+		internalMap[AKLynn_Canal_Icy_Straits],
+		internalMap[AKMatanuska_Susitna],
+		internalMap[AKNome],
+		internalMap[AKNorth_Slope],
+		internalMap[AKNorthwest_Arctic],
+		internalMap[AKOuter_Ketchikan],
+		internalMap[AKPalmer_Wasilla_Talkeetna],
+		internalMap[AKPetersburg],
+		internalMap[AKPribilof_Islands],
+		internalMap[AKPrince_of_Wales],
+		internalMap[AKPrince_of_Wales_Hyder],
+		internalMap[AKPrince_of_Wales_Outer_Ketchikan],
+		internalMap[AKSaint_Matthew_Island],
+		internalMap[AKSecond_Judicial_District],
+		internalMap[AKSeward],
+		internalMap[AKSitka],
+		internalMap[AKSkagway],
+		internalMap[AKSkagway_Hoonah_Angoon],
+		internalMap[AKSkagway_Yakuta],
+		internalMap[AKSkagway_Yakutat_Angoon],
+		internalMap[AKSoutheast_Fairbanks],
+		internalMap[AKThird_Judicial_District],
+		internalMap[AKUpper_Yukon],
+		internalMap[AKValdez_Chitina_Whittier],
+		internalMap[AKValdez_Cordova],
+		internalMap[AKWade_Hampton],
+		internalMap[AKWales_Hyder],
+		internalMap[AKWrangell],
+		internalMap[AKWrangell_Petersburg],
+		internalMap[AKYakutat],
+		internalMap[AKYukon_Koyukuk],
+	}
 }
 
 var internalMap = map[SecondaryAdministrativeSubdivision]Spec{

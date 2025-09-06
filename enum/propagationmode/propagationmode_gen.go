@@ -33,40 +33,67 @@ func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for PropagationMode exists and is not import only.
-func IsValid(propagationmode PropagationMode) bool {
-	spec, ok := internalMap[propagationmode]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All PropagationMode specifications INCLUDING ones marked import only.
-func AllPropagationMode() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActivePropagationMode specifications EXCLUDING ones marked import only.
-func AllActivePropagationMode() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all PropagationMode specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All PropagationMode specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AS],
+		internalMap[AUE],
+		internalMap[AUR],
+		internalMap[BS],
+		internalMap[ECH],
+		internalMap[EME],
+		internalMap[ES],
+		internalMap[F2],
+		internalMap[FAI],
+		internalMap[GWAVE],
+		internalMap[INTERNET],
+		internalMap[ION],
+		internalMap[IRL],
+		internalMap[LOS],
+		internalMap[MS],
+		internalMap[RPT],
+		internalMap[RS],
+		internalMap[SAT],
+		internalMap[TEP],
+		internalMap[TR],
+	}
+}
+
+// PropagationMode specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[AS],
+		internalMap[AUE],
+		internalMap[AUR],
+		internalMap[BS],
+		internalMap[ECH],
+		internalMap[EME],
+		internalMap[ES],
+		internalMap[F2],
+		internalMap[FAI],
+		internalMap[GWAVE],
+		internalMap[INTERNET],
+		internalMap[ION],
+		internalMap[IRL],
+		internalMap[LOS],
+		internalMap[MS],
+		internalMap[RPT],
+		internalMap[RS],
+		internalMap[SAT],
+		internalMap[TEP],
+		internalMap[TR],
+	}
 }
 
 var internalMap = map[PropagationMode]Spec{

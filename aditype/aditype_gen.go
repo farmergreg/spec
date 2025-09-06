@@ -41,40 +41,82 @@ func Lookup(aditype ADIType) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for ADIType exists and is not import only.
-func IsValid(aditype ADIType) bool {
-	spec, ok := internalMap[aditype]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All ADIType specifications INCLUDING ones marked import only.
-func AllADIType() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveADIType specifications EXCLUDING ones marked import only.
-func AllActiveADIType() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all ADIType specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All ADIType specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AwardList],
+		internalMap[Boolean],
+		internalMap[Character],
+		internalMap[CreditList],
+		internalMap[Date],
+		internalMap[Digit],
+		internalMap[Enumeration],
+		internalMap[GridSquare],
+		internalMap[GridSquareExt],
+		internalMap[GridSquareList],
+		internalMap[IOTARefNo],
+		internalMap[Integer],
+		internalMap[IntlCharacter],
+		internalMap[IntlMultilineString],
+		internalMap[IntlString],
+		internalMap[Location],
+		internalMap[MultilineString],
+		internalMap[Number],
+		internalMap[POTARef],
+		internalMap[POTARefList],
+		internalMap[PositiveInteger],
+		internalMap[SOTARef],
+		internalMap[SecondaryAdministrativeSubdivisionListAlt],
+		internalMap[SecondarySubdivisionList],
+		internalMap[SponsoredAwardList],
+		internalMap[String],
+		internalMap[Time],
+		internalMap[WWFFRef],
+	}
+}
+
+// ADIType specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[Boolean],
+		internalMap[Character],
+		internalMap[CreditList],
+		internalMap[Date],
+		internalMap[Digit],
+		internalMap[Enumeration],
+		internalMap[GridSquare],
+		internalMap[GridSquareExt],
+		internalMap[GridSquareList],
+		internalMap[IOTARefNo],
+		internalMap[Integer],
+		internalMap[IntlCharacter],
+		internalMap[IntlMultilineString],
+		internalMap[IntlString],
+		internalMap[Location],
+		internalMap[MultilineString],
+		internalMap[Number],
+		internalMap[POTARef],
+		internalMap[POTARefList],
+		internalMap[PositiveInteger],
+		internalMap[SOTARef],
+		internalMap[SecondaryAdministrativeSubdivisionListAlt],
+		internalMap[SecondarySubdivisionList],
+		internalMap[SponsoredAwardList],
+		internalMap[String],
+		internalMap[Time],
+		internalMap[WWFFRef],
+	}
 }
 
 var internalMap = map[ADIType]Spec{

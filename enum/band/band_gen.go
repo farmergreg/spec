@@ -46,40 +46,93 @@ func Lookup(band Band) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for Band exists and is not import only.
-func IsValid(band Band) bool {
-	spec, ok := internalMap[band]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All Band specifications INCLUDING ones marked import only.
-func AllBand() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveBand specifications EXCLUDING ones marked import only.
-func AllActiveBand() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all Band specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All Band specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[Band1_25cm],
+		internalMap[Band1_25m],
+		internalMap[Band10m],
+		internalMap[Band12m],
+		internalMap[Band13cm],
+		internalMap[Band15m],
+		internalMap[Band160m],
+		internalMap[Band17m],
+		internalMap[Band1mm],
+		internalMap[Band2_5mm],
+		internalMap[Band20m],
+		internalMap[Band2190m],
+		internalMap[Band23cm],
+		internalMap[Band2m],
+		internalMap[Band2mm],
+		internalMap[Band30m],
+		internalMap[Band33cm],
+		internalMap[Band3cm],
+		internalMap[Band40m],
+		internalMap[Band4m],
+		internalMap[Band4mm],
+		internalMap[Band560m],
+		internalMap[Band5m],
+		internalMap[Band60m],
+		internalMap[Band630m],
+		internalMap[Band6cm],
+		internalMap[Band6m],
+		internalMap[Band6mm],
+		internalMap[Band70cm],
+		internalMap[Band80m],
+		internalMap[Band8m],
+		internalMap[Band9cm],
+		internalMap[Bandsubmm],
+	}
+}
+
+// Band specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[Band1_25cm],
+		internalMap[Band1_25m],
+		internalMap[Band10m],
+		internalMap[Band12m],
+		internalMap[Band13cm],
+		internalMap[Band15m],
+		internalMap[Band160m],
+		internalMap[Band17m],
+		internalMap[Band1mm],
+		internalMap[Band2_5mm],
+		internalMap[Band20m],
+		internalMap[Band2190m],
+		internalMap[Band23cm],
+		internalMap[Band2m],
+		internalMap[Band2mm],
+		internalMap[Band30m],
+		internalMap[Band33cm],
+		internalMap[Band3cm],
+		internalMap[Band40m],
+		internalMap[Band4m],
+		internalMap[Band4mm],
+		internalMap[Band560m],
+		internalMap[Band5m],
+		internalMap[Band60m],
+		internalMap[Band630m],
+		internalMap[Band6cm],
+		internalMap[Band6m],
+		internalMap[Band6mm],
+		internalMap[Band70cm],
+		internalMap[Band80m],
+		internalMap[Band8m],
+		internalMap[Band9cm],
+		internalMap[Bandsubmm],
+	}
 }
 
 var internalMap = map[Band]Spec{

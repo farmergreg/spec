@@ -32,7 +32,10 @@
     "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
     "workspaceFolder": "/app",
     "mounts": [
+        /*
+        Cursor can't handle this. See also, Dockerfile
         "source=${localEnv:HOME}/.cache,target=/home/adif-spec/.cache,type=bind",
         "source=${localEnv:HOME}/go/pkg,target=/home/adif-spec/go/pkg,type=bind"
+        */
     ]
 }

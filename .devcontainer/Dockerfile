@@ -74,8 +74,11 @@ RUN \
     chown -R ${USER}:${GID} /home/${USER}/.config
 
 USER ${UID}:${GID}
-RUN --mount=type=cache,target=${HOME}/go/pkg/mod,uid=${UID},gid=${GID}              \
-    --mount=type=cache,target=${XDG_CACHE_HOME}/go-build,uid=${UID},gid=${GID}      \
+
+# Cursor can't handle this. See also, devcontainer.json
+#RUN --mount=type=cache,target=${HOME}/go/pkg/mod,uid=${UID},gid=${GID}              \
+#    --mount=type=cache,target=${XDG_CACHE_HOME}/go-build,uid=${UID},gid=${GID}      \
+RUN \
     go install github.com/go-delve/delve/cmd/dlv@${VERSION_DELVE}               &&  \
     go install golang.org/x/tools/gopls@${VERSION_GOPLS}                        &&  \
     go install golang.org/x/tools/cmd/goimports@${VERSION_GOIMPORTS}            &&  \

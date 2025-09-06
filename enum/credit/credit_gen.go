@@ -84,40 +84,169 @@ func Lookup(credit Credit) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for Credit exists and is not import only.
-func IsValid(credit Credit) bool {
-	spec, ok := internalMap[credit]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All Credit specifications INCLUDING ones marked import only.
-func AllCredit() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveCredit specifications EXCLUDING ones marked import only.
-func AllActiveCredit() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all Credit specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All Credit specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[CQDX],
+		internalMap[CQDXFIELD],
+		internalMap[CQDXFIELD_BAND],
+		internalMap[CQDXFIELD_MOBILE],
+		internalMap[CQDXFIELD_MODE],
+		internalMap[CQDXFIELD_QRP],
+		internalMap[CQDXFIELD_SATELLITE],
+		internalMap[CQDX_BAND],
+		internalMap[CQDX_MOBILE],
+		internalMap[CQDX_MODE],
+		internalMap[CQDX_QRP],
+		internalMap[CQDX_SATELLITE],
+		internalMap[CQWAZ_BAND],
+		internalMap[CQWAZ_EME],
+		internalMap[CQWAZ_MIXED],
+		internalMap[CQWAZ_MOBILE],
+		internalMap[CQWAZ_MODE],
+		internalMap[CQWAZ_QRP],
+		internalMap[CQWAZ_SATELLITE],
+		internalMap[CQWPX],
+		internalMap[CQWPX_BAND],
+		internalMap[CQWPX_MODE],
+		internalMap[DXCC],
+		internalMap[DXCC_BAND],
+		internalMap[DXCC_MODE],
+		internalMap[DXCC_SATELLITE],
+		internalMap[EAUSTRALIA],
+		internalMap[ECANADA],
+		internalMap[ECOUNTY_STATE],
+		internalMap[EDX],
+		internalMap[EDX100],
+		internalMap[EDX100_BAND],
+		internalMap[EDX100_MODE],
+		internalMap[EECHOLINK50],
+		internalMap[EGRID_BAND],
+		internalMap[EGRID_SATELLITE],
+		internalMap[EPFX300],
+		internalMap[EPFX300_MODE],
+		internalMap[EWAS],
+		internalMap[EWAS_BAND],
+		internalMap[EWAS_MODE],
+		internalMap[EWAS_SATELLITE],
+		internalMap[EZ40],
+		internalMap[EZ40_MODE],
+		internalMap[FFMA],
+		internalMap[IOTA],
+		internalMap[IOTA_BASIC],
+		internalMap[IOTA_CONT],
+		internalMap[IOTA_GROUP],
+		internalMap[RDA],
+		internalMap[USACA],
+		internalMap[VUCC_BAND],
+		internalMap[VUCC_SATELLITE],
+		internalMap[WAB],
+		internalMap[WAC],
+		internalMap[WAC_BAND],
+		internalMap[WAE],
+		internalMap[WAE_BAND],
+		internalMap[WAE_MODE],
+		internalMap[WAIP],
+		internalMap[WAIP_BAND],
+		internalMap[WAIP_MODE],
+		internalMap[WAS],
+		internalMap[WAS_BAND],
+		internalMap[WAS_EME],
+		internalMap[WAS_MODE],
+		internalMap[WAS_NOVICE],
+		internalMap[WAS_QRP],
+		internalMap[WAS_SATELLITE],
+		internalMap[WITUZ],
+		internalMap[WITUZ_BAND],
+	}
+}
+
+// Credit specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[CQDX],
+		internalMap[CQDXFIELD],
+		internalMap[CQDXFIELD_BAND],
+		internalMap[CQDXFIELD_MOBILE],
+		internalMap[CQDXFIELD_MODE],
+		internalMap[CQDXFIELD_QRP],
+		internalMap[CQDXFIELD_SATELLITE],
+		internalMap[CQDX_BAND],
+		internalMap[CQDX_MOBILE],
+		internalMap[CQDX_MODE],
+		internalMap[CQDX_QRP],
+		internalMap[CQDX_SATELLITE],
+		internalMap[CQWAZ_BAND],
+		internalMap[CQWAZ_EME],
+		internalMap[CQWAZ_MIXED],
+		internalMap[CQWAZ_MOBILE],
+		internalMap[CQWAZ_MODE],
+		internalMap[CQWAZ_QRP],
+		internalMap[CQWAZ_SATELLITE],
+		internalMap[CQWPX],
+		internalMap[CQWPX_BAND],
+		internalMap[CQWPX_MODE],
+		internalMap[DXCC],
+		internalMap[DXCC_BAND],
+		internalMap[DXCC_MODE],
+		internalMap[DXCC_SATELLITE],
+		internalMap[EAUSTRALIA],
+		internalMap[ECANADA],
+		internalMap[ECOUNTY_STATE],
+		internalMap[EDX],
+		internalMap[EDX100],
+		internalMap[EDX100_BAND],
+		internalMap[EDX100_MODE],
+		internalMap[EECHOLINK50],
+		internalMap[EGRID_BAND],
+		internalMap[EGRID_SATELLITE],
+		internalMap[EPFX300],
+		internalMap[EPFX300_MODE],
+		internalMap[EWAS],
+		internalMap[EWAS_BAND],
+		internalMap[EWAS_MODE],
+		internalMap[EWAS_SATELLITE],
+		internalMap[EZ40],
+		internalMap[EZ40_MODE],
+		internalMap[FFMA],
+		internalMap[IOTA],
+		internalMap[IOTA_BASIC],
+		internalMap[IOTA_CONT],
+		internalMap[IOTA_GROUP],
+		internalMap[RDA],
+		internalMap[USACA],
+		internalMap[VUCC_BAND],
+		internalMap[VUCC_SATELLITE],
+		internalMap[WAB],
+		internalMap[WAC],
+		internalMap[WAC_BAND],
+		internalMap[WAE],
+		internalMap[WAE_BAND],
+		internalMap[WAE_MODE],
+		internalMap[WAIP],
+		internalMap[WAIP_BAND],
+		internalMap[WAIP_MODE],
+		internalMap[WAS],
+		internalMap[WAS_BAND],
+		internalMap[WAS_EME],
+		internalMap[WAS_MODE],
+		internalMap[WAS_NOVICE],
+		internalMap[WAS_QRP],
+		internalMap[WAS_SATELLITE],
+		internalMap[WITUZ],
+		internalMap[WITUZ_BAND],
+	}
 }
 
 var internalMap = map[Credit]Spec{

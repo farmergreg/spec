@@ -16,40 +16,33 @@ func Lookup(qsouploadstatus QSOUploadStatus) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for QSOUploadStatus exists and is not import only.
-func IsValid(qsouploadstatus QSOUploadStatus) bool {
-	spec, ok := internalMap[qsouploadstatus]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All QSOUploadStatus specifications INCLUDING ones marked import only.
-func AllQSOUploadStatus() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveQSOUploadStatus specifications EXCLUDING ones marked import only.
-func AllActiveQSOUploadStatus() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all QSOUploadStatus specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All QSOUploadStatus specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[M],
+		internalMap[N],
+		internalMap[Y],
+	}
+}
+
+// QSOUploadStatus specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[M],
+		internalMap[N],
+		internalMap[Y],
+	}
 }
 
 var internalMap = map[QSOUploadStatus]Spec{

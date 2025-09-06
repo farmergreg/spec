@@ -42,40 +42,55 @@ func Lookup(award Award) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for Award exists and is not import only.
-func IsValid(award Award) bool {
-	spec, ok := internalMap[award]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All Award specifications INCLUDING ones marked import only.
-func AllAward() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveAward specifications EXCLUDING ones marked import only.
-func AllActiveAward() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all Award specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All Award specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AJA],
+		internalMap[CQDX],
+		internalMap[CQDXFIELD],
+		internalMap[CQWAZ_160m],
+		internalMap[CQWAZ_CW],
+		internalMap[CQWAZ_MIXED],
+		internalMap[CQWAZ_PHONE],
+		internalMap[CQWAZ_RTTY],
+		internalMap[CQWPX],
+		internalMap[DARC_DOK],
+		internalMap[DXCC],
+		internalMap[DXCC_CW],
+		internalMap[DXCC_MIXED],
+		internalMap[DXCC_PHONE],
+		internalMap[DXCC_RTTY],
+		internalMap[IOTA],
+		internalMap[JCC],
+		internalMap[JCG],
+		internalMap[MARATHON],
+		internalMap[RDA],
+		internalMap[USACA],
+		internalMap[VUCC],
+		internalMap[WAB],
+		internalMap[WAC],
+		internalMap[WAE],
+		internalMap[WAIP],
+		internalMap[WAJA],
+		internalMap[WAS],
+		internalMap[WAZ],
+	}
+}
+
+// Award specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{}
 }
 
 var internalMap = map[Award]Spec{

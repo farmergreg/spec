@@ -16,40 +16,33 @@ func Lookup(eqslag EQSLAG) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for EQSLAG exists and is not import only.
-func IsValid(eqslag EQSLAG) bool {
-	spec, ok := internalMap[eqslag]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All EQSLAG specifications INCLUDING ones marked import only.
-func AllEQSLAG() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveEQSLAG specifications EXCLUDING ones marked import only.
-func AllActiveEQSLAG() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all EQSLAG specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All EQSLAG specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[N],
+		internalMap[U],
+		internalMap[Y],
+	}
+}
+
+// EQSLAG specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[N],
+		internalMap[U],
+		internalMap[Y],
+	}
 }
 
 var internalMap = map[EQSLAG]Spec{

@@ -18,7 +18,7 @@ func Example() {
 	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
 
 	fmt.Println("Current Bands")
-	for _, band := range band.AllActiveBand() {
+	for _, band := range band.ListActive() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 

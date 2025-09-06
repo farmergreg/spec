@@ -17,40 +17,34 @@ func Lookup(qslvia QSLVia) (Spec, bool) {
 	return spec, ok
 }
 
-// IsValid returns true if the specification for QSLVia exists and is not import only.
-func IsValid(qslvia QSLVia) bool {
-	spec, ok := internalMap[qslvia]
-	if ok && bool(spec.IsImportOnly) {
-		return false
-	}
-	return ok
-}
-
-// All QSLVia specifications INCLUDING ones marked import only.
-func AllQSLVia() []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
-		result = append(result, v)
-	}
-	return result
-}
-
-// AllActiveQSLVia specifications EXCLUDING ones marked import only.
-func AllActiveQSLVia() []Spec {
-	return LookupByFilter(func(s Spec) bool {
-		return !bool(s.IsImportOnly)
-	})
-}
-
-// LookupByFilter returns all specifications that match the provided filter function.
+// LookupByFilter returns all QSLVia specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0, len(internalMap))
-	for _, v := range internalMap {
+	result := make([]Spec, 0)
+	for _, v := range List() {
 		if filter(v) {
 			result = append(result, v)
 		}
 	}
 	return result
+}
+
+// All QSLVia specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[B],
+		internalMap[D],
+		internalMap[E],
+		internalMap[M],
+	}
+}
+
+// QSLVia specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[B],
+		internalMap[D],
+		internalMap[E],
+	}
 }
 
 var internalMap = map[QSLVia]Spec{
