@@ -16,12 +16,12 @@ func (r RegionCompositeKey) String() string {
 	return string(r)
 }
 
-// LookupRegion looks up a Region specification by its composite key (RegionCompositeKey + DXCCEntityCode).
-func LookupRegion(code RegionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
+// LookupByCodeAndDXCC looks up a Region specification by its composite key (Region Code + DXCCEntityCode).
+func LookupByCodeAndDXCC(code RegionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
 	if code == NONE {
-		spec, ok := RegionCompositeKeyMap[RegionCompositeKey("NONE")]
+		spec, ok := internalRegionCompositeKeyMap[RegionCompositeKey("NONE")]
 		return spec, ok
 	}
-	spec, ok := RegionCompositeKeyMap[RegionCompositeKey(string(code)+"."+dxccEntityCode.String())]
+	spec, ok := internalRegionCompositeKeyMap[RegionCompositeKey(string(code)+"."+dxccEntityCode.String())]
 	return spec, ok
 }

@@ -11,10 +11,13 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
-// A map of all QSOComplete specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSOCompleteMap = map[QSOComplete]Spec{
+// Lookup looks up a QSOComplete specification
+func Lookup(qsocomplete QSOComplete) (Spec, bool) {
+	spec, ok := internalQSOCompleteMap[qsocomplete], true
+	return spec, ok
+}
+
+var internalQSOCompleteMap = map[QSOComplete]Spec{
 	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
 	N:         {IsImportOnly: false, Key: "N", Description: "no"},
 	NIL:       {IsImportOnly: false, Key: "NIL", Description: "not heard"},
@@ -25,18 +28,18 @@ var QSOCompleteMap = map[QSOComplete]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOCompleteListAll = []Spec{
-	QSOCompleteMap[Uncertain],
-	QSOCompleteMap[N],
-	QSOCompleteMap[NIL],
-	QSOCompleteMap[Y],
+	internalQSOCompleteMap[Uncertain],
+	internalQSOCompleteMap[N],
+	internalQSOCompleteMap[NIL],
+	internalQSOCompleteMap[Y],
 }
 
 // All QSOComplete specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSOCompleteListCurrent = []Spec{
-	QSOCompleteMap[Uncertain],
-	QSOCompleteMap[N],
-	QSOCompleteMap[NIL],
-	QSOCompleteMap[Y],
+	internalQSOCompleteMap[Uncertain],
+	internalQSOCompleteMap[N],
+	internalQSOCompleteMap[NIL],
+	internalQSOCompleteMap[Y],
 }

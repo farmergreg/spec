@@ -11,10 +11,13 @@ const (
 	S AntPath = "S" // S = short path
 )
 
-// A map of all AntPath specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AntPathMap = map[AntPath]Spec{
+// Lookup looks up a AntPath specification
+func Lookup(antpath AntPath) (Spec, bool) {
+	spec, ok := internalAntPathMap[antpath], true
+	return spec, ok
+}
+
+var internalAntPathMap = map[AntPath]Spec{
 	G: {IsImportOnly: false, Key: "G", Description: "grayline"},
 	L: {IsImportOnly: false, Key: "L", Description: "long path"},
 	O: {IsImportOnly: false, Key: "O", Description: "other"},
@@ -25,18 +28,18 @@ var AntPathMap = map[AntPath]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AntPathListAll = []Spec{
-	AntPathMap[G],
-	AntPathMap[L],
-	AntPathMap[O],
-	AntPathMap[S],
+	internalAntPathMap[G],
+	internalAntPathMap[L],
+	internalAntPathMap[O],
+	internalAntPathMap[S],
 }
 
 // All AntPath specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AntPathListCurrent = []Spec{
-	AntPathMap[G],
-	AntPathMap[L],
-	AntPathMap[O],
-	AntPathMap[S],
+	internalAntPathMap[G],
+	internalAntPathMap[L],
+	internalAntPathMap[O],
+	internalAntPathMap[S],
 }

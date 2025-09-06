@@ -36,10 +36,13 @@ const (
 	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
-// A map of all Award specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardMap = map[Award]Spec{
+// Lookup looks up a Award specification
+func Lookup(award Award) (Spec, bool) {
+	spec, ok := internalAwardMap[award], true
+	return spec, ok
+}
+
+var internalAwardMap = map[Award]Spec{
 	AJA:         {IsImportOnly: true, Key: "AJA"},
 	CQDX:        {IsImportOnly: true, Key: "CQDX"},
 	CQDXFIELD:   {IsImportOnly: true, Key: "CQDXFIELD"},
@@ -75,35 +78,35 @@ var AwardMap = map[Award]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardListAll = []Spec{
-	AwardMap[AJA],
-	AwardMap[CQDX],
-	AwardMap[CQDXFIELD],
-	AwardMap[CQWAZ_160m],
-	AwardMap[CQWAZ_CW],
-	AwardMap[CQWAZ_MIXED],
-	AwardMap[CQWAZ_PHONE],
-	AwardMap[CQWAZ_RTTY],
-	AwardMap[CQWPX],
-	AwardMap[DARC_DOK],
-	AwardMap[DXCC],
-	AwardMap[DXCC_CW],
-	AwardMap[DXCC_MIXED],
-	AwardMap[DXCC_PHONE],
-	AwardMap[DXCC_RTTY],
-	AwardMap[IOTA],
-	AwardMap[JCC],
-	AwardMap[JCG],
-	AwardMap[MARATHON],
-	AwardMap[RDA],
-	AwardMap[USACA],
-	AwardMap[VUCC],
-	AwardMap[WAB],
-	AwardMap[WAC],
-	AwardMap[WAE],
-	AwardMap[WAIP],
-	AwardMap[WAJA],
-	AwardMap[WAS],
-	AwardMap[WAZ],
+	internalAwardMap[AJA],
+	internalAwardMap[CQDX],
+	internalAwardMap[CQDXFIELD],
+	internalAwardMap[CQWAZ_160m],
+	internalAwardMap[CQWAZ_CW],
+	internalAwardMap[CQWAZ_MIXED],
+	internalAwardMap[CQWAZ_PHONE],
+	internalAwardMap[CQWAZ_RTTY],
+	internalAwardMap[CQWPX],
+	internalAwardMap[DARC_DOK],
+	internalAwardMap[DXCC],
+	internalAwardMap[DXCC_CW],
+	internalAwardMap[DXCC_MIXED],
+	internalAwardMap[DXCC_PHONE],
+	internalAwardMap[DXCC_RTTY],
+	internalAwardMap[IOTA],
+	internalAwardMap[JCC],
+	internalAwardMap[JCG],
+	internalAwardMap[MARATHON],
+	internalAwardMap[RDA],
+	internalAwardMap[USACA],
+	internalAwardMap[VUCC],
+	internalAwardMap[WAB],
+	internalAwardMap[WAC],
+	internalAwardMap[WAE],
+	internalAwardMap[WAIP],
+	internalAwardMap[WAJA],
+	internalAwardMap[WAS],
+	internalAwardMap[WAZ],
 }
 
 // All Award specifications that are NOT marked import-only.

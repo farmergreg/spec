@@ -12,10 +12,13 @@ const (
 	Y QSLSent = "Y" // Y = an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
 )
 
-// A map of all QSLSent specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLSentMap = map[QSLSent]Spec{
+// Lookup looks up a QSLSent specification
+func Lookup(qslsent QSLSent) (Spec, bool) {
+	spec, ok := internalQSLSentMap[qslsent], true
+	return spec, ok
+}
+
+var internalQSLSentMap = map[QSLSent]Spec{
 	I: {IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
 	N: {IsImportOnly: false, Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
 	Q: {IsImportOnly: false, Key: "Q", Meaning: "queued", Description: "an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service"},
@@ -27,20 +30,20 @@ var QSLSentMap = map[QSLSent]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLSentListAll = []Spec{
-	QSLSentMap[I],
-	QSLSentMap[N],
-	QSLSentMap[Q],
-	QSLSentMap[R],
-	QSLSentMap[Y],
+	internalQSLSentMap[I],
+	internalQSLSentMap[N],
+	internalQSLSentMap[Q],
+	internalQSLSentMap[R],
+	internalQSLSentMap[Y],
 }
 
 // All QSLSent specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLSentListCurrent = []Spec{
-	QSLSentMap[I],
-	QSLSentMap[N],
-	QSLSentMap[Q],
-	QSLSentMap[R],
-	QSLSentMap[Y],
+	internalQSLSentMap[I],
+	internalQSLSentMap[N],
+	internalQSLSentMap[Q],
+	internalQSLSentMap[R],
+	internalQSLSentMap[Y],
 }

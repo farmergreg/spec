@@ -1,8 +1,18 @@
 {{- define "static_data" }}
-// A map of all {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var {{ .CodeGen.CodeGenMetadata.DataType }}Map = map[{{ .CodeGen.CodeGenMetadata.DataType }}]Spec {
+// Lookup look up a specification for {{ .CodeGen.CodeGenMetadata.DataType }}
+func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
+	spec, ok := internal{{ .CodeGen.CodeGenMetadata.DataType }}Map[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}], true
+	return spec, ok
+}
+
+/*
+// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications including import only.
+func All{{ .CodeGen.CodeGenMetadata.DataType }}() []Spec {
+	return internal{{ .CodeGen.CodeGenMetadata.DataType }}Map
+}
+*/
+
+var internal{{ .CodeGen.CodeGenMetadata.DataType }}Map = map[{{ .CodeGen.CodeGenMetadata.DataType }}]Spec {
 {{- range $key, $value := .CodeGen.CodeGenRecords }}
 	{{- $metadata := $value.CodeGenMetadata }}
 	{{ $metadata.ConstName }}: {{ ToGoCode $value $.CodeGen.CodeGenMetadata.PackageName }},
@@ -15,7 +25,7 @@ var {{ .CodeGen.CodeGenMetadata.DataType }}Map = map[{{ .CodeGen.CodeGenMetadata
 var {{ .CodeGen.CodeGenMetadata.DataType }}ListAll = []Spec {
 {{- range $key, $value := .CodeGen.CodeGenRecords }}
 	{{- $metadata := $value.CodeGenMetadata }}
-	{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
+	internal{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
 {{- end }}
 }
 
@@ -26,7 +36,7 @@ var {{ .CodeGen.CodeGenMetadata.DataType }}ListCurrent = []Spec {
 {{- range $key, $value := .CodeGen.CodeGenRecords }}
 	{{- $metadata := $value.CodeGenMetadata }}
 {{- if not $value.IsImportOnly }}
-	{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
+	internal{{ $.CodeGen.CodeGenMetadata.DataType }}Map[{{ $metadata.ConstName }}],
 {{- end }}
 {{- end }}
 }

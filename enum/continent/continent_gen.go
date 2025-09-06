@@ -14,10 +14,13 @@ const (
 	SA Continent = "SA" // SA = South America
 )
 
-// A map of all Continent specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ContinentMap = map[Continent]Spec{
+// Lookup looks up a Continent specification
+func Lookup(continent Continent) (Spec, bool) {
+	spec, ok := internalContinentMap[continent], true
+	return spec, ok
+}
+
+var internalContinentMap = map[Continent]Spec{
 	AF: {IsImportOnly: false, Key: "AF", Continent: "Africa"},
 	AN: {IsImportOnly: false, Key: "AN", Continent: "Antarctica"},
 	AS: {IsImportOnly: false, Key: "AS", Continent: "Asia"},
@@ -31,24 +34,24 @@ var ContinentMap = map[Continent]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContinentListAll = []Spec{
-	ContinentMap[AF],
-	ContinentMap[AN],
-	ContinentMap[AS],
-	ContinentMap[EU],
-	ContinentMap[NA],
-	ContinentMap[OC],
-	ContinentMap[SA],
+	internalContinentMap[AF],
+	internalContinentMap[AN],
+	internalContinentMap[AS],
+	internalContinentMap[EU],
+	internalContinentMap[NA],
+	internalContinentMap[OC],
+	internalContinentMap[SA],
 }
 
 // All Continent specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var ContinentListCurrent = []Spec{
-	ContinentMap[AF],
-	ContinentMap[AN],
-	ContinentMap[AS],
-	ContinentMap[EU],
-	ContinentMap[NA],
-	ContinentMap[OC],
-	ContinentMap[SA],
+	internalContinentMap[AF],
+	internalContinentMap[AN],
+	internalContinentMap[AS],
+	internalContinentMap[EU],
+	internalContinentMap[NA],
+	internalContinentMap[OC],
+	internalContinentMap[SA],
 }

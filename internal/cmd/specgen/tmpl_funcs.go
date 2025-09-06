@@ -9,6 +9,7 @@ import (
 var tmplFuncs = template.FuncMap{
 	"Split":    strings.Split,
 	"ToGoCode": toGoCode,
+	"ToLower":  strings.ToLower,
 }
 
 func toGoCode(a any, packageName string) string {

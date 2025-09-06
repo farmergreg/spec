@@ -20,7 +20,7 @@ func TestLookupRegion(t *testing.T) {
 		{NONE, 9999, true},
 	}
 	for _, tt := range tests {
-		_, ok := LookupRegion(tt.region, tt.dxcc)
+		_, ok := LookupByCodeAndDXCC(tt.region, tt.dxcc)
 		if ok != tt.wantOk {
 			t.Errorf("LookupRegion(%v, %v) = %v, want %v", tt.region, tt.dxcc, ok, tt.wantOk)
 		}

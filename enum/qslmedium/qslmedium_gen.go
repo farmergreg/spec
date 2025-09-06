@@ -10,10 +10,13 @@ const (
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// A map of all QSLMedium specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLMediumMap = map[QSLMedium]Spec{
+// Lookup looks up a QSLMedium specification
+func Lookup(qslmedium QSLMedium) (Spec, bool) {
+	spec, ok := internalQSLMediumMap[qslmedium], true
+	return spec, ok
+}
+
+var internalQSLMediumMap = map[QSLMedium]Spec{
 	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
 	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
 	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
@@ -23,16 +26,16 @@ var QSLMediumMap = map[QSLMedium]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLMediumListAll = []Spec{
-	QSLMediumMap[CARD],
-	QSLMediumMap[EQSL],
-	QSLMediumMap[LOTW],
+	internalQSLMediumMap[CARD],
+	internalQSLMediumMap[EQSL],
+	internalQSLMediumMap[LOTW],
 }
 
 // All QSLMedium specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLMediumListCurrent = []Spec{
-	QSLMediumMap[CARD],
-	QSLMediumMap[EQSL],
-	QSLMediumMap[LOTW],
+	internalQSLMediumMap[CARD],
+	internalQSLMediumMap[EQSL],
+	internalQSLMediumMap[LOTW],
 }

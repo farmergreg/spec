@@ -18,10 +18,13 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
-// A map of all AwardSponsorPrefix specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
+// Lookup looks up a AwardSponsorPrefix specification
+func Lookup(awardsponsorprefix AwardSponsorPrefix) (Spec, bool) {
+	spec, ok := internalAwardSponsorPrefixMap[awardsponsorprefix], true
+	return spec, ok
+}
+
+var internalAwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
 	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
 	ARRL:  {IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
@@ -39,32 +42,32 @@ var AwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardSponsorPrefixListAll = []Spec{
-	AwardSponsorPrefixMap[ADIF],
-	AwardSponsorPrefixMap[ARI],
-	AwardSponsorPrefixMap[ARRL],
-	AwardSponsorPrefixMap[CQ],
-	AwardSponsorPrefixMap[DARC],
-	AwardSponsorPrefixMap[EQSL],
-	AwardSponsorPrefixMap[IARU],
-	AwardSponsorPrefixMap[JARL],
-	AwardSponsorPrefixMap[RSGB],
-	AwardSponsorPrefixMap[TAG],
-	AwardSponsorPrefixMap[WABAG],
+	internalAwardSponsorPrefixMap[ADIF],
+	internalAwardSponsorPrefixMap[ARI],
+	internalAwardSponsorPrefixMap[ARRL],
+	internalAwardSponsorPrefixMap[CQ],
+	internalAwardSponsorPrefixMap[DARC],
+	internalAwardSponsorPrefixMap[EQSL],
+	internalAwardSponsorPrefixMap[IARU],
+	internalAwardSponsorPrefixMap[JARL],
+	internalAwardSponsorPrefixMap[RSGB],
+	internalAwardSponsorPrefixMap[TAG],
+	internalAwardSponsorPrefixMap[WABAG],
 }
 
 // All AwardSponsorPrefix specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var AwardSponsorPrefixListCurrent = []Spec{
-	AwardSponsorPrefixMap[ADIF],
-	AwardSponsorPrefixMap[ARI],
-	AwardSponsorPrefixMap[ARRL],
-	AwardSponsorPrefixMap[CQ],
-	AwardSponsorPrefixMap[DARC],
-	AwardSponsorPrefixMap[EQSL],
-	AwardSponsorPrefixMap[IARU],
-	AwardSponsorPrefixMap[JARL],
-	AwardSponsorPrefixMap[RSGB],
-	AwardSponsorPrefixMap[TAG],
-	AwardSponsorPrefixMap[WABAG],
+	internalAwardSponsorPrefixMap[ADIF],
+	internalAwardSponsorPrefixMap[ARI],
+	internalAwardSponsorPrefixMap[ARRL],
+	internalAwardSponsorPrefixMap[CQ],
+	internalAwardSponsorPrefixMap[DARC],
+	internalAwardSponsorPrefixMap[EQSL],
+	internalAwardSponsorPrefixMap[IARU],
+	internalAwardSponsorPrefixMap[JARL],
+	internalAwardSponsorPrefixMap[RSGB],
+	internalAwardSponsorPrefixMap[TAG],
+	internalAwardSponsorPrefixMap[WABAG],
 }

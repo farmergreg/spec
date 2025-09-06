@@ -14,10 +14,13 @@ const (
 	SS  MorseKeyType = "SS"  // SS   = Sideswiper
 )
 
-// A map of all MorseKeyType specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var MorseKeyTypeMap = map[MorseKeyType]Spec{
+// Lookup looks up a MorseKeyType specification
+func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
+	spec, ok := internalMorseKeyTypeMap[morsekeytype], true
+	return spec, ok
+}
+
+var internalMorseKeyTypeMap = map[MorseKeyType]Spec{
 	BUG: {IsImportOnly: false, Key: "BUG", Description: "Mechanical semi-automatic keyer or Bug", Characteristics: "a control which actuates a switch as well as a control which actuates a spring and pendulum mechanism which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and a human makes the dahs and builds characters.", Examples: "Vibroplex Blue Racer Deluxe"},
 	CPU: {IsImportOnly: false, Key: "CPU", Description: "Computer Driven", Characteristics: "an electronic device performs the actuation of the switch.", MorseComposition: "a machine makes the dits and dahs to build the characters.", Examples: "N1MM+ Logging Software"},
 	DP:  {IsImportOnly: false, Key: "DP", Description: "Dual Paddle", Characteristics: "two controls which actuate independent switches.", MorseComposition: "a machine makes the dits and the dahs and a human builds the characters.", Examples: "Begali Sculpture, VK3IL pressure paddles, M0UKD capacitive touch paddles"},
@@ -31,24 +34,24 @@ var MorseKeyTypeMap = map[MorseKeyType]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var MorseKeyTypeListAll = []Spec{
-	MorseKeyTypeMap[BUG],
-	MorseKeyTypeMap[CPU],
-	MorseKeyTypeMap[DP],
-	MorseKeyTypeMap[FAB],
-	MorseKeyTypeMap[SK],
-	MorseKeyTypeMap[SP],
-	MorseKeyTypeMap[SS],
+	internalMorseKeyTypeMap[BUG],
+	internalMorseKeyTypeMap[CPU],
+	internalMorseKeyTypeMap[DP],
+	internalMorseKeyTypeMap[FAB],
+	internalMorseKeyTypeMap[SK],
+	internalMorseKeyTypeMap[SP],
+	internalMorseKeyTypeMap[SS],
 }
 
 // All MorseKeyType specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var MorseKeyTypeListCurrent = []Spec{
-	MorseKeyTypeMap[BUG],
-	MorseKeyTypeMap[CPU],
-	MorseKeyTypeMap[DP],
-	MorseKeyTypeMap[FAB],
-	MorseKeyTypeMap[SK],
-	MorseKeyTypeMap[SP],
-	MorseKeyTypeMap[SS],
+	internalMorseKeyTypeMap[BUG],
+	internalMorseKeyTypeMap[CPU],
+	internalMorseKeyTypeMap[DP],
+	internalMorseKeyTypeMap[FAB],
+	internalMorseKeyTypeMap[SK],
+	internalMorseKeyTypeMap[SP],
+	internalMorseKeyTypeMap[SS],
 }

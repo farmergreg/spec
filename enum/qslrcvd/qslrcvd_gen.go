@@ -12,10 +12,13 @@ const (
 	Y QSLRcvd = "Y" // Y = an incoming QSL card has been received the QSO has been confirmed by the online service
 )
 
-// A map of all QSLRcvd specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLRcvdMap = map[QSLRcvd]Spec{
+// Lookup looks up a QSLRcvd specification
+func Lookup(qslrcvd QSLRcvd) (Spec, bool) {
+	spec, ok := internalQSLRcvdMap[qslrcvd], true
+	return spec, ok
+}
+
+var internalQSLRcvdMap = map[QSLRcvd]Spec{
 	I: {IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
 	N: {IsImportOnly: false, Key: "N", Meaning: "no", Description: "an incoming QSL card has not been received the QSO has not been confirmed by the online service"},
 	R: {IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service"},
@@ -27,19 +30,19 @@ var QSLRcvdMap = map[QSLRcvd]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLRcvdListAll = []Spec{
-	QSLRcvdMap[I],
-	QSLRcvdMap[N],
-	QSLRcvdMap[R],
-	QSLRcvdMap[V],
-	QSLRcvdMap[Y],
+	internalQSLRcvdMap[I],
+	internalQSLRcvdMap[N],
+	internalQSLRcvdMap[R],
+	internalQSLRcvdMap[V],
+	internalQSLRcvdMap[Y],
 }
 
 // All QSLRcvd specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var QSLRcvdListCurrent = []Spec{
-	QSLRcvdMap[I],
-	QSLRcvdMap[N],
-	QSLRcvdMap[R],
-	QSLRcvdMap[Y],
+	internalQSLRcvdMap[I],
+	internalQSLRcvdMap[N],
+	internalQSLRcvdMap[R],
+	internalQSLRcvdMap[Y],
 }

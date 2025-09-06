@@ -22,10 +22,13 @@ const (
 	SY   RegionCode = "SY"   // SY
 )
 
-// A map of all RegionCompositeKey specifications.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
+// Lookup looks up a RegionCompositeKey specification
+func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
+	spec, ok := internalRegionCompositeKeyMap[regioncompositekey], true
+	return spec, ok
+}
+
+var internalRegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 	"AI.248": {IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	"BI.259": {IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 	"ET.390": {IsImportOnly: false, Code: "ET", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
@@ -42,30 +45,30 @@ var RegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var RegionCompositeKeyListAll = []Spec{
-	RegionCompositeKeyMap["AI.248"],
-	RegionCompositeKeyMap["BI.259"],
-	RegionCompositeKeyMap["ET.390"],
-	RegionCompositeKeyMap["IV.206"],
-	RegionCompositeKeyMap["KO.0"],
-	RegionCompositeKeyMap["KO.296"],
-	RegionCompositeKeyMap["KO.522"],
-	RegionCompositeKeyMap["NONE"],
-	RegionCompositeKeyMap["SI.279"],
-	RegionCompositeKeyMap["SY.248"],
+	internalRegionCompositeKeyMap["AI.248"],
+	internalRegionCompositeKeyMap["BI.259"],
+	internalRegionCompositeKeyMap["ET.390"],
+	internalRegionCompositeKeyMap["IV.206"],
+	internalRegionCompositeKeyMap["KO.0"],
+	internalRegionCompositeKeyMap["KO.296"],
+	internalRegionCompositeKeyMap["KO.522"],
+	internalRegionCompositeKeyMap["NONE"],
+	internalRegionCompositeKeyMap["SI.279"],
+	internalRegionCompositeKeyMap["SY.248"],
 }
 
 // All RegionCompositeKey specifications that are NOT marked import-only.
 // For convenience, this data is mutable.
 // If you require immutable data, please use the specdata package.
 var RegionCompositeKeyListCurrent = []Spec{
-	RegionCompositeKeyMap["AI.248"],
-	RegionCompositeKeyMap["BI.259"],
-	RegionCompositeKeyMap["ET.390"],
-	RegionCompositeKeyMap["IV.206"],
-	RegionCompositeKeyMap["KO.0"],
-	RegionCompositeKeyMap["KO.296"],
-	RegionCompositeKeyMap["KO.522"],
-	RegionCompositeKeyMap["NONE"],
-	RegionCompositeKeyMap["SI.279"],
-	RegionCompositeKeyMap["SY.248"],
+	internalRegionCompositeKeyMap["AI.248"],
+	internalRegionCompositeKeyMap["BI.259"],
+	internalRegionCompositeKeyMap["ET.390"],
+	internalRegionCompositeKeyMap["IV.206"],
+	internalRegionCompositeKeyMap["KO.0"],
+	internalRegionCompositeKeyMap["KO.296"],
+	internalRegionCompositeKeyMap["KO.522"],
+	internalRegionCompositeKeyMap["NONE"],
+	internalRegionCompositeKeyMap["SI.279"],
+	internalRegionCompositeKeyMap["SY.248"],
 }
