@@ -12,7 +12,7 @@ const (
 	Y QSLSent = "Y" // Y = an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
 )
 
-// Lookup look up a specification for QSLSent
+// Lookup look up a specification for the given QSLSent
 func Lookup(qslsent QSLSent) (Spec, bool) {
 	spec, ok := internalMap[qslsent]
 	return spec, ok
@@ -29,18 +29,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All QSLSent specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[Q],
-		internalMap[R],
-		internalMap[Y],
-	}
-}
-
-// QSLSent specifications EXCLUDING those marked import only.
+// Generate a list of QSLSent specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[I],
@@ -51,6 +40,18 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all QSLSent specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[I],
+		internalMap[N],
+		internalMap[Q],
+		internalMap[R],
+		internalMap[Y],
+	}
+}
+
+// internalMap is a map of all known QSLSent specifications
 var internalMap = map[QSLSent]Spec{
 	I: {IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
 	N: {IsImportOnly: false, Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},

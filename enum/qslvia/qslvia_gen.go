@@ -11,7 +11,7 @@ const (
 	M QSLVia = "M" // Deprecated: M = manager
 )
 
-// Lookup look up a specification for QSLVia
+// Lookup look up a specification for the given QSLVia
 func Lookup(qslvia QSLVia) (Spec, bool) {
 	spec, ok := internalMap[qslvia]
 	return spec, ok
@@ -28,7 +28,16 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All QSLVia specifications INCLUDING those marked import only.
+// Generate a list of QSLVia specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[B],
+		internalMap[D],
+		internalMap[E],
+	}
+}
+
+// Generate a list of all QSLVia specifications INCLUDING those marked import only.
 func List() []Spec {
 	return []Spec{
 		internalMap[B],
@@ -38,15 +47,7 @@ func List() []Spec {
 	}
 }
 
-// QSLVia specifications EXCLUDING those marked import only.
-func ListActive() []Spec {
-	return []Spec{
-		internalMap[B],
-		internalMap[D],
-		internalMap[E],
-	}
-}
-
+// internalMap is a map of all known QSLVia specifications
 var internalMap = map[QSLVia]Spec{
 	B: {IsImportOnly: false, Key: "B", Description: "bureau"},
 	D: {IsImportOnly: false, Key: "D", Description: "direct"},

@@ -10,7 +10,7 @@ const (
 	Y QSODownloadStatus = "Y" // Y = the QSO has been downloaded from the online service
 )
 
-// Lookup look up a specification for QSODownloadStatus
+// Lookup look up a specification for the given QSODownloadStatus
 func Lookup(qsodownloadstatus QSODownloadStatus) (Spec, bool) {
 	spec, ok := internalMap[qsodownloadstatus]
 	return spec, ok
@@ -27,16 +27,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All QSODownloadStatus specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[Y],
-	}
-}
-
-// QSODownloadStatus specifications EXCLUDING those marked import only.
+// Generate a list of QSODownloadStatus specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[I],
@@ -45,6 +36,16 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all QSODownloadStatus specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[I],
+		internalMap[N],
+		internalMap[Y],
+	}
+}
+
+// internalMap is a map of all known QSODownloadStatus specifications
 var internalMap = map[QSODownloadStatus]Spec{
 	I: {IsImportOnly: false, Key: "I", Description: "ignore or invalid"},
 	N: {IsImportOnly: false, Key: "N", Description: "the QSO has not been downloaded from the online service"},

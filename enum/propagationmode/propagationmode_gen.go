@@ -27,7 +27,7 @@ const (
 	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
-// Lookup look up a specification for PropagationMode
+// Lookup look up a specification for the given PropagationMode
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	spec, ok := internalMap[propagationmode]
 	return spec, ok
@@ -44,33 +44,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All PropagationMode specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[AS],
-		internalMap[AUE],
-		internalMap[AUR],
-		internalMap[BS],
-		internalMap[ECH],
-		internalMap[EME],
-		internalMap[ES],
-		internalMap[F2],
-		internalMap[FAI],
-		internalMap[GWAVE],
-		internalMap[INTERNET],
-		internalMap[ION],
-		internalMap[IRL],
-		internalMap[LOS],
-		internalMap[MS],
-		internalMap[RPT],
-		internalMap[RS],
-		internalMap[SAT],
-		internalMap[TEP],
-		internalMap[TR],
-	}
-}
-
-// PropagationMode specifications EXCLUDING those marked import only.
+// Generate a list of PropagationMode specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[AS],
@@ -96,6 +70,33 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all PropagationMode specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AS],
+		internalMap[AUE],
+		internalMap[AUR],
+		internalMap[BS],
+		internalMap[ECH],
+		internalMap[EME],
+		internalMap[ES],
+		internalMap[F2],
+		internalMap[FAI],
+		internalMap[GWAVE],
+		internalMap[INTERNET],
+		internalMap[ION],
+		internalMap[IRL],
+		internalMap[LOS],
+		internalMap[MS],
+		internalMap[RPT],
+		internalMap[RS],
+		internalMap[SAT],
+		internalMap[TEP],
+		internalMap[TR],
+	}
+}
+
+// internalMap is a map of all known PropagationMode specifications
 var internalMap = map[PropagationMode]Spec{
 	AS:       {IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
 	AUE:      {IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},

@@ -18,7 +18,7 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
-// Lookup look up a specification for AwardSponsorPrefix
+// Lookup look up a specification for the given AwardSponsorPrefix
 func Lookup(awardsponsorprefix AwardSponsorPrefix) (Spec, bool) {
 	spec, ok := internalMap[awardsponsorprefix]
 	return spec, ok
@@ -35,24 +35,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All AwardSponsorPrefix specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[ADIF],
-		internalMap[ARI],
-		internalMap[ARRL],
-		internalMap[CQ],
-		internalMap[DARC],
-		internalMap[EQSL],
-		internalMap[IARU],
-		internalMap[JARL],
-		internalMap[RSGB],
-		internalMap[TAG],
-		internalMap[WABAG],
-	}
-}
-
-// AwardSponsorPrefix specifications EXCLUDING those marked import only.
+// Generate a list of AwardSponsorPrefix specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[ADIF],
@@ -69,6 +52,24 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all AwardSponsorPrefix specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[ADIF],
+		internalMap[ARI],
+		internalMap[ARRL],
+		internalMap[CQ],
+		internalMap[DARC],
+		internalMap[EQSL],
+		internalMap[IARU],
+		internalMap[JARL],
+		internalMap[RSGB],
+		internalMap[TAG],
+		internalMap[WABAG],
+	}
+}
+
+// internalMap is a map of all known AwardSponsorPrefix specifications
 var internalMap = map[AwardSponsorPrefix]Spec{
 	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
 	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},

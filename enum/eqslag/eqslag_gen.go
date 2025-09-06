@@ -10,7 +10,7 @@ const (
 	Y EQSLAG = "Y" // Y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL
 )
 
-// Lookup look up a specification for EQSLAG
+// Lookup look up a specification for the given EQSLAG
 func Lookup(eqslag EQSLAG) (Spec, bool) {
 	spec, ok := internalMap[eqslag]
 	return spec, ok
@@ -27,16 +27,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All EQSLAG specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[N],
-		internalMap[U],
-		internalMap[Y],
-	}
-}
-
-// EQSLAG specifications EXCLUDING those marked import only.
+// Generate a list of EQSLAG specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[N],
@@ -45,6 +36,16 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all EQSLAG specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[N],
+		internalMap[U],
+		internalMap[Y],
+	}
+}
+
+// internalMap is a map of all known EQSLAG specifications
 var internalMap = map[EQSLAG]Spec{
 	N: {IsImportOnly: false, Key: "N", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
 	U: {IsImportOnly: false, Key: "U", Description: "unknown"},

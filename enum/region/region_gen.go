@@ -22,7 +22,7 @@ const (
 	SY   RegionCode = "SY"   // SY
 )
 
-// Lookup look up a specification for RegionCompositeKey
+// Lookup look up a specification for the given RegionCompositeKey
 func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	spec, ok := internalMap[regioncompositekey]
 	return spec, ok
@@ -39,23 +39,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All RegionCompositeKey specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap["AI.248"],
-		internalMap["BI.259"],
-		internalMap["ET.390"],
-		internalMap["IV.206"],
-		internalMap["KO.0"],
-		internalMap["KO.296"],
-		internalMap["KO.522"],
-		internalMap["NONE"],
-		internalMap["SI.279"],
-		internalMap["SY.248"],
-	}
-}
-
-// RegionCompositeKey specifications EXCLUDING those marked import only.
+// Generate a list of RegionCompositeKey specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap["AI.248"],
@@ -71,6 +55,23 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all RegionCompositeKey specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap["AI.248"],
+		internalMap["BI.259"],
+		internalMap["ET.390"],
+		internalMap["IV.206"],
+		internalMap["KO.0"],
+		internalMap["KO.296"],
+		internalMap["KO.522"],
+		internalMap["NONE"],
+		internalMap["SI.279"],
+		internalMap["SY.248"],
+	}
+}
+
+// internalMap is a map of all known RegionCompositeKey specifications
 var internalMap = map[RegionCompositeKey]Spec{
 	"AI.248": {IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	"BI.259": {IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},

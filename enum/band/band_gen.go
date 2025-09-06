@@ -40,7 +40,7 @@ const (
 	Bandsubmm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
-// Lookup look up a specification for Band
+// Lookup look up a specification for the given Band
 func Lookup(band Band) (Spec, bool) {
 	spec, ok := internalMap[band]
 	return spec, ok
@@ -57,46 +57,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All Band specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[Band1_25cm],
-		internalMap[Band1_25m],
-		internalMap[Band10m],
-		internalMap[Band12m],
-		internalMap[Band13cm],
-		internalMap[Band15m],
-		internalMap[Band160m],
-		internalMap[Band17m],
-		internalMap[Band1mm],
-		internalMap[Band2_5mm],
-		internalMap[Band20m],
-		internalMap[Band2190m],
-		internalMap[Band23cm],
-		internalMap[Band2m],
-		internalMap[Band2mm],
-		internalMap[Band30m],
-		internalMap[Band33cm],
-		internalMap[Band3cm],
-		internalMap[Band40m],
-		internalMap[Band4m],
-		internalMap[Band4mm],
-		internalMap[Band560m],
-		internalMap[Band5m],
-		internalMap[Band60m],
-		internalMap[Band630m],
-		internalMap[Band6cm],
-		internalMap[Band6m],
-		internalMap[Band6mm],
-		internalMap[Band70cm],
-		internalMap[Band80m],
-		internalMap[Band8m],
-		internalMap[Band9cm],
-		internalMap[Bandsubmm],
-	}
-}
-
-// Band specifications EXCLUDING those marked import only.
+// Generate a list of Band specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[Band1_25cm],
@@ -135,6 +96,46 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all Band specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[Band1_25cm],
+		internalMap[Band1_25m],
+		internalMap[Band10m],
+		internalMap[Band12m],
+		internalMap[Band13cm],
+		internalMap[Band15m],
+		internalMap[Band160m],
+		internalMap[Band17m],
+		internalMap[Band1mm],
+		internalMap[Band2_5mm],
+		internalMap[Band20m],
+		internalMap[Band2190m],
+		internalMap[Band23cm],
+		internalMap[Band2m],
+		internalMap[Band2mm],
+		internalMap[Band30m],
+		internalMap[Band33cm],
+		internalMap[Band3cm],
+		internalMap[Band40m],
+		internalMap[Band4m],
+		internalMap[Band4mm],
+		internalMap[Band560m],
+		internalMap[Band5m],
+		internalMap[Band60m],
+		internalMap[Band630m],
+		internalMap[Band6cm],
+		internalMap[Band6m],
+		internalMap[Band6mm],
+		internalMap[Band70cm],
+		internalMap[Band80m],
+		internalMap[Band8m],
+		internalMap[Band9cm],
+		internalMap[Bandsubmm],
+	}
+}
+
+// internalMap is a map of all known Band specifications
 var internalMap = map[Band]Spec{
 	Band1_25cm: {IsImportOnly: false, Key: "1.25cm", LowerFreqMHz: 24000, UpperFreqMHz: 24250},
 	Band1_25m:  {IsImportOnly: false, Key: "1.25m", LowerFreqMHz: 222, UpperFreqMHz: 225},

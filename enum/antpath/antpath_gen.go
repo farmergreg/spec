@@ -11,7 +11,7 @@ const (
 	S AntPath = "S" // S = short path
 )
 
-// Lookup look up a specification for AntPath
+// Lookup look up a specification for the given AntPath
 func Lookup(antpath AntPath) (Spec, bool) {
 	spec, ok := internalMap[antpath]
 	return spec, ok
@@ -28,17 +28,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All AntPath specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[G],
-		internalMap[L],
-		internalMap[O],
-		internalMap[S],
-	}
-}
-
-// AntPath specifications EXCLUDING those marked import only.
+// Generate a list of AntPath specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[G],
@@ -48,6 +38,17 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all AntPath specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[G],
+		internalMap[L],
+		internalMap[O],
+		internalMap[S],
+	}
+}
+
+// internalMap is a map of all known AntPath specifications
 var internalMap = map[AntPath]Spec{
 	G: {IsImportOnly: false, Key: "G", Description: "grayline"},
 	L: {IsImportOnly: false, Key: "L", Description: "long path"},

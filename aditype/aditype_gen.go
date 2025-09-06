@@ -35,7 +35,7 @@ const (
 	WWFFRef                                   ADIType = "WWFFRef"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
-// Lookup look up a specification for ADIType
+// Lookup look up a specification for the given ADIType
 func Lookup(aditype ADIType) (Spec, bool) {
 	spec, ok := internalMap[aditype]
 	return spec, ok
@@ -52,7 +52,40 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All ADIType specifications INCLUDING those marked import only.
+// Generate a list of ADIType specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{
+		internalMap[Boolean],
+		internalMap[Character],
+		internalMap[CreditList],
+		internalMap[Date],
+		internalMap[Digit],
+		internalMap[Enumeration],
+		internalMap[GridSquare],
+		internalMap[GridSquareExt],
+		internalMap[GridSquareList],
+		internalMap[IOTARefNo],
+		internalMap[Integer],
+		internalMap[IntlCharacter],
+		internalMap[IntlMultilineString],
+		internalMap[IntlString],
+		internalMap[Location],
+		internalMap[MultilineString],
+		internalMap[Number],
+		internalMap[POTARef],
+		internalMap[POTARefList],
+		internalMap[PositiveInteger],
+		internalMap[SOTARef],
+		internalMap[SecondaryAdministrativeSubdivisionListAlt],
+		internalMap[SecondarySubdivisionList],
+		internalMap[SponsoredAwardList],
+		internalMap[String],
+		internalMap[Time],
+		internalMap[WWFFRef],
+	}
+}
+
+// Generate a list of all ADIType specifications INCLUDING those marked import only.
 func List() []Spec {
 	return []Spec{
 		internalMap[AwardList],
@@ -86,39 +119,7 @@ func List() []Spec {
 	}
 }
 
-// ADIType specifications EXCLUDING those marked import only.
-func ListActive() []Spec {
-	return []Spec{
-		internalMap[Boolean],
-		internalMap[Character],
-		internalMap[CreditList],
-		internalMap[Date],
-		internalMap[Digit],
-		internalMap[Enumeration],
-		internalMap[GridSquare],
-		internalMap[GridSquareExt],
-		internalMap[GridSquareList],
-		internalMap[IOTARefNo],
-		internalMap[Integer],
-		internalMap[IntlCharacter],
-		internalMap[IntlMultilineString],
-		internalMap[IntlString],
-		internalMap[Location],
-		internalMap[MultilineString],
-		internalMap[Number],
-		internalMap[POTARef],
-		internalMap[POTARefList],
-		internalMap[PositiveInteger],
-		internalMap[SOTARef],
-		internalMap[SecondaryAdministrativeSubdivisionListAlt],
-		internalMap[SecondarySubdivisionList],
-		internalMap[SponsoredAwardList],
-		internalMap[String],
-		internalMap[Time],
-		internalMap[WWFFRef],
-	}
-}
-
+// internalMap is a map of all known ADIType specifications
 var internalMap = map[ADIType]Spec{
 	AwardList:           {Key: "AwardList", DataTypeIndicator: "", Description: "a comma-delimited list of members of the Award enumeration", MinimumValue: 0, MaximumValue: 0, IsImportOnly: true, Comments: ""},
 	Boolean:             {Key: "Boolean", DataTypeIndicator: "B", Description: "if True, the single ASCII character Y or y if False, the single ASCII character N or n", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},

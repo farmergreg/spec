@@ -10,7 +10,7 @@ const (
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// Lookup look up a specification for QSLMedium
+// Lookup look up a specification for the given QSLMedium
 func Lookup(qslmedium QSLMedium) (Spec, bool) {
 	spec, ok := internalMap[qslmedium]
 	return spec, ok
@@ -27,16 +27,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All QSLMedium specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[CARD],
-		internalMap[EQSL],
-		internalMap[LOTW],
-	}
-}
-
-// QSLMedium specifications EXCLUDING those marked import only.
+// Generate a list of QSLMedium specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[CARD],
@@ -45,6 +36,16 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all QSLMedium specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[CARD],
+		internalMap[EQSL],
+		internalMap[LOTW],
+	}
+}
+
+// internalMap is a map of all known QSLMedium specifications
 var internalMap = map[QSLMedium]Spec{
 	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
 	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},

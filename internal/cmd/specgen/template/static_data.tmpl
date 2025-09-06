@@ -1,5 +1,5 @@
 {{- define "static_data" }}
-// Lookup look up a specification for {{ .CodeGen.CodeGenMetadata.DataType }}
+// Lookup look up a specification for the given {{ .CodeGen.CodeGenMetadata.DataType }}
 func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
 	spec, ok := internalMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
 	return spec, ok
@@ -16,17 +16,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All {{ .CodeGen.CodeGenMetadata.DataType }} specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec {
-	{{- range $key, $value := .CodeGen.CodeGenRecords }}
-		{{- $metadata := $value.CodeGenMetadata }}
-	internalMap[{{ $metadata.ConstName }}],
-	{{- end }}
-	}
-}
-
-// {{ .CodeGen.CodeGenMetadata.DataType }} specifications EXCLUDING those marked import only.
+// Generate a list of {{ .CodeGen.CodeGenMetadata.DataType }} specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec {
 	{{- range $key, $value := .CodeGen.CodeGenRecords }}
@@ -38,6 +28,17 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all {{ .CodeGen.CodeGenMetadata.DataType }} specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec {
+	{{- range $key, $value := .CodeGen.CodeGenRecords }}
+		{{- $metadata := $value.CodeGenMetadata }}
+	internalMap[{{ $metadata.ConstName }}],
+	{{- end }}
+	}
+}
+
+// internalMap is a map of all known {{ .CodeGen.CodeGenMetadata.DataType }} specifications
 var internalMap = map[{{ .CodeGen.CodeGenMetadata.DataType }}]Spec {
 	{{- range $key, $value := .CodeGen.CodeGenRecords }}
 		{{- $metadata := $value.CodeGenMetadata }}

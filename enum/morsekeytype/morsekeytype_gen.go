@@ -14,7 +14,7 @@ const (
 	SS  MorseKeyType = "SS"  // SS   = Sideswiper
 )
 
-// Lookup look up a specification for MorseKeyType
+// Lookup look up a specification for the given MorseKeyType
 func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
 	spec, ok := internalMap[morsekeytype]
 	return spec, ok
@@ -31,20 +31,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All MorseKeyType specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[BUG],
-		internalMap[CPU],
-		internalMap[DP],
-		internalMap[FAB],
-		internalMap[SK],
-		internalMap[SP],
-		internalMap[SS],
-	}
-}
-
-// MorseKeyType specifications EXCLUDING those marked import only.
+// Generate a list of MorseKeyType specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[BUG],
@@ -57,6 +44,20 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all MorseKeyType specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[BUG],
+		internalMap[CPU],
+		internalMap[DP],
+		internalMap[FAB],
+		internalMap[SK],
+		internalMap[SP],
+		internalMap[SS],
+	}
+}
+
+// internalMap is a map of all known MorseKeyType specifications
 var internalMap = map[MorseKeyType]Spec{
 	BUG: {IsImportOnly: false, Key: "BUG", Description: "Mechanical semi-automatic keyer or Bug", Characteristics: "a control which actuates a switch as well as a control which actuates a spring and pendulum mechanism which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and a human makes the dahs and builds characters.", Examples: "Vibroplex Blue Racer Deluxe"},
 	CPU: {IsImportOnly: false, Key: "CPU", Description: "Computer Driven", Characteristics: "an electronic device performs the actuation of the switch.", MorseComposition: "a machine makes the dits and dahs to build the characters.", Examples: "N1MM+ Logging Software"},

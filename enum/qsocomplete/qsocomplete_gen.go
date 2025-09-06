@@ -11,7 +11,7 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
-// Lookup look up a specification for QSOComplete
+// Lookup look up a specification for the given QSOComplete
 func Lookup(qsocomplete QSOComplete) (Spec, bool) {
 	spec, ok := internalMap[qsocomplete]
 	return spec, ok
@@ -28,17 +28,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All QSOComplete specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[Uncertain],
-		internalMap[N],
-		internalMap[NIL],
-		internalMap[Y],
-	}
-}
-
-// QSOComplete specifications EXCLUDING those marked import only.
+// Generate a list of QSOComplete specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[Uncertain],
@@ -48,6 +38,17 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all QSOComplete specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[Uncertain],
+		internalMap[N],
+		internalMap[NIL],
+		internalMap[Y],
+	}
+}
+
+// internalMap is a map of all known QSOComplete specifications
 var internalMap = map[QSOComplete]Spec{
 	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
 	N:         {IsImportOnly: false, Key: "N", Description: "no"},

@@ -14,7 +14,7 @@ const (
 	SA Continent = "SA" // SA = South America
 )
 
-// Lookup look up a specification for Continent
+// Lookup look up a specification for the given Continent
 func Lookup(continent Continent) (Spec, bool) {
 	spec, ok := internalMap[continent]
 	return spec, ok
@@ -31,20 +31,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All Continent specifications INCLUDING those marked import only.
-func List() []Spec {
-	return []Spec{
-		internalMap[AF],
-		internalMap[AN],
-		internalMap[AS],
-		internalMap[EU],
-		internalMap[NA],
-		internalMap[OC],
-		internalMap[SA],
-	}
-}
-
-// Continent specifications EXCLUDING those marked import only.
+// Generate a list of Continent specifications EXCLUDING those marked import only.
 func ListActive() []Spec {
 	return []Spec{
 		internalMap[AF],
@@ -57,6 +44,20 @@ func ListActive() []Spec {
 	}
 }
 
+// Generate a list of all Continent specifications INCLUDING those marked import only.
+func List() []Spec {
+	return []Spec{
+		internalMap[AF],
+		internalMap[AN],
+		internalMap[AS],
+		internalMap[EU],
+		internalMap[NA],
+		internalMap[OC],
+		internalMap[SA],
+	}
+}
+
+// internalMap is a map of all known Continent specifications
 var internalMap = map[Continent]Spec{
 	AF: {IsImportOnly: false, Key: "AF", Continent: "Africa"},
 	AN: {IsImportOnly: false, Key: "AN", Continent: "Antarctica"},

@@ -36,7 +36,7 @@ const (
 	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
-// Lookup look up a specification for Award
+// Lookup look up a specification for the given Award
 func Lookup(award Award) (Spec, bool) {
 	spec, ok := internalMap[award]
 	return spec, ok
@@ -53,7 +53,12 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// All Award specifications INCLUDING those marked import only.
+// Generate a list of Award specifications EXCLUDING those marked import only.
+func ListActive() []Spec {
+	return []Spec{}
+}
+
+// Generate a list of all Award specifications INCLUDING those marked import only.
 func List() []Spec {
 	return []Spec{
 		internalMap[AJA],
@@ -88,11 +93,7 @@ func List() []Spec {
 	}
 }
 
-// Award specifications EXCLUDING those marked import only.
-func ListActive() []Spec {
-	return []Spec{}
-}
-
+// internalMap is a map of all known Award specifications
 var internalMap = map[Award]Spec{
 	AJA:         {IsImportOnly: true, Key: "AJA"},
 	CQDX:        {IsImportOnly: true, Key: "CQDX"},
