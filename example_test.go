@@ -14,11 +14,11 @@ func Example() {
 	 * You can use convenience constants and variables in packages that represent each ADIF enum type.
 	 * For example, the band package represents ADIF bands:
 	 */
-	forty := band.BandMap[band.Band40m]
+	forty, _ := band.Lookup(band.Band40m)
 	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
 
 	fmt.Println("Current Bands")
-	for _, band := range band.BandListCurrent {
+	for _, band := range band.AllActiveBand() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 

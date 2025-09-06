@@ -11,34 +11,42 @@ const (
 	M QSLVia = "M" // Deprecated: M = manager
 )
 
-// Lookup looks up a QSLVia specification
+// Lookup look up a specification for QSLVia
 func Lookup(qslvia QSLVia) (Spec, bool) {
-	spec, ok := internalQSLViaMap[qslvia], true
+	spec, ok := internalMap[qslvia], true
 	return spec, ok
 }
 
-var internalQSLViaMap = map[QSLVia]Spec{
+// All QSLVia specifications INCLUDING ones marked import only.
+func AllQSLVia() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveQSLVia specifications EXCLUDING ones marked import only.
+func AllActiveQSLVia() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[QSLVia]Spec{
 	B: {IsImportOnly: false, Key: "B", Description: "bureau"},
 	D: {IsImportOnly: false, Key: "D", Description: "direct"},
 	E: {IsImportOnly: false, Key: "E", Description: "electronic"},
 	M: {IsImportOnly: true, Key: "M", Description: "manager"},
-}
-
-// All QSLVia specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLViaListAll = []Spec{
-	internalQSLViaMap[B],
-	internalQSLViaMap[D],
-	internalQSLViaMap[E],
-	internalQSLViaMap[M],
-}
-
-// All QSLVia specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLViaListCurrent = []Spec{
-	internalQSLViaMap[B],
-	internalQSLViaMap[D],
-	internalQSLViaMap[E],
 }

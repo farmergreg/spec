@@ -10,32 +10,41 @@ const (
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// Lookup looks up a QSLMedium specification
+// Lookup look up a specification for QSLMedium
 func Lookup(qslmedium QSLMedium) (Spec, bool) {
-	spec, ok := internalQSLMediumMap[qslmedium], true
+	spec, ok := internalMap[qslmedium], true
 	return spec, ok
 }
 
-var internalQSLMediumMap = map[QSLMedium]Spec{
+// All QSLMedium specifications INCLUDING ones marked import only.
+func AllQSLMedium() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveQSLMedium specifications EXCLUDING ones marked import only.
+func AllActiveQSLMedium() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[QSLMedium]Spec{
 	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
 	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
 	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
-}
-
-// All QSLMedium specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLMediumListAll = []Spec{
-	internalQSLMediumMap[CARD],
-	internalQSLMediumMap[EQSL],
-	internalQSLMediumMap[LOTW],
-}
-
-// All QSLMedium specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSLMediumListCurrent = []Spec{
-	internalQSLMediumMap[CARD],
-	internalQSLMediumMap[EQSL],
-	internalQSLMediumMap[LOTW],
 }

@@ -10,32 +10,41 @@ const (
 	Y EQSLAG = "Y" // Y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL
 )
 
-// Lookup looks up a EQSLAG specification
+// Lookup look up a specification for EQSLAG
 func Lookup(eqslag EQSLAG) (Spec, bool) {
-	spec, ok := internalEQSLAGMap[eqslag], true
+	spec, ok := internalMap[eqslag], true
 	return spec, ok
 }
 
-var internalEQSLAGMap = map[EQSLAG]Spec{
+// All EQSLAG specifications INCLUDING ones marked import only.
+func AllEQSLAG() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveEQSLAG specifications EXCLUDING ones marked import only.
+func AllActiveEQSLAG() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[EQSLAG]Spec{
 	N: {IsImportOnly: false, Key: "N", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
 	U: {IsImportOnly: false, Key: "U", Description: "unknown"},
 	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
-}
-
-// All EQSLAG specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var EQSLAGListAll = []Spec{
-	internalEQSLAGMap[N],
-	internalEQSLAGMap[U],
-	internalEQSLAGMap[Y],
-}
-
-// All EQSLAG specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var EQSLAGListCurrent = []Spec{
-	internalEQSLAGMap[N],
-	internalEQSLAGMap[U],
-	internalEQSLAGMap[Y],
 }

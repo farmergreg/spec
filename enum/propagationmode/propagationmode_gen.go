@@ -27,13 +27,40 @@ const (
 	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
-// Lookup looks up a PropagationMode specification
+// Lookup look up a specification for PropagationMode
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
-	spec, ok := internalPropagationModeMap[propagationmode], true
+	spec, ok := internalMap[propagationmode], true
 	return spec, ok
 }
 
-var internalPropagationModeMap = map[PropagationMode]Spec{
+// All PropagationMode specifications INCLUDING ones marked import only.
+func AllPropagationMode() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActivePropagationMode specifications EXCLUDING ones marked import only.
+func AllActivePropagationMode() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[PropagationMode]Spec{
 	AS:       {IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
 	AUE:      {IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
 	AUR:      {IsImportOnly: false, Key: "AUR", Description: "Aurora"},
@@ -54,56 +81,4 @@ var internalPropagationModeMap = map[PropagationMode]Spec{
 	SAT:      {IsImportOnly: false, Key: "SAT", Description: "Satellite"},
 	TEP:      {IsImportOnly: false, Key: "TEP", Description: "Trans-equatorial"},
 	TR:       {IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
-}
-
-// All PropagationMode specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var PropagationModeListAll = []Spec{
-	internalPropagationModeMap[AS],
-	internalPropagationModeMap[AUE],
-	internalPropagationModeMap[AUR],
-	internalPropagationModeMap[BS],
-	internalPropagationModeMap[ECH],
-	internalPropagationModeMap[EME],
-	internalPropagationModeMap[ES],
-	internalPropagationModeMap[F2],
-	internalPropagationModeMap[FAI],
-	internalPropagationModeMap[GWAVE],
-	internalPropagationModeMap[INTERNET],
-	internalPropagationModeMap[ION],
-	internalPropagationModeMap[IRL],
-	internalPropagationModeMap[LOS],
-	internalPropagationModeMap[MS],
-	internalPropagationModeMap[RPT],
-	internalPropagationModeMap[RS],
-	internalPropagationModeMap[SAT],
-	internalPropagationModeMap[TEP],
-	internalPropagationModeMap[TR],
-}
-
-// All PropagationMode specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var PropagationModeListCurrent = []Spec{
-	internalPropagationModeMap[AS],
-	internalPropagationModeMap[AUE],
-	internalPropagationModeMap[AUR],
-	internalPropagationModeMap[BS],
-	internalPropagationModeMap[ECH],
-	internalPropagationModeMap[EME],
-	internalPropagationModeMap[ES],
-	internalPropagationModeMap[F2],
-	internalPropagationModeMap[FAI],
-	internalPropagationModeMap[GWAVE],
-	internalPropagationModeMap[INTERNET],
-	internalPropagationModeMap[ION],
-	internalPropagationModeMap[IRL],
-	internalPropagationModeMap[LOS],
-	internalPropagationModeMap[MS],
-	internalPropagationModeMap[RPT],
-	internalPropagationModeMap[RS],
-	internalPropagationModeMap[SAT],
-	internalPropagationModeMap[TEP],
-	internalPropagationModeMap[TR],
 }

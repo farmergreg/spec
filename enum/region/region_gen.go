@@ -22,13 +22,40 @@ const (
 	SY   RegionCode = "SY"   // SY
 )
 
-// Lookup looks up a RegionCompositeKey specification
+// Lookup look up a specification for RegionCompositeKey
 func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
-	spec, ok := internalRegionCompositeKeyMap[regioncompositekey], true
+	spec, ok := internalMap[regioncompositekey], true
 	return spec, ok
 }
 
-var internalRegionCompositeKeyMap = map[RegionCompositeKey]Spec{
+// All RegionCompositeKey specifications INCLUDING ones marked import only.
+func AllRegionCompositeKey() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveRegionCompositeKey specifications EXCLUDING ones marked import only.
+func AllActiveRegionCompositeKey() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[RegionCompositeKey]Spec{
 	"AI.248": {IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	"BI.259": {IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 	"ET.390": {IsImportOnly: false, Code: "ET", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
@@ -39,36 +66,4 @@ var internalRegionCompositeKeyMap = map[RegionCompositeKey]Spec{
 	"NONE":   {IsImportOnly: false, Code: "NONE", DXCCEntityCode: 0, Region: "Not within a WAE or CQ region that is within a DXCC entity", Prefix: "", Applicability: spectype.StringSlice(nil), StartDate: 0, EndDate: 0},
 	"SI.279": {IsImportOnly: false, Code: "SI", DXCCEntityCode: 279, Region: "Shetland Islands", Prefix: "GM/S", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 	"SY.248": {IsImportOnly: false, Code: "SY", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
-}
-
-// All RegionCompositeKey specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var RegionCompositeKeyListAll = []Spec{
-	internalRegionCompositeKeyMap["AI.248"],
-	internalRegionCompositeKeyMap["BI.259"],
-	internalRegionCompositeKeyMap["ET.390"],
-	internalRegionCompositeKeyMap["IV.206"],
-	internalRegionCompositeKeyMap["KO.0"],
-	internalRegionCompositeKeyMap["KO.296"],
-	internalRegionCompositeKeyMap["KO.522"],
-	internalRegionCompositeKeyMap["NONE"],
-	internalRegionCompositeKeyMap["SI.279"],
-	internalRegionCompositeKeyMap["SY.248"],
-}
-
-// All RegionCompositeKey specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var RegionCompositeKeyListCurrent = []Spec{
-	internalRegionCompositeKeyMap["AI.248"],
-	internalRegionCompositeKeyMap["BI.259"],
-	internalRegionCompositeKeyMap["ET.390"],
-	internalRegionCompositeKeyMap["IV.206"],
-	internalRegionCompositeKeyMap["KO.0"],
-	internalRegionCompositeKeyMap["KO.296"],
-	internalRegionCompositeKeyMap["KO.522"],
-	internalRegionCompositeKeyMap["NONE"],
-	internalRegionCompositeKeyMap["SI.279"],
-	internalRegionCompositeKeyMap["SY.248"],
 }

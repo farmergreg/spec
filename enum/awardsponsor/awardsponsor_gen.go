@@ -18,13 +18,40 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
-// Lookup looks up a AwardSponsorPrefix specification
+// Lookup look up a specification for AwardSponsorPrefix
 func Lookup(awardsponsorprefix AwardSponsorPrefix) (Spec, bool) {
-	spec, ok := internalAwardSponsorPrefixMap[awardsponsorprefix], true
+	spec, ok := internalMap[awardsponsorprefix], true
 	return spec, ok
 }
 
-var internalAwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
+// All AwardSponsorPrefix specifications INCLUDING ones marked import only.
+func AllAwardSponsorPrefix() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveAwardSponsorPrefix specifications EXCLUDING ones marked import only.
+func AllActiveAwardSponsorPrefix() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[AwardSponsorPrefix]Spec{
 	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
 	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
 	ARRL:  {IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
@@ -36,38 +63,4 @@ var internalAwardSponsorPrefixMap = map[AwardSponsorPrefix]Spec{
 	RSGB:  {IsImportOnly: false, Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
 	TAG:   {IsImportOnly: false, Key: "TAG_", Description: "TAG - Tambov award group"},
 	WABAG: {IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
-}
-
-// All AwardSponsorPrefix specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardSponsorPrefixListAll = []Spec{
-	internalAwardSponsorPrefixMap[ADIF],
-	internalAwardSponsorPrefixMap[ARI],
-	internalAwardSponsorPrefixMap[ARRL],
-	internalAwardSponsorPrefixMap[CQ],
-	internalAwardSponsorPrefixMap[DARC],
-	internalAwardSponsorPrefixMap[EQSL],
-	internalAwardSponsorPrefixMap[IARU],
-	internalAwardSponsorPrefixMap[JARL],
-	internalAwardSponsorPrefixMap[RSGB],
-	internalAwardSponsorPrefixMap[TAG],
-	internalAwardSponsorPrefixMap[WABAG],
-}
-
-// All AwardSponsorPrefix specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardSponsorPrefixListCurrent = []Spec{
-	internalAwardSponsorPrefixMap[ADIF],
-	internalAwardSponsorPrefixMap[ARI],
-	internalAwardSponsorPrefixMap[ARRL],
-	internalAwardSponsorPrefixMap[CQ],
-	internalAwardSponsorPrefixMap[DARC],
-	internalAwardSponsorPrefixMap[EQSL],
-	internalAwardSponsorPrefixMap[IARU],
-	internalAwardSponsorPrefixMap[JARL],
-	internalAwardSponsorPrefixMap[RSGB],
-	internalAwardSponsorPrefixMap[TAG],
-	internalAwardSponsorPrefixMap[WABAG],
 }

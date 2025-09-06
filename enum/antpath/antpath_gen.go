@@ -11,35 +11,42 @@ const (
 	S AntPath = "S" // S = short path
 )
 
-// Lookup looks up a AntPath specification
+// Lookup look up a specification for AntPath
 func Lookup(antpath AntPath) (Spec, bool) {
-	spec, ok := internalAntPathMap[antpath], true
+	spec, ok := internalMap[antpath], true
 	return spec, ok
 }
 
-var internalAntPathMap = map[AntPath]Spec{
+// All AntPath specifications INCLUDING ones marked import only.
+func AllAntPath() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveAntPath specifications EXCLUDING ones marked import only.
+func AllActiveAntPath() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[AntPath]Spec{
 	G: {IsImportOnly: false, Key: "G", Description: "grayline"},
 	L: {IsImportOnly: false, Key: "L", Description: "long path"},
 	O: {IsImportOnly: false, Key: "O", Description: "other"},
 	S: {IsImportOnly: false, Key: "S", Description: "short path"},
-}
-
-// All AntPath specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AntPathListAll = []Spec{
-	internalAntPathMap[G],
-	internalAntPathMap[L],
-	internalAntPathMap[O],
-	internalAntPathMap[S],
-}
-
-// All AntPath specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AntPathListCurrent = []Spec{
-	internalAntPathMap[G],
-	internalAntPathMap[L],
-	internalAntPathMap[O],
-	internalAntPathMap[S],
 }

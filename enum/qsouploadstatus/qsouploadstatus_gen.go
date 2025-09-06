@@ -10,32 +10,41 @@ const (
 	Y QSOUploadStatus = "Y" // Y = the QSO has been uploaded to, and accepted by, the online service
 )
 
-// Lookup looks up a QSOUploadStatus specification
+// Lookup look up a specification for QSOUploadStatus
 func Lookup(qsouploadstatus QSOUploadStatus) (Spec, bool) {
-	spec, ok := internalQSOUploadStatusMap[qsouploadstatus], true
+	spec, ok := internalMap[qsouploadstatus], true
 	return spec, ok
 }
 
-var internalQSOUploadStatusMap = map[QSOUploadStatus]Spec{
+// All QSOUploadStatus specifications INCLUDING ones marked import only.
+func AllQSOUploadStatus() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveQSOUploadStatus specifications EXCLUDING ones marked import only.
+func AllActiveQSOUploadStatus() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[QSOUploadStatus]Spec{
 	M: {IsImportOnly: false, Key: "M", Description: "the QSO has been modified since being uploaded to the online service"},
 	N: {IsImportOnly: false, Key: "N", Description: "do not upload the QSO to the online service"},
 	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO has been uploaded to, and accepted by, the online service"},
-}
-
-// All QSOUploadStatus specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSOUploadStatusListAll = []Spec{
-	internalQSOUploadStatusMap[M],
-	internalQSOUploadStatusMap[N],
-	internalQSOUploadStatusMap[Y],
-}
-
-// All QSOUploadStatus specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSOUploadStatusListCurrent = []Spec{
-	internalQSOUploadStatusMap[M],
-	internalQSOUploadStatusMap[N],
-	internalQSOUploadStatusMap[Y],
 }

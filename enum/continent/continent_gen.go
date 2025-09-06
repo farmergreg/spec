@@ -14,13 +14,40 @@ const (
 	SA Continent = "SA" // SA = South America
 )
 
-// Lookup looks up a Continent specification
+// Lookup look up a specification for Continent
 func Lookup(continent Continent) (Spec, bool) {
-	spec, ok := internalContinentMap[continent], true
+	spec, ok := internalMap[continent], true
 	return spec, ok
 }
 
-var internalContinentMap = map[Continent]Spec{
+// All Continent specifications INCLUDING ones marked import only.
+func AllContinent() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveContinent specifications EXCLUDING ones marked import only.
+func AllActiveContinent() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[Continent]Spec{
 	AF: {IsImportOnly: false, Key: "AF", Continent: "Africa"},
 	AN: {IsImportOnly: false, Key: "AN", Continent: "Antarctica"},
 	AS: {IsImportOnly: false, Key: "AS", Continent: "Asia"},
@@ -28,30 +55,4 @@ var internalContinentMap = map[Continent]Spec{
 	NA: {IsImportOnly: false, Key: "NA", Continent: "North America"},
 	OC: {IsImportOnly: false, Key: "OC", Continent: "Oceania"},
 	SA: {IsImportOnly: false, Key: "SA", Continent: "South America"},
-}
-
-// All Continent specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ContinentListAll = []Spec{
-	internalContinentMap[AF],
-	internalContinentMap[AN],
-	internalContinentMap[AS],
-	internalContinentMap[EU],
-	internalContinentMap[NA],
-	internalContinentMap[OC],
-	internalContinentMap[SA],
-}
-
-// All Continent specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ContinentListCurrent = []Spec{
-	internalContinentMap[AF],
-	internalContinentMap[AN],
-	internalContinentMap[AS],
-	internalContinentMap[EU],
-	internalContinentMap[NA],
-	internalContinentMap[OC],
-	internalContinentMap[SA],
 }

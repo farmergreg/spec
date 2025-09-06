@@ -99,13 +99,40 @@ const (
 	WY  ARRLSection = "WY"  // WY   = Wyoming
 )
 
-// Lookup looks up a ARRLSection specification
+// Lookup look up a specification for ARRLSection
 func Lookup(arrlsection ARRLSection) (Spec, bool) {
-	spec, ok := internalARRLSectionMap[arrlsection], true
+	spec, ok := internalMap[arrlsection], true
 	return spec, ok
 }
 
-var internalARRLSectionMap = map[ARRLSection]Spec{
+// All ARRLSection specifications INCLUDING ones marked import only.
+func AllARRLSection() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveARRLSection specifications EXCLUDING ones marked import only.
+func AllActiveARRLSection() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[ARRLSection]Spec{
 	AB:  {IsImportOnly: false, Comments: "", Key: "AB", Description: "Alberta", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{1}, FromDate: 0, DeletedDate: 0},
 	AK:  {IsImportOnly: false, Comments: "", Key: "AK", Description: "Alaska", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{6}, FromDate: 0, DeletedDate: 0},
 	AL:  {IsImportOnly: false, Comments: "", Key: "AL", Description: "Alabama", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
@@ -196,196 +223,4 @@ var internalARRLSectionMap = map[ARRLSection]Spec{
 	WV:  {IsImportOnly: false, Comments: "", Key: "WV", Description: "West Virginia", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
 	WWA: {IsImportOnly: false, Comments: "", Key: "WWA", Description: "Western Washington", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
 	WY:  {IsImportOnly: false, Comments: "", Key: "WY", Description: "Wyoming", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
-}
-
-// All ARRLSection specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ARRLSectionListAll = []Spec{
-	internalARRLSectionMap[AB],
-	internalARRLSectionMap[AK],
-	internalARRLSectionMap[AL],
-	internalARRLSectionMap[AR],
-	internalARRLSectionMap[AZ],
-	internalARRLSectionMap[BC],
-	internalARRLSectionMap[CO],
-	internalARRLSectionMap[CT],
-	internalARRLSectionMap[DE],
-	internalARRLSectionMap[EB],
-	internalARRLSectionMap[EMA],
-	internalARRLSectionMap[ENY],
-	internalARRLSectionMap[EPA],
-	internalARRLSectionMap[EWA],
-	internalARRLSectionMap[GA],
-	internalARRLSectionMap[GH],
-	internalARRLSectionMap[GTA],
-	internalARRLSectionMap[IA],
-	internalARRLSectionMap[ID],
-	internalARRLSectionMap[IL],
-	internalARRLSectionMap[IN],
-	internalARRLSectionMap[KS],
-	internalARRLSectionMap[KY],
-	internalARRLSectionMap[LA],
-	internalARRLSectionMap[LAX],
-	internalARRLSectionMap[MAR],
-	internalARRLSectionMap[MB],
-	internalARRLSectionMap[MDC],
-	internalARRLSectionMap[ME],
-	internalARRLSectionMap[MI],
-	internalARRLSectionMap[MN],
-	internalARRLSectionMap[MO],
-	internalARRLSectionMap[MS],
-	internalARRLSectionMap[MT],
-	internalARRLSectionMap[NB],
-	internalARRLSectionMap[NC],
-	internalARRLSectionMap[ND],
-	internalARRLSectionMap[NE],
-	internalARRLSectionMap[NFL],
-	internalARRLSectionMap[NH],
-	internalARRLSectionMap[NL],
-	internalARRLSectionMap[NLI],
-	internalARRLSectionMap[NM],
-	internalARRLSectionMap[NNJ],
-	internalARRLSectionMap[NNY],
-	internalARRLSectionMap[NS],
-	internalARRLSectionMap[NT],
-	internalARRLSectionMap[NTX],
-	internalARRLSectionMap[NV],
-	internalARRLSectionMap[NWT],
-	internalARRLSectionMap[OH],
-	internalARRLSectionMap[OK],
-	internalARRLSectionMap[ON],
-	internalARRLSectionMap[ONE],
-	internalARRLSectionMap[ONN],
-	internalARRLSectionMap[ONS],
-	internalARRLSectionMap[OR],
-	internalARRLSectionMap[ORG],
-	internalARRLSectionMap[PAC],
-	internalARRLSectionMap[PE],
-	internalARRLSectionMap[PR],
-	internalARRLSectionMap[QC],
-	internalARRLSectionMap[RI],
-	internalARRLSectionMap[SB],
-	internalARRLSectionMap[SC],
-	internalARRLSectionMap[SCV],
-	internalARRLSectionMap[SD],
-	internalARRLSectionMap[SDG],
-	internalARRLSectionMap[SF],
-	internalARRLSectionMap[SFL],
-	internalARRLSectionMap[SJV],
-	internalARRLSectionMap[SK],
-	internalARRLSectionMap[SNJ],
-	internalARRLSectionMap[STX],
-	internalARRLSectionMap[SV],
-	internalARRLSectionMap[TER],
-	internalARRLSectionMap[TN],
-	internalARRLSectionMap[UT],
-	internalARRLSectionMap[VA],
-	internalARRLSectionMap[VI],
-	internalARRLSectionMap[VT],
-	internalARRLSectionMap[WCF],
-	internalARRLSectionMap[WI],
-	internalARRLSectionMap[WMA],
-	internalARRLSectionMap[WNY],
-	internalARRLSectionMap[WPA],
-	internalARRLSectionMap[WTX],
-	internalARRLSectionMap[WV],
-	internalARRLSectionMap[WWA],
-	internalARRLSectionMap[WY],
-}
-
-// All ARRLSection specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ARRLSectionListCurrent = []Spec{
-	internalARRLSectionMap[AB],
-	internalARRLSectionMap[AK],
-	internalARRLSectionMap[AL],
-	internalARRLSectionMap[AR],
-	internalARRLSectionMap[AZ],
-	internalARRLSectionMap[BC],
-	internalARRLSectionMap[CO],
-	internalARRLSectionMap[CT],
-	internalARRLSectionMap[DE],
-	internalARRLSectionMap[EB],
-	internalARRLSectionMap[EMA],
-	internalARRLSectionMap[ENY],
-	internalARRLSectionMap[EPA],
-	internalARRLSectionMap[EWA],
-	internalARRLSectionMap[GA],
-	internalARRLSectionMap[GH],
-	internalARRLSectionMap[GTA],
-	internalARRLSectionMap[IA],
-	internalARRLSectionMap[ID],
-	internalARRLSectionMap[IL],
-	internalARRLSectionMap[IN],
-	internalARRLSectionMap[KS],
-	internalARRLSectionMap[KY],
-	internalARRLSectionMap[LA],
-	internalARRLSectionMap[LAX],
-	internalARRLSectionMap[MAR],
-	internalARRLSectionMap[MB],
-	internalARRLSectionMap[MDC],
-	internalARRLSectionMap[ME],
-	internalARRLSectionMap[MI],
-	internalARRLSectionMap[MN],
-	internalARRLSectionMap[MO],
-	internalARRLSectionMap[MS],
-	internalARRLSectionMap[MT],
-	internalARRLSectionMap[NB],
-	internalARRLSectionMap[NC],
-	internalARRLSectionMap[ND],
-	internalARRLSectionMap[NE],
-	internalARRLSectionMap[NFL],
-	internalARRLSectionMap[NH],
-	internalARRLSectionMap[NL],
-	internalARRLSectionMap[NLI],
-	internalARRLSectionMap[NM],
-	internalARRLSectionMap[NNJ],
-	internalARRLSectionMap[NNY],
-	internalARRLSectionMap[NS],
-	internalARRLSectionMap[NT],
-	internalARRLSectionMap[NTX],
-	internalARRLSectionMap[NV],
-	internalARRLSectionMap[NWT],
-	internalARRLSectionMap[OH],
-	internalARRLSectionMap[OK],
-	internalARRLSectionMap[ON],
-	internalARRLSectionMap[ONE],
-	internalARRLSectionMap[ONN],
-	internalARRLSectionMap[ONS],
-	internalARRLSectionMap[OR],
-	internalARRLSectionMap[ORG],
-	internalARRLSectionMap[PAC],
-	internalARRLSectionMap[PE],
-	internalARRLSectionMap[PR],
-	internalARRLSectionMap[QC],
-	internalARRLSectionMap[RI],
-	internalARRLSectionMap[SB],
-	internalARRLSectionMap[SC],
-	internalARRLSectionMap[SCV],
-	internalARRLSectionMap[SD],
-	internalARRLSectionMap[SDG],
-	internalARRLSectionMap[SF],
-	internalARRLSectionMap[SFL],
-	internalARRLSectionMap[SJV],
-	internalARRLSectionMap[SK],
-	internalARRLSectionMap[SNJ],
-	internalARRLSectionMap[STX],
-	internalARRLSectionMap[SV],
-	internalARRLSectionMap[TER],
-	internalARRLSectionMap[TN],
-	internalARRLSectionMap[UT],
-	internalARRLSectionMap[VA],
-	internalARRLSectionMap[VI],
-	internalARRLSectionMap[VT],
-	internalARRLSectionMap[WCF],
-	internalARRLSectionMap[WI],
-	internalARRLSectionMap[WMA],
-	internalARRLSectionMap[WNY],
-	internalARRLSectionMap[WPA],
-	internalARRLSectionMap[WTX],
-	internalARRLSectionMap[WV],
-	internalARRLSectionMap[WWA],
-	internalARRLSectionMap[WY],
 }

@@ -35,13 +35,40 @@ const (
 	WWFFRef                                   ADIType = "WWFFRef"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
-// Lookup looks up a ADIType specification
+// Lookup look up a specification for ADIType
 func Lookup(aditype ADIType) (Spec, bool) {
-	spec, ok := internalADITypeMap[aditype], true
+	spec, ok := internalMap[aditype], true
 	return spec, ok
 }
 
-var internalADITypeMap = map[ADIType]Spec{
+// All ADIType specifications INCLUDING ones marked import only.
+func AllADIType() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveADIType specifications EXCLUDING ones marked import only.
+func AllActiveADIType() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[ADIType]Spec{
 	AwardList:           {Key: "AwardList", DataTypeIndicator: "", Description: "a comma-delimited list of members of the Award enumeration", MinimumValue: 0, MaximumValue: 0, IsImportOnly: true, Comments: ""},
 	Boolean:             {Key: "Boolean", DataTypeIndicator: "B", Description: "if True, the single ASCII character Y or y if False, the single ASCII character N or n", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 	Character:           {Key: "Character", DataTypeIndicator: "", Description: "an ASCII character whose code lies in the range of 32 through 126, inclusive", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
@@ -70,71 +97,4 @@ var internalADITypeMap = map[ADIType]Spec{
 	String:                                    {Key: "String", DataTypeIndicator: "S", Description: "a sequence of Characters", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 	Time:                                      {Key: "Time", DataTypeIndicator: "T", Description: "6 Digits representing a UTC time in HHMMSS format or 4 Digits representing a time in HHMM format, where HH is a 2-Digit hour specifier, where 0 <= HH <= 23 [use leading zeroes] MM is a 2-Digit minute specifier, where 0 <= MM <= 59 [use leading zeroes] SS is a 2-Digit second specifier, where 0 <= SS <= 59 [use leading zeroes]", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 	WWFFRef:                                   {Key: "WWFFRef", DataTypeIndicator: "", Description: "a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
-}
-
-// All ADIType specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ADITypeListAll = []Spec{
-	internalADITypeMap[AwardList],
-	internalADITypeMap[Boolean],
-	internalADITypeMap[Character],
-	internalADITypeMap[CreditList],
-	internalADITypeMap[Date],
-	internalADITypeMap[Digit],
-	internalADITypeMap[Enumeration],
-	internalADITypeMap[GridSquare],
-	internalADITypeMap[GridSquareExt],
-	internalADITypeMap[GridSquareList],
-	internalADITypeMap[IOTARefNo],
-	internalADITypeMap[Integer],
-	internalADITypeMap[IntlCharacter],
-	internalADITypeMap[IntlMultilineString],
-	internalADITypeMap[IntlString],
-	internalADITypeMap[Location],
-	internalADITypeMap[MultilineString],
-	internalADITypeMap[Number],
-	internalADITypeMap[POTARef],
-	internalADITypeMap[POTARefList],
-	internalADITypeMap[PositiveInteger],
-	internalADITypeMap[SOTARef],
-	internalADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
-	internalADITypeMap[SecondarySubdivisionList],
-	internalADITypeMap[SponsoredAwardList],
-	internalADITypeMap[String],
-	internalADITypeMap[Time],
-	internalADITypeMap[WWFFRef],
-}
-
-// All ADIType specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ADITypeListCurrent = []Spec{
-	internalADITypeMap[Boolean],
-	internalADITypeMap[Character],
-	internalADITypeMap[CreditList],
-	internalADITypeMap[Date],
-	internalADITypeMap[Digit],
-	internalADITypeMap[Enumeration],
-	internalADITypeMap[GridSquare],
-	internalADITypeMap[GridSquareExt],
-	internalADITypeMap[GridSquareList],
-	internalADITypeMap[IOTARefNo],
-	internalADITypeMap[Integer],
-	internalADITypeMap[IntlCharacter],
-	internalADITypeMap[IntlMultilineString],
-	internalADITypeMap[IntlString],
-	internalADITypeMap[Location],
-	internalADITypeMap[MultilineString],
-	internalADITypeMap[Number],
-	internalADITypeMap[POTARef],
-	internalADITypeMap[POTARefList],
-	internalADITypeMap[PositiveInteger],
-	internalADITypeMap[SOTARef],
-	internalADITypeMap[SecondaryAdministrativeSubdivisionListAlt],
-	internalADITypeMap[SecondarySubdivisionList],
-	internalADITypeMap[SponsoredAwardList],
-	internalADITypeMap[String],
-	internalADITypeMap[Time],
-	internalADITypeMap[WWFFRef],
 }

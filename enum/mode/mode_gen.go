@@ -99,13 +99,40 @@ const (
 	WSPR         Mode = "WSPR"         // WSPR                   =
 )
 
-// Lookup looks up a Mode specification
+// Lookup look up a specification for Mode
 func Lookup(mode Mode) (Spec, bool) {
-	spec, ok := internalModeMap[mode], true
+	spec, ok := internalMap[mode], true
 	return spec, ok
 }
 
-var internalModeMap = map[Mode]Spec{
+// All Mode specifications INCLUDING ones marked import only.
+func AllMode() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveMode specifications EXCLUDING ones marked import only.
+func AllActiveMode() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[Mode]Spec{
 	AM:           {IsImportOnly: false, Key: "AM", Submodes: submode.SubModeList(nil), Description: ""},
 	AMTORFEC:     {IsImportOnly: true, Key: "AMTORFEC", Submodes: submode.SubModeList(nil), Description: ""},
 	ARDOP:        {IsImportOnly: false, Key: "ARDOP", Submodes: submode.SubModeList(nil), Description: "Amateur Radio Digital Open Protocol"},
@@ -196,154 +223,4 @@ var internalModeMap = map[Mode]Spec{
 	VOI:          {IsImportOnly: false, Key: "VOI", Submodes: submode.SubModeList(nil), Description: ""},
 	WINMOR:       {IsImportOnly: false, Key: "WINMOR", Submodes: submode.SubModeList(nil), Description: ""},
 	WSPR:         {IsImportOnly: false, Key: "WSPR", Submodes: submode.SubModeList(nil), Description: ""},
-}
-
-// All Mode specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ModeListAll = []Spec{
-	internalModeMap[AM],
-	internalModeMap[AMTORFEC],
-	internalModeMap[ARDOP],
-	internalModeMap[ASCI],
-	internalModeMap[ATV],
-	internalModeMap[C4FM],
-	internalModeMap[CHIP],
-	internalModeMap[CHIP128],
-	internalModeMap[CHIP64],
-	internalModeMap[CLO],
-	internalModeMap[CONTESTI],
-	internalModeMap[CW],
-	internalModeMap[DIGITALVOICE],
-	internalModeMap[DOMINO],
-	internalModeMap[DOMINOF],
-	internalModeMap[DSTAR],
-	internalModeMap[DYNAMIC],
-	internalModeMap[FAX],
-	internalModeMap[FM],
-	internalModeMap[FMHELL],
-	internalModeMap[FSK],
-	internalModeMap[FSK31],
-	internalModeMap[FSK441],
-	internalModeMap[FT8],
-	internalModeMap[GTOR],
-	internalModeMap[HELL],
-	internalModeMap[HELL80],
-	internalModeMap[HFSK],
-	internalModeMap[ISCAT],
-	internalModeMap[JT4],
-	internalModeMap[JT44],
-	internalModeMap[JT4A],
-	internalModeMap[JT4B],
-	internalModeMap[JT4C],
-	internalModeMap[JT4D],
-	internalModeMap[JT4E],
-	internalModeMap[JT4F],
-	internalModeMap[JT4G],
-	internalModeMap[JT65],
-	internalModeMap[JT65A],
-	internalModeMap[JT65B],
-	internalModeMap[JT65C],
-	internalModeMap[JT6M],
-	internalModeMap[JT9],
-	internalModeMap[MFSK],
-	internalModeMap[MFSK16],
-	internalModeMap[MFSK8],
-	internalModeMap[MSK144],
-	internalModeMap[MT63],
-	internalModeMap[MTONE],
-	internalModeMap[OLIVIA],
-	internalModeMap[OPERA],
-	internalModeMap[PAC],
-	internalModeMap[PAC2],
-	internalModeMap[PAC3],
-	internalModeMap[PAX],
-	internalModeMap[PAX2],
-	internalModeMap[PCW],
-	internalModeMap[PKT],
-	internalModeMap[PSK],
-	internalModeMap[PSK10],
-	internalModeMap[PSK125],
-	internalModeMap[PSK2K],
-	internalModeMap[PSK31],
-	internalModeMap[PSK63],
-	internalModeMap[PSK63F],
-	internalModeMap[PSKAM10],
-	internalModeMap[PSKAM31],
-	internalModeMap[PSKAM50],
-	internalModeMap[PSKFEC31],
-	internalModeMap[PSKHELL],
-	internalModeMap[Q15],
-	internalModeMap[QPSK125],
-	internalModeMap[QPSK31],
-	internalModeMap[QPSK63],
-	internalModeMap[QRA64],
-	internalModeMap[ROS],
-	internalModeMap[RTTY],
-	internalModeMap[RTTYM],
-	internalModeMap[SSB],
-	internalModeMap[SSTV],
-	internalModeMap[T10],
-	internalModeMap[THOR],
-	internalModeMap[THRB],
-	internalModeMap[THRBX],
-	internalModeMap[TOR],
-	internalModeMap[V4],
-	internalModeMap[VOI],
-	internalModeMap[WINMOR],
-	internalModeMap[WSPR],
-}
-
-// All Mode specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var ModeListCurrent = []Spec{
-	internalModeMap[AM],
-	internalModeMap[ARDOP],
-	internalModeMap[ATV],
-	internalModeMap[CHIP],
-	internalModeMap[CLO],
-	internalModeMap[CONTESTI],
-	internalModeMap[CW],
-	internalModeMap[DIGITALVOICE],
-	internalModeMap[DOMINO],
-	internalModeMap[DYNAMIC],
-	internalModeMap[FAX],
-	internalModeMap[FM],
-	internalModeMap[FSK],
-	internalModeMap[FSK441],
-	internalModeMap[FT8],
-	internalModeMap[HELL],
-	internalModeMap[ISCAT],
-	internalModeMap[JT4],
-	internalModeMap[JT44],
-	internalModeMap[JT65],
-	internalModeMap[JT6M],
-	internalModeMap[JT9],
-	internalModeMap[MFSK],
-	internalModeMap[MSK144],
-	internalModeMap[MT63],
-	internalModeMap[MTONE],
-	internalModeMap[OLIVIA],
-	internalModeMap[OPERA],
-	internalModeMap[PAC],
-	internalModeMap[PAX],
-	internalModeMap[PKT],
-	internalModeMap[PSK],
-	internalModeMap[PSK2K],
-	internalModeMap[Q15],
-	internalModeMap[QRA64],
-	internalModeMap[ROS],
-	internalModeMap[RTTY],
-	internalModeMap[RTTYM],
-	internalModeMap[SSB],
-	internalModeMap[SSTV],
-	internalModeMap[T10],
-	internalModeMap[THOR],
-	internalModeMap[THRB],
-	internalModeMap[TOR],
-	internalModeMap[V4],
-	internalModeMap[VOI],
-	internalModeMap[WINMOR],
-	internalModeMap[WSPR],
 }

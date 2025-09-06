@@ -15,6 +15,6 @@ func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 
 // LookupByCodeAndDXCC looks up a Primary Administrative Subdivision specification by its composite key (Code + DXCCEntityCode).
 func LookupByCodeAndDXCC(code PrimaryAdministrativeSubdivisionCode, dxccEntityCode dxccentitycode.DXCCEntityCode) (Spec, bool) {
-	spec, ok := internalPrimaryAdministrativeSubdivisionCompositeKeyMap[PrimaryAdministrativeSubdivisionCompositeKey(string(code)+"."+dxccEntityCode.String())]
+	spec, ok := Lookup(PrimaryAdministrativeSubdivisionCompositeKey(string(code) + "." + dxccEntityCode.String()))
 	return spec, ok
 }

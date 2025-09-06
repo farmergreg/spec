@@ -36,13 +36,40 @@ const (
 	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
-// Lookup looks up a Award specification
+// Lookup look up a specification for Award
 func Lookup(award Award) (Spec, bool) {
-	spec, ok := internalAwardMap[award], true
+	spec, ok := internalMap[award], true
 	return spec, ok
 }
 
-var internalAwardMap = map[Award]Spec{
+// All Award specifications INCLUDING ones marked import only.
+func AllAward() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveAward specifications EXCLUDING ones marked import only.
+func AllActiveAward() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[Award]Spec{
 	AJA:         {IsImportOnly: true, Key: "AJA"},
 	CQDX:        {IsImportOnly: true, Key: "CQDX"},
 	CQDXFIELD:   {IsImportOnly: true, Key: "CQDXFIELD"},
@@ -73,43 +100,3 @@ var internalAwardMap = map[Award]Spec{
 	WAS:         {IsImportOnly: true, Key: "WAS"},
 	WAZ:         {IsImportOnly: true, Key: "WAZ"},
 }
-
-// All Award specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardListAll = []Spec{
-	internalAwardMap[AJA],
-	internalAwardMap[CQDX],
-	internalAwardMap[CQDXFIELD],
-	internalAwardMap[CQWAZ_160m],
-	internalAwardMap[CQWAZ_CW],
-	internalAwardMap[CQWAZ_MIXED],
-	internalAwardMap[CQWAZ_PHONE],
-	internalAwardMap[CQWAZ_RTTY],
-	internalAwardMap[CQWPX],
-	internalAwardMap[DARC_DOK],
-	internalAwardMap[DXCC],
-	internalAwardMap[DXCC_CW],
-	internalAwardMap[DXCC_MIXED],
-	internalAwardMap[DXCC_PHONE],
-	internalAwardMap[DXCC_RTTY],
-	internalAwardMap[IOTA],
-	internalAwardMap[JCC],
-	internalAwardMap[JCG],
-	internalAwardMap[MARATHON],
-	internalAwardMap[RDA],
-	internalAwardMap[USACA],
-	internalAwardMap[VUCC],
-	internalAwardMap[WAB],
-	internalAwardMap[WAC],
-	internalAwardMap[WAE],
-	internalAwardMap[WAIP],
-	internalAwardMap[WAJA],
-	internalAwardMap[WAS],
-	internalAwardMap[WAZ],
-}
-
-// All Award specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var AwardListCurrent = []Spec{}

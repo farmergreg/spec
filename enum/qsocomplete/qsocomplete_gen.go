@@ -11,35 +11,42 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
-// Lookup looks up a QSOComplete specification
+// Lookup look up a specification for QSOComplete
 func Lookup(qsocomplete QSOComplete) (Spec, bool) {
-	spec, ok := internalQSOCompleteMap[qsocomplete], true
+	spec, ok := internalMap[qsocomplete], true
 	return spec, ok
 }
 
-var internalQSOCompleteMap = map[QSOComplete]Spec{
+// All QSOComplete specifications INCLUDING ones marked import only.
+func AllQSOComplete() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveQSOComplete specifications EXCLUDING ones marked import only.
+func AllActiveQSOComplete() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[QSOComplete]Spec{
 	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
 	N:         {IsImportOnly: false, Key: "N", Description: "no"},
 	NIL:       {IsImportOnly: false, Key: "NIL", Description: "not heard"},
 	Y:         {IsImportOnly: false, Key: "Y", Description: "yes"},
-}
-
-// All QSOComplete specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSOCompleteListAll = []Spec{
-	internalQSOCompleteMap[Uncertain],
-	internalQSOCompleteMap[N],
-	internalQSOCompleteMap[NIL],
-	internalQSOCompleteMap[Y],
-}
-
-// All QSOComplete specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var QSOCompleteListCurrent = []Spec{
-	internalQSOCompleteMap[Uncertain],
-	internalQSOCompleteMap[N],
-	internalQSOCompleteMap[NIL],
-	internalQSOCompleteMap[Y],
 }

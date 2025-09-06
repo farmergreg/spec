@@ -78,13 +78,40 @@ const (
 	WITUZ_BAND          Credit = "WITUZ_BAND"          // WITUZ_BAND           = RSGB            Worked ITU Zones (WITUZ)                      Band
 )
 
-// Lookup looks up a Credit specification
+// Lookup look up a specification for Credit
 func Lookup(credit Credit) (Spec, bool) {
-	spec, ok := internalCreditMap[credit], true
+	spec, ok := internalMap[credit], true
 	return spec, ok
 }
 
-var internalCreditMap = map[Credit]Spec{
+// All Credit specifications INCLUDING ones marked import only.
+func AllCredit() []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		result = append(result, v)
+	}
+	return result
+}
+
+// AllActiveCredit specifications EXCLUDING ones marked import only.
+func AllActiveCredit() []Spec {
+	return LookupByFilter(func(s Spec) bool {
+		return !bool(s.IsImportOnly)
+	})
+}
+
+// LookupByFilter returns all specifications that match the provided filter function.
+func LookupByFilter(filter func(Spec) bool) []Spec {
+	result := make([]Spec, 0, len(internalMap))
+	for _, v := range internalMap {
+		if filter(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+var internalMap = map[Credit]Spec{
 	CQDX:                {IsImportOnly: false, Key: "CQDX", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mixed"},
 	CQDXFIELD:           {IsImportOnly: false, Key: "CQDXFIELD", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mixed"},
 	CQDXFIELD_BAND:      {IsImportOnly: false, Key: "CQDXFIELD_BAND", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Band"},
@@ -156,158 +183,4 @@ var internalCreditMap = map[Credit]Spec{
 	WAS_SATELLITE:       {IsImportOnly: false, Key: "WAS_SATELLITE", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Satellite"},
 	WITUZ:               {IsImportOnly: false, Key: "WITUZ", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Mixed"},
 	WITUZ_BAND:          {IsImportOnly: false, Key: "WITUZ_BAND", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Band"},
-}
-
-// All Credit specifications including deprecated and import only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var CreditListAll = []Spec{
-	internalCreditMap[CQDX],
-	internalCreditMap[CQDXFIELD],
-	internalCreditMap[CQDXFIELD_BAND],
-	internalCreditMap[CQDXFIELD_MOBILE],
-	internalCreditMap[CQDXFIELD_MODE],
-	internalCreditMap[CQDXFIELD_QRP],
-	internalCreditMap[CQDXFIELD_SATELLITE],
-	internalCreditMap[CQDX_BAND],
-	internalCreditMap[CQDX_MOBILE],
-	internalCreditMap[CQDX_MODE],
-	internalCreditMap[CQDX_QRP],
-	internalCreditMap[CQDX_SATELLITE],
-	internalCreditMap[CQWAZ_BAND],
-	internalCreditMap[CQWAZ_EME],
-	internalCreditMap[CQWAZ_MIXED],
-	internalCreditMap[CQWAZ_MOBILE],
-	internalCreditMap[CQWAZ_MODE],
-	internalCreditMap[CQWAZ_QRP],
-	internalCreditMap[CQWAZ_SATELLITE],
-	internalCreditMap[CQWPX],
-	internalCreditMap[CQWPX_BAND],
-	internalCreditMap[CQWPX_MODE],
-	internalCreditMap[DXCC],
-	internalCreditMap[DXCC_BAND],
-	internalCreditMap[DXCC_MODE],
-	internalCreditMap[DXCC_SATELLITE],
-	internalCreditMap[EAUSTRALIA],
-	internalCreditMap[ECANADA],
-	internalCreditMap[ECOUNTY_STATE],
-	internalCreditMap[EDX],
-	internalCreditMap[EDX100],
-	internalCreditMap[EDX100_BAND],
-	internalCreditMap[EDX100_MODE],
-	internalCreditMap[EECHOLINK50],
-	internalCreditMap[EGRID_BAND],
-	internalCreditMap[EGRID_SATELLITE],
-	internalCreditMap[EPFX300],
-	internalCreditMap[EPFX300_MODE],
-	internalCreditMap[EWAS],
-	internalCreditMap[EWAS_BAND],
-	internalCreditMap[EWAS_MODE],
-	internalCreditMap[EWAS_SATELLITE],
-	internalCreditMap[EZ40],
-	internalCreditMap[EZ40_MODE],
-	internalCreditMap[FFMA],
-	internalCreditMap[IOTA],
-	internalCreditMap[IOTA_BASIC],
-	internalCreditMap[IOTA_CONT],
-	internalCreditMap[IOTA_GROUP],
-	internalCreditMap[RDA],
-	internalCreditMap[USACA],
-	internalCreditMap[VUCC_BAND],
-	internalCreditMap[VUCC_SATELLITE],
-	internalCreditMap[WAB],
-	internalCreditMap[WAC],
-	internalCreditMap[WAC_BAND],
-	internalCreditMap[WAE],
-	internalCreditMap[WAE_BAND],
-	internalCreditMap[WAE_MODE],
-	internalCreditMap[WAIP],
-	internalCreditMap[WAIP_BAND],
-	internalCreditMap[WAIP_MODE],
-	internalCreditMap[WAS],
-	internalCreditMap[WAS_BAND],
-	internalCreditMap[WAS_EME],
-	internalCreditMap[WAS_MODE],
-	internalCreditMap[WAS_NOVICE],
-	internalCreditMap[WAS_QRP],
-	internalCreditMap[WAS_SATELLITE],
-	internalCreditMap[WITUZ],
-	internalCreditMap[WITUZ_BAND],
-}
-
-// All Credit specifications that are NOT marked import-only.
-// For convenience, this data is mutable.
-// If you require immutable data, please use the specdata package.
-var CreditListCurrent = []Spec{
-	internalCreditMap[CQDX],
-	internalCreditMap[CQDXFIELD],
-	internalCreditMap[CQDXFIELD_BAND],
-	internalCreditMap[CQDXFIELD_MOBILE],
-	internalCreditMap[CQDXFIELD_MODE],
-	internalCreditMap[CQDXFIELD_QRP],
-	internalCreditMap[CQDXFIELD_SATELLITE],
-	internalCreditMap[CQDX_BAND],
-	internalCreditMap[CQDX_MOBILE],
-	internalCreditMap[CQDX_MODE],
-	internalCreditMap[CQDX_QRP],
-	internalCreditMap[CQDX_SATELLITE],
-	internalCreditMap[CQWAZ_BAND],
-	internalCreditMap[CQWAZ_EME],
-	internalCreditMap[CQWAZ_MIXED],
-	internalCreditMap[CQWAZ_MOBILE],
-	internalCreditMap[CQWAZ_MODE],
-	internalCreditMap[CQWAZ_QRP],
-	internalCreditMap[CQWAZ_SATELLITE],
-	internalCreditMap[CQWPX],
-	internalCreditMap[CQWPX_BAND],
-	internalCreditMap[CQWPX_MODE],
-	internalCreditMap[DXCC],
-	internalCreditMap[DXCC_BAND],
-	internalCreditMap[DXCC_MODE],
-	internalCreditMap[DXCC_SATELLITE],
-	internalCreditMap[EAUSTRALIA],
-	internalCreditMap[ECANADA],
-	internalCreditMap[ECOUNTY_STATE],
-	internalCreditMap[EDX],
-	internalCreditMap[EDX100],
-	internalCreditMap[EDX100_BAND],
-	internalCreditMap[EDX100_MODE],
-	internalCreditMap[EECHOLINK50],
-	internalCreditMap[EGRID_BAND],
-	internalCreditMap[EGRID_SATELLITE],
-	internalCreditMap[EPFX300],
-	internalCreditMap[EPFX300_MODE],
-	internalCreditMap[EWAS],
-	internalCreditMap[EWAS_BAND],
-	internalCreditMap[EWAS_MODE],
-	internalCreditMap[EWAS_SATELLITE],
-	internalCreditMap[EZ40],
-	internalCreditMap[EZ40_MODE],
-	internalCreditMap[FFMA],
-	internalCreditMap[IOTA],
-	internalCreditMap[IOTA_BASIC],
-	internalCreditMap[IOTA_CONT],
-	internalCreditMap[IOTA_GROUP],
-	internalCreditMap[RDA],
-	internalCreditMap[USACA],
-	internalCreditMap[VUCC_BAND],
-	internalCreditMap[VUCC_SATELLITE],
-	internalCreditMap[WAB],
-	internalCreditMap[WAC],
-	internalCreditMap[WAC_BAND],
-	internalCreditMap[WAE],
-	internalCreditMap[WAE_BAND],
-	internalCreditMap[WAE_MODE],
-	internalCreditMap[WAIP],
-	internalCreditMap[WAIP_BAND],
-	internalCreditMap[WAIP_MODE],
-	internalCreditMap[WAS],
-	internalCreditMap[WAS_BAND],
-	internalCreditMap[WAS_EME],
-	internalCreditMap[WAS_MODE],
-	internalCreditMap[WAS_NOVICE],
-	internalCreditMap[WAS_QRP],
-	internalCreditMap[WAS_SATELLITE],
-	internalCreditMap[WITUZ],
-	internalCreditMap[WITUZ_BAND],
 }
