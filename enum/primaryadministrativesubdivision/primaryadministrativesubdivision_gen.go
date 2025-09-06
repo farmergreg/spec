@@ -1337,8 +1337,17 @@ const (
 
 // Lookup look up a specification for PrimaryAdministrativeSubdivisionCompositeKey
 func Lookup(primaryadministrativesubdivisioncompositekey PrimaryAdministrativeSubdivisionCompositeKey) (Spec, bool) {
-	spec, ok := internalMap[primaryadministrativesubdivisioncompositekey], true
+	spec, ok := internalMap[primaryadministrativesubdivisioncompositekey]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for PrimaryAdministrativeSubdivisionCompositeKey exists and is not import only.
+func IsValid(primaryadministrativesubdivisioncompositekey PrimaryAdministrativeSubdivisionCompositeKey) bool {
+	spec, ok := internalMap[primaryadministrativesubdivisioncompositekey]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All PrimaryAdministrativeSubdivisionCompositeKey specifications INCLUDING ones marked import only.

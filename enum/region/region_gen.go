@@ -24,8 +24,17 @@ const (
 
 // Lookup look up a specification for RegionCompositeKey
 func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
-	spec, ok := internalMap[regioncompositekey], true
+	spec, ok := internalMap[regioncompositekey]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for RegionCompositeKey exists and is not import only.
+func IsValid(regioncompositekey RegionCompositeKey) bool {
+	spec, ok := internalMap[regioncompositekey]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All RegionCompositeKey specifications INCLUDING ones marked import only.

@@ -16,8 +16,17 @@ const (
 
 // Lookup look up a specification for MorseKeyType
 func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
-	spec, ok := internalMap[morsekeytype], true
+	spec, ok := internalMap[morsekeytype]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for MorseKeyType exists and is not import only.
+func IsValid(morsekeytype MorseKeyType) bool {
+	spec, ok := internalMap[morsekeytype]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All MorseKeyType specifications INCLUDING ones marked import only.

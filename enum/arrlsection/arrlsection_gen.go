@@ -101,8 +101,17 @@ const (
 
 // Lookup look up a specification for ARRLSection
 func Lookup(arrlsection ARRLSection) (Spec, bool) {
-	spec, ok := internalMap[arrlsection], true
+	spec, ok := internalMap[arrlsection]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for ARRLSection exists and is not import only.
+func IsValid(arrlsection ARRLSection) bool {
+	spec, ok := internalMap[arrlsection]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All ARRLSection specifications INCLUDING ones marked import only.

@@ -80,8 +80,17 @@ const (
 
 // Lookup look up a specification for Credit
 func Lookup(credit Credit) (Spec, bool) {
-	spec, ok := internalMap[credit], true
+	spec, ok := internalMap[credit]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Credit exists and is not import only.
+func IsValid(credit Credit) bool {
+	spec, ok := internalMap[credit]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Credit specifications INCLUDING ones marked import only.

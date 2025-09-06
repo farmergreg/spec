@@ -16,8 +16,17 @@ const (
 
 // Lookup look up a specification for Continent
 func Lookup(continent Continent) (Spec, bool) {
-	spec, ok := internalMap[continent], true
+	spec, ok := internalMap[continent]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Continent exists and is not import only.
+func IsValid(continent Continent) bool {
+	spec, ok := internalMap[continent]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Continent specifications INCLUDING ones marked import only.

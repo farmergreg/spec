@@ -13,8 +13,17 @@ const (
 
 // Lookup look up a specification for AntPath
 func Lookup(antpath AntPath) (Spec, bool) {
-	spec, ok := internalMap[antpath], true
+	spec, ok := internalMap[antpath]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for AntPath exists and is not import only.
+func IsValid(antpath AntPath) bool {
+	spec, ok := internalMap[antpath]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All AntPath specifications INCLUDING ones marked import only.

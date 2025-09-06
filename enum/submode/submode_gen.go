@@ -192,8 +192,17 @@ const (
 
 // Lookup look up a specification for SubMode
 func Lookup(submode SubMode) (Spec, bool) {
-	spec, ok := internalMap[submode], true
+	spec, ok := internalMap[submode]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for SubMode exists and is not import only.
+func IsValid(submode SubMode) bool {
+	spec, ok := internalMap[submode]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All SubMode specifications INCLUDING ones marked import only.

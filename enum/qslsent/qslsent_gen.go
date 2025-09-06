@@ -14,8 +14,17 @@ const (
 
 // Lookup look up a specification for QSLSent
 func Lookup(qslsent QSLSent) (Spec, bool) {
-	spec, ok := internalMap[qslsent], true
+	spec, ok := internalMap[qslsent]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSLSent exists and is not import only.
+func IsValid(qslsent QSLSent) bool {
+	spec, ok := internalMap[qslsent]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSLSent specifications INCLUDING ones marked import only.

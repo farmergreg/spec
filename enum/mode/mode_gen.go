@@ -101,8 +101,17 @@ const (
 
 // Lookup look up a specification for Mode
 func Lookup(mode Mode) (Spec, bool) {
-	spec, ok := internalMap[mode], true
+	spec, ok := internalMap[mode]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Mode exists and is not import only.
+func IsValid(mode Mode) bool {
+	spec, ok := internalMap[mode]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Mode specifications INCLUDING ones marked import only.

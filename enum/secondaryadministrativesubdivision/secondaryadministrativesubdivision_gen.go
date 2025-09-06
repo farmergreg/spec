@@ -67,8 +67,17 @@ const (
 
 // Lookup look up a specification for SecondaryAdministrativeSubdivision
 func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivision) (Spec, bool) {
-	spec, ok := internalMap[secondaryadministrativesubdivision], true
+	spec, ok := internalMap[secondaryadministrativesubdivision]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for SecondaryAdministrativeSubdivision exists and is not import only.
+func IsValid(secondaryadministrativesubdivision SecondaryAdministrativeSubdivision) bool {
+	spec, ok := internalMap[secondaryadministrativesubdivision]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All SecondaryAdministrativeSubdivision specifications INCLUDING ones marked import only.

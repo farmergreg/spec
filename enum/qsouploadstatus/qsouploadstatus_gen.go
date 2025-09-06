@@ -12,8 +12,17 @@ const (
 
 // Lookup look up a specification for QSOUploadStatus
 func Lookup(qsouploadstatus QSOUploadStatus) (Spec, bool) {
-	spec, ok := internalMap[qsouploadstatus], true
+	spec, ok := internalMap[qsouploadstatus]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSOUploadStatus exists and is not import only.
+func IsValid(qsouploadstatus QSOUploadStatus) bool {
+	spec, ok := internalMap[qsouploadstatus]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSOUploadStatus specifications INCLUDING ones marked import only.

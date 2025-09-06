@@ -42,8 +42,17 @@ const (
 
 // Lookup look up a specification for Band
 func Lookup(band Band) (Spec, bool) {
-	spec, ok := internalMap[band], true
+	spec, ok := internalMap[band]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Band exists and is not import only.
+func IsValid(band Band) bool {
+	spec, ok := internalMap[band]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Band specifications INCLUDING ones marked import only.

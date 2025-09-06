@@ -14,8 +14,17 @@ const (
 
 // Lookup look up a specification for QSLRcvd
 func Lookup(qslrcvd QSLRcvd) (Spec, bool) {
-	spec, ok := internalMap[qslrcvd], true
+	spec, ok := internalMap[qslrcvd]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSLRcvd exists and is not import only.
+func IsValid(qslrcvd QSLRcvd) bool {
+	spec, ok := internalMap[qslrcvd]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSLRcvd specifications INCLUDING ones marked import only.

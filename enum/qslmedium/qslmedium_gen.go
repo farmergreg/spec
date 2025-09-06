@@ -12,8 +12,17 @@ const (
 
 // Lookup look up a specification for QSLMedium
 func Lookup(qslmedium QSLMedium) (Spec, bool) {
-	spec, ok := internalMap[qslmedium], true
+	spec, ok := internalMap[qslmedium]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSLMedium exists and is not import only.
+func IsValid(qslmedium QSLMedium) bool {
+	spec, ok := internalMap[qslmedium]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSLMedium specifications INCLUDING ones marked import only.

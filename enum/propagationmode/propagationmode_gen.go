@@ -29,8 +29,17 @@ const (
 
 // Lookup look up a specification for PropagationMode
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
-	spec, ok := internalMap[propagationmode], true
+	spec, ok := internalMap[propagationmode]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for PropagationMode exists and is not import only.
+func IsValid(propagationmode PropagationMode) bool {
+	spec, ok := internalMap[propagationmode]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All PropagationMode specifications INCLUDING ones marked import only.

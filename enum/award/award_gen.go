@@ -38,8 +38,17 @@ const (
 
 // Lookup look up a specification for Award
 func Lookup(award Award) (Spec, bool) {
-	spec, ok := internalMap[award], true
+	spec, ok := internalMap[award]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Award exists and is not import only.
+func IsValid(award Award) bool {
+	spec, ok := internalMap[award]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Award specifications INCLUDING ones marked import only.

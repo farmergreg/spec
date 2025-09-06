@@ -231,8 +231,17 @@ const (
 
 // Lookup look up a specification for ADIField
 func Lookup(adifield ADIField) (Spec, bool) {
-	spec, ok := internalMap[adifield], true
+	spec, ok := internalMap[adifield]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for ADIField exists and is not import only.
+func IsValid(adifield ADIField) bool {
+	spec, ok := internalMap[adifield]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All ADIField specifications INCLUDING ones marked import only.

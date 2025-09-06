@@ -13,8 +13,17 @@ const (
 
 // Lookup look up a specification for QSLVia
 func Lookup(qslvia QSLVia) (Spec, bool) {
-	spec, ok := internalMap[qslvia], true
+	spec, ok := internalMap[qslvia]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSLVia exists and is not import only.
+func IsValid(qslvia QSLVia) bool {
+	spec, ok := internalMap[qslvia]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSLVia specifications INCLUDING ones marked import only.

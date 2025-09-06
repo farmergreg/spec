@@ -37,8 +37,17 @@ const (
 
 // Lookup look up a specification for ADIType
 func Lookup(aditype ADIType) (Spec, bool) {
-	spec, ok := internalMap[aditype], true
+	spec, ok := internalMap[aditype]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for ADIType exists and is not import only.
+func IsValid(aditype ADIType) bool {
+	spec, ok := internalMap[aditype]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All ADIType specifications INCLUDING ones marked import only.

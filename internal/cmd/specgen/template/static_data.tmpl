@@ -1,8 +1,17 @@
 {{- define "static_data" }}
 // Lookup look up a specification for {{ .CodeGen.CodeGenMetadata.DataType }}
 func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
-	spec, ok := internalMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}], true
+	spec, ok := internalMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for {{ .CodeGen.CodeGenMetadata.DataType }} exists and is not import only.
+func IsValid({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) bool {
+	spec, ok := internalMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All {{ .CodeGen.CodeGenMetadata.DataType }} specifications INCLUDING ones marked import only.

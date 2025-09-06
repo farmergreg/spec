@@ -13,8 +13,17 @@ const (
 
 // Lookup look up a specification for QSOComplete
 func Lookup(qsocomplete QSOComplete) (Spec, bool) {
-	spec, ok := internalMap[qsocomplete], true
+	spec, ok := internalMap[qsocomplete]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for QSOComplete exists and is not import only.
+func IsValid(qsocomplete QSOComplete) bool {
+	spec, ok := internalMap[qsocomplete]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All QSOComplete specifications INCLUDING ones marked import only.

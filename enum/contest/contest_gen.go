@@ -265,8 +265,17 @@ const (
 
 // Lookup look up a specification for Contest
 func Lookup(contest Contest) (Spec, bool) {
-	spec, ok := internalMap[contest], true
+	spec, ok := internalMap[contest]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for Contest exists and is not import only.
+func IsValid(contest Contest) bool {
+	spec, ok := internalMap[contest]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All Contest specifications INCLUDING ones marked import only.

@@ -12,8 +12,17 @@ const (
 
 // Lookup look up a specification for EQSLAG
 func Lookup(eqslag EQSLAG) (Spec, bool) {
-	spec, ok := internalMap[eqslag], true
+	spec, ok := internalMap[eqslag]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for EQSLAG exists and is not import only.
+func IsValid(eqslag EQSLAG) bool {
+	spec, ok := internalMap[eqslag]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All EQSLAG specifications INCLUDING ones marked import only.

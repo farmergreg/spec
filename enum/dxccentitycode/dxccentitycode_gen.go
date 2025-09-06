@@ -412,8 +412,17 @@ const (
 
 // Lookup look up a specification for DXCCEntityCode
 func Lookup(dxccentitycode DXCCEntityCode) (Spec, bool) {
-	spec, ok := internalMap[dxccentitycode], true
+	spec, ok := internalMap[dxccentitycode]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for DXCCEntityCode exists and is not import only.
+func IsValid(dxccentitycode DXCCEntityCode) bool {
+	spec, ok := internalMap[dxccentitycode]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All DXCCEntityCode specifications INCLUDING ones marked import only.

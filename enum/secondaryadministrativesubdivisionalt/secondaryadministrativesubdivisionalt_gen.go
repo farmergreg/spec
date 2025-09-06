@@ -82,8 +82,17 @@ const (
 
 // Lookup look up a specification for SecondaryAdministrativeSubdivisionAlt
 func Lookup(secondaryadministrativesubdivisionalt SecondaryAdministrativeSubdivisionAlt) (Spec, bool) {
-	spec, ok := internalMap[secondaryadministrativesubdivisionalt], true
+	spec, ok := internalMap[secondaryadministrativesubdivisionalt]
 	return spec, ok
+}
+
+// IsValid returns true if the specification for SecondaryAdministrativeSubdivisionAlt exists and is not import only.
+func IsValid(secondaryadministrativesubdivisionalt SecondaryAdministrativeSubdivisionAlt) bool {
+	spec, ok := internalMap[secondaryadministrativesubdivisionalt]
+	if ok && bool(spec.IsImportOnly) {
+		return false
+	}
+	return ok
 }
 
 // All SecondaryAdministrativeSubdivisionAlt specifications INCLUDING ones marked import only.
