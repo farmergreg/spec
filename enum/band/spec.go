@@ -65,7 +65,7 @@ func FindBandByMHz(mhz float64) (Spec, bool) {
 			return item, true
 		}
 	}
-	return Spec{}, false // Not found.
+	return Spec{}, false
 }
 
 // Bandwidth returns the width of the frequency range in MHz
