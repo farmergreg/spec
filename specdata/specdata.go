@@ -31,7 +31,6 @@ func LoadADIFJson(data []byte) (*spec.AdifSpecContainer, error) {
 // Returns a complete copy of the ADIF Workgroup Specification EXACTLY as defined in the all.json export.
 // This data is re-created every time this function is called.
 func LoadADIFSpec() *spec.AdifSpecContainer {
-
 	container, err := LoadADIFJson(specData)
 	if err != nil {
 		log.Fatal(err)
