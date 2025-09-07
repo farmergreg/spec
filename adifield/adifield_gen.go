@@ -710,16 +710,6 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns ADIField specifications.
-// This list excludes those marked as import-only.
-// ADIF 3.1.6
-func ListActive() []Spec {
-	listActiveOnce.Do(func() {
-		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
-	})
-	return listActive
-}
-
 // List returns all ADIField specifications.
 // This list includes those marked import-only.
 // ADIF 3.1.6
@@ -727,4 +717,17 @@ func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)
 	return list
+}
+
+// ListActive returns ADIField specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
+func ListActive() []Spec {
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+
+	result := make([]Spec, len(listActive))
+	copy(result, listActive)
+	return result
 }
