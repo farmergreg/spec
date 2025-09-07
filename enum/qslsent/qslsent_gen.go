@@ -15,11 +15,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known QSLSent specifications
+// lookupList contains all known QSLSent specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
 	{IsImportOnly: false, Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
@@ -28,7 +28,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "Y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
 }
 
-// lookupMap contains all known QSLSent specifications
+// lookupMap contains all known QSLSent specifications.
 var lookupMap = map[QSLSent]*Spec{
 	I: &lookupList[0],
 	N: &lookupList[1],
@@ -37,7 +37,8 @@ var lookupMap = map[QSLSent]*Spec{
 	Y: &lookupList[4],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided QSLSent
+// Lookup returns the specification for the provided QSLSent.
+// ADIF 3.1.6
 func Lookup(qslsent QSLSent) (Spec, bool) {
 	spec, ok := lookupMap[qslsent]
 	if !ok {
@@ -46,7 +47,8 @@ func Lookup(qslsent QSLSent) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 QSLSent specifications that match the provided filter function.
+// LookupByFilter returns all QSLSent specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -57,7 +59,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 QSLSent specifications, but excludes those marked as import-only.
+// ListActive returns QSLSent specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -65,7 +69,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 QSLSent specifications. This includes those marked import-only.
+// List returns all QSLSent specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

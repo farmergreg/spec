@@ -266,11 +266,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known Contest specifications
+// lookupList contains all known Contest specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "070-160M-SPRINT", Description: "PODXS Great Pumpkin Sprint"},
 	{IsImportOnly: false, Key: "070-3-DAY", Description: "PODXS Three Day Weekend"},
@@ -530,7 +530,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "YUDXC", Description: "YU DX Contest"},
 }
 
-// lookupMap contains all known Contest specifications
+// lookupMap contains all known Contest specifications.
 var lookupMap = map[Contest]*Spec{
 	Contest_070_160M_SPRINT:        &lookupList[0],
 	Contest_070_3_DAY:              &lookupList[1],
@@ -790,7 +790,8 @@ var lookupMap = map[Contest]*Spec{
 	Contest_YUDXC:                  &lookupList[255],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided Contest
+// Lookup returns the specification for the provided Contest.
+// ADIF 3.1.6
 func Lookup(contest Contest) (Spec, bool) {
 	spec, ok := lookupMap[contest]
 	if !ok {
@@ -799,7 +800,8 @@ func Lookup(contest Contest) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 Contest specifications that match the provided filter function.
+// LookupByFilter returns all Contest specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -810,7 +812,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 Contest specifications, but excludes those marked as import-only.
+// ListActive returns Contest specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -818,7 +822,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 Contest specifications. This includes those marked import-only.
+// List returns all Contest specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

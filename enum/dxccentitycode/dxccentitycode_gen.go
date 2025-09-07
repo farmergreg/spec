@@ -413,11 +413,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known DXCCEntityCode specifications
+// lookupList contains all known DXCCEntityCode specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: 0, EntityName: "None (the contacted station is known to not be within a DXCC entity)", IsDeleted: false},
 	{IsImportOnly: false, Key: 1, EntityName: "CANADA", IsDeleted: false},
@@ -824,7 +824,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: 522, EntityName: "REPUBLIC OF KOSOVO", IsDeleted: false},
 }
 
-// lookupMap contains all known DXCCEntityCode specifications
+// lookupMap contains all known DXCCEntityCode specifications.
 var lookupMap = map[DXCCEntityCode]*Spec{
 	NONE:                                     &lookupList[0],
 	CANADA:                                   &lookupList[1],
@@ -1231,7 +1231,8 @@ var lookupMap = map[DXCCEntityCode]*Spec{
 	REPUBLIC_OF_KOSOVO:                       &lookupList[402],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided DXCCEntityCode
+// Lookup returns the specification for the provided DXCCEntityCode.
+// ADIF 3.1.6
 func Lookup(dxccentitycode DXCCEntityCode) (Spec, bool) {
 	spec, ok := lookupMap[dxccentitycode]
 	if !ok {
@@ -1240,7 +1241,8 @@ func Lookup(dxccentitycode DXCCEntityCode) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 DXCCEntityCode specifications that match the provided filter function.
+// LookupByFilter returns all DXCCEntityCode specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -1251,7 +1253,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 DXCCEntityCode specifications, but excludes those marked as import-only.
+// ListActive returns DXCCEntityCode specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -1259,7 +1263,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 DXCCEntityCode specifications. This includes those marked import-only.
+// List returns all DXCCEntityCode specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

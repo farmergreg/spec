@@ -30,11 +30,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known PropagationMode specifications
+// lookupList contains all known PropagationMode specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
 	{IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
@@ -58,7 +58,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
 }
 
-// lookupMap contains all known PropagationMode specifications
+// lookupMap contains all known PropagationMode specifications.
 var lookupMap = map[PropagationMode]*Spec{
 	AS:       &lookupList[0],
 	AUE:      &lookupList[1],
@@ -82,7 +82,8 @@ var lookupMap = map[PropagationMode]*Spec{
 	TR:       &lookupList[19],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided PropagationMode
+// Lookup returns the specification for the provided PropagationMode.
+// ADIF 3.1.6
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	spec, ok := lookupMap[propagationmode]
 	if !ok {
@@ -91,7 +92,8 @@ func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 PropagationMode specifications that match the provided filter function.
+// LookupByFilter returns all PropagationMode specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -102,7 +104,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 PropagationMode specifications, but excludes those marked as import-only.
+// ListActive returns PropagationMode specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -110,7 +114,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 PropagationMode specifications. This includes those marked import-only.
+// List returns all PropagationMode specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

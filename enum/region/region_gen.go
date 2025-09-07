@@ -27,11 +27,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known RegionCompositeKey specifications
+// lookupList contains all known RegionCompositeKey specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
 	{IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
@@ -45,7 +45,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Code: "SY", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 }
 
-// lookupMap contains all known RegionCompositeKey specifications
+// lookupMap contains all known RegionCompositeKey specifications.
 var lookupMap = map[RegionCompositeKey]*Spec{
 	"AI.248": &lookupList[0],
 	"BI.259": &lookupList[1],
@@ -59,7 +59,8 @@ var lookupMap = map[RegionCompositeKey]*Spec{
 	"SY.248": &lookupList[9],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided RegionCompositeKey
+// Lookup returns the specification for the provided RegionCompositeKey.
+// ADIF 3.1.6
 func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	spec, ok := lookupMap[regioncompositekey]
 	if !ok {
@@ -68,7 +69,8 @@ func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 RegionCompositeKey specifications that match the provided filter function.
+// LookupByFilter returns all RegionCompositeKey specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -79,7 +81,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 RegionCompositeKey specifications, but excludes those marked as import-only.
+// ListActive returns RegionCompositeKey specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -87,7 +91,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 RegionCompositeKey specifications. This includes those marked import-only.
+// List returns all RegionCompositeKey specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

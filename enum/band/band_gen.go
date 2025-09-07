@@ -43,11 +43,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known Band specifications
+// lookupList contains all known Band specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "1.25cm", LowerFreqMHz: 24000, UpperFreqMHz: 24250},
 	{IsImportOnly: false, Key: "1.25m", LowerFreqMHz: 222, UpperFreqMHz: 225},
@@ -84,7 +84,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "submm", LowerFreqMHz: 300000, UpperFreqMHz: 7.5e+06},
 }
 
-// lookupMap contains all known Band specifications
+// lookupMap contains all known Band specifications.
 var lookupMap = map[Band]*Spec{
 	Band1_25cm: &lookupList[0],
 	Band1_25m:  &lookupList[1],
@@ -121,7 +121,8 @@ var lookupMap = map[Band]*Spec{
 	Bandsubmm:  &lookupList[32],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided Band
+// Lookup returns the specification for the provided Band.
+// ADIF 3.1.6
 func Lookup(band Band) (Spec, bool) {
 	spec, ok := lookupMap[band]
 	if !ok {
@@ -130,7 +131,8 @@ func Lookup(band Band) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 Band specifications that match the provided filter function.
+// LookupByFilter returns all Band specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -141,7 +143,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 Band specifications, but excludes those marked as import-only.
+// ListActive returns Band specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -149,7 +153,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 Band specifications. This includes those marked import-only.
+// List returns all Band specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

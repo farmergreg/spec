@@ -193,11 +193,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known SubMode specifications
+// lookupList contains all known SubMode specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "8PSK1000", Mode: "PSK", Description: ""},
 	{IsImportOnly: false, Key: "8PSK1000F", Mode: "PSK", Description: ""},
@@ -384,7 +384,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "VARA SATELLITE", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for satellite operations"},
 }
 
-// lookupMap contains all known SubMode specifications
+// lookupMap contains all known SubMode specifications.
 var lookupMap = map[SubMode]*Spec{
 	SubMode8PSK1000:       &lookupList[0],
 	SubMode8PSK1000F:      &lookupList[1],
@@ -571,7 +571,8 @@ var lookupMap = map[SubMode]*Spec{
 	SubModeVARA_SATELLITE: &lookupList[182],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided SubMode
+// Lookup returns the specification for the provided SubMode.
+// ADIF 3.1.6
 func Lookup(submode SubMode) (Spec, bool) {
 	spec, ok := lookupMap[submode]
 	if !ok {
@@ -580,7 +581,8 @@ func Lookup(submode SubMode) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 SubMode specifications that match the provided filter function.
+// LookupByFilter returns all SubMode specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -591,7 +593,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 SubMode specifications, but excludes those marked as import-only.
+// ListActive returns SubMode specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -599,7 +603,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 SubMode specifications. This includes those marked import-only.
+// List returns all SubMode specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

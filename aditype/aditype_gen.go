@@ -38,11 +38,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known ADIType specifications
+// lookupList contains all known ADIType specifications.
 var lookupList = []Spec{
 	{Key: "AwardList", DataTypeIndicator: "", Description: "a comma-delimited list of members of the Award enumeration", MinimumValue: 0, MaximumValue: 0, IsImportOnly: true, Comments: ""},
 	{Key: "Boolean", DataTypeIndicator: "B", Description: "if True, the single ASCII character Y or y if False, the single ASCII character N or n", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
@@ -74,7 +74,7 @@ var lookupList = []Spec{
 	{Key: "WWFFRef", DataTypeIndicator: "", Description: "a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 }
 
-// lookupMap contains all known ADIType specifications
+// lookupMap contains all known ADIType specifications.
 var lookupMap = map[ADIType]*Spec{
 	AwardList:           &lookupList[0],
 	Boolean:             &lookupList[1],
@@ -106,7 +106,8 @@ var lookupMap = map[ADIType]*Spec{
 	WWFFRef:                                   &lookupList[27],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided ADIType
+// Lookup returns the specification for the provided ADIType.
+// ADIF 3.1.6
 func Lookup(aditype ADIType) (Spec, bool) {
 	spec, ok := lookupMap[aditype]
 	if !ok {
@@ -115,7 +116,8 @@ func Lookup(aditype ADIType) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 ADIType specifications that match the provided filter function.
+// LookupByFilter returns all ADIType specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -126,7 +128,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 ADIType specifications, but excludes those marked as import-only.
+// ListActive returns ADIType specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -134,7 +138,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 ADIType specifications. This includes those marked import-only.
+// List returns all ADIType specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

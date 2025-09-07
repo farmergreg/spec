@@ -13,25 +13,26 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known QSLMedium specifications
+// lookupList contains all known QSLMedium specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
 	{IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
 	{IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
 }
 
-// lookupMap contains all known QSLMedium specifications
+// lookupMap contains all known QSLMedium specifications.
 var lookupMap = map[QSLMedium]*Spec{
 	CARD: &lookupList[0],
 	EQSL: &lookupList[1],
 	LOTW: &lookupList[2],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided QSLMedium
+// Lookup returns the specification for the provided QSLMedium.
+// ADIF 3.1.6
 func Lookup(qslmedium QSLMedium) (Spec, bool) {
 	spec, ok := lookupMap[qslmedium]
 	if !ok {
@@ -40,7 +41,8 @@ func Lookup(qslmedium QSLMedium) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 QSLMedium specifications that match the provided filter function.
+// LookupByFilter returns all QSLMedium specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -51,7 +53,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 QSLMedium specifications, but excludes those marked as import-only.
+// ListActive returns QSLMedium specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -59,7 +63,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 QSLMedium specifications. This includes those marked import-only.
+// List returns all QSLMedium specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

@@ -17,11 +17,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known MorseKeyType specifications
+// lookupList contains all known MorseKeyType specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "BUG", Description: "Mechanical semi-automatic keyer or Bug", Characteristics: "a control which actuates a switch as well as a control which actuates a spring and pendulum mechanism which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and a human makes the dahs and builds characters.", Examples: "Vibroplex Blue Racer Deluxe"},
 	{IsImportOnly: false, Key: "CPU", Description: "Computer Driven", Characteristics: "an electronic device performs the actuation of the switch.", MorseComposition: "a machine makes the dits and dahs to build the characters.", Examples: "N1MM+ Logging Software"},
@@ -32,7 +32,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "SS", Description: "Sideswiper", Characteristics: "a single control which actuates a SPDT (single poll, double throw) switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "W1SFR Green Machine Torsion Bar Cootie"},
 }
 
-// lookupMap contains all known MorseKeyType specifications
+// lookupMap contains all known MorseKeyType specifications.
 var lookupMap = map[MorseKeyType]*Spec{
 	BUG: &lookupList[0],
 	CPU: &lookupList[1],
@@ -43,7 +43,8 @@ var lookupMap = map[MorseKeyType]*Spec{
 	SS:  &lookupList[6],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided MorseKeyType
+// Lookup returns the specification for the provided MorseKeyType.
+// ADIF 3.1.6
 func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
 	spec, ok := lookupMap[morsekeytype]
 	if !ok {
@@ -52,7 +53,8 @@ func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 MorseKeyType specifications that match the provided filter function.
+// LookupByFilter returns all MorseKeyType specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -63,7 +65,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 MorseKeyType specifications, but excludes those marked as import-only.
+// ListActive returns MorseKeyType specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -71,7 +75,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 MorseKeyType specifications. This includes those marked import-only.
+// List returns all MorseKeyType specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

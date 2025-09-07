@@ -14,11 +14,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known QSOComplete specifications
+// lookupList contains all known QSOComplete specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "?", Description: "uncertain"},
 	{IsImportOnly: false, Key: "N", Description: "no"},
@@ -26,7 +26,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "Y", Description: "yes"},
 }
 
-// lookupMap contains all known QSOComplete specifications
+// lookupMap contains all known QSOComplete specifications.
 var lookupMap = map[QSOComplete]*Spec{
 	Uncertain: &lookupList[0],
 	N:         &lookupList[1],
@@ -34,7 +34,8 @@ var lookupMap = map[QSOComplete]*Spec{
 	Y:         &lookupList[3],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided QSOComplete
+// Lookup returns the specification for the provided QSOComplete.
+// ADIF 3.1.6
 func Lookup(qsocomplete QSOComplete) (Spec, bool) {
 	spec, ok := lookupMap[qsocomplete]
 	if !ok {
@@ -43,7 +44,8 @@ func Lookup(qsocomplete QSOComplete) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 QSOComplete specifications that match the provided filter function.
+// LookupByFilter returns all QSOComplete specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -54,7 +56,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 QSOComplete specifications, but excludes those marked as import-only.
+// ListActive returns QSOComplete specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -62,7 +66,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 QSOComplete specifications. This includes those marked import-only.
+// List returns all QSOComplete specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

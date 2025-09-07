@@ -68,11 +68,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known SecondaryAdministrativeSubdivision specifications
+// lookupList contains all known SecondaryAdministrativeSubdivision specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "AK,Aleutians East", SecondaryAdminSub: "Aleutians East", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
 	{IsImportOnly: false, Key: "AK,Aleutians Islands", SecondaryAdminSub: "Aleutians Islands", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
@@ -134,7 +134,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Key: "AK,Yukon-Koyukuk", SecondaryAdminSub: "Yukon-Koyukuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
 }
 
-// lookupMap contains all known SecondaryAdministrativeSubdivision specifications
+// lookupMap contains all known SecondaryAdministrativeSubdivision specifications.
 var lookupMap = map[SecondaryAdministrativeSubdivision]*Spec{
 	AKAleutians_East:                  &lookupList[0],
 	AKAleutians_Islands:               &lookupList[1],
@@ -196,7 +196,8 @@ var lookupMap = map[SecondaryAdministrativeSubdivision]*Spec{
 	AKYukon_Koyukuk:                   &lookupList[57],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided SecondaryAdministrativeSubdivision
+// Lookup returns the specification for the provided SecondaryAdministrativeSubdivision.
+// ADIF 3.1.6
 func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivision) (Spec, bool) {
 	spec, ok := lookupMap[secondaryadministrativesubdivision]
 	if !ok {
@@ -205,7 +206,8 @@ func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivisio
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications that match the provided filter function.
+// LookupByFilter returns all SecondaryAdministrativeSubdivision specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -216,7 +218,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications, but excludes those marked as import-only.
+// ListActive returns SecondaryAdministrativeSubdivision specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -224,7 +228,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications. This includes those marked import-only.
+// List returns all SecondaryAdministrativeSubdivision specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

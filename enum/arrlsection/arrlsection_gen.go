@@ -104,11 +104,11 @@ const (
 )
 
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known ARRLSection specifications
+// lookupList contains all known ARRLSection specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Comments: "", Key: "AB", Description: "Alberta", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{1}, FromDate: 0, DeletedDate: 0},
 	{IsImportOnly: false, Comments: "", Key: "AK", Description: "Alaska", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{6}, FromDate: 0, DeletedDate: 0},
@@ -202,7 +202,7 @@ var lookupList = []Spec{
 	{IsImportOnly: false, Comments: "", Key: "WY", Description: "Wyoming", DXCCEntityCode: dxccentitycode.DXCCEntityCodeList{291}, FromDate: 0, DeletedDate: 0},
 }
 
-// lookupMap contains all known ARRLSection specifications
+// lookupMap contains all known ARRLSection specifications.
 var lookupMap = map[ARRLSection]*Spec{
 	AB:  &lookupList[0],
 	AK:  &lookupList[1],
@@ -296,7 +296,8 @@ var lookupMap = map[ARRLSection]*Spec{
 	WY:  &lookupList[89],
 }
 
-// Lookup locates the ADIF 3.1.6 specification for the provided ARRLSection
+// Lookup returns the specification for the provided ARRLSection.
+// ADIF 3.1.6
 func Lookup(arrlsection ARRLSection) (Spec, bool) {
 	spec, ok := lookupMap[arrlsection]
 	if !ok {
@@ -305,7 +306,8 @@ func Lookup(arrlsection ARRLSection) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF 3.1.6 ARRLSection specifications that match the provided filter function.
+// LookupByFilter returns all ARRLSection specifications that match the provided filter function.
+// ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -316,7 +318,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF 3.1.6 ARRLSection specifications, but excludes those marked as import-only.
+// ListActive returns ARRLSection specifications.
+// This list excludes those marked as import-only.
+// ADIF 3.1.6
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -324,7 +328,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 ARRLSection specifications. This includes those marked import-only.
+// List returns all ARRLSection specifications.
+// This list includes those marked import-only.
+// ADIF 3.1.6
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

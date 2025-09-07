@@ -1,10 +1,10 @@
 {{- define "static_data" }}
 var (
-	listActive     []Spec
-	listActiveOnce sync.Once
+	listActive     []Spec // listActive is a cached copy of the active specifications (those not marked as import-only).
+	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known {{ .CodeGen.CodeGenMetadata.DataType }} specifications
+// lookupList contains all known {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
 var lookupList = []Spec {
 	{{- range $key, $value := .CodeGen.CodeGenRecords }}
 		{{- $metadata := $value.CodeGenMetadata }}
@@ -12,7 +12,7 @@ var lookupList = []Spec {
 	{{- end }}
 }
 
-// lookupMap contains all known {{ .CodeGen.CodeGenMetadata.DataType }} specifications
+// lookupMap contains all known {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
 var lookupMap = map[{{ .CodeGen.CodeGenMetadata.DataType }}]*Spec {
 	{{- $index := 0 }}
 	{{- range $key, $value := .CodeGen.CodeGenRecords }}
@@ -22,7 +22,8 @@ var lookupMap = map[{{ .CodeGen.CodeGenMetadata.DataType }}]*Spec {
 	{{- end }}
 }
 
-// Lookup locates the ADIF {{ .Spec.Version }} specification for the provided {{ .CodeGen.CodeGenMetadata.DataType }}
+// Lookup returns the specification for the provided {{ .CodeGen.CodeGenMetadata.DataType }}.
+// ADIF {{ .Spec.Version }}
 func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
 	spec, ok := lookupMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
 	if !ok {
@@ -31,7 +32,8 @@ func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGe
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIF {{ .Spec.Version }} {{ .CodeGen.CodeGenMetadata.DataType }} specifications that match the provided filter function.
+// LookupByFilter returns all {{ .CodeGen.CodeGenMetadata.DataType }} specifications that match the provided filter function.
+// ADIF {{ .Spec.Version }}
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -42,7 +44,9 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ADIF {{ .Spec.Version }} {{ .CodeGen.CodeGenMetadata.DataType }} specifications, but excludes those marked as import-only.
+// ListActive returns {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
+// This list excludes those marked as import-only.
+// ADIF {{ .Spec.Version }}
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -50,7 +54,9 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF {{ .Spec.Version }} {{ .CodeGen.CodeGenMetadata.DataType }} specifications. This includes those marked import-only.
+// List returns all {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
+// This list includes those marked import-only.
+// ADIF {{ .Spec.Version }}
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)
