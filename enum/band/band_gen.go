@@ -4,6 +4,8 @@
 // Package band provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package band
 
+import "sync"
+
 const (
 	Band1_25cm Band = "1.25cm" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
 	Band1_25m  Band = "1.25m"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
@@ -40,16 +42,98 @@ const (
 	Bandsubmm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
-// Lookup look up a specification for the given Band
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known Band specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "1.25cm", LowerFreqMHz: 24000, UpperFreqMHz: 24250},
+	{IsImportOnly: false, Key: "1.25m", LowerFreqMHz: 222, UpperFreqMHz: 225},
+	{IsImportOnly: false, Key: "10m", LowerFreqMHz: 28, UpperFreqMHz: 29.7},
+	{IsImportOnly: false, Key: "12m", LowerFreqMHz: 24.89, UpperFreqMHz: 24.99},
+	{IsImportOnly: false, Key: "13cm", LowerFreqMHz: 2300, UpperFreqMHz: 2450},
+	{IsImportOnly: false, Key: "15m", LowerFreqMHz: 21, UpperFreqMHz: 21.45},
+	{IsImportOnly: false, Key: "160m", LowerFreqMHz: 1.8, UpperFreqMHz: 2},
+	{IsImportOnly: false, Key: "17m", LowerFreqMHz: 18.068, UpperFreqMHz: 18.168},
+	{IsImportOnly: false, Key: "1mm", LowerFreqMHz: 241000, UpperFreqMHz: 250000},
+	{IsImportOnly: false, Key: "2.5mm", LowerFreqMHz: 119980, UpperFreqMHz: 123000},
+	{IsImportOnly: false, Key: "20m", LowerFreqMHz: 14, UpperFreqMHz: 14.35},
+	{IsImportOnly: false, Key: "2190m", LowerFreqMHz: 0.1357, UpperFreqMHz: 0.1378},
+	{IsImportOnly: false, Key: "23cm", LowerFreqMHz: 1240, UpperFreqMHz: 1300},
+	{IsImportOnly: false, Key: "2m", LowerFreqMHz: 144, UpperFreqMHz: 148},
+	{IsImportOnly: false, Key: "2mm", LowerFreqMHz: 134000, UpperFreqMHz: 149000},
+	{IsImportOnly: false, Key: "30m", LowerFreqMHz: 10.1, UpperFreqMHz: 10.15},
+	{IsImportOnly: false, Key: "33cm", LowerFreqMHz: 902, UpperFreqMHz: 928},
+	{IsImportOnly: false, Key: "3cm", LowerFreqMHz: 10000, UpperFreqMHz: 10500},
+	{IsImportOnly: false, Key: "40m", LowerFreqMHz: 7, UpperFreqMHz: 7.3},
+	{IsImportOnly: false, Key: "4m", LowerFreqMHz: 70, UpperFreqMHz: 71},
+	{IsImportOnly: false, Key: "4mm", LowerFreqMHz: 75500, UpperFreqMHz: 81000},
+	{IsImportOnly: false, Key: "560m", LowerFreqMHz: 0.501, UpperFreqMHz: 0.504},
+	{IsImportOnly: false, Key: "5m", LowerFreqMHz: 54.000001, UpperFreqMHz: 69.9},
+	{IsImportOnly: false, Key: "60m", LowerFreqMHz: 5.06, UpperFreqMHz: 5.45},
+	{IsImportOnly: false, Key: "630m", LowerFreqMHz: 0.472, UpperFreqMHz: 0.479},
+	{IsImportOnly: false, Key: "6cm", LowerFreqMHz: 5650, UpperFreqMHz: 5925},
+	{IsImportOnly: false, Key: "6m", LowerFreqMHz: 50, UpperFreqMHz: 54},
+	{IsImportOnly: false, Key: "6mm", LowerFreqMHz: 47000, UpperFreqMHz: 47200},
+	{IsImportOnly: false, Key: "70cm", LowerFreqMHz: 420, UpperFreqMHz: 450},
+	{IsImportOnly: false, Key: "80m", LowerFreqMHz: 3.5, UpperFreqMHz: 4},
+	{IsImportOnly: false, Key: "8m", LowerFreqMHz: 40, UpperFreqMHz: 45},
+	{IsImportOnly: false, Key: "9cm", LowerFreqMHz: 3300, UpperFreqMHz: 3500},
+	{IsImportOnly: false, Key: "submm", LowerFreqMHz: 300000, UpperFreqMHz: 7.5e+06},
+}
+
+// lookupMap contains all known Band specifications
+var lookupMap = map[Band]*Spec{
+	Band1_25cm: &lookupList[0],
+	Band1_25m:  &lookupList[1],
+	Band10m:    &lookupList[2],
+	Band12m:    &lookupList[3],
+	Band13cm:   &lookupList[4],
+	Band15m:    &lookupList[5],
+	Band160m:   &lookupList[6],
+	Band17m:    &lookupList[7],
+	Band1mm:    &lookupList[8],
+	Band2_5mm:  &lookupList[9],
+	Band20m:    &lookupList[10],
+	Band2190m:  &lookupList[11],
+	Band23cm:   &lookupList[12],
+	Band2m:     &lookupList[13],
+	Band2mm:    &lookupList[14],
+	Band30m:    &lookupList[15],
+	Band33cm:   &lookupList[16],
+	Band3cm:    &lookupList[17],
+	Band40m:    &lookupList[18],
+	Band4m:     &lookupList[19],
+	Band4mm:    &lookupList[20],
+	Band560m:   &lookupList[21],
+	Band5m:     &lookupList[22],
+	Band60m:    &lookupList[23],
+	Band630m:   &lookupList[24],
+	Band6cm:    &lookupList[25],
+	Band6m:     &lookupList[26],
+	Band6mm:    &lookupList[27],
+	Band70cm:   &lookupList[28],
+	Band80m:    &lookupList[29],
+	Band8m:     &lookupList[30],
+	Band9cm:    &lookupList[31],
+	Bandsubmm:  &lookupList[32],
+}
+
+// Lookup locates the specification for the given Band
 func Lookup(band Band) (Spec, bool) {
-	spec, ok := internalMap[band]
-	return spec, ok
+	spec, ok := lookupMap[band]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all Band specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -57,117 +141,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of Band specifications EXCLUDING those marked import only.
+// ListActive returns a slice of Band specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[Band1_25cm],
-		internalMap[Band1_25m],
-		internalMap[Band10m],
-		internalMap[Band12m],
-		internalMap[Band13cm],
-		internalMap[Band15m],
-		internalMap[Band160m],
-		internalMap[Band17m],
-		internalMap[Band1mm],
-		internalMap[Band2_5mm],
-		internalMap[Band20m],
-		internalMap[Band2190m],
-		internalMap[Band23cm],
-		internalMap[Band2m],
-		internalMap[Band2mm],
-		internalMap[Band30m],
-		internalMap[Band33cm],
-		internalMap[Band3cm],
-		internalMap[Band40m],
-		internalMap[Band4m],
-		internalMap[Band4mm],
-		internalMap[Band560m],
-		internalMap[Band5m],
-		internalMap[Band60m],
-		internalMap[Band630m],
-		internalMap[Band6cm],
-		internalMap[Band6m],
-		internalMap[Band6mm],
-		internalMap[Band70cm],
-		internalMap[Band80m],
-		internalMap[Band8m],
-		internalMap[Band9cm],
-		internalMap[Bandsubmm],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all Band specifications INCLUDING those marked import only.
+// List returns a slice of all Band specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[Band1_25cm],
-		internalMap[Band1_25m],
-		internalMap[Band10m],
-		internalMap[Band12m],
-		internalMap[Band13cm],
-		internalMap[Band15m],
-		internalMap[Band160m],
-		internalMap[Band17m],
-		internalMap[Band1mm],
-		internalMap[Band2_5mm],
-		internalMap[Band20m],
-		internalMap[Band2190m],
-		internalMap[Band23cm],
-		internalMap[Band2m],
-		internalMap[Band2mm],
-		internalMap[Band30m],
-		internalMap[Band33cm],
-		internalMap[Band3cm],
-		internalMap[Band40m],
-		internalMap[Band4m],
-		internalMap[Band4mm],
-		internalMap[Band560m],
-		internalMap[Band5m],
-		internalMap[Band60m],
-		internalMap[Band630m],
-		internalMap[Band6cm],
-		internalMap[Band6m],
-		internalMap[Band6mm],
-		internalMap[Band70cm],
-		internalMap[Band80m],
-		internalMap[Band8m],
-		internalMap[Band9cm],
-		internalMap[Bandsubmm],
-	}
-}
-
-// internalMap is a map of all known Band specifications
-var internalMap = map[Band]Spec{
-	Band1_25cm: {IsImportOnly: false, Key: "1.25cm", LowerFreqMHz: 24000, UpperFreqMHz: 24250},
-	Band1_25m:  {IsImportOnly: false, Key: "1.25m", LowerFreqMHz: 222, UpperFreqMHz: 225},
-	Band10m:    {IsImportOnly: false, Key: "10m", LowerFreqMHz: 28, UpperFreqMHz: 29.7},
-	Band12m:    {IsImportOnly: false, Key: "12m", LowerFreqMHz: 24.89, UpperFreqMHz: 24.99},
-	Band13cm:   {IsImportOnly: false, Key: "13cm", LowerFreqMHz: 2300, UpperFreqMHz: 2450},
-	Band15m:    {IsImportOnly: false, Key: "15m", LowerFreqMHz: 21, UpperFreqMHz: 21.45},
-	Band160m:   {IsImportOnly: false, Key: "160m", LowerFreqMHz: 1.8, UpperFreqMHz: 2},
-	Band17m:    {IsImportOnly: false, Key: "17m", LowerFreqMHz: 18.068, UpperFreqMHz: 18.168},
-	Band1mm:    {IsImportOnly: false, Key: "1mm", LowerFreqMHz: 241000, UpperFreqMHz: 250000},
-	Band2_5mm:  {IsImportOnly: false, Key: "2.5mm", LowerFreqMHz: 119980, UpperFreqMHz: 123000},
-	Band20m:    {IsImportOnly: false, Key: "20m", LowerFreqMHz: 14, UpperFreqMHz: 14.35},
-	Band2190m:  {IsImportOnly: false, Key: "2190m", LowerFreqMHz: 0.1357, UpperFreqMHz: 0.1378},
-	Band23cm:   {IsImportOnly: false, Key: "23cm", LowerFreqMHz: 1240, UpperFreqMHz: 1300},
-	Band2m:     {IsImportOnly: false, Key: "2m", LowerFreqMHz: 144, UpperFreqMHz: 148},
-	Band2mm:    {IsImportOnly: false, Key: "2mm", LowerFreqMHz: 134000, UpperFreqMHz: 149000},
-	Band30m:    {IsImportOnly: false, Key: "30m", LowerFreqMHz: 10.1, UpperFreqMHz: 10.15},
-	Band33cm:   {IsImportOnly: false, Key: "33cm", LowerFreqMHz: 902, UpperFreqMHz: 928},
-	Band3cm:    {IsImportOnly: false, Key: "3cm", LowerFreqMHz: 10000, UpperFreqMHz: 10500},
-	Band40m:    {IsImportOnly: false, Key: "40m", LowerFreqMHz: 7, UpperFreqMHz: 7.3},
-	Band4m:     {IsImportOnly: false, Key: "4m", LowerFreqMHz: 70, UpperFreqMHz: 71},
-	Band4mm:    {IsImportOnly: false, Key: "4mm", LowerFreqMHz: 75500, UpperFreqMHz: 81000},
-	Band560m:   {IsImportOnly: false, Key: "560m", LowerFreqMHz: 0.501, UpperFreqMHz: 0.504},
-	Band5m:     {IsImportOnly: false, Key: "5m", LowerFreqMHz: 54.000001, UpperFreqMHz: 69.9},
-	Band60m:    {IsImportOnly: false, Key: "60m", LowerFreqMHz: 5.06, UpperFreqMHz: 5.45},
-	Band630m:   {IsImportOnly: false, Key: "630m", LowerFreqMHz: 0.472, UpperFreqMHz: 0.479},
-	Band6cm:    {IsImportOnly: false, Key: "6cm", LowerFreqMHz: 5650, UpperFreqMHz: 5925},
-	Band6m:     {IsImportOnly: false, Key: "6m", LowerFreqMHz: 50, UpperFreqMHz: 54},
-	Band6mm:    {IsImportOnly: false, Key: "6mm", LowerFreqMHz: 47000, UpperFreqMHz: 47200},
-	Band70cm:   {IsImportOnly: false, Key: "70cm", LowerFreqMHz: 420, UpperFreqMHz: 450},
-	Band80m:    {IsImportOnly: false, Key: "80m", LowerFreqMHz: 3.5, UpperFreqMHz: 4},
-	Band8m:     {IsImportOnly: false, Key: "8m", LowerFreqMHz: 40, UpperFreqMHz: 45},
-	Band9cm:    {IsImportOnly: false, Key: "9cm", LowerFreqMHz: 3300, UpperFreqMHz: 3500},
-	Bandsubmm:  {IsImportOnly: false, Key: "submm", LowerFreqMHz: 300000, UpperFreqMHz: 7.5e+06},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

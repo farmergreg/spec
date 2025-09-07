@@ -4,22 +4,46 @@
 // Package qslmedium provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qslmedium
 
+import "sync"
+
 const (
 	CARD QSLMedium = "CARD" // CARD = QSO confirmation via paper QSL card
 	EQSL QSLMedium = "EQSL" // EQSL = QSO confirmation via eQSL.cc
 	LOTW QSLMedium = "LOTW" // LOTW = QSO confirmation via ARRL Logbook of the World
 )
 
-// Lookup look up a specification for the given QSLMedium
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known QSLMedium specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
+	{IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
+	{IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
+}
+
+// lookupMap contains all known QSLMedium specifications
+var lookupMap = map[QSLMedium]*Spec{
+	CARD: &lookupList[0],
+	EQSL: &lookupList[1],
+	LOTW: &lookupList[2],
+}
+
+// Lookup locates the specification for the given QSLMedium
 func Lookup(qslmedium QSLMedium) (Spec, bool) {
-	spec, ok := internalMap[qslmedium]
-	return spec, ok
+	spec, ok := lookupMap[qslmedium]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all QSLMedium specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -27,27 +51,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of QSLMedium specifications EXCLUDING those marked import only.
+// ListActive returns a slice of QSLMedium specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[CARD],
-		internalMap[EQSL],
-		internalMap[LOTW],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all QSLMedium specifications INCLUDING those marked import only.
+// List returns a slice of all QSLMedium specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[CARD],
-		internalMap[EQSL],
-		internalMap[LOTW],
-	}
-}
-
-// internalMap is a map of all known QSLMedium specifications
-var internalMap = map[QSLMedium]Spec{
-	CARD: {IsImportOnly: false, Key: "CARD", Description: "QSO confirmation via paper QSL card"},
-	EQSL: {IsImportOnly: false, Key: "EQSL", Description: "QSO confirmation via eQSL.cc"},
-	LOTW: {IsImportOnly: false, Key: "LOTW", Description: "QSO confirmation via ARRL Logbook of the World"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

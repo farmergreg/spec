@@ -10,6 +10,7 @@ var tmplFuncs = template.FuncMap{
 	"Split":    strings.Split,
 	"ToGoCode": toGoCode,
 	"ToLower":  strings.ToLower,
+	"Add":      func(a, b int) int { return a + b },
 }
 
 func toGoCode(a any, packageName string) string {

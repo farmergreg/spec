@@ -4,6 +4,8 @@
 // Package propagationmode provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package propagationmode
 
+import "sync"
+
 const (
 	AS       PropagationMode = "AS"       // AS         = Aircraft Scatter
 	AUE      PropagationMode = "AUE"      // AUE        = Aurora-E
@@ -27,16 +29,72 @@ const (
 	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
-// Lookup look up a specification for the given PropagationMode
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known PropagationMode specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
+	{IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
+	{IsImportOnly: false, Key: "AUR", Description: "Aurora"},
+	{IsImportOnly: false, Key: "BS", Description: "Back scatter"},
+	{IsImportOnly: false, Key: "ECH", Description: "EchoLink"},
+	{IsImportOnly: false, Key: "EME", Description: "Earth-Moon-Earth"},
+	{IsImportOnly: false, Key: "ES", Description: "Sporadic E"},
+	{IsImportOnly: false, Key: "F2", Description: "F2 Reflection"},
+	{IsImportOnly: false, Key: "FAI", Description: "Field Aligned Irregularities"},
+	{IsImportOnly: false, Key: "GWAVE", Description: "Ground Wave"},
+	{IsImportOnly: false, Key: "INTERNET", Description: "Internet-assisted"},
+	{IsImportOnly: false, Key: "ION", Description: "Ionoscatter"},
+	{IsImportOnly: false, Key: "IRL", Description: "IRLP"},
+	{IsImportOnly: false, Key: "LOS", Description: "Line of Sight (includes transmission through obstacles such as walls)"},
+	{IsImportOnly: false, Key: "MS", Description: "Meteor scatter"},
+	{IsImportOnly: false, Key: "RPT", Description: "Terrestrial or atmospheric repeater or transponder"},
+	{IsImportOnly: false, Key: "RS", Description: "Rain scatter"},
+	{IsImportOnly: false, Key: "SAT", Description: "Satellite"},
+	{IsImportOnly: false, Key: "TEP", Description: "Trans-equatorial"},
+	{IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
+}
+
+// lookupMap contains all known PropagationMode specifications
+var lookupMap = map[PropagationMode]*Spec{
+	AS:       &lookupList[0],
+	AUE:      &lookupList[1],
+	AUR:      &lookupList[2],
+	BS:       &lookupList[3],
+	ECH:      &lookupList[4],
+	EME:      &lookupList[5],
+	ES:       &lookupList[6],
+	F2:       &lookupList[7],
+	FAI:      &lookupList[8],
+	GWAVE:    &lookupList[9],
+	INTERNET: &lookupList[10],
+	ION:      &lookupList[11],
+	IRL:      &lookupList[12],
+	LOS:      &lookupList[13],
+	MS:       &lookupList[14],
+	RPT:      &lookupList[15],
+	RS:       &lookupList[16],
+	SAT:      &lookupList[17],
+	TEP:      &lookupList[18],
+	TR:       &lookupList[19],
+}
+
+// Lookup locates the specification for the given PropagationMode
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
-	spec, ok := internalMap[propagationmode]
-	return spec, ok
+	spec, ok := lookupMap[propagationmode]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all PropagationMode specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -44,78 +102,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of PropagationMode specifications EXCLUDING those marked import only.
+// ListActive returns a slice of PropagationMode specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[AS],
-		internalMap[AUE],
-		internalMap[AUR],
-		internalMap[BS],
-		internalMap[ECH],
-		internalMap[EME],
-		internalMap[ES],
-		internalMap[F2],
-		internalMap[FAI],
-		internalMap[GWAVE],
-		internalMap[INTERNET],
-		internalMap[ION],
-		internalMap[IRL],
-		internalMap[LOS],
-		internalMap[MS],
-		internalMap[RPT],
-		internalMap[RS],
-		internalMap[SAT],
-		internalMap[TEP],
-		internalMap[TR],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all PropagationMode specifications INCLUDING those marked import only.
+// List returns a slice of all PropagationMode specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[AS],
-		internalMap[AUE],
-		internalMap[AUR],
-		internalMap[BS],
-		internalMap[ECH],
-		internalMap[EME],
-		internalMap[ES],
-		internalMap[F2],
-		internalMap[FAI],
-		internalMap[GWAVE],
-		internalMap[INTERNET],
-		internalMap[ION],
-		internalMap[IRL],
-		internalMap[LOS],
-		internalMap[MS],
-		internalMap[RPT],
-		internalMap[RS],
-		internalMap[SAT],
-		internalMap[TEP],
-		internalMap[TR],
-	}
-}
-
-// internalMap is a map of all known PropagationMode specifications
-var internalMap = map[PropagationMode]Spec{
-	AS:       {IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
-	AUE:      {IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
-	AUR:      {IsImportOnly: false, Key: "AUR", Description: "Aurora"},
-	BS:       {IsImportOnly: false, Key: "BS", Description: "Back scatter"},
-	ECH:      {IsImportOnly: false, Key: "ECH", Description: "EchoLink"},
-	EME:      {IsImportOnly: false, Key: "EME", Description: "Earth-Moon-Earth"},
-	ES:       {IsImportOnly: false, Key: "ES", Description: "Sporadic E"},
-	F2:       {IsImportOnly: false, Key: "F2", Description: "F2 Reflection"},
-	FAI:      {IsImportOnly: false, Key: "FAI", Description: "Field Aligned Irregularities"},
-	GWAVE:    {IsImportOnly: false, Key: "GWAVE", Description: "Ground Wave"},
-	INTERNET: {IsImportOnly: false, Key: "INTERNET", Description: "Internet-assisted"},
-	ION:      {IsImportOnly: false, Key: "ION", Description: "Ionoscatter"},
-	IRL:      {IsImportOnly: false, Key: "IRL", Description: "IRLP"},
-	LOS:      {IsImportOnly: false, Key: "LOS", Description: "Line of Sight (includes transmission through obstacles such as walls)"},
-	MS:       {IsImportOnly: false, Key: "MS", Description: "Meteor scatter"},
-	RPT:      {IsImportOnly: false, Key: "RPT", Description: "Terrestrial or atmospheric repeater or transponder"},
-	RS:       {IsImportOnly: false, Key: "RS", Description: "Rain scatter"},
-	SAT:      {IsImportOnly: false, Key: "SAT", Description: "Satellite"},
-	TEP:      {IsImportOnly: false, Key: "TEP", Description: "Trans-equatorial"},
-	TR:       {IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

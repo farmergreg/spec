@@ -4,6 +4,8 @@
 // Package awardsponsor provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package awardsponsor
 
+import "sync"
+
 const (
 	ADIF  AwardSponsorPrefix = "ADIF_"  // ADIF_  = ADIF Development Group
 	ARI   AwardSponsorPrefix = "ARI_"   // ARI_   = ARI - l'Associazione Radioamatori Italiani
@@ -18,16 +20,54 @@ const (
 	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
-// Lookup look up a specification for the given AwardSponsorPrefix
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known AwardSponsorPrefix specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
+	{IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
+	{IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
+	{IsImportOnly: false, Key: "CQ_", Description: "CQ Magazine"},
+	{IsImportOnly: false, Key: "DARC_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
+	{IsImportOnly: false, Key: "EQSL_", Description: "eQSL"},
+	{IsImportOnly: false, Key: "IARU_", Description: "IARU - International Amateur Radio Union"},
+	{IsImportOnly: false, Key: "JARL_", Description: "JARL - Japan Amateur Radio League"},
+	{IsImportOnly: false, Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
+	{IsImportOnly: false, Key: "TAG_", Description: "TAG - Tambov award group"},
+	{IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
+}
+
+// lookupMap contains all known AwardSponsorPrefix specifications
+var lookupMap = map[AwardSponsorPrefix]*Spec{
+	ADIF:  &lookupList[0],
+	ARI:   &lookupList[1],
+	ARRL:  &lookupList[2],
+	CQ:    &lookupList[3],
+	DARC:  &lookupList[4],
+	EQSL:  &lookupList[5],
+	IARU:  &lookupList[6],
+	JARL:  &lookupList[7],
+	RSGB:  &lookupList[8],
+	TAG:   &lookupList[9],
+	WABAG: &lookupList[10],
+}
+
+// Lookup locates the specification for the given AwardSponsorPrefix
 func Lookup(awardsponsorprefix AwardSponsorPrefix) (Spec, bool) {
-	spec, ok := internalMap[awardsponsorprefix]
-	return spec, ok
+	spec, ok := lookupMap[awardsponsorprefix]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all AwardSponsorPrefix specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -35,51 +75,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of AwardSponsorPrefix specifications EXCLUDING those marked import only.
+// ListActive returns a slice of AwardSponsorPrefix specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[ADIF],
-		internalMap[ARI],
-		internalMap[ARRL],
-		internalMap[CQ],
-		internalMap[DARC],
-		internalMap[EQSL],
-		internalMap[IARU],
-		internalMap[JARL],
-		internalMap[RSGB],
-		internalMap[TAG],
-		internalMap[WABAG],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all AwardSponsorPrefix specifications INCLUDING those marked import only.
+// List returns a slice of all AwardSponsorPrefix specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[ADIF],
-		internalMap[ARI],
-		internalMap[ARRL],
-		internalMap[CQ],
-		internalMap[DARC],
-		internalMap[EQSL],
-		internalMap[IARU],
-		internalMap[JARL],
-		internalMap[RSGB],
-		internalMap[TAG],
-		internalMap[WABAG],
-	}
-}
-
-// internalMap is a map of all known AwardSponsorPrefix specifications
-var internalMap = map[AwardSponsorPrefix]Spec{
-	ADIF:  {IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
-	ARI:   {IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
-	ARRL:  {IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
-	CQ:    {IsImportOnly: false, Key: "CQ_", Description: "CQ Magazine"},
-	DARC:  {IsImportOnly: false, Key: "DARC_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
-	EQSL:  {IsImportOnly: false, Key: "EQSL_", Description: "eQSL"},
-	IARU:  {IsImportOnly: false, Key: "IARU_", Description: "IARU - International Amateur Radio Union"},
-	JARL:  {IsImportOnly: false, Key: "JARL_", Description: "JARL - Japan Amateur Radio League"},
-	RSGB:  {IsImportOnly: false, Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
-	TAG:   {IsImportOnly: false, Key: "TAG_", Description: "TAG - Tambov award group"},
-	WABAG: {IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

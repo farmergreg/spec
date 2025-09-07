@@ -4,22 +4,46 @@
 // Package qsodownloadstatus provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qsodownloadstatus
 
+import "sync"
+
 const (
 	I QSODownloadStatus = "I" // I = ignore or invalid
 	N QSODownloadStatus = "N" // N = the QSO has not been downloaded from the online service
 	Y QSODownloadStatus = "Y" // Y = the QSO has been downloaded from the online service
 )
 
-// Lookup look up a specification for the given QSODownloadStatus
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known QSODownloadStatus specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "I", Description: "ignore or invalid"},
+	{IsImportOnly: false, Key: "N", Description: "the QSO has not been downloaded from the online service"},
+	{IsImportOnly: false, Key: "Y", Description: "the QSO has been downloaded from the online service"},
+}
+
+// lookupMap contains all known QSODownloadStatus specifications
+var lookupMap = map[QSODownloadStatus]*Spec{
+	I: &lookupList[0],
+	N: &lookupList[1],
+	Y: &lookupList[2],
+}
+
+// Lookup locates the specification for the given QSODownloadStatus
 func Lookup(qsodownloadstatus QSODownloadStatus) (Spec, bool) {
-	spec, ok := internalMap[qsodownloadstatus]
-	return spec, ok
+	spec, ok := lookupMap[qsodownloadstatus]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all QSODownloadStatus specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -27,27 +51,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of QSODownloadStatus specifications EXCLUDING those marked import only.
+// ListActive returns a slice of QSODownloadStatus specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[Y],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all QSODownloadStatus specifications INCLUDING those marked import only.
+// List returns a slice of all QSODownloadStatus specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[Y],
-	}
-}
-
-// internalMap is a map of all known QSODownloadStatus specifications
-var internalMap = map[QSODownloadStatus]Spec{
-	I: {IsImportOnly: false, Key: "I", Description: "ignore or invalid"},
-	N: {IsImportOnly: false, Key: "N", Description: "the QSO has not been downloaded from the online service"},
-	Y: {IsImportOnly: false, Key: "Y", Description: "the QSO has been downloaded from the online service"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

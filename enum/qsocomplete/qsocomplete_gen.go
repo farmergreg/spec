@@ -4,6 +4,8 @@
 // Package qsocomplete provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qsocomplete
 
+import "sync"
+
 const (
 	Uncertain QSOComplete = "?"   // ?    = uncertain
 	N         QSOComplete = "N"   // N    = no
@@ -11,16 +13,40 @@ const (
 	Y         QSOComplete = "Y"   // Y    = yes
 )
 
-// Lookup look up a specification for the given QSOComplete
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known QSOComplete specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "?", Description: "uncertain"},
+	{IsImportOnly: false, Key: "N", Description: "no"},
+	{IsImportOnly: false, Key: "NIL", Description: "not heard"},
+	{IsImportOnly: false, Key: "Y", Description: "yes"},
+}
+
+// lookupMap contains all known QSOComplete specifications
+var lookupMap = map[QSOComplete]*Spec{
+	Uncertain: &lookupList[0],
+	N:         &lookupList[1],
+	NIL:       &lookupList[2],
+	Y:         &lookupList[3],
+}
+
+// Lookup locates the specification for the given QSOComplete
 func Lookup(qsocomplete QSOComplete) (Spec, bool) {
-	spec, ok := internalMap[qsocomplete]
-	return spec, ok
+	spec, ok := lookupMap[qsocomplete]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all QSOComplete specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -28,30 +54,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of QSOComplete specifications EXCLUDING those marked import only.
+// ListActive returns a slice of QSOComplete specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[Uncertain],
-		internalMap[N],
-		internalMap[NIL],
-		internalMap[Y],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all QSOComplete specifications INCLUDING those marked import only.
+// List returns a slice of all QSOComplete specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[Uncertain],
-		internalMap[N],
-		internalMap[NIL],
-		internalMap[Y],
-	}
-}
-
-// internalMap is a map of all known QSOComplete specifications
-var internalMap = map[QSOComplete]Spec{
-	Uncertain: {IsImportOnly: false, Key: "?", Description: "uncertain"},
-	N:         {IsImportOnly: false, Key: "N", Description: "no"},
-	NIL:       {IsImportOnly: false, Key: "NIL", Description: "not heard"},
-	Y:         {IsImportOnly: false, Key: "Y", Description: "yes"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

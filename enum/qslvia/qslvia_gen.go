@@ -4,6 +4,8 @@
 // Package qslvia provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qslvia
 
+import "sync"
+
 const (
 	B QSLVia = "B" // B = bureau
 	D QSLVia = "D" // D = direct
@@ -11,16 +13,40 @@ const (
 	M QSLVia = "M" // Deprecated: M = manager
 )
 
-// Lookup look up a specification for the given QSLVia
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known QSLVia specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "B", Description: "bureau"},
+	{IsImportOnly: false, Key: "D", Description: "direct"},
+	{IsImportOnly: false, Key: "E", Description: "electronic"},
+	{IsImportOnly: true, Key: "M", Description: "manager"},
+}
+
+// lookupMap contains all known QSLVia specifications
+var lookupMap = map[QSLVia]*Spec{
+	B: &lookupList[0],
+	D: &lookupList[1],
+	E: &lookupList[2],
+	M: &lookupList[3],
+}
+
+// Lookup locates the specification for the given QSLVia
 func Lookup(qslvia QSLVia) (Spec, bool) {
-	spec, ok := internalMap[qslvia]
-	return spec, ok
+	spec, ok := lookupMap[qslvia]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all QSLVia specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -28,29 +54,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of QSLVia specifications EXCLUDING those marked import only.
+// ListActive returns a slice of QSLVia specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[B],
-		internalMap[D],
-		internalMap[E],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all QSLVia specifications INCLUDING those marked import only.
+// List returns a slice of all QSLVia specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[B],
-		internalMap[D],
-		internalMap[E],
-		internalMap[M],
-	}
-}
-
-// internalMap is a map of all known QSLVia specifications
-var internalMap = map[QSLVia]Spec{
-	B: {IsImportOnly: false, Key: "B", Description: "bureau"},
-	D: {IsImportOnly: false, Key: "D", Description: "direct"},
-	E: {IsImportOnly: false, Key: "E", Description: "electronic"},
-	M: {IsImportOnly: true, Key: "M", Description: "manager"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

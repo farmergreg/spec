@@ -4,6 +4,8 @@
 // Package qslrcvd provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package qslrcvd
 
+import "sync"
+
 const (
 	I QSLRcvd = "I" // I =
 	N QSLRcvd = "N" // N = an incoming QSL card has not been received the QSO has not been confirmed by the online service
@@ -12,16 +14,42 @@ const (
 	Y QSLRcvd = "Y" // Y = an incoming QSL card has been received the QSO has been confirmed by the online service
 )
 
-// Lookup look up a specification for the given QSLRcvd
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known QSLRcvd specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
+	{IsImportOnly: false, Key: "N", Meaning: "no", Description: "an incoming QSL card has not been received the QSO has not been confirmed by the online service"},
+	{IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service"},
+	{IsImportOnly: true, Key: "V", Meaning: "verified", Description: "DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw"},
+	{IsImportOnly: false, Key: "Y", Meaning: "yes (confirmed)", Description: "an incoming QSL card has been received the QSO has been confirmed by the online service"},
+}
+
+// lookupMap contains all known QSLRcvd specifications
+var lookupMap = map[QSLRcvd]*Spec{
+	I: &lookupList[0],
+	N: &lookupList[1],
+	R: &lookupList[2],
+	V: &lookupList[3],
+	Y: &lookupList[4],
+}
+
+// Lookup locates the specification for the given QSLRcvd
 func Lookup(qslrcvd QSLRcvd) (Spec, bool) {
-	spec, ok := internalMap[qslrcvd]
-	return spec, ok
+	spec, ok := lookupMap[qslrcvd]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all QSLRcvd specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -29,32 +57,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of QSLRcvd specifications EXCLUDING those marked import only.
+// ListActive returns a slice of QSLRcvd specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[R],
-		internalMap[Y],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all QSLRcvd specifications INCLUDING those marked import only.
+// List returns a slice of all QSLRcvd specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[I],
-		internalMap[N],
-		internalMap[R],
-		internalMap[V],
-		internalMap[Y],
-	}
-}
-
-// internalMap is a map of all known QSLRcvd specifications
-var internalMap = map[QSLRcvd]Spec{
-	I: {IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
-	N: {IsImportOnly: false, Key: "N", Meaning: "no", Description: "an incoming QSL card has not been received the QSO has not been confirmed by the online service"},
-	R: {IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service"},
-	V: {IsImportOnly: true, Key: "V", Meaning: "verified", Description: "DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw"},
-	Y: {IsImportOnly: false, Key: "Y", Meaning: "yes (confirmed)", Description: "an incoming QSL card has been received the QSO has been confirmed by the online service"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }

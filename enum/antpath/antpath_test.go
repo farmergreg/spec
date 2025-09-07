@@ -10,10 +10,10 @@ func TestLookup_Success(t *testing.T) {
 		arg  AntPath
 		want Spec
 	}{
-		{name: "G", arg: G, want: internalMap[G]},
-		{name: "L", arg: L, want: internalMap[L]},
-		{name: "O", arg: O, want: internalMap[O]},
-		{name: "S", arg: S, want: internalMap[S]},
+		{name: "G", arg: G, want: *lookupMap[G]},
+		{name: "L", arg: L, want: *lookupMap[L]},
+		{name: "O", arg: O, want: *lookupMap[O]},
+		{name: "S", arg: S, want: *lookupMap[S]},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

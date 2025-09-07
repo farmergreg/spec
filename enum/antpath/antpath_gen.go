@@ -4,6 +4,8 @@
 // Package antpath provides code and constants as defined in ADIF 3.1.6 (Proposed)
 package antpath
 
+import "sync"
+
 const (
 	G AntPath = "G" // G = grayline
 	L AntPath = "L" // L = long path
@@ -11,16 +13,40 @@ const (
 	S AntPath = "S" // S = short path
 )
 
-// Lookup look up a specification for the given AntPath
+var (
+	listActive     []Spec
+	listActiveOnce sync.Once
+)
+
+// lookupList contains all known AntPath specifications
+var lookupList = []Spec{
+	{IsImportOnly: false, Key: "G", Description: "grayline"},
+	{IsImportOnly: false, Key: "L", Description: "long path"},
+	{IsImportOnly: false, Key: "O", Description: "other"},
+	{IsImportOnly: false, Key: "S", Description: "short path"},
+}
+
+// lookupMap contains all known AntPath specifications
+var lookupMap = map[AntPath]*Spec{
+	G: &lookupList[0],
+	L: &lookupList[1],
+	O: &lookupList[2],
+	S: &lookupList[3],
+}
+
+// Lookup locates the specification for the given AntPath
 func Lookup(antpath AntPath) (Spec, bool) {
-	spec, ok := internalMap[antpath]
-	return spec, ok
+	spec, ok := lookupMap[antpath]
+	if !ok {
+		return Spec{}, false
+	}
+	return *spec, true
 }
 
 // LookupByFilter returns all AntPath specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
-	result := make([]Spec, 0)
-	for _, v := range List() {
+	result := make([]Spec, 0, len(lookupList))
+	for _, v := range lookupList {
 		if filter(v) {
 			result = append(result, v)
 		}
@@ -28,30 +54,17 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// Generate a list of AntPath specifications EXCLUDING those marked import only.
+// ListActive returns a slice of AntPath specifications excluding those marked as import-only.
 func ListActive() []Spec {
-	return []Spec{
-		internalMap[G],
-		internalMap[L],
-		internalMap[O],
-		internalMap[S],
-	}
+	listActiveOnce.Do(func() {
+		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
+	})
+	return listActive
 }
 
-// Generate a list of all AntPath specifications INCLUDING those marked import only.
+// List returns a slice of all AntPath specifications including those marked as import-only.
 func List() []Spec {
-	return []Spec{
-		internalMap[G],
-		internalMap[L],
-		internalMap[O],
-		internalMap[S],
-	}
-}
-
-// internalMap is a map of all known AntPath specifications
-var internalMap = map[AntPath]Spec{
-	G: {IsImportOnly: false, Key: "G", Description: "grayline"},
-	L: {IsImportOnly: false, Key: "L", Description: "long path"},
-	O: {IsImportOnly: false, Key: "O", Description: "other"},
-	S: {IsImportOnly: false, Key: "S", Description: "short path"},
+	list := make([]Spec, len(lookupList))
+	copy(list, lookupList)
+	return list
 }
