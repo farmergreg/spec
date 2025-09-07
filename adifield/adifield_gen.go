@@ -716,7 +716,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF 3.1.6 ADIField specifications.
+// List returns a slice of all ADIF 3.1.6 ADIField specifications. This includes those marked import-only.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

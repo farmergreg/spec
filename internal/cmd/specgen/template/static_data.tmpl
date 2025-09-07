@@ -50,7 +50,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ADIF {{ .Spec.Version }} {{ .CodeGen.CodeGenMetadata.DataType }} specifications.
+// List returns a slice of all ADIF {{ .Spec.Version }} {{ .CodeGen.CodeGenMetadata.DataType }} specifications. This includes those marked import-only.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)
