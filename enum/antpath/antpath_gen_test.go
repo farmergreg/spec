@@ -66,7 +66,10 @@ func TestLookup_Immutability(t *testing.T) {
 	if !ok {
 		t.Errorf("lookupMap[G] not found")
 	}
+
 	spec.Key = "Z"
+	_ = spec.Key // we want to see if this newly assigned value affects the next lookup
+
 	spec2, ok := Lookup(G)
 	if !ok {
 		t.Errorf("lookupMap[G] not found")
