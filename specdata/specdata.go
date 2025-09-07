@@ -19,11 +19,21 @@ var specData []byte
 //go:embed fields_extra.json
 var extraFieldData []byte
 
+// LoadADIFJson loads the ADIF Workgroup Specification from a JSON byte slice.
+func LoadADIFJson(data []byte) (*spec.AdifSpecContainer, error) {
+	var container spec.AdifSpecContainer
+	if err := json.Unmarshal(data, &container); err != nil {
+		return nil, err
+	}
+	return &container, nil
+}
+
 // Returns a complete copy of the ADIF Workgroup Specification EXACTLY as defined in the all.json export.
 // This data is re-created every time this function is called.
-func LoadADIFSpec() spec.AdifSpecContainer {
-	var container spec.AdifSpecContainer
-	if err := json.Unmarshal(specData, &container); err != nil {
+func LoadADIFSpec() *spec.AdifSpecContainer {
+
+	container, err := LoadADIFJson(specData)
+	if err != nil {
 		log.Fatal(err)
 	}
 	return container
@@ -33,7 +43,7 @@ func LoadADIFSpec() spec.AdifSpecContainer {
 // 1. USERDEFn is replaced with USERDEF1, USERDEF2, ..., USERDEF9.
 // 2. Extra fields from fields_extra.json are added to the specification.
 // This data is re-created every time this function is called.
-func LoadADIFSpecWithExtras() spec.AdifSpec {
+func LoadADIFSpecWithExtras() *spec.AdifSpec {
 	// Step 1: Load ADIF Workgroup Specification
 	container := LoadADIFSpec()
 
@@ -54,5 +64,5 @@ func LoadADIFSpecWithExtras() spec.AdifSpec {
 	maps.Copy(container.AdifSpec.Fields.Records, extraFields)
 
 	// Step N: All done, return...
-	return container.AdifSpec
+	return &container.AdifSpec
 }

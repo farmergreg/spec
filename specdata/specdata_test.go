@@ -8,7 +8,7 @@ import (
 
 func TestLoadCompleteADIFSpec(t *testing.T) {
 	spec := LoadADIFSpec()
-	verify(t, spec.AdifSpec)
+	verify(t, &spec.AdifSpec)
 }
 
 func TestLoadADIFSpecWithExtras(t *testing.T) {
@@ -16,7 +16,7 @@ func TestLoadADIFSpecWithExtras(t *testing.T) {
 	verify(t, spec)
 }
 
-func verify(t *testing.T, spec spec.AdifSpec) {
+func verify(t *testing.T, spec *spec.AdifSpec) {
 	if len(spec.Fields.Records) < 186 {
 		t.Error("fields list is too short")
 	}

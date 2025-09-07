@@ -34,46 +34,46 @@ func main() {
 	/*
 	 * ADIF Overview
 	 */
-	generate(false, "spec.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec})
+	generate(false, "spec.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec})
 
 	/*
 	 * Fields and Data Types
 	 */
-	generate(false, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Fields})
-	generate(false, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.DataTypes})
+	generate(false, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Fields})
+	generate(false, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.DataTypes})
 
 	/*
 	 * Enumerations
 	 */
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Ant_Path})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.ARRL_Section})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Award})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Award_Sponsor})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Band})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Contest_ID})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Continent})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Credit})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.DXCC_Entity_Code})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.EQSL_AG})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Mode})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Morse_Key_Type})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Propagation_Mode})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSL_Medium})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSL_Rcvd})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSL_Sent})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSL_Via})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSO_Complete})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSO_Download_Status})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.QSO_Upload_Status})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Secondary_Administrative_Subdivision})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Secondary_Administrative_Subdivision_Alt})
-	generate(true, "standard.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Submode})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Ant_Path})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.ARRL_Section})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Award})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Award_Sponsor})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Band})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Contest_ID})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Continent})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Credit})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.DXCC_Entity_Code})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.EQSL_AG})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Mode})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Morse_Key_Type})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Propagation_Mode})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSL_Medium})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSL_Rcvd})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSL_Sent})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSL_Via})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSO_Complete})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSO_Download_Status})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.QSO_Upload_Status})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Secondary_Administrative_Subdivision})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Secondary_Administrative_Subdivision_Alt})
+	generate(true, "standard.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Submode})
 
 	/*
 	 * Enumerations: Composite Key
 	 */
-	generate(true, "standard_composite_index.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Primary_Administrative_Subdivision})
-	generate(true, "standard_composite_index.tmpl", ViewBag{Spec: adifSpec, CodeGen: adifSpec.Enum.Region})
+	generate(true, "standard_composite_index.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Primary_Administrative_Subdivision})
+	generate(true, "standard_composite_index.tmpl", ViewBag{Spec: *adifSpec, CodeGen: adifSpec.Enum.Region})
 }
 
 func generate(isEnum bool, tmplName string, viewBag ViewBag) {
