@@ -13,7 +13,7 @@ It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_reso
 
 ## Installing The Library
 
-`go get github.com/hamradiolog-net/adif-spec@latest`
+`go get github.com/hamradiolog-net/adif-spec@v6`
 
 ## Examples
 
@@ -23,7 +23,7 @@ Please see the [example code here](example_test.go).
 
 If you wish to update this library, the following steps are required:
 
-1. Download the latest ADIF all.json file export from the ADIF Workgroup. This file must be placed into the `src/pkg/specdata/` directory of this repository.
+1. Download the latest ADIF all.json file export from the ADIF Workgroup. This file must be placed into the `specdata/` directory of this repository.
 
 2. Add code for any new enumerations to the src/pkg folder being careful to follow the existing style.
 
