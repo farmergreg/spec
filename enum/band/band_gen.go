@@ -121,7 +121,7 @@ var lookupMap = map[Band]*Spec{
 	Bandsubmm:  &lookupList[32],
 }
 
-// Lookup locates the specification for the given Band
+// Lookup locates the ADIF 3.1.6 specification for the provided Band
 func Lookup(band Band) (Spec, bool) {
 	spec, ok := lookupMap[band]
 	if !ok {
@@ -130,7 +130,7 @@ func Lookup(band Band) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all Band specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 Band specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -141,7 +141,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of Band specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 Band specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -149,7 +149,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all Band specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 Band specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

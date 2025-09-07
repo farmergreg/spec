@@ -235,7 +235,7 @@ var lookupMap = map[Credit]*Spec{
 	WITUZ_BAND:          &lookupList[70],
 }
 
-// Lookup locates the specification for the given Credit
+// Lookup locates the ADIF 3.1.6 specification for the provided Credit
 func Lookup(credit Credit) (Spec, bool) {
 	spec, ok := lookupMap[credit]
 	if !ok {
@@ -244,7 +244,7 @@ func Lookup(credit Credit) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all Credit specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 Credit specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -255,7 +255,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of Credit specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 Credit specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -263,7 +263,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all Credit specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 Credit specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

@@ -37,7 +37,7 @@ var lookupMap = map[QSLSent]*Spec{
 	Y: &lookupList[4],
 }
 
-// Lookup locates the specification for the given QSLSent
+// Lookup locates the ADIF 3.1.6 specification for the provided QSLSent
 func Lookup(qslsent QSLSent) (Spec, bool) {
 	spec, ok := lookupMap[qslsent]
 	if !ok {
@@ -46,7 +46,7 @@ func Lookup(qslsent QSLSent) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all QSLSent specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 QSLSent specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -57,7 +57,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of QSLSent specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 QSLSent specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -65,7 +65,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all QSLSent specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 QSLSent specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

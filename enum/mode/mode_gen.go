@@ -296,7 +296,7 @@ var lookupMap = map[Mode]*Spec{
 	WSPR:         &lookupList[89],
 }
 
-// Lookup locates the specification for the given Mode
+// Lookup locates the ADIF 3.1.6 specification for the provided Mode
 func Lookup(mode Mode) (Spec, bool) {
 	spec, ok := lookupMap[mode]
 	if !ok {
@@ -305,7 +305,7 @@ func Lookup(mode Mode) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all Mode specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 Mode specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -316,7 +316,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of Mode specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 Mode specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -324,7 +324,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all Mode specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 Mode specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

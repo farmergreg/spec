@@ -82,7 +82,7 @@ var lookupMap = map[PropagationMode]*Spec{
 	TR:       &lookupList[19],
 }
 
-// Lookup locates the specification for the given PropagationMode
+// Lookup locates the ADIF 3.1.6 specification for the provided PropagationMode
 func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	spec, ok := lookupMap[propagationmode]
 	if !ok {
@@ -91,7 +91,7 @@ func Lookup(propagationmode PropagationMode) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all PropagationMode specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 PropagationMode specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -102,7 +102,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of PropagationMode specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 PropagationMode specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -110,7 +110,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all PropagationMode specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 PropagationMode specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

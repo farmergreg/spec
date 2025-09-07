@@ -43,7 +43,7 @@ var lookupMap = map[Continent]*Spec{
 	SA: &lookupList[6],
 }
 
-// Lookup locates the specification for the given Continent
+// Lookup locates the ADIF 3.1.6 specification for the provided Continent
 func Lookup(continent Continent) (Spec, bool) {
 	spec, ok := lookupMap[continent]
 	if !ok {
@@ -52,7 +52,7 @@ func Lookup(continent Continent) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all Continent specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 Continent specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -63,7 +63,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of Continent specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 Continent specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -71,7 +71,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all Continent specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 Continent specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

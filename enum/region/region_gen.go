@@ -59,7 +59,7 @@ var lookupMap = map[RegionCompositeKey]*Spec{
 	"SY.248": &lookupList[9],
 }
 
-// Lookup locates the specification for the given RegionCompositeKey
+// Lookup locates the ADIF 3.1.6 specification for the provided RegionCompositeKey
 func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	spec, ok := lookupMap[regioncompositekey]
 	if !ok {
@@ -68,7 +68,7 @@ func Lookup(regioncompositekey RegionCompositeKey) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all RegionCompositeKey specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 RegionCompositeKey specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -79,7 +79,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of RegionCompositeKey specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 RegionCompositeKey specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -87,7 +87,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all RegionCompositeKey specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 RegionCompositeKey specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

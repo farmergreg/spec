@@ -196,7 +196,7 @@ var lookupMap = map[SecondaryAdministrativeSubdivision]*Spec{
 	AKYukon_Koyukuk:                   &lookupList[57],
 }
 
-// Lookup locates the specification for the given SecondaryAdministrativeSubdivision
+// Lookup locates the ADIF 3.1.6 specification for the provided SecondaryAdministrativeSubdivision
 func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivision) (Spec, bool) {
 	spec, ok := lookupMap[secondaryadministrativesubdivision]
 	if !ok {
@@ -205,7 +205,7 @@ func Lookup(secondaryadministrativesubdivision SecondaryAdministrativeSubdivisio
 	return *spec, true
 }
 
-// LookupByFilter returns all SecondaryAdministrativeSubdivision specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -216,7 +216,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of SecondaryAdministrativeSubdivision specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -224,7 +224,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all SecondaryAdministrativeSubdivision specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 SecondaryAdministrativeSubdivision specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

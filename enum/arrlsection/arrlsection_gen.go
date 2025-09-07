@@ -296,7 +296,7 @@ var lookupMap = map[ARRLSection]*Spec{
 	WY:  &lookupList[89],
 }
 
-// Lookup locates the specification for the given ARRLSection
+// Lookup locates the ADIF 3.1.6 specification for the provided ARRLSection
 func Lookup(arrlsection ARRLSection) (Spec, bool) {
 	spec, ok := lookupMap[arrlsection]
 	if !ok {
@@ -305,7 +305,7 @@ func Lookup(arrlsection ARRLSection) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all ARRLSection specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 ARRLSection specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -316,7 +316,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of ARRLSection specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 ARRLSection specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -324,7 +324,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all ARRLSection specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 ARRLSection specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)

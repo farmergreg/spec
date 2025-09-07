@@ -31,7 +31,7 @@ var lookupMap = map[EQSLAG]*Spec{
 	Y: &lookupList[2],
 }
 
-// Lookup locates the specification for the given EQSLAG
+// Lookup locates the ADIF 3.1.6 specification for the provided EQSLAG
 func Lookup(eqslag EQSLAG) (Spec, bool) {
 	spec, ok := lookupMap[eqslag]
 	if !ok {
@@ -40,7 +40,7 @@ func Lookup(eqslag EQSLAG) (Spec, bool) {
 	return *spec, true
 }
 
-// LookupByFilter returns all EQSLAG specifications that match the provided filter function.
+// LookupByFilter returns all ADIF 3.1.6 EQSLAG specifications that match the provided filter function.
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
 	for _, v := range lookupList {
@@ -51,7 +51,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// ListActive returns a slice of EQSLAG specifications excluding those marked as import-only.
+// ListActive returns a slice of ADIF 3.1.6 EQSLAG specifications, but excludes those marked as import-only.
 func ListActive() []Spec {
 	listActiveOnce.Do(func() {
 		listActive = LookupByFilter(func(spec Spec) bool { return !bool(spec.IsImportOnly) })
@@ -59,7 +59,7 @@ func ListActive() []Spec {
 	return listActive
 }
 
-// List returns a slice of all EQSLAG specifications including those marked as import-only.
+// List returns a slice of all ADIF 3.1.6 EQSLAG specifications.
 func List() []Spec {
 	list := make([]Spec, len(lookupList))
 	copy(list, lookupList)
