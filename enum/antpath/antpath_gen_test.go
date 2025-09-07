@@ -27,23 +27,23 @@ func TestLookup_Success(t *testing.T) {
 }
 
 func TestLookup_Failure(t *testing.T) {
-	got, ok := Lookup("Z")
+	got, ok := Lookup("ZZ")
 	if ok {
-		t.Errorf("Lookup(Z) = %v, want nil", got)
+		t.Errorf("Lookup(ZZ) = %v, want nil", got)
 	}
 }
 
 func TestLookupByFilter_Success(t *testing.T) {
-	got := LookupByFilter(func(spec Spec) bool { return spec.Key == "G" })
+	got := LookupByFilter(func(spec Spec) bool { return spec.Key == G })
 	if len(got) != 1 || got[0].Key != "G" {
-		t.Errorf("LookupByFilter(%v) = %v, want %v", "G", got, 1)
+		t.Errorf("LookupByFilter(%v) = %v, want %v", G, got, 1)
 	}
 }
 
-func TestLookupByFilter_Failure(t *testing.T) {
-	got := LookupByFilter(func(spec Spec) bool { return spec.Key == "A" })
+func TestLookupByFilter_NoResults(t *testing.T) {
+	got := LookupByFilter(func(spec Spec) bool { return spec.Key == "ZZ" })
 	if len(got) != 0 {
-		t.Errorf("LookupByFilter(%v) = %v, want %v", "A", got, 0)
+		t.Errorf("LookupByFilter(%v) = %v, want %v", G, got, 0)
 	}
 }
 
@@ -77,15 +77,15 @@ func TestLookup_Immutability(t *testing.T) {
 }
 
 func TestLookupByFilter_Immutability(t *testing.T) {
-	filterFunc := func(spec Spec) bool { return spec.Key == "G" }
+	filterFunc := func(spec Spec) bool { return spec.Key == G }
 	got := LookupByFilter(filterFunc)
 	if len(got) != 1 {
-		t.Errorf("LookupByFilter(%v) = %v, want %v", "G", got, 1)
+		t.Errorf("LookupByFilter(%v) = %v, want %v", G, got, 1)
 	}
 	got[0].Key = "Z"
 	got2 := LookupByFilter(filterFunc)
 	if len(got2) != 1 {
-		t.Errorf("LookupByFilter(%v) = %v, want %v", "G", got2, 1)
+		t.Errorf("LookupByFilter(%v) = %v, want %v", G, got2, 1)
 	}
 	if got2[0].Key == "Z" {
 		t.Errorf("LookupByFilter is not immutable")
@@ -94,18 +94,18 @@ func TestLookupByFilter_Immutability(t *testing.T) {
 
 func TestListImmutability(t *testing.T) {
 	list1 := List()
-	list1[0].Key = "Z"
+	list1[0].Key = "ZZ"
 	list2 := List()
-	if list2[0].Key == "Z" {
+	if list2[0].Key == "ZZ" {
 		t.Errorf("List() is not immutable")
 	}
 }
 
 func TestListActiveImmutability(t *testing.T) {
 	list1 := ListActive()
-	list1[0].Key = "Z"
+	list1[0].Key = "ZZ"
 	list2 := ListActive()
-	if list2[0].Key == "Z" {
+	if list2[0].Key == "ZZ" {
 		t.Errorf("ListActive() is not immutable")
 	}
 }
