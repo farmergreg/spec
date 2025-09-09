@@ -3,7 +3,7 @@ package specdata
 import (
 	"testing"
 
-	"github.com/hamradiolog-net/adif-spec/v6/spec"
+	"github.com/hamradiolog-net/spec/v6/spec"
 )
 
 func TestLoadCompleteADIFSpec(t *testing.T) {

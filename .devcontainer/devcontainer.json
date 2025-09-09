@@ -1,5 +1,5 @@
 {
-    "name": "adif-spec",
+    "name": "spec",
     "build": {
         "dockerfile": "Dockerfile",
         "target": "dev-container",
@@ -34,8 +34,8 @@
     "mounts": [
         /*
         Cursor can't handle this. See also, Dockerfile
-        "source=${localEnv:HOME}/.cache,target=/home/adif-spec/.cache,type=bind",
-        "source=${localEnv:HOME}/go/pkg,target=/home/adif-spec/go/pkg,type=bind"
+        "source=${localEnv:HOME}/.cache,target=/home/spec/.cache,type=bind",
+        "source=${localEnv:HOME}/go/pkg,target=/home/spec/go/pkg,type=bind"
         */
     ]
 }

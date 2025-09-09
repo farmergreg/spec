@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 )
 
 // DXCCEntityCode is an ARRL DX Century Club code.
@@ -13,10 +13,12 @@ type DXCCEntityCode int
 
 var _ codegen.CodeGenKey = DXCCEntityCode(0)
 
+// Int returns the integer representation of the DXCCEntityCode.
 func (d DXCCEntityCode) Int() int {
 	return int(d)
 }
 
+// String returns the string representation of the DXCCEntityCode.
 func (d DXCCEntityCode) String() string {
 	return strconv.Itoa(int(d))
 }

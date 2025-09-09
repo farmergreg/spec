@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/adif-spec/v6/spectype"
+	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/spectype"
 )
 
 var (
@@ -38,6 +38,11 @@ type Spec struct {
 
 // PrimaryAdministrativeSubdivisionCode is the Code portion of the composite key.
 type PrimaryAdministrativeSubdivisionCode string
+
+// String returns the string representation of the PrimaryAdministrativeSubdivisionCode.
+func (c PrimaryAdministrativeSubdivisionCode) String() string {
+	return string(c)
+}
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))

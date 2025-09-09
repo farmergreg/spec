@@ -1,8 +1,8 @@
 package region
 
 import (
-	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 )
 
 // RegionCompositeKey works differently that almost all of the other enumerations!
@@ -12,6 +12,7 @@ type RegionCompositeKey string
 
 var _ codegen.CodeGenKey = RegionCompositeKey("")
 
+// String returns the string representation of the RegionCompositeKey.
 func (r RegionCompositeKey) String() string {
 	return string(r)
 }

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/adif-spec/v6/spectype"
+	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/spectype"
 )
 
 var (
@@ -36,6 +36,11 @@ type Spec struct {
 
 // RegionCode represents a region entity code.
 type RegionCode string
+
+// String returns the string representation of the RegionCode.
+func (r RegionCode) String() string {
+	return string(r)
+}
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))

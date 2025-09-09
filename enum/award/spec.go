@@ -3,8 +3,8 @@ package award
 import (
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/adif-spec/v6/spectype"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/spectype"
 )
 
 var (

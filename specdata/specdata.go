@@ -7,8 +7,8 @@ import (
 	"maps"
 	"strconv"
 
-	"github.com/hamradiolog-net/adif-spec/v6/adifield"
-	"github.com/hamradiolog-net/adif-spec/v6/spec"
+	"github.com/hamradiolog-net/spec/v6/adifield"
+	"github.com/hamradiolog-net/spec/v6/spec"
 )
 
 // https://adif.org.uk/proposed/316/ADIF_316_resources_2025_08_27.zip

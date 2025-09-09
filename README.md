@@ -37,7 +37,7 @@ If you wish to update this library, the following steps are required:
 
 If you found this library useful, you may also be interested in the following projects:
 
-- [World's Fastest ADIF Parser](https://github.com/hamradiolog-net/adif-parser)
+- [World's Fastest ADIF Parser](https://github.com/hamradiolog-net/adif)
 - [Go ADIF Parser Benchmarks](https://github.com/hamradiolog-net/adif-benchmark)
 - [g3zod/CreateADIFTestFiles](https://github.com/g3zod/CreateADIFTestFiles) ADI Test Files
 - [g3zod/CreateADIFExportFiles](https://github.com/g3zod/CreateADIFExportFiles) ADIF Workgroup Specification Export Tool

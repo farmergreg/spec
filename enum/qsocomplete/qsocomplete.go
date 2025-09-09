@@ -1,12 +1,13 @@
 package qsocomplete
 
-import "github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
+import "github.com/hamradiolog-net/spec/v6/internal/codegen"
 
 // QSOComplete represents the completion status of a QSO
 type QSOComplete string
 
 var _ codegen.CodeGenKey = QSOComplete("")
 
+// String returns the string representation of the QSOComplete.
 func (q QSOComplete) String() string {
 	return string(q)
 }

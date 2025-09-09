@@ -1,14 +1,15 @@
 package primaryadministrativesubdivision
 
 import (
-	"github.com/hamradiolog-net/adif-spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/adif-spec/v6/internal/codegen"
+	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 )
 
 type PrimaryAdministrativeSubdivisionCompositeKey string
 
 var _ codegen.CodeGenKey = PrimaryAdministrativeSubdivisionCompositeKey("")
 
+// String returns the string representation of the PrimaryAdministrativeSubdivisionCompositeKey.
 func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 	return string(p)
 }

@@ -7,7 +7,7 @@ package mode
 import (
 	"sync"
 
-	"github.com/hamradiolog-net/adif-spec/v6/enum/submode"
+	"github.com/hamradiolog-net/spec/v6/enum/submode"
 )
 
 const (
