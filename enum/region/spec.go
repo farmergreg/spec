@@ -74,8 +74,8 @@ func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGe
 func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
 	keyMap := make(map[string]string)
 	for _, v := range c.Records {
-
-		keyMap[string(v.Code)] = string(v.Code)
+		code := strings.ToUpper(string(v.Code))
+		keyMap[code] = code
 	}
 
 	return codegen.CodeGenContainerMetadata{

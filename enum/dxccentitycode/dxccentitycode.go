@@ -18,9 +18,8 @@ func (c DXCCEntityCode) Int() int {
 	return int(c)
 }
 
-// ADIF enums are case-insensitive.
-func (c DXCCEntityCode) Compare(other DXCCEntityCode) int {
-	return int(c) - int(other)
+func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
+	return int(t) - int(other)
 }
 
 // String returns the string representation of the DXCCEntityCode.

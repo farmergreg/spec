@@ -10,7 +10,7 @@ const (
 	AJA         Award = "AJA"         // Deprecated: AJA
 	CQDX        Award = "CQDX"        // Deprecated: CQDX
 	CQDXFIELD   Award = "CQDXFIELD"   // Deprecated: CQDXFIELD
-	CQWAZ_160m  Award = "CQWAZ_160m"  // Deprecated: CQWAZ_160m
+	CQWAZ_160M  Award = "CQWAZ_160M"  // Deprecated: CQWAZ_160M
 	CQWAZ_CW    Award = "CQWAZ_CW"    // Deprecated: CQWAZ_CW
 	CQWAZ_MIXED Award = "CQWAZ_MIXED" // Deprecated: CQWAZ_MIXED
 	CQWAZ_PHONE Award = "CQWAZ_PHONE" // Deprecated: CQWAZ_PHONE
@@ -48,7 +48,7 @@ var lookupList = []Spec{
 	{IsImportOnly: true, Key: "AJA"},
 	{IsImportOnly: true, Key: "CQDX"},
 	{IsImportOnly: true, Key: "CQDXFIELD"},
-	{IsImportOnly: true, Key: "CQWAZ_160m"},
+	{IsImportOnly: true, Key: "CQWAZ_160M"},
 	{IsImportOnly: true, Key: "CQWAZ_CW"},
 	{IsImportOnly: true, Key: "CQWAZ_MIXED"},
 	{IsImportOnly: true, Key: "CQWAZ_PHONE"},
@@ -81,7 +81,7 @@ var lookupMap = map[Award]*Spec{
 	AJA:         &lookupList[0],
 	CQDX:        &lookupList[1],
 	CQDXFIELD:   &lookupList[2],
-	CQWAZ_160m:  &lookupList[3],
+	CQWAZ_160M:  &lookupList[3],
 	CQWAZ_CW:    &lookupList[4],
 	CQWAZ_MIXED: &lookupList[5],
 	CQWAZ_PHONE: &lookupList[6],
