@@ -23,5 +23,5 @@ func (e EQSLAG) String() string {
 
 // ADIF enums are case-insensitive.
 func (e EQSLAG) Compare(other EQSLAG) int {
-	return strings.Compare(string(e), other.String())
+	return strings.Compare(string(e), string(other))
 }

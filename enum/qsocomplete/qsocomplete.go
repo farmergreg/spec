@@ -23,5 +23,5 @@ func (q QSOComplete) String() string {
 
 // ADIF enums are case-insensitive.
 func (q QSOComplete) Compare(other QSOComplete) int {
-	return strings.Compare(string(q), other.String())
+	return strings.Compare(string(q), string(other))
 }

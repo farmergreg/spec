@@ -23,5 +23,5 @@ func (c Credit) String() string {
 
 // ADIF enums are case-insensitive.
 func (c Credit) Compare(other Credit) int {
-	return strings.Compare(string(c), other.String())
+	return strings.Compare(string(c), string(other))
 }

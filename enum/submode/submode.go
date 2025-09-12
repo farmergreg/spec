@@ -23,5 +23,5 @@ func (s SubMode) String() string {
 
 // ADIF enums are case-insensitive.
 func (s SubMode) Compare(other SubMode) int {
-	return strings.Compare(string(s), other.String())
+	return strings.Compare(string(s), string(other))
 }

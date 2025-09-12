@@ -24,5 +24,5 @@ func (a Award) String() string {
 // Deprecated: Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Award) Compare(other Award) int {
-	return strings.Compare(string(t), other.String())
+	return strings.Compare(string(t), string(other))
 }

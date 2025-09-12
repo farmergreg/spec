@@ -23,5 +23,5 @@ func (a AwardSponsorPrefix) String() string {
 
 // ADIF enums are case-insensitive.
 func (t AwardSponsorPrefix) Compare(other AwardSponsorPrefix) int {
-	return strings.Compare(string(t), other.String())
+	return strings.Compare(string(t), string(other))
 }

@@ -31,7 +31,7 @@ type Spec struct {
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	return codegen.CodeGenEnumMetadata{
-		ConstName:     codegen.ToGoIdentifier("Band" + string(s.Key)),
+		ConstName:     codegen.ToGoIdentifier("Band_" + string(s.Key)),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
 		ConstComments: fmt.Sprintf("%-6s = %12.4f MHz to %12.4f MHz", s.Key, s.LowerFreqMHz, s.UpperFreqMHz),
 		IsDeprecated:  bool(s.IsImportOnly),

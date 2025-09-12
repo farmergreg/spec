@@ -23,5 +23,5 @@ func (t ADIType) String() string {
 
 // ADIF enums are case-insensitive.
 func (t ADIType) Compare(other ADIType) int {
-	return strings.Compare(string(t), other.String())
+	return strings.Compare(string(t), string(other))
 }

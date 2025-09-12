@@ -23,5 +23,5 @@ func (q QSLSent) String() string {
 
 // ADIF enums are case-insensitive.
 func (q QSLSent) Compare(other QSLSent) int {
-	return strings.Compare(string(q), other.String())
+	return strings.Compare(string(q), string(other))
 }

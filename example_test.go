@@ -14,7 +14,7 @@ func Example() {
 	 * You can use convenience constants and variables in packages that represent each ADIF enum type.
 	 * For example, the band package represents ADIF bands:
 	 */
-	forty, _ := band.Lookup(band.Band40m)
+	forty, _ := band.Lookup(band.Band_40m)
 	fmt.Printf("The 40m band is between %f and %f MHz\n", forty.LowerFreqMHz, forty.UpperFreqMHz)
 
 	fmt.Println("Current Bands")
@@ -22,9 +22,14 @@ func Example() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
-	// If for some reason, you have an ADIF enum value as a string, you can convert it to the corresponding type:
+	// If for some reason, you have an ADIF enum value as a string (e.g. post from a web form), you can convert it to the corresponding type:
 	twenty := band.New("20m")
-	twenty.Compare(band.BAND_20M) // true
+	if twenty == band.Band_20m {
+		fmt.Println("The twenty variable is equal to the Band_20m constant")
+
+		// You can also compare two ADIF enum values using the Compare method:
+		twenty.Compare(band.Band_20m) // return 0 because they are equal
+	}
 
 	/*
 	 * You can load an immutable copy of the specification using the spec data package.

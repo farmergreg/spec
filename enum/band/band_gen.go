@@ -7,39 +7,39 @@ package band
 import "sync"
 
 const (
-	Band1_25cm Band = "1.25cm" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
-	Band1_25m  Band = "1.25m"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
-	Band10m    Band = "10m"    // 10m    =      28.0000 MHz to      29.7000 MHz
-	Band12m    Band = "12m"    // 12m    =      24.8900 MHz to      24.9900 MHz
-	Band13cm   Band = "13cm"   // 13cm   =    2300.0000 MHz to    2450.0000 MHz
-	Band15m    Band = "15m"    // 15m    =      21.0000 MHz to      21.4500 MHz
-	Band160m   Band = "160m"   // 160m   =       1.8000 MHz to       2.0000 MHz
-	Band17m    Band = "17m"    // 17m    =      18.0680 MHz to      18.1680 MHz
-	Band1mm    Band = "1mm"    // 1mm    =  241000.0000 MHz to  250000.0000 MHz
-	Band2_5mm  Band = "2.5mm"  // 2.5mm  =  119980.0000 MHz to  123000.0000 MHz
-	Band20m    Band = "20m"    // 20m    =      14.0000 MHz to      14.3500 MHz
-	Band2190m  Band = "2190m"  // 2190m  =       0.1357 MHz to       0.1378 MHz
-	Band23cm   Band = "23cm"   // 23cm   =    1240.0000 MHz to    1300.0000 MHz
-	Band2m     Band = "2m"     // 2m     =     144.0000 MHz to     148.0000 MHz
-	Band2mm    Band = "2mm"    // 2mm    =  134000.0000 MHz to  149000.0000 MHz
-	Band30m    Band = "30m"    // 30m    =      10.1000 MHz to      10.1500 MHz
-	Band33cm   Band = "33cm"   // 33cm   =     902.0000 MHz to     928.0000 MHz
-	Band3cm    Band = "3cm"    // 3cm    =   10000.0000 MHz to   10500.0000 MHz
-	Band40m    Band = "40m"    // 40m    =       7.0000 MHz to       7.3000 MHz
-	Band4m     Band = "4m"     // 4m     =      70.0000 MHz to      71.0000 MHz
-	Band4mm    Band = "4mm"    // 4mm    =   75500.0000 MHz to   81000.0000 MHz
-	Band560m   Band = "560m"   // 560m   =       0.5010 MHz to       0.5040 MHz
-	Band5m     Band = "5m"     // 5m     =      54.0000 MHz to      69.9000 MHz
-	Band60m    Band = "60m"    // 60m    =       5.0600 MHz to       5.4500 MHz
-	Band630m   Band = "630m"   // 630m   =       0.4720 MHz to       0.4790 MHz
-	Band6cm    Band = "6cm"    // 6cm    =    5650.0000 MHz to    5925.0000 MHz
-	Band6m     Band = "6m"     // 6m     =      50.0000 MHz to      54.0000 MHz
-	Band6mm    Band = "6mm"    // 6mm    =   47000.0000 MHz to   47200.0000 MHz
-	Band70cm   Band = "70cm"   // 70cm   =     420.0000 MHz to     450.0000 MHz
-	Band80m    Band = "80m"    // 80m    =       3.5000 MHz to       4.0000 MHz
-	Band8m     Band = "8m"     // 8m     =      40.0000 MHz to      45.0000 MHz
-	Band9cm    Band = "9cm"    // 9cm    =    3300.0000 MHz to    3500.0000 MHz
-	Bandsubmm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
+	Band_1_25cm Band = "1.25cm" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
+	Band_1_25m  Band = "1.25m"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
+	Band_10m    Band = "10m"    // 10m    =      28.0000 MHz to      29.7000 MHz
+	Band_12m    Band = "12m"    // 12m    =      24.8900 MHz to      24.9900 MHz
+	Band_13cm   Band = "13cm"   // 13cm   =    2300.0000 MHz to    2450.0000 MHz
+	Band_15m    Band = "15m"    // 15m    =      21.0000 MHz to      21.4500 MHz
+	Band_160m   Band = "160m"   // 160m   =       1.8000 MHz to       2.0000 MHz
+	Band_17m    Band = "17m"    // 17m    =      18.0680 MHz to      18.1680 MHz
+	Band_1mm    Band = "1mm"    // 1mm    =  241000.0000 MHz to  250000.0000 MHz
+	Band_2_5mm  Band = "2.5mm"  // 2.5mm  =  119980.0000 MHz to  123000.0000 MHz
+	Band_20m    Band = "20m"    // 20m    =      14.0000 MHz to      14.3500 MHz
+	Band_2190m  Band = "2190m"  // 2190m  =       0.1357 MHz to       0.1378 MHz
+	Band_23cm   Band = "23cm"   // 23cm   =    1240.0000 MHz to    1300.0000 MHz
+	Band_2m     Band = "2m"     // 2m     =     144.0000 MHz to     148.0000 MHz
+	Band_2mm    Band = "2mm"    // 2mm    =  134000.0000 MHz to  149000.0000 MHz
+	Band_30m    Band = "30m"    // 30m    =      10.1000 MHz to      10.1500 MHz
+	Band_33cm   Band = "33cm"   // 33cm   =     902.0000 MHz to     928.0000 MHz
+	Band_3cm    Band = "3cm"    // 3cm    =   10000.0000 MHz to   10500.0000 MHz
+	Band_40m    Band = "40m"    // 40m    =       7.0000 MHz to       7.3000 MHz
+	Band_4m     Band = "4m"     // 4m     =      70.0000 MHz to      71.0000 MHz
+	Band_4mm    Band = "4mm"    // 4mm    =   75500.0000 MHz to   81000.0000 MHz
+	Band_560m   Band = "560m"   // 560m   =       0.5010 MHz to       0.5040 MHz
+	Band_5m     Band = "5m"     // 5m     =      54.0000 MHz to      69.9000 MHz
+	Band_60m    Band = "60m"    // 60m    =       5.0600 MHz to       5.4500 MHz
+	Band_630m   Band = "630m"   // 630m   =       0.4720 MHz to       0.4790 MHz
+	Band_6cm    Band = "6cm"    // 6cm    =    5650.0000 MHz to    5925.0000 MHz
+	Band_6m     Band = "6m"     // 6m     =      50.0000 MHz to      54.0000 MHz
+	Band_6mm    Band = "6mm"    // 6mm    =   47000.0000 MHz to   47200.0000 MHz
+	Band_70cm   Band = "70cm"   // 70cm   =     420.0000 MHz to     450.0000 MHz
+	Band_80m    Band = "80m"    // 80m    =       3.5000 MHz to       4.0000 MHz
+	Band_8m     Band = "8m"     // 8m     =      40.0000 MHz to      45.0000 MHz
+	Band_9cm    Band = "9cm"    // 9cm    =    3300.0000 MHz to    3500.0000 MHz
+	Band_submm  Band = "submm"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
 var (
@@ -86,39 +86,39 @@ var lookupList = []Spec{
 
 // lookupMap contains all known Band specifications.
 var lookupMap = map[Band]*Spec{
-	Band1_25cm: &lookupList[0],
-	Band1_25m:  &lookupList[1],
-	Band10m:    &lookupList[2],
-	Band12m:    &lookupList[3],
-	Band13cm:   &lookupList[4],
-	Band15m:    &lookupList[5],
-	Band160m:   &lookupList[6],
-	Band17m:    &lookupList[7],
-	Band1mm:    &lookupList[8],
-	Band2_5mm:  &lookupList[9],
-	Band20m:    &lookupList[10],
-	Band2190m:  &lookupList[11],
-	Band23cm:   &lookupList[12],
-	Band2m:     &lookupList[13],
-	Band2mm:    &lookupList[14],
-	Band30m:    &lookupList[15],
-	Band33cm:   &lookupList[16],
-	Band3cm:    &lookupList[17],
-	Band40m:    &lookupList[18],
-	Band4m:     &lookupList[19],
-	Band4mm:    &lookupList[20],
-	Band560m:   &lookupList[21],
-	Band5m:     &lookupList[22],
-	Band60m:    &lookupList[23],
-	Band630m:   &lookupList[24],
-	Band6cm:    &lookupList[25],
-	Band6m:     &lookupList[26],
-	Band6mm:    &lookupList[27],
-	Band70cm:   &lookupList[28],
-	Band80m:    &lookupList[29],
-	Band8m:     &lookupList[30],
-	Band9cm:    &lookupList[31],
-	Bandsubmm:  &lookupList[32],
+	Band_1_25cm: &lookupList[0],
+	Band_1_25m:  &lookupList[1],
+	Band_10m:    &lookupList[2],
+	Band_12m:    &lookupList[3],
+	Band_13cm:   &lookupList[4],
+	Band_15m:    &lookupList[5],
+	Band_160m:   &lookupList[6],
+	Band_17m:    &lookupList[7],
+	Band_1mm:    &lookupList[8],
+	Band_2_5mm:  &lookupList[9],
+	Band_20m:    &lookupList[10],
+	Band_2190m:  &lookupList[11],
+	Band_23cm:   &lookupList[12],
+	Band_2m:     &lookupList[13],
+	Band_2mm:    &lookupList[14],
+	Band_30m:    &lookupList[15],
+	Band_33cm:   &lookupList[16],
+	Band_3cm:    &lookupList[17],
+	Band_40m:    &lookupList[18],
+	Band_4m:     &lookupList[19],
+	Band_4mm:    &lookupList[20],
+	Band_560m:   &lookupList[21],
+	Band_5m:     &lookupList[22],
+	Band_60m:    &lookupList[23],
+	Band_630m:   &lookupList[24],
+	Band_6cm:    &lookupList[25],
+	Band_6m:     &lookupList[26],
+	Band_6mm:    &lookupList[27],
+	Band_70cm:   &lookupList[28],
+	Band_80m:    &lookupList[29],
+	Band_8m:     &lookupList[30],
+	Band_9cm:    &lookupList[31],
+	Band_submm:  &lookupList[32],
 }
 
 // Lookup returns the specification for the provided Band.

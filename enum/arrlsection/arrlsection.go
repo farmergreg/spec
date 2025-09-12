@@ -23,5 +23,5 @@ func (a ARRLSection) String() string {
 
 // ADIF enums are case-insensitive.
 func (t ARRLSection) Compare(other ARRLSection) int {
-	return strings.Compare(string(t), other.String())
+	return strings.Compare(string(t), string(other))
 }
