@@ -22,6 +22,6 @@ func (b Band) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t Band) Compare(other Band) int {
-	return strings.Compare(string(t), other.String())
+func (b Band) Compare(other Band) int {
+	return strings.Compare(string(b), other.String())
 }

@@ -22,6 +22,6 @@ func (q QSLMedium) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t QSLMedium) Compare(other QSLMedium) int {
-	return strings.Compare(string(t), other.String())
+func (q QSLMedium) Compare(other QSLMedium) int {
+	return strings.Compare(string(q), other.String())
 }

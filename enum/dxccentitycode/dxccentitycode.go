@@ -14,21 +14,21 @@ type DXCCEntityCode int
 var _ codegen.CodeGenKey = DXCCEntityCode(0)
 
 // Int returns the integer representation of the DXCCEntityCode.
-func (d DXCCEntityCode) Int() int {
-	return int(d)
+func (c DXCCEntityCode) Int() int {
+	return int(c)
 }
 
 // ADIF enums are case-insensitive.
-func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
-	return int(t) - int(other)
+func (c DXCCEntityCode) Compare(other DXCCEntityCode) int {
+	return int(c) - int(other)
 }
 
 // String returns the string representation of the DXCCEntityCode.
-func (d DXCCEntityCode) String() string {
-	return strconv.Itoa(int(d))
+func (c DXCCEntityCode) String() string {
+	return strconv.Itoa(int(c))
 }
 
-func (d *DXCCEntityCode) UnmarshalJSON(data []byte) error {
+func (c *DXCCEntityCode) UnmarshalJSON(data []byte) error {
 	var val string
 	if err := json.Unmarshal(data, &val); err != nil {
 		return err
@@ -39,6 +39,6 @@ func (d *DXCCEntityCode) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	*d = DXCCEntityCode(parsedCode)
+	*c = DXCCEntityCode(parsedCode)
 	return nil
 }

@@ -22,6 +22,6 @@ func (c Continent) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t Continent) Compare(other Continent) int {
-	return strings.Compare(string(t), other.String())
+func (c Continent) Compare(other Continent) int {
+	return strings.Compare(string(c), other.String())
 }

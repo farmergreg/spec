@@ -21,6 +21,6 @@ func (a AntPath) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t AntPath) Compare(other AntPath) int {
-	return strings.Compare(string(t), other.String())
+func (a AntPath) Compare(other AntPath) int {
+	return strings.Compare(string(a), other.String())
 }

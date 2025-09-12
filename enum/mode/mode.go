@@ -22,6 +22,6 @@ func (m Mode) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t Mode) Compare(other Mode) int {
-	return strings.Compare(string(t), other.String())
+func (m Mode) Compare(other Mode) int {
+	return strings.Compare(string(m), other.String())
 }

@@ -24,6 +24,6 @@ func (f ADIField) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t ADIField) Compare(other ADIField) int {
-	return strings.Compare(string(t), other.String())
+func (f ADIField) Compare(other ADIField) int {
+	return strings.Compare(string(f), other.String())
 }

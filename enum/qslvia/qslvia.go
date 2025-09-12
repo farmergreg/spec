@@ -22,6 +22,6 @@ func (q QSLVia) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t QSLVia) Compare(other QSLVia) int {
-	return strings.Compare(string(t), other.String())
+func (q QSLVia) Compare(other QSLVia) int {
+	return strings.Compare(string(q), other.String())
 }

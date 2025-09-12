@@ -46,8 +46,8 @@ func New(value string) PrimaryAdministrativeSubdivisionCode {
 }
 
 // String returns the string representation of the PrimaryAdministrativeSubdivisionCode.
-func (c PrimaryAdministrativeSubdivisionCode) String() string {
-	return string(c)
+func (p PrimaryAdministrativeSubdivisionCode) String() string {
+	return string(p)
 }
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {

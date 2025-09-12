@@ -22,6 +22,6 @@ func (q QSOUploadStatus) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t QSOUploadStatus) Compare(other QSOUploadStatus) int {
-	return strings.Compare(string(t), other.String())
+func (q QSOUploadStatus) Compare(other QSOUploadStatus) int {
+	return strings.Compare(string(q), other.String())
 }

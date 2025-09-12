@@ -20,8 +20,8 @@ func (r RegionCompositeKey) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t RegionCompositeKey) Compare(other RegionCompositeKey) int {
-	return strings.Compare(string(t), other.String())
+func (r RegionCompositeKey) Compare(other RegionCompositeKey) int {
+	return strings.Compare(string(r), other.String())
 }
 
 // LookupByCodeAndDXCC looks up a Region specification by its composite key (Region Code + DXCCEntityCode).

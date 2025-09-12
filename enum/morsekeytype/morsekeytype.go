@@ -21,6 +21,6 @@ func (m MorseKeyType) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t MorseKeyType) Compare(other MorseKeyType) int {
-	return strings.Compare(string(t), other.String())
+func (m MorseKeyType) Compare(other MorseKeyType) int {
+	return strings.Compare(string(m), other.String())
 }

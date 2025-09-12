@@ -22,6 +22,6 @@ func (p PropagationMode) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t PropagationMode) Compare(other PropagationMode) int {
-	return strings.Compare(string(t), other.String())
+func (p PropagationMode) Compare(other PropagationMode) int {
+	return strings.Compare(string(p), other.String())
 }

@@ -21,6 +21,6 @@ func (s SecondaryAdministrativeSubdivision) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t SecondaryAdministrativeSubdivision) Compare(other SecondaryAdministrativeSubdivision) int {
-	return strings.Compare(string(t), other.String())
+func (s SecondaryAdministrativeSubdivision) Compare(other SecondaryAdministrativeSubdivision) int {
+	return strings.Compare(string(s), other.String())
 }
