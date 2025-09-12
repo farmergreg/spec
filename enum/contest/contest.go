@@ -22,6 +22,6 @@ func (c Contest) String() string {
 }
 
 // ADIF enums are case-insensitive.
-func (t Contest) Compare(other Contest) int {
-	return strings.Compare(string(t), other.String())
+func (c Contest) Compare(other Contest) int {
+	return strings.Compare(string(c), other.String())
 }
