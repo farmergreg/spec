@@ -41,6 +41,7 @@ func LoadADIFSpec() *spec.AdifSpecContainer {
 // Returns the ADIF Workgroup Specification, defined in the all.json export, but with some modifications:
 // 1. USERDEFn is replaced with USERDEF1, USERDEF2, ..., USERDEF9.
 // 2. Extra fields from fields_extra.json are added to the specification.
+// 3. All enum key values are converted to UPPERCASE to make using strings.ToUpper faster when comparing ADIF key values (enums are case insensitive).
 // This data is re-created every time this function is called.
 func LoadADIFSpecWithExtras() *spec.AdifSpec {
 	// Step 1: Load ADIF Workgroup Specification

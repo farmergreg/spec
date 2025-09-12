@@ -3,6 +3,7 @@ package submode
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/spec/v6/spectype"
@@ -31,7 +32,7 @@ type Spec struct {
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	return codegen.CodeGenEnumMetadata{
-		ConstName:     codegen.ToGoIdentifier("SubMode" + string(s.Key)),
+		ConstName:     codegen.ToGoIdentifier("SUBMODE_" + string(s.Key)),
 		ConstValue:    strconv.QuoteToASCII(string(s.Key)),
 		ConstComments: fmt.Sprintf("%-15s = %-15s %s", s.Key, s.Mode, s.Description),
 		IsDeprecated:  bool(s.IsImportOnly),
@@ -41,6 +42,7 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
+		v.Key = SubMode(strings.ToUpper(string(v.Key)))
 		result[k] = v
 	}
 	return result
