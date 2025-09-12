@@ -18,6 +18,7 @@ func (d DXCCEntityCode) Int() int {
 	return int(d)
 }
 
+// ADIF enums are case-insensitive.
 func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
 	return int(t) - int(other)
 }

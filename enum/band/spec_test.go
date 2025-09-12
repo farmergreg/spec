@@ -31,8 +31,8 @@ func TestIsInBand(t *testing.T) {
 
 func TestFindBandByMHz(t *testing.T) {
 	b, ok := FindBandByMHz(7.050)
-	if !ok || b.Key != BAND_40M {
-		t.Errorf("7.050 MHz should be in band %s", BAND_40M)
+	if !ok || b.Key != Band40m {
+		t.Errorf("7.050 MHz should be in band %s", Band40m)
 	}
 }
 

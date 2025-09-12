@@ -2,7 +2,6 @@ package aditype
 
 import (
 	"strconv"
-	"strings"
 
 	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/spec/v6/spectype"
@@ -42,7 +41,6 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
-		v.Key = ADIType(strings.ToUpper(string(v.Key)))
 		result[k] = v
 	}
 	return result
