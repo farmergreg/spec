@@ -1,6 +1,8 @@
 package primaryadministrativesubdivision
 
 import (
+	"strings"
+
 	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 )
@@ -12,6 +14,12 @@ var _ codegen.CodeGenKey = PrimaryAdministrativeSubdivisionCompositeKey("")
 // String returns the string representation of the PrimaryAdministrativeSubdivisionCompositeKey.
 func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 	return string(p)
+}
+
+// Compare implements the Comparable interface.
+// ADIF enums are case-insensitive.
+func (t PrimaryAdministrativeSubdivisionCode) Compare(other PrimaryAdministrativeSubdivisionCode) int {
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
 }
 
 // LookupByCodeAndDXCC looks up a Primary Administrative Subdivision specification by its composite key (Code + DXCCEntityCode).
