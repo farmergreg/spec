@@ -22,13 +22,18 @@ func Example() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
-	// If for some reason, you have an ADIF enum value as a string (e.g. post from a web form), you can convert it to the corresponding type:
+	// Per specification, all ADIF enum values are case-insensitive.
+	// To create an instance of an enum value from a string, use the New function:
 	twenty := band.New("20m")
+
+	// Compare an ADIF enum value to a constant using the equality operator:
 	if twenty == band.BAND_20M {
 		fmt.Println("The twenty variable is equal to the Band_20m constant")
+	}
 
-		// You can also compare two ADIF enum values using the Compare method:
-		twenty.Compare(band.BAND_20M) // return 0 because they are equal
+	// Compare two ADIF enum values using the Compare method:
+	if twenty.Compare(band.BAND_20M) == 0 {
+		fmt.Println("The twenty variable is equal to the Band_20m constant using Compare")
 	}
 
 	/*
@@ -36,7 +41,7 @@ func Example() {
 	 */
 	completeSpec := specdata.LoadADIFSpecWithExtras()
 	if completeSpec.Version == spec.ADIF_VER { // e.g. "3.1.6"
-		fmt.Println("The complete spec data matches the ADIF version constant")
+		fmt.Println("The spec data matches the ADIF version constant")
 	}
 
 	// Output:
@@ -75,5 +80,7 @@ func Example() {
 	// 8M: 40.000000 - 45.000000
 	// 9CM: 3300.000000 - 3500.000000
 	// SUBMM: 300000.000000 - 7500000.000000
-	// The complete spec data matches the ADIF version constant
+	// The twenty variable is equal to the Band_20m constant
+	// The twenty variable is equal to the Band_20m constant using Compare
+	// The spec data matches the ADIF version constant
 }
