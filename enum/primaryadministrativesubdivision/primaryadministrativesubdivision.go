@@ -16,10 +16,9 @@ func (p PrimaryAdministrativeSubdivisionCompositeKey) String() string {
 	return string(p)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t PrimaryAdministrativeSubdivisionCode) Compare(other PrimaryAdministrativeSubdivisionCode) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }
 
 // LookupByCodeAndDXCC looks up a Primary Administrative Subdivision specification by its composite key (Code + DXCCEntityCode).

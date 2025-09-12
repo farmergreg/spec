@@ -11,6 +11,11 @@ type Award string
 
 var _ codegen.CodeGenKey = Award("")
 
+// Deprecated: New creates a new Award from the provided string.
+func New(value string) Award {
+	return Award(strings.ToUpper(value))
+}
+
 // Deprecated: String returns the string representation of the Award.
 func (a Award) String() string {
 	return string(a)
@@ -19,5 +24,5 @@ func (a Award) String() string {
 // Deprecated: Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Award) Compare(other Award) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

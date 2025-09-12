@@ -22,6 +22,10 @@ func Example() {
 		fmt.Printf("%s: %f - %f\n", band.Key, band.LowerFreqMHz, band.UpperFreqMHz)
 	}
 
+	// If for some reason, you have an ADIF enum value as a string, you can convert it to the corresponding type:
+	twenty := band.New("20m")
+	twenty.Compare(band.BAND_20M) // true
+
 	/*
 	 * You can load an immutable copy of the specification using the spec data package.
 	 */

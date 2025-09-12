@@ -11,13 +11,17 @@ type Continent string
 
 var _ codegen.CodeGenKey = Continent("")
 
+// New creates a new Continent from the provided string.
+func New(value string) Continent {
+	return Continent(strings.ToUpper(value))
+}
+
 // String returns the string representation of the Continent.
 func (c Continent) String() string {
 	return string(c)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Continent) Compare(other Continent) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

@@ -11,13 +11,17 @@ type Contest string
 
 var _ codegen.CodeGenKey = Contest("")
 
+// New creates a new Contest from the provided string.
+func New(value string) Contest {
+	return Contest(strings.ToUpper(value))
+}
+
 // String returns the string representation of the Contest.
 func (c Contest) String() string {
 	return string(c)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Contest) Compare(other Contest) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

@@ -11,13 +11,17 @@ type QSOComplete string
 
 var _ codegen.CodeGenKey = QSOComplete("")
 
+// New creates a new QSOComplete from the provided string.
+func New(value string) QSOComplete {
+	return QSOComplete(strings.ToUpper(value))
+}
+
 // String returns the string representation of the QSOComplete.
 func (q QSOComplete) String() string {
 	return string(q)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t QSOComplete) Compare(other QSOComplete) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

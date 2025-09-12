@@ -11,13 +11,17 @@ type QSODownloadStatus string
 
 var _ codegen.CodeGenKey = QSODownloadStatus("")
 
+// New creates a new QSODownloadStatus from the provided string.
+func New(value string) QSODownloadStatus {
+	return QSODownloadStatus(strings.ToUpper(value))
+}
+
 // String returns the string representation of the QSODownloadStatus.
 func (q QSODownloadStatus) String() string {
 	return string(q)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t QSODownloadStatus) Compare(other QSODownloadStatus) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

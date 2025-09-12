@@ -11,12 +11,16 @@ type AntPath string
 
 var _ codegen.CodeGenKey = AntPath("")
 
+// New creates a new AntPath from the provided string.
+func New(value string) AntPath {
+	return AntPath(strings.ToUpper(value))
+}
+
 func (a AntPath) String() string {
 	return string(a)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t AntPath) Compare(other AntPath) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

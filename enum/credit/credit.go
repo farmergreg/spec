@@ -11,13 +11,17 @@ type Credit string
 
 var _ codegen.CodeGenKey = Credit("")
 
+// New creates a new Credit from the provided string.
+func New(value string) Credit {
+	return Credit(strings.ToUpper(value))
+}
+
 // String returns the string representation of the Credit.
 func (c Credit) String() string {
 	return string(c)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Credit) Compare(other Credit) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

@@ -11,13 +11,17 @@ type EQSLAG string
 
 var _ codegen.CodeGenKey = EQSLAG("")
 
+// New creates a new EQSLAG from the provided string.
+func New(value string) EQSLAG {
+	return EQSLAG(strings.ToUpper(value))
+}
+
 // String returns the string representation of the EQSLAG.
 func (e EQSLAG) String() string {
 	return string(e)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t EQSLAG) Compare(other EQSLAG) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

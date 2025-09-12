@@ -11,13 +11,17 @@ type ADIType string
 
 var _ codegen.CodeGenKey = ADIType("")
 
+// New creates a new ADIType from the provided string.
+func New(value string) ADIType {
+	return ADIType(strings.ToUpper(value))
+}
+
 // String returns the string representation of the ADIType.
 func (t ADIType) String() string {
 	return string(t)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t ADIType) Compare(other ADIType) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

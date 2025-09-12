@@ -11,13 +11,17 @@ type Band string
 
 var _ codegen.CodeGenKey = Band("")
 
+// New creates a new Band from the provided string.
+func New(value string) Band {
+	return Band(strings.ToUpper(value))
+}
+
 // String returns the string representation of the Band.
 func (b Band) String() string {
 	return string(b)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Band) Compare(other Band) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

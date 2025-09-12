@@ -18,7 +18,6 @@ func (d DXCCEntityCode) Int() int {
 	return int(d)
 }
 
-// Compare implements the Comparable interface.
 func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
 	return int(t) - int(other)
 }

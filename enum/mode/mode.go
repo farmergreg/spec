@@ -11,13 +11,17 @@ type Mode string
 
 var _ codegen.CodeGenKey = Mode("")
 
+// New creates a new Mode from the provided string.
+func New(value string) Mode {
+	return Mode(strings.ToUpper(value))
+}
+
 // String returns the string representation of the Mode.
 func (m Mode) String() string {
 	return string(m)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t Mode) Compare(other Mode) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

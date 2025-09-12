@@ -11,13 +11,17 @@ type QSLVia string
 
 var _ codegen.CodeGenKey = QSLVia("")
 
+// New creates a new QSLVia from the provided string.
+func New(value string) QSLVia {
+	return QSLVia(strings.ToUpper(value))
+}
+
 // String returns the string representation of the QSLVia.
 func (q QSLVia) String() string {
 	return string(q)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t QSLVia) Compare(other QSLVia) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

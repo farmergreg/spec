@@ -10,13 +10,17 @@ type MorseKeyType string
 
 var _ codegen.CodeGenKey = MorseKeyType("")
 
+// New creates a new MorseKeyType from the provided string.
+func New(value string) MorseKeyType {
+	return MorseKeyType(strings.ToUpper(value))
+}
+
 // String returns the string representation of the MorseKeyType.
 func (m MorseKeyType) String() string {
 	return string(m)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t MorseKeyType) Compare(other MorseKeyType) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

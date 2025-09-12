@@ -11,13 +11,17 @@ type PropagationMode string
 
 var _ codegen.CodeGenKey = PropagationMode("")
 
+// New creates a new PropagationMode from the provided string.
+func New(value string) PropagationMode {
+	return PropagationMode(strings.ToUpper(value))
+}
+
 // String returns the string representation of the PropagationMode.
 func (p PropagationMode) String() string {
 	return string(p)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t PropagationMode) Compare(other PropagationMode) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

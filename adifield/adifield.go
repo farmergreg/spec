@@ -13,13 +13,17 @@ type ADIField string
 
 var _ codegen.CodeGenKey = ADIField("")
 
+// New creates a new ADIField from the provided string.
+func New(value string) ADIField {
+	return ADIField(strings.ToUpper(value))
+}
+
 // String returns the string representation of the ADIField.
 func (f ADIField) String() string {
 	return string(f)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t ADIField) Compare(other ADIField) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }

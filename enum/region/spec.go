@@ -38,6 +38,11 @@ type Spec struct {
 // RegionCode represents a region entity code.
 type RegionCode string
 
+// New creates a new RegionCode from the provided string.
+func New(value string) RegionCode {
+	return RegionCode(strings.ToUpper(value))
+}
+
 // String returns the string representation of the RegionCode.
 func (r RegionCode) String() string {
 	return string(r)

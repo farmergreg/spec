@@ -11,13 +11,17 @@ type QSLSent string
 
 var _ codegen.CodeGenKey = QSLSent("")
 
+// New creates a new QSLSent from the provided string.
+func New(value string) QSLSent {
+	return QSLSent(strings.ToUpper(value))
+}
+
 // String returns the string representation of the QSLSent.
 func (q QSLSent) String() string {
 	return string(q)
 }
 
-// Compare implements the Comparable interface.
 // ADIF enums are case-insensitive.
 func (t QSLSent) Compare(other QSLSent) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(other.String()))
+	return strings.Compare(string(t), other.String())
 }
