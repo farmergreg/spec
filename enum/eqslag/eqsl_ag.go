@@ -21,9 +21,10 @@ func (e EQSLAG) String() string {
 	return string(e)
 }
 
+// Compare returns an integer comparing two EQSLAG values lexicographically.
 // ADIF enums are case-insensitive.
 func (e EQSLAG) Compare(other EQSLAG) int {
-	return strings.Compare(string(e), string(other))
+	return strings.Compare(strings.ToUpper(string(e)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this EQSLAG equals the other EQSLAG.

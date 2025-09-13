@@ -50,6 +50,18 @@ func (p PrimaryAdministrativeSubdivisionCode) String() string {
 	return string(p)
 }
 
+// Compare returns an integer comparing two PrimaryAdministrativeSubdivisionCode values lexicographically.
+// ADIF enums are case-insensitive.
+func (p PrimaryAdministrativeSubdivisionCode) Compare(other PrimaryAdministrativeSubdivisionCode) int {
+	return strings.Compare(strings.ToUpper(string(p)), strings.ToUpper(string(other)))
+}
+
+// Equals returns true if this PrimaryAdministrativeSubdivisionCode equals the other PrimaryAdministrativeSubdivisionCode.
+// ADIF enums are case-insensitive.
+func (p PrimaryAdministrativeSubdivisionCode) Equals(other PrimaryAdministrativeSubdivisionCode) bool {
+	return strings.EqualFold(string(p), string(other))
+}
+
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))
 	if s.IsDeleted {

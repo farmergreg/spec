@@ -21,9 +21,10 @@ func (t ADIType) String() string {
 	return string(t)
 }
 
+// Compare returns an integer comparing two ADIType values lexicographically.
 // ADIF enums are case-insensitive.
 func (t ADIType) Compare(other ADIType) int {
-	return strings.Compare(string(t), string(other))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this ADIType equals the other ADIType.

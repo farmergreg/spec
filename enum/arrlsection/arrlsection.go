@@ -21,9 +21,10 @@ func (a ARRLSection) String() string {
 	return string(a)
 }
 
+// Compare returns an integer comparing two ARRLSection values lexicographically.
 // ADIF enums are case-insensitive.
 func (t ARRLSection) Compare(other ARRLSection) int {
-	return strings.Compare(string(t), string(other))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this ARRLSection equals the other ARRLSection.

@@ -21,10 +21,10 @@ func (a Award) String() string {
 	return string(a)
 }
 
-// Deprecated: Compare implements the Comparable interface.
+// Deprecated: Compare returns an integer comparing two Award values lexicographically.
 // ADIF enums are case-insensitive.
 func (t Award) Compare(other Award) int {
-	return strings.Compare(string(t), string(other))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Deprecated: Equals returns true if this Award equals the other Award.

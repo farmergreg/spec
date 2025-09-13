@@ -18,6 +18,7 @@ func (c DXCCEntityCode) Int() int {
 	return int(c)
 }
 
+// Compare returns an integer comparing two DXCCEntityCode values numerically.
 func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
 	return int(t) - int(other)
 }

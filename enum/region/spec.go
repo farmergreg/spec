@@ -48,6 +48,12 @@ func (r RegionCode) String() string {
 	return string(r)
 }
 
+// Compare returns an integer comparing two RegionCode values lexicographically.
+// ADIF enums are case-insensitive.
+func (r RegionCode) Compare(other RegionCode) int {
+	return strings.Compare(strings.ToUpper(string(r)), strings.ToUpper(string(other)))
+}
+
 // Equals returns true if this RegionCode equals the other RegionCode.
 // ADIF enums are case-insensitive.
 func (r RegionCode) Equals(other RegionCode) bool {

@@ -21,9 +21,10 @@ func (q QSOComplete) String() string {
 	return string(q)
 }
 
+// Compare returns an integer comparing two QSOComplete values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSOComplete) Compare(other QSOComplete) int {
-	return strings.Compare(string(q), string(other))
+	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this QSOComplete equals the other QSOComplete.

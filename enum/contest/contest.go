@@ -21,9 +21,10 @@ func (c Contest) String() string {
 	return string(c)
 }
 
+// Compare returns an integer comparing two Contest values lexicographically.
 // ADIF enums are case-insensitive.
 func (c Contest) Compare(other Contest) int {
-	return strings.Compare(string(c), string(other))
+	return strings.Compare(strings.ToUpper(string(c)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this Contest equals the other Contest.

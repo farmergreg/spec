@@ -21,9 +21,10 @@ func (p PropagationMode) String() string {
 	return string(p)
 }
 
+// Compare returns an integer comparing two PropagationMode values lexicographically.
 // ADIF enums are case-insensitive.
 func (p PropagationMode) Compare(other PropagationMode) int {
-	return strings.Compare(string(p), string(other))
+	return strings.Compare(strings.ToUpper(string(p)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this PropagationMode equals the other PropagationMode.

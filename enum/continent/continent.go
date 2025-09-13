@@ -21,9 +21,10 @@ func (c Continent) String() string {
 	return string(c)
 }
 
+// Compare returns an integer comparing two Continent values lexicographically.
 // ADIF enums are case-insensitive.
 func (c Continent) Compare(other Continent) int {
-	return strings.Compare(string(c), string(other))
+	return strings.Compare(strings.ToUpper(string(c)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this Continent equals the other Continent.

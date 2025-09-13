@@ -21,9 +21,10 @@ func (b Band) String() string {
 	return string(b)
 }
 
+// Compare returns an integer comparing two Band values lexicographically.
 // ADIF enums are case-insensitive.
 func (b Band) Compare(other Band) int {
-	return strings.Compare(string(b), string(other))
+	return strings.Compare(strings.ToUpper(string(b)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this Band equals the other Band.

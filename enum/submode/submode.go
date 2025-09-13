@@ -21,9 +21,10 @@ func (s SubMode) String() string {
 	return string(s)
 }
 
+// Compare returns an integer comparing two SubMode values lexicographically.
 // ADIF enums are case-insensitive.
 func (s SubMode) Compare(other SubMode) int {
-	return strings.Compare(string(s), string(other))
+	return strings.Compare(strings.ToUpper(string(s)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this SubMode equals the other SubMode.
