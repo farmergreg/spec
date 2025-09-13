@@ -25,3 +25,9 @@ func (c Contest) String() string {
 func (c Contest) Compare(other Contest) int {
 	return strings.Compare(string(c), string(other))
 }
+
+// Equals returns true if this Contest equals the other Contest.
+// ADIF enums are case-insensitive.
+func (c Contest) Equals(other Contest) bool {
+	return strings.EqualFold(string(c), string(other))
+}

@@ -25,3 +25,9 @@ func (m Mode) String() string {
 func (m Mode) Compare(other Mode) int {
 	return strings.Compare(string(m), string(other))
 }
+
+// Equals returns true if this Mode equals the other Mode.
+// ADIF enums are case-insensitive.
+func (m Mode) Equals(other Mode) bool {
+	return strings.EqualFold(string(m), string(other))
+}

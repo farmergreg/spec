@@ -25,3 +25,9 @@ func (e EQSLAG) String() string {
 func (e EQSLAG) Compare(other EQSLAG) int {
 	return strings.Compare(string(e), string(other))
 }
+
+// Equals returns true if this EQSLAG equals the other EQSLAG.
+// ADIF enums are case-insensitive.
+func (e EQSLAG) Equals(other EQSLAG) bool {
+	return strings.EqualFold(string(e), string(other))
+}

@@ -22,6 +22,11 @@ func (t DXCCEntityCode) Compare(other DXCCEntityCode) int {
 	return int(t) - int(other)
 }
 
+// Equals returns true if this DXCCEntityCode equals the other DXCCEntityCode.
+func (t DXCCEntityCode) Equals(other DXCCEntityCode) bool {
+	return t == other
+}
+
 // String returns the string representation of the DXCCEntityCode.
 func (c DXCCEntityCode) String() string {
 	return strconv.Itoa(int(c))

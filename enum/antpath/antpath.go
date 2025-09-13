@@ -24,3 +24,9 @@ func (a AntPath) String() string {
 func (a AntPath) Compare(other AntPath) int {
 	return strings.Compare(string(a), string(other))
 }
+
+// Equals returns true if this AntPath equals the other AntPath.
+// ADIF enums are case-insensitive.
+func (a AntPath) Equals(other AntPath) bool {
+	return strings.EqualFold(string(a), string(other))
+}

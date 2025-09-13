@@ -26,3 +26,9 @@ func (a Award) String() string {
 func (t Award) Compare(other Award) int {
 	return strings.Compare(string(t), string(other))
 }
+
+// Deprecated: Equals returns true if this Award equals the other Award.
+// ADIF enums are case-insensitive.
+func (t Award) Equals(other Award) bool {
+	return strings.EqualFold(string(t), string(other))
+}

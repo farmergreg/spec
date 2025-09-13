@@ -25,3 +25,9 @@ func (c Continent) String() string {
 func (c Continent) Compare(other Continent) int {
 	return strings.Compare(string(c), string(other))
 }
+
+// Equals returns true if this Continent equals the other Continent.
+// ADIF enums are case-insensitive.
+func (c Continent) Equals(other Continent) bool {
+	return strings.EqualFold(string(c), string(other))
+}

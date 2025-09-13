@@ -25,3 +25,9 @@ func (q QSODownloadStatus) String() string {
 func (q QSODownloadStatus) Compare(other QSODownloadStatus) int {
 	return strings.Compare(string(q), string(other))
 }
+
+// Equals returns true if this QSODownloadStatus equals the other QSODownloadStatus.
+// ADIF enums are case-insensitive.
+func (q QSODownloadStatus) Equals(other QSODownloadStatus) bool {
+	return strings.EqualFold(string(q), string(other))
+}

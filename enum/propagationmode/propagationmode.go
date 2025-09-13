@@ -25,3 +25,9 @@ func (p PropagationMode) String() string {
 func (p PropagationMode) Compare(other PropagationMode) int {
 	return strings.Compare(string(p), string(other))
 }
+
+// Equals returns true if this PropagationMode equals the other PropagationMode.
+// ADIF enums are case-insensitive.
+func (p PropagationMode) Equals(other PropagationMode) bool {
+	return strings.EqualFold(string(p), string(other))
+}

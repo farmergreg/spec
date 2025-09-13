@@ -25,3 +25,9 @@ func (q QSLVia) String() string {
 func (q QSLVia) Compare(other QSLVia) int {
 	return strings.Compare(string(q), string(other))
 }
+
+// Equals returns true if this QSLVia equals the other QSLVia.
+// ADIF enums are case-insensitive.
+func (q QSLVia) Equals(other QSLVia) bool {
+	return strings.EqualFold(string(q), string(other))
+}

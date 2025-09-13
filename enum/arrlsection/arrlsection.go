@@ -25,3 +25,9 @@ func (a ARRLSection) String() string {
 func (t ARRLSection) Compare(other ARRLSection) int {
 	return strings.Compare(string(t), string(other))
 }
+
+// Equals returns true if this ARRLSection equals the other ARRLSection.
+// ADIF enums are case-insensitive.
+func (t ARRLSection) Equals(other ARRLSection) bool {
+	return strings.EqualFold(string(t), string(other))
+}

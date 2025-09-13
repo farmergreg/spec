@@ -25,3 +25,9 @@ func (b Band) String() string {
 func (b Band) Compare(other Band) int {
 	return strings.Compare(string(b), string(other))
 }
+
+// Equals returns true if this Band equals the other Band.
+// ADIF enums are case-insensitive.
+func (b Band) Equals(other Band) bool {
+	return strings.EqualFold(string(b), string(other))
+}

@@ -48,6 +48,12 @@ func (r RegionCode) String() string {
 	return string(r)
 }
 
+// Equals returns true if this RegionCode equals the other RegionCode.
+// ADIF enums are case-insensitive.
+func (r RegionCode) Equals(other RegionCode) bool {
+	return strings.EqualFold(string(r), string(other))
+}
+
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))
 	if string(s.Code) == "NONE" {

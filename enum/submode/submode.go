@@ -25,3 +25,9 @@ func (s SubMode) String() string {
 func (s SubMode) Compare(other SubMode) int {
 	return strings.Compare(string(s), string(other))
 }
+
+// Equals returns true if this SubMode equals the other SubMode.
+// ADIF enums are case-insensitive.
+func (s SubMode) Equals(other SubMode) bool {
+	return strings.EqualFold(string(s), string(other))
+}

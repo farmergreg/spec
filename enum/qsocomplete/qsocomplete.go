@@ -25,3 +25,9 @@ func (q QSOComplete) String() string {
 func (q QSOComplete) Compare(other QSOComplete) int {
 	return strings.Compare(string(q), string(other))
 }
+
+// Equals returns true if this QSOComplete equals the other QSOComplete.
+// ADIF enums are case-insensitive.
+func (q QSOComplete) Equals(other QSOComplete) bool {
+	return strings.EqualFold(string(q), string(other))
+}

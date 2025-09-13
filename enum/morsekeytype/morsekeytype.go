@@ -24,3 +24,9 @@ func (m MorseKeyType) String() string {
 func (m MorseKeyType) Compare(other MorseKeyType) int {
 	return strings.Compare(string(m), string(other))
 }
+
+// Equals returns true if this MorseKeyType equals the other MorseKeyType.
+// ADIF enums are case-insensitive.
+func (m MorseKeyType) Equals(other MorseKeyType) bool {
+	return strings.EqualFold(string(m), string(other))
+}

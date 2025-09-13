@@ -1,8 +1,6 @@
 package region
 
 import (
-	"strings"
-
 	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
 	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 )
@@ -17,11 +15,6 @@ var _ codegen.CodeGenKey = RegionCompositeKey("")
 // String returns the string representation of the RegionCompositeKey.
 func (r RegionCompositeKey) String() string {
 	return string(r)
-}
-
-// ADIF enums are case-insensitive.
-func (r RegionCompositeKey) Compare(other RegionCompositeKey) int {
-	return strings.Compare(string(r), string(other))
 }
 
 // LookupByCodeAndDXCC looks up a Region specification by its composite key (Region Code + DXCCEntityCode).

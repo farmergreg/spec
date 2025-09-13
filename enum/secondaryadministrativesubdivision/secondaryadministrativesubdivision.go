@@ -24,3 +24,9 @@ func (s SecondaryAdministrativeSubdivision) String() string {
 func (s SecondaryAdministrativeSubdivision) Compare(other SecondaryAdministrativeSubdivision) int {
 	return strings.Compare(string(s), string(other))
 }
+
+// Equals returns true if this SecondaryAdministrativeSubdivision equals the other SecondaryAdministrativeSubdivision.
+// ADIF enums are case-insensitive.
+func (s SecondaryAdministrativeSubdivision) Equals(other SecondaryAdministrativeSubdivision) bool {
+	return strings.EqualFold(string(s), string(other))
+}

@@ -25,3 +25,9 @@ func (a AwardSponsorPrefix) String() string {
 func (t AwardSponsorPrefix) Compare(other AwardSponsorPrefix) int {
 	return strings.Compare(string(t), string(other))
 }
+
+// Equals returns true if this AwardSponsorPrefix equals the other AwardSponsorPrefix.
+// ADIF enums are case-insensitive.
+func (t AwardSponsorPrefix) Equals(other AwardSponsorPrefix) bool {
+	return strings.EqualFold(string(t), string(other))
+}

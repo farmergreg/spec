@@ -25,3 +25,9 @@ func (t ADIType) String() string {
 func (t ADIType) Compare(other ADIType) int {
 	return strings.Compare(string(t), string(other))
 }
+
+// Equals returns true if this ADIType equals the other ADIType.
+// ADIF enums are case-insensitive.
+func (t ADIType) Equals(other ADIType) bool {
+	return strings.EqualFold(string(t), string(other))
+}

@@ -23,7 +23,12 @@ func (f ADIField) String() string {
 	return string(f)
 }
 
-// ADIF enums are case-insensitive.
 func (f ADIField) Compare(other ADIField) int {
 	return strings.Compare(string(f), string(other))
+}
+
+// Equals returns true if this ADIField equals the other ADIField.
+// ADIF enums are case-insensitive.
+func (f ADIField) Equals(other ADIField) bool {
+	return strings.EqualFold(string(f), string(other))
 }
