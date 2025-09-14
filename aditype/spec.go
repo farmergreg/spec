@@ -15,13 +15,13 @@ var (
 
 // SpecMapContainer contains all DataType specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
-	Header  []string         `json:"Header"`
-	Records map[ADIType]Spec `json:"Records"`
+	Header  []string      `json:"Header"`
+	Records map[Type]Spec `json:"Records"`
 }
 
 // Spec represents the specification for a single DataType as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Key               ADIType           `json:"Data Type Name"` // Data Type Name
+	Key               Type              `json:"Data Type Name"` // Data Type Name
 	DataTypeIndicator DataTypeIndicator `json:"Data Type Indicator,omitempty"`
 	Description       string            `json:"Description"`
 	MinimumValue      spectype.Integer  `json:"Minimum Value,omitempty"`
@@ -42,7 +42,7 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
-		v.Key = ADIType(strings.ToUpper(string(v.Key)))
+		v.Key = Type(strings.ToUpper(string(v.Key)))
 		result[k] = v
 	}
 	return result
@@ -51,6 +51,6 @@ func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGe
 func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
 	return codegen.CodeGenContainerMetadata{
 		PackageName: "aditype",
-		DataType:    "ADIType",
+		DataType:    "Type",
 	}
 }

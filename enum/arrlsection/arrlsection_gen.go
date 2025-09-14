@@ -298,8 +298,8 @@ var lookupMap = map[ARRLSection]*Spec{
 
 // Lookup returns the specification for the provided ARRLSection.
 // ADIF 3.1.6
-func Lookup(arrlsection ARRLSection) (Spec, bool) {
-	spec, ok := lookupMap[arrlsection]
+func Lookup(a ARRLSection) (Spec, bool) {
+	spec, ok := lookupMap[a]
 	if !ok {
 		return Spec{}, false
 	}

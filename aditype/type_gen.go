@@ -7,34 +7,34 @@ package aditype
 import "sync"
 
 const (
-	AWARDLIST                                 ADIType = "AWARDLIST"                                 // Deprecated: a comma-delimited list of members of the Award enumeration
-	BOOLEAN                                   ADIType = "BOOLEAN"                                   // if True, the single ASCII character Y or y if False, the single ASCII character N or n
-	CHARACTER                                 ADIType = "CHARACTER"                                 // an ASCII character whose code lies in the range of 32 through 126, inclusive
-	CREDITLIST                                ADIType = "CREDITLIST"                                // a comma-delimited list where each list item is either: A member of the Credit enumeration. A member of the Credit enumeration followed by a colon and an ampersand-delimited list of members of the QSL_Medium enumeration. For example IOTA,WAS:LOTW&CARD,DXCC:CARD
-	DATE                                      ADIType = "DATE"                                      // 8 Digits representing a UTC date in YYYYMMDD format, where YYYY is a 4-Digit year specifier, where 1930 <= YYYY MM is a 2-Digit month specifier, where 1 <= MM <= 12 [use leading zeroes] DD is a 2-Digit day specifier, where 1 <= DD <= DaysInMonth(MM) [use leading zeroes]
-	DIGIT                                     ADIType = "DIGIT"                                     // an ASCII character whose code lies in the range of 48 through 57, inclusive
-	ENUMERATION                               ADIType = "ENUMERATION"                               // an explicit list of legal case-insensitive values represented in ASCII set forth in set notation, e.g. {A, B, C, D}, or defined in a table, from which a single value may be selected.
-	GRIDSQUARE                                ADIType = "GRIDSQUARE"                                // a case-insensitive 2-character, 4-character, 6-character, or 8-character Maidenhead locator. Specific fields impose additional restrictions on the number of characters; see the field descriptions for the allowed numbers of characters.
-	GRIDSQUAREEXT                             ADIType = "GRIDSQUAREEXT"                             // For a 10-character Maidenhead locator, contains characters 9 and 10. For a 12-character Maidenhead locator, contains characters 9, 10, 11 and 12. Characters 9 and 10 are case-insensitive ASCII letters in the range A-X. Characters 11 and 12 are Digits in the range 0-9.
-	GRIDSQUARELIST                            ADIType = "GRIDSQUARELIST"                            // a comma-delimited list of GridSquare items
-	IOTAREFNO                                 ADIType = "IOTAREFNO"                                 // IOTA designator, in format CC-XXX, where CC is a member of the Continent enumeration XXX is the island group designator, where 1 <= XXX <= 999 [use leading zeroes]
-	INTEGER                                   ADIType = "INTEGER"                                   // a sequence of one or more Digits representing a decimal integer, optionally preceded by a minus sign (ASCII code 45). Leading zeroes are allowed.
-	INTLCHARACTER                             ADIType = "INTLCHARACTER"                             // a Unicode character (encoded with UTF-8) excluding line break CR (code 13) and LF (code 10) characters
-	INTLMULTILINESTRING                       ADIType = "INTLMULTILINESTRING"                       // a sequence of International Characters and line breaks. Fields of type IntlMultilineString must only be used in ADX files
-	INTLSTRING                                ADIType = "INTLSTRING"                                // a sequence of International Characters. Fields of type IntlString must only be used in ADX files
-	LOCATION                                  ADIType = "LOCATION"                                  // a sequence of 11 characters representing a latitude or longitude in XDDD MM.MMM format, where X is a directional Character from the set {E, W, N, S} DDD is a 3-Digit degrees specifier, where 0 <= DDD <= 180 [use leading zeroes] There is a single space character in between DDD and MM.MMM MM.MMM is an unsigned Number minutes specifier with its decimal point in the third position, where 00.000 <= MM.MMM <= 59.999 [use leading and trailing zeroes]
-	MULTILINESTRING                           ADIType = "MULTILINESTRING"                           // a sequence of Characters and line-breaks, where a line break is an ASCII CR (code 13) followed immediately by an ASCII LF (code 10)
-	NUMBER                                    ADIType = "NUMBER"                                    // a sequence of one or more Digits representing a decimal number, optionally preceded by a minus sign (ASCII code 45) and optionally including a single decimal point (ASCII code 46)
-	POTAREF                                   ADIType = "POTAREF"                                   // a sequence of case-insensitive Characters representing a Parks on the Air park reference in the form xxxx-nnnnn[@yyyyyy] comprising 6 to 17 characters where: xxxx is the POTA national program and is 1 to 4 characters in length, typically the default callsign prefix of the national program (rather than the DX entity) nnnnn represents the unique number within the national program and is either 4 or 5 characters in length (use the exact format listed on the POTA website) yyyyyy **Optional** is the 4 to 6 character ISO 3166-2 code to differentiate which state/province/prefecture/primary administration location the contact represents, in the case that the park reference spans more than one location (such as a trail). Examples of the POTARef Data Type: ReferenceLocation K-5033Golden Hill State Forest K-10000 5-digit park numbers are reserved for future use VE-5082@CA-ABThe Great Trail of Canada (the Canadian Trailway) National Scenic Trail, within Alberta, Canada 8P-0012Chancery Lane Swamp National Park VK-0556Pieman River State Reserve K-4562@US-CAPacific Crest Trail, within California, USA Additional Notes on POTARef: A browsable and searchable list of all park references is available. A complete CSV file is available (generated nightly). For more information, visit the Parks on the Air documentation website.
-	POTAREFLIST                               ADIType = "POTAREFLIST"                               // a comma-delimited list of one or more POTARef items.
-	POSITIVEINTEGER                           ADIType = "POSITIVEINTEGER"                           // an unsigned sequence of one or more Digits representing a decimal integer that has a value greater than 0. Leading zeroes are allowed.
-	SOTAREF                                   ADIType = "SOTAREF"                                   // a sequence of Characters representing an International SOTA Reference. The sequence comprises: an ITU prefix if applicable, a SOTA subdivision a / Character a SOTA Reference Number Examples: W2/WE-003 G/LD-003
-	SECONDARYADMINISTRATIVESUBDIVISIONLISTALT ADIType = "SECONDARYADMINISTRATIVESUBDIVISIONLISTALT" // a semicolon (;) delimited, unordered list of one or more members of a Secondary_Administrative_Subdivision_Alt enumeration in the form: enumeration-name:enumeration-code Where there is more than one locality represented by the enumeration-code, they are separated by slash (/) characters. Only one of each enumeration-name valid for the DXCC entity concerned can appear in the list. Examples: <CNTY_ALT:28>NZ_Regions:Hawkes Bay/Wairoa <MY_CNTY_ALT:52>NZ_Islands:North Island;NZ_Regions:Hawkes Bay/Wairoa The first example shows the enumeration-name NZ_Regions with the region Hawkes Bay and the district Wairoa. For the purposes of illustration, the second example includes a non-existent subdivision with two available enumeration-codes, NZ_Islands:North Island and NZ_Islands:South Island. The example shows: the enumeration-name NZ_Islands with the island North Island the enumeration-name NZ_Regions with the region Hawkes Bay and the district Wairoa
-	SECONDARYSUBDIVISIONLIST                  ADIType = "SECONDARYSUBDIVISIONLIST"                  // a colon-delimited list of two or more members of the Secondary_Administrative_Subdivision enumeration. E.g.: MA,Franklin:MA,Hampshire
-	SPONSOREDAWARDLIST                        ADIType = "SPONSOREDAWARDLIST"                        // a comma-delimited list of members of the Sponsored_Award enumeration
-	STRING                                    ADIType = "STRING"                                    // a sequence of Characters
-	TIME                                      ADIType = "TIME"                                      // 6 Digits representing a UTC time in HHMMSS format or 4 Digits representing a time in HHMM format, where HH is a 2-Digit hour specifier, where 0 <= HH <= 23 [use leading zeroes] MM is a 2-Digit minute specifier, where 0 <= MM <= 59 [use leading zeroes] SS is a 2-Digit second specifier, where 0 <= SS <= 59 [use leading zeroes]
-	WWFFREF                                   ADIType = "WWFFREF"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
+	AWARDLIST                                 Type = "AWARDLIST"                                 // Deprecated: a comma-delimited list of members of the Award enumeration
+	BOOLEAN                                   Type = "BOOLEAN"                                   // if True, the single ASCII character Y or y if False, the single ASCII character N or n
+	CHARACTER                                 Type = "CHARACTER"                                 // an ASCII character whose code lies in the range of 32 through 126, inclusive
+	CREDITLIST                                Type = "CREDITLIST"                                // a comma-delimited list where each list item is either: A member of the Credit enumeration. A member of the Credit enumeration followed by a colon and an ampersand-delimited list of members of the QSL_Medium enumeration. For example IOTA,WAS:LOTW&CARD,DXCC:CARD
+	DATE                                      Type = "DATE"                                      // 8 Digits representing a UTC date in YYYYMMDD format, where YYYY is a 4-Digit year specifier, where 1930 <= YYYY MM is a 2-Digit month specifier, where 1 <= MM <= 12 [use leading zeroes] DD is a 2-Digit day specifier, where 1 <= DD <= DaysInMonth(MM) [use leading zeroes]
+	DIGIT                                     Type = "DIGIT"                                     // an ASCII character whose code lies in the range of 48 through 57, inclusive
+	ENUMERATION                               Type = "ENUMERATION"                               // an explicit list of legal case-insensitive values represented in ASCII set forth in set notation, e.g. {A, B, C, D}, or defined in a table, from which a single value may be selected.
+	GRIDSQUARE                                Type = "GRIDSQUARE"                                // a case-insensitive 2-character, 4-character, 6-character, or 8-character Maidenhead locator. Specific fields impose additional restrictions on the number of characters; see the field descriptions for the allowed numbers of characters.
+	GRIDSQUAREEXT                             Type = "GRIDSQUAREEXT"                             // For a 10-character Maidenhead locator, contains characters 9 and 10. For a 12-character Maidenhead locator, contains characters 9, 10, 11 and 12. Characters 9 and 10 are case-insensitive ASCII letters in the range A-X. Characters 11 and 12 are Digits in the range 0-9.
+	GRIDSQUARELIST                            Type = "GRIDSQUARELIST"                            // a comma-delimited list of GridSquare items
+	IOTAREFNO                                 Type = "IOTAREFNO"                                 // IOTA designator, in format CC-XXX, where CC is a member of the Continent enumeration XXX is the island group designator, where 1 <= XXX <= 999 [use leading zeroes]
+	INTEGER                                   Type = "INTEGER"                                   // a sequence of one or more Digits representing a decimal integer, optionally preceded by a minus sign (ASCII code 45). Leading zeroes are allowed.
+	INTLCHARACTER                             Type = "INTLCHARACTER"                             // a Unicode character (encoded with UTF-8) excluding line break CR (code 13) and LF (code 10) characters
+	INTLMULTILINESTRING                       Type = "INTLMULTILINESTRING"                       // a sequence of International Characters and line breaks. Fields of type IntlMultilineString must only be used in ADX files
+	INTLSTRING                                Type = "INTLSTRING"                                // a sequence of International Characters. Fields of type IntlString must only be used in ADX files
+	LOCATION                                  Type = "LOCATION"                                  // a sequence of 11 characters representing a latitude or longitude in XDDD MM.MMM format, where X is a directional Character from the set {E, W, N, S} DDD is a 3-Digit degrees specifier, where 0 <= DDD <= 180 [use leading zeroes] There is a single space character in between DDD and MM.MMM MM.MMM is an unsigned Number minutes specifier with its decimal point in the third position, where 00.000 <= MM.MMM <= 59.999 [use leading and trailing zeroes]
+	MULTILINESTRING                           Type = "MULTILINESTRING"                           // a sequence of Characters and line-breaks, where a line break is an ASCII CR (code 13) followed immediately by an ASCII LF (code 10)
+	NUMBER                                    Type = "NUMBER"                                    // a sequence of one or more Digits representing a decimal number, optionally preceded by a minus sign (ASCII code 45) and optionally including a single decimal point (ASCII code 46)
+	POTAREF                                   Type = "POTAREF"                                   // a sequence of case-insensitive Characters representing a Parks on the Air park reference in the form xxxx-nnnnn[@yyyyyy] comprising 6 to 17 characters where: xxxx is the POTA national program and is 1 to 4 characters in length, typically the default callsign prefix of the national program (rather than the DX entity) nnnnn represents the unique number within the national program and is either 4 or 5 characters in length (use the exact format listed on the POTA website) yyyyyy **Optional** is the 4 to 6 character ISO 3166-2 code to differentiate which state/province/prefecture/primary administration location the contact represents, in the case that the park reference spans more than one location (such as a trail). Examples of the POTARef Data Type: ReferenceLocation K-5033Golden Hill State Forest K-10000 5-digit park numbers are reserved for future use VE-5082@CA-ABThe Great Trail of Canada (the Canadian Trailway) National Scenic Trail, within Alberta, Canada 8P-0012Chancery Lane Swamp National Park VK-0556Pieman River State Reserve K-4562@US-CAPacific Crest Trail, within California, USA Additional Notes on POTARef: A browsable and searchable list of all park references is available. A complete CSV file is available (generated nightly). For more information, visit the Parks on the Air documentation website.
+	POTAREFLIST                               Type = "POTAREFLIST"                               // a comma-delimited list of one or more POTARef items.
+	POSITIVEINTEGER                           Type = "POSITIVEINTEGER"                           // an unsigned sequence of one or more Digits representing a decimal integer that has a value greater than 0. Leading zeroes are allowed.
+	SOTAREF                                   Type = "SOTAREF"                                   // a sequence of Characters representing an International SOTA Reference. The sequence comprises: an ITU prefix if applicable, a SOTA subdivision a / Character a SOTA Reference Number Examples: W2/WE-003 G/LD-003
+	SECONDARYADMINISTRATIVESUBDIVISIONLISTALT Type = "SECONDARYADMINISTRATIVESUBDIVISIONLISTALT" // a semicolon (;) delimited, unordered list of one or more members of a Secondary_Administrative_Subdivision_Alt enumeration in the form: enumeration-name:enumeration-code Where there is more than one locality represented by the enumeration-code, they are separated by slash (/) characters. Only one of each enumeration-name valid for the DXCC entity concerned can appear in the list. Examples: <CNTY_ALT:28>NZ_Regions:Hawkes Bay/Wairoa <MY_CNTY_ALT:52>NZ_Islands:North Island;NZ_Regions:Hawkes Bay/Wairoa The first example shows the enumeration-name NZ_Regions with the region Hawkes Bay and the district Wairoa. For the purposes of illustration, the second example includes a non-existent subdivision with two available enumeration-codes, NZ_Islands:North Island and NZ_Islands:South Island. The example shows: the enumeration-name NZ_Islands with the island North Island the enumeration-name NZ_Regions with the region Hawkes Bay and the district Wairoa
+	SECONDARYSUBDIVISIONLIST                  Type = "SECONDARYSUBDIVISIONLIST"                  // a colon-delimited list of two or more members of the Secondary_Administrative_Subdivision enumeration. E.g.: MA,Franklin:MA,Hampshire
+	SPONSOREDAWARDLIST                        Type = "SPONSOREDAWARDLIST"                        // a comma-delimited list of members of the Sponsored_Award enumeration
+	STRING                                    Type = "STRING"                                    // a sequence of Characters
+	TIME                                      Type = "TIME"                                      // 6 Digits representing a UTC time in HHMMSS format or 4 Digits representing a time in HHMM format, where HH is a 2-Digit hour specifier, where 0 <= HH <= 23 [use leading zeroes] MM is a 2-Digit minute specifier, where 0 <= MM <= 59 [use leading zeroes] SS is a 2-Digit second specifier, where 0 <= SS <= 59 [use leading zeroes]
+	WWFFREF                                   Type = "WWFFREF"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
 var (
@@ -42,7 +42,7 @@ var (
 	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
 )
 
-// lookupList contains all known ADIType specifications.
+// lookupList contains all known Type specifications.
 var lookupList = []Spec{
 	{Key: "AWARDLIST", DataTypeIndicator: 0, Description: "a comma-delimited list of members of the Award enumeration", MinimumValue: 0, MaximumValue: 0, IsImportOnly: true, Comments: ""},
 	{Key: "BOOLEAN", DataTypeIndicator: 34, Description: "if True, the single ASCII character Y or y if False, the single ASCII character N or n", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
@@ -74,8 +74,8 @@ var lookupList = []Spec{
 	{Key: "WWFFREF", DataTypeIndicator: 0, Description: "a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002", MinimumValue: 0, MaximumValue: 0, IsImportOnly: false, Comments: ""},
 }
 
-// lookupMap contains all known ADIType specifications.
-var lookupMap = map[ADIType]*Spec{
+// lookupMap contains all known Type specifications.
+var lookupMap = map[Type]*Spec{
 	AWARDLIST:           &lookupList[0],
 	BOOLEAN:             &lookupList[1],
 	CHARACTER:           &lookupList[2],
@@ -106,17 +106,17 @@ var lookupMap = map[ADIType]*Spec{
 	WWFFREF:                                   &lookupList[27],
 }
 
-// Lookup returns the specification for the provided ADIType.
+// Lookup returns the specification for the provided Type.
 // ADIF 3.1.6
-func Lookup(aditype ADIType) (Spec, bool) {
-	spec, ok := lookupMap[aditype]
+func Lookup(t Type) (Spec, bool) {
+	spec, ok := lookupMap[t]
 	if !ok {
 		return Spec{}, false
 	}
 	return *spec, true
 }
 
-// LookupByFilter returns all ADIType specifications that match the provided filter function.
+// LookupByFilter returns all Type specifications that match the provided filter function.
 // ADIF 3.1.6
 func LookupByFilter(filter func(Spec) bool) []Spec {
 	result := make([]Spec, 0, len(lookupList))
@@ -128,7 +128,7 @@ func LookupByFilter(filter func(Spec) bool) []Spec {
 	return result
 }
 
-// List returns all ADIType specifications.
+// List returns all Type specifications.
 // This list includes those marked import-only.
 // ADIF 3.1.6
 func List() []Spec {
@@ -137,7 +137,7 @@ func List() []Spec {
 	return list
 }
 
-// ListActive returns ADIType specifications.
+// ListActive returns Type specifications.
 // This list excludes those marked as import-only.
 // ADIF 3.1.6
 func ListActive() []Spec {

@@ -36,8 +36,8 @@ var lookupMap = map[AntPath]*Spec{
 
 // Lookup returns the specification for the provided AntPath.
 // ADIF 3.1.6
-func Lookup(antpath AntPath) (Spec, bool) {
-	spec, ok := lookupMap[antpath]
+func Lookup(a AntPath) (Spec, bool) {
+	spec, ok := lookupMap[a]
 	if !ok {
 		return Spec{}, false
 	}

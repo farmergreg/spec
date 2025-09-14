@@ -84,8 +84,8 @@ var lookupMap = map[PropagationMode]*Spec{
 
 // Lookup returns the specification for the provided PropagationMode.
 // ADIF 3.1.6
-func Lookup(propagationmode PropagationMode) (Spec, bool) {
-	spec, ok := lookupMap[propagationmode]
+func Lookup(p PropagationMode) (Spec, bool) {
+	spec, ok := lookupMap[p]
 	if !ok {
 		return Spec{}, false
 	}

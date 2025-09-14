@@ -33,8 +33,8 @@ var lookupMap = map[EQSLAG]*Spec{
 
 // Lookup returns the specification for the provided EQSLAG.
 // ADIF 3.1.6
-func Lookup(eqslag EQSLAG) (Spec, bool) {
-	spec, ok := lookupMap[eqslag]
+func Lookup(e EQSLAG) (Spec, bool) {
+	spec, ok := lookupMap[e]
 	if !ok {
 		return Spec{}, false
 	}

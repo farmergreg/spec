@@ -45,8 +45,8 @@ var lookupMap = map[MorseKeyType]*Spec{
 
 // Lookup returns the specification for the provided MorseKeyType.
 // ADIF 3.1.6
-func Lookup(morsekeytype MorseKeyType) (Spec, bool) {
-	spec, ok := lookupMap[morsekeytype]
+func Lookup(m MorseKeyType) (Spec, bool) {
+	spec, ok := lookupMap[m]
 	if !ok {
 		return Spec{}, false
 	}

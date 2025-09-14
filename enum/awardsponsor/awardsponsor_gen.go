@@ -57,8 +57,8 @@ var lookupMap = map[AwardSponsorPrefix]*Spec{
 
 // Lookup returns the specification for the provided AwardSponsorPrefix.
 // ADIF 3.1.6
-func Lookup(awardsponsorprefix AwardSponsorPrefix) (Spec, bool) {
-	spec, ok := lookupMap[awardsponsorprefix]
+func Lookup(a AwardSponsorPrefix) (Spec, bool) {
+	spec, ok := lookupMap[a]
 	if !ok {
 		return Spec{}, false
 	}

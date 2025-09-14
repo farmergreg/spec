@@ -45,8 +45,8 @@ var lookupMap = map[Continent]*Spec{
 
 // Lookup returns the specification for the provided Continent.
 // ADIF 3.1.6
-func Lookup(continent Continent) (Spec, bool) {
-	spec, ok := lookupMap[continent]
+func Lookup(c Continent) (Spec, bool) {
+	spec, ok := lookupMap[c]
 	if !ok {
 		return Spec{}, false
 	}

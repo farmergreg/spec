@@ -39,8 +39,8 @@ var lookupMap = map[QSLSent]*Spec{
 
 // Lookup returns the specification for the provided QSLSent.
 // ADIF 3.1.6
-func Lookup(qslsent QSLSent) (Spec, bool) {
-	spec, ok := lookupMap[qslsent]
+func Lookup(q QSLSent) (Spec, bool) {
+	spec, ok := lookupMap[q]
 	if !ok {
 		return Spec{}, false
 	}
