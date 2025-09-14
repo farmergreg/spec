@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/hamradiolog-net/spec/v6/aditype"
 	"github.com/hamradiolog-net/spec/v6/internal/codegen"
 	"github.com/hamradiolog-net/spec/v6/spectype"
 )
@@ -22,8 +23,8 @@ type SpecMapContainer struct {
 
 // Spec represents the specification for a single Field as defined by the ADIF Workgroup specification exports.
 type Spec struct {
-	Key      Field  `json:"Field Name"` // Field Name
-	DataType string `json:"Data Type"`
+	Key      Field        `json:"Field Name"` // Field Name
+	DataType aditype.Type `json:"Data Type"`
 	// Enumeration   string           `json:"Enumeration,omitempty"`
 	Description   string           `json:"Description"`
 	IsHeaderField spectype.Boolean `json:"Header Field,omitempty"`
@@ -51,6 +52,7 @@ func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGe
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		v.Key = Field(strings.ToUpper(string(v.Key)))
+		v.DataType = aditype.New(string(v.DataType))
 		result[k] = v
 	}
 	return result
