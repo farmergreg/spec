@@ -5282,8 +5282,8 @@ var lookupMap = map[PrimaryAdministrativeSubdivisionCompositeKey]*Spec{
 
 // Lookup returns the specification for the provided PrimaryAdministrativeSubdivisionCompositeKey.
 // ADIF 3.1.6
-func Lookup(primaryadministrativesubdivisioncompositekey PrimaryAdministrativeSubdivisionCompositeKey) (Spec, bool) {
-	spec, ok := lookupMap[primaryadministrativesubdivisioncompositekey]
+func Lookup(p PrimaryAdministrativeSubdivisionCompositeKey) (Spec, bool) {
+	spec, ok := lookupMap[p]
 	if !ok {
 		return Spec{}, false
 	}

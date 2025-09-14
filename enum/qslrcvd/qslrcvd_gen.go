@@ -39,8 +39,8 @@ var lookupMap = map[QSLRcvd]*Spec{
 
 // Lookup returns the specification for the provided QSLRcvd.
 // ADIF 3.1.6
-func Lookup(qslrcvd QSLRcvd) (Spec, bool) {
-	spec, ok := lookupMap[qslrcvd]
+func Lookup(q QSLRcvd) (Spec, bool) {
+	spec, ok := lookupMap[q]
 	if !ok {
 		return Spec{}, false
 	}

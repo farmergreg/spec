@@ -111,8 +111,8 @@ var lookupMap = map[Award]*Spec{
 
 // Lookup returns the specification for the provided Award.
 // ADIF 3.1.6
-func Lookup(award Award) (Spec, bool) {
-	spec, ok := lookupMap[award]
+func Lookup(a Award) (Spec, bool) {
+	spec, ok := lookupMap[a]
 	if !ok {
 		return Spec{}, false
 	}

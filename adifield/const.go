@@ -2,10 +2,10 @@ package adifield
 
 const (
 	// Header: End Of Header Marker. No data, no length.
-	EOH ADIField = "EOH"
+	EOH Field = "EOH"
 
 	// Record: End of Record Marker. No data, no length.
-	EOR ADIField = "EOR"
+	EOR Field = "EOR"
 
 	// USERDEF is the prefix for user defined fields.
 	// These fields must always have a number after them, e.g. USERDEF1, USERDEF2, etc.

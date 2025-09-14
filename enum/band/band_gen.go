@@ -123,8 +123,8 @@ var lookupMap = map[Band]*Spec{
 
 // Lookup returns the specification for the provided Band.
 // ADIF 3.1.6
-func Lookup(band Band) (Spec, bool) {
-	spec, ok := lookupMap[band]
+func Lookup(b Band) (Spec, bool) {
+	spec, ok := lookupMap[b]
 	if !ok {
 		return Spec{}, false
 	}

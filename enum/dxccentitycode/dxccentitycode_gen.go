@@ -1233,8 +1233,8 @@ var lookupMap = map[DXCCEntityCode]*Spec{
 
 // Lookup returns the specification for the provided DXCCEntityCode.
 // ADIF 3.1.6
-func Lookup(dxccentitycode DXCCEntityCode) (Spec, bool) {
-	spec, ok := lookupMap[dxccentitycode]
+func Lookup(d DXCCEntityCode) (Spec, bool) {
+	spec, ok := lookupMap[d]
 	if !ok {
 		return Spec{}, false
 	}

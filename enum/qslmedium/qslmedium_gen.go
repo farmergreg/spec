@@ -33,8 +33,8 @@ var lookupMap = map[QSLMedium]*Spec{
 
 // Lookup returns the specification for the provided QSLMedium.
 // ADIF 3.1.6
-func Lookup(qslmedium QSLMedium) (Spec, bool) {
-	spec, ok := lookupMap[qslmedium]
+func Lookup(q QSLMedium) (Spec, bool) {
+	spec, ok := lookupMap[q]
 	if !ok {
 		return Spec{}, false
 	}

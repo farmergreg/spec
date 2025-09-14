@@ -24,8 +24,8 @@ var lookupMap = map[{{ .CodeGen.CodeGenMetadata.DataType }}]*Spec {
 
 // Lookup returns the specification for the provided {{ .CodeGen.CodeGenMetadata.DataType }}.
 // ADIF {{ .Spec.Version }}
-func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLower }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
-	spec, ok := lookupMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLower }}]
+func Lookup({{ .CodeGen.CodeGenMetadata.DataType | ToLowerFirstChar }} {{ .CodeGen.CodeGenMetadata.DataType }}) (Spec, bool) {
+	spec, ok := lookupMap[{{ .CodeGen.CodeGenMetadata.DataType | ToLowerFirstChar }}]
 	if !ok {
 		return Spec{}, false
 	}

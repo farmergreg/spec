@@ -52,12 +52,12 @@ func LoadADIFSpecWithExtras() *spec.AdifSpec {
 	delete(container.AdifSpec.Fields.Records, "USERDEFn")
 	for i := 1; i < 10; i++ {
 		next := userdefn
-		next.Key = adifield.ADIField("USERDEF" + strconv.Itoa(i))
+		next.Key = adifield.Field("USERDEF" + strconv.Itoa(i))
 		container.AdifSpec.Fields.Records[next.Key] = next
 	}
 
 	// Step 3: Add Extra Fields
-	var extraFields map[adifield.ADIField]adifield.Spec
+	var extraFields map[adifield.Field]adifield.Spec
 	if err := json.Unmarshal(extraFieldData, &extraFields); err != nil {
 		panic(err)
 	}

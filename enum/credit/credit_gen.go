@@ -237,8 +237,8 @@ var lookupMap = map[Credit]*Spec{
 
 // Lookup returns the specification for the provided Credit.
 // ADIF 3.1.6
-func Lookup(credit Credit) (Spec, bool) {
-	spec, ok := lookupMap[credit]
+func Lookup(c Credit) (Spec, bool) {
+	spec, ok := lookupMap[c]
 	if !ok {
 		return Spec{}, false
 	}
