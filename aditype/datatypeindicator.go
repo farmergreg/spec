@@ -9,6 +9,8 @@ import (
 // DataTypeIndicator is a single character that represents the ADIF Data Type Indicator that precedes the data field in an ADI record.
 type DataTypeIndicator rune
 
+const DATATYPEINDICATOR_NONE DataTypeIndicator = 0
+
 func (t *DataTypeIndicator) UnmarshalJSON(data []byte) error {
 	var val string
 	err := json.Unmarshal(data, &val)
