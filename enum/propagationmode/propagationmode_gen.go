@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package propagationmode provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package propagationmode provides code and constants as defined in ADIF 3.1.6 (Released)
 package propagationmode
 
 import "sync"

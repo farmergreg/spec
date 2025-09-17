@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package qsouploadstatus provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package qsouploadstatus provides code and constants as defined in ADIF 3.1.6 (Released)
 package qsouploadstatus
 
 import "sync"

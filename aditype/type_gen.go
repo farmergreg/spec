@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package aditype provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package aditype provides code and constants as defined in ADIF 3.1.6 (Released)
 package aditype
 
 import "sync"

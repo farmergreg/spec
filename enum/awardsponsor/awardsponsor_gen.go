@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package awardsponsor provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package awardsponsor provides code and constants as defined in ADIF 3.1.6 (Released)
 package awardsponsor
 
 import "sync"

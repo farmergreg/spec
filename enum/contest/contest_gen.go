@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package contest provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package contest provides code and constants as defined in ADIF 3.1.6 (Released)
 package contest
 
 import "sync"

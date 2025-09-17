@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package secondaryadministrativesubdivision provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package secondaryadministrativesubdivision provides code and constants as defined in ADIF 3.1.6 (Released)
 package secondaryadministrativesubdivision
 
 import "sync"

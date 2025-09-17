@@ -1,7 +1,7 @@
 // DO NOT EDIT; GENERATED CODE
 // run `go generate ./...` from the project root to rebuild this file.
 
-// Package qslvia provides code and constants as defined in ADIF 3.1.6 (Proposed)
+// Package qslvia provides code and constants as defined in ADIF 3.1.6 (Released)
 package qslvia
 
 import "sync"

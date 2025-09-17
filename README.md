@@ -9,7 +9,7 @@
 ## Overview
 
 This repository contains the ADIF specification for Go.
-It is generated from the [export](https://adif.org.uk/proposed/316/ADIF_316_resources_2025_08_27.zip) published by the [ADIF Workgroup](https://www.adif.org/)
+It is generated from the [resources](https://adif.org.uk/316/ADIF_316_resources_2025_09_15.zip) published by the [ADIF Workgroup](https://www.adif.org/)
 
 ## Installing The Library
 
