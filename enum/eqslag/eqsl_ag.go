@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = EQSLAG("")
 
 // New creates a new EQSLAG from the provided string.
 func New(value string) EQSLAG {
-	return EQSLAG(strings.ToUpper(value))
+	return EQSLAG(strings.ToLower(value))
 }
 
 // String returns the string representation of the EQSLAG.
@@ -24,7 +24,7 @@ func (e EQSLAG) String() string {
 // Compare returns an integer comparing two EQSLAG values lexicographically.
 // ADIF enums are case-insensitive.
 func (e EQSLAG) Compare(other EQSLAG) int {
-	return strings.Compare(strings.ToUpper(string(e)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(e)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this EQSLAG equals the other EQSLAG.

@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = Mode("")
 
 // New creates a new Mode from the provided string.
 func New(value string) Mode {
-	return Mode(strings.ToUpper(value))
+	return Mode(strings.ToLower(value))
 }
 
 // String returns the string representation of the Mode.
@@ -24,7 +24,7 @@ func (m Mode) String() string {
 // Compare returns an integer comparing two Mode values lexicographically.
 // ADIF enums are case-insensitive.
 func (m Mode) Compare(other Mode) int {
-	return strings.Compare(strings.ToUpper(string(m)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(m)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this Mode equals the other Mode.

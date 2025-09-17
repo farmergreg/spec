@@ -7,79 +7,79 @@ package secondaryadministrativesubdivisionalt
 import "sync"
 
 const (
-	NZ_Regions_Auckland_Auckland                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Auckland"                   // NZ_Regions:Auckland/Auckland                       = DXCC: 170 Auckland
-	NZ_Regions_Auckland_Franklin                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Franklin"                   // NZ_Regions:Auckland/Franklin                       = DXCC: 170 Auckland
-	NZ_Regions_Auckland_Manukau                    SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Manukau"                    // NZ_Regions:Auckland/Manukau                        = DXCC: 170 Auckland
-	NZ_Regions_Auckland_North_Shore                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/North Shore"                // NZ_Regions:Auckland/North Shore                    = DXCC: 170 Auckland
-	NZ_Regions_Auckland_Papakura                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Papakura"                   // NZ_Regions:Auckland/Papakura                       = DXCC: 170 Auckland
-	NZ_Regions_Auckland_Rodney                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Rodney"                     // NZ_Regions:Auckland/Rodney                         = DXCC: 170 Auckland
-	NZ_Regions_Auckland_Waitakere                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Waitakere"                  // NZ_Regions:Auckland/Waitakere                      = DXCC: 170 Auckland
-	NZ_Regions_Bay_of_Plenty_Kawerau               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Kawerau"               // NZ_Regions:Bay of Plenty/Kawerau                   = DXCC: 170 Bay of Plenty
-	NZ_Regions_Bay_of_Plenty_Opotiki               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Opotiki"               // NZ_Regions:Bay of Plenty/Opotiki                   = DXCC: 170 Bay of Plenty
-	NZ_Regions_Bay_of_Plenty_Rotorua               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Rotorua"               // NZ_Regions:Bay of Plenty/Rotorua                   = DXCC: 170 Bay of Plenty
-	NZ_Regions_Bay_of_Plenty_Tauranga              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Tauranga"              // NZ_Regions:Bay of Plenty/Tauranga                  = DXCC: 170 Bay of Plenty
-	NZ_Regions_Bay_of_Plenty_Western_Bay_of_Plenty SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Western Bay of Plenty" // NZ_Regions:Bay of Plenty/Western Bay of Plenty     = DXCC: 170 Bay of Plenty
-	NZ_Regions_Bay_of_Plenty_Whakatane             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Whakatane"             // NZ_Regions:Bay of Plenty/Whakatane                 = DXCC: 170 Bay of Plenty
-	NZ_Regions_Canterbury_Ashburton                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Ashburton"                // NZ_Regions:Canterbury/Ashburton                    = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Banks_Peninsula          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Banks Peninsula"          // NZ_Regions:Canterbury/Banks Peninsula              = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Christchurch             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Christchurch"             // NZ_Regions:Canterbury/Christchurch                 = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Hurunui                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Hurunui"                  // NZ_Regions:Canterbury/Hurunui                      = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Kaikoura                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Kaikoura"                 // NZ_Regions:Canterbury/Kaikoura                     = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Mackenzie                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Mackenzie"                // NZ_Regions:Canterbury/Mackenzie                    = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Selwyn                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Selwyn"                   // NZ_Regions:Canterbury/Selwyn                       = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Timaru                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Timaru"                   // NZ_Regions:Canterbury/Timaru                       = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Waimakariri              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Waimakariri"              // NZ_Regions:Canterbury/Waimakariri                  = DXCC: 170 Canterbury
-	NZ_Regions_Canterbury_Waimate                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Waimate"                  // NZ_Regions:Canterbury/Waimate                      = DXCC: 170 Canterbury
-	NZ_Regions_Gisborne_Gisborne                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Gisborne/Gisborne"                   // NZ_Regions:Gisborne/Gisborne                       = DXCC: 170 Gisborne
-	NZ_Regions_Hawkes_Bay_Central_Hawkes_Bay       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Central Hawkes Bay"       // NZ_Regions:Hawkes Bay/Central Hawkes Bay           = DXCC: 170 Hawkes Bay
-	NZ_Regions_Hawkes_Bay_Hastings                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Hastings"                 // NZ_Regions:Hawkes Bay/Hastings                     = DXCC: 170 Hawkes Bay
-	NZ_Regions_Hawkes_Bay_Napier                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Napier"                   // NZ_Regions:Hawkes Bay/Napier                       = DXCC: 170 Hawkes Bay
-	NZ_Regions_Hawkes_Bay_Wairoa                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Wairoa"                   // NZ_Regions:Hawkes Bay/Wairoa                       = DXCC: 170 Hawkes Bay
-	NZ_Regions_Marlborough_Marlborough             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Marlborough/Marlborough"             // NZ_Regions:Marlborough/Marlborough                 = DXCC: 170 Marlborough
-	NZ_Regions_Nelson_Nelson                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Nelson/Nelson"                       // NZ_Regions:Nelson/Nelson                           = DXCC: 170 Nelson
-	NZ_Regions_Northland_Far_North                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Far North"                 // NZ_Regions:Northland/Far North                     = DXCC: 170 Northland
-	NZ_Regions_Northland_Kaipara                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Kaipara"                   // NZ_Regions:Northland/Kaipara                       = DXCC: 170 Northland
-	NZ_Regions_Northland_Whangarei                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Whangarei"                 // NZ_Regions:Northland/Whangarei                     = DXCC: 170 Northland
-	NZ_Regions_Otago_Central_Otago                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Central Otago"                 // NZ_Regions:Otago/Central Otago                     = DXCC: 170 Otago
-	NZ_Regions_Otago_Clutha                        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Clutha"                        // NZ_Regions:Otago/Clutha                            = DXCC: 170 Otago
-	NZ_Regions_Otago_Dunedin                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Dunedin"                       // NZ_Regions:Otago/Dunedin                           = DXCC: 170 Otago
-	NZ_Regions_Otago_Queenstown_Lakes              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Queenstown-Lakes"              // NZ_Regions:Otago/Queenstown-Lakes                  = DXCC: 170 Otago
-	NZ_Regions_Otago_Waitaki                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Waitaki"                       // NZ_Regions:Otago/Waitaki                           = DXCC: 170 Otago
-	NZ_Regions_Southland_Gore                      SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Gore"                      // NZ_Regions:Southland/Gore                          = DXCC: 170 Southland
-	NZ_Regions_Southland_Invercargill              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Invercargill"              // NZ_Regions:Southland/Invercargill                  = DXCC: 170 Southland
-	NZ_Regions_Southland_Southland                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Southland"                 // NZ_Regions:Southland/Southland                     = DXCC: 170 Southland
-	NZ_Regions_Taranaki_New_Plymouth               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/New Plymouth"               // NZ_Regions:Taranaki/New Plymouth                   = DXCC: 170 Taranaki
-	NZ_Regions_Taranaki_South_Taranaki             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/South Taranaki"             // NZ_Regions:Taranaki/South Taranaki                 = DXCC: 170 Taranaki
-	NZ_Regions_Taranaki_Stratford                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/Stratford"                  // NZ_Regions:Taranaki/Stratford                      = DXCC: 170 Taranaki
-	NZ_Regions_Tasman_Tasman                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Tasman/Tasman"                       // NZ_Regions:Tasman/Tasman                           = DXCC: 170 Tasman
-	NZ_Regions_Waikato_Hamilton                    SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Hamilton"                    // NZ_Regions:Waikato/Hamilton                        = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Hauraki                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Hauraki"                     // NZ_Regions:Waikato/Hauraki                         = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Matamata_Piako              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Matamata Piako"              // NZ_Regions:Waikato/Matamata Piako                  = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Otorohanga                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Otorohanga"                  // NZ_Regions:Waikato/Otorohanga                      = DXCC: 170 Waikato
-	NZ_Regions_Waikato_South_Waikato               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/South Waikato"               // NZ_Regions:Waikato/South Waikato                   = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Taupo                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Taupo"                       // NZ_Regions:Waikato/Taupo                           = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Thames_Coromandel           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Thames-Coromandel"           // NZ_Regions:Waikato/Thames-Coromandel               = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Waikato                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waikato"                     // NZ_Regions:Waikato/Waikato                         = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Waipa                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waipa"                       // NZ_Regions:Waikato/Waipa                           = DXCC: 170 Waikato
-	NZ_Regions_Waikato_Waitomo                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waitomo"                     // NZ_Regions:Waikato/Waitomo                         = DXCC: 170 Waikato
-	NZ_Regions_Wanganui_Manawatu_Horowhenua        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Horowhenua"        // NZ_Regions:Wanganui-Manawatu/Horowhenua            = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Manawatu          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Manawatu"          // NZ_Regions:Wanganui-Manawatu/Manawatu              = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Palmerston_North  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Palmerston North"  // NZ_Regions:Wanganui-Manawatu/Palmerston North      = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Rangitikei        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Rangitikei"        // NZ_Regions:Wanganui-Manawatu/Rangitikei            = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Ruapehu           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Ruapehu"           // NZ_Regions:Wanganui-Manawatu/Ruapehu               = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Tararua           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Tararua"           // NZ_Regions:Wanganui-Manawatu/Tararua               = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wanganui_Manawatu_Wanganui          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Wanganui"          // NZ_Regions:Wanganui-Manawatu/Wanganui              = DXCC: 170 Wanganui-Manawatu
-	NZ_Regions_Wellington_Carterton                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Carterton"                // NZ_Regions:Wellington/Carterton                    = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Kapiti_Coast             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Kapiti Coast"             // NZ_Regions:Wellington/Kapiti Coast                 = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Lower_Hutt               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Lower Hutt"               // NZ_Regions:Wellington/Lower Hutt                   = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Masterton                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Masterton"                // NZ_Regions:Wellington/Masterton                    = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Porirua                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Porirua"                  // NZ_Regions:Wellington/Porirua                      = DXCC: 170 Wellington
-	NZ_Regions_Wellington_South_Wairarapa          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/South Wairarapa"          // NZ_Regions:Wellington/South Wairarapa              = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Upper_Hutt               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Upper Hutt"               // NZ_Regions:Wellington/Upper Hutt                   = DXCC: 170 Wellington
-	NZ_Regions_Wellington_Wellington               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Wellington"               // NZ_Regions:Wellington/Wellington                   = DXCC: 170 Wellington
-	NZ_Regions_West_Coast_Buller                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Buller"                   // NZ_Regions:West Coast/Buller                       = DXCC: 170 West Coast
-	NZ_Regions_West_Coast_Grey                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Grey"                     // NZ_Regions:West Coast/Grey                         = DXCC: 170 West Coast
-	NZ_Regions_West_Coast_Westland                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Westland"                 // NZ_Regions:West Coast/Westland                     = DXCC: 170 West Coast
+	NZ_REGIONS_AUCKLAND_AUCKLAND                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Auckland"                   // NZ_Regions:Auckland/Auckland                       = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_FRANKLIN                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Franklin"                   // NZ_Regions:Auckland/Franklin                       = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_MANUKAU                    SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Manukau"                    // NZ_Regions:Auckland/Manukau                        = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_NORTH_SHORE                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/North Shore"                // NZ_Regions:Auckland/North Shore                    = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_PAPAKURA                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Papakura"                   // NZ_Regions:Auckland/Papakura                       = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_RODNEY                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Rodney"                     // NZ_Regions:Auckland/Rodney                         = DXCC: 170 Auckland
+	NZ_REGIONS_AUCKLAND_WAITAKERE                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Auckland/Waitakere"                  // NZ_Regions:Auckland/Waitakere                      = DXCC: 170 Auckland
+	NZ_REGIONS_BAY_OF_PLENTY_KAWERAU               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Kawerau"               // NZ_Regions:Bay of Plenty/Kawerau                   = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_BAY_OF_PLENTY_OPOTIKI               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Opotiki"               // NZ_Regions:Bay of Plenty/Opotiki                   = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_BAY_OF_PLENTY_ROTORUA               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Rotorua"               // NZ_Regions:Bay of Plenty/Rotorua                   = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_BAY_OF_PLENTY_TAURANGA              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Tauranga"              // NZ_Regions:Bay of Plenty/Tauranga                  = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_BAY_OF_PLENTY_WESTERN_BAY_OF_PLENTY SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Western Bay of Plenty" // NZ_Regions:Bay of Plenty/Western Bay of Plenty     = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_BAY_OF_PLENTY_WHAKATANE             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Bay of Plenty/Whakatane"             // NZ_Regions:Bay of Plenty/Whakatane                 = DXCC: 170 Bay of Plenty
+	NZ_REGIONS_CANTERBURY_ASHBURTON                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Ashburton"                // NZ_Regions:Canterbury/Ashburton                    = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_BANKS_PENINSULA          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Banks Peninsula"          // NZ_Regions:Canterbury/Banks Peninsula              = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_CHRISTCHURCH             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Christchurch"             // NZ_Regions:Canterbury/Christchurch                 = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_HURUNUI                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Hurunui"                  // NZ_Regions:Canterbury/Hurunui                      = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_KAIKOURA                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Kaikoura"                 // NZ_Regions:Canterbury/Kaikoura                     = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_MACKENZIE                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Mackenzie"                // NZ_Regions:Canterbury/Mackenzie                    = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_SELWYN                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Selwyn"                   // NZ_Regions:Canterbury/Selwyn                       = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_TIMARU                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Timaru"                   // NZ_Regions:Canterbury/Timaru                       = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_WAIMAKARIRI              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Waimakariri"              // NZ_Regions:Canterbury/Waimakariri                  = DXCC: 170 Canterbury
+	NZ_REGIONS_CANTERBURY_WAIMATE                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Canterbury/Waimate"                  // NZ_Regions:Canterbury/Waimate                      = DXCC: 170 Canterbury
+	NZ_REGIONS_GISBORNE_GISBORNE                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Gisborne/Gisborne"                   // NZ_Regions:Gisborne/Gisborne                       = DXCC: 170 Gisborne
+	NZ_REGIONS_HAWKES_BAY_CENTRAL_HAWKES_BAY       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Central Hawkes Bay"       // NZ_Regions:Hawkes Bay/Central Hawkes Bay           = DXCC: 170 Hawkes Bay
+	NZ_REGIONS_HAWKES_BAY_HASTINGS                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Hastings"                 // NZ_Regions:Hawkes Bay/Hastings                     = DXCC: 170 Hawkes Bay
+	NZ_REGIONS_HAWKES_BAY_NAPIER                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Napier"                   // NZ_Regions:Hawkes Bay/Napier                       = DXCC: 170 Hawkes Bay
+	NZ_REGIONS_HAWKES_BAY_WAIROA                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Hawkes Bay/Wairoa"                   // NZ_Regions:Hawkes Bay/Wairoa                       = DXCC: 170 Hawkes Bay
+	NZ_REGIONS_MARLBOROUGH_MARLBOROUGH             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Marlborough/Marlborough"             // NZ_Regions:Marlborough/Marlborough                 = DXCC: 170 Marlborough
+	NZ_REGIONS_NELSON_NELSON                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Nelson/Nelson"                       // NZ_Regions:Nelson/Nelson                           = DXCC: 170 Nelson
+	NZ_REGIONS_NORTHLAND_FAR_NORTH                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Far North"                 // NZ_Regions:Northland/Far North                     = DXCC: 170 Northland
+	NZ_REGIONS_NORTHLAND_KAIPARA                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Kaipara"                   // NZ_Regions:Northland/Kaipara                       = DXCC: 170 Northland
+	NZ_REGIONS_NORTHLAND_WHANGAREI                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Northland/Whangarei"                 // NZ_Regions:Northland/Whangarei                     = DXCC: 170 Northland
+	NZ_REGIONS_OTAGO_CENTRAL_OTAGO                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Central Otago"                 // NZ_Regions:Otago/Central Otago                     = DXCC: 170 Otago
+	NZ_REGIONS_OTAGO_CLUTHA                        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Clutha"                        // NZ_Regions:Otago/Clutha                            = DXCC: 170 Otago
+	NZ_REGIONS_OTAGO_DUNEDIN                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Dunedin"                       // NZ_Regions:Otago/Dunedin                           = DXCC: 170 Otago
+	NZ_REGIONS_OTAGO_QUEENSTOWN_LAKES              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Queenstown-Lakes"              // NZ_Regions:Otago/Queenstown-Lakes                  = DXCC: 170 Otago
+	NZ_REGIONS_OTAGO_WAITAKI                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Otago/Waitaki"                       // NZ_Regions:Otago/Waitaki                           = DXCC: 170 Otago
+	NZ_REGIONS_SOUTHLAND_GORE                      SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Gore"                      // NZ_Regions:Southland/Gore                          = DXCC: 170 Southland
+	NZ_REGIONS_SOUTHLAND_INVERCARGILL              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Invercargill"              // NZ_Regions:Southland/Invercargill                  = DXCC: 170 Southland
+	NZ_REGIONS_SOUTHLAND_SOUTHLAND                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Southland/Southland"                 // NZ_Regions:Southland/Southland                     = DXCC: 170 Southland
+	NZ_REGIONS_TARANAKI_NEW_PLYMOUTH               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/New Plymouth"               // NZ_Regions:Taranaki/New Plymouth                   = DXCC: 170 Taranaki
+	NZ_REGIONS_TARANAKI_SOUTH_TARANAKI             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/South Taranaki"             // NZ_Regions:Taranaki/South Taranaki                 = DXCC: 170 Taranaki
+	NZ_REGIONS_TARANAKI_STRATFORD                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Taranaki/Stratford"                  // NZ_Regions:Taranaki/Stratford                      = DXCC: 170 Taranaki
+	NZ_REGIONS_TASMAN_TASMAN                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Tasman/Tasman"                       // NZ_Regions:Tasman/Tasman                           = DXCC: 170 Tasman
+	NZ_REGIONS_WAIKATO_HAMILTON                    SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Hamilton"                    // NZ_Regions:Waikato/Hamilton                        = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_HAURAKI                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Hauraki"                     // NZ_Regions:Waikato/Hauraki                         = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_MATAMATA_PIAKO              SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Matamata Piako"              // NZ_Regions:Waikato/Matamata Piako                  = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_OTOROHANGA                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Otorohanga"                  // NZ_Regions:Waikato/Otorohanga                      = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_SOUTH_WAIKATO               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/South Waikato"               // NZ_Regions:Waikato/South Waikato                   = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_TAUPO                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Taupo"                       // NZ_Regions:Waikato/Taupo                           = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_THAMES_COROMANDEL           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Thames-Coromandel"           // NZ_Regions:Waikato/Thames-Coromandel               = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_WAIKATO                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waikato"                     // NZ_Regions:Waikato/Waikato                         = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_WAIPA                       SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waipa"                       // NZ_Regions:Waikato/Waipa                           = DXCC: 170 Waikato
+	NZ_REGIONS_WAIKATO_WAITOMO                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Waikato/Waitomo"                     // NZ_Regions:Waikato/Waitomo                         = DXCC: 170 Waikato
+	NZ_REGIONS_WANGANUI_MANAWATU_HOROWHENUA        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Horowhenua"        // NZ_Regions:Wanganui-Manawatu/Horowhenua            = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_MANAWATU          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Manawatu"          // NZ_Regions:Wanganui-Manawatu/Manawatu              = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_PALMERSTON_NORTH  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Palmerston North"  // NZ_Regions:Wanganui-Manawatu/Palmerston North      = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_RANGITIKEI        SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Rangitikei"        // NZ_Regions:Wanganui-Manawatu/Rangitikei            = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_RUAPEHU           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Ruapehu"           // NZ_Regions:Wanganui-Manawatu/Ruapehu               = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_TARARUA           SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Tararua"           // NZ_Regions:Wanganui-Manawatu/Tararua               = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WANGANUI_MANAWATU_WANGANUI          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wanganui-Manawatu/Wanganui"          // NZ_Regions:Wanganui-Manawatu/Wanganui              = DXCC: 170 Wanganui-Manawatu
+	NZ_REGIONS_WELLINGTON_CARTERTON                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Carterton"                // NZ_Regions:Wellington/Carterton                    = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_KAPITI_COAST             SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Kapiti Coast"             // NZ_Regions:Wellington/Kapiti Coast                 = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_LOWER_HUTT               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Lower Hutt"               // NZ_Regions:Wellington/Lower Hutt                   = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_MASTERTON                SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Masterton"                // NZ_Regions:Wellington/Masterton                    = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_PORIRUA                  SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Porirua"                  // NZ_Regions:Wellington/Porirua                      = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_SOUTH_WAIRARAPA          SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/South Wairarapa"          // NZ_Regions:Wellington/South Wairarapa              = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_UPPER_HUTT               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Upper Hutt"               // NZ_Regions:Wellington/Upper Hutt                   = DXCC: 170 Wellington
+	NZ_REGIONS_WELLINGTON_WELLINGTON               SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:Wellington/Wellington"               // NZ_Regions:Wellington/Wellington                   = DXCC: 170 Wellington
+	NZ_REGIONS_WEST_COAST_BULLER                   SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Buller"                   // NZ_Regions:West Coast/Buller                       = DXCC: 170 West Coast
+	NZ_REGIONS_WEST_COAST_GREY                     SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Grey"                     // NZ_Regions:West Coast/Grey                         = DXCC: 170 West Coast
+	NZ_REGIONS_WEST_COAST_WESTLAND                 SecondaryAdministrativeSubdivisionAlt = "NZ_Regions:West Coast/Westland"                 // NZ_Regions:West Coast/Westland                     = DXCC: 170 West Coast
 )
 
 var (
@@ -166,79 +166,79 @@ var lookupList = []Spec{
 
 // lookupMap contains all known SecondaryAdministrativeSubdivisionAlt specifications.
 var lookupMap = map[SecondaryAdministrativeSubdivisionAlt]*Spec{
-	NZ_Regions_Auckland_Auckland:                   &lookupList[0],
-	NZ_Regions_Auckland_Franklin:                   &lookupList[1],
-	NZ_Regions_Auckland_Manukau:                    &lookupList[2],
-	NZ_Regions_Auckland_North_Shore:                &lookupList[3],
-	NZ_Regions_Auckland_Papakura:                   &lookupList[4],
-	NZ_Regions_Auckland_Rodney:                     &lookupList[5],
-	NZ_Regions_Auckland_Waitakere:                  &lookupList[6],
-	NZ_Regions_Bay_of_Plenty_Kawerau:               &lookupList[7],
-	NZ_Regions_Bay_of_Plenty_Opotiki:               &lookupList[8],
-	NZ_Regions_Bay_of_Plenty_Rotorua:               &lookupList[9],
-	NZ_Regions_Bay_of_Plenty_Tauranga:              &lookupList[10],
-	NZ_Regions_Bay_of_Plenty_Western_Bay_of_Plenty: &lookupList[11],
-	NZ_Regions_Bay_of_Plenty_Whakatane:             &lookupList[12],
-	NZ_Regions_Canterbury_Ashburton:                &lookupList[13],
-	NZ_Regions_Canterbury_Banks_Peninsula:          &lookupList[14],
-	NZ_Regions_Canterbury_Christchurch:             &lookupList[15],
-	NZ_Regions_Canterbury_Hurunui:                  &lookupList[16],
-	NZ_Regions_Canterbury_Kaikoura:                 &lookupList[17],
-	NZ_Regions_Canterbury_Mackenzie:                &lookupList[18],
-	NZ_Regions_Canterbury_Selwyn:                   &lookupList[19],
-	NZ_Regions_Canterbury_Timaru:                   &lookupList[20],
-	NZ_Regions_Canterbury_Waimakariri:              &lookupList[21],
-	NZ_Regions_Canterbury_Waimate:                  &lookupList[22],
-	NZ_Regions_Gisborne_Gisborne:                   &lookupList[23],
-	NZ_Regions_Hawkes_Bay_Central_Hawkes_Bay:       &lookupList[24],
-	NZ_Regions_Hawkes_Bay_Hastings:                 &lookupList[25],
-	NZ_Regions_Hawkes_Bay_Napier:                   &lookupList[26],
-	NZ_Regions_Hawkes_Bay_Wairoa:                   &lookupList[27],
-	NZ_Regions_Marlborough_Marlborough:             &lookupList[28],
-	NZ_Regions_Nelson_Nelson:                       &lookupList[29],
-	NZ_Regions_Northland_Far_North:                 &lookupList[30],
-	NZ_Regions_Northland_Kaipara:                   &lookupList[31],
-	NZ_Regions_Northland_Whangarei:                 &lookupList[32],
-	NZ_Regions_Otago_Central_Otago:                 &lookupList[33],
-	NZ_Regions_Otago_Clutha:                        &lookupList[34],
-	NZ_Regions_Otago_Dunedin:                       &lookupList[35],
-	NZ_Regions_Otago_Queenstown_Lakes:              &lookupList[36],
-	NZ_Regions_Otago_Waitaki:                       &lookupList[37],
-	NZ_Regions_Southland_Gore:                      &lookupList[38],
-	NZ_Regions_Southland_Invercargill:              &lookupList[39],
-	NZ_Regions_Southland_Southland:                 &lookupList[40],
-	NZ_Regions_Taranaki_New_Plymouth:               &lookupList[41],
-	NZ_Regions_Taranaki_South_Taranaki:             &lookupList[42],
-	NZ_Regions_Taranaki_Stratford:                  &lookupList[43],
-	NZ_Regions_Tasman_Tasman:                       &lookupList[44],
-	NZ_Regions_Waikato_Hamilton:                    &lookupList[45],
-	NZ_Regions_Waikato_Hauraki:                     &lookupList[46],
-	NZ_Regions_Waikato_Matamata_Piako:              &lookupList[47],
-	NZ_Regions_Waikato_Otorohanga:                  &lookupList[48],
-	NZ_Regions_Waikato_South_Waikato:               &lookupList[49],
-	NZ_Regions_Waikato_Taupo:                       &lookupList[50],
-	NZ_Regions_Waikato_Thames_Coromandel:           &lookupList[51],
-	NZ_Regions_Waikato_Waikato:                     &lookupList[52],
-	NZ_Regions_Waikato_Waipa:                       &lookupList[53],
-	NZ_Regions_Waikato_Waitomo:                     &lookupList[54],
-	NZ_Regions_Wanganui_Manawatu_Horowhenua:        &lookupList[55],
-	NZ_Regions_Wanganui_Manawatu_Manawatu:          &lookupList[56],
-	NZ_Regions_Wanganui_Manawatu_Palmerston_North:  &lookupList[57],
-	NZ_Regions_Wanganui_Manawatu_Rangitikei:        &lookupList[58],
-	NZ_Regions_Wanganui_Manawatu_Ruapehu:           &lookupList[59],
-	NZ_Regions_Wanganui_Manawatu_Tararua:           &lookupList[60],
-	NZ_Regions_Wanganui_Manawatu_Wanganui:          &lookupList[61],
-	NZ_Regions_Wellington_Carterton:                &lookupList[62],
-	NZ_Regions_Wellington_Kapiti_Coast:             &lookupList[63],
-	NZ_Regions_Wellington_Lower_Hutt:               &lookupList[64],
-	NZ_Regions_Wellington_Masterton:                &lookupList[65],
-	NZ_Regions_Wellington_Porirua:                  &lookupList[66],
-	NZ_Regions_Wellington_South_Wairarapa:          &lookupList[67],
-	NZ_Regions_Wellington_Upper_Hutt:               &lookupList[68],
-	NZ_Regions_Wellington_Wellington:               &lookupList[69],
-	NZ_Regions_West_Coast_Buller:                   &lookupList[70],
-	NZ_Regions_West_Coast_Grey:                     &lookupList[71],
-	NZ_Regions_West_Coast_Westland:                 &lookupList[72],
+	NZ_REGIONS_AUCKLAND_AUCKLAND:                   &lookupList[0],
+	NZ_REGIONS_AUCKLAND_FRANKLIN:                   &lookupList[1],
+	NZ_REGIONS_AUCKLAND_MANUKAU:                    &lookupList[2],
+	NZ_REGIONS_AUCKLAND_NORTH_SHORE:                &lookupList[3],
+	NZ_REGIONS_AUCKLAND_PAPAKURA:                   &lookupList[4],
+	NZ_REGIONS_AUCKLAND_RODNEY:                     &lookupList[5],
+	NZ_REGIONS_AUCKLAND_WAITAKERE:                  &lookupList[6],
+	NZ_REGIONS_BAY_OF_PLENTY_KAWERAU:               &lookupList[7],
+	NZ_REGIONS_BAY_OF_PLENTY_OPOTIKI:               &lookupList[8],
+	NZ_REGIONS_BAY_OF_PLENTY_ROTORUA:               &lookupList[9],
+	NZ_REGIONS_BAY_OF_PLENTY_TAURANGA:              &lookupList[10],
+	NZ_REGIONS_BAY_OF_PLENTY_WESTERN_BAY_OF_PLENTY: &lookupList[11],
+	NZ_REGIONS_BAY_OF_PLENTY_WHAKATANE:             &lookupList[12],
+	NZ_REGIONS_CANTERBURY_ASHBURTON:                &lookupList[13],
+	NZ_REGIONS_CANTERBURY_BANKS_PENINSULA:          &lookupList[14],
+	NZ_REGIONS_CANTERBURY_CHRISTCHURCH:             &lookupList[15],
+	NZ_REGIONS_CANTERBURY_HURUNUI:                  &lookupList[16],
+	NZ_REGIONS_CANTERBURY_KAIKOURA:                 &lookupList[17],
+	NZ_REGIONS_CANTERBURY_MACKENZIE:                &lookupList[18],
+	NZ_REGIONS_CANTERBURY_SELWYN:                   &lookupList[19],
+	NZ_REGIONS_CANTERBURY_TIMARU:                   &lookupList[20],
+	NZ_REGIONS_CANTERBURY_WAIMAKARIRI:              &lookupList[21],
+	NZ_REGIONS_CANTERBURY_WAIMATE:                  &lookupList[22],
+	NZ_REGIONS_GISBORNE_GISBORNE:                   &lookupList[23],
+	NZ_REGIONS_HAWKES_BAY_CENTRAL_HAWKES_BAY:       &lookupList[24],
+	NZ_REGIONS_HAWKES_BAY_HASTINGS:                 &lookupList[25],
+	NZ_REGIONS_HAWKES_BAY_NAPIER:                   &lookupList[26],
+	NZ_REGIONS_HAWKES_BAY_WAIROA:                   &lookupList[27],
+	NZ_REGIONS_MARLBOROUGH_MARLBOROUGH:             &lookupList[28],
+	NZ_REGIONS_NELSON_NELSON:                       &lookupList[29],
+	NZ_REGIONS_NORTHLAND_FAR_NORTH:                 &lookupList[30],
+	NZ_REGIONS_NORTHLAND_KAIPARA:                   &lookupList[31],
+	NZ_REGIONS_NORTHLAND_WHANGAREI:                 &lookupList[32],
+	NZ_REGIONS_OTAGO_CENTRAL_OTAGO:                 &lookupList[33],
+	NZ_REGIONS_OTAGO_CLUTHA:                        &lookupList[34],
+	NZ_REGIONS_OTAGO_DUNEDIN:                       &lookupList[35],
+	NZ_REGIONS_OTAGO_QUEENSTOWN_LAKES:              &lookupList[36],
+	NZ_REGIONS_OTAGO_WAITAKI:                       &lookupList[37],
+	NZ_REGIONS_SOUTHLAND_GORE:                      &lookupList[38],
+	NZ_REGIONS_SOUTHLAND_INVERCARGILL:              &lookupList[39],
+	NZ_REGIONS_SOUTHLAND_SOUTHLAND:                 &lookupList[40],
+	NZ_REGIONS_TARANAKI_NEW_PLYMOUTH:               &lookupList[41],
+	NZ_REGIONS_TARANAKI_SOUTH_TARANAKI:             &lookupList[42],
+	NZ_REGIONS_TARANAKI_STRATFORD:                  &lookupList[43],
+	NZ_REGIONS_TASMAN_TASMAN:                       &lookupList[44],
+	NZ_REGIONS_WAIKATO_HAMILTON:                    &lookupList[45],
+	NZ_REGIONS_WAIKATO_HAURAKI:                     &lookupList[46],
+	NZ_REGIONS_WAIKATO_MATAMATA_PIAKO:              &lookupList[47],
+	NZ_REGIONS_WAIKATO_OTOROHANGA:                  &lookupList[48],
+	NZ_REGIONS_WAIKATO_SOUTH_WAIKATO:               &lookupList[49],
+	NZ_REGIONS_WAIKATO_TAUPO:                       &lookupList[50],
+	NZ_REGIONS_WAIKATO_THAMES_COROMANDEL:           &lookupList[51],
+	NZ_REGIONS_WAIKATO_WAIKATO:                     &lookupList[52],
+	NZ_REGIONS_WAIKATO_WAIPA:                       &lookupList[53],
+	NZ_REGIONS_WAIKATO_WAITOMO:                     &lookupList[54],
+	NZ_REGIONS_WANGANUI_MANAWATU_HOROWHENUA:        &lookupList[55],
+	NZ_REGIONS_WANGANUI_MANAWATU_MANAWATU:          &lookupList[56],
+	NZ_REGIONS_WANGANUI_MANAWATU_PALMERSTON_NORTH:  &lookupList[57],
+	NZ_REGIONS_WANGANUI_MANAWATU_RANGITIKEI:        &lookupList[58],
+	NZ_REGIONS_WANGANUI_MANAWATU_RUAPEHU:           &lookupList[59],
+	NZ_REGIONS_WANGANUI_MANAWATU_TARARUA:           &lookupList[60],
+	NZ_REGIONS_WANGANUI_MANAWATU_WANGANUI:          &lookupList[61],
+	NZ_REGIONS_WELLINGTON_CARTERTON:                &lookupList[62],
+	NZ_REGIONS_WELLINGTON_KAPITI_COAST:             &lookupList[63],
+	NZ_REGIONS_WELLINGTON_LOWER_HUTT:               &lookupList[64],
+	NZ_REGIONS_WELLINGTON_MASTERTON:                &lookupList[65],
+	NZ_REGIONS_WELLINGTON_PORIRUA:                  &lookupList[66],
+	NZ_REGIONS_WELLINGTON_SOUTH_WAIRARAPA:          &lookupList[67],
+	NZ_REGIONS_WELLINGTON_UPPER_HUTT:               &lookupList[68],
+	NZ_REGIONS_WELLINGTON_WELLINGTON:               &lookupList[69],
+	NZ_REGIONS_WEST_COAST_BULLER:                   &lookupList[70],
+	NZ_REGIONS_WEST_COAST_GREY:                     &lookupList[71],
+	NZ_REGIONS_WEST_COAST_WESTLAND:                 &lookupList[72],
 }
 
 // Lookup returns the specification for the provided SecondaryAdministrativeSubdivisionAlt.

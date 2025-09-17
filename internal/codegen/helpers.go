@@ -20,5 +20,6 @@ func ToGoIdentifier(s string) string {
 	result := replacer.Replace(s)
 	result = strings.ReplaceAll(result, "__", "_")
 	result = strings.TrimSuffix(result, "_")
+	result = strings.ToUpper(result)
 	return result
 }

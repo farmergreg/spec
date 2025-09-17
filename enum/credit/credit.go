@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = Credit("")
 
 // New creates a new Credit from the provided string.
 func New(value string) Credit {
-	return Credit(strings.ToUpper(value))
+	return Credit(strings.ToLower(value))
 }
 
 // String returns the string representation of the Credit.
@@ -24,7 +24,7 @@ func (c Credit) String() string {
 // Compare returns an integer comparing two Credit values lexicographically.
 // ADIF enums are case-insensitive.
 func (c Credit) Compare(other Credit) int {
-	return strings.Compare(strings.ToUpper(string(c)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(c)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this Credit equals the other Credit.

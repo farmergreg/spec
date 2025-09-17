@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = QSLSent("")
 
 // New creates a new QSLSent from the provided string.
 func New(value string) QSLSent {
-	return QSLSent(strings.ToUpper(value))
+	return QSLSent(strings.ToLower(value))
 }
 
 // String returns the string representation of the QSLSent.
@@ -24,7 +24,7 @@ func (q QSLSent) String() string {
 // Compare returns an integer comparing two QSLSent values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSLSent) Compare(other QSLSent) int {
-	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(q)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this QSLSent equals the other QSLSent.

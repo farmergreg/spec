@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = QSODownloadStatus("")
 
 // New creates a new QSODownloadStatus from the provided string.
 func New(value string) QSODownloadStatus {
-	return QSODownloadStatus(strings.ToUpper(value))
+	return QSODownloadStatus(strings.ToLower(value))
 }
 
 // String returns the string representation of the QSODownloadStatus.
@@ -24,7 +24,7 @@ func (q QSODownloadStatus) String() string {
 // Compare returns an integer comparing two QSODownloadStatus values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSODownloadStatus) Compare(other QSODownloadStatus) int {
-	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(q)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this QSODownloadStatus equals the other QSODownloadStatus.

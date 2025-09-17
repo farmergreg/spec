@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = QSOComplete("")
 
 // New creates a new QSOComplete from the provided string.
 func New(value string) QSOComplete {
-	return QSOComplete(strings.ToUpper(value))
+	return QSOComplete(strings.ToLower(value))
 }
 
 // String returns the string representation of the QSOComplete.
@@ -24,7 +24,7 @@ func (q QSOComplete) String() string {
 // Compare returns an integer comparing two QSOComplete values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSOComplete) Compare(other QSOComplete) int {
-	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(q)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this QSOComplete equals the other QSOComplete.

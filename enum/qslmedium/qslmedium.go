@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = QSLMedium("")
 
 // New creates a new QSLMedium from the provided string.
 func New(value string) QSLMedium {
-	return QSLMedium(strings.ToUpper(value))
+	return QSLMedium(strings.ToLower(value))
 }
 
 // String returns the string representation of the QSLMedium.
@@ -24,7 +24,7 @@ func (q QSLMedium) String() string {
 // Compare returns an integer comparing two QSLMedium values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSLMedium) Compare(other QSLMedium) int {
-	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(q)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this QSLMedium equals the other QSLMedium.

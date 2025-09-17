@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = ARRLSection("")
 
 // New creates a new ARRLSection from the provided string.
 func New(value string) ARRLSection {
-	return ARRLSection(strings.ToUpper(value))
+	return ARRLSection(strings.ToLower(value))
 }
 
 // String returns the string representation of the ARRLSection.
@@ -24,7 +24,7 @@ func (a ARRLSection) String() string {
 // Compare returns an integer comparing two ARRLSection values lexicographically.
 // ADIF enums are case-insensitive.
 func (t ARRLSection) Compare(other ARRLSection) int {
-	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(t)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this ARRLSection equals the other ARRLSection.

@@ -35,7 +35,7 @@ func TestLookup_Failure(t *testing.T) {
 
 func TestLookupByFilter_Success(t *testing.T) {
 	got := LookupByFilter(func(spec Spec) bool { return spec.Key == G })
-	if len(got) != 1 || got[0].Key != "G" {
+	if len(got) != 1 || got[0].Key != "g" {
 		t.Errorf("LookupByFilter(%v) = %v, want %v", G, got, 1)
 	}
 }

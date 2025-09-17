@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = PropagationMode("")
 
 // New creates a new PropagationMode from the provided string.
 func New(value string) PropagationMode {
-	return PropagationMode(strings.ToUpper(value))
+	return PropagationMode(strings.ToLower(value))
 }
 
 // String returns the string representation of the PropagationMode.
@@ -24,7 +24,7 @@ func (p PropagationMode) String() string {
 // Compare returns an integer comparing two PropagationMode values lexicographically.
 // ADIF enums are case-insensitive.
 func (p PropagationMode) Compare(other PropagationMode) int {
-	return strings.Compare(strings.ToUpper(string(p)), strings.ToUpper(string(other)))
+	return strings.Compare(strings.ToLower(string(p)), strings.ToLower(string(other)))
 }
 
 // Equals returns true if this PropagationMode equals the other PropagationMode.
