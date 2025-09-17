@@ -1,0 +1,17 @@
+{{- define "static_data_type" }}
+{{- if eq .CodeGen.CodeGenMetadata.DataType "Type" }}
+
+const DATATYPEINDICATOR_NONE DataTypeIndicator = 0 // Represents an empty/unset DataTypeIndicator (this is NOT part of the ADIF spec)
+
+const (
+{{- range $key, $value := .CodeGen.CodeGenRecords }}
+	{{- if eq $value.DataTypeIndicator 0 }}
+	{{- else }}
+		{{- $metadata := $value.CodeGenMetadata }}
+		DATATYPEINDICATOR_{{ $metadata.ConstName }} DataTypeIndicator = '{{ $value.DataTypeIndicator }}' // {{ $metadata.ConstComments }}
+	{{- end }}
+{{- end }}
+)
+
+{{- end }}
+{{- end }}
