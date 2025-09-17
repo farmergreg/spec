@@ -37,6 +37,21 @@ const (
 	WWFFREF                                   Type = "WWFFREF"                                   // a sequence of case-insensitive Characters representing an International WWFF (World Wildlife Flora & Fauna) reference in the form xxFF-nnnn comprising 8 to 11 characters where: xx is the WWFF national program and is 1 to 4 characters in length. FF- is two F characters followed by a dash character. nnnn represents the unique number within the national program and is 4 characters in length with leading zeros. Examples: KFF-4655 3DAFF-0002
 )
 
+const DATATYPEINDICATOR_NONE DataTypeIndicator = 0 // Represents an empty/unset DataTypeIndicator (this is NOT part of the ADIF spec)
+
+const (
+	DATATYPEINDICATOR_BOOLEAN             DataTypeIndicator = 'B' // if True, the single ASCII character Y or y if False, the single ASCII character N or n
+	DATATYPEINDICATOR_DATE                DataTypeIndicator = 'D' // 8 Digits representing a UTC date in YYYYMMDD format, where YYYY is a 4-Digit year specifier, where 1930 <= YYYY MM is a 2-Digit month specifier, where 1 <= MM <= 12 [use leading zeroes] DD is a 2-Digit day specifier, where 1 <= DD <= DaysInMonth(MM) [use leading zeroes]
+	DATATYPEINDICATOR_ENUMERATION         DataTypeIndicator = 'E' // an explicit list of legal case-insensitive values represented in ASCII set forth in set notation, e.g. {A, B, C, D}, or defined in a table, from which a single value may be selected.
+	DATATYPEINDICATOR_INTLMULTILINESTRING DataTypeIndicator = 'G' // a sequence of International Characters and line breaks. Fields of type IntlMultilineString must only be used in ADX files
+	DATATYPEINDICATOR_INTLSTRING          DataTypeIndicator = 'I' // a sequence of International Characters. Fields of type IntlString must only be used in ADX files
+	DATATYPEINDICATOR_LOCATION            DataTypeIndicator = 'L' // a sequence of 11 characters representing a latitude or longitude in XDDD MM.MMM format, where X is a directional Character from the set {E, W, N, S} DDD is a 3-Digit degrees specifier, where 0 <= DDD <= 180 [use leading zeroes] There is a single space character in between DDD and MM.MMM MM.MMM is an unsigned Number minutes specifier with its decimal point in the third position, where 00.000 <= MM.MMM <= 59.999 [use leading and trailing zeroes]
+	DATATYPEINDICATOR_MULTILINESTRING     DataTypeIndicator = 'M' // a sequence of Characters and line-breaks, where a line break is an ASCII CR (code 13) followed immediately by an ASCII LF (code 10)
+	DATATYPEINDICATOR_NUMBER              DataTypeIndicator = 'N' // a sequence of one or more Digits representing a decimal number, optionally preceded by a minus sign (ASCII code 45) and optionally including a single decimal point (ASCII code 46)
+	DATATYPEINDICATOR_STRING              DataTypeIndicator = 'S' // a sequence of Characters
+	DATATYPEINDICATOR_TIME                DataTypeIndicator = 'T' // 6 Digits representing a UTC time in HHMMSS format or 4 Digits representing a time in HHMM format, where HH is a 2-Digit hour specifier, where 0 <= HH <= 23 [use leading zeroes] MM is a 2-Digit minute specifier, where 0 <= MM <= 59 [use leading zeroes] SS is a 2-Digit second specifier, where 0 <= SS <= 59 [use leading zeroes]
+)
+
 var (
 	listActive     []Spec    // listActive is a cached copy of the active specifications (those not marked as import-only).
 	listActiveOnce sync.Once // listActive is lazy loaded instead of utilizing an init() function. This allows the compiler to remove unused data / variables.
@@ -149,18 +164,3 @@ func ListActive() []Spec {
 	copy(result, listActive)
 	return result
 }
-
-const DATATYPEINDICATOR_NONE DataTypeIndicator = 0 // Represents an empty/unset DataTypeIndicator (this is NOT part of the ADIF spec)
-
-const (
-	DATATYPEINDICATOR_BOOLEAN             DataTypeIndicator = 'B' // if True, the single ASCII character Y or y if False, the single ASCII character N or n
-	DATATYPEINDICATOR_DATE                DataTypeIndicator = 'D' // 8 Digits representing a UTC date in YYYYMMDD format, where YYYY is a 4-Digit year specifier, where 1930 <= YYYY MM is a 2-Digit month specifier, where 1 <= MM <= 12 [use leading zeroes] DD is a 2-Digit day specifier, where 1 <= DD <= DaysInMonth(MM) [use leading zeroes]
-	DATATYPEINDICATOR_ENUMERATION         DataTypeIndicator = 'E' // an explicit list of legal case-insensitive values represented in ASCII set forth in set notation, e.g. {A, B, C, D}, or defined in a table, from which a single value may be selected.
-	DATATYPEINDICATOR_INTLMULTILINESTRING DataTypeIndicator = 'G' // a sequence of International Characters and line breaks. Fields of type IntlMultilineString must only be used in ADX files
-	DATATYPEINDICATOR_INTLSTRING          DataTypeIndicator = 'I' // a sequence of International Characters. Fields of type IntlString must only be used in ADX files
-	DATATYPEINDICATOR_LOCATION            DataTypeIndicator = 'L' // a sequence of 11 characters representing a latitude or longitude in XDDD MM.MMM format, where X is a directional Character from the set {E, W, N, S} DDD is a 3-Digit degrees specifier, where 0 <= DDD <= 180 [use leading zeroes] There is a single space character in between DDD and MM.MMM MM.MMM is an unsigned Number minutes specifier with its decimal point in the third position, where 00.000 <= MM.MMM <= 59.999 [use leading and trailing zeroes]
-	DATATYPEINDICATOR_MULTILINESTRING     DataTypeIndicator = 'M' // a sequence of Characters and line-breaks, where a line break is an ASCII CR (code 13) followed immediately by an ASCII LF (code 10)
-	DATATYPEINDICATOR_NUMBER              DataTypeIndicator = 'N' // a sequence of one or more Digits representing a decimal number, optionally preceded by a minus sign (ASCII code 45) and optionally including a single decimal point (ASCII code 46)
-	DATATYPEINDICATOR_STRING              DataTypeIndicator = 'S' // a sequence of Characters
-	DATATYPEINDICATOR_TIME                DataTypeIndicator = 'T' // 6 Digits representing a UTC time in HHMMSS format or 4 Digits representing a time in HHMM format, where HH is a 2-Digit hour specifier, where 0 <= HH <= 23 [use leading zeroes] MM is a 2-Digit minute specifier, where 0 <= MM <= 59 [use leading zeroes] SS is a 2-Digit second specifier, where 0 <= SS <= 59 [use leading zeroes]
-)

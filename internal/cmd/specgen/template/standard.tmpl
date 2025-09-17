@@ -6,6 +6,6 @@ const (
 	{{ $metadata.ConstName }} {{ $.CodeGen.CodeGenMetadata.DataType }} = {{ $metadata.ConstValue }} // {{ if $metadata.IsDeprecated }}Deprecated: {{ end }}{{ $metadata.ConstComments }}
 {{- end }}
 )
+{{- template "static_data_type" . }}
 
 {{- template "static_data" . }}
-{{- template "static_data_type" . }}
