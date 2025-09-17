@@ -7,7 +7,7 @@ package dxccentitycode
 import "sync"
 
 const (
-	NONE                                     DXCCEntityCode = 0   // 0 = None (the contacted station is known to not be within a DXCC entity)
+	NONE                                     DXCCEntityCode = 0   // 0 = NONE
 	CANADA                                   DXCCEntityCode = 1   // 1 = CANADA
 	ABU_AIL_IS_DELETED                       DXCCEntityCode = 2   // 2 = ABU AIL IS. (DELETED)
 	AFGHANISTAN                              DXCCEntityCode = 3   // 3 = AFGHANISTAN
@@ -419,7 +419,7 @@ var (
 
 // lookupList contains all known DXCCEntityCode specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: 0, EntityName: "None (the contacted station is known to not be within a DXCC entity)", IsDeleted: false},
+	{IsImportOnly: false, Key: 0, EntityName: "NONE", IsDeleted: false},
 	{IsImportOnly: false, Key: 1, EntityName: "CANADA", IsDeleted: false},
 	{IsImportOnly: false, Key: 2, EntityName: "ABU AIL IS.", IsDeleted: true},
 	{IsImportOnly: false, Key: 3, EntityName: "AFGHANISTAN", IsDeleted: false},

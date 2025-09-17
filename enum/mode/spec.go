@@ -50,6 +50,10 @@ func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGe
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
 		v.Key = Mode(strings.ToLower(string(v.Key)))
+		for i, subMode := range v.Submodes {
+			v.Submodes[i] = submode.SubMode(strings.ToLower(string(subMode)))
+
+		}
 		result[k] = v
 	}
 	return result

@@ -14,6 +14,8 @@ var (
 	_ codegen.CodeGenSpec      = Spec{}
 )
 
+const nonePrefix = "None "
+
 // SpecMapContainer contains all DXCCEntityCode specifications as defined by the ADIF Workgroup specification exports.
 type SpecMapContainer struct {
 	// Header  []string         `json:"Header"`
@@ -33,7 +35,7 @@ type Spec struct {
 func (d Spec) Identifier() string {
 	name := d.EntityName
 
-	if strings.HasPrefix(name, "None ") {
+	if strings.HasPrefix(name, nonePrefix) {
 		name = "NONE"
 	}
 
@@ -60,6 +62,9 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
+		if strings.HasPrefix(v.EntityName, nonePrefix) {
+			v.EntityName = "NONE"
+		}
 		result[k] = v
 	}
 	return result

@@ -7,7 +7,7 @@ import (
 )
 
 // Field is the ADIF field name in and ADI file.
-// By convention in the adifield package, field name constants are always lowercase.
+// By convention in the adifield package, field name constants are uppercase and their values are lowercase.
 // n.b. The ADIF specification defines field names as case-insensitive.
 type Field string
 
