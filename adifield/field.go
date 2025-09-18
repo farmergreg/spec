@@ -3,7 +3,7 @@ package adifield
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // Field is the ADIF field name in and ADI file.

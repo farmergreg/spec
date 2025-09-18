@@ -3,7 +3,7 @@ package eqslag
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // EQSLAG - "Authenticity Guaranteed" by eQSL

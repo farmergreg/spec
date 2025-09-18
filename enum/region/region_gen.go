@@ -7,7 +7,7 @@ package region
 import (
 	"sync"
 
-	"github.com/hamradiolog-net/spec/v6/spectype"
+	"github.com/farmergreg/spec/v6/spectype"
 )
 
 /*

@@ -7,7 +7,7 @@ package arrlsection
 import (
 	"sync"
 
-	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/farmergreg/spec/v6/enum/dxccentitycode"
 )
 
 const (

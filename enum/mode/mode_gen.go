@@ -7,7 +7,7 @@ package mode
 import (
 	"sync"
 
-	"github.com/hamradiolog-net/spec/v6/enum/submode"
+	"github.com/farmergreg/spec/v6/enum/submode"
 )
 
 const (

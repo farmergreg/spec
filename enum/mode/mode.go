@@ -3,7 +3,7 @@ package mode
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // Mode is the ADIF mode of a radio communication.

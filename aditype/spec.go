@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/spec/v6/spectype"
+	"github.com/farmergreg/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/spectype"
 )
 
 var (

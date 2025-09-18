@@ -3,7 +3,7 @@ package morsekeytype
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 type MorseKeyType string

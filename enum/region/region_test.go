@@ -3,7 +3,7 @@ package region
 import (
 	"testing"
 
-	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
+	"github.com/farmergreg/spec/v6/enum/dxccentitycode"
 )
 
 func TestLookupRegion(t *testing.T) {

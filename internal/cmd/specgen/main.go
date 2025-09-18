@@ -11,9 +11,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/spec/v6/spec"
-	"github.com/hamradiolog-net/spec/v6/specdata"
+	"github.com/farmergreg/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/spec"
+	"github.com/farmergreg/spec/v6/specdata"
 )
 
 //go:generate go install golang.org/x/tools/cmd/goimports@latest

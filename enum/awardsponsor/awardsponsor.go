@@ -3,7 +3,7 @@ package awardsponsor
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // AwardSponsorPrefix represents the unique identifier for an award sponsor

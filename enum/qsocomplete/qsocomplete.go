@@ -3,7 +3,7 @@ package qsocomplete
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // QSOComplete represents the completion status of a QSO

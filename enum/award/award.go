@@ -3,7 +3,7 @@ package award
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // Deprecated: Award represents an ADIF award type

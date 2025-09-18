@@ -3,7 +3,7 @@ package propagationmode
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // PropagationMode represents the propagation mode

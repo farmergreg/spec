@@ -3,7 +3,7 @@ package continent
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // Continent represents a continent such as EU for Europe

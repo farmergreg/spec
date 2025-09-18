@@ -1,8 +1,8 @@
 package primaryadministrativesubdivision
 
 import (
-	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/enum/dxccentitycode"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 type PrimaryAdministrativeSubdivisionCompositeKey string

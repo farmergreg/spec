@@ -3,7 +3,7 @@ package qslvia
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // QSLVia represents the method used to exchange QSL cards

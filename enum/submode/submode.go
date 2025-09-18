@@ -3,7 +3,7 @@ package submode
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // SubMode represents the submode of an ADIF record

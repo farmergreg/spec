@@ -3,7 +3,7 @@ package qsodownloadstatus
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // QSODownloadStatus represents the download status of a QSO

@@ -3,7 +3,7 @@ package qslrcvd
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // QSLRcvd represents the QSL received status

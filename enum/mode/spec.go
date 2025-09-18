@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/enum/submode"
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
-	"github.com/hamradiolog-net/spec/v6/spectype"
+	"github.com/farmergreg/spec/v6/enum/submode"
+	"github.com/farmergreg/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/spectype"
 )
 
 var (
@@ -52,7 +52,6 @@ func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGe
 		v.Key = Mode(strings.ToLower(string(v.Key)))
 		for i, subMode := range v.Submodes {
 			v.Submodes[i] = submode.SubMode(strings.ToLower(string(subMode)))
-
 		}
 		result[k] = v
 	}

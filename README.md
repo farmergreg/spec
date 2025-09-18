@@ -1,10 +1,10 @@
 # ADIF 3.1.6 Specification Library for Go
 
-[![Tests](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml/badge.svg)](https://github.com/hamradiolog-net/adif-spec/actions/workflows/test.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/hamradiolog-net/adif-spec)](https://goreportcard.com/report/github.com/hamradiolog-net/adif-spec)
-[![Go Reference](https://pkg.go.dev/badge/github.com/hamradiolog-net/adif-spec.svg)](https://pkg.go.dev/github.com/hamradiolog-net/adif-spec)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/hamradiolog-net/adif-spec)](https://github.com/hamradiolog-net/adif-spec/blob/main/go.mod)
-[![License](https://img.shields.io/github/license/hamradiolog-net/adif-spec)](https://github.com/hamradiolog-net/adif-spec/blob/main/LICENSE)
+[![Tests](https://github.com/farmergreg/adif-spec/actions/workflows/test.yml/badge.svg)](https://github.com/farmergreg/adif-spec/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/farmergreg/adif-spec)](https://goreportcard.com/report/github.com/farmergreg/adif-spec)
+[![Go Reference](https://pkg.go.dev/badge/github.com/farmergreg/adif-spec.svg)](https://pkg.go.dev/github.com/farmergreg/adif-spec)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/farmergreg/adif-spec)](https://github.com/farmergreg/adif-spec/blob/main/go.mod)
+[![License](https://img.shields.io/github/license/farmergreg/adif-spec)](https://github.com/farmergreg/adif-spec/blob/main/LICENSE)
 
 ## Overview
 
@@ -13,7 +13,7 @@ It is generated from the [resources](https://adif.org.uk/316/ADIF_316_resources_
 
 ## Installing The Library
 
-`go get github.com/hamradiolog-net/adif-spec@v6`
+`go get github.com/farmergreg/adif-spec@v6`
 
 ## Examples
 
@@ -37,8 +37,8 @@ If you wish to update this library, the following steps are required:
 
 If you found this library useful, you may also be interested in the following projects:
 
-- [World's Fastest ADIF Parser](https://github.com/hamradiolog-net/adif)
-- [Go ADIF Parser Benchmarks](https://github.com/hamradiolog-net/adif-benchmark)
+- [World's Fastest ADIF Parser](https://github.com/farmergreg/adif)
+- [Go ADIF Parser Benchmarks](https://github.com/farmergreg/adif-benchmark)
 - [g3zod/CreateADIFTestFiles](https://github.com/g3zod/CreateADIFTestFiles) ADI Test Files
 - [g3zod/CreateADIFExportFiles](https://github.com/g3zod/CreateADIFExportFiles) ADIF Workgroup Specification Export Tool
 

@@ -3,7 +3,7 @@ package aditype
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // Type represents the ADIF data type of a data field

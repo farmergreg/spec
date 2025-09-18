@@ -3,7 +3,7 @@ package qslmedium
 import (
 	"strings"
 
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // QSLMedium represents the medium used for QSL exchange

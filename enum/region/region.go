@@ -1,8 +1,8 @@
 package region
 
 import (
-	"github.com/hamradiolog-net/spec/v6/enum/dxccentitycode"
-	"github.com/hamradiolog-net/spec/v6/internal/codegen"
+	"github.com/farmergreg/spec/v6/enum/dxccentitycode"
+	"github.com/farmergreg/spec/v6/internal/codegen"
 )
 
 // RegionCompositeKey works differently that almost all of the other enumerations!
