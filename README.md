@@ -1,10 +1,10 @@
 # ADIF 3.1.6 Specification Library for Go
 
-[![Tests](https://github.com/farmergreg/adif-spec/actions/workflows/test.yml/badge.svg)](https://github.com/farmergreg/adif-spec/actions/workflows/test.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/farmergreg/adif-spec)](https://goreportcard.com/report/github.com/farmergreg/adif-spec)
-[![Go Reference](https://pkg.go.dev/badge/github.com/farmergreg/adif-spec.svg)](https://pkg.go.dev/github.com/farmergreg/adif-spec)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/farmergreg/adif-spec)](https://github.com/farmergreg/adif-spec/blob/main/go.mod)
-[![License](https://img.shields.io/github/license/farmergreg/adif-spec)](https://github.com/farmergreg/adif-spec/blob/main/LICENSE)
+[![Tests](https://github.com/farmergreg/spec/actions/workflows/test.yml/badge.svg)](https://github.com/farmergreg/spec/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/farmergreg/spec)](https://goreportcard.com/report/github.com/farmergreg/spec)
+[![Go Reference](https://pkg.go.dev/badge/github.com/farmergreg/spec.svg)](https://pkg.go.dev/github.com/farmergreg/spec)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/farmergreg/spec)](https://github.com/farmergreg/spec/blob/main/go.mod)
+[![License](https://img.shields.io/github/license/farmergreg/spec)](https://github.com/farmergreg/spec/blob/main/LICENSE)
 
 ## Overview
 
@@ -13,7 +13,7 @@ It is generated from the [resources](https://adif.org.uk/316/ADIF_316_resources_
 
 ## Installing The Library
 
-`go get github.com/farmergreg/adif-spec@v6`
+`go get github.com/farmergreg/spec@v6`
 
 ## Examples
 
