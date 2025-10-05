@@ -9,8 +9,8 @@ import (
 var tmplFuncs = template.FuncMap{
 	"Split":            strings.Split,
 	"ToGoCode":         toGoCode,
-	"ToLower":          strings.ToLower,
-	"ToLowerFirstChar": toLowerFirstChar,
+	"ToUpper":          strings.ToUpper,
+	"ToLowerFirstChar": ToLowerFirstChar,
 	"Add":              func(a, b int) int { return a + b },
 }
 
@@ -27,7 +27,7 @@ func toGoCode(a any, packageName string) string {
 	return r
 }
 
-func toLowerFirstChar(s string) string {
+func ToLowerFirstChar(s string) string {
 	if s == "" {
 		return s
 	}

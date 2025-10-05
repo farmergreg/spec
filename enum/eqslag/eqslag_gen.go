@@ -7,9 +7,9 @@ package eqslag
 import "sync"
 
 const (
-	N EQSLAG = "n" // n = the QSO is confirmed but not "Authenticity Guaranteed" by eQSL
-	U EQSLAG = "u" // u = unknown
-	Y EQSLAG = "y" // y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL
+	N EQSLAG = "N" // N = the QSO is confirmed but not "Authenticity Guaranteed" by eQSL
+	U EQSLAG = "U" // U = unknown
+	Y EQSLAG = "Y" // Y = the QSO is confirmed and "Authenticity Guaranteed" by eQSL
 )
 
 var (
@@ -19,9 +19,9 @@ var (
 
 // lookupList contains all known EQSLAG specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "n", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
-	{IsImportOnly: false, Key: "u", Description: "unknown"},
-	{IsImportOnly: false, Key: "y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
+	{IsImportOnly: false, Key: "N", Description: "the QSO is confirmed but not \"Authenticity Guaranteed\" by eQSL"},
+	{IsImportOnly: false, Key: "U", Description: "unknown"},
+	{IsImportOnly: false, Key: "Y", Description: "the QSO is confirmed and \"Authenticity Guaranteed\" by eQSL"},
 }
 
 // lookupMap contains all known EQSLAG specifications.

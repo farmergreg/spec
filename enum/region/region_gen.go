@@ -16,14 +16,14 @@ import (
  */
 
 const (
-	AI   RegionCode = "ai"   // ai
-	BI   RegionCode = "bi"   // bi
-	ET   RegionCode = "et"   // et
-	IV   RegionCode = "iv"   // iv
-	KO   RegionCode = "ko"   // ko
-	NONE RegionCode = "none" // none
-	SI   RegionCode = "si"   // si
-	SY   RegionCode = "sy"   // sy
+	AI   RegionCode = "AI"   // AI
+	BI   RegionCode = "BI"   // BI
+	ET   RegionCode = "ET"   // ET
+	IV   RegionCode = "IV"   // IV
+	KO   RegionCode = "KO"   // KO
+	NONE RegionCode = "NONE" // NONE
+	SI   RegionCode = "SI"   // SI
+	SY   RegionCode = "SY"   // SY
 )
 
 var (
@@ -33,30 +33,30 @@ var (
 
 // lookupList contains all known RegionCompositeKey specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Code: "ai", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "bi", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "et", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "iv", DXCCEntityCode: 206, Region: "ITU Vienna", Prefix: "4U1V", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "ko", DXCCEntityCode: 0, Region: "Kosovo", Prefix: "Z6", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 1347408000, EndDate: 1516406400},
-	{IsImportOnly: false, Code: "ko", DXCCEntityCode: 296, Region: "Kosovo", Prefix: "YU8", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 1347321600},
-	{IsImportOnly: false, Code: "ko", DXCCEntityCode: 522, Region: "Kosovo", Prefix: "Z6", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 1516492800, EndDate: 0},
-	{IsImportOnly: false, Code: "none", DXCCEntityCode: 0, Region: "Not within a WAE or CQ region that is within a DXCC entity", Prefix: "", Applicability: spectype.StringSlice(nil), StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "si", DXCCEntityCode: 279, Region: "Shetland Islands", Prefix: "GM/S", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
-	{IsImportOnly: false, Code: "sy", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "AI", DXCCEntityCode: 248, Region: "African Italy", Prefix: "IG9", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "BI", DXCCEntityCode: 259, Region: "Bear Island", Prefix: "JW/B", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "ET", DXCCEntityCode: 390, Region: "European Turkey", Prefix: "TA1", Applicability: spectype.StringSlice{"CQ"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "IV", DXCCEntityCode: 206, Region: "ITU Vienna", Prefix: "4U1V", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "KO", DXCCEntityCode: 0, Region: "Kosovo", Prefix: "Z6", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 1347408000, EndDate: 1516406400},
+	{IsImportOnly: false, Code: "KO", DXCCEntityCode: 296, Region: "Kosovo", Prefix: "YU8", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 1347321600},
+	{IsImportOnly: false, Code: "KO", DXCCEntityCode: 522, Region: "Kosovo", Prefix: "Z6", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 1516492800, EndDate: 0},
+	{IsImportOnly: false, Code: "NONE", DXCCEntityCode: 0, Region: "Not within a WAE or CQ region that is within a DXCC entity", Prefix: "", Applicability: spectype.StringSlice(nil), StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "SI", DXCCEntityCode: 279, Region: "Shetland Islands", Prefix: "GM/S", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
+	{IsImportOnly: false, Code: "SY", DXCCEntityCode: 248, Region: "Sicily", Prefix: "IT9", Applicability: spectype.StringSlice{"CQ", "WAE"}, StartDate: 0, EndDate: 0},
 }
 
 // lookupMap contains all known RegionCompositeKey specifications.
 var lookupMap = map[RegionCompositeKey]*Spec{
-	"ai.248": &lookupList[0],
-	"bi.259": &lookupList[1],
-	"et.390": &lookupList[2],
-	"iv.206": &lookupList[3],
-	"ko.0":   &lookupList[4],
-	"ko.296": &lookupList[5],
-	"ko.522": &lookupList[6],
-	"none":   &lookupList[7],
-	"si.279": &lookupList[8],
-	"sy.248": &lookupList[9],
+	"AI.248": &lookupList[0],
+	"BI.259": &lookupList[1],
+	"ET.390": &lookupList[2],
+	"IV.206": &lookupList[3],
+	"KO.0":   &lookupList[4],
+	"KO.296": &lookupList[5],
+	"KO.522": &lookupList[6],
+	"NONE.0": &lookupList[7],
+	"SI.279": &lookupList[8],
+	"SY.248": &lookupList[9],
 }
 
 // Lookup returns the specification for the provided RegionCompositeKey.

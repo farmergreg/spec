@@ -7,77 +7,77 @@ package credit
 import "sync"
 
 const (
-	CQDX                Credit = "cqdx"                // cqdx                 = CQ Magazine     DX                                            Mixed
-	CQDXFIELD           Credit = "cqdxfield"           // cqdxfield            = CQ Magazine     DX Field                                      Mixed
-	CQDXFIELD_BAND      Credit = "cqdxfield_band"      // cqdxfield_band       = CQ Magazine     DX Field                                      Band
-	CQDXFIELD_MOBILE    Credit = "cqdxfield_mobile"    // cqdxfield_mobile     = CQ Magazine     DX Field                                      Mobile
-	CQDXFIELD_MODE      Credit = "cqdxfield_mode"      // cqdxfield_mode       = CQ Magazine     DX Field                                      Mode
-	CQDXFIELD_QRP       Credit = "cqdxfield_qrp"       // cqdxfield_qrp        = CQ Magazine     DX Field                                      QRP
-	CQDXFIELD_SATELLITE Credit = "cqdxfield_satellite" // cqdxfield_satellite  = CQ Magazine     DX Field                                      Satellite
-	CQDX_BAND           Credit = "cqdx_band"           // cqdx_band            = CQ Magazine     DX                                            Band
-	CQDX_MOBILE         Credit = "cqdx_mobile"         // cqdx_mobile          = CQ Magazine     DX                                            Mobile
-	CQDX_MODE           Credit = "cqdx_mode"           // cqdx_mode            = CQ Magazine     DX                                            Mode
-	CQDX_QRP            Credit = "cqdx_qrp"            // cqdx_qrp             = CQ Magazine     DX                                            QRP
-	CQDX_SATELLITE      Credit = "cqdx_satellite"      // cqdx_satellite       = CQ Magazine     DX                                            Satellite
-	CQWAZ_BAND          Credit = "cqwaz_band"          // cqwaz_band           = CQ Magazine     Worked All Zones (WAZ)                        Band
-	CQWAZ_EME           Credit = "cqwaz_eme"           // cqwaz_eme            = CQ Magazine     Worked All Zones (WAZ)                        EME
-	CQWAZ_MIXED         Credit = "cqwaz_mixed"         // cqwaz_mixed          = CQ Magazine     Worked All Zones (WAZ)                        Mixed
-	CQWAZ_MOBILE        Credit = "cqwaz_mobile"        // cqwaz_mobile         = CQ Magazine     Worked All Zones (WAZ)                        Mobile
-	CQWAZ_MODE          Credit = "cqwaz_mode"          // cqwaz_mode           = CQ Magazine     Worked All Zones (WAZ)                        Mode
-	CQWAZ_QRP           Credit = "cqwaz_qrp"           // cqwaz_qrp            = CQ Magazine     Worked All Zones (WAZ)                        QRP
-	CQWAZ_SATELLITE     Credit = "cqwaz_satellite"     // cqwaz_satellite      = CQ Magazine     Worked All Zones (WAZ)                        Satellite
-	CQWPX               Credit = "cqwpx"               // cqwpx                = CQ Magazine     WPX                                           Mixed
-	CQWPX_BAND          Credit = "cqwpx_band"          // cqwpx_band           = CQ Magazine     WPX                                           Band
-	CQWPX_MODE          Credit = "cqwpx_mode"          // cqwpx_mode           = CQ Magazine     WPX                                           Mode
-	DXCC                Credit = "dxcc"                // dxcc                 = ARRL            DX Century Club (DXCC)                        Mixed
-	DXCC_BAND           Credit = "dxcc_band"           // dxcc_band            = ARRL            DX Century Club (DXCC)                        Band
-	DXCC_MODE           Credit = "dxcc_mode"           // dxcc_mode            = ARRL            DX Century Club (DXCC)                        Mode
-	DXCC_SATELLITE      Credit = "dxcc_satellite"      // dxcc_satellite       = ARRL            DX Century Club (DXCC)                        Satellite
-	EAUSTRALIA          Credit = "eaustralia"          // eaustralia           = eQSL            eAustralia                                    Mixed
-	ECANADA             Credit = "ecanada"             // ecanada              = eQSL            eCanada                                       Mixed
-	ECOUNTY_STATE       Credit = "ecounty_state"       // ecounty_state        = eQSL            eCounty                                       State
-	EDX                 Credit = "edx"                 // edx                  = eQSL            eDX                                           Mixed
-	EDX100              Credit = "edx100"              // edx100               = eQSL            eDX100                                        Mixed
-	EDX100_BAND         Credit = "edx100_band"         // edx100_band          = eQSL            eDX100                                        Band
-	EDX100_MODE         Credit = "edx100_mode"         // edx100_mode          = eQSL            eDX100                                        Mode
-	EECHOLINK50         Credit = "eecholink50"         // eecholink50          = eQSL            eEcholink50                                   Echolink
-	EGRID_BAND          Credit = "egrid_band"          // egrid_band           = eQSL            eGrid                                         Band
-	EGRID_SATELLITE     Credit = "egrid_satellite"     // egrid_satellite      = eQSL            eGrid                                         Satellite
-	EPFX300             Credit = "epfx300"             // epfx300              = eQSL            ePfx300                                       Mixed
-	EPFX300_MODE        Credit = "epfx300_mode"        // epfx300_mode         = eQSL            ePfx300                                       Mode
-	EWAS                Credit = "ewas"                // ewas                 = eQSL            eWAS                                          Mixed
-	EWAS_BAND           Credit = "ewas_band"           // ewas_band            = eQSL            eWAS                                          Band
-	EWAS_MODE           Credit = "ewas_mode"           // ewas_mode            = eQSL            eWAS                                          Mode
-	EWAS_SATELLITE      Credit = "ewas_satellite"      // ewas_satellite       = eQSL            eWAS                                          Satellite
-	EZ40                Credit = "ez40"                // ez40                 = eQSL            eZ40                                          Mixed
-	EZ40_MODE           Credit = "ez40_mode"           // ez40_mode            = eQSL            eZ40                                          Mode
-	FFMA                Credit = "ffma"                // ffma                 = ARRL            Fred Fish Memorial Award (FFMA)               Mixed
-	IOTA                Credit = "iota"                // iota                 = RSGB            Islands on the Air (IOTA)                     Mixed
-	IOTA_BASIC          Credit = "iota_basic"          // iota_basic           = RSGB            Islands on the Air (IOTA)                     Mixed
-	IOTA_CONT           Credit = "iota_cont"           // iota_cont            = RSGB            Islands on the Air (IOTA)                     Continent
-	IOTA_GROUP          Credit = "iota_group"          // iota_group           = RSGB            Islands on the Air (IOTA)                     Group
-	RDA                 Credit = "rda"                 // rda                  = TAG             Russian Districts Award (RDA)                 Mixed
-	USACA               Credit = "usaca"               // usaca                = CQ Magazine     United States of America Counties (USA-CA)    Mixed
-	VUCC_BAND           Credit = "vucc_band"           // vucc_band            = ARRL            VHF/UHF Century Club Program (VUCC)           Band
-	VUCC_SATELLITE      Credit = "vucc_satellite"      // vucc_satellite       = ARRL            VHF/UHF Century Club Program (VUCC)           Satellite
-	WAB                 Credit = "wab"                 // wab                  = WAB AG          Worked All Britain (WAB)                      Mixed
-	WAC                 Credit = "wac"                 // wac                  = IARU            Worked All Continents (WAC)                   Mixed
-	WAC_BAND            Credit = "wac_band"            // wac_band             = IARU            Worked All Continents (WAC)                   Band
-	WAE                 Credit = "wae"                 // wae                  = DARC            Worked All Europe (WAE)                       Mixed
-	WAE_BAND            Credit = "wae_band"            // wae_band             = DARC            Worked All Europe (WAE)                       Band
-	WAE_MODE            Credit = "wae_mode"            // wae_mode             = DARC            Worked All Europe (WAE)                       Mode
-	WAIP                Credit = "waip"                // waip                 = ARI             Worked All Italian Provinces (WAIP)           Mixed
-	WAIP_BAND           Credit = "waip_band"           // waip_band            = ARI             Worked All Italian Provinces (WAIP)           Band
-	WAIP_MODE           Credit = "waip_mode"           // waip_mode            = ARI             Worked All Italian Provinces (WAIP)           Mode
-	WAS                 Credit = "was"                 // was                  = ARRL            Worked All States (WAS)                       Mixed
-	WAS_BAND            Credit = "was_band"            // was_band             = ARRL            Worked All States (WAS)                       Band
-	WAS_EME             Credit = "was_eme"             // was_eme              = ARRL            Worked All States (WAS)                       EME
-	WAS_MODE            Credit = "was_mode"            // was_mode             = ARRL            Worked All States (WAS)                       Mode
-	WAS_NOVICE          Credit = "was_novice"          // was_novice           = ARRL            Worked All States (WAS)                       Novice
-	WAS_QRP             Credit = "was_qrp"             // was_qrp              = ARRL            Worked All States (WAS)                       QRP
-	WAS_SATELLITE       Credit = "was_satellite"       // was_satellite        = ARRL            Worked All States (WAS)                       Satellite
-	WITUZ               Credit = "wituz"               // wituz                = RSGB            Worked ITU Zones (WITUZ)                      Mixed
-	WITUZ_BAND          Credit = "wituz_band"          // wituz_band           = RSGB            Worked ITU Zones (WITUZ)                      Band
+	CQDX                Credit = "CQDX"                // CQDX                 = CQ Magazine     DX                                            Mixed
+	CQDXFIELD           Credit = "CQDXFIELD"           // CQDXFIELD            = CQ Magazine     DX Field                                      Mixed
+	CQDXFIELD_BAND      Credit = "CQDXFIELD_BAND"      // CQDXFIELD_BAND       = CQ Magazine     DX Field                                      Band
+	CQDXFIELD_MOBILE    Credit = "CQDXFIELD_MOBILE"    // CQDXFIELD_MOBILE     = CQ Magazine     DX Field                                      Mobile
+	CQDXFIELD_MODE      Credit = "CQDXFIELD_MODE"      // CQDXFIELD_MODE       = CQ Magazine     DX Field                                      Mode
+	CQDXFIELD_QRP       Credit = "CQDXFIELD_QRP"       // CQDXFIELD_QRP        = CQ Magazine     DX Field                                      QRP
+	CQDXFIELD_SATELLITE Credit = "CQDXFIELD_SATELLITE" // CQDXFIELD_SATELLITE  = CQ Magazine     DX Field                                      Satellite
+	CQDX_BAND           Credit = "CQDX_BAND"           // CQDX_BAND            = CQ Magazine     DX                                            Band
+	CQDX_MOBILE         Credit = "CQDX_MOBILE"         // CQDX_MOBILE          = CQ Magazine     DX                                            Mobile
+	CQDX_MODE           Credit = "CQDX_MODE"           // CQDX_MODE            = CQ Magazine     DX                                            Mode
+	CQDX_QRP            Credit = "CQDX_QRP"            // CQDX_QRP             = CQ Magazine     DX                                            QRP
+	CQDX_SATELLITE      Credit = "CQDX_SATELLITE"      // CQDX_SATELLITE       = CQ Magazine     DX                                            Satellite
+	CQWAZ_BAND          Credit = "CQWAZ_BAND"          // CQWAZ_BAND           = CQ Magazine     Worked All Zones (WAZ)                        Band
+	CQWAZ_EME           Credit = "CQWAZ_EME"           // CQWAZ_EME            = CQ Magazine     Worked All Zones (WAZ)                        EME
+	CQWAZ_MIXED         Credit = "CQWAZ_MIXED"         // CQWAZ_MIXED          = CQ Magazine     Worked All Zones (WAZ)                        Mixed
+	CQWAZ_MOBILE        Credit = "CQWAZ_MOBILE"        // CQWAZ_MOBILE         = CQ Magazine     Worked All Zones (WAZ)                        Mobile
+	CQWAZ_MODE          Credit = "CQWAZ_MODE"          // CQWAZ_MODE           = CQ Magazine     Worked All Zones (WAZ)                        Mode
+	CQWAZ_QRP           Credit = "CQWAZ_QRP"           // CQWAZ_QRP            = CQ Magazine     Worked All Zones (WAZ)                        QRP
+	CQWAZ_SATELLITE     Credit = "CQWAZ_SATELLITE"     // CQWAZ_SATELLITE      = CQ Magazine     Worked All Zones (WAZ)                        Satellite
+	CQWPX               Credit = "CQWPX"               // CQWPX                = CQ Magazine     WPX                                           Mixed
+	CQWPX_BAND          Credit = "CQWPX_BAND"          // CQWPX_BAND           = CQ Magazine     WPX                                           Band
+	CQWPX_MODE          Credit = "CQWPX_MODE"          // CQWPX_MODE           = CQ Magazine     WPX                                           Mode
+	DXCC                Credit = "DXCC"                // DXCC                 = ARRL            DX Century Club (DXCC)                        Mixed
+	DXCC_BAND           Credit = "DXCC_BAND"           // DXCC_BAND            = ARRL            DX Century Club (DXCC)                        Band
+	DXCC_MODE           Credit = "DXCC_MODE"           // DXCC_MODE            = ARRL            DX Century Club (DXCC)                        Mode
+	DXCC_SATELLITE      Credit = "DXCC_SATELLITE"      // DXCC_SATELLITE       = ARRL            DX Century Club (DXCC)                        Satellite
+	EAUSTRALIA          Credit = "EAUSTRALIA"          // EAUSTRALIA           = eQSL            eAustralia                                    Mixed
+	ECANADA             Credit = "ECANADA"             // ECANADA              = eQSL            eCanada                                       Mixed
+	ECOUNTY_STATE       Credit = "ECOUNTY_STATE"       // ECOUNTY_STATE        = eQSL            eCounty                                       State
+	EDX                 Credit = "EDX"                 // EDX                  = eQSL            eDX                                           Mixed
+	EDX100              Credit = "EDX100"              // EDX100               = eQSL            eDX100                                        Mixed
+	EDX100_BAND         Credit = "EDX100_BAND"         // EDX100_BAND          = eQSL            eDX100                                        Band
+	EDX100_MODE         Credit = "EDX100_MODE"         // EDX100_MODE          = eQSL            eDX100                                        Mode
+	EECHOLINK50         Credit = "EECHOLINK50"         // EECHOLINK50          = eQSL            eEcholink50                                   Echolink
+	EGRID_BAND          Credit = "EGRID_BAND"          // EGRID_BAND           = eQSL            eGrid                                         Band
+	EGRID_SATELLITE     Credit = "EGRID_SATELLITE"     // EGRID_SATELLITE      = eQSL            eGrid                                         Satellite
+	EPFX300             Credit = "EPFX300"             // EPFX300              = eQSL            ePfx300                                       Mixed
+	EPFX300_MODE        Credit = "EPFX300_MODE"        // EPFX300_MODE         = eQSL            ePfx300                                       Mode
+	EWAS                Credit = "EWAS"                // EWAS                 = eQSL            eWAS                                          Mixed
+	EWAS_BAND           Credit = "EWAS_BAND"           // EWAS_BAND            = eQSL            eWAS                                          Band
+	EWAS_MODE           Credit = "EWAS_MODE"           // EWAS_MODE            = eQSL            eWAS                                          Mode
+	EWAS_SATELLITE      Credit = "EWAS_SATELLITE"      // EWAS_SATELLITE       = eQSL            eWAS                                          Satellite
+	EZ40                Credit = "EZ40"                // EZ40                 = eQSL            eZ40                                          Mixed
+	EZ40_MODE           Credit = "EZ40_MODE"           // EZ40_MODE            = eQSL            eZ40                                          Mode
+	FFMA                Credit = "FFMA"                // FFMA                 = ARRL            Fred Fish Memorial Award (FFMA)               Mixed
+	IOTA                Credit = "IOTA"                // IOTA                 = RSGB            Islands on the Air (IOTA)                     Mixed
+	IOTA_BASIC          Credit = "IOTA_BASIC"          // IOTA_BASIC           = RSGB            Islands on the Air (IOTA)                     Mixed
+	IOTA_CONT           Credit = "IOTA_CONT"           // IOTA_CONT            = RSGB            Islands on the Air (IOTA)                     Continent
+	IOTA_GROUP          Credit = "IOTA_GROUP"          // IOTA_GROUP           = RSGB            Islands on the Air (IOTA)                     Group
+	RDA                 Credit = "RDA"                 // RDA                  = TAG             Russian Districts Award (RDA)                 Mixed
+	USACA               Credit = "USACA"               // USACA                = CQ Magazine     United States of America Counties (USA-CA)    Mixed
+	VUCC_BAND           Credit = "VUCC_BAND"           // VUCC_BAND            = ARRL            VHF/UHF Century Club Program (VUCC)           Band
+	VUCC_SATELLITE      Credit = "VUCC_SATELLITE"      // VUCC_SATELLITE       = ARRL            VHF/UHF Century Club Program (VUCC)           Satellite
+	WAB                 Credit = "WAB"                 // WAB                  = WAB AG          Worked All Britain (WAB)                      Mixed
+	WAC                 Credit = "WAC"                 // WAC                  = IARU            Worked All Continents (WAC)                   Mixed
+	WAC_BAND            Credit = "WAC_BAND"            // WAC_BAND             = IARU            Worked All Continents (WAC)                   Band
+	WAE                 Credit = "WAE"                 // WAE                  = DARC            Worked All Europe (WAE)                       Mixed
+	WAE_BAND            Credit = "WAE_BAND"            // WAE_BAND             = DARC            Worked All Europe (WAE)                       Band
+	WAE_MODE            Credit = "WAE_MODE"            // WAE_MODE             = DARC            Worked All Europe (WAE)                       Mode
+	WAIP                Credit = "WAIP"                // WAIP                 = ARI             Worked All Italian Provinces (WAIP)           Mixed
+	WAIP_BAND           Credit = "WAIP_BAND"           // WAIP_BAND            = ARI             Worked All Italian Provinces (WAIP)           Band
+	WAIP_MODE           Credit = "WAIP_MODE"           // WAIP_MODE            = ARI             Worked All Italian Provinces (WAIP)           Mode
+	WAS                 Credit = "WAS"                 // WAS                  = ARRL            Worked All States (WAS)                       Mixed
+	WAS_BAND            Credit = "WAS_BAND"            // WAS_BAND             = ARRL            Worked All States (WAS)                       Band
+	WAS_EME             Credit = "WAS_EME"             // WAS_EME              = ARRL            Worked All States (WAS)                       EME
+	WAS_MODE            Credit = "WAS_MODE"            // WAS_MODE             = ARRL            Worked All States (WAS)                       Mode
+	WAS_NOVICE          Credit = "WAS_NOVICE"          // WAS_NOVICE           = ARRL            Worked All States (WAS)                       Novice
+	WAS_QRP             Credit = "WAS_QRP"             // WAS_QRP              = ARRL            Worked All States (WAS)                       QRP
+	WAS_SATELLITE       Credit = "WAS_SATELLITE"       // WAS_SATELLITE        = ARRL            Worked All States (WAS)                       Satellite
+	WITUZ               Credit = "WITUZ"               // WITUZ                = RSGB            Worked ITU Zones (WITUZ)                      Mixed
+	WITUZ_BAND          Credit = "WITUZ_BAND"          // WITUZ_BAND           = RSGB            Worked ITU Zones (WITUZ)                      Band
 )
 
 var (
@@ -87,77 +87,77 @@ var (
 
 // lookupList contains all known Credit specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "cqdx", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "cqdxfield", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "cqdxfield_band", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Band"},
-	{IsImportOnly: false, Key: "cqdxfield_mobile", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mobile"},
-	{IsImportOnly: false, Key: "cqdxfield_mode", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mode"},
-	{IsImportOnly: false, Key: "cqdxfield_qrp", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "QRP"},
-	{IsImportOnly: false, Key: "cqdxfield_satellite", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "cqdx_band", Sponsor: "CQ Magazine", Award: "DX", Facet: "Band"},
-	{IsImportOnly: false, Key: "cqdx_mobile", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mobile"},
-	{IsImportOnly: false, Key: "cqdx_mode", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mode"},
-	{IsImportOnly: false, Key: "cqdx_qrp", Sponsor: "CQ Magazine", Award: "DX", Facet: "QRP"},
-	{IsImportOnly: false, Key: "cqdx_satellite", Sponsor: "CQ Magazine", Award: "DX", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "cqwaz_band", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Band"},
-	{IsImportOnly: false, Key: "cqwaz_eme", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "EME"},
-	{IsImportOnly: false, Key: "cqwaz_mixed", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "cqwaz_mobile", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mobile"},
-	{IsImportOnly: false, Key: "cqwaz_mode", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mode"},
-	{IsImportOnly: false, Key: "cqwaz_qrp", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "QRP"},
-	{IsImportOnly: false, Key: "cqwaz_satellite", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "cqwpx", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "cqwpx_band", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Band"},
-	{IsImportOnly: false, Key: "cqwpx_mode", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Mode"},
-	{IsImportOnly: false, Key: "dxcc", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "dxcc_band", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Band"},
-	{IsImportOnly: false, Key: "dxcc_mode", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Mode"},
-	{IsImportOnly: false, Key: "dxcc_satellite", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "eaustralia", Sponsor: "eQSL", Award: "eAustralia", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "ecanada", Sponsor: "eQSL", Award: "eCanada", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "ecounty_state", Sponsor: "eQSL", Award: "eCounty", Facet: "State"},
-	{IsImportOnly: false, Key: "edx", Sponsor: "eQSL", Award: "eDX", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "edx100", Sponsor: "eQSL", Award: "eDX100", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "edx100_band", Sponsor: "eQSL", Award: "eDX100", Facet: "Band"},
-	{IsImportOnly: false, Key: "edx100_mode", Sponsor: "eQSL", Award: "eDX100", Facet: "Mode"},
-	{IsImportOnly: false, Key: "eecholink50", Sponsor: "eQSL", Award: "eEcholink50", Facet: "Echolink"},
-	{IsImportOnly: false, Key: "egrid_band", Sponsor: "eQSL", Award: "eGrid", Facet: "Band"},
-	{IsImportOnly: false, Key: "egrid_satellite", Sponsor: "eQSL", Award: "eGrid", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "epfx300", Sponsor: "eQSL", Award: "ePfx300", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "epfx300_mode", Sponsor: "eQSL", Award: "ePfx300", Facet: "Mode"},
-	{IsImportOnly: false, Key: "ewas", Sponsor: "eQSL", Award: "eWAS", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "ewas_band", Sponsor: "eQSL", Award: "eWAS", Facet: "Band"},
-	{IsImportOnly: false, Key: "ewas_mode", Sponsor: "eQSL", Award: "eWAS", Facet: "Mode"},
-	{IsImportOnly: false, Key: "ewas_satellite", Sponsor: "eQSL", Award: "eWAS", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "ez40", Sponsor: "eQSL", Award: "eZ40", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "ez40_mode", Sponsor: "eQSL", Award: "eZ40", Facet: "Mode"},
-	{IsImportOnly: false, Key: "ffma", Sponsor: "ARRL", Award: "Fred Fish Memorial Award (FFMA)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "iota", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "iota_basic", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "iota_cont", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Continent"},
-	{IsImportOnly: false, Key: "iota_group", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Group"},
-	{IsImportOnly: false, Key: "rda", Sponsor: "TAG", Award: "Russian Districts Award (RDA)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "usaca", Sponsor: "CQ Magazine", Award: "United States of America Counties (USA-CA)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "vucc_band", Sponsor: "ARRL", Award: "VHF/UHF Century Club Program (VUCC)", Facet: "Band"},
-	{IsImportOnly: false, Key: "vucc_satellite", Sponsor: "ARRL", Award: "VHF/UHF Century Club Program (VUCC)", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "wab", Sponsor: "WAB AG", Award: "Worked All Britain (WAB)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "wac", Sponsor: "IARU", Award: "Worked All Continents (WAC)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "wac_band", Sponsor: "IARU", Award: "Worked All Continents (WAC)", Facet: "Band"},
-	{IsImportOnly: false, Key: "wae", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "wae_band", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Band"},
-	{IsImportOnly: false, Key: "wae_mode", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Mode"},
-	{IsImportOnly: false, Key: "waip", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "waip_band", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Band"},
-	{IsImportOnly: false, Key: "waip_mode", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Mode"},
-	{IsImportOnly: false, Key: "was", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "was_band", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Band"},
-	{IsImportOnly: false, Key: "was_eme", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "EME"},
-	{IsImportOnly: false, Key: "was_mode", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Mode"},
-	{IsImportOnly: false, Key: "was_novice", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Novice"},
-	{IsImportOnly: false, Key: "was_qrp", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "QRP"},
-	{IsImportOnly: false, Key: "was_satellite", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Satellite"},
-	{IsImportOnly: false, Key: "wituz", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Mixed"},
-	{IsImportOnly: false, Key: "wituz_band", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Band"},
+	{IsImportOnly: false, Key: "CQDX", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "CQDXFIELD", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "CQDXFIELD_BAND", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Band"},
+	{IsImportOnly: false, Key: "CQDXFIELD_MOBILE", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mobile"},
+	{IsImportOnly: false, Key: "CQDXFIELD_MODE", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Mode"},
+	{IsImportOnly: false, Key: "CQDXFIELD_QRP", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "QRP"},
+	{IsImportOnly: false, Key: "CQDXFIELD_SATELLITE", Sponsor: "CQ Magazine", Award: "DX Field", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "CQDX_BAND", Sponsor: "CQ Magazine", Award: "DX", Facet: "Band"},
+	{IsImportOnly: false, Key: "CQDX_MOBILE", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mobile"},
+	{IsImportOnly: false, Key: "CQDX_MODE", Sponsor: "CQ Magazine", Award: "DX", Facet: "Mode"},
+	{IsImportOnly: false, Key: "CQDX_QRP", Sponsor: "CQ Magazine", Award: "DX", Facet: "QRP"},
+	{IsImportOnly: false, Key: "CQDX_SATELLITE", Sponsor: "CQ Magazine", Award: "DX", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "CQWAZ_BAND", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Band"},
+	{IsImportOnly: false, Key: "CQWAZ_EME", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "EME"},
+	{IsImportOnly: false, Key: "CQWAZ_MIXED", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "CQWAZ_MOBILE", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mobile"},
+	{IsImportOnly: false, Key: "CQWAZ_MODE", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Mode"},
+	{IsImportOnly: false, Key: "CQWAZ_QRP", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "QRP"},
+	{IsImportOnly: false, Key: "CQWAZ_SATELLITE", Sponsor: "CQ Magazine", Award: "Worked All Zones (WAZ)", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "CQWPX", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "CQWPX_BAND", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Band"},
+	{IsImportOnly: false, Key: "CQWPX_MODE", Sponsor: "CQ Magazine", Award: "WPX", Facet: "Mode"},
+	{IsImportOnly: false, Key: "DXCC", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "DXCC_BAND", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Band"},
+	{IsImportOnly: false, Key: "DXCC_MODE", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Mode"},
+	{IsImportOnly: false, Key: "DXCC_SATELLITE", Sponsor: "ARRL", Award: "DX Century Club (DXCC)", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "EAUSTRALIA", Sponsor: "eQSL", Award: "eAustralia", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "ECANADA", Sponsor: "eQSL", Award: "eCanada", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "ECOUNTY_STATE", Sponsor: "eQSL", Award: "eCounty", Facet: "State"},
+	{IsImportOnly: false, Key: "EDX", Sponsor: "eQSL", Award: "eDX", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "EDX100", Sponsor: "eQSL", Award: "eDX100", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "EDX100_BAND", Sponsor: "eQSL", Award: "eDX100", Facet: "Band"},
+	{IsImportOnly: false, Key: "EDX100_MODE", Sponsor: "eQSL", Award: "eDX100", Facet: "Mode"},
+	{IsImportOnly: false, Key: "EECHOLINK50", Sponsor: "eQSL", Award: "eEcholink50", Facet: "Echolink"},
+	{IsImportOnly: false, Key: "EGRID_BAND", Sponsor: "eQSL", Award: "eGrid", Facet: "Band"},
+	{IsImportOnly: false, Key: "EGRID_SATELLITE", Sponsor: "eQSL", Award: "eGrid", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "EPFX300", Sponsor: "eQSL", Award: "ePfx300", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "EPFX300_MODE", Sponsor: "eQSL", Award: "ePfx300", Facet: "Mode"},
+	{IsImportOnly: false, Key: "EWAS", Sponsor: "eQSL", Award: "eWAS", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "EWAS_BAND", Sponsor: "eQSL", Award: "eWAS", Facet: "Band"},
+	{IsImportOnly: false, Key: "EWAS_MODE", Sponsor: "eQSL", Award: "eWAS", Facet: "Mode"},
+	{IsImportOnly: false, Key: "EWAS_SATELLITE", Sponsor: "eQSL", Award: "eWAS", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "EZ40", Sponsor: "eQSL", Award: "eZ40", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "EZ40_MODE", Sponsor: "eQSL", Award: "eZ40", Facet: "Mode"},
+	{IsImportOnly: false, Key: "FFMA", Sponsor: "ARRL", Award: "Fred Fish Memorial Award (FFMA)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "IOTA", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "IOTA_BASIC", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "IOTA_CONT", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Continent"},
+	{IsImportOnly: false, Key: "IOTA_GROUP", Sponsor: "RSGB", Award: "Islands on the Air (IOTA)", Facet: "Group"},
+	{IsImportOnly: false, Key: "RDA", Sponsor: "TAG", Award: "Russian Districts Award (RDA)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "USACA", Sponsor: "CQ Magazine", Award: "United States of America Counties (USA-CA)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "VUCC_BAND", Sponsor: "ARRL", Award: "VHF/UHF Century Club Program (VUCC)", Facet: "Band"},
+	{IsImportOnly: false, Key: "VUCC_SATELLITE", Sponsor: "ARRL", Award: "VHF/UHF Century Club Program (VUCC)", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "WAB", Sponsor: "WAB AG", Award: "Worked All Britain (WAB)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WAC", Sponsor: "IARU", Award: "Worked All Continents (WAC)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WAC_BAND", Sponsor: "IARU", Award: "Worked All Continents (WAC)", Facet: "Band"},
+	{IsImportOnly: false, Key: "WAE", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WAE_BAND", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Band"},
+	{IsImportOnly: false, Key: "WAE_MODE", Sponsor: "DARC", Award: "Worked All Europe (WAE)", Facet: "Mode"},
+	{IsImportOnly: false, Key: "WAIP", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WAIP_BAND", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Band"},
+	{IsImportOnly: false, Key: "WAIP_MODE", Sponsor: "ARI", Award: "Worked All Italian Provinces (WAIP)", Facet: "Mode"},
+	{IsImportOnly: false, Key: "WAS", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WAS_BAND", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Band"},
+	{IsImportOnly: false, Key: "WAS_EME", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "EME"},
+	{IsImportOnly: false, Key: "WAS_MODE", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Mode"},
+	{IsImportOnly: false, Key: "WAS_NOVICE", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Novice"},
+	{IsImportOnly: false, Key: "WAS_QRP", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "QRP"},
+	{IsImportOnly: false, Key: "WAS_SATELLITE", Sponsor: "ARRL", Award: "Worked All States (WAS)", Facet: "Satellite"},
+	{IsImportOnly: false, Key: "WITUZ", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Mixed"},
+	{IsImportOnly: false, Key: "WITUZ_BAND", Sponsor: "RSGB", Award: "Worked ITU Zones (WITUZ)", Facet: "Band"},
 }
 
 // lookupMap contains all known Credit specifications.

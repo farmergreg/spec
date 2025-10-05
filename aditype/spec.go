@@ -42,7 +42,7 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
-		v.Key = Type(strings.ToLower(string(v.Key)))
+		v.Key = Type(strings.ToUpper(string(v.Key)))
 		v.DataTypeIndicator = NewDataTypeIndicator(rune(v.DataTypeIndicator))
 		result[k] = v
 	}

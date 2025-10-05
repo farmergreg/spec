@@ -7,189 +7,189 @@ package submode
 import "sync"
 
 const (
-	SUBMODE_8PSK1000       SubMode = "8psk1000"       // 8psk1000        = psk
-	SUBMODE_8PSK1000F      SubMode = "8psk1000f"      // 8psk1000f       = psk
-	SUBMODE_8PSK1200F      SubMode = "8psk1200f"      // 8psk1200f       = psk
-	SUBMODE_8PSK125        SubMode = "8psk125"        // 8psk125         = psk
-	SUBMODE_8PSK125F       SubMode = "8psk125f"       // 8psk125f        = psk
-	SUBMODE_8PSK125FL      SubMode = "8psk125fl"      // 8psk125fl       = psk
-	SUBMODE_8PSK250        SubMode = "8psk250"        // 8psk250         = psk
-	SUBMODE_8PSK250F       SubMode = "8psk250f"       // 8psk250f        = psk
-	SUBMODE_8PSK250FL      SubMode = "8psk250fl"      // 8psk250fl       = psk
-	SUBMODE_8PSK500        SubMode = "8psk500"        // 8psk500         = psk
-	SUBMODE_8PSK500F       SubMode = "8psk500f"       // 8psk500f        = psk
-	SUBMODE_AMTORFEC       SubMode = "amtorfec"       // amtorfec        = tor
-	SUBMODE_ASCI           SubMode = "asci"           // asci            = rtty
-	SUBMODE_C4FM           SubMode = "c4fm"           // c4fm            = digitalvoice    C4FM 4-level FSK See the Propagation_Mode enumeration section for examples of representing C4FM voice transmissions.
-	SUBMODE_CHIP128        SubMode = "chip128"        // chip128         = chip
-	SUBMODE_CHIP64         SubMode = "chip64"         // chip64          = chip
-	SUBMODE_DMR            SubMode = "dmr"            // dmr             = digitalvoice    Digital Mobile Radio See the Propagation_Mode enumeration section for examples of representing DMR voice transmissions.
-	SUBMODE_DOM_M          SubMode = "dom-m"          // dom-m           = domino
-	SUBMODE_DOM11          SubMode = "dom11"          // dom11           = domino
-	SUBMODE_DOM16          SubMode = "dom16"          // dom16           = domino
-	SUBMODE_DOM22          SubMode = "dom22"          // dom22           = domino
-	SUBMODE_DOM4           SubMode = "dom4"           // dom4            = domino
-	SUBMODE_DOM44          SubMode = "dom44"          // dom44           = domino
-	SUBMODE_DOM5           SubMode = "dom5"           // dom5            = domino
-	SUBMODE_DOM8           SubMode = "dom8"           // dom8            = domino
-	SUBMODE_DOM88          SubMode = "dom88"          // dom88           = domino
-	SUBMODE_DOMINOEX       SubMode = "dominoex"       // dominoex        = domino
-	SUBMODE_DOMINOF        SubMode = "dominof"        // dominof         = domino
-	SUBMODE_DSTAR          SubMode = "dstar"          // dstar           = digitalvoice    Digital Smart Technologies for Amateur Radio See the Propagation_Mode enumeration section for examples of representing DSTAR voice transmissions.
-	SUBMODE_FMHELL         SubMode = "fmhell"         // fmhell          = hell
-	SUBMODE_FREEDV         SubMode = "freedv"         // freedv          = digitalvoice    Digital voice mode for HF radio implemented with open source
-	SUBMODE_FSK31          SubMode = "fsk31"          // fsk31           = psk
-	SUBMODE_FSKH105        SubMode = "fskh105"        // fskh105         = hell
-	SUBMODE_FSKH245        SubMode = "fskh245"        // fskh245         = hell
-	SUBMODE_FSKHELL        SubMode = "fskhell"        // fskhell         = hell
-	SUBMODE_FSQCALL        SubMode = "fsqcall"        // fsqcall         = mfsk            FSQCall protocol used with FSQ (Fast Simple QSO) transmission mode
-	SUBMODE_FST4           SubMode = "fst4"           // fst4            = mfsk            This is a digital mode supported by the WSJT-X software
-	SUBMODE_FST4W          SubMode = "fst4w"          // fst4w           = mfsk            This is a digital mode supported by the WSJT-X software that is for quasi-beacon transmissions of WSPR-style messages
-	SUBMODE_FT4            SubMode = "ft4"            // ft4             = mfsk            FT4 is a digital mode designed specifically for radio contesting
-	SUBMODE_GTOR           SubMode = "gtor"           // gtor            = tor
-	SUBMODE_HELL80         SubMode = "hell80"         // hell80          = hell
-	SUBMODE_HELLX5         SubMode = "hellx5"         // hellx5          = hell
-	SUBMODE_HELLX9         SubMode = "hellx9"         // hellx9          = hell
-	SUBMODE_HFSK           SubMode = "hfsk"           // hfsk            = hell
-	SUBMODE_ISCAT_A        SubMode = "iscat-a"        // iscat-a         = iscat
-	SUBMODE_ISCAT_B        SubMode = "iscat-b"        // iscat-b         = iscat
-	SUBMODE_JS8            SubMode = "js8"            // js8             = mfsk            Jordan Sherer designed 8-FSK modulation
-	SUBMODE_JT4A           SubMode = "jt4a"           // jt4a            = jt4
-	SUBMODE_JT4B           SubMode = "jt4b"           // jt4b            = jt4
-	SUBMODE_JT4C           SubMode = "jt4c"           // jt4c            = jt4
-	SUBMODE_JT4D           SubMode = "jt4d"           // jt4d            = jt4
-	SUBMODE_JT4E           SubMode = "jt4e"           // jt4e            = jt4
-	SUBMODE_JT4F           SubMode = "jt4f"           // jt4f            = jt4
-	SUBMODE_JT4G           SubMode = "jt4g"           // jt4g            = jt4
-	SUBMODE_JT65A          SubMode = "jt65a"          // jt65a           = jt65
-	SUBMODE_JT65B          SubMode = "jt65b"          // jt65b           = jt65
-	SUBMODE_JT65B2         SubMode = "jt65b2"         // jt65b2          = jt65
-	SUBMODE_JT65C          SubMode = "jt65c"          // jt65c           = jt65
-	SUBMODE_JT65C2         SubMode = "jt65c2"         // jt65c2          = jt65
-	SUBMODE_JT9_1          SubMode = "jt9-1"          // jt9-1           = jt9
-	SUBMODE_JT9_10         SubMode = "jt9-10"         // jt9-10          = jt9
-	SUBMODE_JT9_2          SubMode = "jt9-2"          // jt9-2           = jt9
-	SUBMODE_JT9_30         SubMode = "jt9-30"         // jt9-30          = jt9
-	SUBMODE_JT9_5          SubMode = "jt9-5"          // jt9-5           = jt9
-	SUBMODE_JT9A           SubMode = "jt9a"           // jt9a            = jt9
-	SUBMODE_JT9B           SubMode = "jt9b"           // jt9b            = jt9
-	SUBMODE_JT9C           SubMode = "jt9c"           // jt9c            = jt9
-	SUBMODE_JT9D           SubMode = "jt9d"           // jt9d            = jt9
-	SUBMODE_JT9E           SubMode = "jt9e"           // jt9e            = jt9
-	SUBMODE_JT9E_FAST      SubMode = "jt9e fast"      // jt9e fast       = jt9
-	SUBMODE_JT9F           SubMode = "jt9f"           // jt9f            = jt9
-	SUBMODE_JT9F_FAST      SubMode = "jt9f fast"      // jt9f fast       = jt9
-	SUBMODE_JT9G           SubMode = "jt9g"           // jt9g            = jt9
-	SUBMODE_JT9G_FAST      SubMode = "jt9g fast"      // jt9g fast       = jt9
-	SUBMODE_JT9H           SubMode = "jt9h"           // jt9h            = jt9
-	SUBMODE_JT9H_FAST      SubMode = "jt9h fast"      // jt9h fast       = jt9
-	SUBMODE_JTMS           SubMode = "jtms"           // jtms            = mfsk
-	SUBMODE_LSB            SubMode = "lsb"            // lsb             = ssb             Amplitude modulated voice telephony, lower-sideband, suppressed-carrier
-	SUBMODE_M17            SubMode = "m17"            // m17             = digitalvoice    Digital radio protocol using the Codec 2 voice encoder
-	SUBMODE_MFSK11         SubMode = "mfsk11"         // mfsk11          = mfsk
-	SUBMODE_MFSK128        SubMode = "mfsk128"        // mfsk128         = mfsk
-	SUBMODE_MFSK128L       SubMode = "mfsk128l"       // mfsk128l        = mfsk
-	SUBMODE_MFSK16         SubMode = "mfsk16"         // mfsk16          = mfsk
-	SUBMODE_MFSK22         SubMode = "mfsk22"         // mfsk22          = mfsk
-	SUBMODE_MFSK31         SubMode = "mfsk31"         // mfsk31          = mfsk
-	SUBMODE_MFSK32         SubMode = "mfsk32"         // mfsk32          = mfsk
-	SUBMODE_MFSK4          SubMode = "mfsk4"          // mfsk4           = mfsk
-	SUBMODE_MFSK64         SubMode = "mfsk64"         // mfsk64          = mfsk
-	SUBMODE_MFSK64L        SubMode = "mfsk64l"        // mfsk64l         = mfsk
-	SUBMODE_MFSK8          SubMode = "mfsk8"          // mfsk8           = mfsk
-	SUBMODE_NAVTEX         SubMode = "navtex"         // navtex          = tor
-	SUBMODE_OLIVIA_16_1000 SubMode = "olivia 16/1000" // olivia 16/1000  = olivia
-	SUBMODE_OLIVIA_16_500  SubMode = "olivia 16/500"  // olivia 16/500   = olivia
-	SUBMODE_OLIVIA_32_1000 SubMode = "olivia 32/1000" // olivia 32/1000  = olivia
-	SUBMODE_OLIVIA_4_125   SubMode = "olivia 4/125"   // olivia 4/125    = olivia
-	SUBMODE_OLIVIA_4_250   SubMode = "olivia 4/250"   // olivia 4/250    = olivia
-	SUBMODE_OLIVIA_8_250   SubMode = "olivia 8/250"   // olivia 8/250    = olivia
-	SUBMODE_OLIVIA_8_500   SubMode = "olivia 8/500"   // olivia 8/500    = olivia
-	SUBMODE_OPERA_BEACON   SubMode = "opera-beacon"   // opera-beacon    = opera
-	SUBMODE_OPERA_QSO      SubMode = "opera-qso"      // opera-qso       = opera
-	SUBMODE_PAC2           SubMode = "pac2"           // pac2            = pac
-	SUBMODE_PAC3           SubMode = "pac3"           // pac3            = pac
-	SUBMODE_PAC4           SubMode = "pac4"           // pac4            = pac
-	SUBMODE_PAX2           SubMode = "pax2"           // pax2            = pax
-	SUBMODE_PCW            SubMode = "pcw"            // pcw             = cw              Coherent CW
-	SUBMODE_PSK10          SubMode = "psk10"          // psk10           = psk
-	SUBMODE_PSK1000        SubMode = "psk1000"        // psk1000         = psk
-	SUBMODE_PSK1000RC2     SubMode = "psk1000rc2"     // psk1000rc2      = psk
-	SUBMODE_PSK125         SubMode = "psk125"         // psk125          = psk
-	SUBMODE_PSK125RC10     SubMode = "psk125rc10"     // psk125rc10      = psk
-	SUBMODE_PSK125RC12     SubMode = "psk125rc12"     // psk125rc12      = psk
-	SUBMODE_PSK125RC16     SubMode = "psk125rc16"     // psk125rc16      = psk
-	SUBMODE_PSK125RC4      SubMode = "psk125rc4"      // psk125rc4       = psk
-	SUBMODE_PSK125RC5      SubMode = "psk125rc5"      // psk125rc5       = psk
-	SUBMODE_PSK250         SubMode = "psk250"         // psk250          = psk
-	SUBMODE_PSK250RC2      SubMode = "psk250rc2"      // psk250rc2       = psk
-	SUBMODE_PSK250RC3      SubMode = "psk250rc3"      // psk250rc3       = psk
-	SUBMODE_PSK250RC5      SubMode = "psk250rc5"      // psk250rc5       = psk
-	SUBMODE_PSK250RC6      SubMode = "psk250rc6"      // psk250rc6       = psk
-	SUBMODE_PSK250RC7      SubMode = "psk250rc7"      // psk250rc7       = psk
-	SUBMODE_PSK31          SubMode = "psk31"          // psk31           = psk
-	SUBMODE_PSK500         SubMode = "psk500"         // psk500          = psk
-	SUBMODE_PSK500RC2      SubMode = "psk500rc2"      // psk500rc2       = psk
-	SUBMODE_PSK500RC3      SubMode = "psk500rc3"      // psk500rc3       = psk
-	SUBMODE_PSK500RC4      SubMode = "psk500rc4"      // psk500rc4       = psk
-	SUBMODE_PSK63          SubMode = "psk63"          // psk63           = psk
-	SUBMODE_PSK63F         SubMode = "psk63f"         // psk63f          = psk
-	SUBMODE_PSK63RC10      SubMode = "psk63rc10"      // psk63rc10       = psk
-	SUBMODE_PSK63RC20      SubMode = "psk63rc20"      // psk63rc20       = psk
-	SUBMODE_PSK63RC32      SubMode = "psk63rc32"      // psk63rc32       = psk
-	SUBMODE_PSK63RC4       SubMode = "psk63rc4"       // psk63rc4        = psk
-	SUBMODE_PSK63RC5       SubMode = "psk63rc5"       // psk63rc5        = psk
-	SUBMODE_PSK800RC2      SubMode = "psk800rc2"      // psk800rc2       = psk
-	SUBMODE_PSKAM10        SubMode = "pskam10"        // pskam10         = psk
-	SUBMODE_PSKAM31        SubMode = "pskam31"        // pskam31         = psk
-	SUBMODE_PSKAM50        SubMode = "pskam50"        // pskam50         = psk
-	SUBMODE_PSKFEC31       SubMode = "pskfec31"       // pskfec31        = psk
-	SUBMODE_PSKHELL        SubMode = "pskhell"        // pskhell         = hell
-	SUBMODE_Q65            SubMode = "q65"            // q65             = mfsk
-	SUBMODE_QPSK125        SubMode = "qpsk125"        // qpsk125         = psk
-	SUBMODE_QPSK250        SubMode = "qpsk250"        // qpsk250         = psk
-	SUBMODE_QPSK31         SubMode = "qpsk31"         // qpsk31          = psk
-	SUBMODE_QPSK500        SubMode = "qpsk500"        // qpsk500         = psk
-	SUBMODE_QPSK63         SubMode = "qpsk63"         // qpsk63          = psk
-	SUBMODE_QRA64A         SubMode = "qra64a"         // qra64a          = qra64
-	SUBMODE_QRA64B         SubMode = "qra64b"         // qra64b          = qra64
-	SUBMODE_QRA64C         SubMode = "qra64c"         // qra64c          = qra64
-	SUBMODE_QRA64D         SubMode = "qra64d"         // qra64d          = qra64
-	SUBMODE_QRA64E         SubMode = "qra64e"         // qra64e          = qra64
-	SUBMODE_ROS_EME        SubMode = "ros-eme"        // ros-eme         = ros
-	SUBMODE_ROS_HF         SubMode = "ros-hf"         // ros-hf          = ros
-	SUBMODE_ROS_MF         SubMode = "ros-mf"         // ros-mf          = ros
-	SUBMODE_SCAMP_FAST     SubMode = "scamp_fast"     // scamp_fast      = fsk             SCAMP fast FSK
-	SUBMODE_SCAMP_OO       SubMode = "scamp_oo"       // scamp_oo        = mtone           SCAMP single modulated tone on/off keying
-	SUBMODE_SCAMP_OO_SLW   SubMode = "scamp_oo_slw"   // scamp_oo_slw    = mtone           SCAMP single modulated tone on/off slow keying
-	SUBMODE_SCAMP_SLOW     SubMode = "scamp_slow"     // scamp_slow      = fsk             SCAMP slow FSK
-	SUBMODE_SCAMP_VSLOW    SubMode = "scamp_vslow"    // scamp_vslow     = fsk             SCAMP very slow FSK
-	SUBMODE_SIM31          SubMode = "sim31"          // sim31           = psk
-	SUBMODE_SITORB         SubMode = "sitorb"         // sitorb          = tor
-	SUBMODE_SLOWHELL       SubMode = "slowhell"       // slowhell        = hell
-	SUBMODE_THOR_M         SubMode = "thor-m"         // thor-m          = thor
-	SUBMODE_THOR100        SubMode = "thor100"        // thor100         = thor
-	SUBMODE_THOR11         SubMode = "thor11"         // thor11          = thor
-	SUBMODE_THOR16         SubMode = "thor16"         // thor16          = thor
-	SUBMODE_THOR22         SubMode = "thor22"         // thor22          = thor
-	SUBMODE_THOR25X4       SubMode = "thor25x4"       // thor25x4        = thor
-	SUBMODE_THOR4          SubMode = "thor4"          // thor4           = thor
-	SUBMODE_THOR5          SubMode = "thor5"          // thor5           = thor
-	SUBMODE_THOR50X1       SubMode = "thor50x1"       // thor50x1        = thor
-	SUBMODE_THOR50X2       SubMode = "thor50x2"       // thor50x2        = thor
-	SUBMODE_THOR8          SubMode = "thor8"          // thor8           = thor
-	SUBMODE_THRBX          SubMode = "thrbx"          // thrbx           = thrb
-	SUBMODE_THRBX1         SubMode = "thrbx1"         // thrbx1          = thrb
-	SUBMODE_THRBX2         SubMode = "thrbx2"         // thrbx2          = thrb
-	SUBMODE_THRBX4         SubMode = "thrbx4"         // thrbx4          = thrb
-	SUBMODE_THROB1         SubMode = "throb1"         // throb1          = thrb
-	SUBMODE_THROB2         SubMode = "throb2"         // throb2          = thrb
-	SUBMODE_THROB4         SubMode = "throb4"         // throb4          = thrb
-	SUBMODE_USB            SubMode = "usb"            // usb             = ssb             Amplitude modulated voice telephony, upper-sideband, suppressed-carrier
-	SUBMODE_VARA_FM_1200   SubMode = "vara fm 1200"   // vara fm 1200    = dynamic         Channel adaptive high-speed modem for FM transceivers
-	SUBMODE_VARA_FM_9600   SubMode = "vara fm 9600"   // vara fm 9600    = dynamic         Channel adaptive high-speed modem for FM transceivers
-	SUBMODE_VARA_HF        SubMode = "vara hf"        // vara hf         = dynamic         Channel adaptive high-speed modem for HF
-	SUBMODE_VARA_SATELLITE SubMode = "vara satellite" // vara satellite  = dynamic         Channel adaptive high-speed modem for satellite operations
+	SUBMODE_8PSK1000       SubMode = "8PSK1000"       // 8PSK1000        = PSK
+	SUBMODE_8PSK1000F      SubMode = "8PSK1000F"      // 8PSK1000F       = PSK
+	SUBMODE_8PSK1200F      SubMode = "8PSK1200F"      // 8PSK1200F       = PSK
+	SUBMODE_8PSK125        SubMode = "8PSK125"        // 8PSK125         = PSK
+	SUBMODE_8PSK125F       SubMode = "8PSK125F"       // 8PSK125F        = PSK
+	SUBMODE_8PSK125FL      SubMode = "8PSK125FL"      // 8PSK125FL       = PSK
+	SUBMODE_8PSK250        SubMode = "8PSK250"        // 8PSK250         = PSK
+	SUBMODE_8PSK250F       SubMode = "8PSK250F"       // 8PSK250F        = PSK
+	SUBMODE_8PSK250FL      SubMode = "8PSK250FL"      // 8PSK250FL       = PSK
+	SUBMODE_8PSK500        SubMode = "8PSK500"        // 8PSK500         = PSK
+	SUBMODE_8PSK500F       SubMode = "8PSK500F"       // 8PSK500F        = PSK
+	SUBMODE_AMTORFEC       SubMode = "AMTORFEC"       // AMTORFEC        = TOR
+	SUBMODE_ASCI           SubMode = "ASCI"           // ASCI            = RTTY
+	SUBMODE_C4FM           SubMode = "C4FM"           // C4FM            = DIGITALVOICE    C4FM 4-level FSK See the Propagation_Mode enumeration section for examples of representing C4FM voice transmissions.
+	SUBMODE_CHIP128        SubMode = "CHIP128"        // CHIP128         = CHIP
+	SUBMODE_CHIP64         SubMode = "CHIP64"         // CHIP64          = CHIP
+	SUBMODE_DMR            SubMode = "DMR"            // DMR             = DIGITALVOICE    Digital Mobile Radio See the Propagation_Mode enumeration section for examples of representing DMR voice transmissions.
+	SUBMODE_DOM_M          SubMode = "DOM-M"          // DOM-M           = DOMINO
+	SUBMODE_DOM11          SubMode = "DOM11"          // DOM11           = DOMINO
+	SUBMODE_DOM16          SubMode = "DOM16"          // DOM16           = DOMINO
+	SUBMODE_DOM22          SubMode = "DOM22"          // DOM22           = DOMINO
+	SUBMODE_DOM4           SubMode = "DOM4"           // DOM4            = DOMINO
+	SUBMODE_DOM44          SubMode = "DOM44"          // DOM44           = DOMINO
+	SUBMODE_DOM5           SubMode = "DOM5"           // DOM5            = DOMINO
+	SUBMODE_DOM8           SubMode = "DOM8"           // DOM8            = DOMINO
+	SUBMODE_DOM88          SubMode = "DOM88"          // DOM88           = DOMINO
+	SUBMODE_DOMINOEX       SubMode = "DOMINOEX"       // DOMINOEX        = DOMINO
+	SUBMODE_DOMINOF        SubMode = "DOMINOF"        // DOMINOF         = DOMINO
+	SUBMODE_DSTAR          SubMode = "DSTAR"          // DSTAR           = DIGITALVOICE    Digital Smart Technologies for Amateur Radio See the Propagation_Mode enumeration section for examples of representing DSTAR voice transmissions.
+	SUBMODE_FMHELL         SubMode = "FMHELL"         // FMHELL          = HELL
+	SUBMODE_FREEDV         SubMode = "FREEDV"         // FREEDV          = DIGITALVOICE    Digital voice mode for HF radio implemented with open source
+	SUBMODE_FSK31          SubMode = "FSK31"          // FSK31           = PSK
+	SUBMODE_FSKH105        SubMode = "FSKH105"        // FSKH105         = HELL
+	SUBMODE_FSKH245        SubMode = "FSKH245"        // FSKH245         = HELL
+	SUBMODE_FSKHELL        SubMode = "FSKHELL"        // FSKHELL         = HELL
+	SUBMODE_FSQCALL        SubMode = "FSQCALL"        // FSQCALL         = MFSK            FSQCall protocol used with FSQ (Fast Simple QSO) transmission mode
+	SUBMODE_FST4           SubMode = "FST4"           // FST4            = MFSK            This is a digital mode supported by the WSJT-X software
+	SUBMODE_FST4W          SubMode = "FST4W"          // FST4W           = MFSK            This is a digital mode supported by the WSJT-X software that is for quasi-beacon transmissions of WSPR-style messages
+	SUBMODE_FT4            SubMode = "FT4"            // FT4             = MFSK            FT4 is a digital mode designed specifically for radio contesting
+	SUBMODE_GTOR           SubMode = "GTOR"           // GTOR            = TOR
+	SUBMODE_HELL80         SubMode = "HELL80"         // HELL80          = HELL
+	SUBMODE_HELLX5         SubMode = "HELLX5"         // HELLX5          = HELL
+	SUBMODE_HELLX9         SubMode = "HELLX9"         // HELLX9          = HELL
+	SUBMODE_HFSK           SubMode = "HFSK"           // HFSK            = HELL
+	SUBMODE_ISCAT_A        SubMode = "ISCAT-A"        // ISCAT-A         = ISCAT
+	SUBMODE_ISCAT_B        SubMode = "ISCAT-B"        // ISCAT-B         = ISCAT
+	SUBMODE_JS8            SubMode = "JS8"            // JS8             = MFSK            Jordan Sherer designed 8-FSK modulation
+	SUBMODE_JT4A           SubMode = "JT4A"           // JT4A            = JT4
+	SUBMODE_JT4B           SubMode = "JT4B"           // JT4B            = JT4
+	SUBMODE_JT4C           SubMode = "JT4C"           // JT4C            = JT4
+	SUBMODE_JT4D           SubMode = "JT4D"           // JT4D            = JT4
+	SUBMODE_JT4E           SubMode = "JT4E"           // JT4E            = JT4
+	SUBMODE_JT4F           SubMode = "JT4F"           // JT4F            = JT4
+	SUBMODE_JT4G           SubMode = "JT4G"           // JT4G            = JT4
+	SUBMODE_JT65A          SubMode = "JT65A"          // JT65A           = JT65
+	SUBMODE_JT65B          SubMode = "JT65B"          // JT65B           = JT65
+	SUBMODE_JT65B2         SubMode = "JT65B2"         // JT65B2          = JT65
+	SUBMODE_JT65C          SubMode = "JT65C"          // JT65C           = JT65
+	SUBMODE_JT65C2         SubMode = "JT65C2"         // JT65C2          = JT65
+	SUBMODE_JT9_1          SubMode = "JT9-1"          // JT9-1           = JT9
+	SUBMODE_JT9_10         SubMode = "JT9-10"         // JT9-10          = JT9
+	SUBMODE_JT9_2          SubMode = "JT9-2"          // JT9-2           = JT9
+	SUBMODE_JT9_30         SubMode = "JT9-30"         // JT9-30          = JT9
+	SUBMODE_JT9_5          SubMode = "JT9-5"          // JT9-5           = JT9
+	SUBMODE_JT9A           SubMode = "JT9A"           // JT9A            = JT9
+	SUBMODE_JT9B           SubMode = "JT9B"           // JT9B            = JT9
+	SUBMODE_JT9C           SubMode = "JT9C"           // JT9C            = JT9
+	SUBMODE_JT9D           SubMode = "JT9D"           // JT9D            = JT9
+	SUBMODE_JT9E           SubMode = "JT9E"           // JT9E            = JT9
+	SUBMODE_JT9E_FAST      SubMode = "JT9E FAST"      // JT9E FAST       = JT9
+	SUBMODE_JT9F           SubMode = "JT9F"           // JT9F            = JT9
+	SUBMODE_JT9F_FAST      SubMode = "JT9F FAST"      // JT9F FAST       = JT9
+	SUBMODE_JT9G           SubMode = "JT9G"           // JT9G            = JT9
+	SUBMODE_JT9G_FAST      SubMode = "JT9G FAST"      // JT9G FAST       = JT9
+	SUBMODE_JT9H           SubMode = "JT9H"           // JT9H            = JT9
+	SUBMODE_JT9H_FAST      SubMode = "JT9H FAST"      // JT9H FAST       = JT9
+	SUBMODE_JTMS           SubMode = "JTMS"           // JTMS            = MFSK
+	SUBMODE_LSB            SubMode = "LSB"            // LSB             = SSB             Amplitude modulated voice telephony, lower-sideband, suppressed-carrier
+	SUBMODE_M17            SubMode = "M17"            // M17             = DIGITALVOICE    Digital radio protocol using the Codec 2 voice encoder
+	SUBMODE_MFSK11         SubMode = "MFSK11"         // MFSK11          = MFSK
+	SUBMODE_MFSK128        SubMode = "MFSK128"        // MFSK128         = MFSK
+	SUBMODE_MFSK128L       SubMode = "MFSK128L"       // MFSK128L        = MFSK
+	SUBMODE_MFSK16         SubMode = "MFSK16"         // MFSK16          = MFSK
+	SUBMODE_MFSK22         SubMode = "MFSK22"         // MFSK22          = MFSK
+	SUBMODE_MFSK31         SubMode = "MFSK31"         // MFSK31          = MFSK
+	SUBMODE_MFSK32         SubMode = "MFSK32"         // MFSK32          = MFSK
+	SUBMODE_MFSK4          SubMode = "MFSK4"          // MFSK4           = MFSK
+	SUBMODE_MFSK64         SubMode = "MFSK64"         // MFSK64          = MFSK
+	SUBMODE_MFSK64L        SubMode = "MFSK64L"        // MFSK64L         = MFSK
+	SUBMODE_MFSK8          SubMode = "MFSK8"          // MFSK8           = MFSK
+	SUBMODE_NAVTEX         SubMode = "NAVTEX"         // NAVTEX          = TOR
+	SUBMODE_OLIVIA_16_1000 SubMode = "OLIVIA 16/1000" // OLIVIA 16/1000  = OLIVIA
+	SUBMODE_OLIVIA_16_500  SubMode = "OLIVIA 16/500"  // OLIVIA 16/500   = OLIVIA
+	SUBMODE_OLIVIA_32_1000 SubMode = "OLIVIA 32/1000" // OLIVIA 32/1000  = OLIVIA
+	SUBMODE_OLIVIA_4_125   SubMode = "OLIVIA 4/125"   // OLIVIA 4/125    = OLIVIA
+	SUBMODE_OLIVIA_4_250   SubMode = "OLIVIA 4/250"   // OLIVIA 4/250    = OLIVIA
+	SUBMODE_OLIVIA_8_250   SubMode = "OLIVIA 8/250"   // OLIVIA 8/250    = OLIVIA
+	SUBMODE_OLIVIA_8_500   SubMode = "OLIVIA 8/500"   // OLIVIA 8/500    = OLIVIA
+	SUBMODE_OPERA_BEACON   SubMode = "OPERA-BEACON"   // OPERA-BEACON    = OPERA
+	SUBMODE_OPERA_QSO      SubMode = "OPERA-QSO"      // OPERA-QSO       = OPERA
+	SUBMODE_PAC2           SubMode = "PAC2"           // PAC2            = PAC
+	SUBMODE_PAC3           SubMode = "PAC3"           // PAC3            = PAC
+	SUBMODE_PAC4           SubMode = "PAC4"           // PAC4            = PAC
+	SUBMODE_PAX2           SubMode = "PAX2"           // PAX2            = PAX
+	SUBMODE_PCW            SubMode = "PCW"            // PCW             = CW              Coherent CW
+	SUBMODE_PSK10          SubMode = "PSK10"          // PSK10           = PSK
+	SUBMODE_PSK1000        SubMode = "PSK1000"        // PSK1000         = PSK
+	SUBMODE_PSK1000RC2     SubMode = "PSK1000RC2"     // PSK1000RC2      = PSK
+	SUBMODE_PSK125         SubMode = "PSK125"         // PSK125          = PSK
+	SUBMODE_PSK125RC10     SubMode = "PSK125RC10"     // PSK125RC10      = PSK
+	SUBMODE_PSK125RC12     SubMode = "PSK125RC12"     // PSK125RC12      = PSK
+	SUBMODE_PSK125RC16     SubMode = "PSK125RC16"     // PSK125RC16      = PSK
+	SUBMODE_PSK125RC4      SubMode = "PSK125RC4"      // PSK125RC4       = PSK
+	SUBMODE_PSK125RC5      SubMode = "PSK125RC5"      // PSK125RC5       = PSK
+	SUBMODE_PSK250         SubMode = "PSK250"         // PSK250          = PSK
+	SUBMODE_PSK250RC2      SubMode = "PSK250RC2"      // PSK250RC2       = PSK
+	SUBMODE_PSK250RC3      SubMode = "PSK250RC3"      // PSK250RC3       = PSK
+	SUBMODE_PSK250RC5      SubMode = "PSK250RC5"      // PSK250RC5       = PSK
+	SUBMODE_PSK250RC6      SubMode = "PSK250RC6"      // PSK250RC6       = PSK
+	SUBMODE_PSK250RC7      SubMode = "PSK250RC7"      // PSK250RC7       = PSK
+	SUBMODE_PSK31          SubMode = "PSK31"          // PSK31           = PSK
+	SUBMODE_PSK500         SubMode = "PSK500"         // PSK500          = PSK
+	SUBMODE_PSK500RC2      SubMode = "PSK500RC2"      // PSK500RC2       = PSK
+	SUBMODE_PSK500RC3      SubMode = "PSK500RC3"      // PSK500RC3       = PSK
+	SUBMODE_PSK500RC4      SubMode = "PSK500RC4"      // PSK500RC4       = PSK
+	SUBMODE_PSK63          SubMode = "PSK63"          // PSK63           = PSK
+	SUBMODE_PSK63F         SubMode = "PSK63F"         // PSK63F          = PSK
+	SUBMODE_PSK63RC10      SubMode = "PSK63RC10"      // PSK63RC10       = PSK
+	SUBMODE_PSK63RC20      SubMode = "PSK63RC20"      // PSK63RC20       = PSK
+	SUBMODE_PSK63RC32      SubMode = "PSK63RC32"      // PSK63RC32       = PSK
+	SUBMODE_PSK63RC4       SubMode = "PSK63RC4"       // PSK63RC4        = PSK
+	SUBMODE_PSK63RC5       SubMode = "PSK63RC5"       // PSK63RC5        = PSK
+	SUBMODE_PSK800RC2      SubMode = "PSK800RC2"      // PSK800RC2       = PSK
+	SUBMODE_PSKAM10        SubMode = "PSKAM10"        // PSKAM10         = PSK
+	SUBMODE_PSKAM31        SubMode = "PSKAM31"        // PSKAM31         = PSK
+	SUBMODE_PSKAM50        SubMode = "PSKAM50"        // PSKAM50         = PSK
+	SUBMODE_PSKFEC31       SubMode = "PSKFEC31"       // PSKFEC31        = PSK
+	SUBMODE_PSKHELL        SubMode = "PSKHELL"        // PSKHELL         = HELL
+	SUBMODE_Q65            SubMode = "Q65"            // Q65             = MFSK
+	SUBMODE_QPSK125        SubMode = "QPSK125"        // QPSK125         = PSK
+	SUBMODE_QPSK250        SubMode = "QPSK250"        // QPSK250         = PSK
+	SUBMODE_QPSK31         SubMode = "QPSK31"         // QPSK31          = PSK
+	SUBMODE_QPSK500        SubMode = "QPSK500"        // QPSK500         = PSK
+	SUBMODE_QPSK63         SubMode = "QPSK63"         // QPSK63          = PSK
+	SUBMODE_QRA64A         SubMode = "QRA64A"         // QRA64A          = QRA64
+	SUBMODE_QRA64B         SubMode = "QRA64B"         // QRA64B          = QRA64
+	SUBMODE_QRA64C         SubMode = "QRA64C"         // QRA64C          = QRA64
+	SUBMODE_QRA64D         SubMode = "QRA64D"         // QRA64D          = QRA64
+	SUBMODE_QRA64E         SubMode = "QRA64E"         // QRA64E          = QRA64
+	SUBMODE_ROS_EME        SubMode = "ROS-EME"        // ROS-EME         = ROS
+	SUBMODE_ROS_HF         SubMode = "ROS-HF"         // ROS-HF          = ROS
+	SUBMODE_ROS_MF         SubMode = "ROS-MF"         // ROS-MF          = ROS
+	SUBMODE_SCAMP_FAST     SubMode = "SCAMP_FAST"     // SCAMP_FAST      = FSK             SCAMP fast FSK
+	SUBMODE_SCAMP_OO       SubMode = "SCAMP_OO"       // SCAMP_OO        = MTONE           SCAMP single modulated tone on/off keying
+	SUBMODE_SCAMP_OO_SLW   SubMode = "SCAMP_OO_SLW"   // SCAMP_OO_SLW    = MTONE           SCAMP single modulated tone on/off slow keying
+	SUBMODE_SCAMP_SLOW     SubMode = "SCAMP_SLOW"     // SCAMP_SLOW      = FSK             SCAMP slow FSK
+	SUBMODE_SCAMP_VSLOW    SubMode = "SCAMP_VSLOW"    // SCAMP_VSLOW     = FSK             SCAMP very slow FSK
+	SUBMODE_SIM31          SubMode = "SIM31"          // SIM31           = PSK
+	SUBMODE_SITORB         SubMode = "SITORB"         // SITORB          = TOR
+	SUBMODE_SLOWHELL       SubMode = "SLOWHELL"       // SLOWHELL        = HELL
+	SUBMODE_THOR_M         SubMode = "THOR-M"         // THOR-M          = THOR
+	SUBMODE_THOR100        SubMode = "THOR100"        // THOR100         = THOR
+	SUBMODE_THOR11         SubMode = "THOR11"         // THOR11          = THOR
+	SUBMODE_THOR16         SubMode = "THOR16"         // THOR16          = THOR
+	SUBMODE_THOR22         SubMode = "THOR22"         // THOR22          = THOR
+	SUBMODE_THOR25X4       SubMode = "THOR25X4"       // THOR25X4        = THOR
+	SUBMODE_THOR4          SubMode = "THOR4"          // THOR4           = THOR
+	SUBMODE_THOR5          SubMode = "THOR5"          // THOR5           = THOR
+	SUBMODE_THOR50X1       SubMode = "THOR50X1"       // THOR50X1        = THOR
+	SUBMODE_THOR50X2       SubMode = "THOR50X2"       // THOR50X2        = THOR
+	SUBMODE_THOR8          SubMode = "THOR8"          // THOR8           = THOR
+	SUBMODE_THRBX          SubMode = "THRBX"          // THRBX           = THRB
+	SUBMODE_THRBX1         SubMode = "THRBX1"         // THRBX1          = THRB
+	SUBMODE_THRBX2         SubMode = "THRBX2"         // THRBX2          = THRB
+	SUBMODE_THRBX4         SubMode = "THRBX4"         // THRBX4          = THRB
+	SUBMODE_THROB1         SubMode = "THROB1"         // THROB1          = THRB
+	SUBMODE_THROB2         SubMode = "THROB2"         // THROB2          = THRB
+	SUBMODE_THROB4         SubMode = "THROB4"         // THROB4          = THRB
+	SUBMODE_USB            SubMode = "USB"            // USB             = SSB             Amplitude modulated voice telephony, upper-sideband, suppressed-carrier
+	SUBMODE_VARA_FM_1200   SubMode = "VARA FM 1200"   // VARA FM 1200    = DYNAMIC         Channel adaptive high-speed modem for FM transceivers
+	SUBMODE_VARA_FM_9600   SubMode = "VARA FM 9600"   // VARA FM 9600    = DYNAMIC         Channel adaptive high-speed modem for FM transceivers
+	SUBMODE_VARA_HF        SubMode = "VARA HF"        // VARA HF         = DYNAMIC         Channel adaptive high-speed modem for HF
+	SUBMODE_VARA_SATELLITE SubMode = "VARA SATELLITE" // VARA SATELLITE  = DYNAMIC         Channel adaptive high-speed modem for satellite operations
 )
 
 var (
@@ -199,189 +199,189 @@ var (
 
 // lookupList contains all known SubMode specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "8psk1000", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk1000f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk1200f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk125", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk125f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk125fl", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk250", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk250f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk250fl", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk500", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "8psk500f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "amtorfec", Mode: "tor", Description: ""},
-	{IsImportOnly: false, Key: "asci", Mode: "rtty", Description: ""},
-	{IsImportOnly: false, Key: "c4fm", Mode: "digitalvoice", Description: "C4FM 4-level FSK See the Propagation_Mode enumeration section for examples of representing C4FM voice transmissions."},
-	{IsImportOnly: false, Key: "chip128", Mode: "chip", Description: ""},
-	{IsImportOnly: false, Key: "chip64", Mode: "chip", Description: ""},
-	{IsImportOnly: false, Key: "dmr", Mode: "digitalvoice", Description: "Digital Mobile Radio See the Propagation_Mode enumeration section for examples of representing DMR voice transmissions."},
-	{IsImportOnly: false, Key: "dom-m", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom11", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom16", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom22", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom4", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom44", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom5", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom8", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dom88", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dominoex", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dominof", Mode: "domino", Description: ""},
-	{IsImportOnly: false, Key: "dstar", Mode: "digitalvoice", Description: "Digital Smart Technologies for Amateur Radio See the Propagation_Mode enumeration section for examples of representing DSTAR voice transmissions."},
-	{IsImportOnly: false, Key: "fmhell", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "freedv", Mode: "digitalvoice", Description: "Digital voice mode for HF radio implemented with open source"},
-	{IsImportOnly: false, Key: "fsk31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "fskh105", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "fskh245", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "fskhell", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "fsqcall", Mode: "mfsk", Description: "FSQCall protocol used with FSQ (Fast Simple QSO) transmission mode"},
-	{IsImportOnly: false, Key: "fst4", Mode: "mfsk", Description: "This is a digital mode supported by the WSJT-X software"},
-	{IsImportOnly: false, Key: "fst4w", Mode: "mfsk", Description: "This is a digital mode supported by the WSJT-X software that is for quasi-beacon transmissions of WSPR-style messages"},
-	{IsImportOnly: false, Key: "ft4", Mode: "mfsk", Description: "FT4 is a digital mode designed specifically for radio contesting"},
-	{IsImportOnly: false, Key: "gtor", Mode: "tor", Description: ""},
-	{IsImportOnly: false, Key: "hell80", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "hellx5", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "hellx9", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "hfsk", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "iscat-a", Mode: "iscat", Description: ""},
-	{IsImportOnly: false, Key: "iscat-b", Mode: "iscat", Description: ""},
-	{IsImportOnly: false, Key: "js8", Mode: "mfsk", Description: "Jordan Sherer designed 8-FSK modulation"},
-	{IsImportOnly: false, Key: "jt4a", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4b", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4c", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4d", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4e", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4f", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt4g", Mode: "jt4", Description: ""},
-	{IsImportOnly: false, Key: "jt65a", Mode: "jt65", Description: ""},
-	{IsImportOnly: false, Key: "jt65b", Mode: "jt65", Description: ""},
-	{IsImportOnly: false, Key: "jt65b2", Mode: "jt65", Description: ""},
-	{IsImportOnly: false, Key: "jt65c", Mode: "jt65", Description: ""},
-	{IsImportOnly: false, Key: "jt65c2", Mode: "jt65", Description: ""},
-	{IsImportOnly: false, Key: "jt9-1", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9-10", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9-2", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9-30", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9-5", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9a", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9b", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9c", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9d", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9e", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9e fast", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9f", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9f fast", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9g", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9g fast", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9h", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jt9h fast", Mode: "jt9", Description: ""},
-	{IsImportOnly: false, Key: "jtms", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "lsb", Mode: "ssb", Description: "Amplitude modulated voice telephony, lower-sideband, suppressed-carrier"},
-	{IsImportOnly: false, Key: "m17", Mode: "digitalvoice", Description: "Digital radio protocol using the Codec 2 voice encoder"},
-	{IsImportOnly: false, Key: "mfsk11", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk128", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk128l", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk16", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk22", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk31", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk32", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk4", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk64", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk64l", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "mfsk8", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "navtex", Mode: "tor", Description: ""},
-	{IsImportOnly: false, Key: "olivia 16/1000", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 16/500", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 32/1000", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 4/125", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 4/250", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 8/250", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "olivia 8/500", Mode: "olivia", Description: ""},
-	{IsImportOnly: false, Key: "opera-beacon", Mode: "opera", Description: ""},
-	{IsImportOnly: false, Key: "opera-qso", Mode: "opera", Description: ""},
-	{IsImportOnly: false, Key: "pac2", Mode: "pac", Description: ""},
-	{IsImportOnly: false, Key: "pac3", Mode: "pac", Description: ""},
-	{IsImportOnly: false, Key: "pac4", Mode: "pac", Description: ""},
-	{IsImportOnly: false, Key: "pax2", Mode: "pax", Description: ""},
-	{IsImportOnly: false, Key: "pcw", Mode: "cw", Description: "Coherent CW"},
-	{IsImportOnly: false, Key: "psk10", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk1000", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk1000rc2", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125rc10", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125rc12", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125rc16", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125rc4", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk125rc5", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250rc2", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250rc3", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250rc5", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250rc6", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk250rc7", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk500", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk500rc2", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk500rc3", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk500rc4", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63f", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63rc10", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63rc20", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63rc32", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63rc4", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk63rc5", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "psk800rc2", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "pskam10", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "pskam31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "pskam50", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "pskfec31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "pskhell", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "q65", Mode: "mfsk", Description: ""},
-	{IsImportOnly: false, Key: "qpsk125", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "qpsk250", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "qpsk31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "qpsk500", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "qpsk63", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "qra64a", Mode: "qra64", Description: ""},
-	{IsImportOnly: false, Key: "qra64b", Mode: "qra64", Description: ""},
-	{IsImportOnly: false, Key: "qra64c", Mode: "qra64", Description: ""},
-	{IsImportOnly: false, Key: "qra64d", Mode: "qra64", Description: ""},
-	{IsImportOnly: false, Key: "qra64e", Mode: "qra64", Description: ""},
-	{IsImportOnly: false, Key: "ros-eme", Mode: "ros", Description: ""},
-	{IsImportOnly: false, Key: "ros-hf", Mode: "ros", Description: ""},
-	{IsImportOnly: false, Key: "ros-mf", Mode: "ros", Description: ""},
-	{IsImportOnly: false, Key: "scamp_fast", Mode: "fsk", Description: "SCAMP fast FSK"},
-	{IsImportOnly: false, Key: "scamp_oo", Mode: "mtone", Description: "SCAMP single modulated tone on/off keying"},
-	{IsImportOnly: false, Key: "scamp_oo_slw", Mode: "mtone", Description: "SCAMP single modulated tone on/off slow keying"},
-	{IsImportOnly: false, Key: "scamp_slow", Mode: "fsk", Description: "SCAMP slow FSK"},
-	{IsImportOnly: false, Key: "scamp_vslow", Mode: "fsk", Description: "SCAMP very slow FSK"},
-	{IsImportOnly: false, Key: "sim31", Mode: "psk", Description: ""},
-	{IsImportOnly: false, Key: "sitorb", Mode: "tor", Description: ""},
-	{IsImportOnly: false, Key: "slowhell", Mode: "hell", Description: ""},
-	{IsImportOnly: false, Key: "thor-m", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor100", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor11", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor16", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor22", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor25x4", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor4", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor5", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor50x1", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor50x2", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thor8", Mode: "thor", Description: ""},
-	{IsImportOnly: false, Key: "thrbx", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "thrbx1", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "thrbx2", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "thrbx4", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "throb1", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "throb2", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "throb4", Mode: "thrb", Description: ""},
-	{IsImportOnly: false, Key: "usb", Mode: "ssb", Description: "Amplitude modulated voice telephony, upper-sideband, suppressed-carrier"},
-	{IsImportOnly: false, Key: "vara fm 1200", Mode: "dynamic", Description: "Channel adaptive high-speed modem for FM transceivers"},
-	{IsImportOnly: false, Key: "vara fm 9600", Mode: "dynamic", Description: "Channel adaptive high-speed modem for FM transceivers"},
-	{IsImportOnly: false, Key: "vara hf", Mode: "dynamic", Description: "Channel adaptive high-speed modem for HF"},
-	{IsImportOnly: false, Key: "vara satellite", Mode: "dynamic", Description: "Channel adaptive high-speed modem for satellite operations"},
+	{IsImportOnly: false, Key: "8PSK1000", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK1000F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK1200F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK125", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK125F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK125FL", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK250", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK250F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK250FL", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK500", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "8PSK500F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "AMTORFEC", Mode: "TOR", Description: ""},
+	{IsImportOnly: false, Key: "ASCI", Mode: "RTTY", Description: ""},
+	{IsImportOnly: false, Key: "C4FM", Mode: "DIGITALVOICE", Description: "C4FM 4-level FSK See the Propagation_Mode enumeration section for examples of representing C4FM voice transmissions."},
+	{IsImportOnly: false, Key: "CHIP128", Mode: "CHIP", Description: ""},
+	{IsImportOnly: false, Key: "CHIP64", Mode: "CHIP", Description: ""},
+	{IsImportOnly: false, Key: "DMR", Mode: "DIGITALVOICE", Description: "Digital Mobile Radio See the Propagation_Mode enumeration section for examples of representing DMR voice transmissions."},
+	{IsImportOnly: false, Key: "DOM-M", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM11", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM16", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM22", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM4", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM44", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM5", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM8", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOM88", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOMINOEX", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DOMINOF", Mode: "DOMINO", Description: ""},
+	{IsImportOnly: false, Key: "DSTAR", Mode: "DIGITALVOICE", Description: "Digital Smart Technologies for Amateur Radio See the Propagation_Mode enumeration section for examples of representing DSTAR voice transmissions."},
+	{IsImportOnly: false, Key: "FMHELL", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "FREEDV", Mode: "DIGITALVOICE", Description: "Digital voice mode for HF radio implemented with open source"},
+	{IsImportOnly: false, Key: "FSK31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "FSKH105", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "FSKH245", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "FSKHELL", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "FSQCALL", Mode: "MFSK", Description: "FSQCall protocol used with FSQ (Fast Simple QSO) transmission mode"},
+	{IsImportOnly: false, Key: "FST4", Mode: "MFSK", Description: "This is a digital mode supported by the WSJT-X software"},
+	{IsImportOnly: false, Key: "FST4W", Mode: "MFSK", Description: "This is a digital mode supported by the WSJT-X software that is for quasi-beacon transmissions of WSPR-style messages"},
+	{IsImportOnly: false, Key: "FT4", Mode: "MFSK", Description: "FT4 is a digital mode designed specifically for radio contesting"},
+	{IsImportOnly: false, Key: "GTOR", Mode: "TOR", Description: ""},
+	{IsImportOnly: false, Key: "HELL80", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "HELLX5", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "HELLX9", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "HFSK", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "ISCAT-A", Mode: "ISCAT", Description: ""},
+	{IsImportOnly: false, Key: "ISCAT-B", Mode: "ISCAT", Description: ""},
+	{IsImportOnly: false, Key: "JS8", Mode: "MFSK", Description: "Jordan Sherer designed 8-FSK modulation"},
+	{IsImportOnly: false, Key: "JT4A", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4B", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4C", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4D", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4E", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4F", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT4G", Mode: "JT4", Description: ""},
+	{IsImportOnly: false, Key: "JT65A", Mode: "JT65", Description: ""},
+	{IsImportOnly: false, Key: "JT65B", Mode: "JT65", Description: ""},
+	{IsImportOnly: false, Key: "JT65B2", Mode: "JT65", Description: ""},
+	{IsImportOnly: false, Key: "JT65C", Mode: "JT65", Description: ""},
+	{IsImportOnly: false, Key: "JT65C2", Mode: "JT65", Description: ""},
+	{IsImportOnly: false, Key: "JT9-1", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9-10", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9-2", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9-30", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9-5", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9A", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9B", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9C", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9D", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9E", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9E FAST", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9F", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9F FAST", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9G", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9G FAST", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9H", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JT9H FAST", Mode: "JT9", Description: ""},
+	{IsImportOnly: false, Key: "JTMS", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "LSB", Mode: "SSB", Description: "Amplitude modulated voice telephony, lower-sideband, suppressed-carrier"},
+	{IsImportOnly: false, Key: "M17", Mode: "DIGITALVOICE", Description: "Digital radio protocol using the Codec 2 voice encoder"},
+	{IsImportOnly: false, Key: "MFSK11", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK128", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK128L", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK16", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK22", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK31", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK32", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK4", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK64", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK64L", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "MFSK8", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "NAVTEX", Mode: "TOR", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 16/1000", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 16/500", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 32/1000", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 4/125", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 4/250", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 8/250", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OLIVIA 8/500", Mode: "OLIVIA", Description: ""},
+	{IsImportOnly: false, Key: "OPERA-BEACON", Mode: "OPERA", Description: ""},
+	{IsImportOnly: false, Key: "OPERA-QSO", Mode: "OPERA", Description: ""},
+	{IsImportOnly: false, Key: "PAC2", Mode: "PAC", Description: ""},
+	{IsImportOnly: false, Key: "PAC3", Mode: "PAC", Description: ""},
+	{IsImportOnly: false, Key: "PAC4", Mode: "PAC", Description: ""},
+	{IsImportOnly: false, Key: "PAX2", Mode: "PAX", Description: ""},
+	{IsImportOnly: false, Key: "PCW", Mode: "CW", Description: "Coherent CW"},
+	{IsImportOnly: false, Key: "PSK10", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK1000", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK1000RC2", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125RC10", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125RC12", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125RC16", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125RC4", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK125RC5", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250RC2", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250RC3", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250RC5", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250RC6", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK250RC7", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK500", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK500RC2", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK500RC3", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK500RC4", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63F", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63RC10", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63RC20", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63RC32", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63RC4", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK63RC5", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSK800RC2", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSKAM10", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSKAM31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSKAM50", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSKFEC31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "PSKHELL", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "Q65", Mode: "MFSK", Description: ""},
+	{IsImportOnly: false, Key: "QPSK125", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "QPSK250", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "QPSK31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "QPSK500", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "QPSK63", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "QRA64A", Mode: "QRA64", Description: ""},
+	{IsImportOnly: false, Key: "QRA64B", Mode: "QRA64", Description: ""},
+	{IsImportOnly: false, Key: "QRA64C", Mode: "QRA64", Description: ""},
+	{IsImportOnly: false, Key: "QRA64D", Mode: "QRA64", Description: ""},
+	{IsImportOnly: false, Key: "QRA64E", Mode: "QRA64", Description: ""},
+	{IsImportOnly: false, Key: "ROS-EME", Mode: "ROS", Description: ""},
+	{IsImportOnly: false, Key: "ROS-HF", Mode: "ROS", Description: ""},
+	{IsImportOnly: false, Key: "ROS-MF", Mode: "ROS", Description: ""},
+	{IsImportOnly: false, Key: "SCAMP_FAST", Mode: "FSK", Description: "SCAMP fast FSK"},
+	{IsImportOnly: false, Key: "SCAMP_OO", Mode: "MTONE", Description: "SCAMP single modulated tone on/off keying"},
+	{IsImportOnly: false, Key: "SCAMP_OO_SLW", Mode: "MTONE", Description: "SCAMP single modulated tone on/off slow keying"},
+	{IsImportOnly: false, Key: "SCAMP_SLOW", Mode: "FSK", Description: "SCAMP slow FSK"},
+	{IsImportOnly: false, Key: "SCAMP_VSLOW", Mode: "FSK", Description: "SCAMP very slow FSK"},
+	{IsImportOnly: false, Key: "SIM31", Mode: "PSK", Description: ""},
+	{IsImportOnly: false, Key: "SITORB", Mode: "TOR", Description: ""},
+	{IsImportOnly: false, Key: "SLOWHELL", Mode: "HELL", Description: ""},
+	{IsImportOnly: false, Key: "THOR-M", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR100", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR11", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR16", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR22", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR25X4", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR4", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR5", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR50X1", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR50X2", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THOR8", Mode: "THOR", Description: ""},
+	{IsImportOnly: false, Key: "THRBX", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THRBX1", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THRBX2", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THRBX4", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THROB1", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THROB2", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "THROB4", Mode: "THRB", Description: ""},
+	{IsImportOnly: false, Key: "USB", Mode: "SSB", Description: "Amplitude modulated voice telephony, upper-sideband, suppressed-carrier"},
+	{IsImportOnly: false, Key: "VARA FM 1200", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for FM transceivers"},
+	{IsImportOnly: false, Key: "VARA FM 9600", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for FM transceivers"},
+	{IsImportOnly: false, Key: "VARA HF", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for HF"},
+	{IsImportOnly: false, Key: "VARA SATELLITE", Mode: "DYNAMIC", Description: "Channel adaptive high-speed modem for satellite operations"},
 }
 
 // lookupMap contains all known SubMode specifications.

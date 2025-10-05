@@ -7,35 +7,35 @@ package award
 import "sync"
 
 const (
-	AJA         Award = "aja"         // Deprecated: aja
-	CQDX        Award = "cqdx"        // Deprecated: cqdx
-	CQDXFIELD   Award = "cqdxfield"   // Deprecated: cqdxfield
-	CQWAZ_160M  Award = "cqwaz_160m"  // Deprecated: cqwaz_160m
-	CQWAZ_CW    Award = "cqwaz_cw"    // Deprecated: cqwaz_cw
-	CQWAZ_MIXED Award = "cqwaz_mixed" // Deprecated: cqwaz_mixed
-	CQWAZ_PHONE Award = "cqwaz_phone" // Deprecated: cqwaz_phone
-	CQWAZ_RTTY  Award = "cqwaz_rtty"  // Deprecated: cqwaz_rtty
-	CQWPX       Award = "cqwpx"       // Deprecated: cqwpx
-	DARC_DOK    Award = "darc_dok"    // Deprecated: darc_dok
-	DXCC        Award = "dxcc"        // Deprecated: dxcc
-	DXCC_CW     Award = "dxcc_cw"     // Deprecated: dxcc_cw
-	DXCC_MIXED  Award = "dxcc_mixed"  // Deprecated: dxcc_mixed
-	DXCC_PHONE  Award = "dxcc_phone"  // Deprecated: dxcc_phone
-	DXCC_RTTY   Award = "dxcc_rtty"   // Deprecated: dxcc_rtty
-	IOTA        Award = "iota"        // Deprecated: iota
-	JCC         Award = "jcc"         // Deprecated: jcc
-	JCG         Award = "jcg"         // Deprecated: jcg
-	MARATHON    Award = "marathon"    // Deprecated: marathon
-	RDA         Award = "rda"         // Deprecated: rda
-	USACA       Award = "usaca"       // Deprecated: usaca
-	VUCC        Award = "vucc"        // Deprecated: vucc
-	WAB         Award = "wab"         // Deprecated: wab
-	WAC         Award = "wac"         // Deprecated: wac
-	WAE         Award = "wae"         // Deprecated: wae
-	WAIP        Award = "waip"        // Deprecated: waip
-	WAJA        Award = "waja"        // Deprecated: waja
-	WAS         Award = "was"         // Deprecated: was
-	WAZ         Award = "waz"         // Deprecated: waz
+	AJA         Award = "AJA"         // Deprecated: AJA
+	CQDX        Award = "CQDX"        // Deprecated: CQDX
+	CQDXFIELD   Award = "CQDXFIELD"   // Deprecated: CQDXFIELD
+	CQWAZ_160M  Award = "CQWAZ_160M"  // Deprecated: CQWAZ_160M
+	CQWAZ_CW    Award = "CQWAZ_CW"    // Deprecated: CQWAZ_CW
+	CQWAZ_MIXED Award = "CQWAZ_MIXED" // Deprecated: CQWAZ_MIXED
+	CQWAZ_PHONE Award = "CQWAZ_PHONE" // Deprecated: CQWAZ_PHONE
+	CQWAZ_RTTY  Award = "CQWAZ_RTTY"  // Deprecated: CQWAZ_RTTY
+	CQWPX       Award = "CQWPX"       // Deprecated: CQWPX
+	DARC_DOK    Award = "DARC_DOK"    // Deprecated: DARC_DOK
+	DXCC        Award = "DXCC"        // Deprecated: DXCC
+	DXCC_CW     Award = "DXCC_CW"     // Deprecated: DXCC_CW
+	DXCC_MIXED  Award = "DXCC_MIXED"  // Deprecated: DXCC_MIXED
+	DXCC_PHONE  Award = "DXCC_PHONE"  // Deprecated: DXCC_PHONE
+	DXCC_RTTY   Award = "DXCC_RTTY"   // Deprecated: DXCC_RTTY
+	IOTA        Award = "IOTA"        // Deprecated: IOTA
+	JCC         Award = "JCC"         // Deprecated: JCC
+	JCG         Award = "JCG"         // Deprecated: JCG
+	MARATHON    Award = "MARATHON"    // Deprecated: MARATHON
+	RDA         Award = "RDA"         // Deprecated: RDA
+	USACA       Award = "USACA"       // Deprecated: USACA
+	VUCC        Award = "VUCC"        // Deprecated: VUCC
+	WAB         Award = "WAB"         // Deprecated: WAB
+	WAC         Award = "WAC"         // Deprecated: WAC
+	WAE         Award = "WAE"         // Deprecated: WAE
+	WAIP        Award = "WAIP"        // Deprecated: WAIP
+	WAJA        Award = "WAJA"        // Deprecated: WAJA
+	WAS         Award = "WAS"         // Deprecated: WAS
+	WAZ         Award = "WAZ"         // Deprecated: WAZ
 )
 
 var (
@@ -45,35 +45,35 @@ var (
 
 // lookupList contains all known Award specifications.
 var lookupList = []Spec{
-	{IsImportOnly: true, Key: "aja"},
-	{IsImportOnly: true, Key: "cqdx"},
-	{IsImportOnly: true, Key: "cqdxfield"},
-	{IsImportOnly: true, Key: "cqwaz_160m"},
-	{IsImportOnly: true, Key: "cqwaz_cw"},
-	{IsImportOnly: true, Key: "cqwaz_mixed"},
-	{IsImportOnly: true, Key: "cqwaz_phone"},
-	{IsImportOnly: true, Key: "cqwaz_rtty"},
-	{IsImportOnly: true, Key: "cqwpx"},
-	{IsImportOnly: true, Key: "darc_dok"},
-	{IsImportOnly: true, Key: "dxcc"},
-	{IsImportOnly: true, Key: "dxcc_cw"},
-	{IsImportOnly: true, Key: "dxcc_mixed"},
-	{IsImportOnly: true, Key: "dxcc_phone"},
-	{IsImportOnly: true, Key: "dxcc_rtty"},
-	{IsImportOnly: true, Key: "iota"},
-	{IsImportOnly: true, Key: "jcc"},
-	{IsImportOnly: true, Key: "jcg"},
-	{IsImportOnly: true, Key: "marathon"},
-	{IsImportOnly: true, Key: "rda"},
-	{IsImportOnly: true, Key: "usaca"},
-	{IsImportOnly: true, Key: "vucc"},
-	{IsImportOnly: true, Key: "wab"},
-	{IsImportOnly: true, Key: "wac"},
-	{IsImportOnly: true, Key: "wae"},
-	{IsImportOnly: true, Key: "waip"},
-	{IsImportOnly: true, Key: "waja"},
-	{IsImportOnly: true, Key: "was"},
-	{IsImportOnly: true, Key: "waz"},
+	{IsImportOnly: true, Key: "AJA"},
+	{IsImportOnly: true, Key: "CQDX"},
+	{IsImportOnly: true, Key: "CQDXFIELD"},
+	{IsImportOnly: true, Key: "CQWAZ_160M"},
+	{IsImportOnly: true, Key: "CQWAZ_CW"},
+	{IsImportOnly: true, Key: "CQWAZ_MIXED"},
+	{IsImportOnly: true, Key: "CQWAZ_PHONE"},
+	{IsImportOnly: true, Key: "CQWAZ_RTTY"},
+	{IsImportOnly: true, Key: "CQWPX"},
+	{IsImportOnly: true, Key: "DARC_DOK"},
+	{IsImportOnly: true, Key: "DXCC"},
+	{IsImportOnly: true, Key: "DXCC_CW"},
+	{IsImportOnly: true, Key: "DXCC_MIXED"},
+	{IsImportOnly: true, Key: "DXCC_PHONE"},
+	{IsImportOnly: true, Key: "DXCC_RTTY"},
+	{IsImportOnly: true, Key: "IOTA"},
+	{IsImportOnly: true, Key: "JCC"},
+	{IsImportOnly: true, Key: "JCG"},
+	{IsImportOnly: true, Key: "MARATHON"},
+	{IsImportOnly: true, Key: "RDA"},
+	{IsImportOnly: true, Key: "USACA"},
+	{IsImportOnly: true, Key: "VUCC"},
+	{IsImportOnly: true, Key: "WAB"},
+	{IsImportOnly: true, Key: "WAC"},
+	{IsImportOnly: true, Key: "WAE"},
+	{IsImportOnly: true, Key: "WAIP"},
+	{IsImportOnly: true, Key: "WAJA"},
+	{IsImportOnly: true, Key: "WAS"},
+	{IsImportOnly: true, Key: "WAZ"},
 }
 
 // lookupMap contains all known Award specifications.

@@ -7,9 +7,9 @@ package qsodownloadstatus
 import "sync"
 
 const (
-	I QSODownloadStatus = "i" // i = ignore or invalid
-	N QSODownloadStatus = "n" // n = the QSO has not been downloaded from the online service
-	Y QSODownloadStatus = "y" // y = the QSO has been downloaded from the online service
+	I QSODownloadStatus = "I" // I = ignore or invalid
+	N QSODownloadStatus = "N" // N = the QSO has not been downloaded from the online service
+	Y QSODownloadStatus = "Y" // Y = the QSO has been downloaded from the online service
 )
 
 var (
@@ -19,9 +19,9 @@ var (
 
 // lookupList contains all known QSODownloadStatus specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "i", Description: "ignore or invalid"},
-	{IsImportOnly: false, Key: "n", Description: "the QSO has not been downloaded from the online service"},
-	{IsImportOnly: false, Key: "y", Description: "the QSO has been downloaded from the online service"},
+	{IsImportOnly: false, Key: "I", Description: "ignore or invalid"},
+	{IsImportOnly: false, Key: "N", Description: "the QSO has not been downloaded from the online service"},
+	{IsImportOnly: false, Key: "Y", Description: "the QSO has been downloaded from the online service"},
 }
 
 // lookupMap contains all known QSODownloadStatus specifications.

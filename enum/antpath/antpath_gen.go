@@ -7,10 +7,10 @@ package antpath
 import "sync"
 
 const (
-	G AntPath = "g" // g = grayline
-	L AntPath = "l" // l = long path
-	O AntPath = "o" // o = other
-	S AntPath = "s" // s = short path
+	G AntPath = "G" // G = grayline
+	L AntPath = "L" // L = long path
+	O AntPath = "O" // O = other
+	S AntPath = "S" // S = short path
 )
 
 var (
@@ -20,10 +20,10 @@ var (
 
 // lookupList contains all known AntPath specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "g", Description: "grayline"},
-	{IsImportOnly: false, Key: "l", Description: "long path"},
-	{IsImportOnly: false, Key: "o", Description: "other"},
-	{IsImportOnly: false, Key: "s", Description: "short path"},
+	{IsImportOnly: false, Key: "G", Description: "grayline"},
+	{IsImportOnly: false, Key: "L", Description: "long path"},
+	{IsImportOnly: false, Key: "O", Description: "other"},
+	{IsImportOnly: false, Key: "S", Description: "short path"},
 }
 
 // lookupMap contains all known AntPath specifications.

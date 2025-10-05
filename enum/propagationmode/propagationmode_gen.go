@@ -7,26 +7,26 @@ package propagationmode
 import "sync"
 
 const (
-	AS       PropagationMode = "as"       // as         = Aircraft Scatter
-	AUE      PropagationMode = "aue"      // aue        = Aurora-E
-	AUR      PropagationMode = "aur"      // aur        = Aurora
-	BS       PropagationMode = "bs"       // bs         = Back scatter
-	ECH      PropagationMode = "ech"      // ech        = EchoLink
-	EME      PropagationMode = "eme"      // eme        = Earth-Moon-Earth
-	ES       PropagationMode = "es"       // es         = Sporadic E
-	F2       PropagationMode = "f2"       // f2         = F2 Reflection
-	FAI      PropagationMode = "fai"      // fai        = Field Aligned Irregularities
-	GWAVE    PropagationMode = "gwave"    // gwave      = Ground Wave
-	INTERNET PropagationMode = "internet" // internet   = Internet-assisted
-	ION      PropagationMode = "ion"      // ion        = Ionoscatter
-	IRL      PropagationMode = "irl"      // irl        = IRLP
-	LOS      PropagationMode = "los"      // los        = Line of Sight (includes transmission through obstacles such as walls)
-	MS       PropagationMode = "ms"       // ms         = Meteor scatter
-	RPT      PropagationMode = "rpt"      // rpt        = Terrestrial or atmospheric repeater or transponder
-	RS       PropagationMode = "rs"       // rs         = Rain scatter
-	SAT      PropagationMode = "sat"      // sat        = Satellite
-	TEP      PropagationMode = "tep"      // tep        = Trans-equatorial
-	TR       PropagationMode = "tr"       // tr         = Tropospheric ducting
+	AS       PropagationMode = "AS"       // AS         = Aircraft Scatter
+	AUE      PropagationMode = "AUE"      // AUE        = Aurora-E
+	AUR      PropagationMode = "AUR"      // AUR        = Aurora
+	BS       PropagationMode = "BS"       // BS         = Back scatter
+	ECH      PropagationMode = "ECH"      // ECH        = EchoLink
+	EME      PropagationMode = "EME"      // EME        = Earth-Moon-Earth
+	ES       PropagationMode = "ES"       // ES         = Sporadic E
+	F2       PropagationMode = "F2"       // F2         = F2 Reflection
+	FAI      PropagationMode = "FAI"      // FAI        = Field Aligned Irregularities
+	GWAVE    PropagationMode = "GWAVE"    // GWAVE      = Ground Wave
+	INTERNET PropagationMode = "INTERNET" // INTERNET   = Internet-assisted
+	ION      PropagationMode = "ION"      // ION        = Ionoscatter
+	IRL      PropagationMode = "IRL"      // IRL        = IRLP
+	LOS      PropagationMode = "LOS"      // LOS        = Line of Sight (includes transmission through obstacles such as walls)
+	MS       PropagationMode = "MS"       // MS         = Meteor scatter
+	RPT      PropagationMode = "RPT"      // RPT        = Terrestrial or atmospheric repeater or transponder
+	RS       PropagationMode = "RS"       // RS         = Rain scatter
+	SAT      PropagationMode = "SAT"      // SAT        = Satellite
+	TEP      PropagationMode = "TEP"      // TEP        = Trans-equatorial
+	TR       PropagationMode = "TR"       // TR         = Tropospheric ducting
 )
 
 var (
@@ -36,26 +36,26 @@ var (
 
 // lookupList contains all known PropagationMode specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "as", Description: "Aircraft Scatter"},
-	{IsImportOnly: false, Key: "aue", Description: "Aurora-E"},
-	{IsImportOnly: false, Key: "aur", Description: "Aurora"},
-	{IsImportOnly: false, Key: "bs", Description: "Back scatter"},
-	{IsImportOnly: false, Key: "ech", Description: "EchoLink"},
-	{IsImportOnly: false, Key: "eme", Description: "Earth-Moon-Earth"},
-	{IsImportOnly: false, Key: "es", Description: "Sporadic E"},
-	{IsImportOnly: false, Key: "f2", Description: "F2 Reflection"},
-	{IsImportOnly: false, Key: "fai", Description: "Field Aligned Irregularities"},
-	{IsImportOnly: false, Key: "gwave", Description: "Ground Wave"},
-	{IsImportOnly: false, Key: "internet", Description: "Internet-assisted"},
-	{IsImportOnly: false, Key: "ion", Description: "Ionoscatter"},
-	{IsImportOnly: false, Key: "irl", Description: "IRLP"},
-	{IsImportOnly: false, Key: "los", Description: "Line of Sight (includes transmission through obstacles such as walls)"},
-	{IsImportOnly: false, Key: "ms", Description: "Meteor scatter"},
-	{IsImportOnly: false, Key: "rpt", Description: "Terrestrial or atmospheric repeater or transponder"},
-	{IsImportOnly: false, Key: "rs", Description: "Rain scatter"},
-	{IsImportOnly: false, Key: "sat", Description: "Satellite"},
-	{IsImportOnly: false, Key: "tep", Description: "Trans-equatorial"},
-	{IsImportOnly: false, Key: "tr", Description: "Tropospheric ducting"},
+	{IsImportOnly: false, Key: "AS", Description: "Aircraft Scatter"},
+	{IsImportOnly: false, Key: "AUE", Description: "Aurora-E"},
+	{IsImportOnly: false, Key: "AUR", Description: "Aurora"},
+	{IsImportOnly: false, Key: "BS", Description: "Back scatter"},
+	{IsImportOnly: false, Key: "ECH", Description: "EchoLink"},
+	{IsImportOnly: false, Key: "EME", Description: "Earth-Moon-Earth"},
+	{IsImportOnly: false, Key: "ES", Description: "Sporadic E"},
+	{IsImportOnly: false, Key: "F2", Description: "F2 Reflection"},
+	{IsImportOnly: false, Key: "FAI", Description: "Field Aligned Irregularities"},
+	{IsImportOnly: false, Key: "GWAVE", Description: "Ground Wave"},
+	{IsImportOnly: false, Key: "INTERNET", Description: "Internet-assisted"},
+	{IsImportOnly: false, Key: "ION", Description: "Ionoscatter"},
+	{IsImportOnly: false, Key: "IRL", Description: "IRLP"},
+	{IsImportOnly: false, Key: "LOS", Description: "Line of Sight (includes transmission through obstacles such as walls)"},
+	{IsImportOnly: false, Key: "MS", Description: "Meteor scatter"},
+	{IsImportOnly: false, Key: "RPT", Description: "Terrestrial or atmospheric repeater or transponder"},
+	{IsImportOnly: false, Key: "RS", Description: "Rain scatter"},
+	{IsImportOnly: false, Key: "SAT", Description: "Satellite"},
+	{IsImportOnly: false, Key: "TEP", Description: "Trans-equatorial"},
+	{IsImportOnly: false, Key: "TR", Description: "Tropospheric ducting"},
 }
 
 // lookupMap contains all known PropagationMode specifications.

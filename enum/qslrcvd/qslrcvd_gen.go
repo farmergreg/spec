@@ -7,11 +7,11 @@ package qslrcvd
 import "sync"
 
 const (
-	I QSLRcvd = "i" // i =
-	N QSLRcvd = "n" // n = an incoming QSL card has not been received the QSO has not been confirmed by the online service
-	R QSLRcvd = "r" // r = the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service
-	V QSLRcvd = "v" // Deprecated: v = DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw
-	Y QSLRcvd = "y" // y = an incoming QSL card has been received the QSO has been confirmed by the online service
+	I QSLRcvd = "I" // I =
+	N QSLRcvd = "N" // N = an incoming QSL card has not been received the QSO has not been confirmed by the online service
+	R QSLRcvd = "R" // R = the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service
+	V QSLRcvd = "V" // Deprecated: V = DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw
+	Y QSLRcvd = "Y" // Y = an incoming QSL card has been received the QSO has been confirmed by the online service
 )
 
 var (
@@ -21,11 +21,11 @@ var (
 
 // lookupList contains all known QSLRcvd specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "i", Meaning: "ignore or invalid", Description: ""},
-	{IsImportOnly: false, Key: "n", Meaning: "no", Description: "an incoming QSL card has not been received the QSO has not been confirmed by the online service"},
-	{IsImportOnly: false, Key: "r", Meaning: "requested", Description: "the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service"},
-	{IsImportOnly: true, Key: "v", Meaning: "verified", Description: "DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw"},
-	{IsImportOnly: false, Key: "y", Meaning: "yes (confirmed)", Description: "an incoming QSL card has been received the QSO has been confirmed by the online service"},
+	{IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
+	{IsImportOnly: false, Key: "N", Meaning: "no", Description: "an incoming QSL card has not been received the QSO has not been confirmed by the online service"},
+	{IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the logging station has requested a QSL card the logging station has requested the QSO be uploaded to the online service"},
+	{IsImportOnly: true, Key: "V", Meaning: "verified", Description: "DXCC award credit granted for the QSL card - instead use <CREDIT_GRANTED:39>DXCC:card,DXCC_BAND:card,DXCC_MODE:card DXCC credit granted for the LoTW confirmation - instead use <CREDIT_GRANTED:39>DXCC:lotw,DXCC_BAND:lotw,DXCC_MODE:lotw"},
+	{IsImportOnly: false, Key: "Y", Meaning: "yes (confirmed)", Description: "an incoming QSL card has been received the QSO has been confirmed by the online service"},
 }
 
 // lookupMap contains all known QSLRcvd specifications.

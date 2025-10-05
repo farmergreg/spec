@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = Type("")
 
 // New creates a new Type from the provided string.
 func New(value string) Type {
-	return Type(strings.ToLower(value))
+	return Type(strings.ToUpper(value))
 }
 
 // String returns the string representation of the Type.
@@ -24,7 +24,7 @@ func (t Type) String() string {
 // Compare returns an integer comparing two Type values lexicographically.
 // ADIF enums are case-insensitive.
 func (t Type) Compare(other Type) int {
-	return strings.Compare(strings.ToLower(string(t)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this Type equals the other Type.

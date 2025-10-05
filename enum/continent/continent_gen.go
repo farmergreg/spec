@@ -7,13 +7,13 @@ package continent
 import "sync"
 
 const (
-	AF Continent = "af" // af = Africa
-	AN Continent = "an" // an = Antarctica
-	AS Continent = "as" // as = Asia
-	EU Continent = "eu" // eu = Europe
-	NA Continent = "na" // na = North America
-	OC Continent = "oc" // oc = Oceania
-	SA Continent = "sa" // sa = South America
+	AF Continent = "AF" // AF = Africa
+	AN Continent = "AN" // AN = Antarctica
+	AS Continent = "AS" // AS = Asia
+	EU Continent = "EU" // EU = Europe
+	NA Continent = "NA" // NA = North America
+	OC Continent = "OC" // OC = Oceania
+	SA Continent = "SA" // SA = South America
 )
 
 var (
@@ -23,13 +23,13 @@ var (
 
 // lookupList contains all known Continent specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "af", Continent: "Africa"},
-	{IsImportOnly: false, Key: "an", Continent: "Antarctica"},
-	{IsImportOnly: false, Key: "as", Continent: "Asia"},
-	{IsImportOnly: false, Key: "eu", Continent: "Europe"},
-	{IsImportOnly: false, Key: "na", Continent: "North America"},
-	{IsImportOnly: false, Key: "oc", Continent: "Oceania"},
-	{IsImportOnly: false, Key: "sa", Continent: "South America"},
+	{IsImportOnly: false, Key: "AF", Continent: "Africa"},
+	{IsImportOnly: false, Key: "AN", Continent: "Antarctica"},
+	{IsImportOnly: false, Key: "AS", Continent: "Asia"},
+	{IsImportOnly: false, Key: "EU", Continent: "Europe"},
+	{IsImportOnly: false, Key: "NA", Continent: "North America"},
+	{IsImportOnly: false, Key: "OC", Continent: "Oceania"},
+	{IsImportOnly: false, Key: "SA", Continent: "South America"},
 }
 
 // lookupMap contains all known Continent specifications.

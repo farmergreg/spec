@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = QSLRcvd("")
 
 // New creates a new QSLRcvd from the provided string.
 func New(value string) QSLRcvd {
-	return QSLRcvd(strings.ToLower(value))
+	return QSLRcvd(strings.ToUpper(value))
 }
 
 // String returns the string representation of the QSLRcvd.
@@ -24,7 +24,7 @@ func (q QSLRcvd) String() string {
 // Compare returns an integer comparing two QSLRcvd values lexicographically.
 // ADIF enums are case-insensitive.
 func (q QSLRcvd) Compare(other QSLRcvd) int {
-	return strings.Compare(strings.ToLower(string(q)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(q)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this QSLRcvd equals the other QSLRcvd.

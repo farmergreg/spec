@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = SubMode("")
 
 // New creates a new SubMode from the provided string.
 func New(value string) SubMode {
-	return SubMode(strings.ToLower(value))
+	return SubMode(strings.ToUpper(value))
 }
 
 // String returns the string representation of the SubMode.
@@ -24,7 +24,7 @@ func (s SubMode) String() string {
 // Compare returns an integer comparing two SubMode values lexicographically.
 // ADIF enums are case-insensitive.
 func (s SubMode) Compare(other SubMode) int {
-	return strings.Compare(strings.ToLower(string(s)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(s)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this SubMode equals the other SubMode.

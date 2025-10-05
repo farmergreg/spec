@@ -8,9 +8,9 @@ import "sync"
 
 const (
 	UNCERTAIN QSOComplete = "?"   // ?    = uncertain
-	N         QSOComplete = "n"   // n    = no
-	NIL       QSOComplete = "nil" // nil  = not heard
-	Y         QSOComplete = "y"   // y    = yes
+	N         QSOComplete = "N"   // N    = no
+	NIL       QSOComplete = "NIL" // NIL  = not heard
+	Y         QSOComplete = "Y"   // Y    = yes
 )
 
 var (
@@ -21,9 +21,9 @@ var (
 // lookupList contains all known QSOComplete specifications.
 var lookupList = []Spec{
 	{IsImportOnly: false, Key: "?", Description: "uncertain"},
-	{IsImportOnly: false, Key: "n", Description: "no"},
-	{IsImportOnly: false, Key: "nil", Description: "not heard"},
-	{IsImportOnly: false, Key: "y", Description: "yes"},
+	{IsImportOnly: false, Key: "N", Description: "no"},
+	{IsImportOnly: false, Key: "NIL", Description: "not heard"},
+	{IsImportOnly: false, Key: "Y", Description: "yes"},
 }
 
 // lookupMap contains all known QSOComplete specifications.

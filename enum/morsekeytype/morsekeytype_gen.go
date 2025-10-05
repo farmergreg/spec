@@ -7,13 +7,13 @@ package morsekeytype
 import "sync"
 
 const (
-	BUG MorseKeyType = "bug" // bug  = Mechanical semi-automatic keyer or Bug
-	CPU MorseKeyType = "cpu" // cpu  = Computer Driven
-	DP  MorseKeyType = "dp"  // dp   = Dual Paddle
-	FAB MorseKeyType = "fab" // fab  = Mechanical fully-automatic keyer or Bug
-	SK  MorseKeyType = "sk"  // sk   = Straight Key
-	SP  MorseKeyType = "sp"  // sp   = Single Paddle
-	SS  MorseKeyType = "ss"  // ss   = Sideswiper
+	BUG MorseKeyType = "BUG" // BUG  = Mechanical semi-automatic keyer or Bug
+	CPU MorseKeyType = "CPU" // CPU  = Computer Driven
+	DP  MorseKeyType = "DP"  // DP   = Dual Paddle
+	FAB MorseKeyType = "FAB" // FAB  = Mechanical fully-automatic keyer or Bug
+	SK  MorseKeyType = "SK"  // SK   = Straight Key
+	SP  MorseKeyType = "SP"  // SP   = Single Paddle
+	SS  MorseKeyType = "SS"  // SS   = Sideswiper
 )
 
 var (
@@ -23,13 +23,13 @@ var (
 
 // lookupList contains all known MorseKeyType specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "bug", Description: "Mechanical semi-automatic keyer or Bug", Characteristics: "a control which actuates a switch as well as a control which actuates a spring and pendulum mechanism which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and a human makes the dahs and builds characters.", Examples: "Vibroplex Blue Racer Deluxe"},
-	{IsImportOnly: false, Key: "cpu", Description: "Computer Driven", Characteristics: "an electronic device performs the actuation of the switch.", MorseComposition: "a machine makes the dits and dahs to build the characters.", Examples: "N1MM+ Logging Software"},
-	{IsImportOnly: false, Key: "dp", Description: "Dual Paddle", Characteristics: "two controls which actuate independent switches.", MorseComposition: "a machine makes the dits and the dahs and a human builds the characters.", Examples: "Begali Sculpture, VK3IL pressure paddles, M0UKD capacitive touch paddles"},
-	{IsImportOnly: false, Key: "fab", Description: "Mechanical fully-automatic keyer or Bug", Characteristics: "a control which actuates one of two separate spring and pendulum mechanisms at a time, each of which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and the dahs and a human builds characters.", Examples: "GHD GN209FA fully-automatic bug"},
-	{IsImportOnly: false, Key: "sk", Description: "Straight Key", Characteristics: "a single control which actuates a single switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "Lionel J-38"},
-	{IsImportOnly: false, Key: "sp", Description: "Single Paddle", Characteristics: "a single control which actuates two independent switches.", MorseComposition: "a machine makes the dits and the dahs and a human builds the characters.", Examples: "American Morse Mini-B"},
-	{IsImportOnly: false, Key: "ss", Description: "Sideswiper", Characteristics: "a single control which actuates a SPDT (single poll, double throw) switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "W1SFR Green Machine Torsion Bar Cootie"},
+	{IsImportOnly: false, Key: "BUG", Description: "Mechanical semi-automatic keyer or Bug", Characteristics: "a control which actuates a switch as well as a control which actuates a spring and pendulum mechanism which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and a human makes the dahs and builds characters.", Examples: "Vibroplex Blue Racer Deluxe"},
+	{IsImportOnly: false, Key: "CPU", Description: "Computer Driven", Characteristics: "an electronic device performs the actuation of the switch.", MorseComposition: "a machine makes the dits and dahs to build the characters.", Examples: "N1MM+ Logging Software"},
+	{IsImportOnly: false, Key: "DP", Description: "Dual Paddle", Characteristics: "two controls which actuate independent switches.", MorseComposition: "a machine makes the dits and the dahs and a human builds the characters.", Examples: "Begali Sculpture, VK3IL pressure paddles, M0UKD capacitive touch paddles"},
+	{IsImportOnly: false, Key: "FAB", Description: "Mechanical fully-automatic keyer or Bug", Characteristics: "a control which actuates one of two separate spring and pendulum mechanisms at a time, each of which actuates a switch. Both switches are wired in parallel.", MorseComposition: "a machine makes the dits and the dahs and a human builds characters.", Examples: "GHD GN209FA fully-automatic bug"},
+	{IsImportOnly: false, Key: "SK", Description: "Straight Key", Characteristics: "a single control which actuates a single switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "Lionel J-38"},
+	{IsImportOnly: false, Key: "SP", Description: "Single Paddle", Characteristics: "a single control which actuates two independent switches.", MorseComposition: "a machine makes the dits and the dahs and a human builds the characters.", Examples: "American Morse Mini-B"},
+	{IsImportOnly: false, Key: "SS", Description: "Sideswiper", Characteristics: "a single control which actuates a SPDT (single poll, double throw) switch.", MorseComposition: "a human makes the dits and dahs and builds characters", Examples: "W1SFR Green Machine Torsion Bar Cootie"},
 }
 
 // lookupMap contains all known MorseKeyType specifications.

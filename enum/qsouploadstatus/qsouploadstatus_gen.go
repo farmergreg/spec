@@ -7,9 +7,9 @@ package qsouploadstatus
 import "sync"
 
 const (
-	M QSOUploadStatus = "m" // m = the QSO has been modified since being uploaded to the online service
-	N QSOUploadStatus = "n" // n = do not upload the QSO to the online service
-	Y QSOUploadStatus = "y" // y = the QSO has been uploaded to, and accepted by, the online service
+	M QSOUploadStatus = "M" // M = the QSO has been modified since being uploaded to the online service
+	N QSOUploadStatus = "N" // N = do not upload the QSO to the online service
+	Y QSOUploadStatus = "Y" // Y = the QSO has been uploaded to, and accepted by, the online service
 )
 
 var (
@@ -19,9 +19,9 @@ var (
 
 // lookupList contains all known QSOUploadStatus specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "m", Description: "the QSO has been modified since being uploaded to the online service"},
-	{IsImportOnly: false, Key: "n", Description: "do not upload the QSO to the online service"},
-	{IsImportOnly: false, Key: "y", Description: "the QSO has been uploaded to, and accepted by, the online service"},
+	{IsImportOnly: false, Key: "M", Description: "the QSO has been modified since being uploaded to the online service"},
+	{IsImportOnly: false, Key: "N", Description: "do not upload the QSO to the online service"},
+	{IsImportOnly: false, Key: "Y", Description: "the QSO has been uploaded to, and accepted by, the online service"},
 }
 
 // lookupMap contains all known QSOUploadStatus specifications.

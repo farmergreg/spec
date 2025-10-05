@@ -17,7 +17,7 @@ func (t *DataTypeIndicator) UnmarshalJSON(data []byte) error {
 	}
 
 	for _, r := range val {
-		*t = DataTypeIndicator(unicode.ToLower(r))
+		*t = DataTypeIndicator(unicode.ToUpper(r))
 		return nil
 	}
 
@@ -25,7 +25,7 @@ func (t *DataTypeIndicator) UnmarshalJSON(data []byte) error {
 }
 
 func NewDataTypeIndicator(value rune) DataTypeIndicator {
-	return DataTypeIndicator(unicode.ToLower(value))
+	return DataTypeIndicator(unicode.ToUpper(value))
 }
 
 func (t DataTypeIndicator) String() string {
@@ -33,9 +33,9 @@ func (t DataTypeIndicator) String() string {
 }
 
 func (t DataTypeIndicator) Compare(other DataTypeIndicator) int {
-	return int(unicode.ToLower(rune(t))) - int(unicode.ToLower(rune(other)))
+	return int(unicode.ToUpper(rune(t))) - int(unicode.ToUpper(rune(other)))
 }
 
 func (t DataTypeIndicator) Equals(other DataTypeIndicator) bool {
-	return unicode.ToLower(rune(t)) == unicode.ToLower(rune(other))
+	return unicode.ToUpper(rune(t)) == unicode.ToUpper(rune(other))
 }

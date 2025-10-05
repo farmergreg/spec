@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = AwardSponsorPrefix("")
 
 // New creates a new AwardSponsorPrefix from the provided string.
 func New(value string) AwardSponsorPrefix {
-	return AwardSponsorPrefix(strings.ToLower(value))
+	return AwardSponsorPrefix(strings.ToUpper(value))
 }
 
 // String returns the string representation of the AwardSponsorPrefix.
@@ -24,7 +24,7 @@ func (a AwardSponsorPrefix) String() string {
 // Compare returns an integer comparing two AwardSponsorPrefix values lexicographically.
 // ADIF enums are case-insensitive.
 func (t AwardSponsorPrefix) Compare(other AwardSponsorPrefix) int {
-	return strings.Compare(strings.ToLower(string(t)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this AwardSponsorPrefix equals the other AwardSponsorPrefix.

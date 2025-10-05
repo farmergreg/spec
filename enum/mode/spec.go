@@ -49,9 +49,9 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
-		v.Key = Mode(strings.ToLower(string(v.Key)))
+		v.Key = Mode(strings.ToUpper(string(v.Key)))
 		for i, subMode := range v.Submodes {
-			v.Submodes[i] = submode.SubMode(strings.ToLower(string(subMode)))
+			v.Submodes[i] = submode.SubMode(strings.ToUpper(string(subMode)))
 		}
 		result[k] = v
 	}

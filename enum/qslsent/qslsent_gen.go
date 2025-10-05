@@ -7,11 +7,11 @@ package qslsent
 import "sync"
 
 const (
-	I QSLSent = "i" // i =
-	N QSLSent = "n" // n = do not send an outgoing QSL card do not upload the QSO to the online service
-	Q QSLSent = "q" // q = an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service
-	R QSLSent = "r" // r = the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service
-	Y QSLSent = "y" // y = an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
+	I QSLSent = "I" // I =
+	N QSLSent = "N" // N = do not send an outgoing QSL card do not upload the QSO to the online service
+	Q QSLSent = "Q" // Q = an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service
+	R QSLSent = "R" // R = the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service
+	Y QSLSent = "Y" // Y = an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service
 )
 
 var (
@@ -21,11 +21,11 @@ var (
 
 // lookupList contains all known QSLSent specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "i", Meaning: "ignore or invalid", Description: ""},
-	{IsImportOnly: false, Key: "n", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
-	{IsImportOnly: false, Key: "q", Meaning: "queued", Description: "an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service"},
-	{IsImportOnly: false, Key: "r", Meaning: "requested", Description: "the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service"},
-	{IsImportOnly: false, Key: "y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
+	{IsImportOnly: false, Key: "I", Meaning: "ignore or invalid", Description: ""},
+	{IsImportOnly: false, Key: "N", Meaning: "no", Description: "do not send an outgoing QSL card do not upload the QSO to the online service"},
+	{IsImportOnly: false, Key: "Q", Meaning: "queued", Description: "an outgoing QSL card has been selected to be sent a QSO has been selected to be uploaded to the online service"},
+	{IsImportOnly: false, Key: "R", Meaning: "requested", Description: "the contacted station has requested a QSL card the contacted station has requested the QSO be uploaded to the online service"},
+	{IsImportOnly: false, Key: "Y", Meaning: "yes", Description: "an outgoing QSL card has been sent the QSO has been uploaded to, and accepted by, the online service"},
 }
 
 // lookupMap contains all known QSLSent specifications.

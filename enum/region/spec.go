@@ -40,7 +40,7 @@ type RegionCode string
 
 // New creates a new RegionCode from the provided string.
 func New(value string) RegionCode {
-	return RegionCode(strings.ToLower(value))
+	return RegionCode(strings.ToUpper(value))
 }
 
 // String returns the string representation of the RegionCode.
@@ -51,7 +51,7 @@ func (r RegionCode) String() string {
 // Compare returns an integer comparing two RegionCode values lexicographically.
 // ADIF enums are case-insensitive.
 func (r RegionCode) Compare(other RegionCode) int {
-	return strings.Compare(strings.ToLower(string(r)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(r)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this RegionCode equals the other RegionCode.
@@ -69,7 +69,7 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 
 	return codegen.CodeGenEnumMetadata{
 		ConstName:     constName,
-		ConstValue:    strconv.QuoteToASCII(strings.ToLower(string(s.Code))),
+		ConstValue:    strconv.QuoteToASCII(strings.ToUpper(string(s.Code))),
 		ConstComments: fmt.Sprintf("%4s.%-3s = %-5s %-15s; IMPORTANT: This is NOT the Region Code. It is a lookup key for use with RegionCompositeKeyMap", s.Code, s.DXCCEntityCode, s.Code, s.Region),
 		IsDeprecated:  bool(s.IsImportOnly),
 	}
@@ -78,7 +78,7 @@ func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 func (c SpecMapContainer) CodeGenRecords() map[codegen.CodeGenKey]codegen.CodeGenSpec {
 	result := make(map[codegen.CodeGenKey]codegen.CodeGenSpec, len(c.Records))
 	for k, v := range c.Records {
-		v.Code = RegionCode(strings.ToLower(string(v.Code)))
+		v.Code = RegionCode(strings.ToUpper(string(v.Code)))
 		result[k] = v
 	}
 	return result
@@ -88,7 +88,7 @@ func (c SpecMapContainer) CodeGenMetadata() codegen.CodeGenContainerMetadata {
 	keyMap := make(map[string]string)
 	for _, v := range c.Records {
 		code := strings.ToUpper(string(v.Code))
-		keyMap[code] = strings.ToLower(code)
+		keyMap[code] = strings.ToUpper(code)
 	}
 
 	return codegen.CodeGenContainerMetadata{

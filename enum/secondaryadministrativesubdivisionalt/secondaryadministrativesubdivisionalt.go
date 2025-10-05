@@ -12,7 +12,7 @@ var _ codegen.CodeGenKey = SecondaryAdministrativeSubdivisionAlt("")
 
 // New creates a new SecondaryAdministrativeSubdivisionAlt from the provided string.
 func New(value string) SecondaryAdministrativeSubdivisionAlt {
-	return SecondaryAdministrativeSubdivisionAlt(strings.ToLower(value))
+	return SecondaryAdministrativeSubdivisionAlt(strings.ToUpper(value))
 }
 
 // String returns the string representation of the SecondaryAdministrativeSubdivisionAlt.
@@ -23,7 +23,7 @@ func (s SecondaryAdministrativeSubdivisionAlt) String() string {
 // Compare returns an integer comparing two SecondaryAdministrativeSubdivisionAlt values lexicographically.
 // ADIF enums are case-insensitive.
 func (t SecondaryAdministrativeSubdivisionAlt) Compare(other SecondaryAdministrativeSubdivisionAlt) int {
-	return strings.Compare(strings.ToLower(string(t)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(t)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this SecondaryAdministrativeSubdivisionAlt equals the other SecondaryAdministrativeSubdivisionAlt.

@@ -7,17 +7,17 @@ package awardsponsor
 import "sync"
 
 const (
-	ADIF  AwardSponsorPrefix = "adif_"  // adif_  = ADIF Development Group
-	ARI   AwardSponsorPrefix = "ari_"   // ari_   = ARI - l'Associazione Radioamatori Italiani
-	ARRL  AwardSponsorPrefix = "arrl_"  // arrl_  = ARRL - American Radio Relay League
-	CQ    AwardSponsorPrefix = "cq_"    // cq_    = CQ Magazine
-	DARC  AwardSponsorPrefix = "darc_"  // darc_  = DARC - Deutscher Amateur-Radio-Club e.V.
-	EQSL  AwardSponsorPrefix = "eqsl_"  // eqsl_  = eQSL
-	IARU  AwardSponsorPrefix = "iaru_"  // iaru_  = IARU - International Amateur Radio Union
-	JARL  AwardSponsorPrefix = "jarl_"  // jarl_  = JARL - Japan Amateur Radio League
-	RSGB  AwardSponsorPrefix = "rsgb_"  // rsgb_  = RSGB - Radio Society of Great Britain
-	TAG   AwardSponsorPrefix = "tag_"   // tag_   = TAG - Tambov award group
-	WABAG AwardSponsorPrefix = "wabag_" // wabag_ = WAB - Worked all Britain
+	ADIF  AwardSponsorPrefix = "ADIF_"  // ADIF_  = ADIF Development Group
+	ARI   AwardSponsorPrefix = "ARI_"   // ARI_   = ARI - l'Associazione Radioamatori Italiani
+	ARRL  AwardSponsorPrefix = "ARRL_"  // ARRL_  = ARRL - American Radio Relay League
+	CQ    AwardSponsorPrefix = "CQ_"    // CQ_    = CQ Magazine
+	DARC  AwardSponsorPrefix = "DARC_"  // DARC_  = DARC - Deutscher Amateur-Radio-Club e.V.
+	EQSL  AwardSponsorPrefix = "EQSL_"  // EQSL_  = eQSL
+	IARU  AwardSponsorPrefix = "IARU_"  // IARU_  = IARU - International Amateur Radio Union
+	JARL  AwardSponsorPrefix = "JARL_"  // JARL_  = JARL - Japan Amateur Radio League
+	RSGB  AwardSponsorPrefix = "RSGB_"  // RSGB_  = RSGB - Radio Society of Great Britain
+	TAG   AwardSponsorPrefix = "TAG_"   // TAG_   = TAG - Tambov award group
+	WABAG AwardSponsorPrefix = "WABAG_" // WABAG_ = WAB - Worked all Britain
 )
 
 var (
@@ -27,17 +27,17 @@ var (
 
 // lookupList contains all known AwardSponsorPrefix specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "adif_", Description: "ADIF Development Group"},
-	{IsImportOnly: false, Key: "ari_", Description: "ARI - l'Associazione Radioamatori Italiani"},
-	{IsImportOnly: false, Key: "arrl_", Description: "ARRL - American Radio Relay League"},
-	{IsImportOnly: false, Key: "cq_", Description: "CQ Magazine"},
-	{IsImportOnly: false, Key: "darc_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
-	{IsImportOnly: false, Key: "eqsl_", Description: "eQSL"},
-	{IsImportOnly: false, Key: "iaru_", Description: "IARU - International Amateur Radio Union"},
-	{IsImportOnly: false, Key: "jarl_", Description: "JARL - Japan Amateur Radio League"},
-	{IsImportOnly: false, Key: "rsgb_", Description: "RSGB - Radio Society of Great Britain"},
-	{IsImportOnly: false, Key: "tag_", Description: "TAG - Tambov award group"},
-	{IsImportOnly: false, Key: "wabag_", Description: "WAB - Worked all Britain"},
+	{IsImportOnly: false, Key: "ADIF_", Description: "ADIF Development Group"},
+	{IsImportOnly: false, Key: "ARI_", Description: "ARI - l'Associazione Radioamatori Italiani"},
+	{IsImportOnly: false, Key: "ARRL_", Description: "ARRL - American Radio Relay League"},
+	{IsImportOnly: false, Key: "CQ_", Description: "CQ Magazine"},
+	{IsImportOnly: false, Key: "DARC_", Description: "DARC - Deutscher Amateur-Radio-Club e.V."},
+	{IsImportOnly: false, Key: "EQSL_", Description: "eQSL"},
+	{IsImportOnly: false, Key: "IARU_", Description: "IARU - International Amateur Radio Union"},
+	{IsImportOnly: false, Key: "JARL_", Description: "JARL - Japan Amateur Radio League"},
+	{IsImportOnly: false, Key: "RSGB_", Description: "RSGB - Radio Society of Great Britain"},
+	{IsImportOnly: false, Key: "TAG_", Description: "TAG - Tambov award group"},
+	{IsImportOnly: false, Key: "WABAG_", Description: "WAB - Worked all Britain"},
 }
 
 // lookupMap contains all known AwardSponsorPrefix specifications.

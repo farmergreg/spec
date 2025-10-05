@@ -7,262 +7,262 @@ package contest
 import "sync"
 
 const (
-	CONTEST_070_160M_SPRINT        Contest = "070-160m-sprint"        // 070-160m-sprint      = PODXS Great Pumpkin Sprint
-	CONTEST_070_3_DAY              Contest = "070-3-day"              // 070-3-day            = PODXS Three Day Weekend
-	CONTEST_070_31_FLAVORS         Contest = "070-31-flavors"         // 070-31-flavors       = PODXS 31 Flavors
-	CONTEST_070_40M_SPRINT         Contest = "070-40m-sprint"         // 070-40m-sprint       = PODXS 40m Firecracker Sprint
-	CONTEST_070_80M_SPRINT         Contest = "070-80m-sprint"         // 070-80m-sprint       = PODXS 80m Jay Hudak Memorial Sprint
-	CONTEST_070_PSKFEST            Contest = "070-pskfest"            // 070-pskfest          = PODXS PSKFest
-	CONTEST_070_ST_PATS_DAY        Contest = "070-st-pats-day"        // 070-st-pats-day      = PODXS St. Patricks Day
-	CONTEST_070_VALENTINE_SPRINT   Contest = "070-valentine-sprint"   // 070-valentine-sprint = PODXS Valentine Sprint
-	CONTEST_10_RTTY                Contest = "10-rtty"                // 10-rtty              = Ten-Meter RTTY Contest (2011 onwards)
-	CONTEST_1010_OPEN_SEASON       Contest = "1010-open-season"       // 1010-open-season     = Open Season Ten Meter QSO Party
-	CONTEST_7QP                    Contest = "7qp"                    // 7qp                  = 7th-Area QSO Party
-	CONTEST_AL_QSO_PARTY           Contest = "al-qso-party"           // al-qso-party         = Alabama QSO Party
-	CONTEST_ALL_ASIAN_DX_CW        Contest = "all-asian-dx-cw"        // all-asian-dx-cw      = JARL All Asian DX Contest (CW)
-	CONTEST_ALL_ASIAN_DX_PHONE     Contest = "all-asian-dx-phone"     // all-asian-dx-phone   = JARL All Asian DX Contest (PHONE)
-	CONTEST_ANARTS_RTTY            Contest = "anarts-rtty"            // anarts-rtty          = ANARTS WW RTTY
-	CONTEST_ANATOLIAN_RTTY         Contest = "anatolian-rtty"         // anatolian-rtty       = Anatolian WW RTTY
-	CONTEST_AP_SPRINT              Contest = "ap-sprint"              // ap-sprint            = Asia - Pacific Sprint
-	CONTEST_AR_QSO_PARTY           Contest = "ar-qso-party"           // ar-qso-party         = Arkansas QSO Party
-	CONTEST_ARI_DX                 Contest = "ari-dx"                 // ari-dx               = ARI DX Contest
-	CONTEST_ARI_EME                Contest = "ari-eme"                // ari-eme              = ARI Italian EME Trophy
-	CONTEST_ARI_IAC_13CM           Contest = "ari-iac-13cm"           // ari-iac-13cm         = ARI Italian Activity Contest (13cm+)
-	CONTEST_ARI_IAC_23CM           Contest = "ari-iac-23cm"           // ari-iac-23cm         = ARI Italian Activity Contest (23cm)
-	CONTEST_ARI_IAC_6M             Contest = "ari-iac-6m"             // ari-iac-6m           = ARI Italian Activity Contest (6m)
-	CONTEST_ARI_IAC_UHF            Contest = "ari-iac-uhf"            // ari-iac-uhf          = ARI Italian Activity Contest (UHF)
-	CONTEST_ARI_IAC_VHF            Contest = "ari-iac-vhf"            // ari-iac-vhf          = ARI Italian Activity Contest (VHF)
-	CONTEST_ARRL_10                Contest = "arrl-10"                // arrl-10              = ARRL 10 Meter Contest
-	CONTEST_ARRL_10_GHZ            Contest = "arrl-10-ghz"            // arrl-10-ghz          = ARRL 10 GHz and Up Contest
-	CONTEST_ARRL_160               Contest = "arrl-160"               // arrl-160             = ARRL 160 Meter Contest
-	CONTEST_ARRL_222               Contest = "arrl-222"               // arrl-222             = ARRL 222 MHz and Up Distance Contest
-	CONTEST_ARRL_DIGI              Contest = "arrl-digi"              // arrl-digi            = ARRL International Digital Contest
-	CONTEST_ARRL_DX_CW             Contest = "arrl-dx-cw"             // arrl-dx-cw           = ARRL International DX Contest (CW)
-	CONTEST_ARRL_DX_SSB            Contest = "arrl-dx-ssb"            // arrl-dx-ssb          = ARRL International DX Contest (Phone)
-	CONTEST_ARRL_EME               Contest = "arrl-eme"               // arrl-eme             = ARRL EME contest
-	CONTEST_ARRL_FIELD_DAY         Contest = "arrl-field-day"         // arrl-field-day       = ARRL Field Day
-	CONTEST_ARRL_RR_CW             Contest = "arrl-rr-cw"             // arrl-rr-cw           = ARRL Rookie Roundup (CW)
-	CONTEST_ARRL_RR_RTTY           Contest = "arrl-rr-rtty"           // arrl-rr-rtty         = ARRL Rookie Roundup (RTTY)
-	CONTEST_ARRL_RR_SSB            Contest = "arrl-rr-ssb"            // arrl-rr-ssb          = ARRL Rookie Roundup (Phone)
-	CONTEST_ARRL_RTTY              Contest = "arrl-rtty"              // arrl-rtty            = ARRL RTTY Round-Up
-	CONTEST_ARRL_SCR               Contest = "arrl-scr"               // arrl-scr             = ARRL School Club Roundup
-	CONTEST_ARRL_SS_CW             Contest = "arrl-ss-cw"             // arrl-ss-cw           = ARRL November Sweepstakes (CW)
-	CONTEST_ARRL_SS_SSB            Contest = "arrl-ss-ssb"            // arrl-ss-ssb          = ARRL November Sweepstakes (Phone)
-	CONTEST_ARRL_UHF_AUG           Contest = "arrl-uhf-aug"           // arrl-uhf-aug         = ARRL August UHF Contest
-	CONTEST_ARRL_VHF_JAN           Contest = "arrl-vhf-jan"           // arrl-vhf-jan         = ARRL January VHF Sweepstakes
-	CONTEST_ARRL_VHF_JUN           Contest = "arrl-vhf-jun"           // arrl-vhf-jun         = ARRL June VHF QSO Party
-	CONTEST_ARRL_VHF_SEP           Contest = "arrl-vhf-sep"           // arrl-vhf-sep         = ARRL September VHF QSO Party
-	CONTEST_AZ_QSO_PARTY           Contest = "az-qso-party"           // az-qso-party         = Arizona QSO Party
-	CONTEST_BANGGAI_DX             Contest = "banggai-dx"             // banggai-dx           = ORARI Banggai DX Contest
-	CONTEST_BARTG_RTTY             Contest = "bartg-rtty"             // bartg-rtty           = BARTG Spring RTTY Contest
-	CONTEST_BARTG_SPRINT           Contest = "bartg-sprint"           // bartg-sprint         = BARTG Sprint Contest
-	CONTEST_BC_QSO_PARTY           Contest = "bc-qso-party"           // bc-qso-party         = British Columbia QSO Party
-	CONTEST_BEKASI_MERDEKA_CONTEST Contest = "bekasi-merdeka-contest" // bekasi-merdeka-contest = ORARI Bekasi Merdeka Contest
-	CONTEST_CA_QSO_PARTY           Contest = "ca-qso-party"           // ca-qso-party         = California QSO Party
-	CONTEST_CIS_DX                 Contest = "cis-dx"                 // cis-dx               = CIS DX Contest
-	CONTEST_CO_QSO_PARTY           Contest = "co-qso-party"           // co-qso-party         = Colorado QSO Party
-	CONTEST_CQ_160_CW              Contest = "cq-160-cw"              // cq-160-cw            = CQ WW 160 Meter DX Contest (CW)
-	CONTEST_CQ_160_SSB             Contest = "cq-160-ssb"             // cq-160-ssb           = CQ WW 160 Meter DX Contest (SSB)
-	CONTEST_CQ_M                   Contest = "cq-m"                   // cq-m                 = CQ-M International DX Contest
-	CONTEST_CQ_VHF                 Contest = "cq-vhf"                 // cq-vhf               = CQ World-Wide VHF Contest
-	CONTEST_CQ_WPX_CW              Contest = "cq-wpx-cw"              // cq-wpx-cw            = CQ WW WPX Contest (CW)
-	CONTEST_CQ_WPX_RTTY            Contest = "cq-wpx-rtty"            // cq-wpx-rtty          = CQ/RJ WW RTTY WPX Contest
-	CONTEST_CQ_WPX_SSB             Contest = "cq-wpx-ssb"             // cq-wpx-ssb           = CQ WW WPX Contest (SSB)
-	CONTEST_CQ_WW_CW               Contest = "cq-ww-cw"               // cq-ww-cw             = CQ WW DX Contest (CW)
-	CONTEST_CQ_WW_RTTY             Contest = "cq-ww-rtty"             // cq-ww-rtty           = CQ/RJ WW RTTY DX Contest
-	CONTEST_CQ_WW_SSB              Contest = "cq-ww-ssb"              // cq-ww-ssb            = CQ WW DX Contest (SSB)
-	CONTEST_CT_QSO_PARTY           Contest = "ct-qso-party"           // ct-qso-party         = Connecticut QSO Party
-	CONTEST_CVA_DX_CW              Contest = "cva-dx-cw"              // cva-dx-cw            = Concurso Verde e Amarelo DX CW Contest
-	CONTEST_CVA_DX_SSB             Contest = "cva-dx-ssb"             // cva-dx-ssb           = Concurso Verde e Amarelo DX CW Contest
-	CONTEST_CWOPS_CW_OPEN          Contest = "cwops-cw-open"          // cwops-cw-open        = CWops CW Open Competition
-	CONTEST_CWOPS_CWT              Contest = "cwops-cwt"              // cwops-cwt            = CWops Mini-CWT Test
-	CONTEST_DARC_10                Contest = "darc-10"                // darc-10              = DARC 10m Contest
-	CONTEST_DARC_CWA               Contest = "darc-cwa"               // darc-cwa             = DARC CW Trainee Contest
-	CONTEST_DARC_FT4               Contest = "darc-ft4"               // darc-ft4             = DARC FT4 Contest
-	CONTEST_DARC_HELL              Contest = "darc-hell"              // darc-hell            = DARC Hell Contest
-	CONTEST_DARC_MICROWAVE         Contest = "darc-microwave"         // darc-microwave       = DARC Microwave Contest
-	CONTEST_DARC_TRAINEE           Contest = "darc-trainee"           // darc-trainee         = DARC Trainee Contest
-	CONTEST_DARC_UKW_FIELD_DAY     Contest = "darc-ukw-field-day"     // darc-ukw-field-day   = DARC UKW Summer Contest
-	CONTEST_DARC_UKW_SPRING        Contest = "darc-ukw-spring"        // darc-ukw-spring      = DARC UKW Spring Contest
-	CONTEST_DARC_VHF_UHF_MICROWAVE Contest = "darc-vhf-uhf-microwave" // darc-vhf-uhf-microwave = DARC VHF-, UHF-, Microwave Contest (May)
-	CONTEST_DARC_WAEDC_CW          Contest = "darc-waedc-cw"          // darc-waedc-cw        = WAE DX Contest (CW)
-	CONTEST_DARC_WAEDC_RTTY        Contest = "darc-waedc-rtty"        // darc-waedc-rtty      = WAE DX Contest (RTTY)
-	CONTEST_DARC_WAEDC_SSB         Contest = "darc-waedc-ssb"         // darc-waedc-ssb       = WAE DX Contest (SSB)
-	CONTEST_DARC_WAG               Contest = "darc-wag"               // darc-wag             = DARC Worked All Germany
-	CONTEST_DE_QSO_PARTY           Contest = "de-qso-party"           // de-qso-party         = Delaware QSO Party
-	CONTEST_DL_DX_RTTY             Contest = "dl-dx-rtty"             // dl-dx-rtty           = DL-DX RTTY Contest
-	CONTEST_DMC_RTTY               Contest = "dmc-rtty"               // dmc-rtty             = DMC RTTY Contest
-	CONTEST_EA_CNCW                Contest = "ea-cncw"                // ea-cncw              = Concurso Nacional de Telegrafía
-	CONTEST_EA_DME                 Contest = "ea-dme"                 // ea-dme               = Municipios Españoles
-	CONTEST_EA_MAJESTAD_CW         Contest = "ea-majestad-cw"         // ea-majestad-cw       = His Majesty The King of Spain CW Contest (2022 and later)
-	CONTEST_EA_MAJESTAD_SSB        Contest = "ea-majestad-ssb"        // ea-majestad-ssb      = His Majesty The King of Spain SSB Contest (2022 and later)
-	CONTEST_EA_PSK63               Contest = "ea-psk63"               // ea-psk63             = EA PSK63
-	CONTEST_EA_RTTY                Contest = "ea-rtty"                // Deprecated: ea-rtty              = Unión de Radioaficionados Españoles RTTY Contest
-	CONTEST_EA_SMRE_CW             Contest = "ea-smre-cw"             // ea-smre-cw           = Su Majestad El Rey de España - CW (2021 and earlier)
-	CONTEST_EA_SMRE_SSB            Contest = "ea-smre-ssb"            // ea-smre-ssb          = Su Majestad El Rey de España - SSB (2021 and earlier)
-	CONTEST_EA_VHF_ATLANTIC        Contest = "ea-vhf-atlantic"        // ea-vhf-atlantic      = Atlántico V-UHF
-	CONTEST_EA_VHF_COM             Contest = "ea-vhf-com"             // ea-vhf-com           = Combinado de V-UHF
-	CONTEST_EA_VHF_COSTA_SOL       Contest = "ea-vhf-costa-sol"       // ea-vhf-costa-sol     = Costa del Sol V-UHF
-	CONTEST_EA_VHF_EA              Contest = "ea-vhf-ea"              // ea-vhf-ea            = Nacional VHF
-	CONTEST_EA_VHF_EA1RCS          Contest = "ea-vhf-ea1rcs"          // ea-vhf-ea1rcs        = Segovia EA1RCS V-UHF
-	CONTEST_EA_VHF_QSL             Contest = "ea-vhf-qsl"             // ea-vhf-qsl           = QSL V-UHF & 50MHz
-	CONTEST_EA_VHF_SADURNI         Contest = "ea-vhf-sadurni"         // ea-vhf-sadurni       = Sant Sadurni V-UHF
-	CONTEST_EA_WW_RTTY             Contest = "ea-ww-rtty"             // ea-ww-rtty           = Unión de Radioaficionados Españoles RTTY Contest
-	CONTEST_EASTER                 Contest = "easter"                 // easter               = DARC Easter Contest
-	CONTEST_EPC_PSK63              Contest = "epc-psk63"              // epc-psk63            = PSK63 QSO Party
-	CONTEST_EU_SPRINT              Contest = "eu sprint"              // eu sprint            = EU Sprint
-	CONTEST_EU_HF                  Contest = "eu-hf"                  // eu-hf                = EU HF Championship
-	CONTEST_EU_PSK_DX              Contest = "eu-psk-dx"              // eu-psk-dx            = EU PSK DX Contest
-	CONTEST_EUCW160M               Contest = "eucw160m"               // eucw160m             = European CW Association 160m CW Party
-	CONTEST_FALL_SPRINT            Contest = "fall sprint"            // fall sprint          = FISTS Fall Sprint
-	CONTEST_FL_QSO_PARTY           Contest = "fl-qso-party"           // fl-qso-party         = Florida QSO Party
-	CONTEST_GA_QSO_PARTY           Contest = "ga-qso-party"           // ga-qso-party         = Georgia QSO Party
-	CONTEST_HA_DX                  Contest = "ha-dx"                  // ha-dx                = Hungarian DX Contest
-	CONTEST_HELVETIA               Contest = "helvetia"               // helvetia             = Helvetia Contest
-	CONTEST_HI_QSO_PARTY           Contest = "hi-qso-party"           // hi-qso-party         = Hawaiian QSO Party
-	CONTEST_HOLYLAND               Contest = "holyland"               // holyland             = IARC Holyland Contest
-	CONTEST_IA_QSO_PARTY           Contest = "ia-qso-party"           // ia-qso-party         = Iowa QSO Party
-	CONTEST_IARU_FIELD_DAY         Contest = "iaru-field-day"         // iaru-field-day       = DARC IARU Region 1 Field Day
-	CONTEST_IARU_HF                Contest = "iaru-hf"                // iaru-hf              = IARU HF World Championship
-	CONTEST_ICWC_MST               Contest = "icwc-mst"               // icwc-mst             = ICWC Medium Speed Test
-	CONTEST_ID_QSO_PARTY           Contest = "id-qso-party"           // id-qso-party         = Idaho QSO Party
-	CONTEST_IL_QSO_PARTY           Contest = "il qso party"           // il qso party         = Illinois QSO Party
-	CONTEST_IN_QSO_PARTY           Contest = "in-qso-party"           // in-qso-party         = Indiana QSO Party
-	CONTEST_JARTS_WW_RTTY          Contest = "jarts-ww-rtty"          // jarts-ww-rtty        = JARTS WW RTTY
-	CONTEST_JIDX_CW                Contest = "jidx-cw"                // jidx-cw              = Japan International DX Contest (CW)
-	CONTEST_JIDX_SSB               Contest = "jidx-ssb"               // jidx-ssb             = Japan International DX Contest (SSB)
-	CONTEST_JT_DX_RTTY             Contest = "jt-dx-rtty"             // jt-dx-rtty           = Mongolian RTTY DX Contest
-	CONTEST_K1USN_SSO              Contest = "k1usn-sso"              // k1usn-sso            = K1USN Slow Speed Open
-	CONTEST_K1USN_SST              Contest = "k1usn-sst"              // k1usn-sst            = K1USN Slow Speed Test
-	CONTEST_KS_QSO_PARTY           Contest = "ks-qso-party"           // ks-qso-party         = Kansas QSO Party
-	CONTEST_KY_QSO_PARTY           Contest = "ky-qso-party"           // ky-qso-party         = Kentucky QSO Party
-	CONTEST_LA_QSO_PARTY           Contest = "la-qso-party"           // la-qso-party         = Louisiana QSO Party
-	CONTEST_LDC_RTTY               Contest = "ldc-rtty"               // ldc-rtty             = DRCG Long Distance Contest (RTTY)
-	CONTEST_LZ_DX                  Contest = "lz dx"                  // lz dx                = LZ DX Contest
-	CONTEST_MAR_QSO_PARTY          Contest = "mar-qso-party"          // mar-qso-party        = Maritimes QSO Party
-	CONTEST_MD_QSO_PARTY           Contest = "md-qso-party"           // md-qso-party         = Maryland QSO Party
-	CONTEST_ME_QSO_PARTY           Contest = "me-qso-party"           // me-qso-party         = Maine QSO Party
-	CONTEST_MI_QSO_PARTY           Contest = "mi-qso-party"           // mi-qso-party         = Michigan QSO Party
-	CONTEST_MIDATLANTIC_QSO_PARTY  Contest = "midatlantic-qso-party"  // midatlantic-qso-party = Mid-Atlantic QSO Party
-	CONTEST_MN_QSO_PARTY           Contest = "mn-qso-party"           // mn-qso-party         = Minnesota QSO Party
-	CONTEST_MO_QSO_PARTY           Contest = "mo-qso-party"           // mo-qso-party         = Missouri QSO Party
-	CONTEST_MS_QSO_PARTY           Contest = "ms-qso-party"           // ms-qso-party         = Mississippi QSO Party
-	CONTEST_MT_QSO_PARTY           Contest = "mt-qso-party"           // mt-qso-party         = Montana QSO Party
-	CONTEST_NA_SPRINT_CW           Contest = "na-sprint-cw"           // na-sprint-cw         = North America Sprint (CW)
-	CONTEST_NA_SPRINT_RTTY         Contest = "na-sprint-rtty"         // na-sprint-rtty       = North America Sprint (RTTY)
-	CONTEST_NA_SPRINT_SSB          Contest = "na-sprint-ssb"          // na-sprint-ssb        = North America Sprint (Phone)
-	CONTEST_NAQP_CW                Contest = "naqp-cw"                // naqp-cw              = North America QSO Party (CW)
-	CONTEST_NAQP_RTTY              Contest = "naqp-rtty"              // naqp-rtty            = North America QSO Party (RTTY)
-	CONTEST_NAQP_SSB               Contest = "naqp-ssb"               // naqp-ssb             = North America QSO Party (Phone)
-	CONTEST_NAVAL                  Contest = "naval"                  // naval                = International Naval Contest (INC)
-	CONTEST_NC_QSO_PARTY           Contest = "nc-qso-party"           // nc-qso-party         = North Carolina QSO Party
-	CONTEST_ND_QSO_PARTY           Contest = "nd-qso-party"           // nd-qso-party         = North Dakota QSO Party
-	CONTEST_NE_QSO_PARTY           Contest = "ne-qso-party"           // ne-qso-party         = Nebraska QSO Party
-	CONTEST_NEQP                   Contest = "neqp"                   // neqp                 = New England QSO Party
-	CONTEST_NH_QSO_PARTY           Contest = "nh-qso-party"           // nh-qso-party         = New Hampshire QSO Party
-	CONTEST_NJ_QSO_PARTY           Contest = "nj-qso-party"           // nj-qso-party         = New Jersey QSO Party
-	CONTEST_NM_QSO_PARTY           Contest = "nm-qso-party"           // nm-qso-party         = New Mexico QSO Party
-	CONTEST_NRAU_BALTIC_CW         Contest = "nrau-baltic-cw"         // nrau-baltic-cw       = NRAU-Baltic Contest (CW)
-	CONTEST_NRAU_BALTIC_SSB        Contest = "nrau-baltic-ssb"        // nrau-baltic-ssb      = NRAU-Baltic Contest (SSB)
-	CONTEST_NV_QSO_PARTY           Contest = "nv-qso-party"           // nv-qso-party         = Nevada QSO Party
-	CONTEST_NY_QSO_PARTY           Contest = "ny-qso-party"           // ny-qso-party         = New York QSO Party
-	CONTEST_OCEANIA_DX_CW          Contest = "oceania-dx-cw"          // oceania-dx-cw        = Oceania DX Contest (CW)
-	CONTEST_OCEANIA_DX_SSB         Contest = "oceania-dx-ssb"         // oceania-dx-ssb       = Oceania DX Contest (SSB)
-	CONTEST_OH_QSO_PARTY           Contest = "oh-qso-party"           // oh-qso-party         = Ohio QSO Party
-	CONTEST_OK_DX_RTTY             Contest = "ok-dx-rtty"             // ok-dx-rtty           = Czech Radio Club OK DX Contest
-	CONTEST_OK_OM_DX               Contest = "ok-om-dx"               // ok-om-dx             = Czech Radio Club OK-OM DX Contest
-	CONTEST_OK_QSO_PARTY           Contest = "ok-qso-party"           // ok-qso-party         = Oklahoma QSO Party
-	CONTEST_OMISS_QSO_PARTY        Contest = "omiss-qso-party"        // omiss-qso-party      = Old Man International Sideband Society QSO Party
-	CONTEST_ON_QSO_PARTY           Contest = "on-qso-party"           // on-qso-party         = Ontario QSO Party
-	CONTEST_OR_QSO_PARTY           Contest = "or-qso-party"           // or-qso-party         = Oregon QSO Party
-	CONTEST_ORARI_DX               Contest = "orari-dx"               // orari-dx             = ORARI DX Contest
-	CONTEST_PA_QSO_PARTY           Contest = "pa-qso-party"           // pa-qso-party         = Pennsylvania QSO Party
-	CONTEST_PACC                   Contest = "pacc"                   // pacc                 = Dutch PACC Contest
-	CONTEST_PCC                    Contest = "pcc"                    // pcc                  = PCCPro CW Contest
-	CONTEST_PSK_DEATHMATCH         Contest = "psk-deathmatch"         // psk-deathmatch       = MDXA PSK DeathMatch (2005-2010)
-	CONTEST_QC_QSO_PARTY           Contest = "qc-qso-party"           // qc-qso-party         = Quebec QSO Party
-	CONTEST_RAC                    Contest = "rac"                    // Deprecated: rac                  = Canadian Amateur Radio Society Contest
-	CONTEST_RAC_CANADA_DAY         Contest = "rac-canada-day"         // rac-canada-day       = RAC Canada Day Contest
-	CONTEST_RAC_CANADA_WINTER      Contest = "rac-canada-winter"      // rac-canada-winter    = RAC Canada Winter Contest
-	CONTEST_RDAC                   Contest = "rdac"                   // rdac                 = Russian District Award Contest
-	CONTEST_RDXC                   Contest = "rdxc"                   // rdxc                 = Russian DX Contest
-	CONTEST_REF_160M               Contest = "ref-160m"               // ref-160m             = Reseau des Emetteurs Francais 160m Contest
-	CONTEST_REF_CW                 Contest = "ref-cw"                 // ref-cw               = Reseau des Emetteurs Francais Contest (CW)
-	CONTEST_REF_SSB                Contest = "ref-ssb"                // ref-ssb              = Reseau des Emetteurs Francais Contest (SSB)
-	CONTEST_REP_PORTUGAL_DAY_HF    Contest = "rep-portugal-day-hf"    // rep-portugal-day-hf  = Rede dos Emissores Portugueses Portugal Day HF Contest
-	CONTEST_RI_QSO_PARTY           Contest = "ri-qso-party"           // ri-qso-party         = Rhode Island QSO Party
-	CONTEST_RSGB_160               Contest = "rsgb-160"               // rsgb-160             = 1.8MHz Contest
-	CONTEST_RSGB_21_28_CW          Contest = "rsgb-21/28-cw"          // rsgb-21/28-cw        = 21/28 MHz Contest (CW)
-	CONTEST_RSGB_21_28_SSB         Contest = "rsgb-21/28-ssb"         // rsgb-21/28-ssb       = 21/28 MHz Contest (SSB)
-	CONTEST_RSGB_80M_CC            Contest = "rsgb-80m-cc"            // rsgb-80m-cc          = 80m Club Championships
-	CONTEST_RSGB_AFS_CW            Contest = "rsgb-afs-cw"            // rsgb-afs-cw          = Affiliated Societies Team Contest (CW)
-	CONTEST_RSGB_AFS_SSB           Contest = "rsgb-afs-ssb"           // rsgb-afs-ssb         = Affiliated Societies Team Contest (SSB)
-	CONTEST_RSGB_CLUB_CALLS        Contest = "rsgb-club-calls"        // rsgb-club-calls      = Club Calls
-	CONTEST_RSGB_COMMONWEALTH      Contest = "rsgb-commonwealth"      // rsgb-commonwealth    = Commonwealth Contest
-	CONTEST_RSGB_IOTA              Contest = "rsgb-iota"              // rsgb-iota            = IOTA Contest
-	CONTEST_RSGB_LOW_POWER         Contest = "rsgb-low-power"         // rsgb-low-power       = Low Power Field Day
-	CONTEST_RSGB_NFD               Contest = "rsgb-nfd"               // rsgb-nfd             = National Field Day
-	CONTEST_RSGB_ROPOCO            Contest = "rsgb-ropoco"            // rsgb-ropoco          = RoPoCo
-	CONTEST_RSGB_SSB_FD            Contest = "rsgb-ssb-fd"            // rsgb-ssb-fd          = SSB Field Day
-	CONTEST_RUSSIAN_RTTY           Contest = "russian-rtty"           // russian-rtty         = Russian Radio RTTY Worldwide Contest
-	CONTEST_SAC_CW                 Contest = "sac-cw"                 // sac-cw               = Scandinavian Activity Contest (CW)
-	CONTEST_SAC_SSB                Contest = "sac-ssb"                // sac-ssb              = Scandinavian Activity Contest (SSB)
-	CONTEST_SARTG_RTTY             Contest = "sartg-rtty"             // sartg-rtty           = SARTG WW RTTY
-	CONTEST_SC_QSO_PARTY           Contest = "sc-qso-party"           // sc-qso-party         = South Carolina QSO Party
-	CONTEST_SCC_RTTY               Contest = "scc-rtty"               // scc-rtty             = SCC RTTY Championship
-	CONTEST_SD_QSO_PARTY           Contest = "sd-qso-party"           // sd-qso-party         = South Dakota QSO Party
-	CONTEST_SHORTRY                Contest = "shortry"                // shortry              = DARC RTTY Short Contest
-	CONTEST_SMP_AUG                Contest = "smp-aug"                // smp-aug              = SSA Portabeltest
-	CONTEST_SMP_MAY                Contest = "smp-may"                // smp-may              = SSA Portabeltest
-	CONTEST_SP_DX_RTTY             Contest = "sp-dx-rtty"             // sp-dx-rtty           = PRC SPDX Contest (RTTY)
-	CONTEST_SPAR_WINTER_FD         Contest = "spar-winter-fd"         // spar-winter-fd       = SPAR Winter Field Day(2016 and earlier)
-	CONTEST_SPDXCONTEST            Contest = "spdxcontest"            // spdxcontest          = SP DX Contest
-	CONTEST_SPRING_SPRINT          Contest = "spring sprint"          // spring sprint        = FISTS Spring Sprint
-	CONTEST_SR_MARATHON            Contest = "sr-marathon"            // sr-marathon          = Scottish-Russian Marathon
-	CONTEST_STEW_PERRY             Contest = "stew-perry"             // stew-perry           = Stew Perry Topband Distance Challenge
-	CONTEST_SUMMER_SPRINT          Contest = "summer sprint"          // summer sprint        = FISTS Summer Sprint
-	CONTEST_TARA_GRID_DIP          Contest = "tara-grid-dip"          // tara-grid-dip        = TARA Grid Dip PSK-RTTY Shindig
-	CONTEST_TARA_RTTY              Contest = "tara-rtty"              // tara-rtty            = TARA RTTY Mêlée
-	CONTEST_TARA_RUMBLE            Contest = "tara-rumble"            // tara-rumble          = TARA Rumble PSK Contest
-	CONTEST_TARA_SKIRMISH          Contest = "tara-skirmish"          // tara-skirmish        = TARA Skirmish Digital Prefix Contest
-	CONTEST_TEN_RTTY               Contest = "ten-rtty"               // ten-rtty             = Ten-Meter RTTY Contest (before 2011)
-	CONTEST_TMC_RTTY               Contest = "tmc-rtty"               // tmc-rtty             = The Makrothen Contest
-	CONTEST_TN_QSO_PARTY           Contest = "tn-qso-party"           // tn-qso-party         = Tennessee QSO Party
-	CONTEST_TX_QSO_PARTY           Contest = "tx-qso-party"           // tx-qso-party         = Texas QSO Party
-	CONTEST_UBA_DX_CW              Contest = "uba-dx-cw"              // uba-dx-cw            = UBA Contest (CW)
-	CONTEST_UBA_DX_SSB             Contest = "uba-dx-ssb"             // uba-dx-ssb           = UBA Contest (SSB)
-	CONTEST_UK_DX_BPSK63           Contest = "uk-dx-bpsk63"           // uk-dx-bpsk63         = European PSK Club BPSK63 Contest
-	CONTEST_UK_DX_RTTY             Contest = "uk-dx-rtty"             // uk-dx-rtty           = UK DX RTTY Contest
-	CONTEST_UKR_CHAMP_RTTY         Contest = "ukr-champ-rtty"         // ukr-champ-rtty       = Open Ukraine RTTY Championship
-	CONTEST_UKRAINIAN_DX           Contest = "ukrainian dx"           // ukrainian dx         = Ukrainian DX
-	CONTEST_UKSMG_6M_MARATHON      Contest = "uksmg-6m-marathon"      // uksmg-6m-marathon    = UKSMG 6m Marathon
-	CONTEST_UKSMG_SUMMER_ES        Contest = "uksmg-summer-es"        // uksmg-summer-es      = UKSMG Summer Es Contest
-	CONTEST_URE_DX                 Contest = "ure-dx"                 // Deprecated: ure-dx               = Ukrainian DX Contest
-	CONTEST_US_COUNTIES_QSO        Contest = "us-counties-qso"        // us-counties-qso      = Mobile Amateur Awards Club
-	CONTEST_UT_QSO_PARTY           Contest = "ut-qso-party"           // ut-qso-party         = Utah QSO Party
-	CONTEST_VA_QSO_PARTY           Contest = "va-qso-party"           // va-qso-party         = Virginia QSO Party
-	CONTEST_VENEZ_IND_DAY          Contest = "venez-ind-day"          // venez-ind-day        = RCV Venezuelan Independence Day Contest
-	CONTEST_VIRGINIA_QSO_PARTY     Contest = "virginia qso party"     // Deprecated: virginia qso party   = Virginia QSO Party
-	CONTEST_VOLTA_RTTY             Contest = "volta-rtty"             // volta-rtty           = Alessandro Volta RTTY DX Contest
-	CONTEST_VT_QSO_PARTY           Contest = "vt-qso-party"           // vt-qso-party         = Vermont QSO Party
-	CONTEST_WA_QSO_PARTY           Contest = "wa-qso-party"           // wa-qso-party         = Washington QSO Party
-	CONTEST_WFD                    Contest = "wfd"                    // wfd                  = Winter Field Day (2017 and later)
-	CONTEST_WI_QSO_PARTY           Contest = "wi-qso-party"           // wi-qso-party         = Wisconsin QSO Party
-	CONTEST_WIA_HARRY_ANGEL        Contest = "wia-harry angel"        // wia-harry angel      = WIA Harry Angel Memorial 80m Sprint
-	CONTEST_WIA_JMMFD              Contest = "wia-jmmfd"              // wia-jmmfd            = WIA John Moyle Memorial Field Day
-	CONTEST_WIA_OCDX               Contest = "wia-ocdx"               // wia-ocdx             = WIA Oceania DX (OCDX) Contest
-	CONTEST_WIA_REMEMBRANCE        Contest = "wia-remembrance"        // wia-remembrance      = WIA Remembrance Day
-	CONTEST_WIA_ROSS_HULL          Contest = "wia-ross hull"          // wia-ross hull        = WIA Ross Hull Memorial VHF/UHF Contest
-	CONTEST_WIA_TRANS_TASMAN       Contest = "wia-trans tasman"       // wia-trans tasman     = WIA Trans Tasman Low Bands Challenge
-	CONTEST_WIA_VHF_UHF_FD         Contest = "wia-vhf/uhf fd"         // wia-vhf/uhf fd       = WIA VHF UHF Field Days
-	CONTEST_WIA_VK_SHIRES          Contest = "wia-vk shires"          // wia-vk shires        = WIA VK Shires
-	CONTEST_WINTER_SPRINT          Contest = "winter sprint"          // winter sprint        = FISTS Winter Sprint
-	CONTEST_WV_QSO_PARTY           Contest = "wv-qso-party"           // wv-qso-party         = West Virginia QSO Party
-	CONTEST_WW_DIGI                Contest = "ww-digi"                // ww-digi              = World Wide Digi DX Contest
-	CONTEST_WY_QSO_PARTY           Contest = "wy-qso-party"           // wy-qso-party         = Wyoming QSO Party
-	CONTEST_XE_INTL_RTTY           Contest = "xe-intl-rtty"           // xe-intl-rtty         = Mexico International Contest (RTTY)
-	CONTEST_YOHFDX                 Contest = "yohfdx"                 // yohfdx               = YODX HF contest
-	CONTEST_YUDXC                  Contest = "yudxc"                  // yudxc                = YU DX Contest
+	CONTEST_070_160M_SPRINT        Contest = "070-160M-SPRINT"        // 070-160M-SPRINT      = PODXS Great Pumpkin Sprint
+	CONTEST_070_3_DAY              Contest = "070-3-DAY"              // 070-3-DAY            = PODXS Three Day Weekend
+	CONTEST_070_31_FLAVORS         Contest = "070-31-FLAVORS"         // 070-31-FLAVORS       = PODXS 31 Flavors
+	CONTEST_070_40M_SPRINT         Contest = "070-40M-SPRINT"         // 070-40M-SPRINT       = PODXS 40m Firecracker Sprint
+	CONTEST_070_80M_SPRINT         Contest = "070-80M-SPRINT"         // 070-80M-SPRINT       = PODXS 80m Jay Hudak Memorial Sprint
+	CONTEST_070_PSKFEST            Contest = "070-PSKFEST"            // 070-PSKFEST          = PODXS PSKFest
+	CONTEST_070_ST_PATS_DAY        Contest = "070-ST-PATS-DAY"        // 070-ST-PATS-DAY      = PODXS St. Patricks Day
+	CONTEST_070_VALENTINE_SPRINT   Contest = "070-VALENTINE-SPRINT"   // 070-VALENTINE-SPRINT = PODXS Valentine Sprint
+	CONTEST_10_RTTY                Contest = "10-RTTY"                // 10-RTTY              = Ten-Meter RTTY Contest (2011 onwards)
+	CONTEST_1010_OPEN_SEASON       Contest = "1010-OPEN-SEASON"       // 1010-OPEN-SEASON     = Open Season Ten Meter QSO Party
+	CONTEST_7QP                    Contest = "7QP"                    // 7QP                  = 7th-Area QSO Party
+	CONTEST_AL_QSO_PARTY           Contest = "AL-QSO-PARTY"           // AL-QSO-PARTY         = Alabama QSO Party
+	CONTEST_ALL_ASIAN_DX_CW        Contest = "ALL-ASIAN-DX-CW"        // ALL-ASIAN-DX-CW      = JARL All Asian DX Contest (CW)
+	CONTEST_ALL_ASIAN_DX_PHONE     Contest = "ALL-ASIAN-DX-PHONE"     // ALL-ASIAN-DX-PHONE   = JARL All Asian DX Contest (PHONE)
+	CONTEST_ANARTS_RTTY            Contest = "ANARTS-RTTY"            // ANARTS-RTTY          = ANARTS WW RTTY
+	CONTEST_ANATOLIAN_RTTY         Contest = "ANATOLIAN-RTTY"         // ANATOLIAN-RTTY       = Anatolian WW RTTY
+	CONTEST_AP_SPRINT              Contest = "AP-SPRINT"              // AP-SPRINT            = Asia - Pacific Sprint
+	CONTEST_AR_QSO_PARTY           Contest = "AR-QSO-PARTY"           // AR-QSO-PARTY         = Arkansas QSO Party
+	CONTEST_ARI_DX                 Contest = "ARI-DX"                 // ARI-DX               = ARI DX Contest
+	CONTEST_ARI_EME                Contest = "ARI-EME"                // ARI-EME              = ARI Italian EME Trophy
+	CONTEST_ARI_IAC_13CM           Contest = "ARI-IAC-13CM"           // ARI-IAC-13CM         = ARI Italian Activity Contest (13cm+)
+	CONTEST_ARI_IAC_23CM           Contest = "ARI-IAC-23CM"           // ARI-IAC-23CM         = ARI Italian Activity Contest (23cm)
+	CONTEST_ARI_IAC_6M             Contest = "ARI-IAC-6M"             // ARI-IAC-6M           = ARI Italian Activity Contest (6m)
+	CONTEST_ARI_IAC_UHF            Contest = "ARI-IAC-UHF"            // ARI-IAC-UHF          = ARI Italian Activity Contest (UHF)
+	CONTEST_ARI_IAC_VHF            Contest = "ARI-IAC-VHF"            // ARI-IAC-VHF          = ARI Italian Activity Contest (VHF)
+	CONTEST_ARRL_10                Contest = "ARRL-10"                // ARRL-10              = ARRL 10 Meter Contest
+	CONTEST_ARRL_10_GHZ            Contest = "ARRL-10-GHZ"            // ARRL-10-GHZ          = ARRL 10 GHz and Up Contest
+	CONTEST_ARRL_160               Contest = "ARRL-160"               // ARRL-160             = ARRL 160 Meter Contest
+	CONTEST_ARRL_222               Contest = "ARRL-222"               // ARRL-222             = ARRL 222 MHz and Up Distance Contest
+	CONTEST_ARRL_DIGI              Contest = "ARRL-DIGI"              // ARRL-DIGI            = ARRL International Digital Contest
+	CONTEST_ARRL_DX_CW             Contest = "ARRL-DX-CW"             // ARRL-DX-CW           = ARRL International DX Contest (CW)
+	CONTEST_ARRL_DX_SSB            Contest = "ARRL-DX-SSB"            // ARRL-DX-SSB          = ARRL International DX Contest (Phone)
+	CONTEST_ARRL_EME               Contest = "ARRL-EME"               // ARRL-EME             = ARRL EME contest
+	CONTEST_ARRL_FIELD_DAY         Contest = "ARRL-FIELD-DAY"         // ARRL-FIELD-DAY       = ARRL Field Day
+	CONTEST_ARRL_RR_CW             Contest = "ARRL-RR-CW"             // ARRL-RR-CW           = ARRL Rookie Roundup (CW)
+	CONTEST_ARRL_RR_RTTY           Contest = "ARRL-RR-RTTY"           // ARRL-RR-RTTY         = ARRL Rookie Roundup (RTTY)
+	CONTEST_ARRL_RR_SSB            Contest = "ARRL-RR-SSB"            // ARRL-RR-SSB          = ARRL Rookie Roundup (Phone)
+	CONTEST_ARRL_RTTY              Contest = "ARRL-RTTY"              // ARRL-RTTY            = ARRL RTTY Round-Up
+	CONTEST_ARRL_SCR               Contest = "ARRL-SCR"               // ARRL-SCR             = ARRL School Club Roundup
+	CONTEST_ARRL_SS_CW             Contest = "ARRL-SS-CW"             // ARRL-SS-CW           = ARRL November Sweepstakes (CW)
+	CONTEST_ARRL_SS_SSB            Contest = "ARRL-SS-SSB"            // ARRL-SS-SSB          = ARRL November Sweepstakes (Phone)
+	CONTEST_ARRL_UHF_AUG           Contest = "ARRL-UHF-AUG"           // ARRL-UHF-AUG         = ARRL August UHF Contest
+	CONTEST_ARRL_VHF_JAN           Contest = "ARRL-VHF-JAN"           // ARRL-VHF-JAN         = ARRL January VHF Sweepstakes
+	CONTEST_ARRL_VHF_JUN           Contest = "ARRL-VHF-JUN"           // ARRL-VHF-JUN         = ARRL June VHF QSO Party
+	CONTEST_ARRL_VHF_SEP           Contest = "ARRL-VHF-SEP"           // ARRL-VHF-SEP         = ARRL September VHF QSO Party
+	CONTEST_AZ_QSO_PARTY           Contest = "AZ-QSO-PARTY"           // AZ-QSO-PARTY         = Arizona QSO Party
+	CONTEST_BANGGAI_DX             Contest = "BANGGAI-DX"             // BANGGAI-DX           = ORARI Banggai DX Contest
+	CONTEST_BARTG_RTTY             Contest = "BARTG-RTTY"             // BARTG-RTTY           = BARTG Spring RTTY Contest
+	CONTEST_BARTG_SPRINT           Contest = "BARTG-SPRINT"           // BARTG-SPRINT         = BARTG Sprint Contest
+	CONTEST_BC_QSO_PARTY           Contest = "BC-QSO-PARTY"           // BC-QSO-PARTY         = British Columbia QSO Party
+	CONTEST_BEKASI_MERDEKA_CONTEST Contest = "BEKASI-MERDEKA-CONTEST" // BEKASI-MERDEKA-CONTEST = ORARI Bekasi Merdeka Contest
+	CONTEST_CA_QSO_PARTY           Contest = "CA-QSO-PARTY"           // CA-QSO-PARTY         = California QSO Party
+	CONTEST_CIS_DX                 Contest = "CIS-DX"                 // CIS-DX               = CIS DX Contest
+	CONTEST_CO_QSO_PARTY           Contest = "CO-QSO-PARTY"           // CO-QSO-PARTY         = Colorado QSO Party
+	CONTEST_CQ_160_CW              Contest = "CQ-160-CW"              // CQ-160-CW            = CQ WW 160 Meter DX Contest (CW)
+	CONTEST_CQ_160_SSB             Contest = "CQ-160-SSB"             // CQ-160-SSB           = CQ WW 160 Meter DX Contest (SSB)
+	CONTEST_CQ_M                   Contest = "CQ-M"                   // CQ-M                 = CQ-M International DX Contest
+	CONTEST_CQ_VHF                 Contest = "CQ-VHF"                 // CQ-VHF               = CQ World-Wide VHF Contest
+	CONTEST_CQ_WPX_CW              Contest = "CQ-WPX-CW"              // CQ-WPX-CW            = CQ WW WPX Contest (CW)
+	CONTEST_CQ_WPX_RTTY            Contest = "CQ-WPX-RTTY"            // CQ-WPX-RTTY          = CQ/RJ WW RTTY WPX Contest
+	CONTEST_CQ_WPX_SSB             Contest = "CQ-WPX-SSB"             // CQ-WPX-SSB           = CQ WW WPX Contest (SSB)
+	CONTEST_CQ_WW_CW               Contest = "CQ-WW-CW"               // CQ-WW-CW             = CQ WW DX Contest (CW)
+	CONTEST_CQ_WW_RTTY             Contest = "CQ-WW-RTTY"             // CQ-WW-RTTY           = CQ/RJ WW RTTY DX Contest
+	CONTEST_CQ_WW_SSB              Contest = "CQ-WW-SSB"              // CQ-WW-SSB            = CQ WW DX Contest (SSB)
+	CONTEST_CT_QSO_PARTY           Contest = "CT-QSO-PARTY"           // CT-QSO-PARTY         = Connecticut QSO Party
+	CONTEST_CVA_DX_CW              Contest = "CVA-DX-CW"              // CVA-DX-CW            = Concurso Verde e Amarelo DX CW Contest
+	CONTEST_CVA_DX_SSB             Contest = "CVA-DX-SSB"             // CVA-DX-SSB           = Concurso Verde e Amarelo DX CW Contest
+	CONTEST_CWOPS_CW_OPEN          Contest = "CWOPS-CW-OPEN"          // CWOPS-CW-OPEN        = CWops CW Open Competition
+	CONTEST_CWOPS_CWT              Contest = "CWOPS-CWT"              // CWOPS-CWT            = CWops Mini-CWT Test
+	CONTEST_DARC_10                Contest = "DARC-10"                // DARC-10              = DARC 10m Contest
+	CONTEST_DARC_CWA               Contest = "DARC-CWA"               // DARC-CWA             = DARC CW Trainee Contest
+	CONTEST_DARC_FT4               Contest = "DARC-FT4"               // DARC-FT4             = DARC FT4 Contest
+	CONTEST_DARC_HELL              Contest = "DARC-HELL"              // DARC-HELL            = DARC Hell Contest
+	CONTEST_DARC_MICROWAVE         Contest = "DARC-MICROWAVE"         // DARC-MICROWAVE       = DARC Microwave Contest
+	CONTEST_DARC_TRAINEE           Contest = "DARC-TRAINEE"           // DARC-TRAINEE         = DARC Trainee Contest
+	CONTEST_DARC_UKW_FIELD_DAY     Contest = "DARC-UKW-FIELD-DAY"     // DARC-UKW-FIELD-DAY   = DARC UKW Summer Contest
+	CONTEST_DARC_UKW_SPRING        Contest = "DARC-UKW-SPRING"        // DARC-UKW-SPRING      = DARC UKW Spring Contest
+	CONTEST_DARC_VHF_UHF_MICROWAVE Contest = "DARC-VHF-UHF-MICROWAVE" // DARC-VHF-UHF-MICROWAVE = DARC VHF-, UHF-, Microwave Contest (May)
+	CONTEST_DARC_WAEDC_CW          Contest = "DARC-WAEDC-CW"          // DARC-WAEDC-CW        = WAE DX Contest (CW)
+	CONTEST_DARC_WAEDC_RTTY        Contest = "DARC-WAEDC-RTTY"        // DARC-WAEDC-RTTY      = WAE DX Contest (RTTY)
+	CONTEST_DARC_WAEDC_SSB         Contest = "DARC-WAEDC-SSB"         // DARC-WAEDC-SSB       = WAE DX Contest (SSB)
+	CONTEST_DARC_WAG               Contest = "DARC-WAG"               // DARC-WAG             = DARC Worked All Germany
+	CONTEST_DE_QSO_PARTY           Contest = "DE-QSO-PARTY"           // DE-QSO-PARTY         = Delaware QSO Party
+	CONTEST_DL_DX_RTTY             Contest = "DL-DX-RTTY"             // DL-DX-RTTY           = DL-DX RTTY Contest
+	CONTEST_DMC_RTTY               Contest = "DMC-RTTY"               // DMC-RTTY             = DMC RTTY Contest
+	CONTEST_EA_CNCW                Contest = "EA-CNCW"                // EA-CNCW              = Concurso Nacional de Telegrafía
+	CONTEST_EA_DME                 Contest = "EA-DME"                 // EA-DME               = Municipios Españoles
+	CONTEST_EA_MAJESTAD_CW         Contest = "EA-MAJESTAD-CW"         // EA-MAJESTAD-CW       = His Majesty The King of Spain CW Contest (2022 and later)
+	CONTEST_EA_MAJESTAD_SSB        Contest = "EA-MAJESTAD-SSB"        // EA-MAJESTAD-SSB      = His Majesty The King of Spain SSB Contest (2022 and later)
+	CONTEST_EA_PSK63               Contest = "EA-PSK63"               // EA-PSK63             = EA PSK63
+	CONTEST_EA_RTTY                Contest = "EA-RTTY"                // Deprecated: EA-RTTY              = Unión de Radioaficionados Españoles RTTY Contest
+	CONTEST_EA_SMRE_CW             Contest = "EA-SMRE-CW"             // EA-SMRE-CW           = Su Majestad El Rey de España - CW (2021 and earlier)
+	CONTEST_EA_SMRE_SSB            Contest = "EA-SMRE-SSB"            // EA-SMRE-SSB          = Su Majestad El Rey de España - SSB (2021 and earlier)
+	CONTEST_EA_VHF_ATLANTIC        Contest = "EA-VHF-ATLANTIC"        // EA-VHF-ATLANTIC      = Atlántico V-UHF
+	CONTEST_EA_VHF_COM             Contest = "EA-VHF-COM"             // EA-VHF-COM           = Combinado de V-UHF
+	CONTEST_EA_VHF_COSTA_SOL       Contest = "EA-VHF-COSTA-SOL"       // EA-VHF-COSTA-SOL     = Costa del Sol V-UHF
+	CONTEST_EA_VHF_EA              Contest = "EA-VHF-EA"              // EA-VHF-EA            = Nacional VHF
+	CONTEST_EA_VHF_EA1RCS          Contest = "EA-VHF-EA1RCS"          // EA-VHF-EA1RCS        = Segovia EA1RCS V-UHF
+	CONTEST_EA_VHF_QSL             Contest = "EA-VHF-QSL"             // EA-VHF-QSL           = QSL V-UHF & 50MHz
+	CONTEST_EA_VHF_SADURNI         Contest = "EA-VHF-SADURNI"         // EA-VHF-SADURNI       = Sant Sadurni V-UHF
+	CONTEST_EA_WW_RTTY             Contest = "EA-WW-RTTY"             // EA-WW-RTTY           = Unión de Radioaficionados Españoles RTTY Contest
+	CONTEST_EASTER                 Contest = "EASTER"                 // EASTER               = DARC Easter Contest
+	CONTEST_EPC_PSK63              Contest = "EPC-PSK63"              // EPC-PSK63            = PSK63 QSO Party
+	CONTEST_EU_SPRINT              Contest = "EU SPRINT"              // EU SPRINT            = EU Sprint
+	CONTEST_EU_HF                  Contest = "EU-HF"                  // EU-HF                = EU HF Championship
+	CONTEST_EU_PSK_DX              Contest = "EU-PSK-DX"              // EU-PSK-DX            = EU PSK DX Contest
+	CONTEST_EUCW160M               Contest = "EUCW160M"               // EUCW160M             = European CW Association 160m CW Party
+	CONTEST_FALL_SPRINT            Contest = "FALL SPRINT"            // FALL SPRINT          = FISTS Fall Sprint
+	CONTEST_FL_QSO_PARTY           Contest = "FL-QSO-PARTY"           // FL-QSO-PARTY         = Florida QSO Party
+	CONTEST_GA_QSO_PARTY           Contest = "GA-QSO-PARTY"           // GA-QSO-PARTY         = Georgia QSO Party
+	CONTEST_HA_DX                  Contest = "HA-DX"                  // HA-DX                = Hungarian DX Contest
+	CONTEST_HELVETIA               Contest = "HELVETIA"               // HELVETIA             = Helvetia Contest
+	CONTEST_HI_QSO_PARTY           Contest = "HI-QSO-PARTY"           // HI-QSO-PARTY         = Hawaiian QSO Party
+	CONTEST_HOLYLAND               Contest = "HOLYLAND"               // HOLYLAND             = IARC Holyland Contest
+	CONTEST_IA_QSO_PARTY           Contest = "IA-QSO-PARTY"           // IA-QSO-PARTY         = Iowa QSO Party
+	CONTEST_IARU_FIELD_DAY         Contest = "IARU-FIELD-DAY"         // IARU-FIELD-DAY       = DARC IARU Region 1 Field Day
+	CONTEST_IARU_HF                Contest = "IARU-HF"                // IARU-HF              = IARU HF World Championship
+	CONTEST_ICWC_MST               Contest = "ICWC-MST"               // ICWC-MST             = ICWC Medium Speed Test
+	CONTEST_ID_QSO_PARTY           Contest = "ID-QSO-PARTY"           // ID-QSO-PARTY         = Idaho QSO Party
+	CONTEST_IL_QSO_PARTY           Contest = "IL QSO PARTY"           // IL QSO PARTY         = Illinois QSO Party
+	CONTEST_IN_QSO_PARTY           Contest = "IN-QSO-PARTY"           // IN-QSO-PARTY         = Indiana QSO Party
+	CONTEST_JARTS_WW_RTTY          Contest = "JARTS-WW-RTTY"          // JARTS-WW-RTTY        = JARTS WW RTTY
+	CONTEST_JIDX_CW                Contest = "JIDX-CW"                // JIDX-CW              = Japan International DX Contest (CW)
+	CONTEST_JIDX_SSB               Contest = "JIDX-SSB"               // JIDX-SSB             = Japan International DX Contest (SSB)
+	CONTEST_JT_DX_RTTY             Contest = "JT-DX-RTTY"             // JT-DX-RTTY           = Mongolian RTTY DX Contest
+	CONTEST_K1USN_SSO              Contest = "K1USN-SSO"              // K1USN-SSO            = K1USN Slow Speed Open
+	CONTEST_K1USN_SST              Contest = "K1USN-SST"              // K1USN-SST            = K1USN Slow Speed Test
+	CONTEST_KS_QSO_PARTY           Contest = "KS-QSO-PARTY"           // KS-QSO-PARTY         = Kansas QSO Party
+	CONTEST_KY_QSO_PARTY           Contest = "KY-QSO-PARTY"           // KY-QSO-PARTY         = Kentucky QSO Party
+	CONTEST_LA_QSO_PARTY           Contest = "LA-QSO-PARTY"           // LA-QSO-PARTY         = Louisiana QSO Party
+	CONTEST_LDC_RTTY               Contest = "LDC-RTTY"               // LDC-RTTY             = DRCG Long Distance Contest (RTTY)
+	CONTEST_LZ_DX                  Contest = "LZ DX"                  // LZ DX                = LZ DX Contest
+	CONTEST_MAR_QSO_PARTY          Contest = "MAR-QSO-PARTY"          // MAR-QSO-PARTY        = Maritimes QSO Party
+	CONTEST_MD_QSO_PARTY           Contest = "MD-QSO-PARTY"           // MD-QSO-PARTY         = Maryland QSO Party
+	CONTEST_ME_QSO_PARTY           Contest = "ME-QSO-PARTY"           // ME-QSO-PARTY         = Maine QSO Party
+	CONTEST_MI_QSO_PARTY           Contest = "MI-QSO-PARTY"           // MI-QSO-PARTY         = Michigan QSO Party
+	CONTEST_MIDATLANTIC_QSO_PARTY  Contest = "MIDATLANTIC-QSO-PARTY"  // MIDATLANTIC-QSO-PARTY = Mid-Atlantic QSO Party
+	CONTEST_MN_QSO_PARTY           Contest = "MN-QSO-PARTY"           // MN-QSO-PARTY         = Minnesota QSO Party
+	CONTEST_MO_QSO_PARTY           Contest = "MO-QSO-PARTY"           // MO-QSO-PARTY         = Missouri QSO Party
+	CONTEST_MS_QSO_PARTY           Contest = "MS-QSO-PARTY"           // MS-QSO-PARTY         = Mississippi QSO Party
+	CONTEST_MT_QSO_PARTY           Contest = "MT-QSO-PARTY"           // MT-QSO-PARTY         = Montana QSO Party
+	CONTEST_NA_SPRINT_CW           Contest = "NA-SPRINT-CW"           // NA-SPRINT-CW         = North America Sprint (CW)
+	CONTEST_NA_SPRINT_RTTY         Contest = "NA-SPRINT-RTTY"         // NA-SPRINT-RTTY       = North America Sprint (RTTY)
+	CONTEST_NA_SPRINT_SSB          Contest = "NA-SPRINT-SSB"          // NA-SPRINT-SSB        = North America Sprint (Phone)
+	CONTEST_NAQP_CW                Contest = "NAQP-CW"                // NAQP-CW              = North America QSO Party (CW)
+	CONTEST_NAQP_RTTY              Contest = "NAQP-RTTY"              // NAQP-RTTY            = North America QSO Party (RTTY)
+	CONTEST_NAQP_SSB               Contest = "NAQP-SSB"               // NAQP-SSB             = North America QSO Party (Phone)
+	CONTEST_NAVAL                  Contest = "NAVAL"                  // NAVAL                = International Naval Contest (INC)
+	CONTEST_NC_QSO_PARTY           Contest = "NC-QSO-PARTY"           // NC-QSO-PARTY         = North Carolina QSO Party
+	CONTEST_ND_QSO_PARTY           Contest = "ND-QSO-PARTY"           // ND-QSO-PARTY         = North Dakota QSO Party
+	CONTEST_NE_QSO_PARTY           Contest = "NE-QSO-PARTY"           // NE-QSO-PARTY         = Nebraska QSO Party
+	CONTEST_NEQP                   Contest = "NEQP"                   // NEQP                 = New England QSO Party
+	CONTEST_NH_QSO_PARTY           Contest = "NH-QSO-PARTY"           // NH-QSO-PARTY         = New Hampshire QSO Party
+	CONTEST_NJ_QSO_PARTY           Contest = "NJ-QSO-PARTY"           // NJ-QSO-PARTY         = New Jersey QSO Party
+	CONTEST_NM_QSO_PARTY           Contest = "NM-QSO-PARTY"           // NM-QSO-PARTY         = New Mexico QSO Party
+	CONTEST_NRAU_BALTIC_CW         Contest = "NRAU-BALTIC-CW"         // NRAU-BALTIC-CW       = NRAU-Baltic Contest (CW)
+	CONTEST_NRAU_BALTIC_SSB        Contest = "NRAU-BALTIC-SSB"        // NRAU-BALTIC-SSB      = NRAU-Baltic Contest (SSB)
+	CONTEST_NV_QSO_PARTY           Contest = "NV-QSO-PARTY"           // NV-QSO-PARTY         = Nevada QSO Party
+	CONTEST_NY_QSO_PARTY           Contest = "NY-QSO-PARTY"           // NY-QSO-PARTY         = New York QSO Party
+	CONTEST_OCEANIA_DX_CW          Contest = "OCEANIA-DX-CW"          // OCEANIA-DX-CW        = Oceania DX Contest (CW)
+	CONTEST_OCEANIA_DX_SSB         Contest = "OCEANIA-DX-SSB"         // OCEANIA-DX-SSB       = Oceania DX Contest (SSB)
+	CONTEST_OH_QSO_PARTY           Contest = "OH-QSO-PARTY"           // OH-QSO-PARTY         = Ohio QSO Party
+	CONTEST_OK_DX_RTTY             Contest = "OK-DX-RTTY"             // OK-DX-RTTY           = Czech Radio Club OK DX Contest
+	CONTEST_OK_OM_DX               Contest = "OK-OM-DX"               // OK-OM-DX             = Czech Radio Club OK-OM DX Contest
+	CONTEST_OK_QSO_PARTY           Contest = "OK-QSO-PARTY"           // OK-QSO-PARTY         = Oklahoma QSO Party
+	CONTEST_OMISS_QSO_PARTY        Contest = "OMISS-QSO-PARTY"        // OMISS-QSO-PARTY      = Old Man International Sideband Society QSO Party
+	CONTEST_ON_QSO_PARTY           Contest = "ON-QSO-PARTY"           // ON-QSO-PARTY         = Ontario QSO Party
+	CONTEST_OR_QSO_PARTY           Contest = "OR-QSO-PARTY"           // OR-QSO-PARTY         = Oregon QSO Party
+	CONTEST_ORARI_DX               Contest = "ORARI-DX"               // ORARI-DX             = ORARI DX Contest
+	CONTEST_PA_QSO_PARTY           Contest = "PA-QSO-PARTY"           // PA-QSO-PARTY         = Pennsylvania QSO Party
+	CONTEST_PACC                   Contest = "PACC"                   // PACC                 = Dutch PACC Contest
+	CONTEST_PCC                    Contest = "PCC"                    // PCC                  = PCCPro CW Contest
+	CONTEST_PSK_DEATHMATCH         Contest = "PSK-DEATHMATCH"         // PSK-DEATHMATCH       = MDXA PSK DeathMatch (2005-2010)
+	CONTEST_QC_QSO_PARTY           Contest = "QC-QSO-PARTY"           // QC-QSO-PARTY         = Quebec QSO Party
+	CONTEST_RAC                    Contest = "RAC"                    // Deprecated: RAC                  = Canadian Amateur Radio Society Contest
+	CONTEST_RAC_CANADA_DAY         Contest = "RAC-CANADA-DAY"         // RAC-CANADA-DAY       = RAC Canada Day Contest
+	CONTEST_RAC_CANADA_WINTER      Contest = "RAC-CANADA-WINTER"      // RAC-CANADA-WINTER    = RAC Canada Winter Contest
+	CONTEST_RDAC                   Contest = "RDAC"                   // RDAC                 = Russian District Award Contest
+	CONTEST_RDXC                   Contest = "RDXC"                   // RDXC                 = Russian DX Contest
+	CONTEST_REF_160M               Contest = "REF-160M"               // REF-160M             = Reseau des Emetteurs Francais 160m Contest
+	CONTEST_REF_CW                 Contest = "REF-CW"                 // REF-CW               = Reseau des Emetteurs Francais Contest (CW)
+	CONTEST_REF_SSB                Contest = "REF-SSB"                // REF-SSB              = Reseau des Emetteurs Francais Contest (SSB)
+	CONTEST_REP_PORTUGAL_DAY_HF    Contest = "REP-PORTUGAL-DAY-HF"    // REP-PORTUGAL-DAY-HF  = Rede dos Emissores Portugueses Portugal Day HF Contest
+	CONTEST_RI_QSO_PARTY           Contest = "RI-QSO-PARTY"           // RI-QSO-PARTY         = Rhode Island QSO Party
+	CONTEST_RSGB_160               Contest = "RSGB-160"               // RSGB-160             = 1.8MHz Contest
+	CONTEST_RSGB_21_28_CW          Contest = "RSGB-21/28-CW"          // RSGB-21/28-CW        = 21/28 MHz Contest (CW)
+	CONTEST_RSGB_21_28_SSB         Contest = "RSGB-21/28-SSB"         // RSGB-21/28-SSB       = 21/28 MHz Contest (SSB)
+	CONTEST_RSGB_80M_CC            Contest = "RSGB-80M-CC"            // RSGB-80M-CC          = 80m Club Championships
+	CONTEST_RSGB_AFS_CW            Contest = "RSGB-AFS-CW"            // RSGB-AFS-CW          = Affiliated Societies Team Contest (CW)
+	CONTEST_RSGB_AFS_SSB           Contest = "RSGB-AFS-SSB"           // RSGB-AFS-SSB         = Affiliated Societies Team Contest (SSB)
+	CONTEST_RSGB_CLUB_CALLS        Contest = "RSGB-CLUB-CALLS"        // RSGB-CLUB-CALLS      = Club Calls
+	CONTEST_RSGB_COMMONWEALTH      Contest = "RSGB-COMMONWEALTH"      // RSGB-COMMONWEALTH    = Commonwealth Contest
+	CONTEST_RSGB_IOTA              Contest = "RSGB-IOTA"              // RSGB-IOTA            = IOTA Contest
+	CONTEST_RSGB_LOW_POWER         Contest = "RSGB-LOW-POWER"         // RSGB-LOW-POWER       = Low Power Field Day
+	CONTEST_RSGB_NFD               Contest = "RSGB-NFD"               // RSGB-NFD             = National Field Day
+	CONTEST_RSGB_ROPOCO            Contest = "RSGB-ROPOCO"            // RSGB-ROPOCO          = RoPoCo
+	CONTEST_RSGB_SSB_FD            Contest = "RSGB-SSB-FD"            // RSGB-SSB-FD          = SSB Field Day
+	CONTEST_RUSSIAN_RTTY           Contest = "RUSSIAN-RTTY"           // RUSSIAN-RTTY         = Russian Radio RTTY Worldwide Contest
+	CONTEST_SAC_CW                 Contest = "SAC-CW"                 // SAC-CW               = Scandinavian Activity Contest (CW)
+	CONTEST_SAC_SSB                Contest = "SAC-SSB"                // SAC-SSB              = Scandinavian Activity Contest (SSB)
+	CONTEST_SARTG_RTTY             Contest = "SARTG-RTTY"             // SARTG-RTTY           = SARTG WW RTTY
+	CONTEST_SC_QSO_PARTY           Contest = "SC-QSO-PARTY"           // SC-QSO-PARTY         = South Carolina QSO Party
+	CONTEST_SCC_RTTY               Contest = "SCC-RTTY"               // SCC-RTTY             = SCC RTTY Championship
+	CONTEST_SD_QSO_PARTY           Contest = "SD-QSO-PARTY"           // SD-QSO-PARTY         = South Dakota QSO Party
+	CONTEST_SHORTRY                Contest = "SHORTRY"                // SHORTRY              = DARC RTTY Short Contest
+	CONTEST_SMP_AUG                Contest = "SMP-AUG"                // SMP-AUG              = SSA Portabeltest
+	CONTEST_SMP_MAY                Contest = "SMP-MAY"                // SMP-MAY              = SSA Portabeltest
+	CONTEST_SP_DX_RTTY             Contest = "SP-DX-RTTY"             // SP-DX-RTTY           = PRC SPDX Contest (RTTY)
+	CONTEST_SPAR_WINTER_FD         Contest = "SPAR-WINTER-FD"         // SPAR-WINTER-FD       = SPAR Winter Field Day(2016 and earlier)
+	CONTEST_SPDXCONTEST            Contest = "SPDXCONTEST"            // SPDXCONTEST          = SP DX Contest
+	CONTEST_SPRING_SPRINT          Contest = "SPRING SPRINT"          // SPRING SPRINT        = FISTS Spring Sprint
+	CONTEST_SR_MARATHON            Contest = "SR-MARATHON"            // SR-MARATHON          = Scottish-Russian Marathon
+	CONTEST_STEW_PERRY             Contest = "STEW-PERRY"             // STEW-PERRY           = Stew Perry Topband Distance Challenge
+	CONTEST_SUMMER_SPRINT          Contest = "SUMMER SPRINT"          // SUMMER SPRINT        = FISTS Summer Sprint
+	CONTEST_TARA_GRID_DIP          Contest = "TARA-GRID-DIP"          // TARA-GRID-DIP        = TARA Grid Dip PSK-RTTY Shindig
+	CONTEST_TARA_RTTY              Contest = "TARA-RTTY"              // TARA-RTTY            = TARA RTTY Mêlée
+	CONTEST_TARA_RUMBLE            Contest = "TARA-RUMBLE"            // TARA-RUMBLE          = TARA Rumble PSK Contest
+	CONTEST_TARA_SKIRMISH          Contest = "TARA-SKIRMISH"          // TARA-SKIRMISH        = TARA Skirmish Digital Prefix Contest
+	CONTEST_TEN_RTTY               Contest = "TEN-RTTY"               // TEN-RTTY             = Ten-Meter RTTY Contest (before 2011)
+	CONTEST_TMC_RTTY               Contest = "TMC-RTTY"               // TMC-RTTY             = The Makrothen Contest
+	CONTEST_TN_QSO_PARTY           Contest = "TN-QSO-PARTY"           // TN-QSO-PARTY         = Tennessee QSO Party
+	CONTEST_TX_QSO_PARTY           Contest = "TX-QSO-PARTY"           // TX-QSO-PARTY         = Texas QSO Party
+	CONTEST_UBA_DX_CW              Contest = "UBA-DX-CW"              // UBA-DX-CW            = UBA Contest (CW)
+	CONTEST_UBA_DX_SSB             Contest = "UBA-DX-SSB"             // UBA-DX-SSB           = UBA Contest (SSB)
+	CONTEST_UK_DX_BPSK63           Contest = "UK-DX-BPSK63"           // UK-DX-BPSK63         = European PSK Club BPSK63 Contest
+	CONTEST_UK_DX_RTTY             Contest = "UK-DX-RTTY"             // UK-DX-RTTY           = UK DX RTTY Contest
+	CONTEST_UKR_CHAMP_RTTY         Contest = "UKR-CHAMP-RTTY"         // UKR-CHAMP-RTTY       = Open Ukraine RTTY Championship
+	CONTEST_UKRAINIAN_DX           Contest = "UKRAINIAN DX"           // UKRAINIAN DX         = Ukrainian DX
+	CONTEST_UKSMG_6M_MARATHON      Contest = "UKSMG-6M-MARATHON"      // UKSMG-6M-MARATHON    = UKSMG 6m Marathon
+	CONTEST_UKSMG_SUMMER_ES        Contest = "UKSMG-SUMMER-ES"        // UKSMG-SUMMER-ES      = UKSMG Summer Es Contest
+	CONTEST_URE_DX                 Contest = "URE-DX"                 // Deprecated: URE-DX               = Ukrainian DX Contest
+	CONTEST_US_COUNTIES_QSO        Contest = "US-COUNTIES-QSO"        // US-COUNTIES-QSO      = Mobile Amateur Awards Club
+	CONTEST_UT_QSO_PARTY           Contest = "UT-QSO-PARTY"           // UT-QSO-PARTY         = Utah QSO Party
+	CONTEST_VA_QSO_PARTY           Contest = "VA-QSO-PARTY"           // VA-QSO-PARTY         = Virginia QSO Party
+	CONTEST_VENEZ_IND_DAY          Contest = "VENEZ-IND-DAY"          // VENEZ-IND-DAY        = RCV Venezuelan Independence Day Contest
+	CONTEST_VIRGINIA_QSO_PARTY     Contest = "VIRGINIA QSO PARTY"     // Deprecated: VIRGINIA QSO PARTY   = Virginia QSO Party
+	CONTEST_VOLTA_RTTY             Contest = "VOLTA-RTTY"             // VOLTA-RTTY           = Alessandro Volta RTTY DX Contest
+	CONTEST_VT_QSO_PARTY           Contest = "VT-QSO-PARTY"           // VT-QSO-PARTY         = Vermont QSO Party
+	CONTEST_WA_QSO_PARTY           Contest = "WA-QSO-PARTY"           // WA-QSO-PARTY         = Washington QSO Party
+	CONTEST_WFD                    Contest = "WFD"                    // WFD                  = Winter Field Day (2017 and later)
+	CONTEST_WI_QSO_PARTY           Contest = "WI-QSO-PARTY"           // WI-QSO-PARTY         = Wisconsin QSO Party
+	CONTEST_WIA_HARRY_ANGEL        Contest = "WIA-HARRY ANGEL"        // WIA-HARRY ANGEL      = WIA Harry Angel Memorial 80m Sprint
+	CONTEST_WIA_JMMFD              Contest = "WIA-JMMFD"              // WIA-JMMFD            = WIA John Moyle Memorial Field Day
+	CONTEST_WIA_OCDX               Contest = "WIA-OCDX"               // WIA-OCDX             = WIA Oceania DX (OCDX) Contest
+	CONTEST_WIA_REMEMBRANCE        Contest = "WIA-REMEMBRANCE"        // WIA-REMEMBRANCE      = WIA Remembrance Day
+	CONTEST_WIA_ROSS_HULL          Contest = "WIA-ROSS HULL"          // WIA-ROSS HULL        = WIA Ross Hull Memorial VHF/UHF Contest
+	CONTEST_WIA_TRANS_TASMAN       Contest = "WIA-TRANS TASMAN"       // WIA-TRANS TASMAN     = WIA Trans Tasman Low Bands Challenge
+	CONTEST_WIA_VHF_UHF_FD         Contest = "WIA-VHF/UHF FD"         // WIA-VHF/UHF FD       = WIA VHF UHF Field Days
+	CONTEST_WIA_VK_SHIRES          Contest = "WIA-VK SHIRES"          // WIA-VK SHIRES        = WIA VK Shires
+	CONTEST_WINTER_SPRINT          Contest = "WINTER SPRINT"          // WINTER SPRINT        = FISTS Winter Sprint
+	CONTEST_WV_QSO_PARTY           Contest = "WV-QSO-PARTY"           // WV-QSO-PARTY         = West Virginia QSO Party
+	CONTEST_WW_DIGI                Contest = "WW-DIGI"                // WW-DIGI              = World Wide Digi DX Contest
+	CONTEST_WY_QSO_PARTY           Contest = "WY-QSO-PARTY"           // WY-QSO-PARTY         = Wyoming QSO Party
+	CONTEST_XE_INTL_RTTY           Contest = "XE-INTL-RTTY"           // XE-INTL-RTTY         = Mexico International Contest (RTTY)
+	CONTEST_YOHFDX                 Contest = "YOHFDX"                 // YOHFDX               = YODX HF contest
+	CONTEST_YUDXC                  Contest = "YUDXC"                  // YUDXC                = YU DX Contest
 )
 
 var (
@@ -272,262 +272,262 @@ var (
 
 // lookupList contains all known Contest specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "070-160m-sprint", Description: "PODXS Great Pumpkin Sprint"},
-	{IsImportOnly: false, Key: "070-3-day", Description: "PODXS Three Day Weekend"},
-	{IsImportOnly: false, Key: "070-31-flavors", Description: "PODXS 31 Flavors"},
-	{IsImportOnly: false, Key: "070-40m-sprint", Description: "PODXS 40m Firecracker Sprint"},
-	{IsImportOnly: false, Key: "070-80m-sprint", Description: "PODXS 80m Jay Hudak Memorial Sprint"},
-	{IsImportOnly: false, Key: "070-pskfest", Description: "PODXS PSKFest"},
-	{IsImportOnly: false, Key: "070-st-pats-day", Description: "PODXS St. Patricks Day"},
-	{IsImportOnly: false, Key: "070-valentine-sprint", Description: "PODXS Valentine Sprint"},
-	{IsImportOnly: false, Key: "10-rtty", Description: "Ten-Meter RTTY Contest (2011 onwards)"},
-	{IsImportOnly: false, Key: "1010-open-season", Description: "Open Season Ten Meter QSO Party"},
-	{IsImportOnly: false, Key: "7qp", Description: "7th-Area QSO Party"},
-	{IsImportOnly: false, Key: "al-qso-party", Description: "Alabama QSO Party"},
-	{IsImportOnly: false, Key: "all-asian-dx-cw", Description: "JARL All Asian DX Contest (CW)"},
-	{IsImportOnly: false, Key: "all-asian-dx-phone", Description: "JARL All Asian DX Contest (PHONE)"},
-	{IsImportOnly: false, Key: "anarts-rtty", Description: "ANARTS WW RTTY"},
-	{IsImportOnly: false, Key: "anatolian-rtty", Description: "Anatolian WW RTTY"},
-	{IsImportOnly: false, Key: "ap-sprint", Description: "Asia - Pacific Sprint"},
-	{IsImportOnly: false, Key: "ar-qso-party", Description: "Arkansas QSO Party"},
-	{IsImportOnly: false, Key: "ari-dx", Description: "ARI DX Contest"},
-	{IsImportOnly: false, Key: "ari-eme", Description: "ARI Italian EME Trophy"},
-	{IsImportOnly: false, Key: "ari-iac-13cm", Description: "ARI Italian Activity Contest (13cm+)"},
-	{IsImportOnly: false, Key: "ari-iac-23cm", Description: "ARI Italian Activity Contest (23cm)"},
-	{IsImportOnly: false, Key: "ari-iac-6m", Description: "ARI Italian Activity Contest (6m)"},
-	{IsImportOnly: false, Key: "ari-iac-uhf", Description: "ARI Italian Activity Contest (UHF)"},
-	{IsImportOnly: false, Key: "ari-iac-vhf", Description: "ARI Italian Activity Contest (VHF)"},
-	{IsImportOnly: false, Key: "arrl-10", Description: "ARRL 10 Meter Contest"},
-	{IsImportOnly: false, Key: "arrl-10-ghz", Description: "ARRL 10 GHz and Up Contest"},
-	{IsImportOnly: false, Key: "arrl-160", Description: "ARRL 160 Meter Contest"},
-	{IsImportOnly: false, Key: "arrl-222", Description: "ARRL 222 MHz and Up Distance Contest"},
-	{IsImportOnly: false, Key: "arrl-digi", Description: "ARRL International Digital Contest"},
-	{IsImportOnly: false, Key: "arrl-dx-cw", Description: "ARRL International DX Contest (CW)"},
-	{IsImportOnly: false, Key: "arrl-dx-ssb", Description: "ARRL International DX Contest (Phone)"},
-	{IsImportOnly: false, Key: "arrl-eme", Description: "ARRL EME contest"},
-	{IsImportOnly: false, Key: "arrl-field-day", Description: "ARRL Field Day"},
-	{IsImportOnly: false, Key: "arrl-rr-cw", Description: "ARRL Rookie Roundup (CW)"},
-	{IsImportOnly: false, Key: "arrl-rr-rtty", Description: "ARRL Rookie Roundup (RTTY)"},
-	{IsImportOnly: false, Key: "arrl-rr-ssb", Description: "ARRL Rookie Roundup (Phone)"},
-	{IsImportOnly: false, Key: "arrl-rtty", Description: "ARRL RTTY Round-Up"},
-	{IsImportOnly: false, Key: "arrl-scr", Description: "ARRL School Club Roundup"},
-	{IsImportOnly: false, Key: "arrl-ss-cw", Description: "ARRL November Sweepstakes (CW)"},
-	{IsImportOnly: false, Key: "arrl-ss-ssb", Description: "ARRL November Sweepstakes (Phone)"},
-	{IsImportOnly: false, Key: "arrl-uhf-aug", Description: "ARRL August UHF Contest"},
-	{IsImportOnly: false, Key: "arrl-vhf-jan", Description: "ARRL January VHF Sweepstakes"},
-	{IsImportOnly: false, Key: "arrl-vhf-jun", Description: "ARRL June VHF QSO Party"},
-	{IsImportOnly: false, Key: "arrl-vhf-sep", Description: "ARRL September VHF QSO Party"},
-	{IsImportOnly: false, Key: "az-qso-party", Description: "Arizona QSO Party"},
-	{IsImportOnly: false, Key: "banggai-dx", Description: "ORARI Banggai DX Contest"},
-	{IsImportOnly: false, Key: "bartg-rtty", Description: "BARTG Spring RTTY Contest"},
-	{IsImportOnly: false, Key: "bartg-sprint", Description: "BARTG Sprint Contest"},
-	{IsImportOnly: false, Key: "bc-qso-party", Description: "British Columbia QSO Party"},
-	{IsImportOnly: false, Key: "bekasi-merdeka-contest", Description: "ORARI Bekasi Merdeka Contest"},
-	{IsImportOnly: false, Key: "ca-qso-party", Description: "California QSO Party"},
-	{IsImportOnly: false, Key: "cis-dx", Description: "CIS DX Contest"},
-	{IsImportOnly: false, Key: "co-qso-party", Description: "Colorado QSO Party"},
-	{IsImportOnly: false, Key: "cq-160-cw", Description: "CQ WW 160 Meter DX Contest (CW)"},
-	{IsImportOnly: false, Key: "cq-160-ssb", Description: "CQ WW 160 Meter DX Contest (SSB)"},
-	{IsImportOnly: false, Key: "cq-m", Description: "CQ-M International DX Contest"},
-	{IsImportOnly: false, Key: "cq-vhf", Description: "CQ World-Wide VHF Contest"},
-	{IsImportOnly: false, Key: "cq-wpx-cw", Description: "CQ WW WPX Contest (CW)"},
-	{IsImportOnly: false, Key: "cq-wpx-rtty", Description: "CQ/RJ WW RTTY WPX Contest"},
-	{IsImportOnly: false, Key: "cq-wpx-ssb", Description: "CQ WW WPX Contest (SSB)"},
-	{IsImportOnly: false, Key: "cq-ww-cw", Description: "CQ WW DX Contest (CW)"},
-	{IsImportOnly: false, Key: "cq-ww-rtty", Description: "CQ/RJ WW RTTY DX Contest"},
-	{IsImportOnly: false, Key: "cq-ww-ssb", Description: "CQ WW DX Contest (SSB)"},
-	{IsImportOnly: false, Key: "ct-qso-party", Description: "Connecticut QSO Party"},
-	{IsImportOnly: false, Key: "cva-dx-cw", Description: "Concurso Verde e Amarelo DX CW Contest"},
-	{IsImportOnly: false, Key: "cva-dx-ssb", Description: "Concurso Verde e Amarelo DX CW Contest"},
-	{IsImportOnly: false, Key: "cwops-cw-open", Description: "CWops CW Open Competition"},
-	{IsImportOnly: false, Key: "cwops-cwt", Description: "CWops Mini-CWT Test"},
-	{IsImportOnly: false, Key: "darc-10", Description: "DARC 10m Contest"},
-	{IsImportOnly: false, Key: "darc-cwa", Description: "DARC CW Trainee Contest"},
-	{IsImportOnly: false, Key: "darc-ft4", Description: "DARC FT4 Contest"},
-	{IsImportOnly: false, Key: "darc-hell", Description: "DARC Hell Contest"},
-	{IsImportOnly: false, Key: "darc-microwave", Description: "DARC Microwave Contest"},
-	{IsImportOnly: false, Key: "darc-trainee", Description: "DARC Trainee Contest"},
-	{IsImportOnly: false, Key: "darc-ukw-field-day", Description: "DARC UKW Summer Contest"},
-	{IsImportOnly: false, Key: "darc-ukw-spring", Description: "DARC UKW Spring Contest"},
-	{IsImportOnly: false, Key: "darc-vhf-uhf-microwave", Description: "DARC VHF-, UHF-, Microwave Contest (May)"},
-	{IsImportOnly: false, Key: "darc-waedc-cw", Description: "WAE DX Contest (CW)"},
-	{IsImportOnly: false, Key: "darc-waedc-rtty", Description: "WAE DX Contest (RTTY)"},
-	{IsImportOnly: false, Key: "darc-waedc-ssb", Description: "WAE DX Contest (SSB)"},
-	{IsImportOnly: false, Key: "darc-wag", Description: "DARC Worked All Germany"},
-	{IsImportOnly: false, Key: "de-qso-party", Description: "Delaware QSO Party"},
-	{IsImportOnly: false, Key: "dl-dx-rtty", Description: "DL-DX RTTY Contest"},
-	{IsImportOnly: false, Key: "dmc-rtty", Description: "DMC RTTY Contest"},
-	{IsImportOnly: false, Key: "ea-cncw", Description: "Concurso Nacional de Telegrafía"},
-	{IsImportOnly: false, Key: "ea-dme", Description: "Municipios Españoles"},
-	{IsImportOnly: false, Key: "ea-majestad-cw", Description: "His Majesty The King of Spain CW Contest (2022 and later)"},
-	{IsImportOnly: false, Key: "ea-majestad-ssb", Description: "His Majesty The King of Spain SSB Contest (2022 and later)"},
-	{IsImportOnly: false, Key: "ea-psk63", Description: "EA PSK63"},
-	{IsImportOnly: true, Key: "ea-rtty", Description: "Unión de Radioaficionados Españoles RTTY Contest"},
-	{IsImportOnly: false, Key: "ea-smre-cw", Description: "Su Majestad El Rey de España - CW (2021 and earlier)"},
-	{IsImportOnly: false, Key: "ea-smre-ssb", Description: "Su Majestad El Rey de España - SSB (2021 and earlier)"},
-	{IsImportOnly: false, Key: "ea-vhf-atlantic", Description: "Atlántico V-UHF"},
-	{IsImportOnly: false, Key: "ea-vhf-com", Description: "Combinado de V-UHF"},
-	{IsImportOnly: false, Key: "ea-vhf-costa-sol", Description: "Costa del Sol V-UHF"},
-	{IsImportOnly: false, Key: "ea-vhf-ea", Description: "Nacional VHF"},
-	{IsImportOnly: false, Key: "ea-vhf-ea1rcs", Description: "Segovia EA1RCS V-UHF"},
-	{IsImportOnly: false, Key: "ea-vhf-qsl", Description: "QSL V-UHF & 50MHz"},
-	{IsImportOnly: false, Key: "ea-vhf-sadurni", Description: "Sant Sadurni V-UHF"},
-	{IsImportOnly: false, Key: "ea-ww-rtty", Description: "Unión de Radioaficionados Españoles RTTY Contest"},
-	{IsImportOnly: false, Key: "easter", Description: "DARC Easter Contest"},
-	{IsImportOnly: false, Key: "epc-psk63", Description: "PSK63 QSO Party"},
-	{IsImportOnly: false, Key: "eu sprint", Description: "EU Sprint"},
-	{IsImportOnly: false, Key: "eu-hf", Description: "EU HF Championship"},
-	{IsImportOnly: false, Key: "eu-psk-dx", Description: "EU PSK DX Contest"},
-	{IsImportOnly: false, Key: "eucw160m", Description: "European CW Association 160m CW Party"},
-	{IsImportOnly: false, Key: "fall sprint", Description: "FISTS Fall Sprint"},
-	{IsImportOnly: false, Key: "fl-qso-party", Description: "Florida QSO Party"},
-	{IsImportOnly: false, Key: "ga-qso-party", Description: "Georgia QSO Party"},
-	{IsImportOnly: false, Key: "ha-dx", Description: "Hungarian DX Contest"},
-	{IsImportOnly: false, Key: "helvetia", Description: "Helvetia Contest"},
-	{IsImportOnly: false, Key: "hi-qso-party", Description: "Hawaiian QSO Party"},
-	{IsImportOnly: false, Key: "holyland", Description: "IARC Holyland Contest"},
-	{IsImportOnly: false, Key: "ia-qso-party", Description: "Iowa QSO Party"},
-	{IsImportOnly: false, Key: "iaru-field-day", Description: "DARC IARU Region 1 Field Day"},
-	{IsImportOnly: false, Key: "iaru-hf", Description: "IARU HF World Championship"},
-	{IsImportOnly: false, Key: "icwc-mst", Description: "ICWC Medium Speed Test"},
-	{IsImportOnly: false, Key: "id-qso-party", Description: "Idaho QSO Party"},
-	{IsImportOnly: false, Key: "il qso party", Description: "Illinois QSO Party"},
-	{IsImportOnly: false, Key: "in-qso-party", Description: "Indiana QSO Party"},
-	{IsImportOnly: false, Key: "jarts-ww-rtty", Description: "JARTS WW RTTY"},
-	{IsImportOnly: false, Key: "jidx-cw", Description: "Japan International DX Contest (CW)"},
-	{IsImportOnly: false, Key: "jidx-ssb", Description: "Japan International DX Contest (SSB)"},
-	{IsImportOnly: false, Key: "jt-dx-rtty", Description: "Mongolian RTTY DX Contest"},
-	{IsImportOnly: false, Key: "k1usn-sso", Description: "K1USN Slow Speed Open"},
-	{IsImportOnly: false, Key: "k1usn-sst", Description: "K1USN Slow Speed Test"},
-	{IsImportOnly: false, Key: "ks-qso-party", Description: "Kansas QSO Party"},
-	{IsImportOnly: false, Key: "ky-qso-party", Description: "Kentucky QSO Party"},
-	{IsImportOnly: false, Key: "la-qso-party", Description: "Louisiana QSO Party"},
-	{IsImportOnly: false, Key: "ldc-rtty", Description: "DRCG Long Distance Contest (RTTY)"},
-	{IsImportOnly: false, Key: "lz dx", Description: "LZ DX Contest"},
-	{IsImportOnly: false, Key: "mar-qso-party", Description: "Maritimes QSO Party"},
-	{IsImportOnly: false, Key: "md-qso-party", Description: "Maryland QSO Party"},
-	{IsImportOnly: false, Key: "me-qso-party", Description: "Maine QSO Party"},
-	{IsImportOnly: false, Key: "mi-qso-party", Description: "Michigan QSO Party"},
-	{IsImportOnly: false, Key: "midatlantic-qso-party", Description: "Mid-Atlantic QSO Party"},
-	{IsImportOnly: false, Key: "mn-qso-party", Description: "Minnesota QSO Party"},
-	{IsImportOnly: false, Key: "mo-qso-party", Description: "Missouri QSO Party"},
-	{IsImportOnly: false, Key: "ms-qso-party", Description: "Mississippi QSO Party"},
-	{IsImportOnly: false, Key: "mt-qso-party", Description: "Montana QSO Party"},
-	{IsImportOnly: false, Key: "na-sprint-cw", Description: "North America Sprint (CW)"},
-	{IsImportOnly: false, Key: "na-sprint-rtty", Description: "North America Sprint (RTTY)"},
-	{IsImportOnly: false, Key: "na-sprint-ssb", Description: "North America Sprint (Phone)"},
-	{IsImportOnly: false, Key: "naqp-cw", Description: "North America QSO Party (CW)"},
-	{IsImportOnly: false, Key: "naqp-rtty", Description: "North America QSO Party (RTTY)"},
-	{IsImportOnly: false, Key: "naqp-ssb", Description: "North America QSO Party (Phone)"},
-	{IsImportOnly: false, Key: "naval", Description: "International Naval Contest (INC)"},
-	{IsImportOnly: false, Key: "nc-qso-party", Description: "North Carolina QSO Party"},
-	{IsImportOnly: false, Key: "nd-qso-party", Description: "North Dakota QSO Party"},
-	{IsImportOnly: false, Key: "ne-qso-party", Description: "Nebraska QSO Party"},
-	{IsImportOnly: false, Key: "neqp", Description: "New England QSO Party"},
-	{IsImportOnly: false, Key: "nh-qso-party", Description: "New Hampshire QSO Party"},
-	{IsImportOnly: false, Key: "nj-qso-party", Description: "New Jersey QSO Party"},
-	{IsImportOnly: false, Key: "nm-qso-party", Description: "New Mexico QSO Party"},
-	{IsImportOnly: false, Key: "nrau-baltic-cw", Description: "NRAU-Baltic Contest (CW)"},
-	{IsImportOnly: false, Key: "nrau-baltic-ssb", Description: "NRAU-Baltic Contest (SSB)"},
-	{IsImportOnly: false, Key: "nv-qso-party", Description: "Nevada QSO Party"},
-	{IsImportOnly: false, Key: "ny-qso-party", Description: "New York QSO Party"},
-	{IsImportOnly: false, Key: "oceania-dx-cw", Description: "Oceania DX Contest (CW)"},
-	{IsImportOnly: false, Key: "oceania-dx-ssb", Description: "Oceania DX Contest (SSB)"},
-	{IsImportOnly: false, Key: "oh-qso-party", Description: "Ohio QSO Party"},
-	{IsImportOnly: false, Key: "ok-dx-rtty", Description: "Czech Radio Club OK DX Contest"},
-	{IsImportOnly: false, Key: "ok-om-dx", Description: "Czech Radio Club OK-OM DX Contest"},
-	{IsImportOnly: false, Key: "ok-qso-party", Description: "Oklahoma QSO Party"},
-	{IsImportOnly: false, Key: "omiss-qso-party", Description: "Old Man International Sideband Society QSO Party"},
-	{IsImportOnly: false, Key: "on-qso-party", Description: "Ontario QSO Party"},
-	{IsImportOnly: false, Key: "or-qso-party", Description: "Oregon QSO Party"},
-	{IsImportOnly: false, Key: "orari-dx", Description: "ORARI DX Contest"},
-	{IsImportOnly: false, Key: "pa-qso-party", Description: "Pennsylvania QSO Party"},
-	{IsImportOnly: false, Key: "pacc", Description: "Dutch PACC Contest"},
-	{IsImportOnly: false, Key: "pcc", Description: "PCCPro CW Contest"},
-	{IsImportOnly: false, Key: "psk-deathmatch", Description: "MDXA PSK DeathMatch (2005-2010)"},
-	{IsImportOnly: false, Key: "qc-qso-party", Description: "Quebec QSO Party"},
-	{IsImportOnly: true, Key: "rac", Description: "Canadian Amateur Radio Society Contest"},
-	{IsImportOnly: false, Key: "rac-canada-day", Description: "RAC Canada Day Contest"},
-	{IsImportOnly: false, Key: "rac-canada-winter", Description: "RAC Canada Winter Contest"},
-	{IsImportOnly: false, Key: "rdac", Description: "Russian District Award Contest"},
-	{IsImportOnly: false, Key: "rdxc", Description: "Russian DX Contest"},
-	{IsImportOnly: false, Key: "ref-160m", Description: "Reseau des Emetteurs Francais 160m Contest"},
-	{IsImportOnly: false, Key: "ref-cw", Description: "Reseau des Emetteurs Francais Contest (CW)"},
-	{IsImportOnly: false, Key: "ref-ssb", Description: "Reseau des Emetteurs Francais Contest (SSB)"},
-	{IsImportOnly: false, Key: "rep-portugal-day-hf", Description: "Rede dos Emissores Portugueses Portugal Day HF Contest"},
-	{IsImportOnly: false, Key: "ri-qso-party", Description: "Rhode Island QSO Party"},
-	{IsImportOnly: false, Key: "rsgb-160", Description: "1.8MHz Contest"},
-	{IsImportOnly: false, Key: "rsgb-21/28-cw", Description: "21/28 MHz Contest (CW)"},
-	{IsImportOnly: false, Key: "rsgb-21/28-ssb", Description: "21/28 MHz Contest (SSB)"},
-	{IsImportOnly: false, Key: "rsgb-80m-cc", Description: "80m Club Championships"},
-	{IsImportOnly: false, Key: "rsgb-afs-cw", Description: "Affiliated Societies Team Contest (CW)"},
-	{IsImportOnly: false, Key: "rsgb-afs-ssb", Description: "Affiliated Societies Team Contest (SSB)"},
-	{IsImportOnly: false, Key: "rsgb-club-calls", Description: "Club Calls"},
-	{IsImportOnly: false, Key: "rsgb-commonwealth", Description: "Commonwealth Contest"},
-	{IsImportOnly: false, Key: "rsgb-iota", Description: "IOTA Contest"},
-	{IsImportOnly: false, Key: "rsgb-low-power", Description: "Low Power Field Day"},
-	{IsImportOnly: false, Key: "rsgb-nfd", Description: "National Field Day"},
-	{IsImportOnly: false, Key: "rsgb-ropoco", Description: "RoPoCo"},
-	{IsImportOnly: false, Key: "rsgb-ssb-fd", Description: "SSB Field Day"},
-	{IsImportOnly: false, Key: "russian-rtty", Description: "Russian Radio RTTY Worldwide Contest"},
-	{IsImportOnly: false, Key: "sac-cw", Description: "Scandinavian Activity Contest (CW)"},
-	{IsImportOnly: false, Key: "sac-ssb", Description: "Scandinavian Activity Contest (SSB)"},
-	{IsImportOnly: false, Key: "sartg-rtty", Description: "SARTG WW RTTY"},
-	{IsImportOnly: false, Key: "sc-qso-party", Description: "South Carolina QSO Party"},
-	{IsImportOnly: false, Key: "scc-rtty", Description: "SCC RTTY Championship"},
-	{IsImportOnly: false, Key: "sd-qso-party", Description: "South Dakota QSO Party"},
-	{IsImportOnly: false, Key: "shortry", Description: "DARC RTTY Short Contest"},
-	{IsImportOnly: false, Key: "smp-aug", Description: "SSA Portabeltest"},
-	{IsImportOnly: false, Key: "smp-may", Description: "SSA Portabeltest"},
-	{IsImportOnly: false, Key: "sp-dx-rtty", Description: "PRC SPDX Contest (RTTY)"},
-	{IsImportOnly: false, Key: "spar-winter-fd", Description: "SPAR Winter Field Day(2016 and earlier)"},
-	{IsImportOnly: false, Key: "spdxcontest", Description: "SP DX Contest"},
-	{IsImportOnly: false, Key: "spring sprint", Description: "FISTS Spring Sprint"},
-	{IsImportOnly: false, Key: "sr-marathon", Description: "Scottish-Russian Marathon"},
-	{IsImportOnly: false, Key: "stew-perry", Description: "Stew Perry Topband Distance Challenge"},
-	{IsImportOnly: false, Key: "summer sprint", Description: "FISTS Summer Sprint"},
-	{IsImportOnly: false, Key: "tara-grid-dip", Description: "TARA Grid Dip PSK-RTTY Shindig"},
-	{IsImportOnly: false, Key: "tara-rtty", Description: "TARA RTTY Mêlée"},
-	{IsImportOnly: false, Key: "tara-rumble", Description: "TARA Rumble PSK Contest"},
-	{IsImportOnly: false, Key: "tara-skirmish", Description: "TARA Skirmish Digital Prefix Contest"},
-	{IsImportOnly: false, Key: "ten-rtty", Description: "Ten-Meter RTTY Contest (before 2011)"},
-	{IsImportOnly: false, Key: "tmc-rtty", Description: "The Makrothen Contest"},
-	{IsImportOnly: false, Key: "tn-qso-party", Description: "Tennessee QSO Party"},
-	{IsImportOnly: false, Key: "tx-qso-party", Description: "Texas QSO Party"},
-	{IsImportOnly: false, Key: "uba-dx-cw", Description: "UBA Contest (CW)"},
-	{IsImportOnly: false, Key: "uba-dx-ssb", Description: "UBA Contest (SSB)"},
-	{IsImportOnly: false, Key: "uk-dx-bpsk63", Description: "European PSK Club BPSK63 Contest"},
-	{IsImportOnly: false, Key: "uk-dx-rtty", Description: "UK DX RTTY Contest"},
-	{IsImportOnly: false, Key: "ukr-champ-rtty", Description: "Open Ukraine RTTY Championship"},
-	{IsImportOnly: false, Key: "ukrainian dx", Description: "Ukrainian DX"},
-	{IsImportOnly: false, Key: "uksmg-6m-marathon", Description: "UKSMG 6m Marathon"},
-	{IsImportOnly: false, Key: "uksmg-summer-es", Description: "UKSMG Summer Es Contest"},
-	{IsImportOnly: true, Key: "ure-dx", Description: "Ukrainian DX Contest"},
-	{IsImportOnly: false, Key: "us-counties-qso", Description: "Mobile Amateur Awards Club"},
-	{IsImportOnly: false, Key: "ut-qso-party", Description: "Utah QSO Party"},
-	{IsImportOnly: false, Key: "va-qso-party", Description: "Virginia QSO Party"},
-	{IsImportOnly: false, Key: "venez-ind-day", Description: "RCV Venezuelan Independence Day Contest"},
-	{IsImportOnly: true, Key: "virginia qso party", Description: "Virginia QSO Party"},
-	{IsImportOnly: false, Key: "volta-rtty", Description: "Alessandro Volta RTTY DX Contest"},
-	{IsImportOnly: false, Key: "vt-qso-party", Description: "Vermont QSO Party"},
-	{IsImportOnly: false, Key: "wa-qso-party", Description: "Washington QSO Party"},
-	{IsImportOnly: false, Key: "wfd", Description: "Winter Field Day (2017 and later)"},
-	{IsImportOnly: false, Key: "wi-qso-party", Description: "Wisconsin QSO Party"},
-	{IsImportOnly: false, Key: "wia-harry angel", Description: "WIA Harry Angel Memorial 80m Sprint"},
-	{IsImportOnly: false, Key: "wia-jmmfd", Description: "WIA John Moyle Memorial Field Day"},
-	{IsImportOnly: false, Key: "wia-ocdx", Description: "WIA Oceania DX (OCDX) Contest"},
-	{IsImportOnly: false, Key: "wia-remembrance", Description: "WIA Remembrance Day"},
-	{IsImportOnly: false, Key: "wia-ross hull", Description: "WIA Ross Hull Memorial VHF/UHF Contest"},
-	{IsImportOnly: false, Key: "wia-trans tasman", Description: "WIA Trans Tasman Low Bands Challenge"},
-	{IsImportOnly: false, Key: "wia-vhf/uhf fd", Description: "WIA VHF UHF Field Days"},
-	{IsImportOnly: false, Key: "wia-vk shires", Description: "WIA VK Shires"},
-	{IsImportOnly: false, Key: "winter sprint", Description: "FISTS Winter Sprint"},
-	{IsImportOnly: false, Key: "wv-qso-party", Description: "West Virginia QSO Party"},
-	{IsImportOnly: false, Key: "ww-digi", Description: "World Wide Digi DX Contest"},
-	{IsImportOnly: false, Key: "wy-qso-party", Description: "Wyoming QSO Party"},
-	{IsImportOnly: false, Key: "xe-intl-rtty", Description: "Mexico International Contest (RTTY)"},
-	{IsImportOnly: false, Key: "yohfdx", Description: "YODX HF contest"},
-	{IsImportOnly: false, Key: "yudxc", Description: "YU DX Contest"},
+	{IsImportOnly: false, Key: "070-160M-SPRINT", Description: "PODXS Great Pumpkin Sprint"},
+	{IsImportOnly: false, Key: "070-3-DAY", Description: "PODXS Three Day Weekend"},
+	{IsImportOnly: false, Key: "070-31-FLAVORS", Description: "PODXS 31 Flavors"},
+	{IsImportOnly: false, Key: "070-40M-SPRINT", Description: "PODXS 40m Firecracker Sprint"},
+	{IsImportOnly: false, Key: "070-80M-SPRINT", Description: "PODXS 80m Jay Hudak Memorial Sprint"},
+	{IsImportOnly: false, Key: "070-PSKFEST", Description: "PODXS PSKFest"},
+	{IsImportOnly: false, Key: "070-ST-PATS-DAY", Description: "PODXS St. Patricks Day"},
+	{IsImportOnly: false, Key: "070-VALENTINE-SPRINT", Description: "PODXS Valentine Sprint"},
+	{IsImportOnly: false, Key: "10-RTTY", Description: "Ten-Meter RTTY Contest (2011 onwards)"},
+	{IsImportOnly: false, Key: "1010-OPEN-SEASON", Description: "Open Season Ten Meter QSO Party"},
+	{IsImportOnly: false, Key: "7QP", Description: "7th-Area QSO Party"},
+	{IsImportOnly: false, Key: "AL-QSO-PARTY", Description: "Alabama QSO Party"},
+	{IsImportOnly: false, Key: "ALL-ASIAN-DX-CW", Description: "JARL All Asian DX Contest (CW)"},
+	{IsImportOnly: false, Key: "ALL-ASIAN-DX-PHONE", Description: "JARL All Asian DX Contest (PHONE)"},
+	{IsImportOnly: false, Key: "ANARTS-RTTY", Description: "ANARTS WW RTTY"},
+	{IsImportOnly: false, Key: "ANATOLIAN-RTTY", Description: "Anatolian WW RTTY"},
+	{IsImportOnly: false, Key: "AP-SPRINT", Description: "Asia - Pacific Sprint"},
+	{IsImportOnly: false, Key: "AR-QSO-PARTY", Description: "Arkansas QSO Party"},
+	{IsImportOnly: false, Key: "ARI-DX", Description: "ARI DX Contest"},
+	{IsImportOnly: false, Key: "ARI-EME", Description: "ARI Italian EME Trophy"},
+	{IsImportOnly: false, Key: "ARI-IAC-13CM", Description: "ARI Italian Activity Contest (13cm+)"},
+	{IsImportOnly: false, Key: "ARI-IAC-23CM", Description: "ARI Italian Activity Contest (23cm)"},
+	{IsImportOnly: false, Key: "ARI-IAC-6M", Description: "ARI Italian Activity Contest (6m)"},
+	{IsImportOnly: false, Key: "ARI-IAC-UHF", Description: "ARI Italian Activity Contest (UHF)"},
+	{IsImportOnly: false, Key: "ARI-IAC-VHF", Description: "ARI Italian Activity Contest (VHF)"},
+	{IsImportOnly: false, Key: "ARRL-10", Description: "ARRL 10 Meter Contest"},
+	{IsImportOnly: false, Key: "ARRL-10-GHZ", Description: "ARRL 10 GHz and Up Contest"},
+	{IsImportOnly: false, Key: "ARRL-160", Description: "ARRL 160 Meter Contest"},
+	{IsImportOnly: false, Key: "ARRL-222", Description: "ARRL 222 MHz and Up Distance Contest"},
+	{IsImportOnly: false, Key: "ARRL-DIGI", Description: "ARRL International Digital Contest"},
+	{IsImportOnly: false, Key: "ARRL-DX-CW", Description: "ARRL International DX Contest (CW)"},
+	{IsImportOnly: false, Key: "ARRL-DX-SSB", Description: "ARRL International DX Contest (Phone)"},
+	{IsImportOnly: false, Key: "ARRL-EME", Description: "ARRL EME contest"},
+	{IsImportOnly: false, Key: "ARRL-FIELD-DAY", Description: "ARRL Field Day"},
+	{IsImportOnly: false, Key: "ARRL-RR-CW", Description: "ARRL Rookie Roundup (CW)"},
+	{IsImportOnly: false, Key: "ARRL-RR-RTTY", Description: "ARRL Rookie Roundup (RTTY)"},
+	{IsImportOnly: false, Key: "ARRL-RR-SSB", Description: "ARRL Rookie Roundup (Phone)"},
+	{IsImportOnly: false, Key: "ARRL-RTTY", Description: "ARRL RTTY Round-Up"},
+	{IsImportOnly: false, Key: "ARRL-SCR", Description: "ARRL School Club Roundup"},
+	{IsImportOnly: false, Key: "ARRL-SS-CW", Description: "ARRL November Sweepstakes (CW)"},
+	{IsImportOnly: false, Key: "ARRL-SS-SSB", Description: "ARRL November Sweepstakes (Phone)"},
+	{IsImportOnly: false, Key: "ARRL-UHF-AUG", Description: "ARRL August UHF Contest"},
+	{IsImportOnly: false, Key: "ARRL-VHF-JAN", Description: "ARRL January VHF Sweepstakes"},
+	{IsImportOnly: false, Key: "ARRL-VHF-JUN", Description: "ARRL June VHF QSO Party"},
+	{IsImportOnly: false, Key: "ARRL-VHF-SEP", Description: "ARRL September VHF QSO Party"},
+	{IsImportOnly: false, Key: "AZ-QSO-PARTY", Description: "Arizona QSO Party"},
+	{IsImportOnly: false, Key: "BANGGAI-DX", Description: "ORARI Banggai DX Contest"},
+	{IsImportOnly: false, Key: "BARTG-RTTY", Description: "BARTG Spring RTTY Contest"},
+	{IsImportOnly: false, Key: "BARTG-SPRINT", Description: "BARTG Sprint Contest"},
+	{IsImportOnly: false, Key: "BC-QSO-PARTY", Description: "British Columbia QSO Party"},
+	{IsImportOnly: false, Key: "BEKASI-MERDEKA-CONTEST", Description: "ORARI Bekasi Merdeka Contest"},
+	{IsImportOnly: false, Key: "CA-QSO-PARTY", Description: "California QSO Party"},
+	{IsImportOnly: false, Key: "CIS-DX", Description: "CIS DX Contest"},
+	{IsImportOnly: false, Key: "CO-QSO-PARTY", Description: "Colorado QSO Party"},
+	{IsImportOnly: false, Key: "CQ-160-CW", Description: "CQ WW 160 Meter DX Contest (CW)"},
+	{IsImportOnly: false, Key: "CQ-160-SSB", Description: "CQ WW 160 Meter DX Contest (SSB)"},
+	{IsImportOnly: false, Key: "CQ-M", Description: "CQ-M International DX Contest"},
+	{IsImportOnly: false, Key: "CQ-VHF", Description: "CQ World-Wide VHF Contest"},
+	{IsImportOnly: false, Key: "CQ-WPX-CW", Description: "CQ WW WPX Contest (CW)"},
+	{IsImportOnly: false, Key: "CQ-WPX-RTTY", Description: "CQ/RJ WW RTTY WPX Contest"},
+	{IsImportOnly: false, Key: "CQ-WPX-SSB", Description: "CQ WW WPX Contest (SSB)"},
+	{IsImportOnly: false, Key: "CQ-WW-CW", Description: "CQ WW DX Contest (CW)"},
+	{IsImportOnly: false, Key: "CQ-WW-RTTY", Description: "CQ/RJ WW RTTY DX Contest"},
+	{IsImportOnly: false, Key: "CQ-WW-SSB", Description: "CQ WW DX Contest (SSB)"},
+	{IsImportOnly: false, Key: "CT-QSO-PARTY", Description: "Connecticut QSO Party"},
+	{IsImportOnly: false, Key: "CVA-DX-CW", Description: "Concurso Verde e Amarelo DX CW Contest"},
+	{IsImportOnly: false, Key: "CVA-DX-SSB", Description: "Concurso Verde e Amarelo DX CW Contest"},
+	{IsImportOnly: false, Key: "CWOPS-CW-OPEN", Description: "CWops CW Open Competition"},
+	{IsImportOnly: false, Key: "CWOPS-CWT", Description: "CWops Mini-CWT Test"},
+	{IsImportOnly: false, Key: "DARC-10", Description: "DARC 10m Contest"},
+	{IsImportOnly: false, Key: "DARC-CWA", Description: "DARC CW Trainee Contest"},
+	{IsImportOnly: false, Key: "DARC-FT4", Description: "DARC FT4 Contest"},
+	{IsImportOnly: false, Key: "DARC-HELL", Description: "DARC Hell Contest"},
+	{IsImportOnly: false, Key: "DARC-MICROWAVE", Description: "DARC Microwave Contest"},
+	{IsImportOnly: false, Key: "DARC-TRAINEE", Description: "DARC Trainee Contest"},
+	{IsImportOnly: false, Key: "DARC-UKW-FIELD-DAY", Description: "DARC UKW Summer Contest"},
+	{IsImportOnly: false, Key: "DARC-UKW-SPRING", Description: "DARC UKW Spring Contest"},
+	{IsImportOnly: false, Key: "DARC-VHF-UHF-MICROWAVE", Description: "DARC VHF-, UHF-, Microwave Contest (May)"},
+	{IsImportOnly: false, Key: "DARC-WAEDC-CW", Description: "WAE DX Contest (CW)"},
+	{IsImportOnly: false, Key: "DARC-WAEDC-RTTY", Description: "WAE DX Contest (RTTY)"},
+	{IsImportOnly: false, Key: "DARC-WAEDC-SSB", Description: "WAE DX Contest (SSB)"},
+	{IsImportOnly: false, Key: "DARC-WAG", Description: "DARC Worked All Germany"},
+	{IsImportOnly: false, Key: "DE-QSO-PARTY", Description: "Delaware QSO Party"},
+	{IsImportOnly: false, Key: "DL-DX-RTTY", Description: "DL-DX RTTY Contest"},
+	{IsImportOnly: false, Key: "DMC-RTTY", Description: "DMC RTTY Contest"},
+	{IsImportOnly: false, Key: "EA-CNCW", Description: "Concurso Nacional de Telegrafía"},
+	{IsImportOnly: false, Key: "EA-DME", Description: "Municipios Españoles"},
+	{IsImportOnly: false, Key: "EA-MAJESTAD-CW", Description: "His Majesty The King of Spain CW Contest (2022 and later)"},
+	{IsImportOnly: false, Key: "EA-MAJESTAD-SSB", Description: "His Majesty The King of Spain SSB Contest (2022 and later)"},
+	{IsImportOnly: false, Key: "EA-PSK63", Description: "EA PSK63"},
+	{IsImportOnly: true, Key: "EA-RTTY", Description: "Unión de Radioaficionados Españoles RTTY Contest"},
+	{IsImportOnly: false, Key: "EA-SMRE-CW", Description: "Su Majestad El Rey de España - CW (2021 and earlier)"},
+	{IsImportOnly: false, Key: "EA-SMRE-SSB", Description: "Su Majestad El Rey de España - SSB (2021 and earlier)"},
+	{IsImportOnly: false, Key: "EA-VHF-ATLANTIC", Description: "Atlántico V-UHF"},
+	{IsImportOnly: false, Key: "EA-VHF-COM", Description: "Combinado de V-UHF"},
+	{IsImportOnly: false, Key: "EA-VHF-COSTA-SOL", Description: "Costa del Sol V-UHF"},
+	{IsImportOnly: false, Key: "EA-VHF-EA", Description: "Nacional VHF"},
+	{IsImportOnly: false, Key: "EA-VHF-EA1RCS", Description: "Segovia EA1RCS V-UHF"},
+	{IsImportOnly: false, Key: "EA-VHF-QSL", Description: "QSL V-UHF & 50MHz"},
+	{IsImportOnly: false, Key: "EA-VHF-SADURNI", Description: "Sant Sadurni V-UHF"},
+	{IsImportOnly: false, Key: "EA-WW-RTTY", Description: "Unión de Radioaficionados Españoles RTTY Contest"},
+	{IsImportOnly: false, Key: "EASTER", Description: "DARC Easter Contest"},
+	{IsImportOnly: false, Key: "EPC-PSK63", Description: "PSK63 QSO Party"},
+	{IsImportOnly: false, Key: "EU SPRINT", Description: "EU Sprint"},
+	{IsImportOnly: false, Key: "EU-HF", Description: "EU HF Championship"},
+	{IsImportOnly: false, Key: "EU-PSK-DX", Description: "EU PSK DX Contest"},
+	{IsImportOnly: false, Key: "EUCW160M", Description: "European CW Association 160m CW Party"},
+	{IsImportOnly: false, Key: "FALL SPRINT", Description: "FISTS Fall Sprint"},
+	{IsImportOnly: false, Key: "FL-QSO-PARTY", Description: "Florida QSO Party"},
+	{IsImportOnly: false, Key: "GA-QSO-PARTY", Description: "Georgia QSO Party"},
+	{IsImportOnly: false, Key: "HA-DX", Description: "Hungarian DX Contest"},
+	{IsImportOnly: false, Key: "HELVETIA", Description: "Helvetia Contest"},
+	{IsImportOnly: false, Key: "HI-QSO-PARTY", Description: "Hawaiian QSO Party"},
+	{IsImportOnly: false, Key: "HOLYLAND", Description: "IARC Holyland Contest"},
+	{IsImportOnly: false, Key: "IA-QSO-PARTY", Description: "Iowa QSO Party"},
+	{IsImportOnly: false, Key: "IARU-FIELD-DAY", Description: "DARC IARU Region 1 Field Day"},
+	{IsImportOnly: false, Key: "IARU-HF", Description: "IARU HF World Championship"},
+	{IsImportOnly: false, Key: "ICWC-MST", Description: "ICWC Medium Speed Test"},
+	{IsImportOnly: false, Key: "ID-QSO-PARTY", Description: "Idaho QSO Party"},
+	{IsImportOnly: false, Key: "IL QSO PARTY", Description: "Illinois QSO Party"},
+	{IsImportOnly: false, Key: "IN-QSO-PARTY", Description: "Indiana QSO Party"},
+	{IsImportOnly: false, Key: "JARTS-WW-RTTY", Description: "JARTS WW RTTY"},
+	{IsImportOnly: false, Key: "JIDX-CW", Description: "Japan International DX Contest (CW)"},
+	{IsImportOnly: false, Key: "JIDX-SSB", Description: "Japan International DX Contest (SSB)"},
+	{IsImportOnly: false, Key: "JT-DX-RTTY", Description: "Mongolian RTTY DX Contest"},
+	{IsImportOnly: false, Key: "K1USN-SSO", Description: "K1USN Slow Speed Open"},
+	{IsImportOnly: false, Key: "K1USN-SST", Description: "K1USN Slow Speed Test"},
+	{IsImportOnly: false, Key: "KS-QSO-PARTY", Description: "Kansas QSO Party"},
+	{IsImportOnly: false, Key: "KY-QSO-PARTY", Description: "Kentucky QSO Party"},
+	{IsImportOnly: false, Key: "LA-QSO-PARTY", Description: "Louisiana QSO Party"},
+	{IsImportOnly: false, Key: "LDC-RTTY", Description: "DRCG Long Distance Contest (RTTY)"},
+	{IsImportOnly: false, Key: "LZ DX", Description: "LZ DX Contest"},
+	{IsImportOnly: false, Key: "MAR-QSO-PARTY", Description: "Maritimes QSO Party"},
+	{IsImportOnly: false, Key: "MD-QSO-PARTY", Description: "Maryland QSO Party"},
+	{IsImportOnly: false, Key: "ME-QSO-PARTY", Description: "Maine QSO Party"},
+	{IsImportOnly: false, Key: "MI-QSO-PARTY", Description: "Michigan QSO Party"},
+	{IsImportOnly: false, Key: "MIDATLANTIC-QSO-PARTY", Description: "Mid-Atlantic QSO Party"},
+	{IsImportOnly: false, Key: "MN-QSO-PARTY", Description: "Minnesota QSO Party"},
+	{IsImportOnly: false, Key: "MO-QSO-PARTY", Description: "Missouri QSO Party"},
+	{IsImportOnly: false, Key: "MS-QSO-PARTY", Description: "Mississippi QSO Party"},
+	{IsImportOnly: false, Key: "MT-QSO-PARTY", Description: "Montana QSO Party"},
+	{IsImportOnly: false, Key: "NA-SPRINT-CW", Description: "North America Sprint (CW)"},
+	{IsImportOnly: false, Key: "NA-SPRINT-RTTY", Description: "North America Sprint (RTTY)"},
+	{IsImportOnly: false, Key: "NA-SPRINT-SSB", Description: "North America Sprint (Phone)"},
+	{IsImportOnly: false, Key: "NAQP-CW", Description: "North America QSO Party (CW)"},
+	{IsImportOnly: false, Key: "NAQP-RTTY", Description: "North America QSO Party (RTTY)"},
+	{IsImportOnly: false, Key: "NAQP-SSB", Description: "North America QSO Party (Phone)"},
+	{IsImportOnly: false, Key: "NAVAL", Description: "International Naval Contest (INC)"},
+	{IsImportOnly: false, Key: "NC-QSO-PARTY", Description: "North Carolina QSO Party"},
+	{IsImportOnly: false, Key: "ND-QSO-PARTY", Description: "North Dakota QSO Party"},
+	{IsImportOnly: false, Key: "NE-QSO-PARTY", Description: "Nebraska QSO Party"},
+	{IsImportOnly: false, Key: "NEQP", Description: "New England QSO Party"},
+	{IsImportOnly: false, Key: "NH-QSO-PARTY", Description: "New Hampshire QSO Party"},
+	{IsImportOnly: false, Key: "NJ-QSO-PARTY", Description: "New Jersey QSO Party"},
+	{IsImportOnly: false, Key: "NM-QSO-PARTY", Description: "New Mexico QSO Party"},
+	{IsImportOnly: false, Key: "NRAU-BALTIC-CW", Description: "NRAU-Baltic Contest (CW)"},
+	{IsImportOnly: false, Key: "NRAU-BALTIC-SSB", Description: "NRAU-Baltic Contest (SSB)"},
+	{IsImportOnly: false, Key: "NV-QSO-PARTY", Description: "Nevada QSO Party"},
+	{IsImportOnly: false, Key: "NY-QSO-PARTY", Description: "New York QSO Party"},
+	{IsImportOnly: false, Key: "OCEANIA-DX-CW", Description: "Oceania DX Contest (CW)"},
+	{IsImportOnly: false, Key: "OCEANIA-DX-SSB", Description: "Oceania DX Contest (SSB)"},
+	{IsImportOnly: false, Key: "OH-QSO-PARTY", Description: "Ohio QSO Party"},
+	{IsImportOnly: false, Key: "OK-DX-RTTY", Description: "Czech Radio Club OK DX Contest"},
+	{IsImportOnly: false, Key: "OK-OM-DX", Description: "Czech Radio Club OK-OM DX Contest"},
+	{IsImportOnly: false, Key: "OK-QSO-PARTY", Description: "Oklahoma QSO Party"},
+	{IsImportOnly: false, Key: "OMISS-QSO-PARTY", Description: "Old Man International Sideband Society QSO Party"},
+	{IsImportOnly: false, Key: "ON-QSO-PARTY", Description: "Ontario QSO Party"},
+	{IsImportOnly: false, Key: "OR-QSO-PARTY", Description: "Oregon QSO Party"},
+	{IsImportOnly: false, Key: "ORARI-DX", Description: "ORARI DX Contest"},
+	{IsImportOnly: false, Key: "PA-QSO-PARTY", Description: "Pennsylvania QSO Party"},
+	{IsImportOnly: false, Key: "PACC", Description: "Dutch PACC Contest"},
+	{IsImportOnly: false, Key: "PCC", Description: "PCCPro CW Contest"},
+	{IsImportOnly: false, Key: "PSK-DEATHMATCH", Description: "MDXA PSK DeathMatch (2005-2010)"},
+	{IsImportOnly: false, Key: "QC-QSO-PARTY", Description: "Quebec QSO Party"},
+	{IsImportOnly: true, Key: "RAC", Description: "Canadian Amateur Radio Society Contest"},
+	{IsImportOnly: false, Key: "RAC-CANADA-DAY", Description: "RAC Canada Day Contest"},
+	{IsImportOnly: false, Key: "RAC-CANADA-WINTER", Description: "RAC Canada Winter Contest"},
+	{IsImportOnly: false, Key: "RDAC", Description: "Russian District Award Contest"},
+	{IsImportOnly: false, Key: "RDXC", Description: "Russian DX Contest"},
+	{IsImportOnly: false, Key: "REF-160M", Description: "Reseau des Emetteurs Francais 160m Contest"},
+	{IsImportOnly: false, Key: "REF-CW", Description: "Reseau des Emetteurs Francais Contest (CW)"},
+	{IsImportOnly: false, Key: "REF-SSB", Description: "Reseau des Emetteurs Francais Contest (SSB)"},
+	{IsImportOnly: false, Key: "REP-PORTUGAL-DAY-HF", Description: "Rede dos Emissores Portugueses Portugal Day HF Contest"},
+	{IsImportOnly: false, Key: "RI-QSO-PARTY", Description: "Rhode Island QSO Party"},
+	{IsImportOnly: false, Key: "RSGB-160", Description: "1.8MHz Contest"},
+	{IsImportOnly: false, Key: "RSGB-21/28-CW", Description: "21/28 MHz Contest (CW)"},
+	{IsImportOnly: false, Key: "RSGB-21/28-SSB", Description: "21/28 MHz Contest (SSB)"},
+	{IsImportOnly: false, Key: "RSGB-80M-CC", Description: "80m Club Championships"},
+	{IsImportOnly: false, Key: "RSGB-AFS-CW", Description: "Affiliated Societies Team Contest (CW)"},
+	{IsImportOnly: false, Key: "RSGB-AFS-SSB", Description: "Affiliated Societies Team Contest (SSB)"},
+	{IsImportOnly: false, Key: "RSGB-CLUB-CALLS", Description: "Club Calls"},
+	{IsImportOnly: false, Key: "RSGB-COMMONWEALTH", Description: "Commonwealth Contest"},
+	{IsImportOnly: false, Key: "RSGB-IOTA", Description: "IOTA Contest"},
+	{IsImportOnly: false, Key: "RSGB-LOW-POWER", Description: "Low Power Field Day"},
+	{IsImportOnly: false, Key: "RSGB-NFD", Description: "National Field Day"},
+	{IsImportOnly: false, Key: "RSGB-ROPOCO", Description: "RoPoCo"},
+	{IsImportOnly: false, Key: "RSGB-SSB-FD", Description: "SSB Field Day"},
+	{IsImportOnly: false, Key: "RUSSIAN-RTTY", Description: "Russian Radio RTTY Worldwide Contest"},
+	{IsImportOnly: false, Key: "SAC-CW", Description: "Scandinavian Activity Contest (CW)"},
+	{IsImportOnly: false, Key: "SAC-SSB", Description: "Scandinavian Activity Contest (SSB)"},
+	{IsImportOnly: false, Key: "SARTG-RTTY", Description: "SARTG WW RTTY"},
+	{IsImportOnly: false, Key: "SC-QSO-PARTY", Description: "South Carolina QSO Party"},
+	{IsImportOnly: false, Key: "SCC-RTTY", Description: "SCC RTTY Championship"},
+	{IsImportOnly: false, Key: "SD-QSO-PARTY", Description: "South Dakota QSO Party"},
+	{IsImportOnly: false, Key: "SHORTRY", Description: "DARC RTTY Short Contest"},
+	{IsImportOnly: false, Key: "SMP-AUG", Description: "SSA Portabeltest"},
+	{IsImportOnly: false, Key: "SMP-MAY", Description: "SSA Portabeltest"},
+	{IsImportOnly: false, Key: "SP-DX-RTTY", Description: "PRC SPDX Contest (RTTY)"},
+	{IsImportOnly: false, Key: "SPAR-WINTER-FD", Description: "SPAR Winter Field Day(2016 and earlier)"},
+	{IsImportOnly: false, Key: "SPDXCONTEST", Description: "SP DX Contest"},
+	{IsImportOnly: false, Key: "SPRING SPRINT", Description: "FISTS Spring Sprint"},
+	{IsImportOnly: false, Key: "SR-MARATHON", Description: "Scottish-Russian Marathon"},
+	{IsImportOnly: false, Key: "STEW-PERRY", Description: "Stew Perry Topband Distance Challenge"},
+	{IsImportOnly: false, Key: "SUMMER SPRINT", Description: "FISTS Summer Sprint"},
+	{IsImportOnly: false, Key: "TARA-GRID-DIP", Description: "TARA Grid Dip PSK-RTTY Shindig"},
+	{IsImportOnly: false, Key: "TARA-RTTY", Description: "TARA RTTY Mêlée"},
+	{IsImportOnly: false, Key: "TARA-RUMBLE", Description: "TARA Rumble PSK Contest"},
+	{IsImportOnly: false, Key: "TARA-SKIRMISH", Description: "TARA Skirmish Digital Prefix Contest"},
+	{IsImportOnly: false, Key: "TEN-RTTY", Description: "Ten-Meter RTTY Contest (before 2011)"},
+	{IsImportOnly: false, Key: "TMC-RTTY", Description: "The Makrothen Contest"},
+	{IsImportOnly: false, Key: "TN-QSO-PARTY", Description: "Tennessee QSO Party"},
+	{IsImportOnly: false, Key: "TX-QSO-PARTY", Description: "Texas QSO Party"},
+	{IsImportOnly: false, Key: "UBA-DX-CW", Description: "UBA Contest (CW)"},
+	{IsImportOnly: false, Key: "UBA-DX-SSB", Description: "UBA Contest (SSB)"},
+	{IsImportOnly: false, Key: "UK-DX-BPSK63", Description: "European PSK Club BPSK63 Contest"},
+	{IsImportOnly: false, Key: "UK-DX-RTTY", Description: "UK DX RTTY Contest"},
+	{IsImportOnly: false, Key: "UKR-CHAMP-RTTY", Description: "Open Ukraine RTTY Championship"},
+	{IsImportOnly: false, Key: "UKRAINIAN DX", Description: "Ukrainian DX"},
+	{IsImportOnly: false, Key: "UKSMG-6M-MARATHON", Description: "UKSMG 6m Marathon"},
+	{IsImportOnly: false, Key: "UKSMG-SUMMER-ES", Description: "UKSMG Summer Es Contest"},
+	{IsImportOnly: true, Key: "URE-DX", Description: "Ukrainian DX Contest"},
+	{IsImportOnly: false, Key: "US-COUNTIES-QSO", Description: "Mobile Amateur Awards Club"},
+	{IsImportOnly: false, Key: "UT-QSO-PARTY", Description: "Utah QSO Party"},
+	{IsImportOnly: false, Key: "VA-QSO-PARTY", Description: "Virginia QSO Party"},
+	{IsImportOnly: false, Key: "VENEZ-IND-DAY", Description: "RCV Venezuelan Independence Day Contest"},
+	{IsImportOnly: true, Key: "VIRGINIA QSO PARTY", Description: "Virginia QSO Party"},
+	{IsImportOnly: false, Key: "VOLTA-RTTY", Description: "Alessandro Volta RTTY DX Contest"},
+	{IsImportOnly: false, Key: "VT-QSO-PARTY", Description: "Vermont QSO Party"},
+	{IsImportOnly: false, Key: "WA-QSO-PARTY", Description: "Washington QSO Party"},
+	{IsImportOnly: false, Key: "WFD", Description: "Winter Field Day (2017 and later)"},
+	{IsImportOnly: false, Key: "WI-QSO-PARTY", Description: "Wisconsin QSO Party"},
+	{IsImportOnly: false, Key: "WIA-HARRY ANGEL", Description: "WIA Harry Angel Memorial 80m Sprint"},
+	{IsImportOnly: false, Key: "WIA-JMMFD", Description: "WIA John Moyle Memorial Field Day"},
+	{IsImportOnly: false, Key: "WIA-OCDX", Description: "WIA Oceania DX (OCDX) Contest"},
+	{IsImportOnly: false, Key: "WIA-REMEMBRANCE", Description: "WIA Remembrance Day"},
+	{IsImportOnly: false, Key: "WIA-ROSS HULL", Description: "WIA Ross Hull Memorial VHF/UHF Contest"},
+	{IsImportOnly: false, Key: "WIA-TRANS TASMAN", Description: "WIA Trans Tasman Low Bands Challenge"},
+	{IsImportOnly: false, Key: "WIA-VHF/UHF FD", Description: "WIA VHF UHF Field Days"},
+	{IsImportOnly: false, Key: "WIA-VK SHIRES", Description: "WIA VK Shires"},
+	{IsImportOnly: false, Key: "WINTER SPRINT", Description: "FISTS Winter Sprint"},
+	{IsImportOnly: false, Key: "WV-QSO-PARTY", Description: "West Virginia QSO Party"},
+	{IsImportOnly: false, Key: "WW-DIGI", Description: "World Wide Digi DX Contest"},
+	{IsImportOnly: false, Key: "WY-QSO-PARTY", Description: "Wyoming QSO Party"},
+	{IsImportOnly: false, Key: "XE-INTL-RTTY", Description: "Mexico International Contest (RTTY)"},
+	{IsImportOnly: false, Key: "YOHFDX", Description: "YODX HF contest"},
+	{IsImportOnly: false, Key: "YUDXC", Description: "YU DX Contest"},
 }
 
 // lookupMap contains all known Contest specifications.

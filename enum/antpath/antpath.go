@@ -13,7 +13,7 @@ var _ codegen.CodeGenKey = AntPath("")
 
 // New creates a new AntPath from the provided string.
 func New(value string) AntPath {
-	return AntPath(strings.ToLower(value))
+	return AntPath(strings.ToUpper(value))
 }
 
 func (a AntPath) String() string {
@@ -23,7 +23,7 @@ func (a AntPath) String() string {
 // Compare returns an integer comparing two AntPath values lexicographically.
 // ADIF enums are case-insensitive.
 func (a AntPath) Compare(other AntPath) int {
-	return strings.Compare(strings.ToLower(string(a)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(a)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this AntPath equals the other AntPath.

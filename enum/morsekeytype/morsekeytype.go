@@ -12,7 +12,7 @@ var _ codegen.CodeGenKey = MorseKeyType("")
 
 // New creates a new MorseKeyType from the provided string.
 func New(value string) MorseKeyType {
-	return MorseKeyType(strings.ToLower(value))
+	return MorseKeyType(strings.ToUpper(value))
 }
 
 // String returns the string representation of the MorseKeyType.
@@ -23,7 +23,7 @@ func (m MorseKeyType) String() string {
 // Compare returns an integer comparing two MorseKeyType values lexicographically.
 // ADIF enums are case-insensitive.
 func (m MorseKeyType) Compare(other MorseKeyType) int {
-	return strings.Compare(strings.ToLower(string(m)), strings.ToLower(string(other)))
+	return strings.Compare(strings.ToUpper(string(m)), strings.ToUpper(string(other)))
 }
 
 // Equals returns true if this MorseKeyType equals the other MorseKeyType.

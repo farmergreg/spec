@@ -7,64 +7,64 @@ package secondaryadministrativesubdivision
 import "sync"
 
 const (
-	AKALEUTIANS_EAST                  SecondaryAdministrativeSubdivision = "ak,aleutians east"                  // ak,aleutians east                   = DXCC 6: Aleutians East
-	AKALEUTIANS_ISLANDS               SecondaryAdministrativeSubdivision = "ak,aleutians islands"               // ak,aleutians islands                = DXCC 6: Aleutians Islands
-	AKALEUTIANS_WEST                  SecondaryAdministrativeSubdivision = "ak,aleutians west"                  // ak,aleutians west                   = DXCC 6: Aleutians West
-	AKANCHORAGE                       SecondaryAdministrativeSubdivision = "ak,anchorage"                       // ak,anchorage                        = DXCC 6: Anchorage
-	AKANGOON                          SecondaryAdministrativeSubdivision = "ak,angoon"                          // ak,angoon                           = DXCC 6: Angoon
-	AKBARROW                          SecondaryAdministrativeSubdivision = "ak,barrow"                          // ak,barrow                           = DXCC 6: Barrow
-	AKBETHEL                          SecondaryAdministrativeSubdivision = "ak,bethel"                          // ak,bethel                           = DXCC 6: Bethel
-	AKBRISTOL_BAY                     SecondaryAdministrativeSubdivision = "ak,bristol bay"                     // ak,bristol bay                      = DXCC 6: Bristol Bay
-	AKCORDOVA_MCCARTHY                SecondaryAdministrativeSubdivision = "ak,cordova-mccarthy"                // ak,cordova-mccarthy                 = DXCC 6: Cordova-McCarthy
-	AKDENALI                          SecondaryAdministrativeSubdivision = "ak,denali"                          // ak,denali                           = DXCC 6: Denali
-	AKDILLINGHAM                      SecondaryAdministrativeSubdivision = "ak,dillingham"                      // ak,dillingham                       = DXCC 6: Dillingham
-	AKFAIRBANKS                       SecondaryAdministrativeSubdivision = "ak,fairbanks"                       // ak,fairbanks                        = DXCC 6: Fairbanks
-	AKFAIRBANKS_NORTH_STAR            SecondaryAdministrativeSubdivision = "ak,fairbanks north star"            // ak,fairbanks north star             = DXCC 6: Fairbanks North Star
-	AKFIRST_JUDICIAL_DISTRICT         SecondaryAdministrativeSubdivision = "ak,first judicial district"         // ak,first judicial district          = DXCC 6: First Judicial District
-	AKFOURTH_JUDICIAL_DISTRICT        SecondaryAdministrativeSubdivision = "ak,fourth judicial district"        // ak,fourth judicial district         = DXCC 6: Fourth Judicial District
-	AKHAINES                          SecondaryAdministrativeSubdivision = "ak,haines"                          // ak,haines                           = DXCC 6: Haines
-	AKHOONAH_ANGOON                   SecondaryAdministrativeSubdivision = "ak,hoonah-angoon"                   // ak,hoonah-angoon                    = DXCC 6: Hoonah-Angoon
-	AKJUNEAU                          SecondaryAdministrativeSubdivision = "ak,juneau"                          // ak,juneau                           = DXCC 6: Juneau
-	AKKENAI_PENINSULA                 SecondaryAdministrativeSubdivision = "ak,kenai peninsula"                 // ak,kenai peninsula                  = DXCC 6: Kenai Peninsula
-	AKKENAI_COOK_INLET                SecondaryAdministrativeSubdivision = "ak,kenai-cook inlet"                // ak,kenai-cook inlet                 = DXCC 6: Kenai-Cook Inlet
-	AKKETCHIKAN                       SecondaryAdministrativeSubdivision = "ak,ketchikan"                       // ak,ketchikan                        = DXCC 6: Ketchikan
-	AKKETCHIKAN_GATEWAY               SecondaryAdministrativeSubdivision = "ak,ketchikan gateway"               // ak,ketchikan gateway                = DXCC 6: Ketchikan Gateway
-	AKKOBUK                           SecondaryAdministrativeSubdivision = "ak,kobuk"                           // ak,kobuk                            = DXCC 6: Kobuk
-	AKKODIAK_ISLAND                   SecondaryAdministrativeSubdivision = "ak,kodiak island"                   // ak,kodiak island                    = DXCC 6: Kodiak Island
-	AKKUSILVAK                        SecondaryAdministrativeSubdivision = "ak,kusilvak"                        // ak,kusilvak                         = DXCC 6: Kusilvak
-	AKKUSKOKWIM                       SecondaryAdministrativeSubdivision = "ak,kuskokwim"                       // ak,kuskokwim                        = DXCC 6: Kuskokwim
-	AKLAKE_AND_PENINSULA              SecondaryAdministrativeSubdivision = "ak,lake and peninsula"              // ak,lake and peninsula               = DXCC 6: Lake and Peninsula
-	AKLYNN_CANAL_ICY_STRAITS          SecondaryAdministrativeSubdivision = "ak,lynn canal-icy straits"          // ak,lynn canal-icy straits           = DXCC 6: Lynn Canal-Icy Straits
-	AKMATANUSKA_SUSITNA               SecondaryAdministrativeSubdivision = "ak,matanuska-susitna"               // ak,matanuska-susitna                = DXCC 6: Matanuska-Susitna
-	AKNOME                            SecondaryAdministrativeSubdivision = "ak,nome"                            // ak,nome                             = DXCC 6: Nome
-	AKNORTH_SLOPE                     SecondaryAdministrativeSubdivision = "ak,north slope"                     // ak,north slope                      = DXCC 6: North Slope
-	AKNORTHWEST_ARCTIC                SecondaryAdministrativeSubdivision = "ak,northwest arctic"                // ak,northwest arctic                 = DXCC 6: Northwest Arctic
-	AKOUTER_KETCHIKAN                 SecondaryAdministrativeSubdivision = "ak,outer ketchikan"                 // ak,outer ketchikan                  = DXCC 6: Outer Ketchikan
-	AKPALMER_WASILLA_TALKEETNA        SecondaryAdministrativeSubdivision = "ak,palmer-wasilla-talkeetna"        // ak,palmer-wasilla-talkeetna         = DXCC 6: Palmer-Wasilla-Talkeetna
-	AKPETERSBURG                      SecondaryAdministrativeSubdivision = "ak,petersburg"                      // ak,petersburg                       = DXCC 6: Petersburg
-	AKPRIBILOF_ISLANDS                SecondaryAdministrativeSubdivision = "ak,pribilof islands"                // ak,pribilof islands                 = DXCC 6: Pribilof Islands
-	AKPRINCE_OF_WALES                 SecondaryAdministrativeSubdivision = "ak,prince of wales"                 // ak,prince of wales                  = DXCC 6: Prince of Wales
-	AKPRINCE_OF_WALES_HYDER           SecondaryAdministrativeSubdivision = "ak,prince of wales-hyder"           // ak,prince of wales-hyder            = DXCC 6: Prince of Wales-Hyder
-	AKPRINCE_OF_WALES_OUTER_KETCHIKAN SecondaryAdministrativeSubdivision = "ak,prince of wales-outer ketchikan" // ak,prince of wales-outer ketchikan  = DXCC 6: Prince of Wales-Outer Ketchikan
-	AKSAINT_MATTHEW_ISLAND            SecondaryAdministrativeSubdivision = "ak,saint matthew island"            // ak,saint matthew island             = DXCC 6: Saint Matthew Island
-	AKSECOND_JUDICIAL_DISTRICT        SecondaryAdministrativeSubdivision = "ak,second judicial district"        // ak,second judicial district         = DXCC 6: Second Judicial District
-	AKSEWARD                          SecondaryAdministrativeSubdivision = "ak,seward"                          // ak,seward                           = DXCC 6: Seward
-	AKSITKA                           SecondaryAdministrativeSubdivision = "ak,sitka"                           // ak,sitka                            = DXCC 6: Sitka
-	AKSKAGWAY                         SecondaryAdministrativeSubdivision = "ak,skagway"                         // ak,skagway                          = DXCC 6: Skagway
-	AKSKAGWAY_HOONAH_ANGOON           SecondaryAdministrativeSubdivision = "ak,skagway-hoonah-angoon"           // ak,skagway-hoonah-angoon            = DXCC 6: Skagway-Hoonah-Angoon
-	AKSKAGWAY_YAKUTA                  SecondaryAdministrativeSubdivision = "ak,skagway-yakuta"                  // ak,skagway-yakuta                   = DXCC 6: Skagway-Yakutat
-	AKSKAGWAY_YAKUTAT_ANGOON          SecondaryAdministrativeSubdivision = "ak,skagway-yakutat-angoon"          // ak,skagway-yakutat-angoon           = DXCC 6: Skagway-Yakutat-Angoon
-	AKSOUTHEAST_FAIRBANKS             SecondaryAdministrativeSubdivision = "ak,southeast fairbanks"             // ak,southeast fairbanks              = DXCC 6: Southeast Fairbanks
-	AKTHIRD_JUDICIAL_DISTRICT         SecondaryAdministrativeSubdivision = "ak,third judicial district"         // ak,third judicial district          = DXCC 6: Third Judicial District
-	AKUPPER_YUKON                     SecondaryAdministrativeSubdivision = "ak,upper yukon"                     // ak,upper yukon                      = DXCC 6: Upper Yukon
-	AKVALDEZ_CHITINA_WHITTIER         SecondaryAdministrativeSubdivision = "ak,valdez-chitina-whittier"         // ak,valdez-chitina-whittier          = DXCC 6: Valdez-Chitina-Whittier
-	AKVALDEZ_CORDOVA                  SecondaryAdministrativeSubdivision = "ak,valdez-cordova"                  // ak,valdez-cordova                   = DXCC 6: Valdez-Cordova
-	AKWADE_HAMPTON                    SecondaryAdministrativeSubdivision = "ak,wade hampton"                    // ak,wade hampton                     = DXCC 6: Wade Hampton
-	AKWALES_HYDER                     SecondaryAdministrativeSubdivision = "ak,wales-hyder"                     // ak,wales-hyder                      = DXCC 6: Wales-Hyder
-	AKWRANGELL                        SecondaryAdministrativeSubdivision = "ak,wrangell"                        // ak,wrangell                         = DXCC 6: Wrangell
-	AKWRANGELL_PETERSBURG             SecondaryAdministrativeSubdivision = "ak,wrangell-petersburg"             // ak,wrangell-petersburg              = DXCC 6: Wrangell-Petersburg
-	AKYAKUTAT                         SecondaryAdministrativeSubdivision = "ak,yakutat"                         // ak,yakutat                          = DXCC 6: Yakutat
-	AKYUKON_KOYUKUK                   SecondaryAdministrativeSubdivision = "ak,yukon-koyukuk"                   // ak,yukon-koyukuk                    = DXCC 6: Yukon-Koyukuk
+	AKALEUTIANS_EAST                  SecondaryAdministrativeSubdivision = "AK,ALEUTIANS EAST"                  // AK,ALEUTIANS EAST                   = DXCC 6: Aleutians East
+	AKALEUTIANS_ISLANDS               SecondaryAdministrativeSubdivision = "AK,ALEUTIANS ISLANDS"               // AK,ALEUTIANS ISLANDS                = DXCC 6: Aleutians Islands
+	AKALEUTIANS_WEST                  SecondaryAdministrativeSubdivision = "AK,ALEUTIANS WEST"                  // AK,ALEUTIANS WEST                   = DXCC 6: Aleutians West
+	AKANCHORAGE                       SecondaryAdministrativeSubdivision = "AK,ANCHORAGE"                       // AK,ANCHORAGE                        = DXCC 6: Anchorage
+	AKANGOON                          SecondaryAdministrativeSubdivision = "AK,ANGOON"                          // AK,ANGOON                           = DXCC 6: Angoon
+	AKBARROW                          SecondaryAdministrativeSubdivision = "AK,BARROW"                          // AK,BARROW                           = DXCC 6: Barrow
+	AKBETHEL                          SecondaryAdministrativeSubdivision = "AK,BETHEL"                          // AK,BETHEL                           = DXCC 6: Bethel
+	AKBRISTOL_BAY                     SecondaryAdministrativeSubdivision = "AK,BRISTOL BAY"                     // AK,BRISTOL BAY                      = DXCC 6: Bristol Bay
+	AKCORDOVA_MCCARTHY                SecondaryAdministrativeSubdivision = "AK,CORDOVA-MCCARTHY"                // AK,CORDOVA-MCCARTHY                 = DXCC 6: Cordova-McCarthy
+	AKDENALI                          SecondaryAdministrativeSubdivision = "AK,DENALI"                          // AK,DENALI                           = DXCC 6: Denali
+	AKDILLINGHAM                      SecondaryAdministrativeSubdivision = "AK,DILLINGHAM"                      // AK,DILLINGHAM                       = DXCC 6: Dillingham
+	AKFAIRBANKS                       SecondaryAdministrativeSubdivision = "AK,FAIRBANKS"                       // AK,FAIRBANKS                        = DXCC 6: Fairbanks
+	AKFAIRBANKS_NORTH_STAR            SecondaryAdministrativeSubdivision = "AK,FAIRBANKS NORTH STAR"            // AK,FAIRBANKS NORTH STAR             = DXCC 6: Fairbanks North Star
+	AKFIRST_JUDICIAL_DISTRICT         SecondaryAdministrativeSubdivision = "AK,FIRST JUDICIAL DISTRICT"         // AK,FIRST JUDICIAL DISTRICT          = DXCC 6: First Judicial District
+	AKFOURTH_JUDICIAL_DISTRICT        SecondaryAdministrativeSubdivision = "AK,FOURTH JUDICIAL DISTRICT"        // AK,FOURTH JUDICIAL DISTRICT         = DXCC 6: Fourth Judicial District
+	AKHAINES                          SecondaryAdministrativeSubdivision = "AK,HAINES"                          // AK,HAINES                           = DXCC 6: Haines
+	AKHOONAH_ANGOON                   SecondaryAdministrativeSubdivision = "AK,HOONAH-ANGOON"                   // AK,HOONAH-ANGOON                    = DXCC 6: Hoonah-Angoon
+	AKJUNEAU                          SecondaryAdministrativeSubdivision = "AK,JUNEAU"                          // AK,JUNEAU                           = DXCC 6: Juneau
+	AKKENAI_PENINSULA                 SecondaryAdministrativeSubdivision = "AK,KENAI PENINSULA"                 // AK,KENAI PENINSULA                  = DXCC 6: Kenai Peninsula
+	AKKENAI_COOK_INLET                SecondaryAdministrativeSubdivision = "AK,KENAI-COOK INLET"                // AK,KENAI-COOK INLET                 = DXCC 6: Kenai-Cook Inlet
+	AKKETCHIKAN                       SecondaryAdministrativeSubdivision = "AK,KETCHIKAN"                       // AK,KETCHIKAN                        = DXCC 6: Ketchikan
+	AKKETCHIKAN_GATEWAY               SecondaryAdministrativeSubdivision = "AK,KETCHIKAN GATEWAY"               // AK,KETCHIKAN GATEWAY                = DXCC 6: Ketchikan Gateway
+	AKKOBUK                           SecondaryAdministrativeSubdivision = "AK,KOBUK"                           // AK,KOBUK                            = DXCC 6: Kobuk
+	AKKODIAK_ISLAND                   SecondaryAdministrativeSubdivision = "AK,KODIAK ISLAND"                   // AK,KODIAK ISLAND                    = DXCC 6: Kodiak Island
+	AKKUSILVAK                        SecondaryAdministrativeSubdivision = "AK,KUSILVAK"                        // AK,KUSILVAK                         = DXCC 6: Kusilvak
+	AKKUSKOKWIM                       SecondaryAdministrativeSubdivision = "AK,KUSKOKWIM"                       // AK,KUSKOKWIM                        = DXCC 6: Kuskokwim
+	AKLAKE_AND_PENINSULA              SecondaryAdministrativeSubdivision = "AK,LAKE AND PENINSULA"              // AK,LAKE AND PENINSULA               = DXCC 6: Lake and Peninsula
+	AKLYNN_CANAL_ICY_STRAITS          SecondaryAdministrativeSubdivision = "AK,LYNN CANAL-ICY STRAITS"          // AK,LYNN CANAL-ICY STRAITS           = DXCC 6: Lynn Canal-Icy Straits
+	AKMATANUSKA_SUSITNA               SecondaryAdministrativeSubdivision = "AK,MATANUSKA-SUSITNA"               // AK,MATANUSKA-SUSITNA                = DXCC 6: Matanuska-Susitna
+	AKNOME                            SecondaryAdministrativeSubdivision = "AK,NOME"                            // AK,NOME                             = DXCC 6: Nome
+	AKNORTH_SLOPE                     SecondaryAdministrativeSubdivision = "AK,NORTH SLOPE"                     // AK,NORTH SLOPE                      = DXCC 6: North Slope
+	AKNORTHWEST_ARCTIC                SecondaryAdministrativeSubdivision = "AK,NORTHWEST ARCTIC"                // AK,NORTHWEST ARCTIC                 = DXCC 6: Northwest Arctic
+	AKOUTER_KETCHIKAN                 SecondaryAdministrativeSubdivision = "AK,OUTER KETCHIKAN"                 // AK,OUTER KETCHIKAN                  = DXCC 6: Outer Ketchikan
+	AKPALMER_WASILLA_TALKEETNA        SecondaryAdministrativeSubdivision = "AK,PALMER-WASILLA-TALKEETNA"        // AK,PALMER-WASILLA-TALKEETNA         = DXCC 6: Palmer-Wasilla-Talkeetna
+	AKPETERSBURG                      SecondaryAdministrativeSubdivision = "AK,PETERSBURG"                      // AK,PETERSBURG                       = DXCC 6: Petersburg
+	AKPRIBILOF_ISLANDS                SecondaryAdministrativeSubdivision = "AK,PRIBILOF ISLANDS"                // AK,PRIBILOF ISLANDS                 = DXCC 6: Pribilof Islands
+	AKPRINCE_OF_WALES                 SecondaryAdministrativeSubdivision = "AK,PRINCE OF WALES"                 // AK,PRINCE OF WALES                  = DXCC 6: Prince of Wales
+	AKPRINCE_OF_WALES_HYDER           SecondaryAdministrativeSubdivision = "AK,PRINCE OF WALES-HYDER"           // AK,PRINCE OF WALES-HYDER            = DXCC 6: Prince of Wales-Hyder
+	AKPRINCE_OF_WALES_OUTER_KETCHIKAN SecondaryAdministrativeSubdivision = "AK,PRINCE OF WALES-OUTER KETCHIKAN" // AK,PRINCE OF WALES-OUTER KETCHIKAN  = DXCC 6: Prince of Wales-Outer Ketchikan
+	AKSAINT_MATTHEW_ISLAND            SecondaryAdministrativeSubdivision = "AK,SAINT MATTHEW ISLAND"            // AK,SAINT MATTHEW ISLAND             = DXCC 6: Saint Matthew Island
+	AKSECOND_JUDICIAL_DISTRICT        SecondaryAdministrativeSubdivision = "AK,SECOND JUDICIAL DISTRICT"        // AK,SECOND JUDICIAL DISTRICT         = DXCC 6: Second Judicial District
+	AKSEWARD                          SecondaryAdministrativeSubdivision = "AK,SEWARD"                          // AK,SEWARD                           = DXCC 6: Seward
+	AKSITKA                           SecondaryAdministrativeSubdivision = "AK,SITKA"                           // AK,SITKA                            = DXCC 6: Sitka
+	AKSKAGWAY                         SecondaryAdministrativeSubdivision = "AK,SKAGWAY"                         // AK,SKAGWAY                          = DXCC 6: Skagway
+	AKSKAGWAY_HOONAH_ANGOON           SecondaryAdministrativeSubdivision = "AK,SKAGWAY-HOONAH-ANGOON"           // AK,SKAGWAY-HOONAH-ANGOON            = DXCC 6: Skagway-Hoonah-Angoon
+	AKSKAGWAY_YAKUTA                  SecondaryAdministrativeSubdivision = "AK,SKAGWAY-YAKUTA"                  // AK,SKAGWAY-YAKUTA                   = DXCC 6: Skagway-Yakutat
+	AKSKAGWAY_YAKUTAT_ANGOON          SecondaryAdministrativeSubdivision = "AK,SKAGWAY-YAKUTAT-ANGOON"          // AK,SKAGWAY-YAKUTAT-ANGOON           = DXCC 6: Skagway-Yakutat-Angoon
+	AKSOUTHEAST_FAIRBANKS             SecondaryAdministrativeSubdivision = "AK,SOUTHEAST FAIRBANKS"             // AK,SOUTHEAST FAIRBANKS              = DXCC 6: Southeast Fairbanks
+	AKTHIRD_JUDICIAL_DISTRICT         SecondaryAdministrativeSubdivision = "AK,THIRD JUDICIAL DISTRICT"         // AK,THIRD JUDICIAL DISTRICT          = DXCC 6: Third Judicial District
+	AKUPPER_YUKON                     SecondaryAdministrativeSubdivision = "AK,UPPER YUKON"                     // AK,UPPER YUKON                      = DXCC 6: Upper Yukon
+	AKVALDEZ_CHITINA_WHITTIER         SecondaryAdministrativeSubdivision = "AK,VALDEZ-CHITINA-WHITTIER"         // AK,VALDEZ-CHITINA-WHITTIER          = DXCC 6: Valdez-Chitina-Whittier
+	AKVALDEZ_CORDOVA                  SecondaryAdministrativeSubdivision = "AK,VALDEZ-CORDOVA"                  // AK,VALDEZ-CORDOVA                   = DXCC 6: Valdez-Cordova
+	AKWADE_HAMPTON                    SecondaryAdministrativeSubdivision = "AK,WADE HAMPTON"                    // AK,WADE HAMPTON                     = DXCC 6: Wade Hampton
+	AKWALES_HYDER                     SecondaryAdministrativeSubdivision = "AK,WALES-HYDER"                     // AK,WALES-HYDER                      = DXCC 6: Wales-Hyder
+	AKWRANGELL                        SecondaryAdministrativeSubdivision = "AK,WRANGELL"                        // AK,WRANGELL                         = DXCC 6: Wrangell
+	AKWRANGELL_PETERSBURG             SecondaryAdministrativeSubdivision = "AK,WRANGELL-PETERSBURG"             // AK,WRANGELL-PETERSBURG              = DXCC 6: Wrangell-Petersburg
+	AKYAKUTAT                         SecondaryAdministrativeSubdivision = "AK,YAKUTAT"                         // AK,YAKUTAT                          = DXCC 6: Yakutat
+	AKYUKON_KOYUKUK                   SecondaryAdministrativeSubdivision = "AK,YUKON-KOYUKUK"                   // AK,YUKON-KOYUKUK                    = DXCC 6: Yukon-Koyukuk
 )
 
 var (
@@ -74,64 +74,64 @@ var (
 
 // lookupList contains all known SecondaryAdministrativeSubdivision specifications.
 var lookupList = []Spec{
-	{IsImportOnly: false, Key: "ak,aleutians east", SecondaryAdminSub: "Aleutians East", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,aleutians islands", SecondaryAdminSub: "Aleutians Islands", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,aleutians west", SecondaryAdminSub: "Aleutians West", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,anchorage", SecondaryAdminSub: "Anchorage", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,angoon", SecondaryAdminSub: "Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,barrow", SecondaryAdminSub: "Barrow", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,bethel", SecondaryAdminSub: "Bethel", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,bristol bay", SecondaryAdminSub: "Bristol Bay", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,cordova-mccarthy", SecondaryAdminSub: "Cordova-McCarthy", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,denali", SecondaryAdminSub: "Denali", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,dillingham", SecondaryAdminSub: "Dillingham", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,fairbanks", SecondaryAdminSub: "Fairbanks", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,fairbanks north star", SecondaryAdminSub: "Fairbanks North Star", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,first judicial district", SecondaryAdminSub: "First Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,fourth judicial district", SecondaryAdminSub: "Fourth Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,haines", SecondaryAdminSub: "Haines", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,hoonah-angoon", SecondaryAdminSub: "Hoonah-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,juneau", SecondaryAdminSub: "Juneau", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,kenai peninsula", SecondaryAdminSub: "Kenai Peninsula", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,kenai-cook inlet", SecondaryAdminSub: "Kenai-Cook Inlet", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,ketchikan", SecondaryAdminSub: "Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,ketchikan gateway", SecondaryAdminSub: "Ketchikan Gateway", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,kobuk", SecondaryAdminSub: "Kobuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,kodiak island", SecondaryAdminSub: "Kodiak Island", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,kusilvak", SecondaryAdminSub: "Kusilvak", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,kuskokwim", SecondaryAdminSub: "Kuskokwim", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,lake and peninsula", SecondaryAdminSub: "Lake and Peninsula", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,lynn canal-icy straits", SecondaryAdminSub: "Lynn Canal-Icy Straits", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,matanuska-susitna", SecondaryAdminSub: "Matanuska-Susitna", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,nome", SecondaryAdminSub: "Nome", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,north slope", SecondaryAdminSub: "North Slope", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,northwest arctic", SecondaryAdminSub: "Northwest Arctic", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,outer ketchikan", SecondaryAdminSub: "Outer Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,palmer-wasilla-talkeetna", SecondaryAdminSub: "Palmer-Wasilla-Talkeetna", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,petersburg", SecondaryAdminSub: "Petersburg", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,pribilof islands", SecondaryAdminSub: "Pribilof Islands", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,prince of wales", SecondaryAdminSub: "Prince of Wales", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,prince of wales-hyder", SecondaryAdminSub: "Prince of Wales-Hyder", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,prince of wales-outer ketchikan", SecondaryAdminSub: "Prince of Wales-Outer Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,saint matthew island", SecondaryAdminSub: "Saint Matthew Island", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,second judicial district", SecondaryAdminSub: "Second Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,seward", SecondaryAdminSub: "Seward", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,sitka", SecondaryAdminSub: "Sitka", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,skagway", SecondaryAdminSub: "Skagway", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,skagway-hoonah-angoon", SecondaryAdminSub: "Skagway-Hoonah-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,skagway-yakuta", SecondaryAdminSub: "Skagway-Yakutat", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,skagway-yakutat-angoon", SecondaryAdminSub: "Skagway-Yakutat-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,southeast fairbanks", SecondaryAdminSub: "Southeast Fairbanks", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,third judicial district", SecondaryAdminSub: "Third Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,upper yukon", SecondaryAdminSub: "Upper Yukon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,valdez-chitina-whittier", SecondaryAdminSub: "Valdez-Chitina-Whittier", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,valdez-cordova", SecondaryAdminSub: "Valdez-Cordova", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,wade hampton", SecondaryAdminSub: "Wade Hampton", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,wales-hyder", SecondaryAdminSub: "Wales-Hyder", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,wrangell", SecondaryAdminSub: "Wrangell", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,wrangell-petersburg", SecondaryAdminSub: "Wrangell-Petersburg", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
-	{IsImportOnly: false, Key: "ak,yakutat", SecondaryAdminSub: "Yakutat", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
-	{IsImportOnly: false, Key: "ak,yukon-koyukuk", SecondaryAdminSub: "Yukon-Koyukuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,ALEUTIANS EAST", SecondaryAdminSub: "Aleutians East", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,ALEUTIANS ISLANDS", SecondaryAdminSub: "Aleutians Islands", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,ALEUTIANS WEST", SecondaryAdminSub: "Aleutians West", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,ANCHORAGE", SecondaryAdminSub: "Anchorage", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,ANGOON", SecondaryAdminSub: "Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,BARROW", SecondaryAdminSub: "Barrow", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,BETHEL", SecondaryAdminSub: "Bethel", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,BRISTOL BAY", SecondaryAdminSub: "Bristol Bay", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,CORDOVA-MCCARTHY", SecondaryAdminSub: "Cordova-McCarthy", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,DENALI", SecondaryAdminSub: "Denali", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,DILLINGHAM", SecondaryAdminSub: "Dillingham", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,FAIRBANKS", SecondaryAdminSub: "Fairbanks", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,FAIRBANKS NORTH STAR", SecondaryAdminSub: "Fairbanks North Star", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,FIRST JUDICIAL DISTRICT", SecondaryAdminSub: "First Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,FOURTH JUDICIAL DISTRICT", SecondaryAdminSub: "Fourth Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,HAINES", SecondaryAdminSub: "Haines", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,HOONAH-ANGOON", SecondaryAdminSub: "Hoonah-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,JUNEAU", SecondaryAdminSub: "Juneau", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,KENAI PENINSULA", SecondaryAdminSub: "Kenai Peninsula", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,KENAI-COOK INLET", SecondaryAdminSub: "Kenai-Cook Inlet", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,KETCHIKAN", SecondaryAdminSub: "Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,KETCHIKAN GATEWAY", SecondaryAdminSub: "Ketchikan Gateway", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,KOBUK", SecondaryAdminSub: "Kobuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,KODIAK ISLAND", SecondaryAdminSub: "Kodiak Island", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,KUSILVAK", SecondaryAdminSub: "Kusilvak", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,KUSKOKWIM", SecondaryAdminSub: "Kuskokwim", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,LAKE AND PENINSULA", SecondaryAdminSub: "Lake and Peninsula", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,LYNN CANAL-ICY STRAITS", SecondaryAdminSub: "Lynn Canal-Icy Straits", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,MATANUSKA-SUSITNA", SecondaryAdminSub: "Matanuska-Susitna", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,NOME", SecondaryAdminSub: "Nome", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,NORTH SLOPE", SecondaryAdminSub: "North Slope", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,NORTHWEST ARCTIC", SecondaryAdminSub: "Northwest Arctic", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,OUTER KETCHIKAN", SecondaryAdminSub: "Outer Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,PALMER-WASILLA-TALKEETNA", SecondaryAdminSub: "Palmer-Wasilla-Talkeetna", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,PETERSBURG", SecondaryAdminSub: "Petersburg", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,PRIBILOF ISLANDS", SecondaryAdminSub: "Pribilof Islands", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,PRINCE OF WALES", SecondaryAdminSub: "Prince of Wales", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,PRINCE OF WALES-HYDER", SecondaryAdminSub: "Prince of Wales-Hyder", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,PRINCE OF WALES-OUTER KETCHIKAN", SecondaryAdminSub: "Prince of Wales-Outer Ketchikan", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SAINT MATTHEW ISLAND", SecondaryAdminSub: "Saint Matthew Island", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,SECOND JUDICIAL DISTRICT", SecondaryAdminSub: "Second Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SEWARD", SecondaryAdminSub: "Seward", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SITKA", SecondaryAdminSub: "Sitka", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,SKAGWAY", SecondaryAdminSub: "Skagway", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,SKAGWAY-HOONAH-ANGOON", SecondaryAdminSub: "Skagway-Hoonah-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SKAGWAY-YAKUTA", SecondaryAdminSub: "Skagway-Yakutat", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SKAGWAY-YAKUTAT-ANGOON", SecondaryAdminSub: "Skagway-Yakutat-Angoon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,SOUTHEAST FAIRBANKS", SecondaryAdminSub: "Southeast Fairbanks", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,THIRD JUDICIAL DISTRICT", SecondaryAdminSub: "Third Judicial District", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,UPPER YUKON", SecondaryAdminSub: "Upper Yukon", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,VALDEZ-CHITINA-WHITTIER", SecondaryAdminSub: "Valdez-Chitina-Whittier", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,VALDEZ-CORDOVA", SecondaryAdminSub: "Valdez-Cordova", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Third Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,WADE HAMPTON", SecondaryAdminSub: "Wade Hampton", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Second Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,WALES-HYDER", SecondaryAdminSub: "Wales-Hyder", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,WRANGELL", SecondaryAdminSub: "Wrangell", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,WRANGELL-PETERSBURG", SecondaryAdminSub: "Wrangell-Petersburg", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: true},
+	{IsImportOnly: false, Key: "AK,YAKUTAT", SecondaryAdminSub: "Yakutat", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska First Judicial District", IsDeleted: false},
+	{IsImportOnly: false, Key: "AK,YUKON-KOYUKUK", SecondaryAdminSub: "Yukon-Koyukuk", DXCCEntityCode: 6, AlaskaJudicialDistrict: "Alaska Fourth Judicial District", IsDeleted: false},
 }
 
 // lookupMap contains all known SecondaryAdministrativeSubdivision specifications.

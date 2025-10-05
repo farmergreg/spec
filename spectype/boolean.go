@@ -15,6 +15,6 @@ func (b *Boolean) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	*b = strings.ToLower(strings.TrimSpace(val)) == "true"
+	*b = strings.ToUpper(strings.TrimSpace(val)) == "TRUE"
 	return nil
 }
