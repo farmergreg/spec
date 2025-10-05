@@ -7,39 +7,39 @@ package band
 import "sync"
 
 const (
-	BAND_1_25CM Band = "1.25CM" // 1.25cm =   24000.0000 MHz to   24250.0000 MHz
-	BAND_1_25M  Band = "1.25M"  // 1.25m  =     222.0000 MHz to     225.0000 MHz
-	BAND_10M    Band = "10M"    // 10m    =      28.0000 MHz to      29.7000 MHz
-	BAND_12M    Band = "12M"    // 12m    =      24.8900 MHz to      24.9900 MHz
-	BAND_13CM   Band = "13CM"   // 13cm   =    2300.0000 MHz to    2450.0000 MHz
-	BAND_15M    Band = "15M"    // 15m    =      21.0000 MHz to      21.4500 MHz
-	BAND_160M   Band = "160M"   // 160m   =       1.8000 MHz to       2.0000 MHz
-	BAND_17M    Band = "17M"    // 17m    =      18.0680 MHz to      18.1680 MHz
-	BAND_1MM    Band = "1MM"    // 1mm    =  241000.0000 MHz to  250000.0000 MHz
-	BAND_2_5MM  Band = "2.5MM"  // 2.5mm  =  119980.0000 MHz to  123000.0000 MHz
-	BAND_20M    Band = "20M"    // 20m    =      14.0000 MHz to      14.3500 MHz
-	BAND_2190M  Band = "2190M"  // 2190m  =       0.1357 MHz to       0.1378 MHz
-	BAND_23CM   Band = "23CM"   // 23cm   =    1240.0000 MHz to    1300.0000 MHz
-	BAND_2M     Band = "2M"     // 2m     =     144.0000 MHz to     148.0000 MHz
-	BAND_2MM    Band = "2MM"    // 2mm    =  134000.0000 MHz to  149000.0000 MHz
-	BAND_30M    Band = "30M"    // 30m    =      10.1000 MHz to      10.1500 MHz
-	BAND_33CM   Band = "33CM"   // 33cm   =     902.0000 MHz to     928.0000 MHz
-	BAND_3CM    Band = "3CM"    // 3cm    =   10000.0000 MHz to   10500.0000 MHz
-	BAND_40M    Band = "40M"    // 40m    =       7.0000 MHz to       7.3000 MHz
-	BAND_4M     Band = "4M"     // 4m     =      70.0000 MHz to      71.0000 MHz
-	BAND_4MM    Band = "4MM"    // 4mm    =   75500.0000 MHz to   81000.0000 MHz
-	BAND_560M   Band = "560M"   // 560m   =       0.5010 MHz to       0.5040 MHz
-	BAND_5M     Band = "5M"     // 5m     =      54.0000 MHz to      69.9000 MHz
-	BAND_60M    Band = "60M"    // 60m    =       5.0600 MHz to       5.4500 MHz
-	BAND_630M   Band = "630M"   // 630m   =       0.4720 MHz to       0.4790 MHz
-	BAND_6CM    Band = "6CM"    // 6cm    =    5650.0000 MHz to    5925.0000 MHz
-	BAND_6M     Band = "6M"     // 6m     =      50.0000 MHz to      54.0000 MHz
-	BAND_6MM    Band = "6MM"    // 6mm    =   47000.0000 MHz to   47200.0000 MHz
-	BAND_70CM   Band = "70CM"   // 70cm   =     420.0000 MHz to     450.0000 MHz
-	BAND_80M    Band = "80M"    // 80m    =       3.5000 MHz to       4.0000 MHz
-	BAND_8M     Band = "8M"     // 8m     =      40.0000 MHz to      45.0000 MHz
-	BAND_9CM    Band = "9CM"    // 9cm    =    3300.0000 MHz to    3500.0000 MHz
-	BAND_SUBMM  Band = "SUBMM"  // submm  =  300000.0000 MHz to 7500000.0000 MHz
+	BAND_1_25CM Band = "1.25CM" // 1.25CM =   24000.0000 MHz to   24250.0000 MHz
+	BAND_1_25M  Band = "1.25M"  // 1.25M  =     222.0000 MHz to     225.0000 MHz
+	BAND_10M    Band = "10M"    // 10M    =      28.0000 MHz to      29.7000 MHz
+	BAND_12M    Band = "12M"    // 12M    =      24.8900 MHz to      24.9900 MHz
+	BAND_13CM   Band = "13CM"   // 13CM   =    2300.0000 MHz to    2450.0000 MHz
+	BAND_15M    Band = "15M"    // 15M    =      21.0000 MHz to      21.4500 MHz
+	BAND_160M   Band = "160M"   // 160M   =       1.8000 MHz to       2.0000 MHz
+	BAND_17M    Band = "17M"    // 17M    =      18.0680 MHz to      18.1680 MHz
+	BAND_1MM    Band = "1MM"    // 1MM    =  241000.0000 MHz to  250000.0000 MHz
+	BAND_2_5MM  Band = "2.5MM"  // 2.5MM  =  119980.0000 MHz to  123000.0000 MHz
+	BAND_20M    Band = "20M"    // 20M    =      14.0000 MHz to      14.3500 MHz
+	BAND_2190M  Band = "2190M"  // 2190M  =       0.1357 MHz to       0.1378 MHz
+	BAND_23CM   Band = "23CM"   // 23CM   =    1240.0000 MHz to    1300.0000 MHz
+	BAND_2M     Band = "2M"     // 2M     =     144.0000 MHz to     148.0000 MHz
+	BAND_2MM    Band = "2MM"    // 2MM    =  134000.0000 MHz to  149000.0000 MHz
+	BAND_30M    Band = "30M"    // 30M    =      10.1000 MHz to      10.1500 MHz
+	BAND_33CM   Band = "33CM"   // 33CM   =     902.0000 MHz to     928.0000 MHz
+	BAND_3CM    Band = "3CM"    // 3CM    =   10000.0000 MHz to   10500.0000 MHz
+	BAND_40M    Band = "40M"    // 40M    =       7.0000 MHz to       7.3000 MHz
+	BAND_4M     Band = "4M"     // 4M     =      70.0000 MHz to      71.0000 MHz
+	BAND_4MM    Band = "4MM"    // 4MM    =   75500.0000 MHz to   81000.0000 MHz
+	BAND_560M   Band = "560M"   // 560M   =       0.5010 MHz to       0.5040 MHz
+	BAND_5M     Band = "5M"     // 5M     =      54.0000 MHz to      69.9000 MHz
+	BAND_60M    Band = "60M"    // 60M    =       5.0600 MHz to       5.4500 MHz
+	BAND_630M   Band = "630M"   // 630M   =       0.4720 MHz to       0.4790 MHz
+	BAND_6CM    Band = "6CM"    // 6CM    =    5650.0000 MHz to    5925.0000 MHz
+	BAND_6M     Band = "6M"     // 6M     =      50.0000 MHz to      54.0000 MHz
+	BAND_6MM    Band = "6MM"    // 6MM    =   47000.0000 MHz to   47200.0000 MHz
+	BAND_70CM   Band = "70CM"   // 70CM   =     420.0000 MHz to     450.0000 MHz
+	BAND_80M    Band = "80M"    // 80M    =       3.5000 MHz to       4.0000 MHz
+	BAND_8M     Band = "8M"     // 8M     =      40.0000 MHz to      45.0000 MHz
+	BAND_9CM    Band = "9CM"    // 9CM    =    3300.0000 MHz to    3500.0000 MHz
+	BAND_SUBMM  Band = "SUBMM"  // SUBMM  =  300000.0000 MHz to 7500000.0000 MHz
 )
 
 var (
