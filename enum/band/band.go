@@ -18,7 +18,7 @@ func New(value string) Band {
 
 // String returns the string representation of the Band.
 func (b Band) String() string {
-	return string(b)
+	return strings.ToLower(string(b))
 }
 
 // Compare returns an integer comparing two Band values lexicographically.
