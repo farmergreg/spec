@@ -62,8 +62,8 @@ func (r RegionCode) Equals(other RegionCode) bool {
 
 func (s Spec) CodeGenMetadata() codegen.CodeGenEnumMetadata {
 	constName := string(s.Code) + "." + strconv.Itoa(int(s.DXCCEntityCode))
-	if string(s.Code) == "none" {
-		constName = "none"
+	if string(s.Code) == "NONE" {
+		constName = "NONE"
 	}
 	constName = strconv.QuoteToASCII(constName)
 

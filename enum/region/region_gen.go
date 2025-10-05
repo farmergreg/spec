@@ -54,7 +54,7 @@ var lookupMap = map[RegionCompositeKey]*Spec{
 	"KO.0":   &lookupList[4],
 	"KO.296": &lookupList[5],
 	"KO.522": &lookupList[6],
-	"NONE.0": &lookupList[7],
+	"NONE":   &lookupList[7],
 	"SI.279": &lookupList[8],
 	"SY.248": &lookupList[9],
 }
